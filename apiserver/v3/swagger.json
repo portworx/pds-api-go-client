@@ -1,0 +1,92 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Portworx Data Services API Server",
+        "title": "PDS API",
+        "contact": {},
+        "version": "3.0.1"
+    },
+    "security": [
+        {
+            "BearerAuth": []
+        }
+    ],
+    "paths": {
+        "/api/authorizer": {            
+            "post": {
+                "operationId": "authorizer",
+                "description": "Check if the provided operation is allowed",
+                "consumes": [
+                    "application/json"
+                ],
+                
+                "tags": [
+                    "Authorizer"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthorizerRequest"
+                        }
+                    }
+                ],
+                "summary": "Authorize operation",
+                "responses": {
+                    "200": {                        
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthorizerResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }                                       
+                }
+            }
+        }       
+    },
+    "definitions": {
+        "models.AuthorizerResponse": {
+            "type": "object",
+            "properties": {
+                "allow": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.AuthorizerRequest": {
+            "type": "object",
+            "properties": {
+                "operation": {
+                    "type": "string"
+                },
+                "entity_id": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "Entity ID"
+                },
+                "entity_type": {
+                    "type": "string",
+                    "description": "Entity type"
+                }
+            },
+            "required": [
+                "operation",
+                "entity_id",
+                "entity_type"
+            ]
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer token"
+        }
+    }
+}
