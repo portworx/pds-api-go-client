@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContinuationToken** | Pointer to **string** |  | [optional] 
+**Continuation** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewConstraintPaginationWithDefaults instantiates a new ConstraintPagination obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetContinuationToken
+### GetContinuation
 
-`func (o *ConstraintPagination) GetContinuationToken() string`
+`func (o *ConstraintPagination) GetContinuation() string`
 
-GetContinuationToken returns the ContinuationToken field if non-nil, zero value otherwise.
+GetContinuation returns the Continuation field if non-nil, zero value otherwise.
 
-### GetContinuationTokenOk
+### GetContinuationOk
 
-`func (o *ConstraintPagination) GetContinuationTokenOk() (*string, bool)`
+`func (o *ConstraintPagination) GetContinuationOk() (*string, bool)`
 
-GetContinuationTokenOk returns a tuple with the ContinuationToken field if it's non-nil, zero value otherwise
+GetContinuationOk returns a tuple with the Continuation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetContinuationToken
+### SetContinuation
 
-`func (o *ConstraintPagination) SetContinuationToken(v string)`
+`func (o *ConstraintPagination) SetContinuation(v string)`
 
-SetContinuationToken sets ContinuationToken field to given value.
+SetContinuation sets Continuation field to given value.
 
-### HasContinuationToken
+### HasContinuation
 
-`func (o *ConstraintPagination) HasContinuationToken() bool`
+`func (o *ConstraintPagination) HasContinuation() bool`
 
-HasContinuationToken returns a boolean if a field has been set.
+HasContinuation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

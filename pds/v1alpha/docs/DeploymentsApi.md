@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**ApiDeploymentsIdStatusGet**](DeploymentsApi.md#ApiDeploymentsIdStatusGet) | **Get** /api/deployments/{id}/status | Get Deployment Status
 [**ApiDeploymentsPost**](DeploymentsApi.md#ApiDeploymentsPost) | **Post** /api/deployments | Create Deployment
 [**ApiProjectsIdDeploymentsGet**](DeploymentsApi.md#ApiProjectsIdDeploymentsGet) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
+[**ApiProjectsIdDeploymentsPost**](DeploymentsApi.md#ApiProjectsIdDeploymentsPost) | **Post** /api/projects/{id}/deployments | Create Deployment
 
 
 
@@ -580,7 +581,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdDeploymentsGet
 
-> ControllersPaginatedDeployments ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Id2(id2).ClusterName(clusterName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).NamespaceId(namespaceId).Execute()
+> ControllersPaginatedDeployments ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterName(clusterName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).NamespaceId(namespaceId).Execute()
 
 List Project's Deployments
 
@@ -601,6 +602,8 @@ import (
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given Deployment attribute to sort results by (one of: id, cluster_name) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by Deployment id (optional)
     clusterName := "clusterName_example" // string | Filter results by Deployment cluster_name (optional)
     dataServiceId := "dataServiceId_example" // string | Filter results by Deployment data_service_id (optional)
@@ -610,7 +613,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Id2(id2).ClusterName(clusterName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).NamespaceId(namespaceId).Execute()
+    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterName(clusterName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).NamespaceId(namespaceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -637,6 +640,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **sortBy** | **string** | A given Deployment attribute to sort results by (one of: id, cluster_name) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by Deployment id | 
  **clusterName** | **string** | Filter results by Deployment cluster_name | 
  **dataServiceId** | **string** | Filter results by Deployment data_service_id | 
@@ -655,6 +660,80 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectsIdDeploymentsPost
+
+> ModelsDeployment ApiProjectsIdDeploymentsPost(ctx, id).Body(body).LocalOnly(localOnly).Execute()
+
+Create Deployment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    body := *openapiclient.NewControllersCreateProjectDeployment() // ControllersCreateProjectDeployment | Request body containing the deployment config
+    localOnly := true // bool | Set to true to only create the Deployment object in the database (does not create any actual resources) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiProjectsIdDeploymentsPost`: ModelsDeployment
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiProjectsIdDeploymentsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdDeploymentsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersCreateProjectDeployment**](ControllersCreateProjectDeployment.md) | Request body containing the deployment config | 
+ **localOnly** | **bool** | Set to true to only create the Deployment object in the database (does not create any actual resources) | 
+
+### Return type
+
+[**ModelsDeployment**](ModelsDeployment.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -7,14 +7,14 @@ Method | HTTP request | Description
 [**ApiAccountsIdInvitationsPost**](AccountRoleBindingsApi.md#ApiAccountsIdInvitationsPost) | **Post** /api/accounts/{id}/invitations | Create Invitation
 [**ApiAccountsIdRoleBindingsDelete**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsDelete) | **Delete** /api/accounts/{id}/role-bindings | Delete AccountRoleBinding
 [**ApiAccountsIdRoleBindingsGet**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsGet) | **Get** /api/accounts/{id}/role-bindings | List AccountRoleBinding
-[**ApiAccountsIdRoleBindingsPut**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsPut) | **Put** /api/accounts/{id}/role-bindings | Create AccountRoleBinding
+[**ApiAccountsIdRoleBindingsPut**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsPut) | **Put** /api/accounts/{id}/role-bindings | Create/Update AccountRoleBinding
 [**ApiUsersIdAccountRoleBindingsGet**](AccountRoleBindingsApi.md#ApiUsersIdAccountRoleBindingsGet) | **Get** /api/users/{id}/account-role-bindings | List AccountRoleBindings of a given user
 
 
 
 ## ApiAccountsIdInvitationsPost
 
-> ApiAccountsIdInvitationsPost(ctx, id, id2).Body(body).Execute()
+> ApiAccountsIdInvitationsPost(ctx, id).Body(body).Execute()
 
 Create Invitation
 
@@ -34,12 +34,11 @@ import (
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    id2 := TODO // interface{} | Account ID (must be valid UUID)
     body := *openapiclient.NewControllersInvitationRequest() // ControllersInvitationRequest | Request body containing the invitation details.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdInvitationsPost(context.Background(), id, id2).Body(body).Execute()
+    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdInvitationsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdInvitationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,7 +53,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **id** | **string** | Account ID (must be valid UUID) | 
-**id2** | [**interface{}**](.md) | Account ID (must be valid UUID) | 
 
 ### Other Parameters
 
@@ -63,7 +61,6 @@ Other parameters are passed through a pointer to a apiApiAccountsIdInvitationsPo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
  **body** | [**ControllersInvitationRequest**](ControllersInvitationRequest.md) | Request body containing the invitation details. | 
 
@@ -157,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## ApiAccountsIdRoleBindingsGet
 
-> ControllersPaginatedAccountRoleBindings ApiAccountsIdRoleBindingsGet(ctx, id, id2).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
+> ControllersPaginatedAccountRoleBindings ApiAccountsIdRoleBindingsGet(ctx, id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
 
 List AccountRoleBinding
 
@@ -176,8 +173,7 @@ import (
 )
 
 func main() {
-    id := TODO // interface{} | Account ID (must be valid UUID)
-    id2 := "id_example" // string | Account ID (must be valid UUID)
+    id := "id_example" // string | Account ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given AccountRoleBinding attribute to sort results by (one of: role_name, actor_id) (optional)
     roleName := "roleName_example" // string | Filter results by AccountRoleBinding assigned role name (optional)
     actorId := "actorId_example" // string | Filter results by AccountRoleBinding actor id (optional)
@@ -185,7 +181,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsGet(context.Background(), id, id2).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
+    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,8 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | [**interface{}**](.md) | Account ID (must be valid UUID) | 
-**id2** | **string** | Account ID (must be valid UUID) | 
+**id** | **string** | Account ID (must be valid UUID) | 
 
 ### Other Parameters
 
@@ -211,7 +206,6 @@ Other parameters are passed through a pointer to a apiApiAccountsIdRoleBindingsG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
  **sortBy** | **string** | A given AccountRoleBinding attribute to sort results by (one of: role_name, actor_id) | 
  **roleName** | **string** | Filter results by AccountRoleBinding assigned role name | 
@@ -240,7 +234,7 @@ Name | Type | Description  | Notes
 
 > ModelsAccountRoleBinding ApiAccountsIdRoleBindingsPut(ctx, id).Body(body).Execute()
 
-Create AccountRoleBinding
+Create/Update AccountRoleBinding
 
 
 

@@ -1,11 +1,14 @@
 {
+    "schemes": [],
     "swagger": "2.0",
     "info": {
         "description": "Portworx Data Services API Server",
         "title": "PDS API",
         "contact": {},
-        "version": "3.0.1"
+        "version": ""
     },
+    "host": "",
+    "basePath": "",
     "paths": {
         "/api/accounts": {
             "get": {
@@ -27,6 +30,18 @@
                         "type": "string",
                         "description": "A given Accounts attribute to sort results by (one of: id, name)",
                         "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
                         "in": "query"
                     },
                     {
@@ -157,13 +172,6 @@
                         "schema": {
                             "$ref": "#/definitions/controllers.invitationRequest"
                         }
-                    },
-                    {
-                        "type": "uuid",
-                        "description": "Account ID (must be valid UUID)",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -198,13 +206,6 @@
                 ],
                 "summary": "List AccountRoleBinding",
                 "parameters": [
-                    {
-                        "type": "uuid",
-                        "description": "Account ID (must be valid UUID)",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
                     {
                         "type": "string",
                         "description": "Account ID (must be valid UUID)",
@@ -252,7 +253,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Creates a new AccountRoleBinding",
+                "description": "Creates a new AccountRoleBinding, or updates role_name if binding for (actor_id, actor_type) already exists.",
                 "consumes": [
                     "application/json"
                 ],
@@ -262,7 +263,7 @@
                 "tags": [
                     "AccountRoleBindings"
                 ],
-                "summary": "Create AccountRoleBinding",
+                "summary": "Create/Update AccountRoleBinding",
                 "parameters": [
                     {
                         "type": "string",
@@ -367,6 +368,18 @@
                     },
                     {
                         "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "Filter results by Tenant id",
                         "name": "id",
                         "in": "query"
@@ -405,16 +418,21 @@
                 "summary": "List Account Users",
                 "parameters": [
                     {
-                        "type": "uuid",
-                        "description": "Account ID (must be valid UUID)",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
                         "type": "string",
                         "description": "A given User attribute to sort results by (one of: id, email)",
                         "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
                         "in": "query"
                     },
                     {
@@ -479,6 +497,40 @@
                 }
             }
         },
+        "/api/backup-jobs/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a BackupJob",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BackupJobs"
+                ],
+                "summary": "Get BackupJob",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BackupJob ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.BackupJob"
+                        }
+                    }
+                }
+            }
+        },
         "/api/backup-targets": {
             "post": {
                 "security": [
@@ -486,7 +538,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Creates a new BackupTarget",
+                "description": "Deprecated, use POST /api/tenants/{id}/backup-targets instead.",
                 "consumes": [
                     "application/json"
                 ],
@@ -497,6 +549,7 @@
                     "BackupTargets"
                 ],
                 "summary": "Create BackupTarget",
+                "deprecated": true,
                 "parameters": [
                     {
                         "description": "Request body containing the backup target config",
@@ -585,7 +638,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Creates a new database Backup",
+                "description": "Deprecated, use POST /api/projects/{id}/backups instead.",
                 "consumes": [
                     "application/json"
                 ],
@@ -596,6 +649,7 @@
                     "Backups"
                 ],
                 "summary": "Create Backup",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "boolean",
@@ -739,6 +793,70 @@
                 }
             }
         },
+        "/api/backups/{id}/jobs": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Retrieves a list of BackupJobs associated to this Backup",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BackupJobs"
+                ],
+                "summary": "List Backup's Jobs",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Backup ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given BackupJob attribute to sort results by (one of: id, file_size, start_time, completion_time, state)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by BackupJob id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by BackupJob state",
+                        "name": "state",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedBackupJobs"
+                        }
+                    }
+                }
+            }
+        },
         "/api/data-services": {
             "get": {
                 "security": [
@@ -751,7 +869,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Data Services"
+                    "DataServices"
                 ],
                 "summary": "List Data Services",
                 "parameters": [
@@ -832,7 +950,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Data Services"
+                    "DataServices"
                 ],
                 "summary": "Get Data Service",
                 "parameters": [
@@ -849,6 +967,70 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/models.DataService"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/data-services/{id}/versions": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Versions belonging to the Data Service.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Versions"
+                ],
+                "summary": "List Data Service's Versions",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Data Service ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given Version attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Version id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Version's name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedVersions"
                         }
                     }
                 }
@@ -895,7 +1077,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Creates a new DeploymentTarget",
+                "description": "Deprecated, use POST /api/tenants/{id}/deployment-targets instead.",
                 "consumes": [
                     "application/json"
                 ],
@@ -906,6 +1088,7 @@
                     "DeploymentTargets"
                 ],
                 "summary": "Create DeploymentTarget",
+                "deprecated": true,
                 "parameters": [
                     {
                         "description": "Request body containing the deployment target config",
@@ -1005,6 +1188,92 @@
                 }
             }
         },
+        "/api/deployment-targets/{id}/credentials": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches the join credentials of a DeploymentTarget",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "Get join credentials of a DeploymentTarget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "DeploymentTarget ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.DeploymentTargetCredentialsResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployment-targets/{id}/namespaces": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new Namespace",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Create Namespace",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "DeploymentTarget ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the new namespace",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createNamespace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created Namespace will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Namespace"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, see response for more details"
+                    },
+                    "409": {
+                        "description": "Namespace with the given name already exists"
+                    }
+                }
+            }
+        },
         "/api/deployment-templates/{id}": {
             "get": {
                 "security": [
@@ -1046,7 +1315,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Creates a new data service Deployment",
+                "description": "Deprecated, use POST /api/projects/{id}/deployments instead.",
                 "consumes": [
                     "application/json"
                 ],
@@ -1057,6 +1326,7 @@
                     "Deployments"
                 ],
                 "summary": "Create Deployment",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "boolean",
@@ -1226,6 +1496,56 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/pagination.PaginatedResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new database Backup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Backups"
+                ],
+                "summary": "Create Backup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only create the Backup object in the database (does not create any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Request body containing the backup config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createDeploymentBackup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created Backup will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Backup"
                         }
                     }
                 }
@@ -1484,6 +1804,52 @@
                 }
             }
         },
+        "/api/namespaces": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Deprecated, use POST /api/deployment-targets/{id}/namespaces instead.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Create Namespace",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "description": "Request body containing the new namespace",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createNamespaceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created Namespace will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Namespace"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, see response for more details"
+                    },
+                    "409": {
+                        "description": "Namespace with the given name already exists"
+                    }
+                }
+            }
+        },
         "/api/namespaces/{id}": {
             "get": {
                 "security": [
@@ -1552,6 +1918,76 @@
                 }
             }
         },
+        "/api/projects/{id}/deployment-targets": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists DeploymentTargets belonging to the Project",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "List Project's DeploymentTargets",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given DeploymentTarget attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by DeploymentTarget ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Cluster ID",
+                        "name": "cluster_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by DeploymentTarget name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedDeploymentTargets"
+                        }
+                    }
+                }
+            }
+        },
         "/api/projects/{id}/deployments": {
             "get": {
                 "security": [
@@ -1579,6 +2015,18 @@
                         "type": "string",
                         "description": "A given Deployment attribute to sort results by (one of: id, cluster_name)",
                         "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
                         "in": "query"
                     },
                     {
@@ -1623,6 +2071,56 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/controllers.PaginatedDeployments"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new data service Deployment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Create Deployment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only create the Deployment object in the database (does not create any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Request body containing the deployment config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createProjectDeployment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created Deployment will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Deployment"
                         }
                     }
                 }
@@ -1987,6 +2485,18 @@
                     },
                     {
                         "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "A given BackupTarget attribute to sort results by (one of: id, name)",
                         "name": "sort_by",
                         "in": "query"
@@ -2009,6 +2519,50 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/controllers.PaginatedBackupTargets"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new BackupTarget",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BackupTargets"
+                ],
+                "summary": "Create BackupTarget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the backup target config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createTenantBackupTarget"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created BackupTarget will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.BackupTarget"
                         }
                     }
                 }
@@ -2045,8 +2599,26 @@
                     },
                     {
                         "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "Filter results by DeploymentTarget ID",
                         "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Cluster ID",
+                        "name": "cluster_id",
                         "in": "query"
                     },
                     {
@@ -2061,6 +2633,50 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/controllers.PaginatedDeploymentTargets"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new DeploymentTarget",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "Create DeploymentTarget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the deployment target config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createTenantDeploymentTarget"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created DeploymentTarget will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.DeploymentTarget"
                         }
                     }
                 }
@@ -2093,6 +2709,18 @@
                         "type": "string",
                         "description": "A given Project attribute to sort results by (one of: id, name)",
                         "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
                         "in": "query"
                     },
                     {
@@ -2296,6 +2924,18 @@
                     },
                     {
                         "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "Filter results by ServiceAccount name",
                         "name": "name",
                         "in": "query"
@@ -2481,6 +3121,70 @@
                 }
             }
         },
+        "/api/versions/{id}/images": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Images belonging to a Version.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Images"
+                ],
+                "summary": "List Version's Images",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Version ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given Image attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Image id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Image's name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedImages"
+                        }
+                    }
+                }
+            }
+        },
         "/api/whoami": {
             "get": {
                 "security": [
@@ -2648,7 +3352,7 @@
         "constraint.Pagination": {
             "type": "object",
             "properties": {
-                "continuation_token": {
+                "continuation": {
                     "type": "string"
                 }
             }
@@ -2669,6 +3373,20 @@
                     "items": {
                         "type": "string"
                     }
+                }
+            }
+        },
+        "controllers.DeploymentTargetCredentialsResponse": {
+            "type": "object",
+            "properties": {
+                "teleport_ca_pin": {
+                    "type": "string"
+                },
+                "teleport_join_token": {
+                    "type": "string"
+                },
+                "teleport_proxy_addr": {
+                    "type": "string"
                 }
             }
         },
@@ -2728,6 +3446,9 @@
                     "items": {
                         "$ref": "#/definitions/models.Tenant"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2739,6 +3460,23 @@
                     "items": {
                         "$ref": "#/definitions/models.Account"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
+                }
+            }
+        },
+        "controllers.PaginatedBackupJobs": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.BackupJob"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2750,6 +3488,9 @@
                     "items": {
                         "$ref": "#/definitions/models.BackupTarget"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2775,6 +3516,9 @@
                     "items": {
                         "$ref": "#/definitions/models.DeploymentTarget"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2786,6 +3530,9 @@
                     "items": {
                         "$ref": "#/definitions/models.Deployment"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2797,6 +3544,20 @@
                     "items": {
                         "$ref": "#/definitions/models.GlobalRoleBinding"
                     }
+                }
+            }
+        },
+        "controllers.PaginatedImages": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Image"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2830,6 +3591,9 @@
                     "items": {
                         "$ref": "#/definitions/models.ServiceAccount"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2841,6 +3605,9 @@
                     "items": {
                         "$ref": "#/definitions/models.Project"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -2863,6 +3630,23 @@
                     "items": {
                         "$ref": "#/definitions/models.User"
                     }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
+                }
+            }
+        },
+        "controllers.PaginatedVersions": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Version"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
                 }
             }
         },
@@ -3007,6 +3791,35 @@
                 }
             }
         },
+        "controllers.createDeploymentBackup": {
+            "type": "object",
+            "properties": {
+                "backup_level": {
+                    "type": "string",
+                    "example": "snapshot or incremental"
+                },
+                "backup_target_id": {
+                    "type": "string"
+                },
+                "backup_type": {
+                    "type": "string",
+                    "example": "adhoc or scheduled"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "job_history_limit": {
+                    "type": "integer"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string",
+                    "example": "in CRON format, required for scheduled backups"
+                }
+            }
+        },
         "controllers.createDeploymentRequest": {
             "type": "object",
             "properties": {
@@ -3065,9 +3878,6 @@
         "controllers.createDeploymentTargetRequest": {
             "type": "object",
             "properties": {
-                "api_server": {
-                    "type": "string"
-                },
                 "cluster_id": {
                     "type": "string"
                 },
@@ -3076,8 +3886,78 @@
                 },
                 "tenant_id": {
                     "type": "string"
+                }
+            }
+        },
+        "controllers.createNamespace": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Name of the namespace"
+                }
+            }
+        },
+        "controllers.createNamespaceRequest": {
+            "type": "object",
+            "properties": {
+                "deployment_target_id": {
+                    "type": "string"
                 },
-                "token": {
+                "name": {
+                    "type": "string",
+                    "example": "Name of the namespace"
+                }
+            }
+        },
+        "controllers.createProjectDeployment": {
+            "type": "object",
+            "properties": {
+                "cluster_name": {
+                    "type": "string",
+                    "example": "cas-my-service"
+                },
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deployment_target_id": {
+                    "type": "string"
+                },
+                "dns_zone": {
+                    "type": "string"
+                },
+                "image_id": {
+                    "type": "string"
+                },
+                "load_balancer_source_ranges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "namespace_id": {
+                    "type": "string"
+                },
+                "node_count": {
+                    "type": "integer",
+                    "example": 3
+                },
+                "resources": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "service": {
+                    "type": "string",
+                    "example": "my-service"
+                },
+                "service_type": {
+                    "type": "string"
+                },
+                "version_id": {
                     "type": "string"
                 }
             }
@@ -3088,6 +3968,28 @@
                 "name": {
                     "type": "string",
                     "example": "Name of the service account"
+                }
+            }
+        },
+        "controllers.createTenantBackupTarget": {
+            "type": "object",
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.createTenantDeploymentTarget": {
+            "type": "object",
+            "properties": {
+                "cluster_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 }
             }
         },
@@ -3322,10 +4224,55 @@
                 }
             }
         },
+        "models.BackupJob": {
+            "type": "object",
+            "properties": {
+                "backup_id": {
+                    "type": "string"
+                },
+                "completion_time": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "endpoint": {
+                    "description": "Endpoint is populated by the Tekton pipeline on creation",
+                    "type": "string"
+                },
+                "file_size": {
+                    "description": "FileSize is managed by the API",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "start_time": {
+                    "type": "string"
+                },
+                "state": {
+                    "description": "State is managed by the API",
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
         "models.BackupTarget": {
             "type": "object",
             "properties": {
                 "account_id": {
+                    "type": "string"
+                },
+                "backup_credentials_id": {
                     "type": "string"
                 },
                 "created_at": {
@@ -3515,9 +4462,6 @@
                 "account_id": {
                     "type": "string"
                 },
-                "api_server": {
-                    "type": "string"
-                },
                 "cluster_id": {
                     "type": "string"
                 },
@@ -3536,10 +4480,10 @@
                 "name": {
                     "type": "string"
                 },
-                "tenant_id": {
+                "status": {
                     "type": "string"
                 },
-                "token": {
+                "tenant_id": {
                     "type": "string"
                 },
                 "updated_at": {

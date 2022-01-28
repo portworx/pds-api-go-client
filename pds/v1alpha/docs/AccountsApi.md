@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## ApiAccountsGet
 
-> ControllersPaginatedAccounts ApiAccountsGet(ctx).SortBy(sortBy).Id(id).ActorId(actorId).Execute()
+> ControllersPaginatedAccounts ApiAccountsGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).ActorId(actorId).Execute()
 
 List Accounts
 
@@ -33,12 +33,14 @@ import (
 
 func main() {
     sortBy := "sortBy_example" // string | A given Accounts attribute to sort results by (one of: id, name) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id := "id_example" // string | Filter results by Accounts id (optional)
     actorId := "actorId_example" // string | Filter results by Accounts name (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ApiAccountsGet(context.Background()).SortBy(sortBy).Id(id).ActorId(actorId).Execute()
+    resp, r, err := api_client.AccountsApi.ApiAccountsGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).ActorId(actorId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,6 +62,8 @@ Other parameters are passed through a pointer to a apiApiAccountsGetRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sortBy** | **string** | A given Accounts attribute to sort results by (one of: id, name) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id** | **string** | Filter results by Accounts id | 
  **actorId** | **string** | Filter results by Accounts name | 
 
@@ -153,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## ApiAccountsIdUsersGet
 
-> ControllersPaginatedUsers ApiAccountsIdUsersGet(ctx, id).SortBy(sortBy).Id2(id2).Email(email).Execute()
+> ControllersPaginatedUsers ApiAccountsIdUsersGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Email(email).Execute()
 
 List Account Users
 
@@ -172,14 +176,15 @@ import (
 )
 
 func main() {
-    id := TODO // interface{} | Account ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given User attribute to sort results by (one of: id, email) (optional)
-    id2 := "id_example" // string | Filter results by User id (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
+    id := "id_example" // string | Filter results by User id (optional)
     email := "email_example" // string | Filter results by User email (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ApiAccountsIdUsersGet(context.Background(), id).SortBy(sortBy).Id2(id2).Email(email).Execute()
+    resp, r, err := api_client.AccountsApi.ApiAccountsIdUsersGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Email(email).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdUsersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -192,10 +197,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | [**interface{}**](.md) | Account ID (must be valid UUID) | 
 
 ### Other Parameters
 
@@ -204,9 +205,10 @@ Other parameters are passed through a pointer to a apiApiAccountsIdUsersGetReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **sortBy** | **string** | A given User attribute to sort results by (one of: id, email) | 
- **id2** | **string** | Filter results by User id | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
+ **id** | **string** | Filter results by User id | 
  **email** | **string** | Filter results by User email | 
 
 ### Return type

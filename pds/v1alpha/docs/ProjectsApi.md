@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdProjectsGet
 
-> ControllersPaginatedTenantProjects ApiTenantsIdProjectsGet(ctx, id).SortBy(sortBy).Id2(id2).Name(name).Execute()
+> ControllersPaginatedTenantProjects ApiTenantsIdProjectsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
 
 List Tenant's Projects
 
@@ -102,12 +102,14 @@ import (
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given Project attribute to sort results by (one of: id, name) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by Project id (optional)
     name := "name_example" // string | Filter results by Project name (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectsApi.ApiTenantsIdProjectsGet(context.Background(), id).SortBy(sortBy).Id2(id2).Name(name).Execute()
+    resp, r, err := api_client.ProjectsApi.ApiTenantsIdProjectsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiTenantsIdProjectsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,6 +136,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **sortBy** | **string** | A given Project attribute to sort results by (one of: id, name) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by Project id | 
  **name** | **string** | Filter results by Project name | 
 

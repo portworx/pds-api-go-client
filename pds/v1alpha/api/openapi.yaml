@@ -3,7 +3,7 @@ info:
   contact: {}
   description: Portworx Data Services API Server
   title: PDS API
-  version: 3.0.1
+  version: ""
 servers:
 - url: /
 paths:
@@ -14,6 +14,17 @@ paths:
       - description: 'A given Accounts attribute to sort results by (one of: id, name)'
         in: query
         name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
         schema:
           type: string
       - description: Filter results by Accounts id
@@ -93,11 +104,6 @@ paths:
         required: true
         schema:
           type: string
-      - description: Account ID (must be valid UUID)
-        in: path
-        name: id
-        required: true
-        schema: {}
       requestBody:
         content:
           application/json:
@@ -158,11 +164,6 @@ paths:
         in: path
         name: id
         required: true
-        schema: {}
-      - description: Account ID (must be valid UUID)
-        in: path
-        name: id
-        required: true
         schema:
           type: string
       - description: 'A given AccountRoleBinding attribute to sort results by (one
@@ -199,7 +200,8 @@ paths:
       tags:
       - AccountRoleBindings
     put:
-      description: Creates a new AccountRoleBinding
+      description: Creates a new AccountRoleBinding, or updates role_name if binding
+        for (actor_id, actor_type) already exists.
       parameters:
       - description: Account ID (must be valid UUID)
         in: path
@@ -223,7 +225,7 @@ paths:
           description: The created AccountRoleBinding will be returned
       security:
       - ApiKeyAuth: []
-      summary: Create AccountRoleBinding
+      summary: Create/Update AccountRoleBinding
       tags:
       - AccountRoleBindings
       x-codegen-request-body-name: body
@@ -240,6 +242,17 @@ paths:
       - description: 'A given Tenant attribute to sort results by (one of: id, name)'
         in: query
         name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
         schema:
           type: string
       - description: Filter results by Tenant id
@@ -268,14 +281,20 @@ paths:
     get:
       description: Lists Account Users
       parameters:
-      - description: Account ID (must be valid UUID)
-        in: path
-        name: id
-        required: true
-        schema: {}
       - description: 'A given User attribute to sort results by (one of: id, email)'
         in: query
         name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
         schema:
           type: string
       - description: Filter results by User id
@@ -323,9 +342,32 @@ paths:
       tags:
       - Authorizer
       x-codegen-request-body-name: body
+  /api/backup-jobs/{id}:
+    get:
+      description: Fetches a BackupJob
+      parameters:
+      - description: BackupJob ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupJob'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get BackupJob
+      tags:
+      - BackupJobs
   /api/backup-targets:
     post:
-      description: Creates a new BackupTarget
+      deprecated: true
+      description: Deprecated, use POST /api/tenants/{id}/backup-targets instead.
       requestBody:
         content:
           application/json:
@@ -388,7 +430,8 @@ paths:
       - BackupTargets
   /api/backups:
     post:
-      description: Creates a new database Backup
+      deprecated: true
+      description: Deprecated, use POST /api/projects/{id}/backups instead.
       parameters:
       - description: Set to true to only create the Backup object in the database
           (does not create any actual resources)
@@ -497,6 +540,55 @@ paths:
       tags:
       - Backups
       x-codegen-request-body-name: body
+  /api/backups/{id}/jobs:
+    get:
+      description: Retrieves a list of BackupJobs associated to this Backup
+      parameters:
+      - description: Backup ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupJob attribute to sort results by (one of: id,
+          file_size, start_time, completion_time, state)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupJob id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupJob state
+        in: query
+        name: state
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupJobs'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Backup's Jobs
+      tags:
+      - BackupJobs
   /api/data-services:
     get:
       description: Lists Data Services
@@ -559,7 +651,7 @@ paths:
       - ApiKeyAuth: []
       summary: List Data Services
       tags:
-      - Data Services
+      - DataServices
   /api/data-services/{id}:
     get:
       description: Fetches a single Data Service
@@ -581,7 +673,55 @@ paths:
       - ApiKeyAuth: []
       summary: Get Data Service
       tags:
-      - Data Services
+      - DataServices
+  /api/data-services/{id}/versions:
+    get:
+      description: Lists Versions belonging to the Data Service.
+      parameters:
+      - description: Data Service ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Version attribute to sort results by (one of: id, name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Version id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Version's name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedVersions'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Data Service's Versions
+      tags:
+      - Versions
   /api/db-tasks/{id}:
     get:
       description: Fetches a database Task
@@ -606,7 +746,8 @@ paths:
       - Tasks
   /api/deployment-targets:
     post:
-      description: Creates a new DeploymentTarget
+      deprecated: true
+      description: Deprecated, use POST /api/tenants/{id}/deployment-targets instead.
       requestBody:
         content:
           application/json:
@@ -679,6 +820,64 @@ paths:
       tags:
       - DeploymentTargets
       x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/credentials:
+    get:
+      description: Fetches the join credentials of a DeploymentTarget
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.DeploymentTargetCredentialsResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get join credentials of a DeploymentTarget
+      tags:
+      - DeploymentTargets
+  /api/deployment-targets/{id}/namespaces:
+    post:
+      description: Creates a new Namespace
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createNamespace'
+        description: Request body containing the new namespace
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Namespace'
+          description: The created Namespace will be returned
+        "400":
+          content: {}
+          description: Bad request, see response for more details
+        "409":
+          content: {}
+          description: Namespace with the given name already exists
+      security:
+      - ApiKeyAuth: []
+      summary: Create Namespace
+      tags:
+      - Namespaces
+      x-codegen-request-body-name: body
   /api/deployment-templates/{id}:
     get:
       description: Fetches a single DeploymentTemplate
@@ -703,7 +902,8 @@ paths:
       - DeploymentTemplates
   /api/deployments:
     post:
-      description: Creates a new data service Deployment
+      deprecated: true
+      description: Deprecated, use POST /api/projects/{id}/deployments instead.
       parameters:
       - description: Set to true to only create the Deployment object in the database
           (does not create any actual resources)
@@ -834,6 +1034,41 @@ paths:
       summary: Get Deployment Backups
       tags:
       - Deployments
+    post:
+      description: Creates a new database Backup
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only create the Backup object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createDeploymentBackup'
+        description: Request body containing the backup config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Backup'
+          description: The created Backup will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Backup
+      tags:
+      - Backups
+      x-codegen-request-body-name: body
   /api/deployments/{id}/connection-strings:
     get:
       description: Returns connection information for the given Deployment
@@ -1000,6 +1235,36 @@ paths:
       summary: Get Image
       tags:
       - Images
+  /api/namespaces:
+    post:
+      deprecated: true
+      description: Deprecated, use POST /api/deployment-targets/{id}/namespaces instead.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createNamespaceRequest'
+        description: Request body containing the new namespace
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Namespace'
+          description: The created Namespace will be returned
+        "400":
+          content: {}
+          description: Bad request, see response for more details
+        "409":
+          content: {}
+          description: Namespace with the given name already exists
+      security:
+      - ApiKeyAuth: []
+      summary: Create Namespace
+      tags:
+      - Namespaces
+      x-codegen-request-body-name: body
   /api/namespaces/{id}:
     get:
       description: Fetches a single Namespace
@@ -1044,6 +1309,60 @@ paths:
       summary: Get Project
       tags:
       - Projects
+  /api/projects/{id}/deployment-targets:
+    get:
+      description: Lists DeploymentTargets belonging to the Project
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given DeploymentTarget attribute to sort results by (one of:
+          id, name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Cluster ID
+        in: query
+        name: cluster_id
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedDeploymentTargets'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Project's DeploymentTargets
+      tags:
+      - DeploymentTargets
   /api/projects/{id}/deployments:
     get:
       description: Lists Deployments belonging to the Project.
@@ -1058,6 +1377,17 @@ paths:
           cluster_name)'
         in: query
         name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
         schema:
           type: string
       - description: Filter results by Deployment id
@@ -1102,6 +1432,41 @@ paths:
       summary: List Project's Deployments
       tags:
       - Deployments
+    post:
+      description: Creates a new data service Deployment
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only create the Deployment object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createProjectDeployment'
+        description: Request body containing the deployment config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Deployment'
+          description: The created Deployment will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Deployment
+      tags:
+      - Deployments
+      x-codegen-request-body-name: body
   /api/projects/{id}/role-bindings:
     delete:
       description: Removes a single ProjectRoleBinding
@@ -1331,6 +1696,17 @@ paths:
         required: true
         schema:
           type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
       - description: 'A given BackupTarget attribute to sort results by (one of: id,
           name)'
         in: query
@@ -1359,6 +1735,35 @@ paths:
       summary: List Tenant's BackupTargets
       tags:
       - BackupTargets
+    post:
+      description: Creates a new BackupTarget
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createTenantBackupTarget'
+        description: Request body containing the backup target config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupTarget'
+          description: The created BackupTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create BackupTarget
+      tags:
+      - BackupTargets
+      x-codegen-request-body-name: body
   /api/tenants/{id}/deployment-targets:
     get:
       description: Lists Tenant's DeploymentTargets
@@ -1375,9 +1780,25 @@ paths:
         name: sort_by
         schema:
           type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
       - description: Filter results by DeploymentTarget ID
         in: query
         name: id
+        schema:
+          type: string
+      - description: Filter results by Cluster ID
+        in: query
+        name: cluster_id
         schema:
           type: string
       - description: Filter results by DeploymentTarget name
@@ -1397,6 +1818,35 @@ paths:
       summary: List Tenant's DeploymentTargets
       tags:
       - DeploymentTargets
+    post:
+      description: Creates a new DeploymentTarget
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createTenantDeploymentTarget'
+        description: Request body containing the deployment target config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTarget'
+          description: The created DeploymentTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create DeploymentTarget
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
   /api/tenants/{id}/projects:
     get:
       description: Lists Projects visible to the caller and belonging to the Tenant.
@@ -1410,6 +1860,17 @@ paths:
       - description: 'A given Project attribute to sort results by (one of: id, name)'
         in: query
         name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
         schema:
           type: string
       - description: Filter results by Project id
@@ -1548,6 +2009,17 @@ paths:
         name: sort_by
         schema:
           type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
       - description: Filter results by ServiceAccount name
         in: query
         name: name
@@ -1682,6 +2154,54 @@ paths:
       summary: Get Version
       tags:
       - Versions
+  /api/versions/{id}/images:
+    get:
+      description: Lists Images belonging to a Version.
+      parameters:
+      - description: Version ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Image attribute to sort results by (one of: id, name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Image id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Image's name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedImages'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Version's Images
+      tags:
+      - Images
   /api/whoami:
     get:
       description: Fetches a details of the current calling actor (user or service
@@ -1812,9 +2332,9 @@ components:
       type: object
     constraint.Pagination:
       example:
-        continuation_token: continuation_token
+        continuation: continuation
       properties:
-        continuation_token:
+        continuation:
           type: string
       type: object
     controllers.AuthorizationCodeRequest:
@@ -1832,6 +2352,19 @@ components:
           items:
             type: string
           type: array
+      type: object
+    controllers.DeploymentTargetCredentialsResponse:
+      example:
+        teleport_join_token: teleport_join_token
+        teleport_proxy_addr: teleport_proxy_addr
+        teleport_ca_pin: teleport_ca_pin
+      properties:
+        teleport_ca_pin:
+          type: string
+        teleport_join_token:
+          type: string
+        teleport_proxy_addr:
+          type: string
       type: object
     controllers.OIDCInfoResponse:
       example:
@@ -1897,6 +2430,8 @@ components:
       type: object
     controllers.PaginatedAccountTenants:
       example:
+        pagination:
+          continuation: continuation
         data:
         - account_id: account_id
           updated_at: updated_at
@@ -1919,9 +2454,13 @@ components:
           items:
             $ref: '#/components/schemas/models.Tenant'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedAccounts:
       example:
+        pagination:
+          continuation: continuation
         data:
         - updated_at: updated_at
           name: name
@@ -1942,14 +2481,56 @@ components:
           items:
             $ref: '#/components/schemas/models.Account'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedBackupJobs:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - backup_id: backup_id
+          start_time: start_time
+          endpoint: endpoint
+          completion_time: completion_time
+          updated_at: updated_at
+          created_at: created_at
+          id: id
+          state: state
+          deleted_at:
+            valid: true
+            time: time
+          file_size: 0
+        - backup_id: backup_id
+          start_time: start_time
+          endpoint: endpoint
+          completion_time: completion_time
+          updated_at: updated_at
+          created_at: created_at
+          id: id
+          state: state
+          deleted_at:
+            valid: true
+            time: time
+          file_size: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupJob'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedBackupTargets:
       example:
+        pagination:
+          continuation: continuation
         data:
         - tenant_id: tenant_id
           endpoint: endpoint
           account_id: account_id
           updated_at: updated_at
+          backup_credentials_id: backup_credentials_id
           name: name
           created_at: created_at
           id: id
@@ -1960,6 +2541,7 @@ components:
           endpoint: endpoint
           account_id: account_id
           updated_at: updated_at
+          backup_credentials_id: backup_credentials_id
           name: name
           created_at: created_at
           id: id
@@ -1971,11 +2553,13 @@ components:
           items:
             $ref: '#/components/schemas/models.BackupTarget'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedDataServices:
       example:
         pagination:
-          continuation_token: continuation_token
+          continuation: continuation
         data:
         - coming_soon: true
           updated_at: updated_at
@@ -2045,6 +2629,8 @@ components:
       type: object
     controllers.PaginatedDeploymentTargets:
       example:
+        pagination:
+          continuation: continuation
         data:
         - tenant_id: tenant_id
           cluster_id: cluster_id
@@ -2052,32 +2638,34 @@ components:
           updated_at: updated_at
           name: name
           created_at: created_at
-          api_server: api_server
           id: id
           deleted_at:
             valid: true
             time: time
-          token: token
+          status: status
         - tenant_id: tenant_id
           cluster_id: cluster_id
           account_id: account_id
           updated_at: updated_at
           name: name
           created_at: created_at
-          api_server: api_server
           id: id
           deleted_at:
             valid: true
             time: time
-          token: token
+          status: status
       properties:
         data:
           items:
             $ref: '#/components/schemas/models.DeploymentTarget'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedDeployments:
       example:
+        pagination:
+          continuation: continuation
         data:
         - tenant_id: tenant_id
           configuration: '{}'
@@ -2144,6 +2732,8 @@ components:
           items:
             $ref: '#/components/schemas/models.Deployment'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedGlobalRoleBindings:
       example:
@@ -2159,6 +2749,45 @@ components:
           items:
             $ref: '#/components/schemas/models.GlobalRoleBinding'
           type: array
+      type: object
+    controllers.PaginatedImages:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - registry: registry
+          data_service_id: data_service_id
+          updated_at: updated_at
+          build: build
+          name: name
+          namespace: namespace
+          created_at: created_at
+          id: id
+          tag: tag
+          version_id: version_id
+          deleted_at:
+            valid: true
+            time: time
+        - registry: registry
+          data_service_id: data_service_id
+          updated_at: updated_at
+          build: build
+          name: name
+          namespace: namespace
+          created_at: created_at
+          id: id
+          tag: tag
+          version_id: version_id
+          deleted_at:
+            valid: true
+            time: time
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Image'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedProjectRoleBindings:
       example:
@@ -2204,6 +2833,8 @@ components:
       type: object
     controllers.PaginatedServiceAccounts:
       example:
+        pagination:
+          continuation: continuation
         data:
         - tenant_id: tenant_id
           account_id: account_id
@@ -2228,9 +2859,13 @@ components:
           items:
             $ref: '#/components/schemas/models.ServiceAccount'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedTenantProjects:
       example:
+        pagination:
+          continuation: continuation
         data:
         - tenant_id: tenant_id
           account_id: account_id
@@ -2255,6 +2890,8 @@ components:
           items:
             $ref: '#/components/schemas/models.Project'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedTenantRoleBindings:
       example:
@@ -2275,6 +2912,8 @@ components:
       type: object
     controllers.PaginatedUsers:
       example:
+        pagination:
+          continuation: continuation
         data:
         - updated_at: updated_at
           created_at: created_at
@@ -2299,6 +2938,37 @@ components:
           items:
             $ref: '#/components/schemas/models.User'
           type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedVersions:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - data_service_id: data_service_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          deleted_at:
+            valid: true
+            time: time
+        - data_service_id: data_service_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          deleted_at:
+            valid: true
+            time: time
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Version'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.RefreshTokenRequest:
       properties:
@@ -2430,6 +3100,26 @@ components:
         tenant_id:
           type: string
       type: object
+    controllers.createDeploymentBackup:
+      properties:
+        backup_level:
+          example: snapshot or incremental
+          type: string
+        backup_target_id:
+          type: string
+        backup_type:
+          example: adhoc or scheduled
+          type: string
+        data_service_id:
+          type: string
+        job_history_limit:
+          type: integer
+        project_id:
+          type: string
+        schedule:
+          example: in CRON format, required for scheduled backups
+          type: string
+      type: object
     controllers.createDeploymentRequest:
       properties:
         cluster_name:
@@ -2470,21 +3160,81 @@ components:
       type: object
     controllers.createDeploymentTargetRequest:
       properties:
-        api_server:
-          type: string
         cluster_id:
           type: string
         name:
           type: string
         tenant_id:
           type: string
-        token:
+      type: object
+    controllers.createNamespace:
+      properties:
+        name:
+          example: Name of the namespace
+          type: string
+      type: object
+    controllers.createNamespaceRequest:
+      properties:
+        deployment_target_id:
+          type: string
+        name:
+          example: Name of the namespace
+          type: string
+      type: object
+    controllers.createProjectDeployment:
+      properties:
+        cluster_name:
+          example: cas-my-service
+          type: string
+        configuration:
+          properties: {}
+          type: object
+        data_service_id:
+          type: string
+        deployment_target_id:
+          type: string
+        dns_zone:
+          type: string
+        image_id:
+          type: string
+        load_balancer_source_ranges:
+          items:
+            type: string
+          type: array
+        namespace_id:
+          type: string
+        node_count:
+          example: 3
+          type: integer
+        resources:
+          properties: {}
+          type: object
+        service:
+          example: my-service
+          type: string
+        service_type:
+          type: string
+        version_id:
           type: string
       type: object
     controllers.createServiceAccountRequest:
       properties:
         name:
           example: Name of the service account
+          type: string
+      type: object
+    controllers.createTenantBackupTarget:
+      properties:
+        endpoint:
+          type: string
+        name:
+          type: string
+      type: object
+    controllers.createTenantDeploymentTarget:
+      properties:
+        cluster_id:
+          type: string
+        name:
           type: string
       type: object
     controllers.invitationRequest:
@@ -2678,12 +3428,55 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
       type: object
+    models.BackupJob:
+      example:
+        backup_id: backup_id
+        start_time: start_time
+        endpoint: endpoint
+        completion_time: completion_time
+        updated_at: updated_at
+        created_at: created_at
+        id: id
+        state: state
+        deleted_at:
+          valid: true
+          time: time
+        file_size: 0
+      properties:
+        backup_id:
+          type: string
+        completion_time:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        deleted_at:
+          $ref: '#/components/schemas/gorm.DeletedAt'
+        endpoint:
+          description: Endpoint is populated by the Tekton pipeline on creation
+          type: string
+        file_size:
+          description: FileSize is managed by the API
+          type: integer
+        id:
+          description: ID is auto generated on creation
+          type: string
+        start_time:
+          type: string
+        state:
+          description: State is managed by the API
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
     models.BackupTarget:
       example:
         tenant_id: tenant_id
         endpoint: endpoint
         account_id: account_id
         updated_at: updated_at
+        backup_credentials_id: backup_credentials_id
         name: name
         created_at: created_at
         id: id
@@ -2692,6 +3485,8 @@ components:
           time: time
       properties:
         account_id:
+          type: string
+        backup_credentials_id:
           type: string
         created_at:
           description: CreatedAt is autogenerated on creation
@@ -2890,16 +3685,13 @@ components:
         updated_at: updated_at
         name: name
         created_at: created_at
-        api_server: api_server
         id: id
         deleted_at:
           valid: true
           time: time
-        token: token
+        status: status
       properties:
         account_id:
-          type: string
-        api_server:
           type: string
         cluster_id:
           type: string
@@ -2913,9 +3705,9 @@ components:
           type: string
         name:
           type: string
-        tenant_id:
+        status:
           type: string
-        token:
+        tenant_id:
           type: string
         updated_at:
           description: UpdatedAt is autogenerated on update

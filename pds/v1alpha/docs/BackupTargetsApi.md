@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiBackupTargetsIdGet**](BackupTargetsApi.md#ApiBackupTargetsIdGet) | **Get** /api/backup-targets/{id} | Get BackupTarget
 [**ApiBackupTargetsPost**](BackupTargetsApi.md#ApiBackupTargetsPost) | **Post** /api/backup-targets | Create BackupTarget
 [**ApiTenantsIdBackupTargetsGet**](BackupTargetsApi.md#ApiTenantsIdBackupTargetsGet) | **Get** /api/tenants/{id}/backup-targets | List Tenant&#39;s BackupTargets
+[**ApiTenantsIdBackupTargetsPost**](BackupTargetsApi.md#ApiTenantsIdBackupTargetsPost) | **Post** /api/tenants/{id}/backup-targets | Create BackupTarget
 
 
 
@@ -217,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupTargetsGet
 
-> ControllersPaginatedBackupTargets ApiTenantsIdBackupTargetsGet(ctx, id).SortBy(sortBy).Id2(id2).Name(name).Execute()
+> ControllersPaginatedBackupTargets ApiTenantsIdBackupTargetsGet(ctx, id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Execute()
 
 List Tenant's BackupTargets
 
@@ -237,13 +238,15 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     sortBy := "sortBy_example" // string | A given BackupTarget attribute to sort results by (one of: id, name) (optional)
     id2 := "id_example" // string | Filter results by BackupTarget ID (optional)
     name := "name_example" // string | Filter results by BackupTarget name (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupTargetsApi.ApiTenantsIdBackupTargetsGet(context.Background(), id).SortBy(sortBy).Id2(id2).Name(name).Execute()
+    resp, r, err := api_client.BackupTargetsApi.ApiTenantsIdBackupTargetsGet(context.Background(), id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiTenantsIdBackupTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -269,6 +272,8 @@ Other parameters are passed through a pointer to a apiApiTenantsIdBackupTargetsG
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **sortBy** | **string** | A given BackupTarget attribute to sort results by (one of: id, name) | 
  **id2** | **string** | Filter results by BackupTarget ID | 
  **name** | **string** | Filter results by BackupTarget name | 
@@ -284,6 +289,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiTenantsIdBackupTargetsPost
+
+> ModelsBackupTarget ApiTenantsIdBackupTargetsPost(ctx, id).Body(body).Execute()
+
+Create BackupTarget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Tenant ID (must be valid UUID)
+    body := *openapiclient.NewControllersCreateTenantBackupTarget() // ControllersCreateTenantBackupTarget | Request body containing the backup target config
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiTenantsIdBackupTargetsPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiTenantsIdBackupTargetsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiTenantsIdBackupTargetsPost`: ModelsBackupTarget
+    fmt.Fprintf(os.Stdout, "Response from `BackupTargetsApi.ApiTenantsIdBackupTargetsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Tenant ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiTenantsIdBackupTargetsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersCreateTenantBackupTarget**](ControllersCreateTenantBackupTarget.md) | Request body containing the backup target config | 
+
+### Return type
+
+[**ModelsBackupTarget**](ModelsBackupTarget.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

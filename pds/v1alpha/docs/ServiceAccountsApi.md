@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdServiceAccountsGet
 
-> ControllersPaginatedServiceAccounts ApiTenantsIdServiceAccountsGet(ctx, id).SortBy(sortBy).Name(name).Id2(id2).Token(token).Execute()
+> ControllersPaginatedServiceAccounts ApiTenantsIdServiceAccountsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Name(name).Id2(id2).Token(token).Execute()
 
 List Tenant's ServiceAccounts
 
@@ -243,13 +243,15 @@ import (
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given ServiceAccount attribute to sort results by (one of: name, id) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     name := "name_example" // string | Filter results by ServiceAccount name (optional)
     id2 := "id_example" // string | Filter results by ServiceAccount id (optional)
     token := "token_example" // string | Filter results by ServiceAccount token (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceAccountsApi.ApiTenantsIdServiceAccountsGet(context.Background(), id).SortBy(sortBy).Name(name).Id2(id2).Token(token).Execute()
+    resp, r, err := api_client.ServiceAccountsApi.ApiTenantsIdServiceAccountsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Name(name).Id2(id2).Token(token).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiTenantsIdServiceAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,6 +278,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **sortBy** | **string** | A given ServiceAccount attribute to sort results by (one of: name, id) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **name** | **string** | Filter results by ServiceAccount name | 
  **id2** | **string** | Filter results by ServiceAccount id | 
  **token** | **string** | Filter results by ServiceAccount token | 

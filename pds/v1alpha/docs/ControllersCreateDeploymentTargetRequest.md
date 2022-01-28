@@ -4,11 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiServer** | Pointer to **string** |  | [optional] 
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **TenantId** | Pointer to **string** |  | [optional] 
-**Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -28,31 +26,6 @@ will change when the set of required properties is changed
 NewControllersCreateDeploymentTargetRequestWithDefaults instantiates a new ControllersCreateDeploymentTargetRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetApiServer
-
-`func (o *ControllersCreateDeploymentTargetRequest) GetApiServer() string`
-
-GetApiServer returns the ApiServer field if non-nil, zero value otherwise.
-
-### GetApiServerOk
-
-`func (o *ControllersCreateDeploymentTargetRequest) GetApiServerOk() (*string, bool)`
-
-GetApiServerOk returns a tuple with the ApiServer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApiServer
-
-`func (o *ControllersCreateDeploymentTargetRequest) SetApiServer(v string)`
-
-SetApiServer sets ApiServer field to given value.
-
-### HasApiServer
-
-`func (o *ControllersCreateDeploymentTargetRequest) HasApiServer() bool`
-
-HasApiServer returns a boolean if a field has been set.
 
 ### GetClusterId
 
@@ -128,31 +101,6 @@ SetTenantId sets TenantId field to given value.
 `func (o *ControllersCreateDeploymentTargetRequest) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
-
-### GetToken
-
-`func (o *ControllersCreateDeploymentTargetRequest) GetToken() string`
-
-GetToken returns the Token field if non-nil, zero value otherwise.
-
-### GetTokenOk
-
-`func (o *ControllersCreateDeploymentTargetRequest) GetTokenOk() (*string, bool)`
-
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToken
-
-`func (o *ControllersCreateDeploymentTargetRequest) SetToken(v string)`
-
-SetToken sets Token field to given value.
-
-### HasToken
-
-`func (o *ControllersCreateDeploymentTargetRequest) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

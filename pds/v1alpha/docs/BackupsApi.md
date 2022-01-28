@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiBackupsIdGet**](BackupsApi.md#ApiBackupsIdGet) | **Get** /api/backups/{id} | Get Backup
 [**ApiBackupsIdPut**](BackupsApi.md#ApiBackupsIdPut) | **Put** /api/backups/{id} | Update Backup
 [**ApiBackupsPost**](BackupsApi.md#ApiBackupsPost) | **Post** /api/backups | Create Backup
+[**ApiDeploymentsIdBackupsPost**](BackupsApi.md#ApiDeploymentsIdBackupsPost) | **Post** /api/deployments/{id}/backups | Create Backup
 
 
 
@@ -273,6 +274,80 @@ Other parameters are passed through a pointer to a apiApiBackupsPostRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**ControllersCreateBackupRequest**](ControllersCreateBackupRequest.md) | Request body containing the backup config | 
+ **localOnly** | **bool** | Set to true to only create the Backup object in the database (does not create any actual resources) | 
+
+### Return type
+
+[**ModelsBackup**](ModelsBackup.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiDeploymentsIdBackupsPost
+
+> ModelsBackup ApiDeploymentsIdBackupsPost(ctx, id).Body(body).LocalOnly(localOnly).Execute()
+
+Create Backup
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Deployment ID (must be valid UUID)
+    body := *openapiclient.NewControllersCreateDeploymentBackup() // ControllersCreateDeploymentBackup | Request body containing the backup config
+    localOnly := true // bool | Set to true to only create the Backup object in the database (does not create any actual resources) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupsApi.ApiDeploymentsIdBackupsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiDeploymentsIdBackupsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiDeploymentsIdBackupsPost`: ModelsBackup
+    fmt.Fprintf(os.Stdout, "Response from `BackupsApi.ApiDeploymentsIdBackupsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Deployment ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentsIdBackupsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersCreateDeploymentBackup**](ControllersCreateDeploymentBackup.md) | Request body containing the backup config | 
  **localOnly** | **bool** | Set to true to only create the Backup object in the database (does not create any actual resources) | 
 
 ### Return type

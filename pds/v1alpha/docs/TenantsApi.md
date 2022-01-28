@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ApiAccountsIdTenantsGet
 
-> ControllersPaginatedAccountTenants ApiAccountsIdTenantsGet(ctx, id).SortBy(sortBy).Id2(id2).Name(name).Execute()
+> ControllersPaginatedAccountTenants ApiAccountsIdTenantsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
 
 List Account's Tenants
 
@@ -32,12 +32,14 @@ import (
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given Tenant attribute to sort results by (one of: id, name) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by Tenant id (optional)
     name := "name_example" // string | Filter results by Tenant name (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TenantsApi.ApiAccountsIdTenantsGet(context.Background(), id).SortBy(sortBy).Id2(id2).Name(name).Execute()
+    resp, r, err := api_client.TenantsApi.ApiAccountsIdTenantsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.ApiAccountsIdTenantsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,6 +66,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **sortBy** | **string** | A given Tenant attribute to sort results by (one of: id, name) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by Tenant id | 
  **name** | **string** | Filter results by Tenant name | 
 
