@@ -1,0 +1,4108 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Portworx Data Services API Server",
+        "title": "PDS API",
+        "contact": {},
+        "version": "3.0.1"
+    },
+    "paths": {
+        "/api/accounts": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Accounts visible to the caller.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "List Accounts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "A given Accounts attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Accounts id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Accounts name",
+                        "name": "actor_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedAccounts"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new Account",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "Create Account",
+                "parameters": [
+                    {
+                        "description": "Request body containing name of the account",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createAccountRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created Account will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Account"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounts/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Account",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "Get Account",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Account"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounts/{id}/invitations": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Adds role binding to existing user. The plan is to send invites to non-existing users in the future.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AccountRoleBindings"
+                ],
+                "summary": "Create Invitation",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the invitation details.",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.invitationRequest"
+                        }
+                    },
+                    {
+                        "type": "uuid",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The account role binding has been created."
+                    },
+                    "400": {
+                        "description": "The request doesn't contain valid invitation details."
+                    },
+                    "404": {
+                        "description": "The user with specified email doesn't exist."
+                    },
+                    "422": {
+                        "description": "The user is already assigned to this account."
+                    }
+                }
+            }
+        },
+        "/api/accounts/{id}/role-bindings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists AccountRoleBinding",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AccountRoleBindings"
+                ],
+                "summary": "List AccountRoleBinding",
+                "parameters": [
+                    {
+                        "type": "uuid",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given AccountRoleBinding attribute to sort results by (one of: role_name, actor_id)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by AccountRoleBinding assigned role name",
+                        "name": "role_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by AccountRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by AccountRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedAccountRoleBindings"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new AccountRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AccountRoleBindings"
+                ],
+                "summary": "Create AccountRoleBinding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the account role binding",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.upsertAccountRoleBindingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created AccountRoleBinding will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.AccountRoleBinding"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Removes a single AccountRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AccountRoleBindings"
+                ],
+                "summary": "Delete AccountRoleBinding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "AccountRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "AccountRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/accounts/{id}/tenants": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Tenants visible to the caller and belonging to the Account.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tenants"
+                ],
+                "summary": "List Account's Tenants",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given Tenant attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Tenant id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Tenant name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedAccountTenants"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounts/{id}/users": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Account Users",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "List Account Users",
+                "parameters": [
+                    {
+                        "type": "uuid",
+                        "description": "Account ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given User attribute to sort results by (one of: id, email)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by User id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by User email",
+                        "name": "email",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedUsers"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/authorizer": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Check if the provided operation is allowed",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authorizer"
+                ],
+                "summary": "Authorize operation",
+                "parameters": [
+                    {
+                        "description": "Request body containing the authorizer request",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthorizerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthorizerResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/backup-targets": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new BackupTarget",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BackupTargets"
+                ],
+                "summary": "Create BackupTarget",
+                "parameters": [
+                    {
+                        "description": "Request body containing the backup target config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createBackupTargetRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created BackupTarget will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.BackupTarget"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/backup-targets/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single BackupTarget",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BackupTargets"
+                ],
+                "summary": "Get BackupTarget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BackupTarget ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.BackupTarget"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Removes a single BackupTarget",
+                "tags": [
+                    "BackupTargets"
+                ],
+                "summary": "Delete BackupTargets",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BackupTarget ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/backups": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new database Backup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Backups"
+                ],
+                "summary": "Create Backup",
+                "parameters": [
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only create the Backup object in the database (does not create any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Request body containing the backup config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createBackupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created Backup will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Backup"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/backups/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Backup",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Backups"
+                ],
+                "summary": "Get Backup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Backup ID (must be a valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Backup"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Updates an existing database Backup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Backups"
+                ],
+                "summary": "Update Backup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Backup ID (must be UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only update the Backup object in the database (does not create any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Request body containing updated backup",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.updateBackupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The updated Backup will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Backup"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Deletes an existing database deployment Backup",
+                "tags": [
+                    "Backups"
+                ],
+                "summary": "Delete Backup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Backup ID (must be a valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only delete the Backup object in the database (does not delete any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/data-services": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Data Services",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Data Services"
+                ],
+                "summary": "List Data Services",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "A given Data Service attribute to sort results by (one of: id, name, short_name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Maximum number of rows to return (could be less)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Use a token returned by a previous query to continue listing with the next batch of rows",
+                        "name": "continuation",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Data Service ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Data Service name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Data Service short name",
+                        "name": "short_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter results based on incremental backup eligibility",
+                        "name": "has_incremental_backup",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter results based on vault full backup eligibility",
+                        "name": "has_full_backup",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter results based on 'Coming soon' flag",
+                        "name": "coming_soon",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedDataServices"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/data-services/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Data Service",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Data Services"
+                ],
+                "summary": "Get Data Service",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Data Service ID (must be a valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.DataService"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/db-tasks/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a database Task",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tasks"
+                ],
+                "summary": "Get Task",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Task ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Task"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployment-targets": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new DeploymentTarget",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "Create DeploymentTarget",
+                "parameters": [
+                    {
+                        "description": "Request body containing the deployment target config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createDeploymentTargetRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created DeploymentTarget will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.DeploymentTarget"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployment-targets/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single DeploymentTarget",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "Get DeploymentTarget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "DeploymentTarget ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.DeploymentTarget"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Updates existing DeploymentTarget",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "Update DeploymentTarget",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "DeploymentTarget ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Object with partial update fields (name, tenant_id and cluster_id are mandatory)",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.UpdateDeploymentTargetRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The updated DeploymentTarget will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.DeploymentTarget"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployment-templates/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single DeploymentTemplate",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTemplates"
+                ],
+                "summary": "Get DeploymentTemplate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "DeploymentTemplate ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.DeploymentTemplate"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployments": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new data service Deployment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Create Deployment",
+                "parameters": [
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only create the Deployment object in the database (does not create any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Request body containing the deployment config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createDeploymentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created Deployment will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Deployment"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployments/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a data service Deployment",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Get Deployment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (either id or deployment_id field)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Deployment"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Updates an existing database Deployment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Update Deployment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only update the Deployment object in the database (does not create any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    },
+                    {
+                        "description": "Request body containing the updated deployment config",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.updateDeploymentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The updated Deployment will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.Deployment"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Deletes an existing database Deployment",
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Delete Deployment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be a valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Set to true to only delete the Deployment object in the database (does not delete any actual resources)",
+                        "name": "Local-Only",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/deployments/{id}/backups": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Retrieves a list of backups associated to this Deployment",
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Get Deployment Backups",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pagination.PaginatedResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployments/{id}/connection-strings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Returns connection information for the given Deployment",
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Deployment Connection String",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.DeploymentConnectionStringsResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployments/{id}/health": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Retrieves health information on the given Deployment",
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Get Deployment Health",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/status.DeploymentHealth"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deployments/{id}/status": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Retrieves status information on the given Deployment",
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Get Deployment Status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Deployment ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/status.DeploymentStatus"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/global-role-bindings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists GlobalRoleBindings",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "GlobalRoleBindings"
+                ],
+                "summary": "List GlobalRoleBindings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "A given GlobalRoleBinding attribute to sort results by (one of: role_name, actor_id)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by GlobalRoleBinding assigned role name",
+                        "name": "role_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by GlobalRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by GlobalRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedGlobalRoleBindings"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new GlobalRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "GlobalRoleBindings"
+                ],
+                "summary": "Set GlobalRoleBinding",
+                "parameters": [
+                    {
+                        "description": "Request body containing the global role binding",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.GlobalRoleBinding"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created GlobalRoleBinding will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.GlobalRoleBinding"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Removes a single GlobalRoleBindings",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "GlobalRoleBindings"
+                ],
+                "summary": "Delete GlobalRoleBinding",
+                "parameters": [
+                    {
+                        "description": "GlobalRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "GlobalRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/images/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Image",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Images"
+                ],
+                "summary": "Get Image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Image ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Image"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/namespaces/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Namespace",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Get Namespace",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Namespace ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Namespace"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/projects/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Project",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get Project",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Project"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/projects/{id}/deployments": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Deployments belonging to the Project.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "List Project's Deployments",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given Deployment attribute to sort results by (one of: id, cluster_name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Deployment id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Deployment cluster_name",
+                        "name": "cluster_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Deployment data_service_id",
+                        "name": "data_service_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Deployment deployment_target_id",
+                        "name": "deployment_target_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Deployment image_id",
+                        "name": "image_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Deployment namespace_id",
+                        "name": "namespace_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedDeployments"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/projects/{id}/role-bindings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists ProjectRoleBindings",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProjectRoleBindings"
+                ],
+                "summary": "List ProjectRoleBindings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given ProjectRoleBinding attribute to sort results by (one of: role_name, actor_id)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by ProjectRoleBinding assigned role name",
+                        "name": "role_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by ProjectRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by ProjectRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedProjectRoleBindings"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new ProjectRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProjectRoleBindings"
+                ],
+                "summary": "Create ProjectRoleBinding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the project role binding",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.upsertProjectRoleBindingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created ProjectRoleBinding will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProjectRoleBinding"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Removes a single ProjectRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProjectRoleBindings"
+                ],
+                "summary": "Delete ProjectRoleBinding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Project ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "ProjectRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "ProjectRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/roles": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches list of supported Roles",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "List Roles",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedRoles"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/service-accounts/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single ServiceAccount",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ServiceAccounts"
+                ],
+                "summary": "Get ServiceAccounts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ServiceAccount ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ServiceAccount"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Removes a single ServiceAccount",
+                "tags": [
+                    "ServiceAccounts"
+                ],
+                "summary": "Delete ServiceAccounts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ServiceAccount ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/service-accounts/{id}/token": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches the token of a ServiceAccount",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ServiceAccounts"
+                ],
+                "summary": "Get token of a ServiceAccount",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ServiceAccount ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ServiceAccountTokenResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/teams/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Team",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Teams"
+                ],
+                "summary": "Get Team",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Team ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Team"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tenants/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Tenant",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tenants"
+                ],
+                "summary": "Get Tenant",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Tenant"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tenants/{id}/backup-targets": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Tenant's BackupTargets",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BackupTargets"
+                ],
+                "summary": "List Tenant's BackupTargets",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given BackupTarget attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by BackupTarget ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by BackupTarget name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedBackupTargets"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tenants/{id}/deployment-targets": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Tenant's DeploymentTargets",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DeploymentTargets"
+                ],
+                "summary": "List Tenant's DeploymentTargets",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given DeploymentTarget attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by DeploymentTarget ID",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by DeploymentTarget name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedDeploymentTargets"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tenants/{id}/projects": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists Projects visible to the caller and belonging to the Tenant.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "List Tenant's Projects",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given Project attribute to sort results by (one of: id, name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Project id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by Project name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedTenantProjects"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tenants/{id}/role-bindings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Lists TenantRoleBindings",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TenantRoleBindings"
+                ],
+                "summary": "List TenantRoleBindings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given TenantRoleBinding attribute to sort results by (one of: role_name, actor_id)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by TenantRoleBinding assigned role name",
+                        "name": "role_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by TenantRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by TenantRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedTenantRoleBindings"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new TenantRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TenantRoleBindings"
+                ],
+                "summary": "Create TenantRoleBinding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing the tenant role binding",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.upsertTenantRoleBindingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created TenantRoleBinding will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.TenantRoleBinding"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Removes a single TenantRoleBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TenantRoleBindings"
+                ],
+                "summary": "Delete TenantRoleBinding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "TenantRoleBinding actor id",
+                        "name": "actor_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "TenantRoleBinding actor type",
+                        "name": "actor_type",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/tenants/{id}/service-accounts": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List Tenant's ServiceAccounts",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ServiceAccounts"
+                ],
+                "summary": "List Tenant's ServiceAccounts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given ServiceAccount attribute to sort results by (one of: name, id)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by ServiceAccount name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by ServiceAccount id",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by ServiceAccount token",
+                        "name": "token",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedServiceAccounts"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Creates a new ServiceAccount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ServiceAccounts"
+                ],
+                "summary": "Create ServiceAccounts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Tenant ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Request body containing name of the service account",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.createServiceAccountRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The created ServiceAccount will be returned",
+                        "schema": {
+                            "$ref": "#/definitions/models.ServiceAccount"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single User",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}/account-role-bindings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Every user can read its own bindings. Only pds-admin can read bindings of other users.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AccountRoleBindings"
+                ],
+                "summary": "List AccountRoleBindings of a given user",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "A given AccountRoleBinding attribute to sort results by (allowed: role_name)",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter results by AccountRoleBinding assigned role_name",
+                        "name": "role_name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.PaginatedAccountRoleBindings"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/versions/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a single Version",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Versions"
+                ],
+                "summary": "Get Version",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Version ID (must be valid UUID)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Version"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/whoami": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fetches a details of the current calling actor (user or service account)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "WhoAmI"
+                ],
+                "summary": "Get Current Actor",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.WhoAmIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/authorization-code": {
+            "post": {
+                "description": "Exchanges the Authorization Code from the OAuth2 server for an ID Token which is necessary for user authentication using the Authorization HTTP header.\n\n**Authenticating for later requests using the ID token:**\n`Authorization: Bearer {id_token}`",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authorization code exchange",
+                "parameters": [
+                    {
+                        "description": "Request body containing the received authorization code.",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.AuthorizationCodeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.OIDCTokenResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "The submitted request body isn't valid."
+                    },
+                    "401": {
+                        "description": "The token exchange failed."
+                    }
+                }
+            }
+        },
+        "/auth/oidc-info": {
+            "get": {
+                "description": "Returns OIDC configuration for the frontend.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "OIDC info",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.OIDCInfoResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "OIDC is not enabled in the configuration of API server."
+                    }
+                }
+            }
+        },
+        "/auth/refresh-token": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Use refresh token to generate new tokens.",
+                "parameters": [
+                    {
+                        "description": "Request body containing the refresh token.",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.RefreshTokenRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.OIDCTokenResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "The submitted request body isn't valid."
+                    },
+                    "401": {
+                        "description": "The token refresh failed."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "auth.Claims": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "description": "Email of this account.",
+                    "type": "string"
+                },
+                "groups": {
+                    "description": "(optional) Groups in which this account is part of.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "iss": {
+                    "description": "Issuer is the token issuer. For self-signed token do not prefix with `https://`.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of this account.",
+                    "type": "string"
+                },
+                "roles": {
+                    "description": "Roles of this account.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sub": {
+                    "description": "Subject identifier. Unique ID of this account.",
+                    "type": "string"
+                }
+            }
+        },
+        "constraint.Pagination": {
+            "type": "object",
+            "properties": {
+                "continuation_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.AuthorizationCodeRequest": {
+            "type": "object",
+            "properties": {
+                "AuthCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.DeploymentConnectionStringsResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "controllers.OIDCInfoResponse": {
+            "type": "object",
+            "properties": {
+                "authUrl": {
+                    "type": "string",
+                    "example": "https://release-staging.portworx.dev/landing/login"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "issuer": {
+                    "type": "string",
+                    "example": "https://release-staging-api.portworx.dev/api"
+                },
+                "redirectUrl": {
+                    "type": "string",
+                    "example": "http://localhost:8080/auth-wait"
+                }
+            }
+        },
+        "controllers.OIDCTokenResponse": {
+            "type": "object",
+            "properties": {
+                "claims": {
+                    "$ref": "#/definitions/auth.Claims"
+                },
+                "expiresIn": {
+                    "type": "string"
+                },
+                "idToken": {
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.PaginatedAccountRoleBindings": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.AccountRoleBinding"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedAccountTenants": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Tenant"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedAccounts": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Account"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedBackupTargets": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.BackupTarget"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedDataServices": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.DataService"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/constraint.Pagination"
+                }
+            }
+        },
+        "controllers.PaginatedDeploymentTargets": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.DeploymentTarget"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedDeployments": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Deployment"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedGlobalRoleBindings": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.GlobalRoleBinding"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedProjectRoleBindings": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ProjectRoleBinding"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedRoles": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/policy.Role"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedServiceAccounts": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ServiceAccount"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedTenantProjects": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Project"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedTenantRoleBindings": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TenantRoleBinding"
+                    }
+                }
+            }
+        },
+        "controllers.PaginatedUsers": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.User"
+                    }
+                }
+            }
+        },
+        "controllers.RefreshTokenRequest": {
+            "type": "object",
+            "properties": {
+                "refreshToken": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.ServiceAccountTokenResponse": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.UpdateDeploymentTargetRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.WhoAmIResponse": {
+            "type": "object",
+            "properties": {
+                "service_account": {
+                    "$ref": "#/definitions/controllers.WhoAmIServiceAccount"
+                },
+                "user": {
+                    "$ref": "#/definitions/controllers.WhoAmIUser"
+                }
+            }
+        },
+        "controllers.WhoAmIServiceAccount": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.WhoAmIUser": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.createAccountRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Name of the account"
+                }
+            }
+        },
+        "controllers.createBackupRequest": {
+            "type": "object",
+            "properties": {
+                "backup_level": {
+                    "type": "string",
+                    "example": "snapshot or incremental"
+                },
+                "backup_target_id": {
+                    "type": "string"
+                },
+                "backup_type": {
+                    "type": "string",
+                    "example": "adhoc or scheduled"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deployment_id": {
+                    "type": "string"
+                },
+                "job_history_limit": {
+                    "type": "integer"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string",
+                    "example": "in CRON format, required for scheduled backups"
+                }
+            }
+        },
+        "controllers.createBackupTargetRequest": {
+            "type": "object",
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.createDeploymentRequest": {
+            "type": "object",
+            "properties": {
+                "cluster_name": {
+                    "type": "string",
+                    "example": "cas-my-service"
+                },
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deployment_target_id": {
+                    "type": "string"
+                },
+                "dns_zone": {
+                    "type": "string"
+                },
+                "image_id": {
+                    "type": "string"
+                },
+                "load_balancer_source_ranges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "namespace_id": {
+                    "type": "string"
+                },
+                "node_count": {
+                    "type": "integer",
+                    "example": 3
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "service": {
+                    "type": "string",
+                    "example": "my-service"
+                },
+                "service_type": {
+                    "type": "string"
+                },
+                "version_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.createDeploymentTargetRequest": {
+            "type": "object",
+            "properties": {
+                "api_server": {
+                    "type": "string"
+                },
+                "cluster_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.createServiceAccountRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Name of the service account"
+                }
+            }
+        },
+        "controllers.invitationRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.updateBackupRequest": {
+            "type": "object",
+            "properties": {
+                "job_history_limit": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controllers.updateDeploymentRequest": {
+            "type": "object",
+            "properties": {
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "connection_details": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "image_id": {
+                    "type": "string"
+                },
+                "node_count": {
+                    "type": "integer",
+                    "example": 3
+                },
+                "resources": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
+        },
+        "controllers.upsertAccountRoleBindingRequest": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string",
+                    "example": "ID of the role subject"
+                },
+                "actor_type": {
+                    "type": "string",
+                    "example": "Type of the role subject"
+                },
+                "role_name": {
+                    "type": "string",
+                    "example": "Name of the assigned account role"
+                }
+            }
+        },
+        "controllers.upsertProjectRoleBindingRequest": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string",
+                    "example": "ID of the role subject"
+                },
+                "actor_type": {
+                    "type": "string",
+                    "example": "Type of the role subject"
+                },
+                "role_name": {
+                    "type": "string",
+                    "example": "Name of the assigned account role"
+                }
+            }
+        },
+        "controllers.upsertTenantRoleBindingRequest": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string",
+                    "example": "ID of the role subject"
+                },
+                "actor_type": {
+                    "type": "string",
+                    "example": "Type of the role subject"
+                },
+                "role_name": {
+                    "type": "string",
+                    "example": "Name of the assigned account role"
+                }
+            }
+        },
+        "gorm.DeletedAt": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if Time is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.Account": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.AccountRoleBinding": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "actor_id": {
+                    "type": "string"
+                },
+                "actor_type": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AuthorizerRequest": {
+            "type": "object",
+            "properties": {
+                "entity_id": {
+                    "type": "string"
+                },
+                "entity_type": {
+                    "type": "string"
+                },
+                "operation": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.AuthorizerResponse": {
+            "type": "object",
+            "properties": {
+                "allow": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.Backup": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "backup_level": {
+                    "type": "string",
+                    "enum": [
+                        "snapshot",
+                        "incremental"
+                    ]
+                },
+                "backup_target_id": {
+                    "type": "string"
+                },
+                "backup_type": {
+                    "type": "string",
+                    "enum": [
+                        "adhoc",
+                        "scheduled"
+                    ]
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "deployment_id": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "job_history_limit": {
+                    "type": "integer"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.BackupTarget": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Configuration": {
+            "type": "object",
+            "properties": {
+                "default_value": {},
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DataService": {
+            "type": "object",
+            "properties": {
+                "coming_soon": {
+                    "type": "boolean"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "has_full_backup": {
+                    "type": "boolean"
+                },
+                "has_incremental_backup": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nodes_limitations": {
+                    "type": "string"
+                },
+                "short_name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Version"
+                    }
+                }
+            }
+        },
+        "models.Deployment": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "cluster_name": {
+                    "type": "string"
+                },
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "connection_details": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "deployment_target_id": {
+                    "type": "string"
+                },
+                "dns_zone": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "image_id": {
+                    "type": "string"
+                },
+                "initialize": {
+                    "type": "string"
+                },
+                "load_balancer_source_ranges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "namespace_id": {
+                    "type": "string"
+                },
+                "node_count": {
+                    "type": "integer"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "service": {
+                    "type": "string"
+                },
+                "service_type": {
+                    "type": "string"
+                },
+                "state": {
+                    "description": "State is managed by the API",
+                    "type": "string"
+                },
+                "storage_options": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                },
+                "version_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DeploymentTarget": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "api_server": {
+                    "type": "string"
+                },
+                "cluster_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.DeploymentTemplate": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "configurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Configuration"
+                    }
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "sort_order": {
+                    "type": "integer"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.GlobalRoleBinding": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string"
+                },
+                "actor_type": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Image": {
+            "type": "object",
+            "properties": {
+                "build": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "registry": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                },
+                "version_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Namespace": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "deployment_target_id": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Project": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.ProjectRoleBinding": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string"
+                },
+                "actor_type": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ServiceAccount": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Task": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "associated_resource": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "current_step": {
+                    "type": "integer"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "integer"
+                },
+                "log": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "total_steps": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Team": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Tenant": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.TenantRoleBinding": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string"
+                },
+                "actor_type": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "tenant_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.User": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "external_id": {
+                    "description": "ExternalID identifies a User in context of its Issuer. Therefore, it must\nbe unique in the context of the Issuer. But not necessarily unique across different issuers.\nIn case of PX Central the ExternalID is the 'sub' claim from JWT token",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "issuer": {
+                    "description": "Issuer identifies the identity provider where the User is originating from.\nIt corresponds to the 'iss' claim in the JWT token. Example: \"https://central.portworx.com\"",
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Version": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "CreatedAt is autogenerated on creation",
+                    "type": "string"
+                },
+                "data_service_id": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "description": "DeletedAt is autogenerated on deletion",
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "description": "ID is auto generated on creation",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt is autogenerated on update",
+                    "type": "string"
+                }
+            }
+        },
+        "pagination.PaginatedResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "members": {},
+                "page": {
+                    "type": "integer"
+                },
+                "per_page": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                },
+                "total_pages": {
+                    "type": "integer"
+                }
+            }
+        },
+        "policy.Role": {
+            "type": "object",
+            "properties": {
+                "extends": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "level": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "status.DeploymentHealth": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "health": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "uid": {
+                    "type": "string"
+                },
+                "up": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "status.DeploymentStatus": {
+            "type": "object",
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.EndpointAddress"
+                    }
+                },
+                "connection_strings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "health": {
+                    "type": "string"
+                },
+                "initialized": {
+                    "type": "string"
+                },
+                "not_ready_addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.EndpointAddress"
+                    }
+                },
+                "ready_replicas": {
+                    "type": "integer"
+                },
+                "replicas": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.EndpointAddress": {
+            "type": "object",
+            "properties": {
+                "hostname": {
+                    "description": "The Hostname of this endpoint\n+optional",
+                    "type": "string"
+                },
+                "ip": {
+                    "description": "The IP of this endpoint.\nMay not be loopback (127.0.0.0/8), link-local (169.254.0.0/16),\nor link-local multicast ((224.0.0.0/24).\nIPv6 is also accepted but not fully supported on all platforms. Also, certain\nkubernetes components, like kube-proxy, are not IPv6 ready.\nTODO: This should allow hostname or IP, See #4447.",
+                    "type": "string"
+                },
+                "nodeName": {
+                    "description": "Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node.\n+optional",
+                    "type": "string"
+                },
+                "targetRef": {
+                    "description": "Reference to object providing the endpoint.\n+optional",
+                    "$ref": "#/definitions/v1.ObjectReference"
+                }
+            }
+        },
+        "v1.ObjectReference": {
+            "type": "object",
+            "properties": {
+                "apiVersion": {
+                    "description": "API version of the referent.\n+optional",
+                    "type": "string"
+                },
+                "fieldPath": {
+                    "description": "If referring to a piece of an object instead of an entire object, this string\nshould contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].\nFor example, if the object reference is to a container within a pod, this would take on a value like:\n\"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered\nthe event) or if no container name is specified \"spec.containers[2]\" (container with\nindex 2 in this pod). This syntax is chosen only to have some well-defined way of\nreferencing a part of an object.\nTODO: this design is not final and this field is subject to change in the future.\n+optional",
+                    "type": "string"
+                },
+                "kind": {
+                    "description": "Kind of the referent.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds\n+optional",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\n+optional",
+                    "type": "string"
+                },
+                "namespace": {
+                    "description": "Namespace of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/\n+optional",
+                    "type": "string"
+                },
+                "resourceVersion": {
+                    "description": "Specific resourceVersion to which this reference is made, if any.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency\n+optional",
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "UID of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids\n+optional",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
