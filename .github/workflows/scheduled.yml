@@ -42,5 +42,5 @@ jobs:
 
       - name: List context
         run: |
-          docker create portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }} nope
-          docker cp portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }}:/swagger.json .
+          docker create --name pds-api-openapi portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }} nope
+          docker cp pds-api-openapi:/swagger.json .
