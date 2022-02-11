@@ -24,8 +24,10 @@ jobs:
 
       - name: Find SHA
         id: find-sha
-        run:
-          echo "OPENAPI_SHA_SHORT=$(curl -s -H 'Accept: application/vnd.github.v3+json' 'https://api.github.com/repos/portworx/DreamCloud_stella-api/branches/develop'  | jq -r '.commit.sha[:7]')" >> $GITHUB_ENV
+        run: |
+          echo "OPENAPI_SHA_SHORT=$(curl -s --header "Authorization: Bearer $USER_TOKEN" -H 'Accept: application/vnd.github.v3+json' 'https://api.github.com/repos/portworx/DreamCloud_stella-api/branches/develop'  | jq -r '.commit.sha[:7]')" >> $GITHUB_ENV
+        env:
+          USER_TOKEN: ${{ secrets.REPO_TOKEN }}
 
       - name: Download image
         id: download-image
