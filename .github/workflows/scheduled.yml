@@ -29,11 +29,18 @@ jobs:
         env:
           USER_TOKEN: ${{ secrets.REPO_TOKEN }}
 
-      - name: Download image
-        id: download-image
-        uses: ishworkh/docker-image-artifact-download@v1
-        with:
-          image: "portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }}"
+      # - name: Download image
+      #   id: download-image
+      #   uses: ishworkh/docker-image-artifact-download@v1
+      #   with:
+      #     image: "portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }}"
+
+      - name: Pull image
+        id: pull-image
+        run: |
+          docker pull portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }}
 
       - name: List context
-        run: ${{ steps.download-image.outputs.download_path }} 
+        run: |
+          docker create portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }} nope
+          docker cp portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }}:/swagger.json .
