@@ -37,7 +37,7 @@ jobs:
       - name: Get swagger doc
         run: |
           docker create --name pds-api-openapi portworx/pds-api:openapi-dev-${{ env.OPENAPI_SHA_SHORT }} nope
-          docker cp pds-api-openapi:/swagger.json pds/v1alpha1/
+          docker cp pds-api-openapi:/swagger.json ./pds/v1alpha1/swagger.json
           docker rm pds-api-openapi
 
       - name: Setup node
