@@ -1662,6 +1662,75 @@ paths:
       tags:
       - ProjectRoleBindings
       x-codegen-request-body-name: body
+  /api/resource-settings-templates/{id}:
+    delete:
+      description: Removes a single ResourceSettingsTemplate
+      parameters:
+      - description: ResourceSettingsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete ResourceSettingsTemplates
+      tags:
+      - ResourceSettingsTemplates
+    get:
+      description: Fetches a single ResourceSettingsTemplate
+      parameters:
+      - description: ResourceSettingsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get ResourceSettingsTemplate
+      tags:
+      - ResourceSettingsTemplates
+    put:
+      description: Updates existing ResourceSettingsTemplate
+      parameters:
+      - description: ResourceSettingsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateResourceSettingsTemplateRequest'
+        description: Request body containing updated template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          description: The updated resource settings template will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update ResourceSettingsTemplate
+      tags:
+      - ResourceSettingsTemplates
+      x-codegen-request-body-name: body
   /api/roles:
     get:
       description: Fetches list of supported Roles
@@ -1787,6 +1856,12 @@ paths:
     get:
       description: Lists BackupCredentials visible to the caller
       parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
       - description: 'A given BackupCredentials attribute to sort results by (one
           of: id, name, created_at)'
         in: query
@@ -1833,6 +1908,13 @@ paths:
       - BackupCredentials
     post:
       description: Creates a new BackupCredentials
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2078,6 +2160,89 @@ paths:
       summary: List Tenant's Projects
       tags:
       - Projects
+  /api/tenants/{id}/resource-settings-templates:
+    get:
+      description: Lists ResourceSettingsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given ResourceSettingsTemplates attribute to sort results
+          by (one of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by ResourceSettingsTemplates id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by ResourceSettingsTemplates name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by DataService ID
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedResourceSettingsTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List ResourceSettingsTemplates
+      tags:
+      - ResourceSettingsTemplates
+    post:
+      description: Creates a new ResourceSettingsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createResourceSettingsTemplatesRequest'
+        description: Request body containing the resource settings template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          description: The created ResourceSettingsTemplates will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create ResourceSettingsTemplates
+      tags:
+      - ResourceSettingsTemplates
+      x-codegen-request-body-name: body
   /api/tenants/{id}/role-bindings:
     delete:
       description: Removes a single TenantRoleBinding
@@ -2910,6 +3075,7 @@ components:
           updated_at: updated_at
           name: name
           created_at: created_at
+          last_health_check: last_health_check
           id: id
           status: status
         - tenant_id: tenant_id
@@ -2918,6 +3084,7 @@ components:
           updated_at: updated_at
           name: name
           created_at: created_at
+          last_health_check: last_health_check
           id: id
           status: status
       properties:
@@ -3086,6 +3253,43 @@ components:
           items:
             $ref: '#/components/schemas/models.ProjectRoleBinding'
           type: array
+      type: object
+    controllers.PaginatedResourceSettingsTemplates:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedRoles:
       example:
@@ -3319,6 +3523,21 @@ components:
         name:
           type: string
       type: object
+    controllers.UpdateResourceSettingsTemplateRequest:
+      properties:
+        cpu_limit:
+          type: string
+        cpu_request:
+          type: string
+        memory_limit:
+          type: string
+        memory_request:
+          type: string
+        name:
+          type: string
+        storage_request:
+          type: string
+      type: object
     controllers.WhoAmIResponse:
       example:
         service_account:
@@ -3396,6 +3615,23 @@ components:
       properties:
         name:
           example: Name of the namespace
+          type: string
+      type: object
+    controllers.createResourceSettingsTemplatesRequest:
+      properties:
+        cpu_limit:
+          type: string
+        cpu_request:
+          type: string
+        data_service_id:
+          type: string
+        memory_limit:
+          type: string
+        memory_request:
+          type: string
+        name:
+          type: string
+        storage_request:
           type: string
       type: object
     controllers.createServiceAccountRequest:
@@ -3909,6 +4145,7 @@ components:
         updated_at: updated_at
         name: name
         created_at: created_at
+        last_health_check: last_health_check
         id: id
         status: status
       properties:
@@ -3921,6 +4158,8 @@ components:
           type: string
         id:
           description: ID is auto generated on creation
+          type: string
+        last_health_check:
           type: string
         name:
           type: string
@@ -4097,6 +4336,49 @@ components:
         project_id:
           type: string
         role_name:
+          type: string
+      type: object
+    models.ResourceSettingsTemplate:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        data_service_id: data_service_id
+        updated_at: updated_at
+        storage_request: storage_request
+        cpu_limit: cpu_limit
+        name: name
+        created_at: created_at
+        memory_request: memory_request
+        id: id
+        memory_limit: memory_limit
+        cpu_request: cpu_request
+      properties:
+        account_id:
+          type: string
+        cpu_limit:
+          type: string
+        cpu_request:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        memory_limit:
+          type: string
+        memory_request:
+          type: string
+        name:
+          type: string
+        storage_request:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
           type: string
       type: object
     models.S3CompatibleCredentials:

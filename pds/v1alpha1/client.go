@@ -83,6 +83,8 @@ type APIClient struct {
 
 	ProjectsApi *ProjectsApiService
 
+	ResourceSettingsTemplatesApi *ResourceSettingsTemplatesApiService
+
 	RolesApi *RolesApiService
 
 	ServiceAccountsApi *ServiceAccountsApiService
@@ -135,6 +137,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
 	c.ProjectRoleBindingsApi = (*ProjectRoleBindingsApiService)(&c.common)
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
+	c.ResourceSettingsTemplatesApi = (*ResourceSettingsTemplatesApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
 	c.TasksApi = (*TasksApiService)(&c.common)

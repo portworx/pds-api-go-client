@@ -140,6 +140,11 @@ Class | Method | HTTP request | Description
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
 *ProjectsApi* | [**ApiProjectsIdGet**](docs/ProjectsApi.md#apiprojectsidget) | **Get** /api/projects/{id} | Get Project
 *ProjectsApi* | [**ApiTenantsIdProjectsGet**](docs/ProjectsApi.md#apitenantsidprojectsget) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
+*ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdDelete**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesiddelete) | **Delete** /api/resource-settings-templates/{id} | Delete ResourceSettingsTemplates
+*ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdGet**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidget) | **Get** /api/resource-settings-templates/{id} | Get ResourceSettingsTemplate
+*ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
+*ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesGet**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatesget) | **Get** /api/tenants/{id}/resource-settings-templates | List ResourceSettingsTemplates
+*ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplates
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
 *ServiceAccountsApi* | [**ApiServiceAccountsIdDelete**](docs/ServiceAccountsApi.md#apiserviceaccountsiddelete) | **Delete** /api/service-accounts/{id} | Delete ServiceAccounts
 *ServiceAccountsApi* | [**ApiServiceAccountsIdGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidget) | **Get** /api/service-accounts/{id} | Get ServiceAccounts
@@ -169,6 +174,7 @@ Class | Method | HTTP request | Description
  - [ControllersCreateDeploymentBackup](docs/ControllersCreateDeploymentBackup.md)
  - [ControllersCreateNamespace](docs/ControllersCreateNamespace.md)
  - [ControllersCreateProjectDeployment](docs/ControllersCreateProjectDeployment.md)
+ - [ControllersCreateResourceSettingsTemplatesRequest](docs/ControllersCreateResourceSettingsTemplatesRequest.md)
  - [ControllersCreateServiceAccountRequest](docs/ControllersCreateServiceAccountRequest.md)
  - [ControllersCreateTenantBackupTarget](docs/ControllersCreateTenantBackupTarget.md)
  - [ControllersCreateTenantDeploymentTarget](docs/ControllersCreateTenantDeploymentTarget.md)
@@ -192,6 +198,7 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedImages](docs/ControllersPaginatedImages.md)
  - [ControllersPaginatedNamespaces](docs/ControllersPaginatedNamespaces.md)
  - [ControllersPaginatedProjectRoleBindings](docs/ControllersPaginatedProjectRoleBindings.md)
+ - [ControllersPaginatedResourceSettingsTemplates](docs/ControllersPaginatedResourceSettingsTemplates.md)
  - [ControllersPaginatedRoles](docs/ControllersPaginatedRoles.md)
  - [ControllersPaginatedServiceAccounts](docs/ControllersPaginatedServiceAccounts.md)
  - [ControllersPaginatedTenantProjects](docs/ControllersPaginatedTenantProjects.md)
@@ -210,6 +217,7 @@ Class | Method | HTTP request | Description
  - [ControllersUpdateBackupTargetRequest](docs/ControllersUpdateBackupTargetRequest.md)
  - [ControllersUpdateDeploymentRequest](docs/ControllersUpdateDeploymentRequest.md)
  - [ControllersUpdateDeploymentTargetRequest](docs/ControllersUpdateDeploymentTargetRequest.md)
+ - [ControllersUpdateResourceSettingsTemplateRequest](docs/ControllersUpdateResourceSettingsTemplateRequest.md)
  - [ControllersUpsertAccountRoleBindingRequest](docs/ControllersUpsertAccountRoleBindingRequest.md)
  - [ControllersUpsertProjectRoleBindingRequest](docs/ControllersUpsertProjectRoleBindingRequest.md)
  - [ControllersUpsertTenantRoleBindingRequest](docs/ControllersUpsertTenantRoleBindingRequest.md)
@@ -236,6 +244,7 @@ Class | Method | HTTP request | Description
  - [ModelsNamespace](docs/ModelsNamespace.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
+ - [ModelsResourceSettingsTemplate](docs/ModelsResourceSettingsTemplate.md)
  - [ModelsS3CompatibleCredentials](docs/ModelsS3CompatibleCredentials.md)
  - [ModelsS3Credentials](docs/ModelsS3Credentials.md)
  - [ModelsServiceAccount](docs/ModelsServiceAccount.md)

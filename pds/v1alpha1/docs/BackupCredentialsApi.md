@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupCredentialsGet
 
-> ControllersPaginatedBackupCredentials ApiTenantsIdBackupCredentialsGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).Type_(type_).Execute()
+> ControllersPaginatedBackupCredentials ApiTenantsIdBackupCredentialsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Execute()
 
 List BackupCredentials
 
@@ -314,16 +314,17 @@ import (
 )
 
 func main() {
+    id := "id_example" // string | Tenant ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given BackupCredentials attribute to sort results by (one of: id, name, created_at) (optional)
     limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
-    id := "id_example" // string | Filter results by BackupCredentials id (optional)
+    id2 := "id_example" // string | Filter results by BackupCredentials id (optional)
     name := "name_example" // string | Filter results by BackupCredentials name (optional)
     type_ := "type__example" // string | Filter results by BackupCredentials type (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).Type_(type_).Execute()
+    resp, r, err := apiClient.BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,6 +337,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Tenant ID (must be valid UUID) | 
 
 ### Other Parameters
 
@@ -344,10 +349,11 @@ Other parameters are passed through a pointer to a apiApiTenantsIdBackupCredenti
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **sortBy** | **string** | A given BackupCredentials attribute to sort results by (one of: id, name, created_at) | 
  **limit** | **string** | Maximum number of rows to return (could be less) | 
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
- **id** | **string** | Filter results by BackupCredentials id | 
+ **id2** | **string** | Filter results by BackupCredentials id | 
  **name** | **string** | Filter results by BackupCredentials name | 
  **type_** | **string** | Filter results by BackupCredentials type | 
 
@@ -371,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupCredentialsPost
 
-> ModelsBackupCredentials ApiTenantsIdBackupCredentialsPost(ctx).Body(body).Execute()
+> ModelsBackupCredentials ApiTenantsIdBackupCredentialsPost(ctx, id).Body(body).Execute()
 
 Create BackupCredentials
 
@@ -390,11 +396,12 @@ import (
 )
 
 func main() {
+    id := "id_example" // string | Tenant ID (must be valid UUID)
     body := *openapiclient.NewControllersCreateBackupCredentialsRequest() // ControllersCreateBackupCredentialsRequest | Request body containing the backup credentials config
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupCredentialsApi.ApiTenantsIdBackupCredentialsPost(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.BackupCredentialsApi.ApiTenantsIdBackupCredentialsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiTenantsIdBackupCredentialsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,6 +414,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Tenant ID (must be valid UUID) | 
 
 ### Other Parameters
 
@@ -415,6 +426,7 @@ Other parameters are passed through a pointer to a apiApiTenantsIdBackupCredenti
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **body** | [**ControllersCreateBackupCredentialsRequest**](ControllersCreateBackupCredentialsRequest.md) | Request body containing the backup credentials config | 
 
 ### Return type

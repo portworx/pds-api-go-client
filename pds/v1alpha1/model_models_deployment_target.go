@@ -22,6 +22,7 @@ type ModelsDeploymentTarget struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	// ID is auto generated on creation
 	Id *string `json:"id,omitempty"`
+	LastHealthCheck *string `json:"last_health_check,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Status *string `json:"status,omitempty"`
 	TenantId *string `json:"tenant_id,omitempty"`
@@ -174,6 +175,38 @@ func (o *ModelsDeploymentTarget) SetId(v string) {
 	o.Id = &v
 }
 
+// GetLastHealthCheck returns the LastHealthCheck field value if set, zero value otherwise.
+func (o *ModelsDeploymentTarget) GetLastHealthCheck() string {
+	if o == nil || o.LastHealthCheck == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastHealthCheck
+}
+
+// GetLastHealthCheckOk returns a tuple with the LastHealthCheck field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTarget) GetLastHealthCheckOk() (*string, bool) {
+	if o == nil || o.LastHealthCheck == nil {
+		return nil, false
+	}
+	return o.LastHealthCheck, true
+}
+
+// HasLastHealthCheck returns a boolean if a field has been set.
+func (o *ModelsDeploymentTarget) HasLastHealthCheck() bool {
+	if o != nil && o.LastHealthCheck != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastHealthCheck gets a reference to the given string and assigns it to the LastHealthCheck field.
+func (o *ModelsDeploymentTarget) SetLastHealthCheck(v string) {
+	o.LastHealthCheck = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsDeploymentTarget) GetName() string {
 	if o == nil || o.Name == nil {
@@ -315,6 +348,9 @@ func (o ModelsDeploymentTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.LastHealthCheck != nil {
+		toSerialize["last_health_check"] = o.LastHealthCheck
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
