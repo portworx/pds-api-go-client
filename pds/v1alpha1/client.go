@@ -49,6 +49,8 @@ type APIClient struct {
 
 	// API Services
 
+	APIVersionApi *APIVersionApiService
+
 	AccountRoleBindingsApi *AccountRoleBindingsApiService
 
 	AccountsApi *AccountsApiService
@@ -120,6 +122,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.APIVersionApi = (*APIVersionApiService)(&c.common)
 	c.AccountRoleBindingsApi = (*AccountRoleBindingsApiService)(&c.common)
 	c.AccountsApi = (*AccountsApiService)(&c.common)
 	c.AuthenticationApi = (*AuthenticationApiService)(&c.common)

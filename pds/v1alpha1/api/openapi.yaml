@@ -2480,6 +2480,21 @@ paths:
       summary: List AccountRoleBindings of a given user
       tags:
       - AccountRoleBindings
+  /api/version:
+    get:
+      description: Get version information about this server
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.APIVersionResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get version information
+      tags:
+      - APIVersion
   /api/versions/{id}:
     get:
       description: Fetches a single Version
@@ -2684,6 +2699,18 @@ components:
         continuation: continuation
       properties:
         continuation:
+          type: string
+      type: object
+    controllers.APIVersionResponse:
+      example:
+        helm_chart_version: Helm chart version
+        api_version: API server version
+      properties:
+        api_version:
+          example: API server version
+          type: string
+        helm_chart_version:
+          example: Helm chart version
           type: string
       type: object
     controllers.AuthorizationCodeRequest:

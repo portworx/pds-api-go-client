@@ -78,6 +78,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*APIVersionApi* | [**ApiVersionGet**](docs/APIVersionApi.md#apiversionget) | **Get** /api/version | Get version information
 *AccountRoleBindingsApi* | [**ApiAccountsIdInvitationsPost**](docs/AccountRoleBindingsApi.md#apiaccountsidinvitationspost) | **Post** /api/accounts/{id}/invitations | Create Invitation
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsDelete**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsdelete) | **Delete** /api/accounts/{id}/role-bindings | Delete AccountRoleBinding
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsGet**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsget) | **Get** /api/accounts/{id}/role-bindings | List AccountRoleBinding
@@ -168,6 +169,7 @@ Class | Method | HTTP request | Description
 
  - [AuthClaims](docs/AuthClaims.md)
  - [ConstraintPagination](docs/ConstraintPagination.md)
+ - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
