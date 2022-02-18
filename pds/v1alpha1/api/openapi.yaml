@@ -464,6 +464,75 @@ paths:
       summary: Get BackupJob
       tags:
       - BackupJobs
+  /api/backup-policies/{id}:
+    delete:
+      description: Removes a single BackupPolicy
+      parameters:
+      - description: BackupPolicy ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete BackupPolicies
+      tags:
+      - BackupPolicies
+    get:
+      description: Fetches a single BackupPolicy
+      parameters:
+      - description: BackupPolicy ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupPolicy'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get BackupPolicy
+      tags:
+      - BackupPolicies
+    put:
+      description: Updates existing BackupPolicy
+      parameters:
+      - description: BackupPolicy ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateBackupPolicyRequest'
+        description: Request body containing updated backup policy
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupPolicy'
+          description: The updated backup policy will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update BackupPolicy
+      tags:
+      - BackupPolicies
+      x-codegen-request-body-name: body
   /api/backup-targets/{id}:
     delete:
       description: Removes a single BackupTarget
@@ -1808,6 +1877,75 @@ paths:
       summary: Get token of a ServiceAccount
       tags:
       - ServiceAccounts
+  /api/storage-options-templates/{id}:
+    delete:
+      description: Removes a single StorageOptionsTemplate
+      parameters:
+      - description: StorageOptionsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete StorageOptionsTemplates
+      tags:
+      - StorageOptionsTemplates
+    get:
+      description: Fetches a single StorageOptionsTemplate
+      parameters:
+      - description: StorageOptionsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get StorageOptionsTemplate
+      tags:
+      - StorageOptionsTemplates
+    put:
+      description: Updates existing StorageOptionsTemplate
+      parameters:
+      - description: StorageOptionsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateStorageOptionsTemplateRequest'
+        description: Request body containing updated template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          description: The updated storage options template will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update StorageOptionsTemplate
+      tags:
+      - StorageOptionsTemplates
+      x-codegen-request-body-name: body
   /api/teams/{id}:
     get:
       description: Fetches a single Team
@@ -1934,6 +2072,84 @@ paths:
       summary: Create BackupCredentials
       tags:
       - BackupCredentials
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/backup-policies:
+    get:
+      description: Lists BackupPolicies
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupPolicy attribute to sort results by (one of: id,
+          name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupPolicy id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupPolicy name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupPolicies'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List BackupPolicies
+      tags:
+      - BackupPolicies
+    post:
+      description: Creates a new BackupPolicy
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createBackupPolicyRequest'
+        description: Request body containing the backup policy
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupPolicy'
+          description: The created BackupPolicy will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create BackupPolicy
+      tags:
+      - BackupPolicies
       x-codegen-request-body-name: body
   /api/tenants/{id}/backup-targets:
     get:
@@ -2423,6 +2639,84 @@ paths:
       summary: Create ServiceAccounts
       tags:
       - ServiceAccounts
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/storage-options-templates:
+    get:
+      description: Lists StorageOptionsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given StorageOptionsTemplates attribute to sort results by
+          (one of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by StorageOptionsTemplates id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by StorageOptionsTemplates name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedStorageOptionsTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List StorageOptionsTemplates
+      tags:
+      - StorageOptionsTemplates
+    post:
+      description: Creates a new StorageOptionsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createStorageOptionsTemplatesRequest'
+        description: Request body containing the storage options template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          description: The created StorageOptionsTemplates will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create StorageOptionsTemplates
+      tags:
+      - StorageOptionsTemplates
       x-codegen-request-body-name: body
   /api/users/{id}:
     get:
@@ -2980,6 +3274,49 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
+    controllers.PaginatedBackupPolicies:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupPolicy'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
     controllers.PaginatedBackupTargetStates:
       example:
         data:
@@ -3045,17 +3382,6 @@ components:
         data:
         - coming_soon: true
           updated_at: updated_at
-          versions:
-          - data_service_id: data_service_id
-            updated_at: updated_at
-            name: name
-            created_at: created_at
-            id: id
-          - data_service_id: data_service_id
-            updated_at: updated_at
-            name: name
-            created_at: created_at
-            id: id
           name: name
           created_at: created_at
           nodes_limitations: nodes_limitations
@@ -3065,17 +3391,6 @@ components:
           has_full_backup: true
         - coming_soon: true
           updated_at: updated_at
-          versions:
-          - data_service_id: data_service_id
-            updated_at: updated_at
-            name: name
-            created_at: created_at
-            id: id
-          - data_service_id: data_service_id
-            updated_at: updated_at
-            name: name
-            created_at: created_at
-            id: id
           name: name
           created_at: created_at
           nodes_limitations: nodes_limitations
@@ -3368,6 +3683,39 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
+    controllers.PaginatedStorageOptionsTemplates:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          fg: true
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+        - tenant_id: tenant_id
+          fg: true
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
     controllers.PaginatedTenantProjects:
       example:
         pagination:
@@ -3540,6 +3888,15 @@ components:
         token:
           type: string
       type: object
+    controllers.UpdateBackupPolicyRequest:
+      properties:
+        name:
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
+      type: object
     controllers.UpdateBackupTargetRequest:
       properties:
         name:
@@ -3564,6 +3921,22 @@ components:
           type: string
         storage_request:
           type: string
+      type: object
+    controllers.UpdateStorageOptionsTemplateRequest:
+      properties:
+        fg:
+          type: boolean
+        fs:
+          enum:
+          - xfs
+          - ext4
+          type: string
+        name:
+          type: string
+        repl:
+          type: integer
+        secure:
+          type: boolean
       type: object
     controllers.WhoAmIResponse:
       example:
@@ -3638,6 +4011,15 @@ components:
         name:
           type: string
       type: object
+    controllers.createBackupPolicyRequest:
+      properties:
+        name:
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
+      type: object
     controllers.createNamespace:
       properties:
         name:
@@ -3666,6 +4048,22 @@ components:
         name:
           example: Name of the service account
           type: string
+      type: object
+    controllers.createStorageOptionsTemplatesRequest:
+      properties:
+        fg:
+          type: boolean
+        fs:
+          enum:
+          - xfs
+          - ext4
+          type: string
+        name:
+          type: string
+        repl:
+          type: integer
+        secure:
+          type: boolean
       type: object
     controllers.createTenantDeploymentTarget:
       properties:
@@ -3927,6 +4325,66 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
       type: object
+    models.BackupPolicy:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        schedules:
+        - schedule: schedule
+          retention_count: 0
+          id: id
+          type: incremental
+        - schedule: schedule
+          retention_count: 0
+          id: id
+          type: incremental
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.BackupSchedule:
+      example:
+        schedule: schedule
+        retention_count: 0
+        id: id
+        type: incremental
+      properties:
+        id:
+          description: The only purpose of this is to help UI identify validation
+            failures
+          type: string
+        retention_count:
+          type: integer
+        schedule:
+          description: CRON string
+          type: string
+        type:
+          enum:
+          - incremental
+          - full
+          type: string
+      type: object
     models.BackupTarget:
       example:
         bucket: bucket
@@ -4029,17 +4487,6 @@ components:
       example:
         coming_soon: true
         updated_at: updated_at
-        versions:
-        - data_service_id: data_service_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-        - data_service_id: data_service_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
         name: name
         created_at: created_at
         nodes_limitations: nodes_limitations
@@ -4069,10 +4516,6 @@ components:
         updated_at:
           description: UpdatedAt is autogenerated on update
           type: string
-        versions:
-          items:
-            $ref: '#/components/schemas/models.Version'
-          type: array
       type: object
     models.Deployment:
       example:
@@ -4445,6 +4888,46 @@ components:
           type: string
         name:
           type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.StorageOptionsTemplate:
+      example:
+        tenant_id: tenant_id
+        fg: true
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        repl: 0
+        id: id
+        secure: true
+        fs: xfs
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        fg:
+          type: boolean
+        fs:
+          enum:
+          - xfs
+          - ext4
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        repl:
+          type: integer
+        secure:
+          type: boolean
         tenant_id:
           type: string
         updated_at:

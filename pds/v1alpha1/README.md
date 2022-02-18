@@ -100,6 +100,11 @@ Class | Method | HTTP request | Description
 *BackupCredentialsApi* | [**ApiTenantsIdBackupCredentialsPost**](docs/BackupCredentialsApi.md#apitenantsidbackupcredentialspost) | **Post** /api/tenants/{id}/backup-credentials | Create BackupCredentials
 *BackupJobsApi* | [**ApiBackupJobsIdGet**](docs/BackupJobsApi.md#apibackupjobsidget) | **Get** /api/backup-jobs/{id} | Get BackupJob
 *BackupJobsApi* | [**ApiBackupsIdJobsGet**](docs/BackupJobsApi.md#apibackupsidjobsget) | **Get** /api/backups/{id}/jobs | List Backup&#39;s Jobs
+*BackupPoliciesApi* | [**ApiBackupPoliciesIdDelete**](docs/BackupPoliciesApi.md#apibackuppoliciesiddelete) | **Delete** /api/backup-policies/{id} | Delete BackupPolicies
+*BackupPoliciesApi* | [**ApiBackupPoliciesIdGet**](docs/BackupPoliciesApi.md#apibackuppoliciesidget) | **Get** /api/backup-policies/{id} | Get BackupPolicy
+*BackupPoliciesApi* | [**ApiBackupPoliciesIdPut**](docs/BackupPoliciesApi.md#apibackuppoliciesidput) | **Put** /api/backup-policies/{id} | Update BackupPolicy
+*BackupPoliciesApi* | [**ApiTenantsIdBackupPoliciesGet**](docs/BackupPoliciesApi.md#apitenantsidbackuppoliciesget) | **Get** /api/tenants/{id}/backup-policies | List BackupPolicies
+*BackupPoliciesApi* | [**ApiTenantsIdBackupPoliciesPost**](docs/BackupPoliciesApi.md#apitenantsidbackuppoliciespost) | **Post** /api/tenants/{id}/backup-policies | Create BackupPolicy
 *BackupTargetsApi* | [**ApiBackupTargetsIdDelete**](docs/BackupTargetsApi.md#apibackuptargetsiddelete) | **Delete** /api/backup-targets/{id} | Delete BackupTargets
 *BackupTargetsApi* | [**ApiBackupTargetsIdGet**](docs/BackupTargetsApi.md#apibackuptargetsidget) | **Get** /api/backup-targets/{id} | Get BackupTarget
 *BackupTargetsApi* | [**ApiBackupTargetsIdPut**](docs/BackupTargetsApi.md#apibackuptargetsidput) | **Put** /api/backup-targets/{id} | Update BackupTarget
@@ -152,6 +157,11 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiServiceAccountsIdTokenGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidtokenget) | **Get** /api/service-accounts/{id}/token | Get token of a ServiceAccount
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsGet**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountsget) | **Get** /api/tenants/{id}/service-accounts | List Tenant&#39;s ServiceAccounts
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
+*StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdDelete**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesiddelete) | **Delete** /api/storage-options-templates/{id} | Delete StorageOptionsTemplates
+*StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdGet**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidget) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
+*StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdPut**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidput) | **Put** /api/storage-options-templates/{id} | Update StorageOptionsTemplate
+*StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesGet**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatesget) | **Get** /api/tenants/{id}/storage-options-templates | List StorageOptionsTemplates
+*StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesPost**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatespost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplates
 *TasksApi* | [**ApiDbTasksIdGet**](docs/TasksApi.md#apidbtasksidget) | **Get** /api/db-tasks/{id} | Get Task
 *TeamsApi* | [**ApiTeamsIdGet**](docs/TeamsApi.md#apiteamsidget) | **Get** /api/teams/{id} | Get Team
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsDelete**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsdelete) | **Delete** /api/tenants/{id}/role-bindings | Delete TenantRoleBinding
@@ -173,11 +183,13 @@ Class | Method | HTTP request | Description
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
+ - [ControllersCreateBackupPolicyRequest](docs/ControllersCreateBackupPolicyRequest.md)
  - [ControllersCreateDeploymentBackup](docs/ControllersCreateDeploymentBackup.md)
  - [ControllersCreateNamespace](docs/ControllersCreateNamespace.md)
  - [ControllersCreateProjectDeployment](docs/ControllersCreateProjectDeployment.md)
  - [ControllersCreateResourceSettingsTemplatesRequest](docs/ControllersCreateResourceSettingsTemplatesRequest.md)
  - [ControllersCreateServiceAccountRequest](docs/ControllersCreateServiceAccountRequest.md)
+ - [ControllersCreateStorageOptionsTemplatesRequest](docs/ControllersCreateStorageOptionsTemplatesRequest.md)
  - [ControllersCreateTenantBackupTarget](docs/ControllersCreateTenantBackupTarget.md)
  - [ControllersCreateTenantDeploymentTarget](docs/ControllersCreateTenantDeploymentTarget.md)
  - [ControllersCredentials](docs/ControllersCredentials.md)
@@ -191,6 +203,7 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedAccounts](docs/ControllersPaginatedAccounts.md)
  - [ControllersPaginatedBackupCredentials](docs/ControllersPaginatedBackupCredentials.md)
  - [ControllersPaginatedBackupJobs](docs/ControllersPaginatedBackupJobs.md)
+ - [ControllersPaginatedBackupPolicies](docs/ControllersPaginatedBackupPolicies.md)
  - [ControllersPaginatedBackupTargetStates](docs/ControllersPaginatedBackupTargetStates.md)
  - [ControllersPaginatedBackupTargets](docs/ControllersPaginatedBackupTargets.md)
  - [ControllersPaginatedDataServices](docs/ControllersPaginatedDataServices.md)
@@ -203,6 +216,7 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedResourceSettingsTemplates](docs/ControllersPaginatedResourceSettingsTemplates.md)
  - [ControllersPaginatedRoles](docs/ControllersPaginatedRoles.md)
  - [ControllersPaginatedServiceAccounts](docs/ControllersPaginatedServiceAccounts.md)
+ - [ControllersPaginatedStorageOptionsTemplates](docs/ControllersPaginatedStorageOptionsTemplates.md)
  - [ControllersPaginatedTenantProjects](docs/ControllersPaginatedTenantProjects.md)
  - [ControllersPaginatedTenantRoleBindings](docs/ControllersPaginatedTenantRoleBindings.md)
  - [ControllersPaginatedUsers](docs/ControllersPaginatedUsers.md)
@@ -215,11 +229,13 @@ Class | Method | HTTP request | Description
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
  - [ControllersUpdateBackupCredentialsRequest](docs/ControllersUpdateBackupCredentialsRequest.md)
+ - [ControllersUpdateBackupPolicyRequest](docs/ControllersUpdateBackupPolicyRequest.md)
  - [ControllersUpdateBackupRequest](docs/ControllersUpdateBackupRequest.md)
  - [ControllersUpdateBackupTargetRequest](docs/ControllersUpdateBackupTargetRequest.md)
  - [ControllersUpdateDeploymentRequest](docs/ControllersUpdateDeploymentRequest.md)
  - [ControllersUpdateDeploymentTargetRequest](docs/ControllersUpdateDeploymentTargetRequest.md)
  - [ControllersUpdateResourceSettingsTemplateRequest](docs/ControllersUpdateResourceSettingsTemplateRequest.md)
+ - [ControllersUpdateStorageOptionsTemplateRequest](docs/ControllersUpdateStorageOptionsTemplateRequest.md)
  - [ControllersUpsertAccountRoleBindingRequest](docs/ControllersUpsertAccountRoleBindingRequest.md)
  - [ControllersUpsertProjectRoleBindingRequest](docs/ControllersUpsertProjectRoleBindingRequest.md)
  - [ControllersUpsertTenantRoleBindingRequest](docs/ControllersUpsertTenantRoleBindingRequest.md)
@@ -234,6 +250,8 @@ Class | Method | HTTP request | Description
  - [ModelsBackup](docs/ModelsBackup.md)
  - [ModelsBackupCredentials](docs/ModelsBackupCredentials.md)
  - [ModelsBackupJob](docs/ModelsBackupJob.md)
+ - [ModelsBackupPolicy](docs/ModelsBackupPolicy.md)
+ - [ModelsBackupSchedule](docs/ModelsBackupSchedule.md)
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
  - [ModelsConfiguration](docs/ModelsConfiguration.md)
@@ -250,6 +268,7 @@ Class | Method | HTTP request | Description
  - [ModelsS3CompatibleCredentials](docs/ModelsS3CompatibleCredentials.md)
  - [ModelsS3Credentials](docs/ModelsS3Credentials.md)
  - [ModelsServiceAccount](docs/ModelsServiceAccount.md)
+ - [ModelsStorageOptionsTemplate](docs/ModelsStorageOptionsTemplate.md)
  - [ModelsTask](docs/ModelsTask.md)
  - [ModelsTeam](docs/ModelsTeam.md)
  - [ModelsTenant](docs/ModelsTenant.md)

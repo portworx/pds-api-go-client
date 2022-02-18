@@ -63,6 +63,8 @@ type APIClient struct {
 
 	BackupJobsApi *BackupJobsApiService
 
+	BackupPoliciesApi *BackupPoliciesApiService
+
 	BackupTargetsApi *BackupTargetsApiService
 
 	BackupsApi *BackupsApiService
@@ -90,6 +92,8 @@ type APIClient struct {
 	RolesApi *RolesApiService
 
 	ServiceAccountsApi *ServiceAccountsApiService
+
+	StorageOptionsTemplatesApi *StorageOptionsTemplatesApiService
 
 	TasksApi *TasksApiService
 
@@ -129,6 +133,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AuthorizerApi = (*AuthorizerApiService)(&c.common)
 	c.BackupCredentialsApi = (*BackupCredentialsApiService)(&c.common)
 	c.BackupJobsApi = (*BackupJobsApiService)(&c.common)
+	c.BackupPoliciesApi = (*BackupPoliciesApiService)(&c.common)
 	c.BackupTargetsApi = (*BackupTargetsApiService)(&c.common)
 	c.BackupsApi = (*BackupsApiService)(&c.common)
 	c.DataServicesApi = (*DataServicesApiService)(&c.common)
@@ -143,6 +148,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ResourceSettingsTemplatesApi = (*ResourceSettingsTemplatesApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
+	c.StorageOptionsTemplatesApi = (*StorageOptionsTemplatesApiService)(&c.common)
 	c.TasksApi = (*TasksApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.TenantRoleBindingsApi = (*TenantRoleBindingsApiService)(&c.common)
