@@ -1021,6 +1021,36 @@ paths:
       summary: Get join credentials of a DeploymentTarget
       tags:
       - DeploymentTargets
+  /api/deployment-targets/{id}/heartbeat:
+    post:
+      description: Makes control plane aware that DeploymentTarget is still alive
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.DeploymentTargetHeartbeatRequest'
+        description: Object with target cluster ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.DeploymentTargetHeartbeatResponse'
+          description: Object with heart beat response
+      security:
+      - ApiKeyAuth: []
+      summary: Make DeploymentTarget heart beat request
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
   /api/deployment-targets/{id}/namespaces:
     get:
       description: List DeploymentTarget's Namespaces
@@ -1056,6 +1086,11 @@ paths:
       - description: Filter results by Namespace name
         in: query
         name: name
+        schema:
+          type: string
+      - description: Filter results by Namespace status
+        in: query
+        name: status
         schema:
           type: string
       responses:
@@ -1453,6 +1488,35 @@ paths:
       summary: Get Namespace
       tags:
       - Namespaces
+    put:
+      description: Update namespace
+      parameters:
+      - description: Namespace ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateNamespaceRequest'
+        description: Object with partial update of fields (status)
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Namespace'
+          description: The updated Namespace will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update namespace
+      tags:
+      - Namespaces
+      x-codegen-request-body-name: body
   /api/projects/{id}:
     get:
       description: Fetches a single Project
@@ -3110,6 +3174,21 @@ components:
         teleport_proxy_addr:
           type: string
       type: object
+    controllers.DeploymentTargetHeartbeatRequest:
+      properties:
+        cluster_id:
+          type: string
+      type: object
+    controllers.DeploymentTargetHeartbeatResponse:
+      example:
+        cluster_id: cluster_id
+        name: name
+      properties:
+        cluster_id:
+          type: string
+        name:
+          type: string
+      type: object
     controllers.OIDCInfoResponse:
       example:
         authUrl: https://release-staging.portworx.dev/landing/login
@@ -3564,6 +3643,7 @@ components:
           name: name
           created_at: created_at
           id: id
+          status: status
         - tenant_id: tenant_id
           account_id: account_id
           deployment_target_id: deployment_target_id
@@ -3571,6 +3651,7 @@ components:
           name: name
           created_at: created_at
           id: id
+          status: status
       properties:
         data:
           items:
@@ -3905,6 +3986,11 @@ components:
     controllers.UpdateDeploymentTargetRequest:
       properties:
         name:
+          type: string
+      type: object
+    controllers.UpdateNamespaceRequest:
+      properties:
+        status:
           type: string
       type: object
     controllers.UpdateResourceSettingsTemplateRequest:
@@ -4748,6 +4834,7 @@ components:
         name: name
         created_at: created_at
         id: id
+        status: status
       properties:
         account_id:
           type: string
@@ -4760,6 +4847,8 @@ components:
           description: ID is auto generated on creation
           type: string
         name:
+          type: string
+        status:
           type: string
         tenant_id:
           type: string

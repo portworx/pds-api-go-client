@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidget) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
+*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidheartbeatpost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdPut**](docs/DeploymentTargetsApi.md#apideploymenttargetsidput) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
 *DeploymentTargetsApi* | [**ApiProjectsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apiprojectsiddeploymenttargetsget) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
 *DeploymentTargetsApi* | [**ApiTenantsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apitenantsiddeploymenttargetsget) | **Get** /api/tenants/{id}/deployment-targets | List Tenant&#39;s DeploymentTargets
@@ -141,6 +142,7 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**ApiDeploymentTargetsIdNamespacesGet**](docs/NamespacesApi.md#apideploymenttargetsidnamespacesget) | **Get** /api/deployment-targets/{id}/namespaces | List DeploymentTarget&#39;s Namespaces
 *NamespacesApi* | [**ApiDeploymentTargetsIdNamespacesPost**](docs/NamespacesApi.md#apideploymenttargetsidnamespacespost) | **Post** /api/deployment-targets/{id}/namespaces | Create Namespace
 *NamespacesApi* | [**ApiNamespacesIdGet**](docs/NamespacesApi.md#apinamespacesidget) | **Get** /api/namespaces/{id} | Get Namespace
+*NamespacesApi* | [**ApiNamespacesIdPut**](docs/NamespacesApi.md#apinamespacesidput) | **Put** /api/namespaces/{id} | Update namespace
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsDelete**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsdelete) | **Delete** /api/projects/{id}/role-bindings | Delete ProjectRoleBinding
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsget) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
@@ -195,6 +197,8 @@ Class | Method | HTTP request | Description
  - [ControllersCredentials](docs/ControllersCredentials.md)
  - [ControllersDeploymentConnectionStringsResponse](docs/ControllersDeploymentConnectionStringsResponse.md)
  - [ControllersDeploymentTargetCredentialsResponse](docs/ControllersDeploymentTargetCredentialsResponse.md)
+ - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
+ - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
  - [ControllersInvitationRequest](docs/ControllersInvitationRequest.md)
  - [ControllersOIDCInfoResponse](docs/ControllersOIDCInfoResponse.md)
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)
@@ -234,6 +238,7 @@ Class | Method | HTTP request | Description
  - [ControllersUpdateBackupTargetRequest](docs/ControllersUpdateBackupTargetRequest.md)
  - [ControllersUpdateDeploymentRequest](docs/ControllersUpdateDeploymentRequest.md)
  - [ControllersUpdateDeploymentTargetRequest](docs/ControllersUpdateDeploymentTargetRequest.md)
+ - [ControllersUpdateNamespaceRequest](docs/ControllersUpdateNamespaceRequest.md)
  - [ControllersUpdateResourceSettingsTemplateRequest](docs/ControllersUpdateResourceSettingsTemplateRequest.md)
  - [ControllersUpdateStorageOptionsTemplateRequest](docs/ControllersUpdateStorageOptionsTemplateRequest.md)
  - [ControllersUpsertAccountRoleBindingRequest](docs/ControllersUpsertAccountRoleBindingRequest.md)

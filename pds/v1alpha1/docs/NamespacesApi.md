@@ -7,12 +7,13 @@ Method | HTTP request | Description
 [**ApiDeploymentTargetsIdNamespacesGet**](NamespacesApi.md#ApiDeploymentTargetsIdNamespacesGet) | **Get** /api/deployment-targets/{id}/namespaces | List DeploymentTarget&#39;s Namespaces
 [**ApiDeploymentTargetsIdNamespacesPost**](NamespacesApi.md#ApiDeploymentTargetsIdNamespacesPost) | **Post** /api/deployment-targets/{id}/namespaces | Create Namespace
 [**ApiNamespacesIdGet**](NamespacesApi.md#ApiNamespacesIdGet) | **Get** /api/namespaces/{id} | Get Namespace
+[**ApiNamespacesIdPut**](NamespacesApi.md#ApiNamespacesIdPut) | **Put** /api/namespaces/{id} | Update namespace
 
 
 
 ## ApiDeploymentTargetsIdNamespacesGet
 
-> ControllersPaginatedNamespaces ApiDeploymentTargetsIdNamespacesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+> ControllersPaginatedNamespaces ApiDeploymentTargetsIdNamespacesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
 
 List DeploymentTarget's Namespaces
 
@@ -37,10 +38,11 @@ func main() {
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by Namespace ID (optional)
     name := "name_example" // string | Filter results by Namespace name (optional)
+    status := "status_example" // string | Filter results by Namespace status (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamespacesApi.ApiDeploymentTargetsIdNamespacesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    resp, r, err := apiClient.NamespacesApi.ApiDeploymentTargetsIdNamespacesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiDeploymentTargetsIdNamespacesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -71,6 +73,7 @@ Name | Type | Description  | Notes
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by Namespace ID | 
  **name** | **string** | Filter results by Namespace name | 
+ **status** | **string** | Filter results by Namespace status | 
 
 ### Return type
 
@@ -225,6 +228,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiNamespacesIdPut
+
+> ModelsNamespace ApiNamespacesIdPut(ctx, id).Body(body).Execute()
+
+Update namespace
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Namespace ID (must be valid UUID)
+    body := *openapiclient.NewControllersUpdateNamespaceRequest() // ControllersUpdateNamespaceRequest | Object with partial update of fields (status)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NamespacesApi.ApiNamespacesIdPut(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiNamespacesIdPut`: ModelsNamespace
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.ApiNamespacesIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Namespace ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiNamespacesIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersUpdateNamespaceRequest**](ControllersUpdateNamespaceRequest.md) | Object with partial update of fields (status) | 
+
+### Return type
+
+[**ModelsNamespace**](ModelsNamespace.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
