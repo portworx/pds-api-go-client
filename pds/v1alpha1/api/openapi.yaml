@@ -328,6 +328,75 @@ paths:
       summary: List Account Users
       tags:
       - Accounts
+  /api/application-configuration-templates/{id}:
+    delete:
+      description: Removes a single ApplicationConfigurationTemplate
+      parameters:
+      - description: ApplicationConfigurationTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete ApplicationConfigurationTemplates
+      tags:
+      - ApplicationConfigurationTemplates
+    get:
+      description: Fetches a single ApplicationConfigurationTemplate
+      parameters:
+      - description: ApplicationConfigurationTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get ApplicationConfigurationTemplate
+      tags:
+      - ApplicationConfigurationTemplates
+    put:
+      description: Updates existing ApplicationConfigurationTemplate
+      parameters:
+      - description: ApplicationConfigurationTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateApplicationConfigurationTemplateRequest'
+        description: Request body containing updated template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          description: The updated application configuration template will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update ApplicationConfigurationTemplate
+      tags:
+      - ApplicationConfigurationTemplates
+      x-codegen-request-body-name: body
   /api/authorizer:
     post:
       description: Check if the provided operation is allowed
@@ -2054,6 +2123,89 @@ paths:
       summary: Get Tenant
       tags:
       - Tenants
+  /api/tenants/{id}/application-configuration-templates:
+    get:
+      description: Lists ApplicationConfigurationTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given ApplicationConfigurationTemplates attribute to sort
+          results by (one of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by ApplicationConfigurationTemplates id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by ApplicationConfigurationTemplates name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by DataService ID
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedApplicationConfigurationTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List ApplicationConfigurationTemplates
+      tags:
+      - ApplicationConfigurationTemplates
+    post:
+      description: Creates a new ApplicationConfigurationTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createApplicationConfigurationTemplatesRequest'
+        description: Request body containing the application configuration template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          description: The created ApplicationConfigurationTemplates will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create ApplicationConfigurationTemplates
+      tags:
+      - ApplicationConfigurationTemplates
+      x-codegen-request-body-name: body
   /api/tenants/{id}/backup-credentials:
     get:
       description: Lists BackupCredentials visible to the caller
@@ -3295,6 +3447,43 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
+    controllers.PaginatedApplicationConfigurationTemplates:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
     controllers.PaginatedBackupCredentials:
       example:
         pagination:
@@ -3969,6 +4158,15 @@ components:
         token:
           type: string
       type: object
+    controllers.UpdateApplicationConfigurationTemplateRequest:
+      properties:
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        name:
+          type: string
+      type: object
     controllers.UpdateBackupPolicyRequest:
       properties:
         name:
@@ -4088,6 +4286,17 @@ components:
       properties:
         name:
           example: Name of the account
+          type: string
+      type: object
+    controllers.createApplicationConfigurationTemplatesRequest:
+      properties:
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        data_service_id:
+          type: string
+        name:
           type: string
       type: object
     controllers.createBackupCredentialsRequest:
@@ -4265,6 +4474,43 @@ components:
         actor_type:
           type: string
         role_name:
+          type: string
+      type: object
+    models.ApplicationConfigurationTemplate:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        data_service_id: data_service_id
+        updated_at: updated_at
+        config_items:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
           type: string
       type: object
     models.AuthorizerRequest:
@@ -4551,6 +4797,16 @@ components:
           - failed_create
           - failed_delete
           - failed_update
+          type: string
+      type: object
+    models.ConfigItem:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
           type: string
       type: object
     models.Configuration:

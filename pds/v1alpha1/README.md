@@ -88,6 +88,11 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
+*ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdDelete**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesiddelete) | **Delete** /api/application-configuration-templates/{id} | Delete ApplicationConfigurationTemplates
+*ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdGet**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidget) | **Get** /api/application-configuration-templates/{id} | Get ApplicationConfigurationTemplate
+*ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdPut**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidput) | **Put** /api/application-configuration-templates/{id} | Update ApplicationConfigurationTemplate
+*ApplicationConfigurationTemplatesApi* | [**ApiTenantsIdApplicationConfigurationTemplatesGet**](docs/ApplicationConfigurationTemplatesApi.md#apitenantsidapplicationconfigurationtemplatesget) | **Get** /api/tenants/{id}/application-configuration-templates | List ApplicationConfigurationTemplates
+*ApplicationConfigurationTemplatesApi* | [**ApiTenantsIdApplicationConfigurationTemplatesPost**](docs/ApplicationConfigurationTemplatesApi.md#apitenantsidapplicationconfigurationtemplatespost) | **Post** /api/tenants/{id}/application-configuration-templates | Create ApplicationConfigurationTemplates
 *AuthenticationApi* | [**AuthAuthorizationCodePost**](docs/AuthenticationApi.md#authauthorizationcodepost) | **Post** /auth/authorization-code | Authorization code exchange
 *AuthenticationApi* | [**AuthOidcInfoGet**](docs/AuthenticationApi.md#authoidcinfoget) | **Get** /auth/oidc-info | OIDC info
 *AuthenticationApi* | [**AuthRefreshTokenPost**](docs/AuthenticationApi.md#authrefreshtokenpost) | **Post** /auth/refresh-token | Use refresh token to generate new tokens.
@@ -184,6 +189,7 @@ Class | Method | HTTP request | Description
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
+ - [ControllersCreateApplicationConfigurationTemplatesRequest](docs/ControllersCreateApplicationConfigurationTemplatesRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
  - [ControllersCreateBackupPolicyRequest](docs/ControllersCreateBackupPolicyRequest.md)
  - [ControllersCreateDeploymentBackup](docs/ControllersCreateDeploymentBackup.md)
@@ -205,6 +211,7 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedAccountRoleBindings](docs/ControllersPaginatedAccountRoleBindings.md)
  - [ControllersPaginatedAccountTenants](docs/ControllersPaginatedAccountTenants.md)
  - [ControllersPaginatedAccounts](docs/ControllersPaginatedAccounts.md)
+ - [ControllersPaginatedApplicationConfigurationTemplates](docs/ControllersPaginatedApplicationConfigurationTemplates.md)
  - [ControllersPaginatedBackupCredentials](docs/ControllersPaginatedBackupCredentials.md)
  - [ControllersPaginatedBackupJobs](docs/ControllersPaginatedBackupJobs.md)
  - [ControllersPaginatedBackupPolicies](docs/ControllersPaginatedBackupPolicies.md)
@@ -232,6 +239,7 @@ Class | Method | HTTP request | Description
  - [ControllersRefreshTokenRequest](docs/ControllersRefreshTokenRequest.md)
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
+ - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
  - [ControllersUpdateBackupCredentialsRequest](docs/ControllersUpdateBackupCredentialsRequest.md)
  - [ControllersUpdateBackupPolicyRequest](docs/ControllersUpdateBackupPolicyRequest.md)
  - [ControllersUpdateBackupRequest](docs/ControllersUpdateBackupRequest.md)
@@ -249,6 +257,7 @@ Class | Method | HTTP request | Description
  - [ControllersWhoAmIUser](docs/ControllersWhoAmIUser.md)
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountRoleBinding](docs/ModelsAccountRoleBinding.md)
+ - [ModelsApplicationConfigurationTemplate](docs/ModelsApplicationConfigurationTemplate.md)
  - [ModelsAuthorizerRequest](docs/ModelsAuthorizerRequest.md)
  - [ModelsAuthorizerResponse](docs/ModelsAuthorizerResponse.md)
  - [ModelsAzureCredentials](docs/ModelsAzureCredentials.md)
@@ -259,6 +268,7 @@ Class | Method | HTTP request | Description
  - [ModelsBackupSchedule](docs/ModelsBackupSchedule.md)
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
+ - [ModelsConfigItem](docs/ModelsConfigItem.md)
  - [ModelsConfiguration](docs/ModelsConfiguration.md)
  - [ModelsDataService](docs/ModelsDataService.md)
  - [ModelsDeployment](docs/ModelsDeployment.md)
