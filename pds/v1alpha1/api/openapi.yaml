@@ -1,0 +1,5687 @@
+openapi: 3.0.1
+info:
+  contact: {}
+  description: Portworx Data Services API Server
+  title: PDS API
+  version: 3.0.1
+servers:
+- url: /
+paths:
+  /api/accounts:
+    get:
+      description: Lists Accounts visible to the caller.
+      parameters:
+      - description: 'A given Accounts attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Accounts id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Accounts name
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedAccounts'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Accounts
+      tags:
+      - Accounts
+    post:
+      description: Creates a new Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createAccountRequest'
+        description: Request body containing name of the account
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Account'
+          description: The created Account will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Account
+      tags:
+      - Accounts
+      x-codegen-request-body-name: body
+  /api/accounts/{id}:
+    get:
+      description: Fetches a single Account
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Account'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Account
+      tags:
+      - Accounts
+  /api/accounts/{id}/invitations:
+    post:
+      description: Adds role binding to existing user. The plan is to send invites
+        to non-existing users in the future.
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.invitationRequest'
+        description: Request body containing the invitation details.
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: The account role binding has been created.
+        "400":
+          content: {}
+          description: The request doesn't contain valid invitation details.
+        "404":
+          content: {}
+          description: The user with specified email doesn't exist.
+        "422":
+          content: {}
+          description: The user is already assigned to this account.
+      security:
+      - ApiKeyAuth: []
+      summary: Create Invitation
+      tags:
+      - AccountRoleBindings
+      x-codegen-request-body-name: Body
+  /api/accounts/{id}/role-bindings:
+    delete:
+      description: Removes a single AccountRoleBinding
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: AccountRoleBinding actor type
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete AccountRoleBinding
+      tags:
+      - AccountRoleBindings
+      x-codegen-request-body-name: actor_type
+    get:
+      description: Lists AccountRoleBinding
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given AccountRoleBinding attribute to sort results by (one
+          of: role_name, actor_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by AccountRoleBinding assigned role name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      - description: Filter results by AccountRoleBinding actor id
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      - description: Filter results by AccountRoleBinding actor type
+        in: query
+        name: actor_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedAccountRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List AccountRoleBinding
+      tags:
+      - AccountRoleBindings
+    put:
+      description: Creates a new AccountRoleBinding, or updates role_name if binding
+        for (actor_id, actor_type) already exists.
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.upsertAccountRoleBindingRequest'
+        description: Request body containing the account role binding
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.AccountRoleBinding'
+          description: The created AccountRoleBinding will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create/Update AccountRoleBinding
+      tags:
+      - AccountRoleBindings
+      x-codegen-request-body-name: body
+  /api/accounts/{id}/tenants:
+    get:
+      description: Lists Tenants visible to the caller and belonging to the Account.
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Tenant attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Tenant id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Tenant name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedAccountTenants'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Account's Tenants
+      tags:
+      - Tenants
+  /api/accounts/{id}/users:
+    get:
+      description: Lists Account Users
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given User attribute to sort results by (one of: id, email,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by User id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by User email
+        in: query
+        name: email
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedUsers'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Account Users
+      tags:
+      - Accounts
+  /api/application-configuration-templates/{id}:
+    delete:
+      description: Removes a single ApplicationConfigurationTemplate
+      parameters:
+      - description: ApplicationConfigurationTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete ApplicationConfigurationTemplates
+      tags:
+      - ApplicationConfigurationTemplates
+    get:
+      description: Fetches a single ApplicationConfigurationTemplate
+      parameters:
+      - description: ApplicationConfigurationTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get ApplicationConfigurationTemplate
+      tags:
+      - ApplicationConfigurationTemplates
+    put:
+      description: Updates existing ApplicationConfigurationTemplate
+      parameters:
+      - description: ApplicationConfigurationTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateApplicationConfigurationTemplateRequest'
+        description: Request body containing updated template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          description: The updated application configuration template will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update ApplicationConfigurationTemplate
+      tags:
+      - ApplicationConfigurationTemplates
+      x-codegen-request-body-name: body
+  /api/authorizer:
+    post:
+      description: Check if the provided operation is allowed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/models.AuthorizerRequest'
+        description: Request body containing the authorizer request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.AuthorizerResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Authorize operation
+      tags:
+      - Authorizer
+      x-codegen-request-body-name: body
+  /api/backup-credentials/{id}:
+    delete:
+      description: Removes a single BackupCredential
+      parameters:
+      - description: BackupCredentials ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete BackupCredentials
+      tags:
+      - BackupCredentials
+    get:
+      description: Fetches a single BackupCredentials
+      parameters:
+      - description: BackupCredentials ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupCredentials'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get BackupCredentials
+      tags:
+      - BackupCredentials
+    put:
+      description: Updates an existing instance of BackupCredentials
+      parameters:
+      - description: BackupCredentials ID (must be UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.updateBackupCredentialsRequest'
+        description: Request body containing the backup credentials config
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupCredentials'
+          description: The updated BackupCredentials will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update BackupCredentials
+      tags:
+      - BackupCredentials
+      x-codegen-request-body-name: body
+  /api/backup-credentials/{id}/credentials:
+    get:
+      description: Get cloud configuration for BackupCredentials
+      parameters:
+      - description: BackupCredentials ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PartialCredentials'
+          description: Cloud configuration for BackupCredentials
+      security:
+      - ApiKeyAuth: []
+      summary: Get cloud configuration for BackupCredentials
+      tags:
+      - BackupCredentials
+  /api/backup-jobs/{id}:
+    get:
+      description: Fetches a BackupJob
+      parameters:
+      - description: BackupJob ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupJob'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get BackupJob
+      tags:
+      - BackupJobs
+  /api/backup-policies/{id}:
+    delete:
+      description: Removes a single BackupPolicy
+      parameters:
+      - description: BackupPolicy ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete BackupPolicies
+      tags:
+      - BackupPolicies
+    get:
+      description: Fetches a single BackupPolicy
+      parameters:
+      - description: BackupPolicy ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupPolicy'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get BackupPolicy
+      tags:
+      - BackupPolicies
+    put:
+      description: Updates existing BackupPolicy
+      parameters:
+      - description: BackupPolicy ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateBackupPolicyRequest'
+        description: Request body containing updated backup policy
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupPolicy'
+          description: The updated backup policy will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update BackupPolicy
+      tags:
+      - BackupPolicies
+      x-codegen-request-body-name: body
+  /api/backup-targets/{id}:
+    delete:
+      description: Removes a single BackupTarget
+      parameters:
+      - description: BackupTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Delete backup target even if the deletion job fails on any deployment
+          targets
+        in: query
+        name: force
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete BackupTargets
+      tags:
+      - BackupTargets
+    get:
+      description: Fetches a single BackupTarget
+      parameters:
+      - description: BackupTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupTarget'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get BackupTarget
+      tags:
+      - BackupTargets
+    put:
+      description: Updates existing BackupTarget
+      parameters:
+      - description: BackupTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateBackupTargetRequest'
+        description: Object with partial update fields
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupTarget'
+          description: The updated BackupTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update BackupTarget
+      tags:
+      - BackupTargets
+      x-codegen-request-body-name: body
+  /api/backup-targets/{id}/states:
+    get:
+      description: Lists BackupTarget's BackupTargetStates
+      parameters:
+      - description: Backup Target ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: 'A given BackupTargetState attribute to sort results by (one
+          of: state, deployment_target_id, backup_target_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by BackupTarget ID
+        in: query
+        name: backup_target_id
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget ID
+        in: query
+        name: deployment_target_id
+        schema:
+          type: string
+      - description: Filter results by state
+        in: query
+        name: state
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupTargetStates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List BackupTarget's BackupTargetStates
+      tags:
+      - BackupTargets
+  /api/backups/{id}:
+    delete:
+      description: Deletes an existing database deployment Backup
+      parameters:
+      - description: Backup ID (must be a valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only delete the Backup object in the database
+          (does not delete any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Backup
+      tags:
+      - Backups
+    get:
+      description: Fetches a single Backup
+      parameters:
+      - description: Backup ID (must be a valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Backup'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Backup
+      tags:
+      - Backups
+    put:
+      description: Updates an existing database Backup
+      parameters:
+      - description: Backup ID (must be UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only update the Backup object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.updateBackupRequest'
+        description: Request body containing updated backup
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Backup'
+          description: The updated Backup will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update Backup
+      tags:
+      - Backups
+      x-codegen-request-body-name: body
+  /api/backups/{id}/jobs:
+    get:
+      description: Retrieves a list of BackupJobs associated to this Backup
+      parameters:
+      - description: Backup ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupJob attribute to sort results by (one of: id,
+          created_at, file_size, start_time, completion_time, state)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupJob id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupJob state
+        in: query
+        name: state
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupJobs'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Backup's Jobs
+      tags:
+      - BackupJobs
+  /api/data-services:
+    get:
+      description: Lists Data Services
+      parameters:
+      - description: 'A given Data Service attribute to sort results by (one of: id,
+          name, short_name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Data Service ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Data Service name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by Data Service short name
+        in: query
+        name: short_name
+        schema:
+          type: string
+      - description: Filter results based on incremental backup eligibility
+        in: query
+        name: has_incremental_backup
+        schema:
+          type: boolean
+      - description: Filter results based on vault full backup eligibility
+        in: query
+        name: has_full_backup
+        schema:
+          type: boolean
+      - description: Filter results based on 'Coming soon' flag
+        in: query
+        name: coming_soon
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedDataServices'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Data Services
+      tags:
+      - DataServices
+  /api/data-services/{id}:
+    get:
+      description: Fetches a single Data Service
+      parameters:
+      - description: Data Service ID (must be a valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DataService'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Data Service
+      tags:
+      - DataServices
+  /api/data-services/{id}/versions:
+    get:
+      description: Lists Versions belonging to the Data Service.
+      parameters:
+      - description: Data Service ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Version attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Version id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Version's name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedVersions'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Data Service's Versions
+      tags:
+      - Versions
+  /api/db-tasks/{id}:
+    get:
+      description: Fetches a database Task
+      parameters:
+      - description: Task ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Task'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Task
+      tags:
+      - Tasks
+  /api/deployment-targets/{id}:
+    get:
+      description: Fetches a single DeploymentTarget
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTarget'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get DeploymentTarget
+      tags:
+      - DeploymentTargets
+    put:
+      description: Updates existing DeploymentTarget
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateDeploymentTargetRequest'
+        description: Object with partial update fields (name)
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTarget'
+          description: The updated DeploymentTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update DeploymentTarget
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/credentials:
+    get:
+      description: Fetches the join credentials of a DeploymentTarget
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.DeploymentTargetCredentialsResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get join credentials of a DeploymentTarget
+      tags:
+      - DeploymentTargets
+  /api/deployment-targets/{id}/heartbeat:
+    post:
+      description: Makes control plane aware that DeploymentTarget is still alive
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.DeploymentTargetHeartbeatRequest'
+        description: Object with target cluster ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.DeploymentTargetHeartbeatResponse'
+          description: Object with heart beat response
+      security:
+      - ApiKeyAuth: []
+      summary: Make DeploymentTarget heart beat request
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/namespaces:
+    get:
+      description: List DeploymentTarget's Namespaces
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Namespace attribute to sort results by (one of: id,
+          name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Namespace ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Namespace name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by Namespace status
+        in: query
+        name: status
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedNamespaces'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List DeploymentTarget's Namespaces
+      tags:
+      - Namespaces
+    post:
+      description: Creates a new Namespace
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createNamespace'
+        description: Request body containing the new namespace
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Namespace'
+          description: The created Namespace will be returned
+        "400":
+          content: {}
+          description: Bad request, see response for more details
+        "409":
+          content: {}
+          description: Namespace with the given name already exists
+      security:
+      - ApiKeyAuth: []
+      summary: Create Namespace
+      tags:
+      - Namespaces
+      x-codegen-request-body-name: body
+  /api/deployment-templates/{id}:
+    get:
+      description: Fetches a single DeploymentTemplate
+      parameters:
+      - description: DeploymentTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get DeploymentTemplate
+      tags:
+      - DeploymentTemplates
+  /api/deployments/{id}:
+    delete:
+      description: Deletes an existing database Deployment
+      parameters:
+      - description: Deployment ID (must be a valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only delete the Deployment object in the database
+          (does not delete any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Deployment
+      tags:
+      - Deployments
+    get:
+      description: Fetches a data service Deployment
+      parameters:
+      - description: Deployment ID (either id or deployment_id field)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Deployment'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Deployment
+      tags:
+      - Deployments
+    put:
+      description: Updates an existing database Deployment
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only update the Deployment object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.updateDeploymentRequest'
+        description: Request body containing the updated deployment config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Deployment'
+          description: The updated Deployment will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update Deployment
+      tags:
+      - Deployments
+      x-codegen-request-body-name: body
+  /api/deployments/{id}/backups:
+    get:
+      description: Retrieves a list of backups associated to this Deployment
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/pagination.PaginatedResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Deployment Backups
+      tags:
+      - Deployments
+    post:
+      description: Creates a new database Backup
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only create the Backup object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.CreateDeploymentBackup'
+        description: Request body containing the backup config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Backup'
+          description: The created Backup will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Backup
+      tags:
+      - Backups
+      x-codegen-request-body-name: body
+  /api/deployments/{id}/connection-strings:
+    get:
+      description: Returns connection information for the given Deployment
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/controllers.DeploymentConnectionStringsResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Deployment Connection String
+      tags:
+      - Deployments
+  /api/deployments/{id}/health:
+    get:
+      description: Retrieves health information on the given Deployment
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/status.DeploymentHealth'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Deployment Health
+      tags:
+      - Deployments
+  /api/deployments/{id}/status:
+    get:
+      description: Retrieves status information on the given Deployment
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/status.DeploymentStatus'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Deployment Status
+      tags:
+      - Deployments
+  /api/global-role-bindings:
+    delete:
+      description: Removes a single GlobalRoleBindings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: GlobalRoleBinding actor type
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete GlobalRoleBinding
+      tags:
+      - GlobalRoleBindings
+      x-codegen-request-body-name: actor_type
+    get:
+      description: Lists GlobalRoleBindings
+      parameters:
+      - description: 'A given GlobalRoleBinding attribute to sort results by (one
+          of: role_name, actor_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by GlobalRoleBinding assigned role name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      - description: Filter results by GlobalRoleBinding actor id
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      - description: Filter results by GlobalRoleBinding actor type
+        in: query
+        name: actor_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedGlobalRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List GlobalRoleBindings
+      tags:
+      - GlobalRoleBindings
+    put:
+      description: Creates a new GlobalRoleBinding
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/models.GlobalRoleBinding'
+        description: Request body containing the global role binding
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.GlobalRoleBinding'
+          description: The created GlobalRoleBinding will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Set GlobalRoleBinding
+      tags:
+      - GlobalRoleBindings
+      x-codegen-request-body-name: body
+  /api/images/{id}:
+    get:
+      description: Fetches a single Image
+      parameters:
+      - description: Image ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Image'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Image
+      tags:
+      - Images
+  /api/namespaces/{id}:
+    get:
+      description: Fetches a single Namespace
+      parameters:
+      - description: Namespace ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Namespace'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Namespace
+      tags:
+      - Namespaces
+    put:
+      description: Update namespace
+      parameters:
+      - description: Namespace ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateNamespaceRequest'
+        description: Object with partial update of fields (status)
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Namespace'
+          description: The updated Namespace will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update namespace
+      tags:
+      - Namespaces
+      x-codegen-request-body-name: body
+  /api/projects/{id}:
+    get:
+      description: Fetches a single Project
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Project'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Project
+      tags:
+      - Projects
+  /api/projects/{id}/deployment-targets:
+    get:
+      description: Lists DeploymentTargets belonging to the Project
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given DeploymentTarget attribute to sort results by (one of:
+          id, name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Cluster ID
+        in: query
+        name: cluster_id
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedDeploymentTargets'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Project's DeploymentTargets
+      tags:
+      - DeploymentTargets
+  /api/projects/{id}/deployments:
+    get:
+      description: Lists Deployments belonging to the Project.
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Deployment attribute to sort results by (one of: id,
+          cluster_name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Deployment id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Deployment cluster_name
+        in: query
+        name: cluster_name
+        schema:
+          type: string
+      - description: Filter results by Deployment data_service_id
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      - description: Filter results by Deployment deployment_target_id
+        in: query
+        name: deployment_target_id
+        schema:
+          type: string
+      - description: Filter results by Deployment image_id
+        in: query
+        name: image_id
+        schema:
+          type: string
+      - description: Filter results by Deployment namespace_id
+        in: query
+        name: namespace_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedDeployments'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Project's Deployments
+      tags:
+      - Deployments
+    post:
+      description: Creates a new data service Deployment
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Set to true to only create the Deployment object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.CreateProjectDeployment'
+        description: Request body containing the deployment config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Deployment'
+          description: The created Deployment will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Deployment
+      tags:
+      - Deployments
+      x-codegen-request-body-name: body
+  /api/projects/{id}/role-bindings:
+    delete:
+      description: Removes a single ProjectRoleBinding
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: ProjectRoleBinding actor type
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete ProjectRoleBinding
+      tags:
+      - ProjectRoleBindings
+      x-codegen-request-body-name: actor_type
+    get:
+      description: Lists ProjectRoleBindings
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given ProjectRoleBinding attribute to sort results by (one
+          of: role_name, actor_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by ProjectRoleBinding assigned role name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      - description: Filter results by ProjectRoleBinding actor id
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      - description: Filter results by ProjectRoleBinding actor type
+        in: query
+        name: actor_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedProjectRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List ProjectRoleBindings
+      tags:
+      - ProjectRoleBindings
+    put:
+      description: Creates a new ProjectRoleBinding
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.upsertProjectRoleBindingRequest'
+        description: Request body containing the project role binding
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ProjectRoleBinding'
+          description: The created ProjectRoleBinding will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create ProjectRoleBinding
+      tags:
+      - ProjectRoleBindings
+      x-codegen-request-body-name: body
+  /api/resource-settings-templates/{id}:
+    delete:
+      description: Removes a single ResourceSettingsTemplate
+      parameters:
+      - description: ResourceSettingsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete ResourceSettingsTemplates
+      tags:
+      - ResourceSettingsTemplates
+    get:
+      description: Fetches a single ResourceSettingsTemplate
+      parameters:
+      - description: ResourceSettingsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get ResourceSettingsTemplate
+      tags:
+      - ResourceSettingsTemplates
+    put:
+      description: Updates existing ResourceSettingsTemplate
+      parameters:
+      - description: ResourceSettingsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateResourceSettingsTemplateRequest'
+        description: Request body containing updated template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          description: The updated resource settings template will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update ResourceSettingsTemplate
+      tags:
+      - ResourceSettingsTemplates
+      x-codegen-request-body-name: body
+  /api/roles:
+    get:
+      description: Fetches list of supported Roles
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedRoles'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Roles
+      tags:
+      - Roles
+  /api/service-accounts/{id}:
+    delete:
+      description: Removes a single ServiceAccount
+      parameters:
+      - description: ServiceAccount ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete ServiceAccounts
+      tags:
+      - ServiceAccounts
+    get:
+      description: Fetches a single ServiceAccount
+      parameters:
+      - description: ServiceAccount ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.ServiceAccountResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get ServiceAccounts
+      tags:
+      - ServiceAccounts
+  /api/service-accounts/{id}/token:
+    get:
+      description: Fetches the token of a ServiceAccount
+      parameters:
+      - description: ServiceAccount ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.ServiceAccountTokenResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get token of a ServiceAccount
+      tags:
+      - ServiceAccounts
+  /api/storage-options-templates/{id}:
+    delete:
+      description: Removes a single StorageOptionsTemplate
+      parameters:
+      - description: StorageOptionsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete StorageOptionsTemplates
+      tags:
+      - StorageOptionsTemplates
+    get:
+      description: Fetches a single StorageOptionsTemplate
+      parameters:
+      - description: StorageOptionsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get StorageOptionsTemplate
+      tags:
+      - StorageOptionsTemplates
+    put:
+      description: Updates existing StorageOptionsTemplate
+      parameters:
+      - description: StorageOptionsTemplate ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.UpdateStorageOptionsTemplateRequest'
+        description: Request body containing updated template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          description: The updated storage options template will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update StorageOptionsTemplate
+      tags:
+      - StorageOptionsTemplates
+      x-codegen-request-body-name: body
+  /api/teams/{id}:
+    get:
+      description: Fetches a single Team
+      parameters:
+      - description: Team ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Team'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Team
+      tags:
+      - Teams
+  /api/tenants/{id}:
+    get:
+      description: Fetches a single Tenant
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Tenant'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Tenant
+      tags:
+      - Tenants
+  /api/tenants/{id}/application-configuration-templates:
+    get:
+      description: Lists ApplicationConfigurationTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given ApplicationConfigurationTemplates attribute to sort
+          results by (one of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by ApplicationConfigurationTemplates id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by ApplicationConfigurationTemplates name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by DataService ID
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedApplicationConfigurationTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List ApplicationConfigurationTemplates
+      tags:
+      - ApplicationConfigurationTemplates
+    post:
+      description: Creates a new ApplicationConfigurationTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createApplicationConfigurationTemplatesRequest'
+        description: Request body containing the application configuration template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          description: The created ApplicationConfigurationTemplates will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create ApplicationConfigurationTemplates
+      tags:
+      - ApplicationConfigurationTemplates
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/backup-credentials:
+    get:
+      description: Lists BackupCredentials visible to the caller
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupCredentials attribute to sort results by (one
+          of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupCredentials id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupCredentials name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by BackupCredentials type
+        in: query
+        name: type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupCredentials'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List BackupCredentials
+      tags:
+      - BackupCredentials
+    post:
+      description: Creates a new BackupCredentials
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createBackupCredentialsRequest'
+        description: Request body containing the backup credentials config
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupCredentials'
+          description: The created BackupCredentials will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create BackupCredentials
+      tags:
+      - BackupCredentials
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/backup-policies:
+    get:
+      description: Lists BackupPolicies
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupPolicy attribute to sort results by (one of: id,
+          name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupPolicy id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupPolicy name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupPolicies'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List BackupPolicies
+      tags:
+      - BackupPolicies
+    post:
+      description: Creates a new BackupPolicy
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createBackupPolicyRequest'
+        description: Request body containing the backup policy
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupPolicy'
+          description: The created BackupPolicy will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create BackupPolicy
+      tags:
+      - BackupPolicies
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/backup-targets:
+    get:
+      description: Lists Tenant's BackupTargets
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: 'A given BackupTarget attribute to sort results by (one of: id,
+          name, type, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by BackupTarget ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupTarget name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by BackupTarget type
+        in: query
+        name: type
+        schema:
+          type: string
+      - description: Filter results by bucket
+        in: query
+        name: bucket
+        schema:
+          type: string
+      - description: Filter results by region
+        in: query
+        name: region
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupTargets'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Tenant's BackupTargets
+      tags:
+      - BackupTargets
+    post:
+      description: Creates a new BackupTarget
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.CreateTenantBackupTarget'
+        description: Request body containing the backup target config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupTarget'
+          description: The created BackupTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create BackupTarget
+      tags:
+      - BackupTargets
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/deployment-targets:
+    get:
+      description: Lists Tenant's DeploymentTargets
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given DeploymentTarget attribute to sort results by (one of:
+          id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Cluster ID
+        in: query
+        name: cluster_id
+        schema:
+          type: string
+      - description: Filter results by DeploymentTarget name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedDeploymentTargets'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Tenant's DeploymentTargets
+      tags:
+      - DeploymentTargets
+    post:
+      description: Creates a new DeploymentTarget
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createTenantDeploymentTarget'
+        description: Request body containing the deployment target config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTarget'
+          description: The created DeploymentTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create DeploymentTarget
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/projects:
+    get:
+      description: Lists Projects visible to the caller and belonging to the Tenant.
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Project attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Project id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Project name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedTenantProjects'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Tenant's Projects
+      tags:
+      - Projects
+  /api/tenants/{id}/resource-settings-templates:
+    get:
+      description: Lists ResourceSettingsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given ResourceSettingsTemplates attribute to sort results
+          by (one of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by ResourceSettingsTemplates id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by ResourceSettingsTemplates name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by DataService ID
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedResourceSettingsTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List ResourceSettingsTemplates
+      tags:
+      - ResourceSettingsTemplates
+    post:
+      description: Creates a new ResourceSettingsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createResourceSettingsTemplatesRequest'
+        description: Request body containing the resource settings template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          description: The created ResourceSettingsTemplates will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create ResourceSettingsTemplates
+      tags:
+      - ResourceSettingsTemplates
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/role-bindings:
+    delete:
+      description: Removes a single TenantRoleBinding
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: TenantRoleBinding actor type
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete TenantRoleBinding
+      tags:
+      - TenantRoleBindings
+      x-codegen-request-body-name: actor_type
+    get:
+      description: Lists TenantRoleBindings
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given TenantRoleBinding attribute to sort results by (one
+          of: role_name, actor_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by TenantRoleBinding assigned role name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      - description: Filter results by TenantRoleBinding actor id
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      - description: Filter results by TenantRoleBinding actor type
+        in: query
+        name: actor_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedTenantRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List TenantRoleBindings
+      tags:
+      - TenantRoleBindings
+    put:
+      description: Creates a new TenantRoleBinding
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.upsertTenantRoleBindingRequest'
+        description: Request body containing the tenant role binding
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.TenantRoleBinding'
+          description: The created TenantRoleBinding will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create TenantRoleBinding
+      tags:
+      - TenantRoleBindings
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/service-accounts:
+    get:
+      description: List Tenant's ServiceAccounts
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given ServiceAccount attribute to sort results by (one of:
+          name, id, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by ServiceAccount name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by ServiceAccount id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by ServiceAccount token
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedServiceAccounts'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Tenant's ServiceAccounts
+      tags:
+      - ServiceAccounts
+    post:
+      description: Creates a new ServiceAccount
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createServiceAccountRequest'
+        description: Request body containing name of the service account
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ServiceAccount'
+          description: The created ServiceAccount will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create ServiceAccounts
+      tags:
+      - ServiceAccounts
+      x-codegen-request-body-name: body
+  /api/tenants/{id}/storage-options-templates:
+    get:
+      description: Lists StorageOptionsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given StorageOptionsTemplates attribute to sort results by
+          (one of: id, name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by StorageOptionsTemplates id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by StorageOptionsTemplates name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedStorageOptionsTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List StorageOptionsTemplates
+      tags:
+      - StorageOptionsTemplates
+    post:
+      description: Creates a new StorageOptionsTemplates
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.createStorageOptionsTemplatesRequest'
+        description: Request body containing the storage options template
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          description: The created StorageOptionsTemplates will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create StorageOptionsTemplates
+      tags:
+      - StorageOptionsTemplates
+      x-codegen-request-body-name: body
+  /api/users/{id}:
+    get:
+      description: Fetches a single User
+      parameters:
+      - description: User ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.User'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get User
+      tags:
+      - Users
+  /api/users/{id}/account-role-bindings:
+    get:
+      description: Every user can read its own bindings. Only pds-admin can read bindings
+        of other users.
+      parameters:
+      - description: User ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given AccountRoleBinding attribute to sort results by (allowed:
+          role_name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by AccountRoleBinding assigned role_name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedAccountRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List AccountRoleBindings of a given user
+      tags:
+      - AccountRoleBindings
+  /api/version:
+    get:
+      description: Get version information about this server
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.APIVersionResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get version information
+      tags:
+      - APIVersion
+  /api/versions/{id}:
+    get:
+      description: Fetches a single Version
+      parameters:
+      - description: Version ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Version'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Version
+      tags:
+      - Versions
+  /api/versions/{id}/images:
+    get:
+      description: Lists Images belonging to a Version.
+      parameters:
+      - description: Version ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Image attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Image id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Image's name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedImages'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Version's Images
+      tags:
+      - Images
+  /api/whoami:
+    get:
+      description: Fetches a details of the current calling actor (user or service
+        account)
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.WhoAmIResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Current Actor
+      tags:
+      - WhoAmI
+  /auth/authorization-code:
+    post:
+      description: |-
+        Exchanges the Authorization Code from the OAuth2 server for an ID Token which is necessary for user authentication using the Authorization HTTP header.
+
+        **Authenticating for later requests using the ID token:**
+        `Authorization: Bearer {id_token}`
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.AuthorizationCodeRequest'
+        description: Request body containing the received authorization code.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.OIDCTokenResponse'
+          description: OK
+        "400":
+          content: {}
+          description: The submitted request body isn't valid.
+        "401":
+          content: {}
+          description: The token exchange failed.
+      summary: Authorization code exchange
+      tags:
+      - Authentication
+      x-codegen-request-body-name: Body
+  /auth/oidc-info:
+    get:
+      description: Returns OIDC configuration for the frontend.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.OIDCInfoResponse'
+          description: OK
+        "404":
+          content: {}
+          description: OIDC is not enabled in the configuration of API server.
+      summary: OIDC info
+      tags:
+      - Authentication
+  /auth/refresh-token:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.RefreshTokenRequest'
+        description: Request body containing the refresh token.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.OIDCTokenResponse'
+          description: OK
+        "400":
+          content: {}
+          description: The submitted request body isn't valid.
+        "401":
+          content: {}
+          description: The token refresh failed.
+      summary: Use refresh token to generate new tokens.
+      tags:
+      - Authentication
+      x-codegen-request-body-name: Body
+components:
+  schemas:
+    auth.Claims:
+      example:
+        sub: sub
+        roles:
+        - roles
+        - roles
+        iss: iss
+        name: name
+        groups:
+        - groups
+        - groups
+        email: email
+      properties:
+        email:
+          description: Email of this account.
+          type: string
+        groups:
+          description: (optional) Groups in which this account is part of.
+          items:
+            type: string
+          type: array
+        iss:
+          description: Issuer is the token issuer. For self-signed token do not prefix
+            with `https://`.
+          type: string
+        name:
+          description: Name of this account.
+          type: string
+        roles:
+          description: Roles of this account.
+          items:
+            type: string
+          type: array
+        sub:
+          description: Subject identifier. Unique ID of this account.
+          type: string
+      type: object
+    constraint.Pagination:
+      example:
+        continuation: continuation
+      properties:
+        continuation:
+          type: string
+      type: object
+    controllers.APIVersionResponse:
+      example:
+        helm_chart_version: Helm chart version
+        api_version: API server version
+      properties:
+        api_version:
+          example: API server version
+          type: string
+        helm_chart_version:
+          example: Helm chart version
+          type: string
+      type: object
+    controllers.AuthorizationCodeRequest:
+      properties:
+        AuthCode:
+          type: string
+      type: object
+    controllers.CreateDeploymentBackup:
+      properties:
+        backup_level:
+          example: snapshot or incremental
+          type: string
+        backup_target_id:
+          type: string
+        backup_type:
+          example: adhoc or scheduled
+          type: string
+        job_history_limit:
+          type: integer
+        schedule:
+          example: in CRON format, required for scheduled backups
+          type: string
+      type: object
+    controllers.CreateProjectDeployment:
+      properties:
+        cluster_name:
+          example: cas-my-service
+          type: string
+        configuration:
+          properties: {}
+          type: object
+        data_service_id:
+          type: string
+        deployment_target_id:
+          type: string
+        dns_zone:
+          type: string
+        image_id:
+          type: string
+        load_balancer_source_ranges:
+          items:
+            type: string
+          type: array
+        namespace_id:
+          type: string
+        node_count:
+          example: 3
+          type: integer
+        resources:
+          properties: {}
+          type: object
+        service:
+          example: my-service
+          type: string
+        service_type:
+          type: string
+        version_id:
+          type: string
+      type: object
+    controllers.CreateTenantBackupTarget:
+      properties:
+        backup_credentials_id:
+          type: string
+        bucket:
+          type: string
+        name:
+          type: string
+        region:
+          type: string
+        type:
+          type: string
+      type: object
+    controllers.Credentials:
+      properties:
+        azure:
+          $ref: '#/components/schemas/models.AzureCredentials'
+        s3:
+          $ref: '#/components/schemas/models.S3Credentials'
+        s3_compatible:
+          $ref: '#/components/schemas/models.S3CompatibleCredentials'
+      type: object
+    controllers.DeploymentConnectionStringsResponse:
+      example:
+        data:
+        - data
+        - data
+      properties:
+        data:
+          items:
+            type: string
+          type: array
+      type: object
+    controllers.DeploymentTargetCredentialsResponse:
+      example:
+        teleport_join_token: teleport_join_token
+        teleport_proxy_addr: teleport_proxy_addr
+        teleport_ca_pin: teleport_ca_pin
+      properties:
+        teleport_ca_pin:
+          type: string
+        teleport_join_token:
+          type: string
+        teleport_proxy_addr:
+          type: string
+      type: object
+    controllers.DeploymentTargetHeartbeatRequest:
+      properties:
+        cluster_id:
+          type: string
+      type: object
+    controllers.DeploymentTargetHeartbeatResponse:
+      example:
+        cluster_id: cluster_id
+        name: name
+      properties:
+        cluster_id:
+          type: string
+        name:
+          type: string
+      type: object
+    controllers.OIDCInfoResponse:
+      example:
+        authUrl: https://release-staging.portworx.dev/landing/login
+        clientId: clientId
+        redirectUrl: http://localhost:8080/auth-wait
+        issuer: https://release-staging-api.portworx.dev/api
+      properties:
+        authUrl:
+          example: https://release-staging.portworx.dev/landing/login
+          type: string
+        clientId:
+          type: string
+        issuer:
+          example: https://release-staging-api.portworx.dev/api
+          type: string
+        redirectUrl:
+          example: http://localhost:8080/auth-wait
+          type: string
+      type: object
+    controllers.OIDCTokenResponse:
+      example:
+        expiresIn: expiresIn
+        claims:
+          sub: sub
+          roles:
+          - roles
+          - roles
+          iss: iss
+          name: name
+          groups:
+          - groups
+          - groups
+          email: email
+        idToken: idToken
+        refreshToken: refreshToken
+      properties:
+        claims:
+          $ref: '#/components/schemas/auth.Claims'
+        expiresIn:
+          type: string
+        idToken:
+          type: string
+        refreshToken:
+          type: string
+      type: object
+    controllers.PaginatedAccountRoleBindings:
+      example:
+        data:
+        - role_name: role_name
+          account_id: account_id
+          actor_type: actor_type
+          actor_id: actor_id
+        - role_name: role_name
+          account_id: account_id
+          actor_type: actor_type
+          actor_id: actor_id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.AccountRoleBinding'
+          type: array
+      type: object
+    controllers.PaginatedAccountTenants:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Tenant'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedAccounts:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Account'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedApplicationConfigurationTemplates:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedBackupCredentials:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          type: azure
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          type: azure
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupCredentials'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedBackupJobs:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - backup_id: backup_id
+          start_time: start_time
+          endpoint: endpoint
+          completion_time: completion_time
+          updated_at: updated_at
+          created_at: created_at
+          id: id
+          state: state
+          file_size: 0
+        - backup_id: backup_id
+          start_time: start_time
+          endpoint: endpoint
+          completion_time: completion_time
+          updated_at: updated_at
+          created_at: created_at
+          id: id
+          state: state
+          file_size: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupJob'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedBackupPolicies:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupPolicy'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedBackupTargetStates:
+      example:
+        data:
+        - error_message: error_message
+          px_credentials_name: px_credentials_name
+          deployment_target_id: deployment_target_id
+          error_details: error_details
+          px_credentials_id: px_credentials_id
+          backup_target_id: backup_target_id
+          error_code: deployment_target_unavailable
+          state: pending
+        - error_message: error_message
+          px_credentials_name: px_credentials_name
+          deployment_target_id: deployment_target_id
+          error_details: error_details
+          px_credentials_id: px_credentials_id
+          backup_target_id: backup_target_id
+          error_code: deployment_target_unavailable
+          state: pending
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupTargetState'
+          type: array
+      type: object
+    controllers.PaginatedBackupTargets:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - bucket: bucket
+          tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          backup_credentials_id: backup_credentials_id
+          name: name
+          created_at: created_at
+          id: id
+          region: region
+          type: azure
+        - bucket: bucket
+          tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          backup_credentials_id: backup_credentials_id
+          name: name
+          created_at: created_at
+          id: id
+          region: region
+          type: azure
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupTarget'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedDataServices:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - coming_soon: true
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          nodes_limitations: nodes_limitations
+          short_name: short_name
+          id: id
+          has_incremental_backup: true
+          has_full_backup: true
+        - coming_soon: true
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          nodes_limitations: nodes_limitations
+          short_name: short_name
+          id: id
+          has_incremental_backup: true
+          has_full_backup: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.DataService'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedDeploymentTargets:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          cluster_id: cluster_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          last_health_check: last_health_check
+          id: id
+          status: status
+        - tenant_id: tenant_id
+          cluster_id: cluster_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          last_health_check: last_health_check
+          id: id
+          status: status
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.DeploymentTarget'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedDeployments:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          cluster_name: cluster_name
+          data_service_id: data_service_id
+          configuration: '{}'
+          connection_details: '{}'
+          created_at: created_at
+          resources: '{}'
+          version_id: version_id
+          endpoint: endpoint
+          service_type: service_type
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          dns_zone: dns_zone
+          service: service
+          id: id
+          initialize: initialize
+          node_count: 0
+          state: state
+          image_id: image_id
+          load_balancer_source_ranges:
+          - load_balancer_source_ranges
+          - load_balancer_source_ranges
+          storage_options:
+            key: storage_options
+        - tenant_id: tenant_id
+          cluster_name: cluster_name
+          data_service_id: data_service_id
+          configuration: '{}'
+          connection_details: '{}'
+          created_at: created_at
+          resources: '{}'
+          version_id: version_id
+          endpoint: endpoint
+          service_type: service_type
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          dns_zone: dns_zone
+          service: service
+          id: id
+          initialize: initialize
+          node_count: 0
+          state: state
+          image_id: image_id
+          load_balancer_source_ranges:
+          - load_balancer_source_ranges
+          - load_balancer_source_ranges
+          storage_options:
+            key: storage_options
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Deployment'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedGlobalRoleBindings:
+      example:
+        data:
+        - role_name: role_name
+          actor_type: actor_type
+          actor_id: actor_id
+        - role_name: role_name
+          actor_type: actor_type
+          actor_id: actor_id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.GlobalRoleBinding'
+          type: array
+      type: object
+    controllers.PaginatedImages:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - registry: registry
+          data_service_id: data_service_id
+          updated_at: updated_at
+          build: build
+          name: name
+          namespace: namespace
+          created_at: created_at
+          id: id
+          tag: tag
+          version_id: version_id
+        - registry: registry
+          data_service_id: data_service_id
+          updated_at: updated_at
+          build: build
+          name: name
+          namespace: namespace
+          created_at: created_at
+          id: id
+          tag: tag
+          version_id: version_id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Image'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedNamespaces:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          status: status
+        - tenant_id: tenant_id
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          status: status
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Namespace'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedProjectRoleBindings:
+      example:
+        data:
+        - role_name: role_name
+          actor_type: actor_type
+          project_id: project_id
+          actor_id: actor_id
+        - role_name: role_name
+          actor_type: actor_type
+          project_id: project_id
+          actor_id: actor_id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ProjectRoleBinding'
+          type: array
+      type: object
+    controllers.PaginatedResourceSettingsTemplates:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedRoles:
+      example:
+        data:
+        - extends:
+          - extends
+          - extends
+          level: level
+          permissions:
+          - permissions
+          - permissions
+          name: name
+        - extends:
+          - extends
+          - extends
+          level: level
+          permissions:
+          - permissions
+          - permissions
+          name: name
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/policy.Role'
+          type: array
+      type: object
+    controllers.PaginatedServiceAccounts:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ServiceAccount'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedStorageOptionsTemplates:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          fg: true
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+        - tenant_id: tenant_id
+          fg: true
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedTenantProjects:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Project'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedTenantRoleBindings:
+      example:
+        data:
+        - role_name: role_name
+          tenant_id: tenant_id
+          actor_type: actor_type
+          actor_id: actor_id
+        - role_name: role_name
+          tenant_id: tenant_id
+          actor_type: actor_type
+          actor_id: actor_id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.TenantRoleBinding'
+          type: array
+      type: object
+    controllers.PaginatedUsers:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - updated_at: updated_at
+          created_at: created_at
+          external_id: external_id
+          id: id
+          email: email
+          issuer: issuer
+        - updated_at: updated_at
+          created_at: created_at
+          external_id: external_id
+          id: id
+          email: email
+          issuer: issuer
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.User'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PaginatedVersions:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - data_service_id: data_service_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - data_service_id: data_service_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Version'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    controllers.PartialAzureCredentials:
+      example:
+        account_name: account_name
+      properties:
+        account_name:
+          type: string
+      type: object
+    controllers.PartialCredentials:
+      example:
+        s3:
+          endpoint: endpoint
+          access_key: access_key
+        s3_compatible:
+          endpoint: endpoint
+          access_key: access_key
+        azure:
+          account_name: account_name
+      properties:
+        azure:
+          $ref: '#/components/schemas/controllers.PartialAzureCredentials'
+        s3:
+          $ref: '#/components/schemas/controllers.PartialS3Credentials'
+        s3_compatible:
+          $ref: '#/components/schemas/controllers.PartialS3CompatibleCredentials'
+      type: object
+    controllers.PartialS3CompatibleCredentials:
+      example:
+        endpoint: endpoint
+        access_key: access_key
+      properties:
+        access_key:
+          type: string
+        endpoint:
+          type: string
+      type: object
+    controllers.PartialS3Credentials:
+      example:
+        endpoint: endpoint
+        access_key: access_key
+      properties:
+        access_key:
+          type: string
+        endpoint:
+          type: string
+      type: object
+    controllers.RefreshTokenRequest:
+      properties:
+        refreshToken:
+          type: string
+      type: object
+    controllers.ServiceAccountResponse:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    controllers.ServiceAccountTokenResponse:
+      example:
+        token: token
+      properties:
+        token:
+          type: string
+      type: object
+    controllers.UpdateApplicationConfigurationTemplateRequest:
+      properties:
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        name:
+          type: string
+      type: object
+    controllers.UpdateBackupPolicyRequest:
+      properties:
+        name:
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
+      type: object
+    controllers.UpdateBackupTargetRequest:
+      properties:
+        name:
+          type: string
+      type: object
+    controllers.UpdateDeploymentTargetRequest:
+      properties:
+        name:
+          type: string
+      type: object
+    controllers.UpdateNamespaceRequest:
+      properties:
+        status:
+          type: string
+      type: object
+    controllers.UpdateResourceSettingsTemplateRequest:
+      properties:
+        cpu_limit:
+          type: string
+        cpu_request:
+          type: string
+        memory_limit:
+          type: string
+        memory_request:
+          type: string
+        name:
+          type: string
+        storage_request:
+          type: string
+      type: object
+    controllers.UpdateStorageOptionsTemplateRequest:
+      properties:
+        fg:
+          type: boolean
+        fs:
+          enum:
+          - xfs
+          - ext4
+          type: string
+        name:
+          type: string
+        repl:
+          type: integer
+        secure:
+          type: boolean
+      type: object
+    controllers.WhoAmIResponse:
+      example:
+        service_account:
+          tenant_id: tenant_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        user:
+          updated_at: updated_at
+          created_at: created_at
+          id: id
+          email: email
+      properties:
+        service_account:
+          $ref: '#/components/schemas/controllers.WhoAmIServiceAccount'
+        user:
+          $ref: '#/components/schemas/controllers.WhoAmIUser'
+      type: object
+    controllers.WhoAmIServiceAccount:
+      example:
+        tenant_id: tenant_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    controllers.WhoAmIUser:
+      example:
+        updated_at: updated_at
+        created_at: created_at
+        id: id
+        email: email
+      properties:
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        email:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    controllers.createAccountRequest:
+      properties:
+        name:
+          example: Name of the account
+          type: string
+      type: object
+    controllers.createApplicationConfigurationTemplatesRequest:
+      properties:
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        data_service_id:
+          type: string
+        name:
+          type: string
+      type: object
+    controllers.createBackupCredentialsRequest:
+      properties:
+        credentials:
+          $ref: '#/components/schemas/controllers.Credentials'
+        name:
+          type: string
+      type: object
+    controllers.createBackupPolicyRequest:
+      properties:
+        name:
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
+      type: object
+    controllers.createNamespace:
+      properties:
+        name:
+          example: Name of the namespace
+          type: string
+      type: object
+    controllers.createResourceSettingsTemplatesRequest:
+      properties:
+        cpu_limit:
+          type: string
+        cpu_request:
+          type: string
+        data_service_id:
+          type: string
+        memory_limit:
+          type: string
+        memory_request:
+          type: string
+        name:
+          type: string
+        storage_request:
+          type: string
+      type: object
+    controllers.createServiceAccountRequest:
+      properties:
+        name:
+          example: Name of the service account
+          type: string
+      type: object
+    controllers.createStorageOptionsTemplatesRequest:
+      properties:
+        fg:
+          type: boolean
+        fs:
+          enum:
+          - xfs
+          - ext4
+          type: string
+        name:
+          type: string
+        repl:
+          type: integer
+        secure:
+          type: boolean
+      type: object
+    controllers.createTenantDeploymentTarget:
+      properties:
+        cluster_id:
+          type: string
+        name:
+          type: string
+      type: object
+    controllers.invitationRequest:
+      properties:
+        email:
+          type: string
+        role_name:
+          type: string
+      type: object
+    controllers.updateBackupCredentialsRequest:
+      properties:
+        credentials:
+          $ref: '#/components/schemas/controllers.Credentials'
+        name:
+          type: string
+      type: object
+    controllers.updateBackupRequest:
+      properties:
+        job_history_limit:
+          type: integer
+      type: object
+    controllers.updateDeploymentRequest:
+      properties:
+        configuration:
+          properties: {}
+          type: object
+        connection_details:
+          properties: {}
+          type: object
+        endpoint:
+          type: string
+        image_id:
+          type: string
+        node_count:
+          example: 3
+          type: integer
+        resources:
+          properties: {}
+          type: object
+      type: object
+    controllers.upsertAccountRoleBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned account role
+          type: string
+      type: object
+    controllers.upsertProjectRoleBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned account role
+          type: string
+      type: object
+    controllers.upsertTenantRoleBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned account role
+          type: string
+      type: object
+    models.Account:
+      example:
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.AccountRoleBinding:
+      example:
+        role_name: role_name
+        account_id: account_id
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        account_id:
+          type: string
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+      type: object
+    models.ApplicationConfigurationTemplate:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        data_service_id: data_service_id
+        updated_at: updated_at
+        config_items:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.AuthorizerRequest:
+      properties:
+        entity_id:
+          type: string
+        entity_type:
+          type: string
+        operation:
+          type: string
+      type: object
+    models.AuthorizerResponse:
+      example:
+        allow: true
+      properties:
+        allow:
+          type: boolean
+      type: object
+    models.AzureCredentials:
+      properties:
+        account_key:
+          type: string
+        account_name:
+          type: string
+      type: object
+    models.Backup:
+      example:
+        tenant_id: tenant_id
+        data_service_id: data_service_id
+        backup_target_id: backup_target_id
+        backup_type: adhoc
+        created_at: created_at
+        backup_level: snapshot
+        job_history_limit: 0
+        schedule: schedule
+        account_id: account_id
+        updated_at: updated_at
+        project_id: project_id
+        deployment_id: deployment_id
+        id: id
+      properties:
+        account_id:
+          type: string
+        backup_level:
+          enum:
+          - snapshot
+          - incremental
+          type: string
+        backup_target_id:
+          type: string
+        backup_type:
+          enum:
+          - adhoc
+          - scheduled
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        deployment_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        job_history_limit:
+          type: integer
+        project_id:
+          type: string
+        schedule:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.BackupCredentials:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+        type: azure
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        type:
+          enum:
+          - azure
+          - s3
+          - s3-compatible
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.BackupJob:
+      example:
+        backup_id: backup_id
+        start_time: start_time
+        endpoint: endpoint
+        completion_time: completion_time
+        updated_at: updated_at
+        created_at: created_at
+        id: id
+        state: state
+        file_size: 0
+      properties:
+        backup_id:
+          type: string
+        completion_time:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        endpoint:
+          description: Endpoint is populated by the Tekton pipeline on creation
+          type: string
+        file_size:
+          description: FileSize is managed by the API
+          type: integer
+        id:
+          description: ID is auto generated on creation
+          type: string
+        start_time:
+          type: string
+        state:
+          description: State is managed by the API
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.BackupPolicy:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        schedules:
+        - schedule: schedule
+          retention_count: 0
+          id: id
+          type: incremental
+        - schedule: schedule
+          retention_count: 0
+          id: id
+          type: incremental
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        schedules:
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.BackupSchedule:
+      example:
+        schedule: schedule
+        retention_count: 0
+        id: id
+        type: incremental
+      properties:
+        id:
+          description: The only purpose of this is to help UI identify validation
+            failures
+          type: string
+        retention_count:
+          type: integer
+        schedule:
+          description: CRON string
+          type: string
+        type:
+          enum:
+          - incremental
+          - full
+          type: string
+      type: object
+    models.BackupTarget:
+      example:
+        bucket: bucket
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        backup_credentials_id: backup_credentials_id
+        name: name
+        created_at: created_at
+        id: id
+        region: region
+        type: azure
+      properties:
+        account_id:
+          type: string
+        backup_credentials_id:
+          type: string
+        bucket:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        region:
+          type: string
+        tenant_id:
+          type: string
+        type:
+          enum:
+          - azure
+          - s3
+          - s3-compatible
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.BackupTargetState:
+      example:
+        error_message: error_message
+        px_credentials_name: px_credentials_name
+        deployment_target_id: deployment_target_id
+        error_details: error_details
+        px_credentials_id: px_credentials_id
+        backup_target_id: backup_target_id
+        error_code: deployment_target_unavailable
+        state: pending
+      properties:
+        backup_target_id:
+          type: string
+        deployment_target_id:
+          type: string
+        error_code:
+          enum:
+          - deployment_target_unavailable
+          - failed_to_create_px_credentials
+          - failed_to_delete_px_credentials
+          type: string
+        error_details:
+          description: More detailed error message possibly containing the root cause
+            of the error, not suitable to show in the UI.
+          type: string
+        error_message:
+          description: High level human-readable error message determined by the ErrorCode.
+          type: string
+        px_credentials_id:
+          type: string
+        px_credentials_name:
+          type: string
+        state:
+          enum:
+          - pending
+          - successful
+          - failed_create
+          - failed_delete
+          - failed_update
+          type: string
+      type: object
+    models.ConfigItem:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      type: object
+    models.Configuration:
+      example:
+        name: name
+        default_value: '{}'
+        type: type
+        required: true
+      properties:
+        default_value:
+          type: object
+        name:
+          type: string
+        required:
+          type: boolean
+        type:
+          type: string
+      type: object
+    models.DataService:
+      example:
+        coming_soon: true
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        nodes_limitations: nodes_limitations
+        short_name: short_name
+        id: id
+        has_incremental_backup: true
+        has_full_backup: true
+      properties:
+        coming_soon:
+          type: boolean
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        has_full_backup:
+          type: boolean
+        has_incremental_backup:
+          type: boolean
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        nodes_limitations:
+          type: string
+        short_name:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.Deployment:
+      example:
+        tenant_id: tenant_id
+        cluster_name: cluster_name
+        data_service_id: data_service_id
+        configuration: '{}'
+        connection_details: '{}'
+        created_at: created_at
+        resources: '{}'
+        version_id: version_id
+        endpoint: endpoint
+        service_type: service_type
+        account_id: account_id
+        deployment_target_id: deployment_target_id
+        namespace_id: namespace_id
+        updated_at: updated_at
+        project_id: project_id
+        dns_zone: dns_zone
+        service: service
+        id: id
+        initialize: initialize
+        node_count: 0
+        state: state
+        image_id: image_id
+        load_balancer_source_ranges:
+        - load_balancer_source_ranges
+        - load_balancer_source_ranges
+        storage_options:
+          key: storage_options
+      properties:
+        account_id:
+          type: string
+        cluster_name:
+          type: string
+        configuration:
+          properties: {}
+          type: object
+        connection_details:
+          properties: {}
+          type: object
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        deployment_target_id:
+          type: string
+        dns_zone:
+          type: string
+        endpoint:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        image_id:
+          type: string
+        initialize:
+          type: string
+        load_balancer_source_ranges:
+          items:
+            type: string
+          type: array
+        namespace_id:
+          type: string
+        node_count:
+          type: integer
+        project_id:
+          type: string
+        resources:
+          properties: {}
+          type: object
+        service:
+          type: string
+        service_type:
+          type: string
+        state:
+          description: State is managed by the API
+          type: string
+        storage_options:
+          additionalProperties:
+            type: string
+          type: object
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+        version_id:
+          type: string
+      type: object
+    models.DeploymentTarget:
+      example:
+        tenant_id: tenant_id
+        cluster_id: cluster_id
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        last_health_check: last_health_check
+        id: id
+        status: status
+      properties:
+        account_id:
+          type: string
+        cluster_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        last_health_check:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.DeploymentTemplate:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        data_service_id: data_service_id
+        updated_at: updated_at
+        configurations:
+        - name: name
+          default_value: '{}'
+          type: type
+          required: true
+        - name: name
+          default_value: '{}'
+          type: type
+          required: true
+        name: name
+        created_at: created_at
+        resources: '{}'
+        id: id
+        sort_order: 0
+      properties:
+        account_id:
+          type: string
+        configurations:
+          items:
+            $ref: '#/components/schemas/models.Configuration'
+          type: array
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        resources:
+          properties: {}
+          type: object
+        sort_order:
+          type: integer
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.GlobalRoleBinding:
+      example:
+        role_name: role_name
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+      type: object
+    models.Image:
+      example:
+        registry: registry
+        data_service_id: data_service_id
+        updated_at: updated_at
+        build: build
+        name: name
+        namespace: namespace
+        created_at: created_at
+        id: id
+        tag: tag
+        version_id: version_id
+      properties:
+        build:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        registry:
+          type: string
+        tag:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+        version_id:
+          type: string
+      type: object
+    models.Namespace:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        deployment_target_id: deployment_target_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+        status: status
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        deployment_target_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.Project:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.ProjectRoleBinding:
+      example:
+        role_name: role_name
+        actor_type: actor_type
+        project_id: project_id
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        project_id:
+          type: string
+        role_name:
+          type: string
+      type: object
+    models.ResourceSettingsTemplate:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        data_service_id: data_service_id
+        updated_at: updated_at
+        storage_request: storage_request
+        cpu_limit: cpu_limit
+        name: name
+        created_at: created_at
+        memory_request: memory_request
+        id: id
+        memory_limit: memory_limit
+        cpu_request: cpu_request
+      properties:
+        account_id:
+          type: string
+        cpu_limit:
+          type: string
+        cpu_request:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        memory_limit:
+          type: string
+        memory_request:
+          type: string
+        name:
+          type: string
+        storage_request:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.S3CompatibleCredentials:
+      properties:
+        access_key:
+          type: string
+        endpoint:
+          type: string
+        secret_key:
+          type: string
+      type: object
+    models.S3Credentials:
+      properties:
+        access_key:
+          type: string
+        endpoint:
+          type: string
+        secret_key:
+          type: string
+      type: object
+    models.ServiceAccount:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.StorageOptionsTemplate:
+      example:
+        tenant_id: tenant_id
+        fg: true
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        repl: 0
+        id: id
+        secure: true
+        fs: xfs
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        fg:
+          type: boolean
+        fs:
+          enum:
+          - xfs
+          - ext4
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        repl:
+          type: integer
+        secure:
+          type: boolean
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.Task:
+      example:
+        associated_resource: associated_resource
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        log:
+        - log
+        - log
+        project_id: project_id
+        created_at: created_at
+        description: description
+        total_steps: 1
+        id: 6
+        current_step: 0
+        status: status
+      properties:
+        account_id:
+          type: string
+        associated_resource:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        current_step:
+          type: integer
+        description:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: integer
+        log:
+          items:
+            type: string
+          type: array
+        project_id:
+          type: string
+        status:
+          type: string
+        tenant_id:
+          type: string
+        total_steps:
+          type: integer
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.Team:
+      example:
+        tenant_id: tenant_id
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.Tenant:
+      example:
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.TenantRoleBinding:
+      example:
+        role_name: role_name
+        tenant_id: tenant_id
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+        tenant_id:
+          type: string
+      type: object
+    models.User:
+      example:
+        updated_at: updated_at
+        created_at: created_at
+        external_id: external_id
+        id: id
+        email: email
+        issuer: issuer
+      properties:
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        email:
+          type: string
+        external_id:
+          description: |-
+            ExternalID identifies a User in context of its Issuer. Therefore, it must
+            be unique in the context of the Issuer. But not necessarily unique across different issuers.
+            In case of PX Central the ExternalID is the 'sub' claim from JWT token
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        issuer:
+          description: |-
+            Issuer identifies the identity provider where the User is originating from.
+            It corresponds to the 'iss' claim in the JWT token. Example: "https://central.portworx.com"
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.Version:
+      example:
+        data_service_id: data_service_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        data_service_id:
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    pagination.PaginatedResponse:
+      example:
+        per_page: 1
+        total: 5
+        members: '{}'
+        count: 0
+        page: 6
+        total_pages: 5
+      properties:
+        count:
+          type: integer
+        members:
+          type: object
+        page:
+          type: integer
+        per_page:
+          type: integer
+        total:
+          type: integer
+        total_pages:
+          type: integer
+      type: object
+    policy.Role:
+      example:
+        extends:
+        - extends
+        - extends
+        level: level
+        permissions:
+        - permissions
+        - permissions
+        name: name
+      properties:
+        extends:
+          items:
+            type: string
+          type: array
+        level:
+          type: string
+        name:
+          type: string
+        permissions:
+          items:
+            type: string
+          type: array
+      type: object
+    status.DeploymentHealth:
+      example:
+        uid: uid
+        health: health
+        up: true
+        error: error
+        status: 0
+      properties:
+        error:
+          type: string
+        health:
+          type: string
+        status:
+          type: integer
+        uid:
+          type: string
+        up:
+          type: boolean
+      type: object
+    status.DeploymentStatus:
+      example:
+        not_ready_addresses:
+        - nodeName: nodeName
+          targetRef:
+            uid: uid
+            apiVersion: apiVersion
+            kind: kind
+            resourceVersion: resourceVersion
+            fieldPath: fieldPath
+            name: name
+            namespace: namespace
+          hostname: hostname
+          ip: ip
+        - nodeName: nodeName
+          targetRef:
+            uid: uid
+            apiVersion: apiVersion
+            kind: kind
+            resourceVersion: resourceVersion
+            fieldPath: fieldPath
+            name: name
+            namespace: namespace
+          hostname: hostname
+          ip: ip
+        addresses:
+        - nodeName: nodeName
+          targetRef:
+            uid: uid
+            apiVersion: apiVersion
+            kind: kind
+            resourceVersion: resourceVersion
+            fieldPath: fieldPath
+            name: name
+            namespace: namespace
+          hostname: hostname
+          ip: ip
+        - nodeName: nodeName
+          targetRef:
+            uid: uid
+            apiVersion: apiVersion
+            kind: kind
+            resourceVersion: resourceVersion
+            fieldPath: fieldPath
+            name: name
+            namespace: namespace
+          hostname: hostname
+          ip: ip
+        connection_strings:
+        - connection_strings
+        - connection_strings
+        ready_replicas: 0
+        replicas: 6
+        health: health
+        initialized: initialized
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/v1.EndpointAddress'
+          type: array
+        connection_strings:
+          items:
+            type: string
+          type: array
+        health:
+          type: string
+        initialized:
+          type: string
+        not_ready_addresses:
+          items:
+            $ref: '#/components/schemas/v1.EndpointAddress'
+          type: array
+        ready_replicas:
+          type: integer
+        replicas:
+          type: integer
+      type: object
+    v1.EndpointAddress:
+      example:
+        nodeName: nodeName
+        targetRef:
+          uid: uid
+          apiVersion: apiVersion
+          kind: kind
+          resourceVersion: resourceVersion
+          fieldPath: fieldPath
+          name: name
+          namespace: namespace
+        hostname: hostname
+        ip: ip
+      properties:
+        hostname:
+          description: |-
+            The Hostname of this endpoint
+            +optional
+          type: string
+        ip:
+          description: |-
+            The IP of this endpoint.
+            May not be loopback (127.0.0.0/8), link-local (169.254.0.0/16),
+            or link-local multicast ((224.0.0.0/24).
+            IPv6 is also accepted but not fully supported on all platforms. Also, certain
+            kubernetes components, like kube-proxy, are not IPv6 ready.
+            TODO: This should allow hostname or IP, See #4447.
+          type: string
+        nodeName:
+          description: |-
+            Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node.
+            +optional
+          type: string
+        targetRef:
+          $ref: '#/components/schemas/v1.ObjectReference'
+      type: object
+    v1.ObjectReference:
+      example:
+        uid: uid
+        apiVersion: apiVersion
+        kind: kind
+        resourceVersion: resourceVersion
+        fieldPath: fieldPath
+        name: name
+        namespace: namespace
+      properties:
+        apiVersion:
+          description: |-
+            API version of the referent.
+            +optional
+          type: string
+        fieldPath:
+          description: |-
+            If referring to a piece of an object instead of an entire object, this string
+            should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+            For example, if the object reference is to a container within a pod, this would take on a value like:
+            "spec.containers{name}" (where "name" refers to the name of the container that triggered
+            the event) or if no container name is specified "spec.containers[2]" (container with
+            index 2 in this pod). This syntax is chosen only to have some well-defined way of
+            referencing a part of an object.
+            TODO: this design is not final and this field is subject to change in the future.
+            +optional
+          type: string
+        kind:
+          description: |-
+            Kind of the referent.
+            More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            +optional
+          type: string
+        name:
+          description: |-
+            Name of the referent.
+            More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+            +optional
+          type: string
+        namespace:
+          description: |-
+            Namespace of the referent.
+            More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+            +optional
+          type: string
+        resourceVersion:
+          description: |-
+            Specific resourceVersion to which this reference is made, if any.
+            More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+            +optional
+          type: string
+        uid:
+          description: |-
+            UID of the referent.
+            More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+            +optional
+          type: string
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
