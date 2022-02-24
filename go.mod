@@ -1,4 +1,4 @@
-module github.com/outwarped/pds-api-go-client
+module github.com/portworx/pds-api-go-client
 
 go 1.17
 
