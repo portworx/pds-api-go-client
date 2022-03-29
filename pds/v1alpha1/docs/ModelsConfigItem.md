@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
+**DeployTime** | Pointer to **bool** | If true, user must fill the value for this configuration parameter when creating a new deployment. | [optional] 
+**Key** | Pointer to **string** | Configuration key, transfers to the image&#39;s environment variable. | [optional] 
+**Value** | Pointer to **string** | Configuration value. | [optional] 
 
 ## Methods
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewModelsConfigItemWithDefaults instantiates a new ModelsConfigItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeployTime
+
+`func (o *ModelsConfigItem) GetDeployTime() bool`
+
+GetDeployTime returns the DeployTime field if non-nil, zero value otherwise.
+
+### GetDeployTimeOk
+
+`func (o *ModelsConfigItem) GetDeployTimeOk() (*bool, bool)`
+
+GetDeployTimeOk returns a tuple with the DeployTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeployTime
+
+`func (o *ModelsConfigItem) SetDeployTime(v bool)`
+
+SetDeployTime sets DeployTime field to given value.
+
+### HasDeployTime
+
+`func (o *ModelsConfigItem) HasDeployTime() bool`
+
+HasDeployTime returns a boolean if a field has been set.
 
 ### GetKey
 

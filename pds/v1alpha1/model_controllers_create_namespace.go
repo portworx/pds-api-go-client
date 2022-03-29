@@ -16,6 +16,7 @@ import (
 
 // ControllersCreateNamespace struct for ControllersCreateNamespace
 type ControllersCreateNamespace struct {
+	// Name of the namespace
 	Name *string `json:"name,omitempty"`
 }
 

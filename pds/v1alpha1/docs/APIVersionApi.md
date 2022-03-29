@@ -31,8 +31,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIVersionApi.ApiVersionGet(context.Background()).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.APIVersionApi.ApiVersionGet(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `APIVersionApi.ApiVersionGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

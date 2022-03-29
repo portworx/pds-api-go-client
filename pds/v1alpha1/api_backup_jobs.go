@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // BackupJobsApiService BackupJobsApi service
 type BackupJobsApiService service
 
 type ApiApiBackupJobsIdGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *BackupJobsApiService
 	id string
 }
 
 
-func (r ApiApiBackupJobsIdGetRequest) Execute() (*ModelsBackupJob, *http.Response, error) {
+func (r ApiApiBackupJobsIdGetRequest) Execute() (ModelsBackupJob, *_nethttp.Response, error) {
 	return r.ApiService.ApiBackupJobsIdGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiBackupJobsIdGet Get BackupJob
 
 Fetches a BackupJob
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupJob ID (must be valid UUID)
  @return ApiApiBackupJobsIdGetRequest
 */
-func (a *BackupJobsApiService) ApiBackupJobsIdGet(ctx context.Context, id string) ApiApiBackupJobsIdGetRequest {
+func (a *BackupJobsApiService) ApiBackupJobsIdGet(ctx _context.Context, id string) ApiApiBackupJobsIdGetRequest {
 	return ApiApiBackupJobsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *BackupJobsApiService) ApiBackupJobsIdGet(ctx context.Context, id string
 
 // Execute executes the request
 //  @return ModelsBackupJob
-func (a *BackupJobsApiService) ApiBackupJobsIdGetExecute(r ApiApiBackupJobsIdGetRequest) (*ModelsBackupJob, *http.Response, error) {
+func (a *BackupJobsApiService) ApiBackupJobsIdGetExecute(r ApiApiBackupJobsIdGetRequest) (ModelsBackupJob, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsBackupJob
+		localVarReturnValue  ModelsBackupJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupJobsApiService.ApiBackupJobsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-jobs/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *BackupJobsApiService) ApiBackupJobsIdGetExecute(r ApiApiBackupJobsIdGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *BackupJobsApiService) ApiBackupJobsIdGetExecute(r ApiApiBackupJobsIdGet
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -146,43 +146,13 @@ func (a *BackupJobsApiService) ApiBackupJobsIdGetExecute(r ApiApiBackupJobsIdGet
 }
 
 type ApiApiBackupsIdJobsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *BackupJobsApiService
 	id string
-	sortBy *string
-	limit *string
-	continuation *string
-	id2 *string
-	state *string
 }
 
-// A given BackupJob attribute to sort results by (one of: id, created_at, file_size, start_time, completion_time, state)
-func (r ApiApiBackupsIdJobsGetRequest) SortBy(sortBy string) ApiApiBackupsIdJobsGetRequest {
-	r.sortBy = &sortBy
-	return r
-}
-// Maximum number of rows to return (could be less)
-func (r ApiApiBackupsIdJobsGetRequest) Limit(limit string) ApiApiBackupsIdJobsGetRequest {
-	r.limit = &limit
-	return r
-}
-// Use a token returned by a previous query to continue listing with the next batch of rows
-func (r ApiApiBackupsIdJobsGetRequest) Continuation(continuation string) ApiApiBackupsIdJobsGetRequest {
-	r.continuation = &continuation
-	return r
-}
-// Filter results by BackupJob id
-func (r ApiApiBackupsIdJobsGetRequest) Id2(id2 string) ApiApiBackupsIdJobsGetRequest {
-	r.id2 = &id2
-	return r
-}
-// Filter results by BackupJob state
-func (r ApiApiBackupsIdJobsGetRequest) State(state string) ApiApiBackupsIdJobsGetRequest {
-	r.state = &state
-	return r
-}
 
-func (r ApiApiBackupsIdJobsGetRequest) Execute() (*ControllersPaginatedBackupJobs, *http.Response, error) {
+func (r ApiApiBackupsIdJobsGetRequest) Execute() (ControllersBackupJobsResponse, *_nethttp.Response, error) {
 	return r.ApiService.ApiBackupsIdJobsGetExecute(r)
 }
 
@@ -191,11 +161,11 @@ ApiBackupsIdJobsGet List Backup's Jobs
 
 Retrieves a list of BackupJobs associated to this Backup
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Backup ID (must be valid UUID)
  @return ApiApiBackupsIdJobsGetRequest
 */
-func (a *BackupJobsApiService) ApiBackupsIdJobsGet(ctx context.Context, id string) ApiApiBackupsIdJobsGetRequest {
+func (a *BackupJobsApiService) ApiBackupsIdJobsGet(ctx _context.Context, id string) ApiApiBackupsIdJobsGetRequest {
 	return ApiApiBackupsIdJobsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -204,42 +174,27 @@ func (a *BackupJobsApiService) ApiBackupsIdJobsGet(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedBackupJobs
-func (a *BackupJobsApiService) ApiBackupsIdJobsGetExecute(r ApiApiBackupsIdJobsGetRequest) (*ControllersPaginatedBackupJobs, *http.Response, error) {
+//  @return ControllersBackupJobsResponse
+func (a *BackupJobsApiService) ApiBackupsIdJobsGetExecute(r ApiApiBackupsIdJobsGetRequest) (ControllersBackupJobsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedBackupJobs
+		localVarReturnValue  ControllersBackupJobsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupJobsApiService.ApiBackupsIdJobsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}/jobs"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
-	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
-	}
-	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
-	}
-	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
-	}
-	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
-	}
-	if r.state != nil {
-		localVarQueryParams.Add("state", parameterToString(*r.state, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -281,15 +236,15 @@ func (a *BackupJobsApiService) ApiBackupsIdJobsGetExecute(r ApiApiBackupsIdJobsG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -298,7 +253,7 @@ func (a *BackupJobsApiService) ApiBackupsIdJobsGetExecute(r ApiApiBackupsIdJobsG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackupCredentialsId** | Pointer to **string** |  | [optional] 
-**Bucket** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Region** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Bucket** | Pointer to **string** | Bucket name for S3 or S3 compatible. Container name for Azure. | [optional] 
+**Name** | Pointer to **string** | Name of the backup target. Must be unique for the given tenant. | [optional] 
+**Region** | Pointer to **string** | Region of the bucket. Required for S3. Otherwise must be empty. | [optional] 
+**Type** | Pointer to **string** | Type of the backup target. Must match the used backup credentials. | [optional] 
 
 ## Methods
 

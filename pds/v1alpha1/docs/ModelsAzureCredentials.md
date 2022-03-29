@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountKey** | Pointer to **string** |  | [optional] 
-**AccountName** | Pointer to **string** |  | [optional] 
+**AccountKey** | Pointer to **string** | Access key for the Azure Storage account. | [optional] 
+**AccountName** | Pointer to **string** | Name of the Azure Storage account. | [optional] 
 
 ## Methods
 

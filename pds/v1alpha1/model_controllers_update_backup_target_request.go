@@ -16,6 +16,7 @@ import (
 
 // ControllersUpdateBackupTargetRequest struct for ControllersUpdateBackupTargetRequest
 type ControllersUpdateBackupTargetRequest struct {
+	// Name of the backup target. Must be unique for the given tenant.
 	Name *string `json:"name,omitempty"`
 }
 

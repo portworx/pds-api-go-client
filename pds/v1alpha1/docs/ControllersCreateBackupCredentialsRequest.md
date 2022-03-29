@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Credentials** | Pointer to [**ControllersCredentials**](ControllersCredentials.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | Name of the backup credentials. Must be unique for the given tenant. | [optional] 
 
 ## Methods
 

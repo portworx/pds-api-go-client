@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiDeploymentTargetsIdCredentialsGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdCredentialsGet) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
+[**ApiDeploymentTargetsIdDelete**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdDelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
 [**ApiDeploymentTargetsIdGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdGet) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 [**ApiDeploymentTargetsIdHeartbeatPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdHeartbeatPost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 [**ApiDeploymentTargetsIdPut**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdPut) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
@@ -38,8 +39,8 @@ func main() {
     id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdCredentialsGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiDeploymentTargetsIdCredentialsGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -84,6 +85,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ApiDeploymentTargetsIdDelete
+
+> ApiDeploymentTargetsIdDelete(ctx, id).Execute()
+
+Delete DeploymentTarget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiDeploymentTargetsIdDelete(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | DeploymentTarget ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentTargetsIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiDeploymentTargetsIdGet
 
 > ModelsDeploymentTarget ApiDeploymentTargetsIdGet(ctx, id).Execute()
@@ -108,8 +177,8 @@ func main() {
     id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiDeploymentTargetsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,8 +248,8 @@ func main() {
     body := *openapiclient.NewControllersDeploymentTargetHeartbeatRequest() // ControllersDeploymentTargetHeartbeatRequest | Object with target cluster ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdHeartbeatPost(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiDeploymentTargetsIdHeartbeatPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdHeartbeatPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +320,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateDeploymentTargetRequest() // ControllersUpdateDeploymentTargetRequest | Object with partial update fields (name)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdPut(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiDeploymentTargetsIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -328,8 +397,8 @@ func main() {
     name := "name_example" // string | Filter results by DeploymentTarget name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiProjectsIdDeploymentTargetsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiProjectsIdDeploymentTargetsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiProjectsIdDeploymentTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,8 +479,8 @@ func main() {
     name := "name_example" // string | Filter results by DeploymentTarget name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,8 +556,8 @@ func main() {
     body := *openapiclient.NewControllersCreateTenantDeploymentTarget() // ControllersCreateTenantDeploymentTarget | Request body containing the deployment target config
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsPost(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

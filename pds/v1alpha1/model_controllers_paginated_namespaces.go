@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedNamespaces struct for ControllersPaginatedNamespaces
 type ControllersPaginatedNamespaces struct {
-	Data []ModelsNamespace `json:"data,omitempty"`
+	Data *[]ModelsNamespace `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedNamespaces) GetData() []ModelsNamespace {
 		var ret []ModelsNamespace
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedNamespaces) GetDataOk() ([]ModelsNamespace, bool) {
+func (o *ControllersPaginatedNamespaces) GetDataOk() (*[]ModelsNamespace, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedNamespaces) HasData() bool {
 
 // SetData gets a reference to the given []ModelsNamespace and assigns it to the Data field.
 func (o *ControllersPaginatedNamespaces) SetData(v []ModelsNamespace) {
-	o.Data = v
+	o.Data = &v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

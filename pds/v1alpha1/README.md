@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import pds "github.com/GIT_USER_ID/GIT_REPO_ID"
+import sw "./pds"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -40,7 +40,7 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), pds.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -48,7 +48,7 @@ ctx := context.WithValue(context.Background(), pds.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), pds.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), sw.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -62,10 +62,10 @@ An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
-ctx := context.WithValue(context.Background(), pds.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), sw.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), pds.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -88,6 +88,9 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
+*AccountsDNSApi* | [**ApiAccountsIdDnsDetailsPut**](docs/AccountsDNSApi.md#apiaccountsiddnsdetailsput) | **Put** /api/accounts/{id}/dns-details | Update DNS Details
+*AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsGet**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsget) | **Get** /api/accounts/{id}/maas-details | Get MAAS details
+*AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsPut**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsput) | **Put** /api/accounts/{id}/maas-details | Update MAAS details
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdDelete**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesiddelete) | **Delete** /api/application-configuration-templates/{id} | Delete ApplicationConfigurationTemplates
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdGet**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidget) | **Get** /api/application-configuration-templates/{id} | Get ApplicationConfigurationTemplate
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdPut**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidput) | **Put** /api/application-configuration-templates/{id} | Update ApplicationConfigurationTemplate
@@ -113,28 +116,31 @@ Class | Method | HTTP request | Description
 *BackupTargetsApi* | [**ApiBackupTargetsIdDelete**](docs/BackupTargetsApi.md#apibackuptargetsiddelete) | **Delete** /api/backup-targets/{id} | Delete BackupTargets
 *BackupTargetsApi* | [**ApiBackupTargetsIdGet**](docs/BackupTargetsApi.md#apibackuptargetsidget) | **Get** /api/backup-targets/{id} | Get BackupTarget
 *BackupTargetsApi* | [**ApiBackupTargetsIdPut**](docs/BackupTargetsApi.md#apibackuptargetsidput) | **Put** /api/backup-targets/{id} | Update BackupTarget
+*BackupTargetsApi* | [**ApiBackupTargetsIdRetryPost**](docs/BackupTargetsApi.md#apibackuptargetsidretrypost) | **Post** /api/backup-targets/{id}/retry | Retry sync of a BackupTarget
 *BackupTargetsApi* | [**ApiBackupTargetsIdStatesGet**](docs/BackupTargetsApi.md#apibackuptargetsidstatesget) | **Get** /api/backup-targets/{id}/states | List BackupTarget&#39;s BackupTargetStates
 *BackupTargetsApi* | [**ApiTenantsIdBackupTargetsGet**](docs/BackupTargetsApi.md#apitenantsidbackuptargetsget) | **Get** /api/tenants/{id}/backup-targets | List Tenant&#39;s BackupTargets
 *BackupTargetsApi* | [**ApiTenantsIdBackupTargetsPost**](docs/BackupTargetsApi.md#apitenantsidbackuptargetspost) | **Post** /api/tenants/{id}/backup-targets | Create BackupTarget
+*BackupsApi* | [**ApiBackupTargetsIdBackupsGet**](docs/BackupsApi.md#apibackuptargetsidbackupsget) | **Get** /api/backup-targets/{id}/backups | List BackupTarget&#39;s Backups
 *BackupsApi* | [**ApiBackupsIdDelete**](docs/BackupsApi.md#apibackupsiddelete) | **Delete** /api/backups/{id} | Delete Backup
 *BackupsApi* | [**ApiBackupsIdGet**](docs/BackupsApi.md#apibackupsidget) | **Get** /api/backups/{id} | Get Backup
 *BackupsApi* | [**ApiBackupsIdPut**](docs/BackupsApi.md#apibackupsidput) | **Put** /api/backups/{id} | Update Backup
+*BackupsApi* | [**ApiDeploymentsIdBackupsGet**](docs/BackupsApi.md#apideploymentsidbackupsget) | **Get** /api/deployments/{id}/backups | List Deployment&#39;s Backups
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
+*DefaultTemplatesApi* | [**ApiTenantsIdSeedDefaultTemplatesPost**](docs/DefaultTemplatesApi.md#apitenantsidseeddefaulttemplatespost) | **Post** /api/tenants/{id}/seed-default-templates | Seed default templates
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
+*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidget) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidheartbeatpost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdPut**](docs/DeploymentTargetsApi.md#apideploymenttargetsidput) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
 *DeploymentTargetsApi* | [**ApiProjectsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apiprojectsiddeploymenttargetsget) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
 *DeploymentTargetsApi* | [**ApiTenantsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apitenantsiddeploymenttargetsget) | **Get** /api/tenants/{id}/deployment-targets | List Tenant&#39;s DeploymentTargets
 *DeploymentTargetsApi* | [**ApiTenantsIdDeploymentTargetsPost**](docs/DeploymentTargetsApi.md#apitenantsiddeploymenttargetspost) | **Post** /api/tenants/{id}/deployment-targets | Create DeploymentTarget
-*DeploymentTemplatesApi* | [**ApiDeploymentTemplatesIdGet**](docs/DeploymentTemplatesApi.md#apideploymenttemplatesidget) | **Get** /api/deployment-templates/{id} | Get DeploymentTemplate
-*DeploymentsApi* | [**ApiDeploymentsIdBackupsGet**](docs/DeploymentsApi.md#apideploymentsidbackupsget) | **Get** /api/deployments/{id}/backups | Get Deployment Backups
-*DeploymentsApi* | [**ApiDeploymentsIdConnectionStringsGet**](docs/DeploymentsApi.md#apideploymentsidconnectionstringsget) | **Get** /api/deployments/{id}/connection-strings | Deployment Connection String
+*DeploymentsApi* | [**ApiDeploymentsIdConnectionInfoGet**](docs/DeploymentsApi.md#apideploymentsidconnectioninfoget) | **Get** /api/deployments/{id}/connection-info | Deployment Connection Information
+*DeploymentsApi* | [**ApiDeploymentsIdCredentialsGet**](docs/DeploymentsApi.md#apideploymentsidcredentialsget) | **Get** /api/deployments/{id}/credentials | Deployment Credentials
 *DeploymentsApi* | [**ApiDeploymentsIdDelete**](docs/DeploymentsApi.md#apideploymentsiddelete) | **Delete** /api/deployments/{id} | Delete Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdGet**](docs/DeploymentsApi.md#apideploymentsidget) | **Get** /api/deployments/{id} | Get Deployment
-*DeploymentsApi* | [**ApiDeploymentsIdHealthGet**](docs/DeploymentsApi.md#apideploymentsidhealthget) | **Get** /api/deployments/{id}/health | Get Deployment Health
 *DeploymentsApi* | [**ApiDeploymentsIdPut**](docs/DeploymentsApi.md#apideploymentsidput) | **Put** /api/deployments/{id} | Update Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdStatusGet**](docs/DeploymentsApi.md#apideploymentsidstatusget) | **Get** /api/deployments/{id}/status | Get Deployment Status
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsGet**](docs/DeploymentsApi.md#apiprojectsiddeploymentsget) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
@@ -146,6 +152,7 @@ Class | Method | HTTP request | Description
 *ImagesApi* | [**ApiVersionsIdImagesGet**](docs/ImagesApi.md#apiversionsidimagesget) | **Get** /api/versions/{id}/images | List Version&#39;s Images
 *NamespacesApi* | [**ApiDeploymentTargetsIdNamespacesGet**](docs/NamespacesApi.md#apideploymenttargetsidnamespacesget) | **Get** /api/deployment-targets/{id}/namespaces | List DeploymentTarget&#39;s Namespaces
 *NamespacesApi* | [**ApiDeploymentTargetsIdNamespacesPost**](docs/NamespacesApi.md#apideploymenttargetsidnamespacespost) | **Post** /api/deployment-targets/{id}/namespaces | Create Namespace
+*NamespacesApi* | [**ApiNamespacesIdDelete**](docs/NamespacesApi.md#apinamespacesiddelete) | **Delete** /api/namespaces/{id} | Delete Namespace
 *NamespacesApi* | [**ApiNamespacesIdGet**](docs/NamespacesApi.md#apinamespacesidget) | **Get** /api/namespaces/{id} | Get Namespace
 *NamespacesApi* | [**ApiNamespacesIdPut**](docs/NamespacesApi.md#apinamespacesidput) | **Put** /api/namespaces/{id} | Update namespace
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsDelete**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsdelete) | **Delete** /api/projects/{id}/role-bindings | Delete ProjectRoleBinding
@@ -175,6 +182,7 @@ Class | Method | HTTP request | Description
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsget) | **Get** /api/tenants/{id}/role-bindings | List TenantRoleBindings
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
+*TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
 *UsersApi* | [**ApiUsersIdGet**](docs/UsersApi.md#apiusersidget) | **Get** /api/users/{id} | Get User
 *VersionsApi* | [**ApiDataServicesIdVersionsGet**](docs/VersionsApi.md#apidataservicesidversionsget) | **Get** /api/data-services/{id}/versions | List Data Service&#39;s Versions
@@ -188,11 +196,14 @@ Class | Method | HTTP request | Description
  - [ConstraintPagination](docs/ConstraintPagination.md)
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
+ - [ControllersBackupJobStatus](docs/ControllersBackupJobStatus.md)
+ - [ControllersBackupJobsResponse](docs/ControllersBackupJobsResponse.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
  - [ControllersCreateApplicationConfigurationTemplatesRequest](docs/ControllersCreateApplicationConfigurationTemplatesRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
  - [ControllersCreateBackupPolicyRequest](docs/ControllersCreateBackupPolicyRequest.md)
  - [ControllersCreateDeploymentBackup](docs/ControllersCreateDeploymentBackup.md)
+ - [ControllersCreateDeploymentScheduledBackup](docs/ControllersCreateDeploymentScheduledBackup.md)
  - [ControllersCreateNamespace](docs/ControllersCreateNamespace.md)
  - [ControllersCreateProjectDeployment](docs/ControllersCreateProjectDeployment.md)
  - [ControllersCreateResourceSettingsTemplatesRequest](docs/ControllersCreateResourceSettingsTemplatesRequest.md)
@@ -201,7 +212,6 @@ Class | Method | HTTP request | Description
  - [ControllersCreateTenantBackupTarget](docs/ControllersCreateTenantBackupTarget.md)
  - [ControllersCreateTenantDeploymentTarget](docs/ControllersCreateTenantDeploymentTarget.md)
  - [ControllersCredentials](docs/ControllersCredentials.md)
- - [ControllersDeploymentConnectionStringsResponse](docs/ControllersDeploymentConnectionStringsResponse.md)
  - [ControllersDeploymentTargetCredentialsResponse](docs/ControllersDeploymentTargetCredentialsResponse.md)
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
@@ -213,10 +223,10 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedAccounts](docs/ControllersPaginatedAccounts.md)
  - [ControllersPaginatedApplicationConfigurationTemplates](docs/ControllersPaginatedApplicationConfigurationTemplates.md)
  - [ControllersPaginatedBackupCredentials](docs/ControllersPaginatedBackupCredentials.md)
- - [ControllersPaginatedBackupJobs](docs/ControllersPaginatedBackupJobs.md)
  - [ControllersPaginatedBackupPolicies](docs/ControllersPaginatedBackupPolicies.md)
  - [ControllersPaginatedBackupTargetStates](docs/ControllersPaginatedBackupTargetStates.md)
  - [ControllersPaginatedBackupTargets](docs/ControllersPaginatedBackupTargets.md)
+ - [ControllersPaginatedBackups](docs/ControllersPaginatedBackups.md)
  - [ControllersPaginatedDataServices](docs/ControllersPaginatedDataServices.md)
  - [ControllersPaginatedDeploymentTargets](docs/ControllersPaginatedDeploymentTargets.md)
  - [ControllersPaginatedDeployments](docs/ControllersPaginatedDeployments.md)
@@ -245,6 +255,7 @@ Class | Method | HTTP request | Description
  - [ControllersUpdateBackupRequest](docs/ControllersUpdateBackupRequest.md)
  - [ControllersUpdateBackupTargetRequest](docs/ControllersUpdateBackupTargetRequest.md)
  - [ControllersUpdateDeploymentRequest](docs/ControllersUpdateDeploymentRequest.md)
+ - [ControllersUpdateDeploymentScheduledBackup](docs/ControllersUpdateDeploymentScheduledBackup.md)
  - [ControllersUpdateDeploymentTargetRequest](docs/ControllersUpdateDeploymentTargetRequest.md)
  - [ControllersUpdateNamespaceRequest](docs/ControllersUpdateNamespaceRequest.md)
  - [ControllersUpdateResourceSettingsTemplateRequest](docs/ControllersUpdateResourceSettingsTemplateRequest.md)
@@ -255,6 +266,12 @@ Class | Method | HTTP request | Description
  - [ControllersWhoAmIResponse](docs/ControllersWhoAmIResponse.md)
  - [ControllersWhoAmIServiceAccount](docs/ControllersWhoAmIServiceAccount.md)
  - [ControllersWhoAmIUser](docs/ControllersWhoAmIUser.md)
+ - [DeploymentsConnectionDetails](docs/DeploymentsConnectionDetails.md)
+ - [DeploymentsConnectionInfo](docs/DeploymentsConnectionInfo.md)
+ - [DeploymentsCredentials](docs/DeploymentsCredentials.md)
+ - [DeploymentsPodInfo](docs/DeploymentsPodInfo.md)
+ - [DeploymentsStatus](docs/DeploymentsStatus.md)
+ - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountRoleBinding](docs/ModelsAccountRoleBinding.md)
  - [ModelsApplicationConfigurationTemplate](docs/ModelsApplicationConfigurationTemplate.md)
@@ -269,13 +286,15 @@ Class | Method | HTTP request | Description
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
  - [ModelsConfigItem](docs/ModelsConfigItem.md)
- - [ModelsConfiguration](docs/ModelsConfiguration.md)
+ - [ModelsDNSDetails](docs/ModelsDNSDetails.md)
  - [ModelsDataService](docs/ModelsDataService.md)
  - [ModelsDeployment](docs/ModelsDeployment.md)
+ - [ModelsDeploymentResources](docs/ModelsDeploymentResources.md)
+ - [ModelsDeploymentStorageOptions](docs/ModelsDeploymentStorageOptions.md)
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
- - [ModelsDeploymentTemplate](docs/ModelsDeploymentTemplate.md)
  - [ModelsGlobalRoleBinding](docs/ModelsGlobalRoleBinding.md)
  - [ModelsImage](docs/ModelsImage.md)
+ - [ModelsMAASDetails](docs/ModelsMAASDetails.md)
  - [ModelsNamespace](docs/ModelsNamespace.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
@@ -290,12 +309,7 @@ Class | Method | HTTP request | Description
  - [ModelsTenantRoleBinding](docs/ModelsTenantRoleBinding.md)
  - [ModelsUser](docs/ModelsUser.md)
  - [ModelsVersion](docs/ModelsVersion.md)
- - [PaginationPaginatedResponse](docs/PaginationPaginatedResponse.md)
  - [PolicyRole](docs/PolicyRole.md)
- - [StatusDeploymentHealth](docs/StatusDeploymentHealth.md)
- - [StatusDeploymentStatus](docs/StatusDeploymentStatus.md)
- - [V1EndpointAddress](docs/V1EndpointAddress.md)
- - [V1ObjectReference](docs/V1ObjectReference.md)
 
 
 ## Documentation For Authorization

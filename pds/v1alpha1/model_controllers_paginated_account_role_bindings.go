@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedAccountRoleBindings struct for ControllersPaginatedAccountRoleBindings
 type ControllersPaginatedAccountRoleBindings struct {
-	Data []ModelsAccountRoleBinding `json:"data,omitempty"`
+	Data *[]ModelsAccountRoleBinding `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedAccountRoleBindings instantiates a new ControllersPaginatedAccountRoleBindings object
@@ -42,12 +42,12 @@ func (o *ControllersPaginatedAccountRoleBindings) GetData() []ModelsAccountRoleB
 		var ret []ModelsAccountRoleBinding
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedAccountRoleBindings) GetDataOk() ([]ModelsAccountRoleBinding, bool) {
+func (o *ControllersPaginatedAccountRoleBindings) GetDataOk() (*[]ModelsAccountRoleBinding, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ControllersPaginatedAccountRoleBindings) HasData() bool {
 
 // SetData gets a reference to the given []ModelsAccountRoleBinding and assigns it to the Data field.
 func (o *ControllersPaginatedAccountRoleBindings) SetData(v []ModelsAccountRoleBinding) {
-	o.Data = v
+	o.Data = &v
 }
 
 func (o ControllersPaginatedAccountRoleBindings) MarshalJSON() ([]byte, error) {

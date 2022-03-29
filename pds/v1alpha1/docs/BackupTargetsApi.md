@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApiBackupTargetsIdDelete**](BackupTargetsApi.md#ApiBackupTargetsIdDelete) | **Delete** /api/backup-targets/{id} | Delete BackupTargets
 [**ApiBackupTargetsIdGet**](BackupTargetsApi.md#ApiBackupTargetsIdGet) | **Get** /api/backup-targets/{id} | Get BackupTarget
 [**ApiBackupTargetsIdPut**](BackupTargetsApi.md#ApiBackupTargetsIdPut) | **Put** /api/backup-targets/{id} | Update BackupTarget
+[**ApiBackupTargetsIdRetryPost**](BackupTargetsApi.md#ApiBackupTargetsIdRetryPost) | **Post** /api/backup-targets/{id}/retry | Retry sync of a BackupTarget
 [**ApiBackupTargetsIdStatesGet**](BackupTargetsApi.md#ApiBackupTargetsIdStatesGet) | **Get** /api/backup-targets/{id}/states | List BackupTarget&#39;s BackupTargetStates
 [**ApiTenantsIdBackupTargetsGet**](BackupTargetsApi.md#ApiTenantsIdBackupTargetsGet) | **Get** /api/tenants/{id}/backup-targets | List Tenant&#39;s BackupTargets
 [**ApiTenantsIdBackupTargetsPost**](BackupTargetsApi.md#ApiTenantsIdBackupTargetsPost) | **Post** /api/tenants/{id}/backup-targets | Create BackupTarget
@@ -38,8 +39,8 @@ func main() {
     force := "force_example" // string | Delete backup target even if the deletion job fails on any deployment targets (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupTargetsApi.ApiBackupTargetsIdDelete(context.Background(), id).Force(force).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiBackupTargetsIdDelete(context.Background(), id).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiBackupTargetsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +108,8 @@ func main() {
     id := "id_example" // string | BackupTarget ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupTargetsApi.ApiBackupTargetsIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiBackupTargetsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiBackupTargetsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +179,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateBackupTargetRequest() // ControllersUpdateBackupTargetRequest | Object with partial update fields
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupTargetsApi.ApiBackupTargetsIdPut(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiBackupTargetsIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiBackupTargetsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,6 +226,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ApiBackupTargetsIdRetryPost
+
+> ApiBackupTargetsIdRetryPost(ctx, id).Execute()
+
+Retry sync of a BackupTarget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | BackupTargetState ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiBackupTargetsIdRetryPost(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiBackupTargetsIdRetryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | BackupTargetState ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiBackupTargetsIdRetryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiBackupTargetsIdStatesGet
 
 > ControllersPaginatedBackupTargetStates ApiBackupTargetsIdStatesGet(ctx, id).Limit(limit).Continuation(continuation).SortBy(sortBy).BackupTargetId(backupTargetId).DeploymentTargetId(deploymentTargetId).State(state).Execute()
@@ -255,8 +324,8 @@ func main() {
     state := "state_example" // string | Filter results by state (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupTargetsApi.ApiBackupTargetsIdStatesGet(context.Background(), id).Limit(limit).Continuation(continuation).SortBy(sortBy).BackupTargetId(backupTargetId).DeploymentTargetId(deploymentTargetId).State(state).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiBackupTargetsIdStatesGet(context.Background(), id).Limit(limit).Continuation(continuation).SortBy(sortBy).BackupTargetId(backupTargetId).DeploymentTargetId(deploymentTargetId).State(state).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiBackupTargetsIdStatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -309,7 +378,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupTargetsGet
 
-> ControllersPaginatedBackupTargets ApiTenantsIdBackupTargetsGet(ctx, id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).Execute()
+> ControllersPaginatedBackupTargets ApiTenantsIdBackupTargetsGet(ctx, id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).BackupCredentialsId(backupCredentialsId).Execute()
 
 List Tenant's BackupTargets
 
@@ -337,10 +406,11 @@ func main() {
     type_ := "type__example" // string | Filter results by BackupTarget type (optional)
     bucket := "bucket_example" // string | Filter results by bucket (optional)
     region := "region_example" // string | Filter results by region (optional)
+    backupCredentialsId := "backupCredentialsId_example" // string | Filter results by BackupCredentials ID (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupTargetsApi.ApiTenantsIdBackupTargetsGet(context.Background(), id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiTenantsIdBackupTargetsGet(context.Background(), id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).BackupCredentialsId(backupCredentialsId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiTenantsIdBackupTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,6 +444,7 @@ Name | Type | Description  | Notes
  **type_** | **string** | Filter results by BackupTarget type | 
  **bucket** | **string** | Filter results by bucket | 
  **region** | **string** | Filter results by region | 
+ **backupCredentialsId** | **string** | Filter results by BackupCredentials ID | 
 
 ### Return type
 
@@ -418,8 +489,8 @@ func main() {
     body := *openapiclient.NewControllersCreateTenantBackupTarget() // ControllersCreateTenantBackupTarget | Request body containing the backup target config
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupTargetsApi.ApiTenantsIdBackupTargetsPost(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupTargetsApi.ApiTenantsIdBackupTargetsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiTenantsIdBackupTargetsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

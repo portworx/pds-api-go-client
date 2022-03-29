@@ -19,13 +19,13 @@ type AuthClaims struct {
 	// Email of this account.
 	Email *string `json:"email,omitempty"`
 	// (optional) Groups in which this account is part of.
-	Groups []string `json:"groups,omitempty"`
+	Groups *[]string `json:"groups,omitempty"`
 	// Issuer is the token issuer. For self-signed token do not prefix with `https://`.
 	Iss *string `json:"iss,omitempty"`
 	// Name of this account.
 	Name *string `json:"name,omitempty"`
 	// Roles of this account.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 	// Subject identifier. Unique ID of this account.
 	Sub *string `json:"sub,omitempty"`
 }
@@ -85,12 +85,12 @@ func (o *AuthClaims) GetGroups() []string {
 		var ret []string
 		return ret
 	}
-	return o.Groups
+	return *o.Groups
 }
 
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthClaims) GetGroupsOk() ([]string, bool) {
+func (o *AuthClaims) GetGroupsOk() (*[]string, bool) {
 	if o == nil || o.Groups == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *AuthClaims) HasGroups() bool {
 
 // SetGroups gets a reference to the given []string and assigns it to the Groups field.
 func (o *AuthClaims) SetGroups(v []string) {
-	o.Groups = v
+	o.Groups = &v
 }
 
 // GetIss returns the Iss field value if set, zero value otherwise.
@@ -181,12 +181,12 @@ func (o *AuthClaims) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthClaims) GetRolesOk() ([]string, bool) {
+func (o *AuthClaims) GetRolesOk() (*[]string, bool) {
 	if o == nil || o.Roles == nil {
 		return nil, false
 	}
@@ -204,7 +204,7 @@ func (o *AuthClaims) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *AuthClaims) SetRoles(v []string) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 // GetSub returns the Sub field value if set, zero value otherwise.

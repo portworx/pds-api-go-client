@@ -33,8 +33,8 @@ func main() {
     id := "id_example" // string | BackupJob ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupJobsApi.ApiBackupJobsIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupJobsApi.ApiBackupJobsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupJobsApi.ApiBackupJobsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ApiBackupsIdJobsGet
 
-> ControllersPaginatedBackupJobs ApiBackupsIdJobsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).State(state).Execute()
+> ControllersBackupJobsResponse ApiBackupsIdJobsGet(ctx, id).Execute()
 
 List Backup's Jobs
 
@@ -101,20 +101,15 @@ import (
 
 func main() {
     id := "id_example" // string | Backup ID (must be valid UUID)
-    sortBy := "sortBy_example" // string | A given BackupJob attribute to sort results by (one of: id, created_at, file_size, start_time, completion_time, state) (optional)
-    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
-    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
-    id2 := "id_example" // string | Filter results by BackupJob id (optional)
-    state := "state_example" // string | Filter results by BackupJob state (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupJobsApi.ApiBackupsIdJobsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).State(state).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BackupJobsApi.ApiBackupsIdJobsGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupJobsApi.ApiBackupsIdJobsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiBackupsIdJobsGet`: ControllersPaginatedBackupJobs
+    // response from `ApiBackupsIdJobsGet`: ControllersBackupJobsResponse
     fmt.Fprintf(os.Stdout, "Response from `BackupJobsApi.ApiBackupsIdJobsGet`: %v\n", resp)
 }
 ```
@@ -135,15 +130,10 @@ Other parameters are passed through a pointer to a apiApiBackupsIdJobsGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | A given BackupJob attribute to sort results by (one of: id, created_at, file_size, start_time, completion_time, state) | 
- **limit** | **string** | Maximum number of rows to return (could be less) | 
- **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
- **id2** | **string** | Filter results by BackupJob id | 
- **state** | **string** | Filter results by BackupJob state | 
 
 ### Return type
 
-[**ControllersPaginatedBackupJobs**](ControllersPaginatedBackupJobs.md)
+[**ControllersBackupJobsResponse**](ControllersBackupJobsResponse.md)
 
 ### Authorization
 

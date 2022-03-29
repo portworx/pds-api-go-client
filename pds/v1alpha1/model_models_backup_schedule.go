@@ -16,11 +16,13 @@ import (
 
 // ModelsBackupSchedule struct for ModelsBackupSchedule
 type ModelsBackupSchedule struct {
-	// The only purpose of this is to help UI identify validation failures
+	// An ID of the backup schedule to help the UI identify validation failures. The type is UUID and it is generated on the UI side.
 	Id *string `json:"id,omitempty"`
+	// Number of retained backup jobs. Must be 1 or greater.
 	RetentionCount *int32 `json:"retention_count,omitempty"`
-	// CRON string
+	// CRON expression for the backup schedule.
 	Schedule *string `json:"schedule,omitempty"`
+	// Type of the backup schedule.
 	Type *string `json:"type,omitempty"`
 }
 

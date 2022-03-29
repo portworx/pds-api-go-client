@@ -16,6 +16,7 @@ import (
 
 // ControllersPartialAzureCredentials struct for ControllersPartialAzureCredentials
 type ControllersPartialAzureCredentials struct {
+	// Name of the Azure Storage account.
 	AccountName *string `json:"account_name,omitempty"`
 }
 

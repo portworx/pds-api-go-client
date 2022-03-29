@@ -55,6 +55,10 @@ type APIClient struct {
 
 	AccountsApi *AccountsApiService
 
+	AccountsDNSApi *AccountsDNSApiService
+
+	AccountsMAASDetailsApi *AccountsMAASDetailsApiService
+
 	ApplicationConfigurationTemplatesApi *ApplicationConfigurationTemplatesApiService
 
 	AuthenticationApi *AuthenticationApiService
@@ -73,9 +77,9 @@ type APIClient struct {
 
 	DataServicesApi *DataServicesApiService
 
-	DeploymentTargetsApi *DeploymentTargetsApiService
+	DefaultTemplatesApi *DefaultTemplatesApiService
 
-	DeploymentTemplatesApi *DeploymentTemplatesApiService
+	DeploymentTargetsApi *DeploymentTargetsApiService
 
 	DeploymentsApi *DeploymentsApiService
 
@@ -131,6 +135,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.APIVersionApi = (*APIVersionApiService)(&c.common)
 	c.AccountRoleBindingsApi = (*AccountRoleBindingsApiService)(&c.common)
 	c.AccountsApi = (*AccountsApiService)(&c.common)
+	c.AccountsDNSApi = (*AccountsDNSApiService)(&c.common)
+	c.AccountsMAASDetailsApi = (*AccountsMAASDetailsApiService)(&c.common)
 	c.ApplicationConfigurationTemplatesApi = (*ApplicationConfigurationTemplatesApiService)(&c.common)
 	c.AuthenticationApi = (*AuthenticationApiService)(&c.common)
 	c.AuthorizerApi = (*AuthorizerApiService)(&c.common)
@@ -140,8 +146,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BackupTargetsApi = (*BackupTargetsApiService)(&c.common)
 	c.BackupsApi = (*BackupsApiService)(&c.common)
 	c.DataServicesApi = (*DataServicesApiService)(&c.common)
+	c.DefaultTemplatesApi = (*DefaultTemplatesApiService)(&c.common)
 	c.DeploymentTargetsApi = (*DeploymentTargetsApiService)(&c.common)
-	c.DeploymentTemplatesApi = (*DeploymentTemplatesApiService)(&c.common)
 	c.DeploymentsApi = (*DeploymentsApiService)(&c.common)
 	c.GlobalRoleBindingsApi = (*GlobalRoleBindingsApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
@@ -510,13 +516,6 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 // Prevent trying to import "fmt"
 func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
-}
-
-// A wrapper for strict JSON decoding
-func newStrictDecoder(data []byte) *json.Decoder {
-	dec := json.NewDecoder(bytes.NewBuffer(data))
-	dec.DisallowUnknownFields()
-	return dec
 }
 
 // Set request body from an interface{}

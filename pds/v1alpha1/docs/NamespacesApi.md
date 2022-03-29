@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiDeploymentTargetsIdNamespacesGet**](NamespacesApi.md#ApiDeploymentTargetsIdNamespacesGet) | **Get** /api/deployment-targets/{id}/namespaces | List DeploymentTarget&#39;s Namespaces
 [**ApiDeploymentTargetsIdNamespacesPost**](NamespacesApi.md#ApiDeploymentTargetsIdNamespacesPost) | **Post** /api/deployment-targets/{id}/namespaces | Create Namespace
+[**ApiNamespacesIdDelete**](NamespacesApi.md#ApiNamespacesIdDelete) | **Delete** /api/namespaces/{id} | Delete Namespace
 [**ApiNamespacesIdGet**](NamespacesApi.md#ApiNamespacesIdGet) | **Get** /api/namespaces/{id} | Get Namespace
 [**ApiNamespacesIdPut**](NamespacesApi.md#ApiNamespacesIdPut) | **Put** /api/namespaces/{id} | Update namespace
 
@@ -41,8 +42,8 @@ func main() {
     status := "status_example" // string | Filter results by Namespace status (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamespacesApi.ApiDeploymentTargetsIdNamespacesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.ApiDeploymentTargetsIdNamespacesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiDeploymentTargetsIdNamespacesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -118,8 +119,8 @@ func main() {
     body := *openapiclient.NewControllersCreateNamespace() // ControllersCreateNamespace | Request body containing the new namespace
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamespacesApi.ApiDeploymentTargetsIdNamespacesPost(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.ApiDeploymentTargetsIdNamespacesPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiDeploymentTargetsIdNamespacesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,6 +166,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ApiNamespacesIdDelete
+
+> ApiNamespacesIdDelete(ctx, id).Execute()
+
+Delete Namespace
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Namespace ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.ApiNamespacesIdDelete(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Namespace ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiNamespacesIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiNamespacesIdGet
 
 > ModelsNamespace ApiNamespacesIdGet(ctx, id).Execute()
@@ -189,8 +258,8 @@ func main() {
     id := "id_example" // string | Namespace ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamespacesApi.ApiNamespacesIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.ApiNamespacesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +329,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateNamespaceRequest() // ControllersUpdateNamespaceRequest | Object with partial update of fields (status)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamespacesApi.ApiNamespacesIdPut(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.ApiNamespacesIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

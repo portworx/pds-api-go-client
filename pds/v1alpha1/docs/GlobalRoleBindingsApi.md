@@ -34,8 +34,8 @@ func main() {
     actorType := "actorType_example" // string | GlobalRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete(context.Background()).ActorType(actorType).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete(context.Background()).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -101,8 +101,8 @@ func main() {
     actorType := "actorType_example" // string | Filter results by GlobalRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsGet(context.Background()).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GlobalRoleBindingsApi.ApiGlobalRoleBindingsGet(context.Background()).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalRoleBindingsApi.ApiGlobalRoleBindingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,8 +170,8 @@ func main() {
     body := *openapiclient.NewModelsGlobalRoleBinding() // ModelsGlobalRoleBinding | Request body containing the global role binding
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsPut(context.Background()).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GlobalRoleBindingsApi.ApiGlobalRoleBindingsPut(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalRoleBindingsApi.ApiGlobalRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

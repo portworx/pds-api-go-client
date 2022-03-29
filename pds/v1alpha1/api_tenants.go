@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // TenantsApiService TenantsApi service
 type TenantsApiService service
 
 type ApiApiAccountsIdTenantsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *TenantsApiService
 	id string
 	sortBy *string
@@ -64,7 +64,7 @@ func (r ApiApiAccountsIdTenantsGetRequest) Name(name string) ApiApiAccountsIdTen
 	return r
 }
 
-func (r ApiApiAccountsIdTenantsGetRequest) Execute() (*ControllersPaginatedAccountTenants, *http.Response, error) {
+func (r ApiApiAccountsIdTenantsGetRequest) Execute() (ControllersPaginatedAccountTenants, *_nethttp.Response, error) {
 	return r.ApiService.ApiAccountsIdTenantsGetExecute(r)
 }
 
@@ -73,11 +73,11 @@ ApiAccountsIdTenantsGet List Account's Tenants
 
 Lists Tenants visible to the caller and belonging to the Account.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdTenantsGetRequest
 */
-func (a *TenantsApiService) ApiAccountsIdTenantsGet(ctx context.Context, id string) ApiApiAccountsIdTenantsGetRequest {
+func (a *TenantsApiService) ApiAccountsIdTenantsGet(ctx _context.Context, id string) ApiApiAccountsIdTenantsGetRequest {
 	return ApiApiAccountsIdTenantsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -87,25 +87,25 @@ func (a *TenantsApiService) ApiAccountsIdTenantsGet(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return ControllersPaginatedAccountTenants
-func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTenantsGetRequest) (*ControllersPaginatedAccountTenants, *http.Response, error) {
+func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTenantsGetRequest) (ControllersPaginatedAccountTenants, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedAccountTenants
+		localVarReturnValue  ControllersPaginatedAccountTenants
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.ApiAccountsIdTenantsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/tenants"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -163,15 +163,15 @@ func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -180,7 +180,7 @@ func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -190,28 +190,28 @@ func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTenantsIdGetRequest struct {
-	ctx context.Context
+type ApiApiTenantsIdDnsDetailsGetRequest struct {
+	ctx _context.Context
 	ApiService *TenantsApiService
 	id string
 }
 
 
-func (r ApiApiTenantsIdGetRequest) Execute() (*ModelsTenant, *http.Response, error) {
-	return r.ApiService.ApiTenantsIdGetExecute(r)
+func (r ApiApiTenantsIdDnsDetailsGetRequest) Execute() (ModelsDNSDetails, *_nethttp.Response, error) {
+	return r.ApiService.ApiTenantsIdDnsDetailsGetExecute(r)
 }
 
 /*
-ApiTenantsIdGet Get Tenant
+ApiTenantsIdDnsDetailsGet Get DNS details for Tenant
 
-Fetches a single Tenant
+Get DNS details/credentials for Tenant
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
- @return ApiApiTenantsIdGetRequest
+ @return ApiApiTenantsIdDnsDetailsGetRequest
 */
-func (a *TenantsApiService) ApiTenantsIdGet(ctx context.Context, id string) ApiApiTenantsIdGetRequest {
-	return ApiApiTenantsIdGetRequest{
+func (a *TenantsApiService) ApiTenantsIdDnsDetailsGet(ctx _context.Context, id string) ApiApiTenantsIdDnsDetailsGetRequest {
+	return ApiApiTenantsIdDnsDetailsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -219,26 +219,26 @@ func (a *TenantsApiService) ApiTenantsIdGet(ctx context.Context, id string) ApiA
 }
 
 // Execute executes the request
-//  @return ModelsTenant
-func (a *TenantsApiService) ApiTenantsIdGetExecute(r ApiApiTenantsIdGetRequest) (*ModelsTenant, *http.Response, error) {
+//  @return ModelsDNSDetails
+func (a *TenantsApiService) ApiTenantsIdDnsDetailsGetExecute(r ApiApiTenantsIdDnsDetailsGetRequest) (ModelsDNSDetails, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsTenant
+		localVarReturnValue  ModelsDNSDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.ApiTenantsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.ApiTenantsIdDnsDetailsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/tenants/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath := localBasePath + "/api/tenants/{id}/dns-details"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -281,15 +281,15 @@ func (a *TenantsApiService) ApiTenantsIdGetExecute(r ApiApiTenantsIdGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -298,7 +298,125 @@ func (a *TenantsApiService) ApiTenantsIdGetExecute(r ApiApiTenantsIdGetRequest) 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiTenantsIdGetRequest struct {
+	ctx _context.Context
+	ApiService *TenantsApiService
+	id string
+}
+
+
+func (r ApiApiTenantsIdGetRequest) Execute() (ModelsTenant, *_nethttp.Response, error) {
+	return r.ApiService.ApiTenantsIdGetExecute(r)
+}
+
+/*
+ApiTenantsIdGet Get Tenant
+
+Fetches a single Tenant
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Tenant ID (must be valid UUID)
+ @return ApiApiTenantsIdGetRequest
+*/
+func (a *TenantsApiService) ApiTenantsIdGet(ctx _context.Context, id string) ApiApiTenantsIdGetRequest {
+	return ApiApiTenantsIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ModelsTenant
+func (a *TenantsApiService) ApiTenantsIdGetExecute(r ApiApiTenantsIdGetRequest) (ModelsTenant, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  ModelsTenant
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.ApiTenantsIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/tenants/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedDataServices struct for ControllersPaginatedDataServices
 type ControllersPaginatedDataServices struct {
-	Data []ModelsDataService `json:"data,omitempty"`
+	Data *[]ModelsDataService `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedDataServices) GetData() []ModelsDataService {
 		var ret []ModelsDataService
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedDataServices) GetDataOk() ([]ModelsDataService, bool) {
+func (o *ControllersPaginatedDataServices) GetDataOk() (*[]ModelsDataService, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedDataServices) HasData() bool {
 
 // SetData gets a reference to the given []ModelsDataService and assigns it to the Data field.
 func (o *ControllersPaginatedDataServices) SetData(v []ModelsDataService) {
-	o.Data = v
+	o.Data = &v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedAccounts struct for ControllersPaginatedAccounts
 type ControllersPaginatedAccounts struct {
-	Data []ModelsAccount `json:"data,omitempty"`
+	Data *[]ModelsAccount `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedAccounts) GetData() []ModelsAccount {
 		var ret []ModelsAccount
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedAccounts) GetDataOk() ([]ModelsAccount, bool) {
+func (o *ControllersPaginatedAccounts) GetDataOk() (*[]ModelsAccount, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedAccounts) HasData() bool {
 
 // SetData gets a reference to the given []ModelsAccount and assigns it to the Data field.
 func (o *ControllersPaginatedAccounts) SetData(v []ModelsAccount) {
-	o.Data = v
+	o.Data = &v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

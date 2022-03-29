@@ -16,6 +16,9 @@ import (
 
 // ControllersCreateAccountRequest struct for ControllersCreateAccountRequest
 type ControllersCreateAccountRequest struct {
+	DnsDetails *ModelsDNSDetails `json:"dns_details,omitempty"`
+	MaasDetails *ModelsMAASDetails `json:"maas_details,omitempty"`
+	// Name of the account.
 	Name *string `json:"name,omitempty"`
 }
 
@@ -34,6 +37,70 @@ func NewControllersCreateAccountRequest() *ControllersCreateAccountRequest {
 func NewControllersCreateAccountRequestWithDefaults() *ControllersCreateAccountRequest {
 	this := ControllersCreateAccountRequest{}
 	return &this
+}
+
+// GetDnsDetails returns the DnsDetails field value if set, zero value otherwise.
+func (o *ControllersCreateAccountRequest) GetDnsDetails() ModelsDNSDetails {
+	if o == nil || o.DnsDetails == nil {
+		var ret ModelsDNSDetails
+		return ret
+	}
+	return *o.DnsDetails
+}
+
+// GetDnsDetailsOk returns a tuple with the DnsDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersCreateAccountRequest) GetDnsDetailsOk() (*ModelsDNSDetails, bool) {
+	if o == nil || o.DnsDetails == nil {
+		return nil, false
+	}
+	return o.DnsDetails, true
+}
+
+// HasDnsDetails returns a boolean if a field has been set.
+func (o *ControllersCreateAccountRequest) HasDnsDetails() bool {
+	if o != nil && o.DnsDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsDetails gets a reference to the given ModelsDNSDetails and assigns it to the DnsDetails field.
+func (o *ControllersCreateAccountRequest) SetDnsDetails(v ModelsDNSDetails) {
+	o.DnsDetails = &v
+}
+
+// GetMaasDetails returns the MaasDetails field value if set, zero value otherwise.
+func (o *ControllersCreateAccountRequest) GetMaasDetails() ModelsMAASDetails {
+	if o == nil || o.MaasDetails == nil {
+		var ret ModelsMAASDetails
+		return ret
+	}
+	return *o.MaasDetails
+}
+
+// GetMaasDetailsOk returns a tuple with the MaasDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersCreateAccountRequest) GetMaasDetailsOk() (*ModelsMAASDetails, bool) {
+	if o == nil || o.MaasDetails == nil {
+		return nil, false
+	}
+	return o.MaasDetails, true
+}
+
+// HasMaasDetails returns a boolean if a field has been set.
+func (o *ControllersCreateAccountRequest) HasMaasDetails() bool {
+	if o != nil && o.MaasDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaasDetails gets a reference to the given ModelsMAASDetails and assigns it to the MaasDetails field.
+func (o *ControllersCreateAccountRequest) SetMaasDetails(v ModelsMAASDetails) {
+	o.MaasDetails = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -70,6 +137,12 @@ func (o *ControllersCreateAccountRequest) SetName(v string) {
 
 func (o ControllersCreateAccountRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DnsDetails != nil {
+		toSerialize["dns_details"] = o.DnsDetails
+	}
+	if o.MaasDetails != nil {
+		toSerialize["maas_details"] = o.MaasDetails
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}

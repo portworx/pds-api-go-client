@@ -18,13 +18,17 @@ import (
 type ModelsBackupTargetState struct {
 	BackupTargetId *string `json:"backup_target_id,omitempty"`
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
+	// More detailed specification of the error when the 'state' is in one of the failed states.
 	ErrorCode *string `json:"error_code,omitempty"`
 	// More detailed error message possibly containing the root cause of the error, not suitable to show in the UI.
 	ErrorDetails *string `json:"error_details,omitempty"`
 	// High level human-readable error message determined by the ErrorCode.
 	ErrorMessage *string `json:"error_message,omitempty"`
+	// ID of the credentials in PX cluster.
 	PxCredentialsId *string `json:"px_credentials_id,omitempty"`
+	// Name of the credentials in PX cluster. This will be used when creating a new backup.
 	PxCredentialsName *string `json:"px_credentials_name,omitempty"`
+	// State of the synchronization of credentials.
 	State *string `json:"state,omitempty"`
 }
 

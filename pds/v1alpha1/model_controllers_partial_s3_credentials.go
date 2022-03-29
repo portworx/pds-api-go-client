@@ -16,7 +16,9 @@ import (
 
 // ControllersPartialS3Credentials struct for ControllersPartialS3Credentials
 type ControllersPartialS3Credentials struct {
+	// Access key for the AWS IAM user.
 	AccessKey *string `json:"access_key,omitempty"`
+	// Endpoint of S3 storage service.
 	Endpoint *string `json:"endpoint,omitempty"`
 }
 

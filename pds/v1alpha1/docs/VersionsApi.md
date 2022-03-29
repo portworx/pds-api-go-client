@@ -38,8 +38,8 @@ func main() {
     name := "name_example" // string | Filter results by Version's name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VersionsApi.ApiDataServicesIdVersionsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.VersionsApi.ApiDataServicesIdVersionsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VersionsApi.ApiDataServicesIdVersionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     id := "id_example" // string | Version ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VersionsApi.ApiVersionsIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.VersionsApi.ApiVersionsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VersionsApi.ApiVersionsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
