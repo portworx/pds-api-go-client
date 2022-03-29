@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Configuration** | Pointer to **map[string]interface{}** |  | [optional] 
-**ConnectionDetails** | Pointer to **map[string]interface{}** |  | [optional] 
-**Endpoint** | Pointer to **string** |  | [optional] 
+**ApplicationConfigurationOverrides** | Pointer to **map[string]string** |  | [optional] 
+**ApplicationConfigurationTemplateId** | Pointer to **string** |  | [optional] 
 **ImageId** | Pointer to **string** |  | [optional] 
-**NodeCount** | Pointer to **int32** |  | [optional] 
-**Resources** | Pointer to **map[string]interface{}** |  | [optional] 
+**NodeCount** | Pointer to **int32** | See models.Deployment for more information. | [optional] 
+**ResourceSettingsTemplateId** | Pointer to **string** |  | [optional] 
+**ScheduledBackup** | Pointer to [**ControllersUpdateDeploymentScheduledBackup**](ControllersUpdateDeploymentScheduledBackup.md) |  | [optional] 
 
 ## Methods
 
@@ -30,80 +30,55 @@ NewControllersUpdateDeploymentRequestWithDefaults instantiates a new Controllers
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConfiguration
+### GetApplicationConfigurationOverrides
 
-`func (o *ControllersUpdateDeploymentRequest) GetConfiguration() map[string]interface{}`
+`func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverrides() map[string]string`
 
-GetConfiguration returns the Configuration field if non-nil, zero value otherwise.
+GetApplicationConfigurationOverrides returns the ApplicationConfigurationOverrides field if non-nil, zero value otherwise.
 
-### GetConfigurationOk
+### GetApplicationConfigurationOverridesOk
 
-`func (o *ControllersUpdateDeploymentRequest) GetConfigurationOk() (*map[string]interface{}, bool)`
+`func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverridesOk() (*map[string]string, bool)`
 
-GetConfigurationOk returns a tuple with the Configuration field if it's non-nil, zero value otherwise
+GetApplicationConfigurationOverridesOk returns a tuple with the ApplicationConfigurationOverrides field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfiguration
+### SetApplicationConfigurationOverrides
 
-`func (o *ControllersUpdateDeploymentRequest) SetConfiguration(v map[string]interface{})`
+`func (o *ControllersUpdateDeploymentRequest) SetApplicationConfigurationOverrides(v map[string]string)`
 
-SetConfiguration sets Configuration field to given value.
+SetApplicationConfigurationOverrides sets ApplicationConfigurationOverrides field to given value.
 
-### HasConfiguration
+### HasApplicationConfigurationOverrides
 
-`func (o *ControllersUpdateDeploymentRequest) HasConfiguration() bool`
+`func (o *ControllersUpdateDeploymentRequest) HasApplicationConfigurationOverrides() bool`
 
-HasConfiguration returns a boolean if a field has been set.
+HasApplicationConfigurationOverrides returns a boolean if a field has been set.
 
-### GetConnectionDetails
+### GetApplicationConfigurationTemplateId
 
-`func (o *ControllersUpdateDeploymentRequest) GetConnectionDetails() map[string]interface{}`
+`func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplateId() string`
 
-GetConnectionDetails returns the ConnectionDetails field if non-nil, zero value otherwise.
+GetApplicationConfigurationTemplateId returns the ApplicationConfigurationTemplateId field if non-nil, zero value otherwise.
 
-### GetConnectionDetailsOk
+### GetApplicationConfigurationTemplateIdOk
 
-`func (o *ControllersUpdateDeploymentRequest) GetConnectionDetailsOk() (*map[string]interface{}, bool)`
+`func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplateIdOk() (*string, bool)`
 
-GetConnectionDetailsOk returns a tuple with the ConnectionDetails field if it's non-nil, zero value otherwise
+GetApplicationConfigurationTemplateIdOk returns a tuple with the ApplicationConfigurationTemplateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConnectionDetails
+### SetApplicationConfigurationTemplateId
 
-`func (o *ControllersUpdateDeploymentRequest) SetConnectionDetails(v map[string]interface{})`
+`func (o *ControllersUpdateDeploymentRequest) SetApplicationConfigurationTemplateId(v string)`
 
-SetConnectionDetails sets ConnectionDetails field to given value.
+SetApplicationConfigurationTemplateId sets ApplicationConfigurationTemplateId field to given value.
 
-### HasConnectionDetails
+### HasApplicationConfigurationTemplateId
 
-`func (o *ControllersUpdateDeploymentRequest) HasConnectionDetails() bool`
+`func (o *ControllersUpdateDeploymentRequest) HasApplicationConfigurationTemplateId() bool`
 
-HasConnectionDetails returns a boolean if a field has been set.
-
-### GetEndpoint
-
-`func (o *ControllersUpdateDeploymentRequest) GetEndpoint() string`
-
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
-
-### GetEndpointOk
-
-`func (o *ControllersUpdateDeploymentRequest) GetEndpointOk() (*string, bool)`
-
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndpoint
-
-`func (o *ControllersUpdateDeploymentRequest) SetEndpoint(v string)`
-
-SetEndpoint sets Endpoint field to given value.
-
-### HasEndpoint
-
-`func (o *ControllersUpdateDeploymentRequest) HasEndpoint() bool`
-
-HasEndpoint returns a boolean if a field has been set.
+HasApplicationConfigurationTemplateId returns a boolean if a field has been set.
 
 ### GetImageId
 
@@ -155,30 +130,55 @@ SetNodeCount sets NodeCount field to given value.
 
 HasNodeCount returns a boolean if a field has been set.
 
-### GetResources
+### GetResourceSettingsTemplateId
 
-`func (o *ControllersUpdateDeploymentRequest) GetResources() map[string]interface{}`
+`func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateId() string`
 
-GetResources returns the Resources field if non-nil, zero value otherwise.
+GetResourceSettingsTemplateId returns the ResourceSettingsTemplateId field if non-nil, zero value otherwise.
 
-### GetResourcesOk
+### GetResourceSettingsTemplateIdOk
 
-`func (o *ControllersUpdateDeploymentRequest) GetResourcesOk() (*map[string]interface{}, bool)`
+`func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateIdOk() (*string, bool)`
 
-GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+GetResourceSettingsTemplateIdOk returns a tuple with the ResourceSettingsTemplateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResources
+### SetResourceSettingsTemplateId
 
-`func (o *ControllersUpdateDeploymentRequest) SetResources(v map[string]interface{})`
+`func (o *ControllersUpdateDeploymentRequest) SetResourceSettingsTemplateId(v string)`
 
-SetResources sets Resources field to given value.
+SetResourceSettingsTemplateId sets ResourceSettingsTemplateId field to given value.
 
-### HasResources
+### HasResourceSettingsTemplateId
 
-`func (o *ControllersUpdateDeploymentRequest) HasResources() bool`
+`func (o *ControllersUpdateDeploymentRequest) HasResourceSettingsTemplateId() bool`
 
-HasResources returns a boolean if a field has been set.
+HasResourceSettingsTemplateId returns a boolean if a field has been set.
+
+### GetScheduledBackup
+
+`func (o *ControllersUpdateDeploymentRequest) GetScheduledBackup() ControllersUpdateDeploymentScheduledBackup`
+
+GetScheduledBackup returns the ScheduledBackup field if non-nil, zero value otherwise.
+
+### GetScheduledBackupOk
+
+`func (o *ControllersUpdateDeploymentRequest) GetScheduledBackupOk() (*ControllersUpdateDeploymentScheduledBackup, bool)`
+
+GetScheduledBackupOk returns a tuple with the ScheduledBackup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScheduledBackup
+
+`func (o *ControllersUpdateDeploymentRequest) SetScheduledBackup(v ControllersUpdateDeploymentScheduledBackup)`
+
+SetScheduledBackup sets ScheduledBackup field to given value.
+
+### HasScheduledBackup
+
+`func (o *ControllersUpdateDeploymentRequest) HasScheduledBackup() bool`
+
+HasScheduledBackup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

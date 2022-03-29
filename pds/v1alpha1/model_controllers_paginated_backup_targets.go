@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedBackupTargets struct for ControllersPaginatedBackupTargets
 type ControllersPaginatedBackupTargets struct {
-	Data []ModelsBackupTarget `json:"data,omitempty"`
+	Data *[]ModelsBackupTarget `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedBackupTargets) GetData() []ModelsBackupTarget {
 		var ret []ModelsBackupTarget
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupTargets) GetDataOk() ([]ModelsBackupTarget, bool) {
+func (o *ControllersPaginatedBackupTargets) GetDataOk() (*[]ModelsBackupTarget, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedBackupTargets) HasData() bool {
 
 // SetData gets a reference to the given []ModelsBackupTarget and assigns it to the Data field.
 func (o *ControllersPaginatedBackupTargets) SetData(v []ModelsBackupTarget) {
-	o.Data = v
+	o.Data = &v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

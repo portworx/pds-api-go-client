@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessKey** | Pointer to **string** |  | [optional] 
-**Endpoint** | Pointer to **string** |  | [optional] 
-**SecretKey** | Pointer to **string** |  | [optional] 
+**AccessKey** | Pointer to **string** | Access key for the AWS IAM user. | [optional] 
+**Endpoint** | Pointer to **string** | Endpoint of S3 storage service. | [optional] 
+**SecretKey** | Pointer to **string** | Secret key for the AWS IAM user. | [optional] 
 
 ## Methods
 

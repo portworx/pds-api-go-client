@@ -36,8 +36,8 @@ func main() {
     id := "id_example" // string | StorageOptionsTemplate ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdDelete(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     id := "id_example" // string | StorageOptionsTemplate ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateStorageOptionsTemplateRequest() // ControllersUpdateStorageOptionsTemplateRequest | Request body containing updated template
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdPut(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiStorageOptionsTemplatesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +251,8 @@ func main() {
     name := "name_example" // string | Filter results by StorageOptionsTemplates name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -327,8 +327,8 @@ func main() {
     body := *openapiclient.NewControllersCreateStorageOptionsTemplatesRequest() // ControllersCreateStorageOptionsTemplatesRequest | Request body containing the storage options template
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesPost(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

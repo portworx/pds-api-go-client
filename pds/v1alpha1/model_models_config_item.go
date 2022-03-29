@@ -16,7 +16,11 @@ import (
 
 // ModelsConfigItem struct for ModelsConfigItem
 type ModelsConfigItem struct {
+	// If true, user must fill the value for this configuration parameter when creating a new deployment.
+	DeployTime *bool `json:"deploy_time,omitempty"`
+	// Configuration key, transfers to the image's environment variable.
 	Key *string `json:"key,omitempty"`
+	// Configuration value.
 	Value *string `json:"value,omitempty"`
 }
 
@@ -35,6 +39,38 @@ func NewModelsConfigItem() *ModelsConfigItem {
 func NewModelsConfigItemWithDefaults() *ModelsConfigItem {
 	this := ModelsConfigItem{}
 	return &this
+}
+
+// GetDeployTime returns the DeployTime field value if set, zero value otherwise.
+func (o *ModelsConfigItem) GetDeployTime() bool {
+	if o == nil || o.DeployTime == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeployTime
+}
+
+// GetDeployTimeOk returns a tuple with the DeployTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsConfigItem) GetDeployTimeOk() (*bool, bool) {
+	if o == nil || o.DeployTime == nil {
+		return nil, false
+	}
+	return o.DeployTime, true
+}
+
+// HasDeployTime returns a boolean if a field has been set.
+func (o *ModelsConfigItem) HasDeployTime() bool {
+	if o != nil && o.DeployTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeployTime gets a reference to the given bool and assigns it to the DeployTime field.
+func (o *ModelsConfigItem) SetDeployTime(v bool) {
+	o.DeployTime = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -103,6 +139,9 @@ func (o *ModelsConfigItem) SetValue(v string) {
 
 func (o ModelsConfigItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeployTime != nil {
+		toSerialize["deploy_time"] = o.DeployTime
+	}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}

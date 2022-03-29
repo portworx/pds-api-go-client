@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConfigItems** | Pointer to [**[]ModelsConfigItem**](ModelsConfigItem.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | See models.ApplicationConfigurationTemplate for more information. | [optional] 
 
 ## Methods
 

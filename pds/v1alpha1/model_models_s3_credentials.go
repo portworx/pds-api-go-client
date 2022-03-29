@@ -16,8 +16,11 @@ import (
 
 // ModelsS3Credentials struct for ModelsS3Credentials
 type ModelsS3Credentials struct {
+	// Access key for the AWS IAM user.
 	AccessKey *string `json:"access_key,omitempty"`
+	// Endpoint of S3 storage service.
 	Endpoint *string `json:"endpoint,omitempty"`
+	// Secret key for the AWS IAM user.
 	SecretKey *string `json:"secret_key,omitempty"`
 }
 

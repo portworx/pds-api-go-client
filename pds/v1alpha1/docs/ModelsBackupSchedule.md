@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The only purpose of this is to help UI identify validation failures | [optional] 
-**RetentionCount** | Pointer to **int32** |  | [optional] 
-**Schedule** | Pointer to **string** | CRON string | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | An ID of the backup schedule to help the UI identify validation failures. The type is UUID and it is generated on the UI side. | [optional] 
+**RetentionCount** | Pointer to **int32** | Number of retained backup jobs. Must be 1 or greater. | [optional] 
+**Schedule** | Pointer to **string** | CRON expression for the backup schedule. | [optional] 
+**Type** | Pointer to **string** | Type of the backup schedule. | [optional] 
 
 ## Methods
 

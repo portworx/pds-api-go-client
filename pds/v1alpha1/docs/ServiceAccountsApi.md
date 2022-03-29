@@ -36,8 +36,8 @@ func main() {
     id := "id_example" // string | ServiceAccount ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountsApi.ApiServiceAccountsIdDelete(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ServiceAccountsApi.ApiServiceAccountsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiServiceAccountsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     id := "id_example" // string | ServiceAccount ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountsApi.ApiServiceAccountsIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ServiceAccountsApi.ApiServiceAccountsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiServiceAccountsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
     id := "id_example" // string | ServiceAccount ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountsApi.ApiServiceAccountsIdTokenGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ServiceAccountsApi.ApiServiceAccountsIdTokenGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiServiceAccountsIdTokenGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,8 +250,8 @@ func main() {
     token := "token_example" // string | Filter results by ServiceAccount token (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountsApi.ApiTenantsIdServiceAccountsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Name(name).Id2(id2).Token(token).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ServiceAccountsApi.ApiTenantsIdServiceAccountsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Name(name).Id2(id2).Token(token).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiTenantsIdServiceAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -327,8 +327,8 @@ func main() {
     body := *openapiclient.NewControllersCreateServiceAccountRequest() // ControllersCreateServiceAccountRequest | Request body containing name of the service account
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountsApi.ApiTenantsIdServiceAccountsPost(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ServiceAccountsApi.ApiTenantsIdServiceAccountsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiTenantsIdServiceAccountsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

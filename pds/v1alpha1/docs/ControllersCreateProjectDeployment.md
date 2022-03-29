@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClusterName** | Pointer to **string** |  | [optional] 
-**Configuration** | Pointer to **map[string]interface{}** |  | [optional] 
+**ApplicationConfigurationOverrides** | Pointer to **map[string]string** |  | [optional] 
+**ApplicationConfigurationTemplateId** | Pointer to **string** |  | [optional] 
 **DataServiceId** | Pointer to **string** |  | [optional] 
 **DeploymentTargetId** | Pointer to **string** |  | [optional] 
 **DnsZone** | Pointer to **string** |  | [optional] 
 **ImageId** | Pointer to **string** |  | [optional] 
 **LoadBalancerSourceRanges** | Pointer to **[]string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **NamespaceId** | Pointer to **string** |  | [optional] 
-**NodeCount** | Pointer to **int32** |  | [optional] 
-**Resources** | Pointer to **map[string]interface{}** |  | [optional] 
-**Service** | Pointer to **string** |  | [optional] 
+**NodeCount** | Pointer to **int32** | See models.Deployment for more information. | [optional] 
+**ResourceSettingsTemplateId** | Pointer to **string** |  | [optional] 
+**ScheduledBackup** | Pointer to [**ControllersCreateDeploymentScheduledBackup**](ControllersCreateDeploymentScheduledBackup.md) |  | [optional] 
 **ServiceType** | Pointer to **string** |  | [optional] 
+**StorageOptionsTemplateId** | Pointer to **string** |  | [optional] 
 **VersionId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -37,55 +39,55 @@ NewControllersCreateProjectDeploymentWithDefaults instantiates a new Controllers
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetClusterName
+### GetApplicationConfigurationOverrides
 
-`func (o *ControllersCreateProjectDeployment) GetClusterName() string`
+`func (o *ControllersCreateProjectDeployment) GetApplicationConfigurationOverrides() map[string]string`
 
-GetClusterName returns the ClusterName field if non-nil, zero value otherwise.
+GetApplicationConfigurationOverrides returns the ApplicationConfigurationOverrides field if non-nil, zero value otherwise.
 
-### GetClusterNameOk
+### GetApplicationConfigurationOverridesOk
 
-`func (o *ControllersCreateProjectDeployment) GetClusterNameOk() (*string, bool)`
+`func (o *ControllersCreateProjectDeployment) GetApplicationConfigurationOverridesOk() (*map[string]string, bool)`
 
-GetClusterNameOk returns a tuple with the ClusterName field if it's non-nil, zero value otherwise
+GetApplicationConfigurationOverridesOk returns a tuple with the ApplicationConfigurationOverrides field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetClusterName
+### SetApplicationConfigurationOverrides
 
-`func (o *ControllersCreateProjectDeployment) SetClusterName(v string)`
+`func (o *ControllersCreateProjectDeployment) SetApplicationConfigurationOverrides(v map[string]string)`
 
-SetClusterName sets ClusterName field to given value.
+SetApplicationConfigurationOverrides sets ApplicationConfigurationOverrides field to given value.
 
-### HasClusterName
+### HasApplicationConfigurationOverrides
 
-`func (o *ControllersCreateProjectDeployment) HasClusterName() bool`
+`func (o *ControllersCreateProjectDeployment) HasApplicationConfigurationOverrides() bool`
 
-HasClusterName returns a boolean if a field has been set.
+HasApplicationConfigurationOverrides returns a boolean if a field has been set.
 
-### GetConfiguration
+### GetApplicationConfigurationTemplateId
 
-`func (o *ControllersCreateProjectDeployment) GetConfiguration() map[string]interface{}`
+`func (o *ControllersCreateProjectDeployment) GetApplicationConfigurationTemplateId() string`
 
-GetConfiguration returns the Configuration field if non-nil, zero value otherwise.
+GetApplicationConfigurationTemplateId returns the ApplicationConfigurationTemplateId field if non-nil, zero value otherwise.
 
-### GetConfigurationOk
+### GetApplicationConfigurationTemplateIdOk
 
-`func (o *ControllersCreateProjectDeployment) GetConfigurationOk() (*map[string]interface{}, bool)`
+`func (o *ControllersCreateProjectDeployment) GetApplicationConfigurationTemplateIdOk() (*string, bool)`
 
-GetConfigurationOk returns a tuple with the Configuration field if it's non-nil, zero value otherwise
+GetApplicationConfigurationTemplateIdOk returns a tuple with the ApplicationConfigurationTemplateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfiguration
+### SetApplicationConfigurationTemplateId
 
-`func (o *ControllersCreateProjectDeployment) SetConfiguration(v map[string]interface{})`
+`func (o *ControllersCreateProjectDeployment) SetApplicationConfigurationTemplateId(v string)`
 
-SetConfiguration sets Configuration field to given value.
+SetApplicationConfigurationTemplateId sets ApplicationConfigurationTemplateId field to given value.
 
-### HasConfiguration
+### HasApplicationConfigurationTemplateId
 
-`func (o *ControllersCreateProjectDeployment) HasConfiguration() bool`
+`func (o *ControllersCreateProjectDeployment) HasApplicationConfigurationTemplateId() bool`
 
-HasConfiguration returns a boolean if a field has been set.
+HasApplicationConfigurationTemplateId returns a boolean if a field has been set.
 
 ### GetDataServiceId
 
@@ -212,6 +214,31 @@ SetLoadBalancerSourceRanges sets LoadBalancerSourceRanges field to given value.
 
 HasLoadBalancerSourceRanges returns a boolean if a field has been set.
 
+### GetName
+
+`func (o *ControllersCreateProjectDeployment) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ControllersCreateProjectDeployment) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ControllersCreateProjectDeployment) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *ControllersCreateProjectDeployment) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
 ### GetNamespaceId
 
 `func (o *ControllersCreateProjectDeployment) GetNamespaceId() string`
@@ -262,55 +289,55 @@ SetNodeCount sets NodeCount field to given value.
 
 HasNodeCount returns a boolean if a field has been set.
 
-### GetResources
+### GetResourceSettingsTemplateId
 
-`func (o *ControllersCreateProjectDeployment) GetResources() map[string]interface{}`
+`func (o *ControllersCreateProjectDeployment) GetResourceSettingsTemplateId() string`
 
-GetResources returns the Resources field if non-nil, zero value otherwise.
+GetResourceSettingsTemplateId returns the ResourceSettingsTemplateId field if non-nil, zero value otherwise.
 
-### GetResourcesOk
+### GetResourceSettingsTemplateIdOk
 
-`func (o *ControllersCreateProjectDeployment) GetResourcesOk() (*map[string]interface{}, bool)`
+`func (o *ControllersCreateProjectDeployment) GetResourceSettingsTemplateIdOk() (*string, bool)`
 
-GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+GetResourceSettingsTemplateIdOk returns a tuple with the ResourceSettingsTemplateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResources
+### SetResourceSettingsTemplateId
 
-`func (o *ControllersCreateProjectDeployment) SetResources(v map[string]interface{})`
+`func (o *ControllersCreateProjectDeployment) SetResourceSettingsTemplateId(v string)`
 
-SetResources sets Resources field to given value.
+SetResourceSettingsTemplateId sets ResourceSettingsTemplateId field to given value.
 
-### HasResources
+### HasResourceSettingsTemplateId
 
-`func (o *ControllersCreateProjectDeployment) HasResources() bool`
+`func (o *ControllersCreateProjectDeployment) HasResourceSettingsTemplateId() bool`
 
-HasResources returns a boolean if a field has been set.
+HasResourceSettingsTemplateId returns a boolean if a field has been set.
 
-### GetService
+### GetScheduledBackup
 
-`func (o *ControllersCreateProjectDeployment) GetService() string`
+`func (o *ControllersCreateProjectDeployment) GetScheduledBackup() ControllersCreateDeploymentScheduledBackup`
 
-GetService returns the Service field if non-nil, zero value otherwise.
+GetScheduledBackup returns the ScheduledBackup field if non-nil, zero value otherwise.
 
-### GetServiceOk
+### GetScheduledBackupOk
 
-`func (o *ControllersCreateProjectDeployment) GetServiceOk() (*string, bool)`
+`func (o *ControllersCreateProjectDeployment) GetScheduledBackupOk() (*ControllersCreateDeploymentScheduledBackup, bool)`
 
-GetServiceOk returns a tuple with the Service field if it's non-nil, zero value otherwise
+GetScheduledBackupOk returns a tuple with the ScheduledBackup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetService
+### SetScheduledBackup
 
-`func (o *ControllersCreateProjectDeployment) SetService(v string)`
+`func (o *ControllersCreateProjectDeployment) SetScheduledBackup(v ControllersCreateDeploymentScheduledBackup)`
 
-SetService sets Service field to given value.
+SetScheduledBackup sets ScheduledBackup field to given value.
 
-### HasService
+### HasScheduledBackup
 
-`func (o *ControllersCreateProjectDeployment) HasService() bool`
+`func (o *ControllersCreateProjectDeployment) HasScheduledBackup() bool`
 
-HasService returns a boolean if a field has been set.
+HasScheduledBackup returns a boolean if a field has been set.
 
 ### GetServiceType
 
@@ -336,6 +363,31 @@ SetServiceType sets ServiceType field to given value.
 `func (o *ControllersCreateProjectDeployment) HasServiceType() bool`
 
 HasServiceType returns a boolean if a field has been set.
+
+### GetStorageOptionsTemplateId
+
+`func (o *ControllersCreateProjectDeployment) GetStorageOptionsTemplateId() string`
+
+GetStorageOptionsTemplateId returns the StorageOptionsTemplateId field if non-nil, zero value otherwise.
+
+### GetStorageOptionsTemplateIdOk
+
+`func (o *ControllersCreateProjectDeployment) GetStorageOptionsTemplateIdOk() (*string, bool)`
+
+GetStorageOptionsTemplateIdOk returns a tuple with the StorageOptionsTemplateId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageOptionsTemplateId
+
+`func (o *ControllersCreateProjectDeployment) SetStorageOptionsTemplateId(v string)`
+
+SetStorageOptionsTemplateId sets StorageOptionsTemplateId field to given value.
+
+### HasStorageOptionsTemplateId
+
+`func (o *ControllersCreateProjectDeployment) HasStorageOptionsTemplateId() bool`
+
+HasStorageOptionsTemplateId returns a boolean if a field has been set.
 
 ### GetVersionId
 

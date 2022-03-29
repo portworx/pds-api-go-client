@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountName** | Pointer to **string** |  | [optional] 
+**AccountName** | Pointer to **string** | Name of the Azure Storage account. | [optional] 
 
 ## Methods
 

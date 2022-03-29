@@ -16,8 +16,11 @@ import (
 
 // ModelsS3CompatibleCredentials struct for ModelsS3CompatibleCredentials
 type ModelsS3CompatibleCredentials struct {
+	// Access key for S3-compatible user.
 	AccessKey *string `json:"access_key,omitempty"`
+	// Endpoint of S3-compatible storage service.
 	Endpoint *string `json:"endpoint,omitempty"`
+	// Secret key for S3-compatible user.
 	SecretKey *string `json:"secret_key,omitempty"`
 }
 

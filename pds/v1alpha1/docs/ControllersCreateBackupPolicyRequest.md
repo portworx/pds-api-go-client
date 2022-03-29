@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**Schedules** | Pointer to [**[]ModelsBackupSchedule**](ModelsBackupSchedule.md) |  | [optional] 
+**Name** | Pointer to **string** | Name of the backup policy. Must be unique for the given tenant. | [optional] 
+**Schedules** | Pointer to [**[]ModelsBackupSchedule**](ModelsBackupSchedule.md) | An array of the backup schedules. Must be non-empty. | [optional] 
 
 ## Methods
 

@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // ServiceAccountsApiService ServiceAccountsApi service
 type ServiceAccountsApiService service
 
 type ApiApiServiceAccountsIdDeleteRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ServiceAccountsApiService
 	id string
 }
 
 
-func (r ApiApiServiceAccountsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiApiServiceAccountsIdDeleteRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ApiServiceAccountsIdDeleteExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiServiceAccountsIdDelete Delete ServiceAccounts
 
 Removes a single ServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ServiceAccount ID (must be valid UUID)
  @return ApiApiServiceAccountsIdDeleteRequest
 */
-func (a *ServiceAccountsApiService) ApiServiceAccountsIdDelete(ctx context.Context, id string) ApiApiServiceAccountsIdDeleteRequest {
+func (a *ServiceAccountsApiService) ApiServiceAccountsIdDelete(ctx _context.Context, id string) ApiApiServiceAccountsIdDeleteRequest {
 	return ApiApiServiceAccountsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,24 +56,24 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdDelete(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *ServiceAccountsApiService) ApiServiceAccountsIdDeleteExecute(r ApiApiServiceAccountsIdDeleteRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) ApiServiceAccountsIdDeleteExecute(r ApiApiServiceAccountsIdDeleteRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ApiServiceAccountsIdDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/service-accounts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -116,15 +116,15 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdDeleteExecute(r ApiApiSe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,13 +135,13 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdDeleteExecute(r ApiApiSe
 }
 
 type ApiApiServiceAccountsIdGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ServiceAccountsApiService
 	id string
 }
 
 
-func (r ApiApiServiceAccountsIdGetRequest) Execute() (*ControllersServiceAccountResponse, *http.Response, error) {
+func (r ApiApiServiceAccountsIdGetRequest) Execute() (ControllersServiceAccountResponse, *_nethttp.Response, error) {
 	return r.ApiService.ApiServiceAccountsIdGetExecute(r)
 }
 
@@ -150,11 +150,11 @@ ApiServiceAccountsIdGet Get ServiceAccounts
 
 Fetches a single ServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ServiceAccount ID (must be valid UUID)
  @return ApiApiServiceAccountsIdGetRequest
 */
-func (a *ServiceAccountsApiService) ApiServiceAccountsIdGet(ctx context.Context, id string) ApiApiServiceAccountsIdGetRequest {
+func (a *ServiceAccountsApiService) ApiServiceAccountsIdGet(ctx _context.Context, id string) ApiApiServiceAccountsIdGetRequest {
 	return ApiApiServiceAccountsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,25 +164,25 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdGet(ctx context.Context,
 
 // Execute executes the request
 //  @return ControllersServiceAccountResponse
-func (a *ServiceAccountsApiService) ApiServiceAccountsIdGetExecute(r ApiApiServiceAccountsIdGetRequest) (*ControllersServiceAccountResponse, *http.Response, error) {
+func (a *ServiceAccountsApiService) ApiServiceAccountsIdGetExecute(r ApiApiServiceAccountsIdGetRequest) (ControllersServiceAccountResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersServiceAccountResponse
+		localVarReturnValue  ControllersServiceAccountResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ApiServiceAccountsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/service-accounts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -225,15 +225,15 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdGetExecute(r ApiApiServi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,7 +242,7 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdGetExecute(r ApiApiServi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -253,13 +253,13 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdGetExecute(r ApiApiServi
 }
 
 type ApiApiServiceAccountsIdTokenGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ServiceAccountsApiService
 	id string
 }
 
 
-func (r ApiApiServiceAccountsIdTokenGetRequest) Execute() (*ControllersServiceAccountTokenResponse, *http.Response, error) {
+func (r ApiApiServiceAccountsIdTokenGetRequest) Execute() (ControllersServiceAccountTokenResponse, *_nethttp.Response, error) {
 	return r.ApiService.ApiServiceAccountsIdTokenGetExecute(r)
 }
 
@@ -268,11 +268,11 @@ ApiServiceAccountsIdTokenGet Get token of a ServiceAccount
 
 Fetches the token of a ServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ServiceAccount ID (must be valid UUID)
  @return ApiApiServiceAccountsIdTokenGetRequest
 */
-func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGet(ctx context.Context, id string) ApiApiServiceAccountsIdTokenGetRequest {
+func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGet(ctx _context.Context, id string) ApiApiServiceAccountsIdTokenGetRequest {
 	return ApiApiServiceAccountsIdTokenGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -282,25 +282,25 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGet(ctx context.Con
 
 // Execute executes the request
 //  @return ControllersServiceAccountTokenResponse
-func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGetExecute(r ApiApiServiceAccountsIdTokenGetRequest) (*ControllersServiceAccountTokenResponse, *http.Response, error) {
+func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGetExecute(r ApiApiServiceAccountsIdTokenGetRequest) (ControllersServiceAccountTokenResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersServiceAccountTokenResponse
+		localVarReturnValue  ControllersServiceAccountTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ApiServiceAccountsIdTokenGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/service-accounts/{id}/token"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -343,15 +343,15 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGetExecute(r ApiApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -360,7 +360,7 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGetExecute(r ApiApi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -371,7 +371,7 @@ func (a *ServiceAccountsApiService) ApiServiceAccountsIdTokenGetExecute(r ApiApi
 }
 
 type ApiApiTenantsIdServiceAccountsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ServiceAccountsApiService
 	id string
 	sortBy *string
@@ -413,7 +413,7 @@ func (r ApiApiTenantsIdServiceAccountsGetRequest) Token(token string) ApiApiTena
 	return r
 }
 
-func (r ApiApiTenantsIdServiceAccountsGetRequest) Execute() (*ControllersPaginatedServiceAccounts, *http.Response, error) {
+func (r ApiApiTenantsIdServiceAccountsGetRequest) Execute() (ControllersPaginatedServiceAccounts, *_nethttp.Response, error) {
 	return r.ApiService.ApiTenantsIdServiceAccountsGetExecute(r)
 }
 
@@ -422,11 +422,11 @@ ApiTenantsIdServiceAccountsGet List Tenant's ServiceAccounts
 
 List Tenant's ServiceAccounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdServiceAccountsGetRequest
 */
-func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGet(ctx context.Context, id string) ApiApiTenantsIdServiceAccountsGetRequest {
+func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGet(ctx _context.Context, id string) ApiApiTenantsIdServiceAccountsGetRequest {
 	return ApiApiTenantsIdServiceAccountsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -436,25 +436,25 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGet(ctx context.C
 
 // Execute executes the request
 //  @return ControllersPaginatedServiceAccounts
-func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiApiTenantsIdServiceAccountsGetRequest) (*ControllersPaginatedServiceAccounts, *http.Response, error) {
+func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiApiTenantsIdServiceAccountsGetRequest) (ControllersPaginatedServiceAccounts, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedServiceAccounts
+		localVarReturnValue  ControllersPaginatedServiceAccounts
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ApiTenantsIdServiceAccountsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/service-accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -515,15 +515,15 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -532,7 +532,7 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -543,7 +543,7 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiA
 }
 
 type ApiApiTenantsIdServiceAccountsPostRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ServiceAccountsApiService
 	id string
 	body *ControllersCreateServiceAccountRequest
@@ -555,7 +555,7 @@ func (r ApiApiTenantsIdServiceAccountsPostRequest) Body(body ControllersCreateSe
 	return r
 }
 
-func (r ApiApiTenantsIdServiceAccountsPostRequest) Execute() (*ModelsServiceAccount, *http.Response, error) {
+func (r ApiApiTenantsIdServiceAccountsPostRequest) Execute() (ModelsServiceAccount, *_nethttp.Response, error) {
 	return r.ApiService.ApiTenantsIdServiceAccountsPostExecute(r)
 }
 
@@ -564,11 +564,11 @@ ApiTenantsIdServiceAccountsPost Create ServiceAccounts
 
 Creates a new ServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdServiceAccountsPostRequest
 */
-func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPost(ctx context.Context, id string) ApiApiTenantsIdServiceAccountsPostRequest {
+func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPost(ctx _context.Context, id string) ApiApiTenantsIdServiceAccountsPostRequest {
 	return ApiApiTenantsIdServiceAccountsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -578,25 +578,25 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPost(ctx context.
 
 // Execute executes the request
 //  @return ModelsServiceAccount
-func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPostExecute(r ApiApiTenantsIdServiceAccountsPostRequest) (*ModelsServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPostExecute(r ApiApiTenantsIdServiceAccountsPostRequest) (ModelsServiceAccount, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsServiceAccount
+		localVarReturnValue  ModelsServiceAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ApiTenantsIdServiceAccountsPost")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/service-accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -644,15 +644,15 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPostExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -661,7 +661,7 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsPostExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

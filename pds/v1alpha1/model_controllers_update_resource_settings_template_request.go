@@ -20,6 +20,7 @@ type ControllersUpdateResourceSettingsTemplateRequest struct {
 	CpuRequest *string `json:"cpu_request,omitempty"`
 	MemoryLimit *string `json:"memory_limit,omitempty"`
 	MemoryRequest *string `json:"memory_request,omitempty"`
+	// See models.ResourceSettingsTemplate for more information.
 	Name *string `json:"name,omitempty"`
 	StorageRequest *string `json:"storage_request,omitempty"`
 }

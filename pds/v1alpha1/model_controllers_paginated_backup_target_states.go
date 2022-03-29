@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedBackupTargetStates struct for ControllersPaginatedBackupTargetStates
 type ControllersPaginatedBackupTargetStates struct {
-	Data []ModelsBackupTargetState `json:"data,omitempty"`
+	Data *[]ModelsBackupTargetState `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedBackupTargetStates instantiates a new ControllersPaginatedBackupTargetStates object
@@ -42,12 +42,12 @@ func (o *ControllersPaginatedBackupTargetStates) GetData() []ModelsBackupTargetS
 		var ret []ModelsBackupTargetState
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupTargetStates) GetDataOk() ([]ModelsBackupTargetState, bool) {
+func (o *ControllersPaginatedBackupTargetStates) GetDataOk() (*[]ModelsBackupTargetState, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ControllersPaginatedBackupTargetStates) HasData() bool {
 
 // SetData gets a reference to the given []ModelsBackupTargetState and assigns it to the Data field.
 func (o *ControllersPaginatedBackupTargetStates) SetData(v []ModelsBackupTargetState) {
-	o.Data = v
+	o.Data = &v
 }
 
 func (o ControllersPaginatedBackupTargetStates) MarshalJSON() ([]byte, error) {

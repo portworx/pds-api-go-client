@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // ResourceSettingsTemplatesApiService ResourceSettingsTemplatesApi service
 type ResourceSettingsTemplatesApiService service
 
 type ApiApiResourceSettingsTemplatesIdDeleteRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 }
 
 
-func (r ApiApiResourceSettingsTemplatesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiApiResourceSettingsTemplatesIdDeleteRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ApiResourceSettingsTemplatesIdDeleteExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiResourceSettingsTemplatesIdDelete Delete ResourceSettingsTemplates
 
 Removes a single ResourceSettingsTemplate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ResourceSettingsTemplate ID (must be valid UUID)
  @return ApiApiResourceSettingsTemplatesIdDeleteRequest
 */
-func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDelete(ctx context.Context, id string) ApiApiResourceSettingsTemplatesIdDeleteRequest {
+func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDelete(ctx _context.Context, id string) ApiApiResourceSettingsTemplatesIdDeleteRequest {
 	return ApiApiResourceSettingsTemplatesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,24 +56,24 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDele
 }
 
 // Execute executes the request
-func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDeleteExecute(r ApiApiResourceSettingsTemplatesIdDeleteRequest) (*http.Response, error) {
+func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDeleteExecute(r ApiApiResourceSettingsTemplatesIdDeleteRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceSettingsTemplatesApiService.ApiResourceSettingsTemplatesIdDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/resource-settings-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -116,15 +116,15 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDele
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,13 +135,13 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDele
 }
 
 type ApiApiResourceSettingsTemplatesIdGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 }
 
 
-func (r ApiApiResourceSettingsTemplatesIdGetRequest) Execute() (*ModelsResourceSettingsTemplate, *http.Response, error) {
+func (r ApiApiResourceSettingsTemplatesIdGetRequest) Execute() (ModelsResourceSettingsTemplate, *_nethttp.Response, error) {
 	return r.ApiService.ApiResourceSettingsTemplatesIdGetExecute(r)
 }
 
@@ -150,11 +150,11 @@ ApiResourceSettingsTemplatesIdGet Get ResourceSettingsTemplate
 
 Fetches a single ResourceSettingsTemplate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ResourceSettingsTemplate ID (must be valid UUID)
  @return ApiApiResourceSettingsTemplatesIdGetRequest
 */
-func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGet(ctx context.Context, id string) ApiApiResourceSettingsTemplatesIdGetRequest {
+func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGet(ctx _context.Context, id string) ApiApiResourceSettingsTemplatesIdGetRequest {
 	return ApiApiResourceSettingsTemplatesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,25 +164,25 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGet(
 
 // Execute executes the request
 //  @return ModelsResourceSettingsTemplate
-func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetExecute(r ApiApiResourceSettingsTemplatesIdGetRequest) (*ModelsResourceSettingsTemplate, *http.Response, error) {
+func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetExecute(r ApiApiResourceSettingsTemplatesIdGetRequest) (ModelsResourceSettingsTemplate, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsResourceSettingsTemplate
+		localVarReturnValue  ModelsResourceSettingsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceSettingsTemplatesApiService.ApiResourceSettingsTemplatesIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/resource-settings-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -225,15 +225,15 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,7 +242,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetE
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -253,7 +253,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetE
 }
 
 type ApiApiResourceSettingsTemplatesIdPutRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 	body *ControllersUpdateResourceSettingsTemplateRequest
@@ -265,7 +265,7 @@ func (r ApiApiResourceSettingsTemplatesIdPutRequest) Body(body ControllersUpdate
 	return r
 }
 
-func (r ApiApiResourceSettingsTemplatesIdPutRequest) Execute() (*ModelsResourceSettingsTemplate, *http.Response, error) {
+func (r ApiApiResourceSettingsTemplatesIdPutRequest) Execute() (ModelsResourceSettingsTemplate, *_nethttp.Response, error) {
 	return r.ApiService.ApiResourceSettingsTemplatesIdPutExecute(r)
 }
 
@@ -274,11 +274,11 @@ ApiResourceSettingsTemplatesIdPut Update ResourceSettingsTemplate
 
 Updates existing ResourceSettingsTemplate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ResourceSettingsTemplate ID (must be valid UUID)
  @return ApiApiResourceSettingsTemplatesIdPutRequest
 */
-func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPut(ctx context.Context, id string) ApiApiResourceSettingsTemplatesIdPutRequest {
+func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPut(ctx _context.Context, id string) ApiApiResourceSettingsTemplatesIdPutRequest {
 	return ApiApiResourceSettingsTemplatesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -288,25 +288,25 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPut(
 
 // Execute executes the request
 //  @return ModelsResourceSettingsTemplate
-func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutExecute(r ApiApiResourceSettingsTemplatesIdPutRequest) (*ModelsResourceSettingsTemplate, *http.Response, error) {
+func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutExecute(r ApiApiResourceSettingsTemplatesIdPutRequest) (ModelsResourceSettingsTemplate, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsResourceSettingsTemplate
+		localVarReturnValue  ModelsResourceSettingsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceSettingsTemplatesApiService.ApiResourceSettingsTemplatesIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/resource-settings-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -354,15 +354,15 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -371,7 +371,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutE
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -382,7 +382,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutE
 }
 
 type ApiApiTenantsIdResourceSettingsTemplatesGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 	sortBy *string
@@ -424,7 +424,7 @@ func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) DataServiceId(dataSe
 	return r
 }
 
-func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) Execute() (*ControllersPaginatedResourceSettingsTemplates, *http.Response, error) {
+func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) Execute() (ControllersPaginatedResourceSettingsTemplates, *_nethttp.Response, error) {
 	return r.ApiService.ApiTenantsIdResourceSettingsTemplatesGetExecute(r)
 }
 
@@ -433,11 +433,11 @@ ApiTenantsIdResourceSettingsTemplatesGet List ResourceSettingsTemplates
 
 Lists ResourceSettingsTemplates
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdResourceSettingsTemplatesGetRequest
 */
-func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesGet(ctx context.Context, id string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
+func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesGet(ctx _context.Context, id string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
 	return ApiApiTenantsIdResourceSettingsTemplatesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -447,25 +447,25 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 
 // Execute executes the request
 //  @return ControllersPaginatedResourceSettingsTemplates
-func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesGetExecute(r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) (*ControllersPaginatedResourceSettingsTemplates, *http.Response, error) {
+func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesGetExecute(r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) (ControllersPaginatedResourceSettingsTemplates, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedResourceSettingsTemplates
+		localVarReturnValue  ControllersPaginatedResourceSettingsTemplates
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceSettingsTemplatesApiService.ApiTenantsIdResourceSettingsTemplatesGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/resource-settings-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -526,15 +526,15 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -543,7 +543,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -554,7 +554,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 }
 
 type ApiApiTenantsIdResourceSettingsTemplatesPostRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 	body *ControllersCreateResourceSettingsTemplatesRequest
@@ -566,7 +566,7 @@ func (r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) Body(body Controlle
 	return r
 }
 
-func (r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) Execute() (*ModelsResourceSettingsTemplate, *http.Response, error) {
+func (r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) Execute() (ModelsResourceSettingsTemplate, *_nethttp.Response, error) {
 	return r.ApiService.ApiTenantsIdResourceSettingsTemplatesPostExecute(r)
 }
 
@@ -575,11 +575,11 @@ ApiTenantsIdResourceSettingsTemplatesPost Create ResourceSettingsTemplates
 
 Creates a new ResourceSettingsTemplates
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdResourceSettingsTemplatesPostRequest
 */
-func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesPost(ctx context.Context, id string) ApiApiTenantsIdResourceSettingsTemplatesPostRequest {
+func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesPost(ctx _context.Context, id string) ApiApiTenantsIdResourceSettingsTemplatesPostRequest {
 	return ApiApiTenantsIdResourceSettingsTemplatesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -589,25 +589,25 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 
 // Execute executes the request
 //  @return ModelsResourceSettingsTemplate
-func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesPostExecute(r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) (*ModelsResourceSettingsTemplate, *http.Response, error) {
+func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTemplatesPostExecute(r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) (ModelsResourceSettingsTemplate, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsResourceSettingsTemplate
+		localVarReturnValue  ModelsResourceSettingsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceSettingsTemplatesApiService.ApiTenantsIdResourceSettingsTemplatesPost")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/resource-settings-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -655,15 +655,15 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -672,7 +672,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

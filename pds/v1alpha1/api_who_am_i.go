@@ -12,27 +12,27 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // WhoAmIApiService WhoAmIApi service
 type WhoAmIApiService service
 
 type ApiApiWhoamiGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *WhoAmIApiService
 }
 
 
-func (r ApiApiWhoamiGetRequest) Execute() (*ControllersWhoAmIResponse, *http.Response, error) {
+func (r ApiApiWhoamiGetRequest) Execute() (ControllersWhoAmIResponse, *_nethttp.Response, error) {
 	return r.ApiService.ApiWhoamiGetExecute(r)
 }
 
@@ -41,10 +41,10 @@ ApiWhoamiGet Get Current Actor
 
 Fetches a details of the current calling actor (user or service account)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiWhoamiGetRequest
 */
-func (a *WhoAmIApiService) ApiWhoamiGet(ctx context.Context) ApiApiWhoamiGetRequest {
+func (a *WhoAmIApiService) ApiWhoamiGet(ctx _context.Context) ApiApiWhoamiGetRequest {
 	return ApiApiWhoamiGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -53,24 +53,24 @@ func (a *WhoAmIApiService) ApiWhoamiGet(ctx context.Context) ApiApiWhoamiGetRequ
 
 // Execute executes the request
 //  @return ControllersWhoAmIResponse
-func (a *WhoAmIApiService) ApiWhoamiGetExecute(r ApiApiWhoamiGetRequest) (*ControllersWhoAmIResponse, *http.Response, error) {
+func (a *WhoAmIApiService) ApiWhoamiGetExecute(r ApiApiWhoamiGetRequest) (ControllersWhoAmIResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersWhoAmIResponse
+		localVarReturnValue  ControllersWhoAmIResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WhoAmIApiService.ApiWhoamiGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/whoami"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -113,15 +113,15 @@ func (a *WhoAmIApiService) ApiWhoamiGetExecute(r ApiApiWhoamiGetRequest) (*Contr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -130,7 +130,7 @@ func (a *WhoAmIApiService) ApiWhoamiGetExecute(r ApiApiWhoamiGetRequest) (*Contr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

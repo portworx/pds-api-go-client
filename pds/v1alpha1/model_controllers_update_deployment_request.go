@@ -16,12 +16,13 @@ import (
 
 // ControllersUpdateDeploymentRequest struct for ControllersUpdateDeploymentRequest
 type ControllersUpdateDeploymentRequest struct {
-	Configuration map[string]interface{} `json:"configuration,omitempty"`
-	ConnectionDetails map[string]interface{} `json:"connection_details,omitempty"`
-	Endpoint *string `json:"endpoint,omitempty"`
+	ApplicationConfigurationOverrides *map[string]string `json:"application_configuration_overrides,omitempty"`
+	ApplicationConfigurationTemplateId *string `json:"application_configuration_template_id,omitempty"`
 	ImageId *string `json:"image_id,omitempty"`
+	// See models.Deployment for more information.
 	NodeCount *int32 `json:"node_count,omitempty"`
-	Resources map[string]interface{} `json:"resources,omitempty"`
+	ResourceSettingsTemplateId *string `json:"resource_settings_template_id,omitempty"`
+	ScheduledBackup *ControllersUpdateDeploymentScheduledBackup `json:"scheduled_backup,omitempty"`
 }
 
 // NewControllersUpdateDeploymentRequest instantiates a new ControllersUpdateDeploymentRequest object
@@ -41,100 +42,68 @@ func NewControllersUpdateDeploymentRequestWithDefaults() *ControllersUpdateDeplo
 	return &this
 }
 
-// GetConfiguration returns the Configuration field value if set, zero value otherwise.
-func (o *ControllersUpdateDeploymentRequest) GetConfiguration() map[string]interface{} {
-	if o == nil || o.Configuration == nil {
-		var ret map[string]interface{}
+// GetApplicationConfigurationOverrides returns the ApplicationConfigurationOverrides field value if set, zero value otherwise.
+func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverrides() map[string]string {
+	if o == nil || o.ApplicationConfigurationOverrides == nil {
+		var ret map[string]string
 		return ret
 	}
-	return o.Configuration
+	return *o.ApplicationConfigurationOverrides
 }
 
-// GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
+// GetApplicationConfigurationOverridesOk returns a tuple with the ApplicationConfigurationOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersUpdateDeploymentRequest) GetConfigurationOk() (map[string]interface{}, bool) {
-	if o == nil || o.Configuration == nil {
+func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverridesOk() (*map[string]string, bool) {
+	if o == nil || o.ApplicationConfigurationOverrides == nil {
 		return nil, false
 	}
-	return o.Configuration, true
+	return o.ApplicationConfigurationOverrides, true
 }
 
-// HasConfiguration returns a boolean if a field has been set.
-func (o *ControllersUpdateDeploymentRequest) HasConfiguration() bool {
-	if o != nil && o.Configuration != nil {
+// HasApplicationConfigurationOverrides returns a boolean if a field has been set.
+func (o *ControllersUpdateDeploymentRequest) HasApplicationConfigurationOverrides() bool {
+	if o != nil && o.ApplicationConfigurationOverrides != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConfiguration gets a reference to the given map[string]interface{} and assigns it to the Configuration field.
-func (o *ControllersUpdateDeploymentRequest) SetConfiguration(v map[string]interface{}) {
-	o.Configuration = v
+// SetApplicationConfigurationOverrides gets a reference to the given map[string]string and assigns it to the ApplicationConfigurationOverrides field.
+func (o *ControllersUpdateDeploymentRequest) SetApplicationConfigurationOverrides(v map[string]string) {
+	o.ApplicationConfigurationOverrides = &v
 }
 
-// GetConnectionDetails returns the ConnectionDetails field value if set, zero value otherwise.
-func (o *ControllersUpdateDeploymentRequest) GetConnectionDetails() map[string]interface{} {
-	if o == nil || o.ConnectionDetails == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ConnectionDetails
-}
-
-// GetConnectionDetailsOk returns a tuple with the ConnectionDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ControllersUpdateDeploymentRequest) GetConnectionDetailsOk() (map[string]interface{}, bool) {
-	if o == nil || o.ConnectionDetails == nil {
-		return nil, false
-	}
-	return o.ConnectionDetails, true
-}
-
-// HasConnectionDetails returns a boolean if a field has been set.
-func (o *ControllersUpdateDeploymentRequest) HasConnectionDetails() bool {
-	if o != nil && o.ConnectionDetails != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectionDetails gets a reference to the given map[string]interface{} and assigns it to the ConnectionDetails field.
-func (o *ControllersUpdateDeploymentRequest) SetConnectionDetails(v map[string]interface{}) {
-	o.ConnectionDetails = v
-}
-
-// GetEndpoint returns the Endpoint field value if set, zero value otherwise.
-func (o *ControllersUpdateDeploymentRequest) GetEndpoint() string {
-	if o == nil || o.Endpoint == nil {
+// GetApplicationConfigurationTemplateId returns the ApplicationConfigurationTemplateId field value if set, zero value otherwise.
+func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplateId() string {
+	if o == nil || o.ApplicationConfigurationTemplateId == nil {
 		var ret string
 		return ret
 	}
-	return *o.Endpoint
+	return *o.ApplicationConfigurationTemplateId
 }
 
-// GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
+// GetApplicationConfigurationTemplateIdOk returns a tuple with the ApplicationConfigurationTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersUpdateDeploymentRequest) GetEndpointOk() (*string, bool) {
-	if o == nil || o.Endpoint == nil {
+func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplateIdOk() (*string, bool) {
+	if o == nil || o.ApplicationConfigurationTemplateId == nil {
 		return nil, false
 	}
-	return o.Endpoint, true
+	return o.ApplicationConfigurationTemplateId, true
 }
 
-// HasEndpoint returns a boolean if a field has been set.
-func (o *ControllersUpdateDeploymentRequest) HasEndpoint() bool {
-	if o != nil && o.Endpoint != nil {
+// HasApplicationConfigurationTemplateId returns a boolean if a field has been set.
+func (o *ControllersUpdateDeploymentRequest) HasApplicationConfigurationTemplateId() bool {
+	if o != nil && o.ApplicationConfigurationTemplateId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEndpoint gets a reference to the given string and assigns it to the Endpoint field.
-func (o *ControllersUpdateDeploymentRequest) SetEndpoint(v string) {
-	o.Endpoint = &v
+// SetApplicationConfigurationTemplateId gets a reference to the given string and assigns it to the ApplicationConfigurationTemplateId field.
+func (o *ControllersUpdateDeploymentRequest) SetApplicationConfigurationTemplateId(v string) {
+	o.ApplicationConfigurationTemplateId = &v
 }
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
@@ -201,48 +170,77 @@ func (o *ControllersUpdateDeploymentRequest) SetNodeCount(v int32) {
 	o.NodeCount = &v
 }
 
-// GetResources returns the Resources field value if set, zero value otherwise.
-func (o *ControllersUpdateDeploymentRequest) GetResources() map[string]interface{} {
-	if o == nil || o.Resources == nil {
-		var ret map[string]interface{}
+// GetResourceSettingsTemplateId returns the ResourceSettingsTemplateId field value if set, zero value otherwise.
+func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateId() string {
+	if o == nil || o.ResourceSettingsTemplateId == nil {
+		var ret string
 		return ret
 	}
-	return o.Resources
+	return *o.ResourceSettingsTemplateId
 }
 
-// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// GetResourceSettingsTemplateIdOk returns a tuple with the ResourceSettingsTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersUpdateDeploymentRequest) GetResourcesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Resources == nil {
+func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateIdOk() (*string, bool) {
+	if o == nil || o.ResourceSettingsTemplateId == nil {
 		return nil, false
 	}
-	return o.Resources, true
+	return o.ResourceSettingsTemplateId, true
 }
 
-// HasResources returns a boolean if a field has been set.
-func (o *ControllersUpdateDeploymentRequest) HasResources() bool {
-	if o != nil && o.Resources != nil {
+// HasResourceSettingsTemplateId returns a boolean if a field has been set.
+func (o *ControllersUpdateDeploymentRequest) HasResourceSettingsTemplateId() bool {
+	if o != nil && o.ResourceSettingsTemplateId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetResources gets a reference to the given map[string]interface{} and assigns it to the Resources field.
-func (o *ControllersUpdateDeploymentRequest) SetResources(v map[string]interface{}) {
-	o.Resources = v
+// SetResourceSettingsTemplateId gets a reference to the given string and assigns it to the ResourceSettingsTemplateId field.
+func (o *ControllersUpdateDeploymentRequest) SetResourceSettingsTemplateId(v string) {
+	o.ResourceSettingsTemplateId = &v
+}
+
+// GetScheduledBackup returns the ScheduledBackup field value if set, zero value otherwise.
+func (o *ControllersUpdateDeploymentRequest) GetScheduledBackup() ControllersUpdateDeploymentScheduledBackup {
+	if o == nil || o.ScheduledBackup == nil {
+		var ret ControllersUpdateDeploymentScheduledBackup
+		return ret
+	}
+	return *o.ScheduledBackup
+}
+
+// GetScheduledBackupOk returns a tuple with the ScheduledBackup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersUpdateDeploymentRequest) GetScheduledBackupOk() (*ControllersUpdateDeploymentScheduledBackup, bool) {
+	if o == nil || o.ScheduledBackup == nil {
+		return nil, false
+	}
+	return o.ScheduledBackup, true
+}
+
+// HasScheduledBackup returns a boolean if a field has been set.
+func (o *ControllersUpdateDeploymentRequest) HasScheduledBackup() bool {
+	if o != nil && o.ScheduledBackup != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScheduledBackup gets a reference to the given ControllersUpdateDeploymentScheduledBackup and assigns it to the ScheduledBackup field.
+func (o *ControllersUpdateDeploymentRequest) SetScheduledBackup(v ControllersUpdateDeploymentScheduledBackup) {
+	o.ScheduledBackup = &v
 }
 
 func (o ControllersUpdateDeploymentRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Configuration != nil {
-		toSerialize["configuration"] = o.Configuration
+	if o.ApplicationConfigurationOverrides != nil {
+		toSerialize["application_configuration_overrides"] = o.ApplicationConfigurationOverrides
 	}
-	if o.ConnectionDetails != nil {
-		toSerialize["connection_details"] = o.ConnectionDetails
-	}
-	if o.Endpoint != nil {
-		toSerialize["endpoint"] = o.Endpoint
+	if o.ApplicationConfigurationTemplateId != nil {
+		toSerialize["application_configuration_template_id"] = o.ApplicationConfigurationTemplateId
 	}
 	if o.ImageId != nil {
 		toSerialize["image_id"] = o.ImageId
@@ -250,8 +248,11 @@ func (o ControllersUpdateDeploymentRequest) MarshalJSON() ([]byte, error) {
 	if o.NodeCount != nil {
 		toSerialize["node_count"] = o.NodeCount
 	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
+	if o.ResourceSettingsTemplateId != nil {
+		toSerialize["resource_settings_template_id"] = o.ResourceSettingsTemplateId
+	}
+	if o.ScheduledBackup != nil {
+		toSerialize["scheduled_backup"] = o.ScheduledBackup
 	}
 	return json.Marshal(toSerialize)
 }

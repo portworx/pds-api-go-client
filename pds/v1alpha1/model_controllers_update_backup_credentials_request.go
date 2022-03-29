@@ -17,6 +17,7 @@ import (
 // ControllersUpdateBackupCredentialsRequest struct for ControllersUpdateBackupCredentialsRequest
 type ControllersUpdateBackupCredentialsRequest struct {
 	Credentials *ControllersCredentials `json:"credentials,omitempty"`
+	// Name of the backup credentials. Must be unique for the given tenant.
 	Name *string `json:"name,omitempty"`
 }
 

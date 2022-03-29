@@ -12,22 +12,22 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // GlobalRoleBindingsApiService GlobalRoleBindingsApi service
 type GlobalRoleBindingsApiService service
 
 type ApiApiGlobalRoleBindingsDeleteRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *GlobalRoleBindingsApiService
 	actorType *string
 }
@@ -38,7 +38,7 @@ func (r ApiApiGlobalRoleBindingsDeleteRequest) ActorType(actorType string) ApiAp
 	return r
 }
 
-func (r ApiApiGlobalRoleBindingsDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiApiGlobalRoleBindingsDeleteRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ApiGlobalRoleBindingsDeleteExecute(r)
 }
 
@@ -47,10 +47,10 @@ ApiGlobalRoleBindingsDelete Delete GlobalRoleBinding
 
 Removes a single GlobalRoleBindings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiGlobalRoleBindingsDeleteRequest
 */
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDelete(ctx context.Context) ApiApiGlobalRoleBindingsDeleteRequest {
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDelete(ctx _context.Context) ApiApiGlobalRoleBindingsDeleteRequest {
 	return ApiApiGlobalRoleBindingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,23 +58,23 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDelete(ctx context.C
 }
 
 // Execute executes the request
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDeleteExecute(r ApiApiGlobalRoleBindingsDeleteRequest) (*http.Response, error) {
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDeleteExecute(r ApiApiGlobalRoleBindingsDeleteRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalRoleBindingsApiService.ApiGlobalRoleBindingsDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/global-role-bindings"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -119,15 +119,15 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDeleteExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -138,7 +138,7 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDeleteExecute(r ApiA
 }
 
 type ApiApiGlobalRoleBindingsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *GlobalRoleBindingsApiService
 	sortBy *string
 	roleName *string
@@ -167,7 +167,7 @@ func (r ApiApiGlobalRoleBindingsGetRequest) ActorType(actorType string) ApiApiGl
 	return r
 }
 
-func (r ApiApiGlobalRoleBindingsGetRequest) Execute() (*ControllersPaginatedGlobalRoleBindings, *http.Response, error) {
+func (r ApiApiGlobalRoleBindingsGetRequest) Execute() (ControllersPaginatedGlobalRoleBindings, *_nethttp.Response, error) {
 	return r.ApiService.ApiGlobalRoleBindingsGetExecute(r)
 }
 
@@ -176,10 +176,10 @@ ApiGlobalRoleBindingsGet List GlobalRoleBindings
 
 Lists GlobalRoleBindings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiGlobalRoleBindingsGetRequest
 */
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGet(ctx context.Context) ApiApiGlobalRoleBindingsGetRequest {
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGet(ctx _context.Context) ApiApiGlobalRoleBindingsGetRequest {
 	return ApiApiGlobalRoleBindingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -188,24 +188,24 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGet(ctx context.Cont
 
 // Execute executes the request
 //  @return ControllersPaginatedGlobalRoleBindings
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiGlobalRoleBindingsGetRequest) (*ControllersPaginatedGlobalRoleBindings, *http.Response, error) {
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiGlobalRoleBindingsGetRequest) (ControllersPaginatedGlobalRoleBindings, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedGlobalRoleBindings
+		localVarReturnValue  ControllersPaginatedGlobalRoleBindings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalRoleBindingsApiService.ApiGlobalRoleBindingsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/global-role-bindings"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -260,15 +260,15 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -277,7 +277,7 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -288,7 +288,7 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiG
 }
 
 type ApiApiGlobalRoleBindingsPutRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *GlobalRoleBindingsApiService
 	body *ModelsGlobalRoleBinding
 }
@@ -299,7 +299,7 @@ func (r ApiApiGlobalRoleBindingsPutRequest) Body(body ModelsGlobalRoleBinding) A
 	return r
 }
 
-func (r ApiApiGlobalRoleBindingsPutRequest) Execute() (*ModelsGlobalRoleBinding, *http.Response, error) {
+func (r ApiApiGlobalRoleBindingsPutRequest) Execute() (ModelsGlobalRoleBinding, *_nethttp.Response, error) {
 	return r.ApiService.ApiGlobalRoleBindingsPutExecute(r)
 }
 
@@ -308,10 +308,10 @@ ApiGlobalRoleBindingsPut Set GlobalRoleBinding
 
 Creates a new GlobalRoleBinding
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiGlobalRoleBindingsPutRequest
 */
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPut(ctx context.Context) ApiApiGlobalRoleBindingsPutRequest {
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPut(ctx _context.Context) ApiApiGlobalRoleBindingsPutRequest {
 	return ApiApiGlobalRoleBindingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -320,24 +320,24 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPut(ctx context.Cont
 
 // Execute executes the request
 //  @return ModelsGlobalRoleBinding
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiGlobalRoleBindingsPutRequest) (*ModelsGlobalRoleBinding, *http.Response, error) {
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiGlobalRoleBindingsPutRequest) (ModelsGlobalRoleBinding, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsGlobalRoleBinding
+		localVarReturnValue  ModelsGlobalRoleBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalRoleBindingsApiService.ApiGlobalRoleBindingsPut")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/global-role-bindings"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -385,15 +385,15 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -402,7 +402,7 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

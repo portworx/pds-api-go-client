@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // VersionsApiService VersionsApi service
 type VersionsApiService service
 
 type ApiApiDataServicesIdVersionsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *VersionsApiService
 	id string
 	sortBy *string
@@ -64,7 +64,7 @@ func (r ApiApiDataServicesIdVersionsGetRequest) Name(name string) ApiApiDataServ
 	return r
 }
 
-func (r ApiApiDataServicesIdVersionsGetRequest) Execute() (*ControllersPaginatedVersions, *http.Response, error) {
+func (r ApiApiDataServicesIdVersionsGetRequest) Execute() (ControllersPaginatedVersions, *_nethttp.Response, error) {
 	return r.ApiService.ApiDataServicesIdVersionsGetExecute(r)
 }
 
@@ -73,11 +73,11 @@ ApiDataServicesIdVersionsGet List Data Service's Versions
 
 Lists Versions belonging to the Data Service.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Data Service ID (must be valid UUID)
  @return ApiApiDataServicesIdVersionsGetRequest
 */
-func (a *VersionsApiService) ApiDataServicesIdVersionsGet(ctx context.Context, id string) ApiApiDataServicesIdVersionsGetRequest {
+func (a *VersionsApiService) ApiDataServicesIdVersionsGet(ctx _context.Context, id string) ApiApiDataServicesIdVersionsGetRequest {
 	return ApiApiDataServicesIdVersionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -87,25 +87,25 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGet(ctx context.Context, i
 
 // Execute executes the request
 //  @return ControllersPaginatedVersions
-func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataServicesIdVersionsGetRequest) (*ControllersPaginatedVersions, *http.Response, error) {
+func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataServicesIdVersionsGetRequest) (ControllersPaginatedVersions, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedVersions
+		localVarReturnValue  ControllersPaginatedVersions
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VersionsApiService.ApiDataServicesIdVersionsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/data-services/{id}/versions"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -163,15 +163,15 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataSer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -180,7 +180,7 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataSer
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -191,13 +191,13 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataSer
 }
 
 type ApiApiVersionsIdGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *VersionsApiService
 	id string
 }
 
 
-func (r ApiApiVersionsIdGetRequest) Execute() (*ModelsVersion, *http.Response, error) {
+func (r ApiApiVersionsIdGetRequest) Execute() (ModelsVersion, *_nethttp.Response, error) {
 	return r.ApiService.ApiVersionsIdGetExecute(r)
 }
 
@@ -206,11 +206,11 @@ ApiVersionsIdGet Get Version
 
 Fetches a single Version
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Version ID (must be valid UUID)
  @return ApiApiVersionsIdGetRequest
 */
-func (a *VersionsApiService) ApiVersionsIdGet(ctx context.Context, id string) ApiApiVersionsIdGetRequest {
+func (a *VersionsApiService) ApiVersionsIdGet(ctx _context.Context, id string) ApiApiVersionsIdGetRequest {
 	return ApiApiVersionsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,25 +220,25 @@ func (a *VersionsApiService) ApiVersionsIdGet(ctx context.Context, id string) Ap
 
 // Execute executes the request
 //  @return ModelsVersion
-func (a *VersionsApiService) ApiVersionsIdGetExecute(r ApiApiVersionsIdGetRequest) (*ModelsVersion, *http.Response, error) {
+func (a *VersionsApiService) ApiVersionsIdGetExecute(r ApiApiVersionsIdGetRequest) (ModelsVersion, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsVersion
+		localVarReturnValue  ModelsVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VersionsApiService.ApiVersionsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/versions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -281,15 +281,15 @@ func (a *VersionsApiService) ApiVersionsIdGetExecute(r ApiApiVersionsIdGetReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -298,7 +298,7 @@ func (a *VersionsApiService) ApiVersionsIdGetExecute(r ApiApiVersionsIdGetReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

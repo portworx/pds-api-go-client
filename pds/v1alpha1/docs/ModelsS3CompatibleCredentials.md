@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessKey** | Pointer to **string** |  | [optional] 
-**Endpoint** | Pointer to **string** |  | [optional] 
-**SecretKey** | Pointer to **string** |  | [optional] 
+**AccessKey** | Pointer to **string** | Access key for S3-compatible user. | [optional] 
+**Endpoint** | Pointer to **string** | Endpoint of S3-compatible storage service. | [optional] 
+**SecretKey** | Pointer to **string** | Secret key for S3-compatible user. | [optional] 
 
 ## Methods
 

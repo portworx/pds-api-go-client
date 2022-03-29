@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedApplicationConfigurationTemplates struct for ControllersPaginatedApplicationConfigurationTemplates
 type ControllersPaginatedApplicationConfigurationTemplates struct {
-	Data []ModelsApplicationConfigurationTemplate `json:"data,omitempty"`
+	Data *[]ModelsApplicationConfigurationTemplate `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedApplicationConfigurationTemplates) GetData() []Mode
 		var ret []ModelsApplicationConfigurationTemplate
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedApplicationConfigurationTemplates) GetDataOk() ([]ModelsApplicationConfigurationTemplate, bool) {
+func (o *ControllersPaginatedApplicationConfigurationTemplates) GetDataOk() (*[]ModelsApplicationConfigurationTemplate, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedApplicationConfigurationTemplates) HasData() bool {
 
 // SetData gets a reference to the given []ModelsApplicationConfigurationTemplate and assigns it to the Data field.
 func (o *ControllersPaginatedApplicationConfigurationTemplates) SetData(v []ModelsApplicationConfigurationTemplate) {
-	o.Data = v
+	o.Data = &v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

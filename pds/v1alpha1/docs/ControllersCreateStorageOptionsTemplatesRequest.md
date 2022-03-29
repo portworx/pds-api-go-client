@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fg** | Pointer to **bool** |  | [optional] 
 **Fs** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | See models.StorageOptionsTemplate for more information. | [optional] 
 **Repl** | Pointer to **int32** |  | [optional] 
 **Secure** | Pointer to **bool** |  | [optional] 
 

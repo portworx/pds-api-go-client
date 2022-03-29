@@ -16,7 +16,9 @@ import (
 
 // ModelsAzureCredentials struct for ModelsAzureCredentials
 type ModelsAzureCredentials struct {
+	// Access key for the Azure Storage account.
 	AccountKey *string `json:"account_key,omitempty"`
+	// Name of the Azure Storage account.
 	AccountName *string `json:"account_name,omitempty"`
 }
 

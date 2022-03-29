@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackupTargetId** | Pointer to **string** |  | [optional] 
 **DeploymentTargetId** | Pointer to **string** |  | [optional] 
-**ErrorCode** | Pointer to **string** |  | [optional] 
+**ErrorCode** | Pointer to **string** | More detailed specification of the error when the &#39;state&#39; is in one of the failed states. | [optional] 
 **ErrorDetails** | Pointer to **string** | More detailed error message possibly containing the root cause of the error, not suitable to show in the UI. | [optional] 
 **ErrorMessage** | Pointer to **string** | High level human-readable error message determined by the ErrorCode. | [optional] 
-**PxCredentialsId** | Pointer to **string** |  | [optional] 
-**PxCredentialsName** | Pointer to **string** |  | [optional] 
-**State** | Pointer to **string** |  | [optional] 
+**PxCredentialsId** | Pointer to **string** | ID of the credentials in PX cluster. | [optional] 
+**PxCredentialsName** | Pointer to **string** | Name of the credentials in PX cluster. This will be used when creating a new backup. | [optional] 
+**State** | Pointer to **string** | State of the synchronization of credentials. | [optional] 
 
 ## Methods
 

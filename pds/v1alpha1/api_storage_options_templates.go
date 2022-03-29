@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // StorageOptionsTemplatesApiService StorageOptionsTemplatesApi service
 type StorageOptionsTemplatesApiService service
 
 type ApiApiStorageOptionsTemplatesIdDeleteRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 }
 
 
-func (r ApiApiStorageOptionsTemplatesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiApiStorageOptionsTemplatesIdDeleteRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ApiStorageOptionsTemplatesIdDeleteExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiStorageOptionsTemplatesIdDelete Delete StorageOptionsTemplates
 
 Removes a single StorageOptionsTemplate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id StorageOptionsTemplate ID (must be valid UUID)
  @return ApiApiStorageOptionsTemplatesIdDeleteRequest
 */
-func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDelete(ctx context.Context, id string) ApiApiStorageOptionsTemplatesIdDeleteRequest {
+func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDelete(ctx _context.Context, id string) ApiApiStorageOptionsTemplatesIdDeleteRequest {
 	return ApiApiStorageOptionsTemplatesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,24 +56,24 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDelete(c
 }
 
 // Execute executes the request
-func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDeleteExecute(r ApiApiStorageOptionsTemplatesIdDeleteRequest) (*http.Response, error) {
+func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDeleteExecute(r ApiApiStorageOptionsTemplatesIdDeleteRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageOptionsTemplatesApiService.ApiStorageOptionsTemplatesIdDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/storage-options-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -116,15 +116,15 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDeleteEx
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,13 +135,13 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDeleteEx
 }
 
 type ApiApiStorageOptionsTemplatesIdGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 }
 
 
-func (r ApiApiStorageOptionsTemplatesIdGetRequest) Execute() (*ModelsStorageOptionsTemplate, *http.Response, error) {
+func (r ApiApiStorageOptionsTemplatesIdGetRequest) Execute() (ModelsStorageOptionsTemplate, *_nethttp.Response, error) {
 	return r.ApiService.ApiStorageOptionsTemplatesIdGetExecute(r)
 }
 
@@ -150,11 +150,11 @@ ApiStorageOptionsTemplatesIdGet Get StorageOptionsTemplate
 
 Fetches a single StorageOptionsTemplate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id StorageOptionsTemplate ID (must be valid UUID)
  @return ApiApiStorageOptionsTemplatesIdGetRequest
 */
-func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGet(ctx context.Context, id string) ApiApiStorageOptionsTemplatesIdGetRequest {
+func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGet(ctx _context.Context, id string) ApiApiStorageOptionsTemplatesIdGetRequest {
 	return ApiApiStorageOptionsTemplatesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,25 +164,25 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGet(ctx 
 
 // Execute executes the request
 //  @return ModelsStorageOptionsTemplate
-func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecute(r ApiApiStorageOptionsTemplatesIdGetRequest) (*ModelsStorageOptionsTemplate, *http.Response, error) {
+func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecute(r ApiApiStorageOptionsTemplatesIdGetRequest) (ModelsStorageOptionsTemplate, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsStorageOptionsTemplate
+		localVarReturnValue  ModelsStorageOptionsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageOptionsTemplatesApiService.ApiStorageOptionsTemplatesIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/storage-options-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -225,15 +225,15 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,7 +242,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -253,7 +253,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecu
 }
 
 type ApiApiStorageOptionsTemplatesIdPutRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 	body *ControllersUpdateStorageOptionsTemplateRequest
@@ -265,7 +265,7 @@ func (r ApiApiStorageOptionsTemplatesIdPutRequest) Body(body ControllersUpdateSt
 	return r
 }
 
-func (r ApiApiStorageOptionsTemplatesIdPutRequest) Execute() (*ModelsStorageOptionsTemplate, *http.Response, error) {
+func (r ApiApiStorageOptionsTemplatesIdPutRequest) Execute() (ModelsStorageOptionsTemplate, *_nethttp.Response, error) {
 	return r.ApiService.ApiStorageOptionsTemplatesIdPutExecute(r)
 }
 
@@ -274,11 +274,11 @@ ApiStorageOptionsTemplatesIdPut Update StorageOptionsTemplate
 
 Updates existing StorageOptionsTemplate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id StorageOptionsTemplate ID (must be valid UUID)
  @return ApiApiStorageOptionsTemplatesIdPutRequest
 */
-func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPut(ctx context.Context, id string) ApiApiStorageOptionsTemplatesIdPutRequest {
+func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPut(ctx _context.Context, id string) ApiApiStorageOptionsTemplatesIdPutRequest {
 	return ApiApiStorageOptionsTemplatesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -288,25 +288,25 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPut(ctx 
 
 // Execute executes the request
 //  @return ModelsStorageOptionsTemplate
-func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecute(r ApiApiStorageOptionsTemplatesIdPutRequest) (*ModelsStorageOptionsTemplate, *http.Response, error) {
+func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecute(r ApiApiStorageOptionsTemplatesIdPutRequest) (ModelsStorageOptionsTemplate, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsStorageOptionsTemplate
+		localVarReturnValue  ModelsStorageOptionsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageOptionsTemplatesApiService.ApiStorageOptionsTemplatesIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/storage-options-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -354,15 +354,15 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -371,7 +371,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -382,7 +382,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecu
 }
 
 type ApiApiTenantsIdStorageOptionsTemplatesGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 	sortBy *string
@@ -418,7 +418,7 @@ func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Name(name string) ApiA
 	return r
 }
 
-func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Execute() (*ControllersPaginatedStorageOptionsTemplates, *http.Response, error) {
+func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Execute() (ControllersPaginatedStorageOptionsTemplates, *_nethttp.Response, error) {
 	return r.ApiService.ApiTenantsIdStorageOptionsTemplatesGetExecute(r)
 }
 
@@ -427,11 +427,11 @@ ApiTenantsIdStorageOptionsTemplatesGet List StorageOptionsTemplates
 
 Lists StorageOptionsTemplates
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdStorageOptionsTemplatesGetRequest
 */
-func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesGet(ctx context.Context, id string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
+func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesGet(ctx _context.Context, id string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	return ApiApiTenantsIdStorageOptionsTemplatesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -441,25 +441,25 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 
 // Execute executes the request
 //  @return ControllersPaginatedStorageOptionsTemplates
-func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesGetExecute(r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) (*ControllersPaginatedStorageOptionsTemplates, *http.Response, error) {
+func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesGetExecute(r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) (ControllersPaginatedStorageOptionsTemplates, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedStorageOptionsTemplates
+		localVarReturnValue  ControllersPaginatedStorageOptionsTemplates
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageOptionsTemplatesApiService.ApiTenantsIdStorageOptionsTemplatesGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/storage-options-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -517,15 +517,15 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -534,7 +534,7 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -545,7 +545,7 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 }
 
 type ApiApiTenantsIdStorageOptionsTemplatesPostRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 	body *ControllersCreateStorageOptionsTemplatesRequest
@@ -557,7 +557,7 @@ func (r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) Body(body Controllers
 	return r
 }
 
-func (r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) Execute() (*ModelsStorageOptionsTemplate, *http.Response, error) {
+func (r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) Execute() (ModelsStorageOptionsTemplate, *_nethttp.Response, error) {
 	return r.ApiService.ApiTenantsIdStorageOptionsTemplatesPostExecute(r)
 }
 
@@ -566,11 +566,11 @@ ApiTenantsIdStorageOptionsTemplatesPost Create StorageOptionsTemplates
 
 Creates a new StorageOptionsTemplates
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdStorageOptionsTemplatesPostRequest
 */
-func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesPost(ctx context.Context, id string) ApiApiTenantsIdStorageOptionsTemplatesPostRequest {
+func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesPost(ctx _context.Context, id string) ApiApiTenantsIdStorageOptionsTemplatesPostRequest {
 	return ApiApiTenantsIdStorageOptionsTemplatesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -580,25 +580,25 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesP
 
 // Execute executes the request
 //  @return ModelsStorageOptionsTemplate
-func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesPostExecute(r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) (*ModelsStorageOptionsTemplate, *http.Response, error) {
+func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesPostExecute(r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) (ModelsStorageOptionsTemplate, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsStorageOptionsTemplate
+		localVarReturnValue  ModelsStorageOptionsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageOptionsTemplatesApiService.ApiTenantsIdStorageOptionsTemplatesPost")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/storage-options-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -646,15 +646,15 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -663,7 +663,7 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -35,8 +35,8 @@ func main() {
     actorType := "actorType_example" // string | TenantRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     actorType := "actorType_example" // string | Filter results by TenantRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,8 +183,8 @@ func main() {
     body := *openapiclient.NewControllersUpsertTenantRoleBindingRequest() // ControllersUpsertTenantRoleBindingRequest | Request body containing the tenant role binding
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

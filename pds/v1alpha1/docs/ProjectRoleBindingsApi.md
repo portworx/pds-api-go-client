@@ -35,8 +35,8 @@ func main() {
     actorType := "actorType_example" // string | ProjectRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     actorType := "actorType_example" // string | Filter results by ProjectRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,8 +183,8 @@ func main() {
     body := *openapiclient.NewControllersUpsertProjectRoleBindingRequest() // ControllersUpsertProjectRoleBindingRequest | Request body containing the project role binding
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsPut(context.Background(), id).Body(body).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

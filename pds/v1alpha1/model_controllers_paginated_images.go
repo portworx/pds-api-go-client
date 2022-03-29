@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedImages struct for ControllersPaginatedImages
 type ControllersPaginatedImages struct {
-	Data []ModelsImage `json:"data,omitempty"`
+	Data *[]ModelsImage `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedImages) GetData() []ModelsImage {
 		var ret []ModelsImage
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedImages) GetDataOk() ([]ModelsImage, bool) {
+func (o *ControllersPaginatedImages) GetDataOk() (*[]ModelsImage, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedImages) HasData() bool {
 
 // SetData gets a reference to the given []ModelsImage and assigns it to the Data field.
 func (o *ControllersPaginatedImages) SetData(v []ModelsImage) {
-	o.Data = v
+	o.Data = &v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

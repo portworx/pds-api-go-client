@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DataServiceId** | Pointer to **string** |  | [optional] 
 **MemoryLimit** | Pointer to **string** |  | [optional] 
 **MemoryRequest** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | See models.ResourceSettingsTemplate for more information. | [optional] 
 **StorageRequest** | Pointer to **string** |  | [optional] 
 
 ## Methods

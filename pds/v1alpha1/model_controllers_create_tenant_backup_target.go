@@ -17,9 +17,13 @@ import (
 // ControllersCreateTenantBackupTarget struct for ControllersCreateTenantBackupTarget
 type ControllersCreateTenantBackupTarget struct {
 	BackupCredentialsId *string `json:"backup_credentials_id,omitempty"`
+	// Bucket name for S3 or S3 compatible. Container name for Azure.
 	Bucket *string `json:"bucket,omitempty"`
+	// Name of the backup target. Must be unique for the given tenant.
 	Name *string `json:"name,omitempty"`
+	// Region of the bucket. Required for S3. Otherwise must be empty.
 	Region *string `json:"region,omitempty"`
+	// Type of the backup target. Must match the used backup credentials.
 	Type *string `json:"type,omitempty"`
 }
 

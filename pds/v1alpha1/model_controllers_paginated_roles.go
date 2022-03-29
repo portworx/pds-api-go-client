@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedRoles struct for ControllersPaginatedRoles
 type ControllersPaginatedRoles struct {
-	Data []PolicyRole `json:"data,omitempty"`
+	Data *[]PolicyRole `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedRoles instantiates a new ControllersPaginatedRoles object
@@ -42,12 +42,12 @@ func (o *ControllersPaginatedRoles) GetData() []PolicyRole {
 		var ret []PolicyRole
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedRoles) GetDataOk() ([]PolicyRole, bool) {
+func (o *ControllersPaginatedRoles) GetDataOk() (*[]PolicyRole, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ControllersPaginatedRoles) HasData() bool {
 
 // SetData gets a reference to the given []PolicyRole and assigns it to the Data field.
 func (o *ControllersPaginatedRoles) SetData(v []PolicyRole) {
-	o.Data = v
+	o.Data = &v
 }
 
 func (o ControllersPaginatedRoles) MarshalJSON() ([]byte, error) {

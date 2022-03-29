@@ -4,11 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiDeploymentsIdBackupsGet**](DeploymentsApi.md#ApiDeploymentsIdBackupsGet) | **Get** /api/deployments/{id}/backups | Get Deployment Backups
-[**ApiDeploymentsIdConnectionStringsGet**](DeploymentsApi.md#ApiDeploymentsIdConnectionStringsGet) | **Get** /api/deployments/{id}/connection-strings | Deployment Connection String
+[**ApiDeploymentsIdConnectionInfoGet**](DeploymentsApi.md#ApiDeploymentsIdConnectionInfoGet) | **Get** /api/deployments/{id}/connection-info | Deployment Connection Information
+[**ApiDeploymentsIdCredentialsGet**](DeploymentsApi.md#ApiDeploymentsIdCredentialsGet) | **Get** /api/deployments/{id}/credentials | Deployment Credentials
 [**ApiDeploymentsIdDelete**](DeploymentsApi.md#ApiDeploymentsIdDelete) | **Delete** /api/deployments/{id} | Delete Deployment
 [**ApiDeploymentsIdGet**](DeploymentsApi.md#ApiDeploymentsIdGet) | **Get** /api/deployments/{id} | Get Deployment
-[**ApiDeploymentsIdHealthGet**](DeploymentsApi.md#ApiDeploymentsIdHealthGet) | **Get** /api/deployments/{id}/health | Get Deployment Health
 [**ApiDeploymentsIdPut**](DeploymentsApi.md#ApiDeploymentsIdPut) | **Put** /api/deployments/{id} | Update Deployment
 [**ApiDeploymentsIdStatusGet**](DeploymentsApi.md#ApiDeploymentsIdStatusGet) | **Get** /api/deployments/{id}/status | Get Deployment Status
 [**ApiProjectsIdDeploymentsGet**](DeploymentsApi.md#ApiProjectsIdDeploymentsGet) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
@@ -16,11 +15,11 @@ Method | HTTP request | Description
 
 
 
-## ApiDeploymentsIdBackupsGet
+## ApiDeploymentsIdConnectionInfoGet
 
-> PaginationPaginatedResponse ApiDeploymentsIdBackupsGet(ctx, id).Execute()
+> DeploymentsConnectionInfo ApiDeploymentsIdConnectionInfoGet(ctx, id).Execute()
 
-Get Deployment Backups
+Deployment Connection Information
 
 
 
@@ -40,14 +39,14 @@ func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdBackupsGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdConnectionInfoGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdBackupsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdConnectionInfoGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdBackupsGet`: PaginationPaginatedResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdBackupsGet`: %v\n", resp)
+    // response from `ApiDeploymentsIdConnectionInfoGet`: DeploymentsConnectionInfo
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdConnectionInfoGet`: %v\n", resp)
 }
 ```
 
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiDeploymentsIdBackupsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiDeploymentsIdConnectionInfoGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -70,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationPaginatedResponse**](PaginationPaginatedResponse.md)
+[**DeploymentsConnectionInfo**](DeploymentsConnectionInfo.md)
 
 ### Authorization
 
@@ -86,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiDeploymentsIdConnectionStringsGet
+## ApiDeploymentsIdCredentialsGet
 
-> ControllersDeploymentConnectionStringsResponse ApiDeploymentsIdConnectionStringsGet(ctx, id).Execute()
+> DeploymentsCredentials ApiDeploymentsIdCredentialsGet(ctx, id).Execute()
 
-Deployment Connection String
+Deployment Credentials
 
 
 
@@ -110,14 +109,14 @@ func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdConnectionStringsGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdCredentialsGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdConnectionStringsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdConnectionStringsGet`: ControllersDeploymentConnectionStringsResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdConnectionStringsGet`: %v\n", resp)
+    // response from `ApiDeploymentsIdCredentialsGet`: DeploymentsCredentials
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdCredentialsGet`: %v\n", resp)
 }
 ```
 
@@ -131,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiDeploymentsIdConnectionStringsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiDeploymentsIdCredentialsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -140,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersDeploymentConnectionStringsResponse**](ControllersDeploymentConnectionStringsResponse.md)
+[**DeploymentsCredentials**](DeploymentsCredentials.md)
 
 ### Authorization
 
@@ -181,8 +180,8 @@ func main() {
     localOnly := true // bool | Set to true to only delete the Deployment object in the database (does not delete any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdDelete(context.Background(), id).LocalOnly(localOnly).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdDelete(context.Background(), id).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,8 +249,8 @@ func main() {
     id := "id_example" // string | Deployment ID (either id or deployment_id field)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,76 +295,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiDeploymentsIdHealthGet
-
-> StatusDeploymentHealth ApiDeploymentsIdHealthGet(ctx, id).Execute()
-
-Get Deployment Health
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "id_example" // string | Deployment ID (must be valid UUID)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdHealthGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdHealthGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApiDeploymentsIdHealthGet`: StatusDeploymentHealth
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdHealthGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Deployment ID (must be valid UUID) | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApiDeploymentsIdHealthGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**StatusDeploymentHealth**](StatusDeploymentHealth.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ApiDeploymentsIdPut
 
 > ModelsDeployment ApiDeploymentsIdPut(ctx, id).Body(body).LocalOnly(localOnly).Execute()
@@ -392,8 +321,8 @@ func main() {
     localOnly := true // bool | Set to true to only update the Deployment object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdPut(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdPut(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -442,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdStatusGet
 
-> StatusDeploymentStatus ApiDeploymentsIdStatusGet(ctx, id).Execute()
+> DeploymentsStatus ApiDeploymentsIdStatusGet(ctx, id).Execute()
 
 Get Deployment Status
 
@@ -464,13 +393,13 @@ func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdStatusGet(context.Background(), id).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdStatusGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdStatusGet`: StatusDeploymentStatus
+    // response from `ApiDeploymentsIdStatusGet`: DeploymentsStatus
     fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdStatusGet`: %v\n", resp)
 }
 ```
@@ -494,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StatusDeploymentStatus**](StatusDeploymentStatus.md)
+[**DeploymentsStatus**](DeploymentsStatus.md)
 
 ### Authorization
 
@@ -512,7 +441,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdDeploymentsGet
 
-> ControllersPaginatedDeployments ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterName(clusterName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).NamespaceId(namespaceId).Execute()
+> ControllersPaginatedDeployments ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
 
 List Project's Deployments
 
@@ -532,19 +461,21 @@ import (
 
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
-    sortBy := "sortBy_example" // string | A given Deployment attribute to sort results by (one of: id, cluster_name, created_at) (optional)
+    sortBy := "sortBy_example" // string | A given Deployment attribute to sort results by (one of: id, name, cluster_resource_name, created_at) (optional)
     limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by Deployment id (optional)
-    clusterName := "clusterName_example" // string | Filter results by Deployment cluster_name (optional)
+    clusterResourceName := "clusterResourceName_example" // string | Filter results by Deployment cluster_resource_name (optional)
     dataServiceId := "dataServiceId_example" // string | Filter results by Deployment data_service_id (optional)
     deploymentTargetId := "deploymentTargetId_example" // string | Filter results by Deployment deployment_target_id (optional)
     imageId := "imageId_example" // string | Filter results by Deployment image_id (optional)
+    name := "name_example" // string | Filter results by Deployment name (optional)
     namespaceId := "namespaceId_example" // string | Filter results by Deployment namespace_id (optional)
+    state := "state_example" // string | Filter results by Deployment state (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterName(clusterName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).NamespaceId(namespaceId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -570,15 +501,17 @@ Other parameters are passed through a pointer to a apiApiProjectsIdDeploymentsGe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | A given Deployment attribute to sort results by (one of: id, cluster_name, created_at) | 
+ **sortBy** | **string** | A given Deployment attribute to sort results by (one of: id, name, cluster_resource_name, created_at) | 
  **limit** | **string** | Maximum number of rows to return (could be less) | 
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by Deployment id | 
- **clusterName** | **string** | Filter results by Deployment cluster_name | 
+ **clusterResourceName** | **string** | Filter results by Deployment cluster_resource_name | 
  **dataServiceId** | **string** | Filter results by Deployment data_service_id | 
  **deploymentTargetId** | **string** | Filter results by Deployment deployment_target_id | 
  **imageId** | **string** | Filter results by Deployment image_id | 
+ **name** | **string** | Filter results by Deployment name | 
  **namespaceId** | **string** | Filter results by Deployment namespace_id | 
+ **state** | **string** | Filter results by Deployment state | 
 
 ### Return type
 
@@ -624,8 +557,8 @@ func main() {
     localOnly := true // bool | Set to true to only create the Deployment object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiProjectsIdDeploymentsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

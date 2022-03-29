@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // AccountRoleBindingsApiService AccountRoleBindingsApi service
 type AccountRoleBindingsApiService service
 
 type ApiApiAccountsIdInvitationsPostRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *AccountRoleBindingsApiService
 	id string
 	body *ControllersInvitationRequest
@@ -40,7 +40,7 @@ func (r ApiApiAccountsIdInvitationsPostRequest) Body(body ControllersInvitationR
 	return r
 }
 
-func (r ApiApiAccountsIdInvitationsPostRequest) Execute() (*http.Response, error) {
+func (r ApiApiAccountsIdInvitationsPostRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ApiAccountsIdInvitationsPostExecute(r)
 }
 
@@ -49,11 +49,11 @@ ApiAccountsIdInvitationsPost Create Invitation
 
 Adds role binding to existing user. The plan is to send invites to non-existing users in the future.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdInvitationsPostRequest
 */
-func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPost(ctx context.Context, id string) ApiApiAccountsIdInvitationsPostRequest {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPost(ctx _context.Context, id string) ApiApiAccountsIdInvitationsPostRequest {
 	return ApiApiAccountsIdInvitationsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,24 +62,24 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPost(ctx context
 }
 
 // Execute executes the request
-func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPostExecute(r ApiApiAccountsIdInvitationsPostRequest) (*http.Response, error) {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPostExecute(r ApiApiAccountsIdInvitationsPostRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountRoleBindingsApiService.ApiAccountsIdInvitationsPost")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/invitations"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return nil, reportError("body is required and must be specified")
 	}
@@ -127,15 +127,15 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPostExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -146,7 +146,7 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdInvitationsPostExecute(r Ap
 }
 
 type ApiApiAccountsIdRoleBindingsDeleteRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *AccountRoleBindingsApiService
 	id string
 	actorType *string
@@ -158,7 +158,7 @@ func (r ApiApiAccountsIdRoleBindingsDeleteRequest) ActorType(actorType string) A
 	return r
 }
 
-func (r ApiApiAccountsIdRoleBindingsDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiApiAccountsIdRoleBindingsDeleteRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ApiAccountsIdRoleBindingsDeleteExecute(r)
 }
 
@@ -167,11 +167,11 @@ ApiAccountsIdRoleBindingsDelete Delete AccountRoleBinding
 
 Removes a single AccountRoleBinding
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdRoleBindingsDeleteRequest
 */
-func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDelete(ctx context.Context, id string) ApiApiAccountsIdRoleBindingsDeleteRequest {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDelete(ctx _context.Context, id string) ApiApiAccountsIdRoleBindingsDeleteRequest {
 	return ApiApiAccountsIdRoleBindingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -180,24 +180,24 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDelete(ctx cont
 }
 
 // Execute executes the request
-func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDeleteExecute(r ApiApiAccountsIdRoleBindingsDeleteRequest) (*http.Response, error) {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDeleteExecute(r ApiApiAccountsIdRoleBindingsDeleteRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountRoleBindingsApiService.ApiAccountsIdRoleBindingsDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -242,15 +242,15 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDeleteExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -261,7 +261,7 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsDeleteExecute(r
 }
 
 type ApiApiAccountsIdRoleBindingsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *AccountRoleBindingsApiService
 	id string
 	sortBy *string
@@ -291,7 +291,7 @@ func (r ApiApiAccountsIdRoleBindingsGetRequest) ActorType(actorType string) ApiA
 	return r
 }
 
-func (r ApiApiAccountsIdRoleBindingsGetRequest) Execute() (*ControllersPaginatedAccountRoleBindings, *http.Response, error) {
+func (r ApiApiAccountsIdRoleBindingsGetRequest) Execute() (ControllersPaginatedAccountRoleBindings, *_nethttp.Response, error) {
 	return r.ApiService.ApiAccountsIdRoleBindingsGetExecute(r)
 }
 
@@ -300,11 +300,11 @@ ApiAccountsIdRoleBindingsGet List AccountRoleBinding
 
 Lists AccountRoleBinding
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdRoleBindingsGetRequest
 */
-func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGet(ctx context.Context, id string) ApiApiAccountsIdRoleBindingsGetRequest {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGet(ctx _context.Context, id string) ApiApiAccountsIdRoleBindingsGetRequest {
 	return ApiApiAccountsIdRoleBindingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -314,25 +314,25 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGet(ctx context
 
 // Execute executes the request
 //  @return ControllersPaginatedAccountRoleBindings
-func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGetExecute(r ApiApiAccountsIdRoleBindingsGetRequest) (*ControllersPaginatedAccountRoleBindings, *http.Response, error) {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGetExecute(r ApiApiAccountsIdRoleBindingsGetRequest) (ControllersPaginatedAccountRoleBindings, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedAccountRoleBindings
+		localVarReturnValue  ControllersPaginatedAccountRoleBindings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountRoleBindingsApiService.ApiAccountsIdRoleBindingsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -387,15 +387,15 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGetExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -404,7 +404,7 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGetExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -415,7 +415,7 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsGetExecute(r Ap
 }
 
 type ApiApiAccountsIdRoleBindingsPutRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *AccountRoleBindingsApiService
 	id string
 	body *ControllersUpsertAccountRoleBindingRequest
@@ -427,7 +427,7 @@ func (r ApiApiAccountsIdRoleBindingsPutRequest) Body(body ControllersUpsertAccou
 	return r
 }
 
-func (r ApiApiAccountsIdRoleBindingsPutRequest) Execute() (*ModelsAccountRoleBinding, *http.Response, error) {
+func (r ApiApiAccountsIdRoleBindingsPutRequest) Execute() (ModelsAccountRoleBinding, *_nethttp.Response, error) {
 	return r.ApiService.ApiAccountsIdRoleBindingsPutExecute(r)
 }
 
@@ -436,11 +436,11 @@ ApiAccountsIdRoleBindingsPut Create/Update AccountRoleBinding
 
 Creates a new AccountRoleBinding, or updates role_name if binding for (actor_id, actor_type) already exists.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdRoleBindingsPutRequest
 */
-func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPut(ctx context.Context, id string) ApiApiAccountsIdRoleBindingsPutRequest {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPut(ctx _context.Context, id string) ApiApiAccountsIdRoleBindingsPutRequest {
 	return ApiApiAccountsIdRoleBindingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -450,25 +450,25 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPut(ctx context
 
 // Execute executes the request
 //  @return ModelsAccountRoleBinding
-func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPutExecute(r ApiApiAccountsIdRoleBindingsPutRequest) (*ModelsAccountRoleBinding, *http.Response, error) {
+func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPutExecute(r ApiApiAccountsIdRoleBindingsPutRequest) (ModelsAccountRoleBinding, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsAccountRoleBinding
+		localVarReturnValue  ModelsAccountRoleBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountRoleBindingsApiService.ApiAccountsIdRoleBindingsPut")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -516,15 +516,15 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPutExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -533,7 +533,7 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPutExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -544,7 +544,7 @@ func (a *AccountRoleBindingsApiService) ApiAccountsIdRoleBindingsPutExecute(r Ap
 }
 
 type ApiApiUsersIdAccountRoleBindingsGetRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *AccountRoleBindingsApiService
 	id string
 	sortBy *string
@@ -562,7 +562,7 @@ func (r ApiApiUsersIdAccountRoleBindingsGetRequest) RoleName(roleName string) Ap
 	return r
 }
 
-func (r ApiApiUsersIdAccountRoleBindingsGetRequest) Execute() (*ControllersPaginatedAccountRoleBindings, *http.Response, error) {
+func (r ApiApiUsersIdAccountRoleBindingsGetRequest) Execute() (ControllersPaginatedAccountRoleBindings, *_nethttp.Response, error) {
 	return r.ApiService.ApiUsersIdAccountRoleBindingsGetExecute(r)
 }
 
@@ -571,11 +571,11 @@ ApiUsersIdAccountRoleBindingsGet List AccountRoleBindings of a given user
 
 Every user can read its own bindings. Only pds-admin can read bindings of other users.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id User ID (must be valid UUID)
  @return ApiApiUsersIdAccountRoleBindingsGetRequest
 */
-func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGet(ctx context.Context, id string) ApiApiUsersIdAccountRoleBindingsGetRequest {
+func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGet(ctx _context.Context, id string) ApiApiUsersIdAccountRoleBindingsGetRequest {
 	return ApiApiUsersIdAccountRoleBindingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -585,25 +585,25 @@ func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGet(ctx con
 
 // Execute executes the request
 //  @return ControllersPaginatedAccountRoleBindings
-func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGetExecute(r ApiApiUsersIdAccountRoleBindingsGetRequest) (*ControllersPaginatedAccountRoleBindings, *http.Response, error) {
+func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGetExecute(r ApiApiUsersIdAccountRoleBindingsGetRequest) (ControllersPaginatedAccountRoleBindings, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedAccountRoleBindings
+		localVarReturnValue  ControllersPaginatedAccountRoleBindings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountRoleBindingsApiService.ApiUsersIdAccountRoleBindingsGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/account-role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -652,15 +652,15 @@ func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -669,7 +669,7 @@ func (a *AccountRoleBindingsApiService) ApiUsersIdAccountRoleBindingsGetExecute(
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
