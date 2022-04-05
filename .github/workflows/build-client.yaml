@@ -1,5 +1,10 @@
 name: Build client
 on:
+  # GitHub recognizes when pushes are performed by a workflow, so this won't lead to endless circular runs.
+  push:
+    branches:
+    - master
+
   # Allow manual trigger.
   workflow_dispatch:
 
