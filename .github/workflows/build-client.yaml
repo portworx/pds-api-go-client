@@ -5,6 +5,10 @@ on:
     branches:
     - master
 
+  # Trigger every night.
+  schedule:
+    - cron: '0 0 * * *'
+
   # Allow manual trigger.
   workflow_dispatch:
 
