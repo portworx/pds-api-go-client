@@ -9,6 +9,10 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+  # Trigger by updates from other repos.
+  repository_dispatch:
+    types: [client-update]
+
   # Allow manual trigger.
   workflow_dispatch:
 
