@@ -1,0 +1,57 @@
+name: Build client
+on:
+  # Allow manual trigger.
+  workflow_dispatch:
+
+jobs:
+  client:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+
+    - name: Docker Login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Find latest SHA
+      id: latest-revision
+      run: |
+        API_SHA_SHORT=$(curl -s \
+          --header "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H 'Accept: application/vnd.github.v3+json' \
+          'https://api.github.com/repos/portworx/DreamCloud_stella-api/branches/develop'  \
+          | jq -r '.commit.sha[:7]')
+        echo "::set-output name=short-sha::${API_SHA_SHORT}"
+
+    - name: Pull openapi image
+      id: image
+      run: |
+        IMAGE=portworx/pds-api:openapi-dev-${{ steps.latest-revision.outputs.short-sha }}
+        docker pull ${IMAGE}
+        echo "::set-output name=name::${IMAGE}"
+
+    - name: Unpack openapi docs
+      run: |
+        docker create --name pds-api-openapi ${{ steps.image.outputs.name }} nope
+        docker cp pds-api-openapi:/swagger.json ./swagger.json
+
+    - name: Generate client
+      uses: openapi-generators/openapitools-generator-action@v1
+      with:
+        generator: go
+        generator-tag: v5.4.0
+        openapi-file: swagger.json
+        command-args: -o pds/v1alpha1/ --package-name pds
+    
+    # Skips the push if there are no changes, so it's safe to run repeatedly.
+    - name: Commit and push
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: 'pds/'
+        default_author: github_actions
+        message: 'Update client for `${{ steps.latest-revision.outputs.short-sha }}`'
+        push: true
+    
