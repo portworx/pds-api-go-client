@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedResourceSettingsTemplates struct for ControllersPaginatedResourceSettingsTemplates
 type ControllersPaginatedResourceSettingsTemplates struct {
-	Data *[]ModelsResourceSettingsTemplate `json:"data,omitempty"`
+	Data []ModelsResourceSettingsTemplate `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedResourceSettingsTemplates) GetData() []ModelsResour
 		var ret []ModelsResourceSettingsTemplate
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedResourceSettingsTemplates) GetDataOk() (*[]ModelsResourceSettingsTemplate, bool) {
+func (o *ControllersPaginatedResourceSettingsTemplates) GetDataOk() ([]ModelsResourceSettingsTemplate, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedResourceSettingsTemplates) HasData() bool {
 
 // SetData gets a reference to the given []ModelsResourceSettingsTemplate and assigns it to the Data field.
 func (o *ControllersPaginatedResourceSettingsTemplates) SetData(v []ModelsResourceSettingsTemplate) {
-	o.Data = &v
+	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

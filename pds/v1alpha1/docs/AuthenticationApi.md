@@ -34,8 +34,8 @@ func main() {
     body := *openapiclient.NewControllersAuthorizationCodeRequest() // ControllersAuthorizationCodeRequest | Request body containing the received authorization code.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticationApi.AuthAuthorizationCodePost(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticationApi.AuthAuthorizationCodePost(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationApi.AuthAuthorizationCodePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -99,8 +99,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticationApi.AuthOidcInfoGet(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticationApi.AuthOidcInfoGet(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationApi.AuthOidcInfoGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,8 +159,8 @@ func main() {
     body := *openapiclient.NewControllersRefreshTokenRequest() // ControllersRefreshTokenRequest | Request body containing the refresh token.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticationApi.AuthRefreshTokenPost(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticationApi.AuthRefreshTokenPost(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationApi.AuthRefreshTokenPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

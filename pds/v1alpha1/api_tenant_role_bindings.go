@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // TenantRoleBindingsApiService TenantRoleBindingsApi service
 type TenantRoleBindingsApiService service
 
 type ApiApiTenantsIdRoleBindingsDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *TenantRoleBindingsApiService
 	id string
 	actorType *string
@@ -40,7 +40,7 @@ func (r ApiApiTenantsIdRoleBindingsDeleteRequest) ActorType(actorType string) Ap
 	return r
 }
 
-func (r ApiApiTenantsIdRoleBindingsDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiTenantsIdRoleBindingsDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiTenantsIdRoleBindingsDeleteExecute(r)
 }
 
@@ -49,11 +49,11 @@ ApiTenantsIdRoleBindingsDelete Delete TenantRoleBinding
 
 Removes a single TenantRoleBinding
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdRoleBindingsDeleteRequest
 */
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDelete(ctx _context.Context, id string) ApiApiTenantsIdRoleBindingsDeleteRequest {
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDelete(ctx context.Context, id string) ApiApiTenantsIdRoleBindingsDeleteRequest {
 	return ApiApiTenantsIdRoleBindingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,24 +62,24 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDelete(ctx _conte
 }
 
 // Execute executes the request
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDeleteExecute(r ApiApiTenantsIdRoleBindingsDeleteRequest) (*_nethttp.Response, error) {
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDeleteExecute(r ApiApiTenantsIdRoleBindingsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantRoleBindingsApiService.ApiTenantsIdRoleBindingsDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -124,15 +124,15 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDeleteExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -143,7 +143,7 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDeleteExecute(r A
 }
 
 type ApiApiTenantsIdRoleBindingsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *TenantRoleBindingsApiService
 	id string
 	sortBy *string
@@ -173,7 +173,7 @@ func (r ApiApiTenantsIdRoleBindingsGetRequest) ActorType(actorType string) ApiAp
 	return r
 }
 
-func (r ApiApiTenantsIdRoleBindingsGetRequest) Execute() (ControllersPaginatedTenantRoleBindings, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdRoleBindingsGetRequest) Execute() (*ControllersPaginatedTenantRoleBindings, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdRoleBindingsGetExecute(r)
 }
 
@@ -182,11 +182,11 @@ ApiTenantsIdRoleBindingsGet List TenantRoleBindings
 
 Lists TenantRoleBindings
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdRoleBindingsGetRequest
 */
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGet(ctx _context.Context, id string) ApiApiTenantsIdRoleBindingsGetRequest {
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGet(ctx context.Context, id string) ApiApiTenantsIdRoleBindingsGetRequest {
 	return ApiApiTenantsIdRoleBindingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -196,25 +196,25 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGet(ctx _context.
 
 // Execute executes the request
 //  @return ControllersPaginatedTenantRoleBindings
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiApiTenantsIdRoleBindingsGetRequest) (ControllersPaginatedTenantRoleBindings, *_nethttp.Response, error) {
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiApiTenantsIdRoleBindingsGetRequest) (*ControllersPaginatedTenantRoleBindings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedTenantRoleBindings
+		localVarReturnValue  *ControllersPaginatedTenantRoleBindings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantRoleBindingsApiService.ApiTenantsIdRoleBindingsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -269,15 +269,15 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -286,7 +286,7 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -297,7 +297,7 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiA
 }
 
 type ApiApiTenantsIdRoleBindingsPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *TenantRoleBindingsApiService
 	id string
 	body *ControllersUpsertTenantRoleBindingRequest
@@ -309,7 +309,7 @@ func (r ApiApiTenantsIdRoleBindingsPutRequest) Body(body ControllersUpsertTenant
 	return r
 }
 
-func (r ApiApiTenantsIdRoleBindingsPutRequest) Execute() (ModelsTenantRoleBinding, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdRoleBindingsPutRequest) Execute() (*ModelsTenantRoleBinding, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdRoleBindingsPutExecute(r)
 }
 
@@ -318,11 +318,11 @@ ApiTenantsIdRoleBindingsPut Create TenantRoleBinding
 
 Creates a new TenantRoleBinding
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdRoleBindingsPutRequest
 */
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPut(ctx _context.Context, id string) ApiApiTenantsIdRoleBindingsPutRequest {
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPut(ctx context.Context, id string) ApiApiTenantsIdRoleBindingsPutRequest {
 	return ApiApiTenantsIdRoleBindingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -332,25 +332,25 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPut(ctx _context.
 
 // Execute executes the request
 //  @return ModelsTenantRoleBinding
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiApiTenantsIdRoleBindingsPutRequest) (ModelsTenantRoleBinding, *_nethttp.Response, error) {
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiApiTenantsIdRoleBindingsPutRequest) (*ModelsTenantRoleBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsTenantRoleBinding
+		localVarReturnValue  *ModelsTenantRoleBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantRoleBindingsApiService.ApiTenantsIdRoleBindingsPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -398,15 +398,15 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -415,7 +415,7 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -16,10 +16,10 @@ import (
 
 // PolicyRole struct for PolicyRole
 type PolicyRole struct {
-	Extends *[]string `json:"extends,omitempty"`
+	Extends []string `json:"extends,omitempty"`
 	Level *string `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Permissions *[]string `json:"permissions,omitempty"`
+	Permissions []string `json:"permissions,omitempty"`
 }
 
 // NewPolicyRole instantiates a new PolicyRole object
@@ -45,12 +45,12 @@ func (o *PolicyRole) GetExtends() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Extends
+	return o.Extends
 }
 
 // GetExtendsOk returns a tuple with the Extends field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PolicyRole) GetExtendsOk() (*[]string, bool) {
+func (o *PolicyRole) GetExtendsOk() ([]string, bool) {
 	if o == nil || o.Extends == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *PolicyRole) HasExtends() bool {
 
 // SetExtends gets a reference to the given []string and assigns it to the Extends field.
 func (o *PolicyRole) SetExtends(v []string) {
-	o.Extends = &v
+	o.Extends = v
 }
 
 // GetLevel returns the Level field value if set, zero value otherwise.
@@ -141,12 +141,12 @@ func (o *PolicyRole) GetPermissions() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Permissions
+	return o.Permissions
 }
 
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PolicyRole) GetPermissionsOk() (*[]string, bool) {
+func (o *PolicyRole) GetPermissionsOk() ([]string, bool) {
 	if o == nil || o.Permissions == nil {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *PolicyRole) HasPermissions() bool {
 
 // SetPermissions gets a reference to the given []string and assigns it to the Permissions field.
 func (o *PolicyRole) SetPermissions(v []string) {
-	o.Permissions = &v
+	o.Permissions = v
 }
 
 func (o PolicyRole) MarshalJSON() ([]byte, error) {

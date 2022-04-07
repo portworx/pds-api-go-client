@@ -36,8 +36,8 @@ func main() {
     id := "id_example" // string | ResourceSettingsTemplate ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     id := "id_example" // string | ResourceSettingsTemplate ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateResourceSettingsTemplateRequest() // ControllersUpdateResourceSettingsTemplateRequest | Request body containing updated template
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceSettingsTemplatesApi.ApiResourceSettingsTemplatesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,8 +252,8 @@ func main() {
     dataServiceId := "dataServiceId_example" // string | Filter results by DataService ID (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,8 +329,8 @@ func main() {
     body := *openapiclient.NewControllersCreateResourceSettingsTemplatesRequest() // ControllersCreateResourceSettingsTemplatesRequest | Request body containing the resource settings template
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesPost(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

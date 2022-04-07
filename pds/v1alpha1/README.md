@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import sw "./pds"
+import pds "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -40,7 +40,7 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), pds.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -48,7 +48,7 @@ ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), sw.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), pds.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -62,10 +62,10 @@ An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
-ctx := context.WithValue(context.Background(), sw.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), pds.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), pds.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -123,6 +123,7 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiBackupTargetsIdBackupsGet**](docs/BackupsApi.md#apibackuptargetsidbackupsget) | **Get** /api/backup-targets/{id}/backups | List BackupTarget&#39;s Backups
 *BackupsApi* | [**ApiBackupsIdDelete**](docs/BackupsApi.md#apibackupsiddelete) | **Delete** /api/backups/{id} | Delete Backup
 *BackupsApi* | [**ApiBackupsIdGet**](docs/BackupsApi.md#apibackupsidget) | **Get** /api/backups/{id} | Get Backup
+*BackupsApi* | [**ApiBackupsIdJobsNameDelete**](docs/BackupsApi.md#apibackupsidjobsnamedelete) | **Delete** /api/backups/{id}/jobs/{name} | Delete Backup jobs
 *BackupsApi* | [**ApiBackupsIdPut**](docs/BackupsApi.md#apibackupsidput) | **Put** /api/backups/{id} | Update Backup
 *BackupsApi* | [**ApiDeploymentsIdBackupsGet**](docs/BackupsApi.md#apideploymentsidbackupsget) | **Get** /api/deployments/{id}/backups | List Deployment&#39;s Backups
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup

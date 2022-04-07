@@ -36,8 +36,8 @@ func main() {
     id := "id_example" // string | BackupPolicy ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupPoliciesApi.ApiBackupPoliciesIdDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupPoliciesApi.ApiBackupPoliciesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupPoliciesApi.ApiBackupPoliciesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     id := "id_example" // string | BackupPolicy ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupPoliciesApi.ApiBackupPoliciesIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupPoliciesApi.ApiBackupPoliciesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupPoliciesApi.ApiBackupPoliciesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateBackupPolicyRequest() // ControllersUpdateBackupPolicyRequest | Request body containing updated backup policy
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupPoliciesApi.ApiBackupPoliciesIdPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupPoliciesApi.ApiBackupPoliciesIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupPoliciesApi.ApiBackupPoliciesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +251,8 @@ func main() {
     name := "name_example" // string | Filter results by BackupPolicy name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupPoliciesApi.ApiTenantsIdBackupPoliciesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupPoliciesApi.ApiTenantsIdBackupPoliciesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupPoliciesApi.ApiTenantsIdBackupPoliciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -327,8 +327,8 @@ func main() {
     body := *openapiclient.NewControllersCreateBackupPolicyRequest() // ControllersCreateBackupPolicyRequest | Request body containing the backup policy
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupPoliciesApi.ApiTenantsIdBackupPoliciesPost(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupPoliciesApi.ApiTenantsIdBackupPoliciesPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupPoliciesApi.ApiTenantsIdBackupPoliciesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

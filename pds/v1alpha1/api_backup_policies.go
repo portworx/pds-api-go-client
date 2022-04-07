@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // BackupPoliciesApiService BackupPoliciesApi service
 type BackupPoliciesApiService service
 
 type ApiApiBackupPoliciesIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupPoliciesApiService
 	id string
 }
 
 
-func (r ApiApiBackupPoliciesIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiBackupPoliciesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupPoliciesIdDeleteExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiBackupPoliciesIdDelete Delete BackupPolicies
 
 Removes a single BackupPolicy
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupPolicy ID (must be valid UUID)
  @return ApiApiBackupPoliciesIdDeleteRequest
 */
-func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDelete(ctx _context.Context, id string) ApiApiBackupPoliciesIdDeleteRequest {
+func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDelete(ctx context.Context, id string) ApiApiBackupPoliciesIdDeleteRequest {
 	return ApiApiBackupPoliciesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,24 +56,24 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDelete(ctx _context.Contex
 }
 
 // Execute executes the request
-func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDeleteExecute(r ApiApiBackupPoliciesIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDeleteExecute(r ApiApiBackupPoliciesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPoliciesApiService.ApiBackupPoliciesIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-policies/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -116,15 +116,15 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDeleteExecute(r ApiApiBack
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,13 +135,13 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDeleteExecute(r ApiApiBack
 }
 
 type ApiApiBackupPoliciesIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupPoliciesApiService
 	id string
 }
 
 
-func (r ApiApiBackupPoliciesIdGetRequest) Execute() (ModelsBackupPolicy, *_nethttp.Response, error) {
+func (r ApiApiBackupPoliciesIdGetRequest) Execute() (*ModelsBackupPolicy, *http.Response, error) {
 	return r.ApiService.ApiBackupPoliciesIdGetExecute(r)
 }
 
@@ -150,11 +150,11 @@ ApiBackupPoliciesIdGet Get BackupPolicy
 
 Fetches a single BackupPolicy
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupPolicy ID (must be valid UUID)
  @return ApiApiBackupPoliciesIdGetRequest
 */
-func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGet(ctx _context.Context, id string) ApiApiBackupPoliciesIdGetRequest {
+func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGet(ctx context.Context, id string) ApiApiBackupPoliciesIdGetRequest {
 	return ApiApiBackupPoliciesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -164,25 +164,25 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGet(ctx _context.Context, 
 
 // Execute executes the request
 //  @return ModelsBackupPolicy
-func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupPoliciesIdGetRequest) (ModelsBackupPolicy, *_nethttp.Response, error) {
+func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupPoliciesIdGetRequest) (*ModelsBackupPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackupPolicy
+		localVarReturnValue  *ModelsBackupPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPoliciesApiService.ApiBackupPoliciesIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-policies/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -225,15 +225,15 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -242,7 +242,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -253,7 +253,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupP
 }
 
 type ApiApiBackupPoliciesIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupPoliciesApiService
 	id string
 	body *ControllersUpdateBackupPolicyRequest
@@ -265,7 +265,7 @@ func (r ApiApiBackupPoliciesIdPutRequest) Body(body ControllersUpdateBackupPolic
 	return r
 }
 
-func (r ApiApiBackupPoliciesIdPutRequest) Execute() (ModelsBackupPolicy, *_nethttp.Response, error) {
+func (r ApiApiBackupPoliciesIdPutRequest) Execute() (*ModelsBackupPolicy, *http.Response, error) {
 	return r.ApiService.ApiBackupPoliciesIdPutExecute(r)
 }
 
@@ -274,11 +274,11 @@ ApiBackupPoliciesIdPut Update BackupPolicy
 
 Updates existing BackupPolicy
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupPolicy ID (must be valid UUID)
  @return ApiApiBackupPoliciesIdPutRequest
 */
-func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPut(ctx _context.Context, id string) ApiApiBackupPoliciesIdPutRequest {
+func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPut(ctx context.Context, id string) ApiApiBackupPoliciesIdPutRequest {
 	return ApiApiBackupPoliciesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -288,25 +288,25 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPut(ctx _context.Context, 
 
 // Execute executes the request
 //  @return ModelsBackupPolicy
-func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupPoliciesIdPutRequest) (ModelsBackupPolicy, *_nethttp.Response, error) {
+func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupPoliciesIdPutRequest) (*ModelsBackupPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackupPolicy
+		localVarReturnValue  *ModelsBackupPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPoliciesApiService.ApiBackupPoliciesIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-policies/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -354,15 +354,15 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -371,7 +371,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -382,7 +382,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupP
 }
 
 type ApiApiTenantsIdBackupPoliciesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupPoliciesApiService
 	id string
 	sortBy *string
@@ -418,7 +418,7 @@ func (r ApiApiTenantsIdBackupPoliciesGetRequest) Name(name string) ApiApiTenants
 	return r
 }
 
-func (r ApiApiTenantsIdBackupPoliciesGetRequest) Execute() (ControllersPaginatedBackupPolicies, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdBackupPoliciesGetRequest) Execute() (*ControllersPaginatedBackupPolicies, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdBackupPoliciesGetExecute(r)
 }
 
@@ -427,11 +427,11 @@ ApiTenantsIdBackupPoliciesGet List BackupPolicies
 
 Lists BackupPolicies
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdBackupPoliciesGetRequest
 */
-func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGet(ctx _context.Context, id string) ApiApiTenantsIdBackupPoliciesGetRequest {
+func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGet(ctx context.Context, id string) ApiApiTenantsIdBackupPoliciesGetRequest {
 	return ApiApiTenantsIdBackupPoliciesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -441,25 +441,25 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGet(ctx _context.Co
 
 // Execute executes the request
 //  @return ControllersPaginatedBackupPolicies
-func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApiTenantsIdBackupPoliciesGetRequest) (ControllersPaginatedBackupPolicies, *_nethttp.Response, error) {
+func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApiTenantsIdBackupPoliciesGetRequest) (*ControllersPaginatedBackupPolicies, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedBackupPolicies
+		localVarReturnValue  *ControllersPaginatedBackupPolicies
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPoliciesApiService.ApiTenantsIdBackupPoliciesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -517,15 +517,15 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -534,7 +534,7 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -545,7 +545,7 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApi
 }
 
 type ApiApiTenantsIdBackupPoliciesPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupPoliciesApiService
 	id string
 	body *ControllersCreateBackupPolicyRequest
@@ -557,7 +557,7 @@ func (r ApiApiTenantsIdBackupPoliciesPostRequest) Body(body ControllersCreateBac
 	return r
 }
 
-func (r ApiApiTenantsIdBackupPoliciesPostRequest) Execute() (ModelsBackupPolicy, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdBackupPoliciesPostRequest) Execute() (*ModelsBackupPolicy, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdBackupPoliciesPostExecute(r)
 }
 
@@ -566,11 +566,11 @@ ApiTenantsIdBackupPoliciesPost Create BackupPolicy
 
 Creates a new BackupPolicy
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdBackupPoliciesPostRequest
 */
-func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPost(ctx _context.Context, id string) ApiApiTenantsIdBackupPoliciesPostRequest {
+func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPost(ctx context.Context, id string) ApiApiTenantsIdBackupPoliciesPostRequest {
 	return ApiApiTenantsIdBackupPoliciesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -580,25 +580,25 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPost(ctx _context.C
 
 // Execute executes the request
 //  @return ModelsBackupPolicy
-func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPostExecute(r ApiApiTenantsIdBackupPoliciesPostRequest) (ModelsBackupPolicy, *_nethttp.Response, error) {
+func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPostExecute(r ApiApiTenantsIdBackupPoliciesPostRequest) (*ModelsBackupPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackupPolicy
+		localVarReturnValue  *ModelsBackupPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPoliciesApiService.ApiTenantsIdBackupPoliciesPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -646,15 +646,15 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPostExecute(r ApiAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -663,7 +663,7 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPostExecute(r ApiAp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

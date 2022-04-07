@@ -18,11 +18,10 @@ import (
 type ControllersCreateProjectDeployment struct {
 	ApplicationConfigurationOverrides *map[string]string `json:"application_configuration_overrides,omitempty"`
 	ApplicationConfigurationTemplateId *string `json:"application_configuration_template_id,omitempty"`
-	DataServiceId *string `json:"data_service_id,omitempty"`
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
 	DnsZone *string `json:"dns_zone,omitempty"`
 	ImageId *string `json:"image_id,omitempty"`
-	LoadBalancerSourceRanges *[]string `json:"load_balancer_source_ranges,omitempty"`
+	LoadBalancerSourceRanges []string `json:"load_balancer_source_ranges,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NamespaceId *string `json:"namespace_id,omitempty"`
 	// See models.Deployment for more information.
@@ -31,7 +30,6 @@ type ControllersCreateProjectDeployment struct {
 	ScheduledBackup *ControllersCreateDeploymentScheduledBackup `json:"scheduled_backup,omitempty"`
 	ServiceType *string `json:"service_type,omitempty"`
 	StorageOptionsTemplateId *string `json:"storage_options_template_id,omitempty"`
-	VersionId *string `json:"version_id,omitempty"`
 }
 
 // NewControllersCreateProjectDeployment instantiates a new ControllersCreateProjectDeployment object
@@ -113,38 +111,6 @@ func (o *ControllersCreateProjectDeployment) HasApplicationConfigurationTemplate
 // SetApplicationConfigurationTemplateId gets a reference to the given string and assigns it to the ApplicationConfigurationTemplateId field.
 func (o *ControllersCreateProjectDeployment) SetApplicationConfigurationTemplateId(v string) {
 	o.ApplicationConfigurationTemplateId = &v
-}
-
-// GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
-func (o *ControllersCreateProjectDeployment) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
-		var ret string
-		return ret
-	}
-	return *o.DataServiceId
-}
-
-// GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ControllersCreateProjectDeployment) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
-		return nil, false
-	}
-	return o.DataServiceId, true
-}
-
-// HasDataServiceId returns a boolean if a field has been set.
-func (o *ControllersCreateProjectDeployment) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDataServiceId gets a reference to the given string and assigns it to the DataServiceId field.
-func (o *ControllersCreateProjectDeployment) SetDataServiceId(v string) {
-	o.DataServiceId = &v
 }
 
 // GetDeploymentTargetId returns the DeploymentTargetId field value if set, zero value otherwise.
@@ -249,12 +215,12 @@ func (o *ControllersCreateProjectDeployment) GetLoadBalancerSourceRanges() []str
 		var ret []string
 		return ret
 	}
-	return *o.LoadBalancerSourceRanges
+	return o.LoadBalancerSourceRanges
 }
 
 // GetLoadBalancerSourceRangesOk returns a tuple with the LoadBalancerSourceRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateProjectDeployment) GetLoadBalancerSourceRangesOk() (*[]string, bool) {
+func (o *ControllersCreateProjectDeployment) GetLoadBalancerSourceRangesOk() ([]string, bool) {
 	if o == nil || o.LoadBalancerSourceRanges == nil {
 		return nil, false
 	}
@@ -272,7 +238,7 @@ func (o *ControllersCreateProjectDeployment) HasLoadBalancerSourceRanges() bool 
 
 // SetLoadBalancerSourceRanges gets a reference to the given []string and assigns it to the LoadBalancerSourceRanges field.
 func (o *ControllersCreateProjectDeployment) SetLoadBalancerSourceRanges(v []string) {
-	o.LoadBalancerSourceRanges = &v
+	o.LoadBalancerSourceRanges = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -499,38 +465,6 @@ func (o *ControllersCreateProjectDeployment) SetStorageOptionsTemplateId(v strin
 	o.StorageOptionsTemplateId = &v
 }
 
-// GetVersionId returns the VersionId field value if set, zero value otherwise.
-func (o *ControllersCreateProjectDeployment) GetVersionId() string {
-	if o == nil || o.VersionId == nil {
-		var ret string
-		return ret
-	}
-	return *o.VersionId
-}
-
-// GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ControllersCreateProjectDeployment) GetVersionIdOk() (*string, bool) {
-	if o == nil || o.VersionId == nil {
-		return nil, false
-	}
-	return o.VersionId, true
-}
-
-// HasVersionId returns a boolean if a field has been set.
-func (o *ControllersCreateProjectDeployment) HasVersionId() bool {
-	if o != nil && o.VersionId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVersionId gets a reference to the given string and assigns it to the VersionId field.
-func (o *ControllersCreateProjectDeployment) SetVersionId(v string) {
-	o.VersionId = &v
-}
-
 func (o ControllersCreateProjectDeployment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApplicationConfigurationOverrides != nil {
@@ -538,9 +472,6 @@ func (o ControllersCreateProjectDeployment) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApplicationConfigurationTemplateId != nil {
 		toSerialize["application_configuration_template_id"] = o.ApplicationConfigurationTemplateId
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
 	}
 	if o.DeploymentTargetId != nil {
 		toSerialize["deployment_target_id"] = o.DeploymentTargetId
@@ -574,9 +505,6 @@ func (o ControllersCreateProjectDeployment) MarshalJSON() ([]byte, error) {
 	}
 	if o.StorageOptionsTemplateId != nil {
 		toSerialize["storage_options_template_id"] = o.StorageOptionsTemplateId
-	}
-	if o.VersionId != nil {
-		toSerialize["version_id"] = o.VersionId
 	}
 	return json.Marshal(toSerialize)
 }

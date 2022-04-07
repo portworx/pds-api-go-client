@@ -33,8 +33,8 @@ func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectsApi.ApiProjectsIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectsApi.ApiProjectsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiProjectsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     name := "name_example" // string | Filter results by Project name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectsApi.ApiTenantsIdProjectsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectsApi.ApiTenantsIdProjectsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiTenantsIdProjectsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

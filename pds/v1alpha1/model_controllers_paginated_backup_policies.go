@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedBackupPolicies struct for ControllersPaginatedBackupPolicies
 type ControllersPaginatedBackupPolicies struct {
-	Data *[]ModelsBackupPolicy `json:"data,omitempty"`
+	Data []ModelsBackupPolicy `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedBackupPolicies) GetData() []ModelsBackupPolicy {
 		var ret []ModelsBackupPolicy
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupPolicies) GetDataOk() (*[]ModelsBackupPolicy, bool) {
+func (o *ControllersPaginatedBackupPolicies) GetDataOk() ([]ModelsBackupPolicy, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedBackupPolicies) HasData() bool {
 
 // SetData gets a reference to the given []ModelsBackupPolicy and assigns it to the Data field.
 func (o *ControllersPaginatedBackupPolicies) SetData(v []ModelsBackupPolicy) {
-	o.Data = &v
+	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

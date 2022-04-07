@@ -39,8 +39,8 @@ func main() {
     name := "name_example" // string | Filter results by Accounts name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ApiAccountsGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ApiAccountsIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -184,8 +184,8 @@ func main() {
     email := "email_example" // string | Filter results by User email (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ApiAccountsIdUsersGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsIdUsersGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdUsersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -259,8 +259,8 @@ func main() {
     body := *openapiclient.NewControllersCreateAccountRequest() // ControllersCreateAccountRequest | Request body containing name of the account
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ApiAccountsPost(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsPost(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // ImagesApiService ImagesApi service
 type ImagesApiService service
 
 type ApiApiImagesIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ImagesApiService
 	id string
 }
 
 
-func (r ApiApiImagesIdGetRequest) Execute() (ModelsImage, *_nethttp.Response, error) {
+func (r ApiApiImagesIdGetRequest) Execute() (*ModelsImage, *http.Response, error) {
 	return r.ApiService.ApiImagesIdGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiImagesIdGet Get Image
 
 Fetches a single Image
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Image ID (must be valid UUID)
  @return ApiApiImagesIdGetRequest
 */
-func (a *ImagesApiService) ApiImagesIdGet(ctx _context.Context, id string) ApiApiImagesIdGetRequest {
+func (a *ImagesApiService) ApiImagesIdGet(ctx context.Context, id string) ApiApiImagesIdGetRequest {
 	return ApiApiImagesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *ImagesApiService) ApiImagesIdGet(ctx _context.Context, id string) ApiAp
 
 // Execute executes the request
 //  @return ModelsImage
-func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (ModelsImage, *_nethttp.Response, error) {
+func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (*ModelsImage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsImage
+		localVarReturnValue  *ModelsImage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesApiService.ApiImagesIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/images/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (Mo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (Mo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -146,7 +146,7 @@ func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (Mo
 }
 
 type ApiApiVersionsIdImagesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ImagesApiService
 	id string
 	sortBy *string
@@ -182,7 +182,7 @@ func (r ApiApiVersionsIdImagesGetRequest) Name(name string) ApiApiVersionsIdImag
 	return r
 }
 
-func (r ApiApiVersionsIdImagesGetRequest) Execute() (ControllersPaginatedImages, *_nethttp.Response, error) {
+func (r ApiApiVersionsIdImagesGetRequest) Execute() (*ControllersPaginatedImages, *http.Response, error) {
 	return r.ApiService.ApiVersionsIdImagesGetExecute(r)
 }
 
@@ -191,11 +191,11 @@ ApiVersionsIdImagesGet List Version's Images
 
 Lists Images belonging to a Version.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Version ID (must be valid UUID)
  @return ApiApiVersionsIdImagesGetRequest
 */
-func (a *ImagesApiService) ApiVersionsIdImagesGet(ctx _context.Context, id string) ApiApiVersionsIdImagesGetRequest {
+func (a *ImagesApiService) ApiVersionsIdImagesGet(ctx context.Context, id string) ApiApiVersionsIdImagesGetRequest {
 	return ApiApiVersionsIdImagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -205,25 +205,25 @@ func (a *ImagesApiService) ApiVersionsIdImagesGet(ctx _context.Context, id strin
 
 // Execute executes the request
 //  @return ControllersPaginatedImages
-func (a *ImagesApiService) ApiVersionsIdImagesGetExecute(r ApiApiVersionsIdImagesGetRequest) (ControllersPaginatedImages, *_nethttp.Response, error) {
+func (a *ImagesApiService) ApiVersionsIdImagesGetExecute(r ApiApiVersionsIdImagesGetRequest) (*ControllersPaginatedImages, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedImages
+		localVarReturnValue  *ControllersPaginatedImages
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesApiService.ApiVersionsIdImagesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/versions/{id}/images"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -281,15 +281,15 @@ func (a *ImagesApiService) ApiVersionsIdImagesGetExecute(r ApiApiVersionsIdImage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -298,7 +298,7 @@ func (a *ImagesApiService) ApiVersionsIdImagesGetExecute(r ApiApiVersionsIdImage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

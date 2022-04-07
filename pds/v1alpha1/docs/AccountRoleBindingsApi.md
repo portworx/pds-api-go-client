@@ -37,8 +37,8 @@ func main() {
     body := *openapiclient.NewControllersInvitationRequest() // ControllersInvitationRequest | Request body containing the invitation details.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdInvitationsPost(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdInvitationsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdInvitationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     actorType := "actorType_example" // string | AccountRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,8 +180,8 @@ func main() {
     actorType := "actorType_example" // string | Filter results by AccountRoleBinding actor type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).ActorId(actorId).ActorType(actorType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,8 +255,8 @@ func main() {
     body := *openapiclient.NewControllersUpsertAccountRoleBindingRequest() // ControllersUpsertAccountRoleBindingRequest | Request body containing the account role binding
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -328,8 +328,8 @@ func main() {
     roleName := "roleName_example" // string | Filter results by AccountRoleBinding assigned role_name (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountRoleBindingsApi.ApiUsersIdAccountRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountRoleBindingsApi.ApiUsersIdAccountRoleBindingsGet(context.Background(), id).SortBy(sortBy).RoleName(roleName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiUsersIdAccountRoleBindingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

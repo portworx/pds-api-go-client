@@ -12,27 +12,27 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // RolesApiService RolesApi service
 type RolesApiService service
 
 type ApiApiRolesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *RolesApiService
 }
 
 
-func (r ApiApiRolesGetRequest) Execute() (ControllersPaginatedRoles, *_nethttp.Response, error) {
+func (r ApiApiRolesGetRequest) Execute() (*ControllersPaginatedRoles, *http.Response, error) {
 	return r.ApiService.ApiRolesGetExecute(r)
 }
 
@@ -41,10 +41,10 @@ ApiRolesGet List Roles
 
 Fetches list of supported Roles
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiRolesGetRequest
 */
-func (a *RolesApiService) ApiRolesGet(ctx _context.Context) ApiApiRolesGetRequest {
+func (a *RolesApiService) ApiRolesGet(ctx context.Context) ApiApiRolesGetRequest {
 	return ApiApiRolesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -53,24 +53,24 @@ func (a *RolesApiService) ApiRolesGet(ctx _context.Context) ApiApiRolesGetReques
 
 // Execute executes the request
 //  @return ControllersPaginatedRoles
-func (a *RolesApiService) ApiRolesGetExecute(r ApiApiRolesGetRequest) (ControllersPaginatedRoles, *_nethttp.Response, error) {
+func (a *RolesApiService) ApiRolesGetExecute(r ApiApiRolesGetRequest) (*ControllersPaginatedRoles, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedRoles
+		localVarReturnValue  *ControllersPaginatedRoles
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.ApiRolesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/roles"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -113,15 +113,15 @@ func (a *RolesApiService) ApiRolesGetExecute(r ApiApiRolesGetRequest) (Controlle
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -130,7 +130,7 @@ func (a *RolesApiService) ApiRolesGetExecute(r ApiApiRolesGetRequest) (Controlle
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

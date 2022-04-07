@@ -33,8 +33,8 @@ func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsMAASDetailsApi.ApiAccountsIdMaasDetailsGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsMAASDetailsApi.ApiAccountsIdMaasDetailsGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsMAASDetailsApi.ApiAccountsIdMaasDetailsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,8 +103,8 @@ func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsMAASDetailsApi.ApiAccountsIdMaasDetailsPut(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsMAASDetailsApi.ApiAccountsIdMaasDetailsPut(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsMAASDetailsApi.ApiAccountsIdMaasDetailsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

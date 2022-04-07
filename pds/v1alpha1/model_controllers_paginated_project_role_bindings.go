@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedProjectRoleBindings struct for ControllersPaginatedProjectRoleBindings
 type ControllersPaginatedProjectRoleBindings struct {
-	Data *[]ModelsProjectRoleBinding `json:"data,omitempty"`
+	Data []ModelsProjectRoleBinding `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedProjectRoleBindings instantiates a new ControllersPaginatedProjectRoleBindings object
@@ -42,12 +42,12 @@ func (o *ControllersPaginatedProjectRoleBindings) GetData() []ModelsProjectRoleB
 		var ret []ModelsProjectRoleBinding
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedProjectRoleBindings) GetDataOk() (*[]ModelsProjectRoleBinding, bool) {
+func (o *ControllersPaginatedProjectRoleBindings) GetDataOk() ([]ModelsProjectRoleBinding, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ControllersPaginatedProjectRoleBindings) HasData() bool {
 
 // SetData gets a reference to the given []ModelsProjectRoleBinding and assigns it to the Data field.
 func (o *ControllersPaginatedProjectRoleBindings) SetData(v []ModelsProjectRoleBinding) {
-	o.Data = &v
+	o.Data = v
 }
 
 func (o ControllersPaginatedProjectRoleBindings) MarshalJSON() ([]byte, error) {

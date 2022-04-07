@@ -42,8 +42,8 @@ func main() {
     comingSoon := true // bool | Filter results based on 'Coming soon' flag (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DataServicesApi.ApiDataServicesGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).ResourceType(resourceType).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DataServicesApi.ApiDataServicesGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).ResourceType(resourceType).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataServicesApi.ApiDataServicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -117,8 +117,8 @@ func main() {
     id := "id_example" // string | Data Service ID (must be a valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DataServicesApi.ApiDataServicesIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DataServicesApi.ApiDataServicesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataServicesApi.ApiDataServicesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

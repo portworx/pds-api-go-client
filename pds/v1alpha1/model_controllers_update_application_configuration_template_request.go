@@ -16,7 +16,7 @@ import (
 
 // ControllersUpdateApplicationConfigurationTemplateRequest struct for ControllersUpdateApplicationConfigurationTemplateRequest
 type ControllersUpdateApplicationConfigurationTemplateRequest struct {
-	ConfigItems *[]ModelsConfigItem `json:"config_items,omitempty"`
+	ConfigItems []ModelsConfigItem `json:"config_items,omitempty"`
 	// See models.ApplicationConfigurationTemplate for more information.
 	Name *string `json:"name,omitempty"`
 }
@@ -44,12 +44,12 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItem
 		var ret []ModelsConfigItem
 		return ret
 	}
-	return *o.ConfigItems
+	return o.ConfigItems
 }
 
 // GetConfigItemsOk returns a tuple with the ConfigItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItemsOk() (*[]ModelsConfigItem, bool) {
+func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
 	if o == nil || o.ConfigItems == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) HasConfigItem
 
 // SetConfigItems gets a reference to the given []ModelsConfigItem and assigns it to the ConfigItems field.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) SetConfigItems(v []ModelsConfigItem) {
-	o.ConfigItems = &v
+	o.ConfigItems = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.

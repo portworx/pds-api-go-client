@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // UsersApiService UsersApi service
 type UsersApiService service
 
 type ApiApiUsersIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *UsersApiService
 	id string
 }
 
 
-func (r ApiApiUsersIdGetRequest) Execute() (ModelsUser, *_nethttp.Response, error) {
+func (r ApiApiUsersIdGetRequest) Execute() (*ModelsUser, *http.Response, error) {
 	return r.ApiService.ApiUsersIdGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiUsersIdGet Get User
 
 Fetches a single User
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id User ID (must be valid UUID)
  @return ApiApiUsersIdGetRequest
 */
-func (a *UsersApiService) ApiUsersIdGet(ctx _context.Context, id string) ApiApiUsersIdGetRequest {
+func (a *UsersApiService) ApiUsersIdGet(ctx context.Context, id string) ApiApiUsersIdGetRequest {
 	return ApiApiUsersIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *UsersApiService) ApiUsersIdGet(ctx _context.Context, id string) ApiApiU
 
 // Execute executes the request
 //  @return ModelsUser
-func (a *UsersApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (ModelsUser, *_nethttp.Response, error) {
+func (a *UsersApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (*ModelsUser, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsUser
+		localVarReturnValue  *ModelsUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersApiService.ApiUsersIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *UsersApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (Model
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *UsersApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (Model
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

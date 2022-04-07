@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // ProjectRoleBindingsApiService ProjectRoleBindingsApi service
 type ProjectRoleBindingsApiService service
 
 type ApiApiProjectsIdRoleBindingsDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ProjectRoleBindingsApiService
 	id string
 	actorType *string
@@ -40,7 +40,7 @@ func (r ApiApiProjectsIdRoleBindingsDeleteRequest) ActorType(actorType string) A
 	return r
 }
 
-func (r ApiApiProjectsIdRoleBindingsDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiProjectsIdRoleBindingsDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiProjectsIdRoleBindingsDeleteExecute(r)
 }
 
@@ -49,11 +49,11 @@ ApiProjectsIdRoleBindingsDelete Delete ProjectRoleBinding
 
 Removes a single ProjectRoleBinding
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Project ID (must be valid UUID)
  @return ApiApiProjectsIdRoleBindingsDeleteRequest
 */
-func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDelete(ctx _context.Context, id string) ApiApiProjectsIdRoleBindingsDeleteRequest {
+func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDelete(ctx context.Context, id string) ApiApiProjectsIdRoleBindingsDeleteRequest {
 	return ApiApiProjectsIdRoleBindingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,24 +62,24 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDelete(ctx _con
 }
 
 // Execute executes the request
-func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDeleteExecute(r ApiApiProjectsIdRoleBindingsDeleteRequest) (*_nethttp.Response, error) {
+func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDeleteExecute(r ApiApiProjectsIdRoleBindingsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectRoleBindingsApiService.ApiProjectsIdRoleBindingsDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -124,15 +124,15 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDeleteExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -143,7 +143,7 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsDeleteExecute(r
 }
 
 type ApiApiProjectsIdRoleBindingsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ProjectRoleBindingsApiService
 	id string
 	sortBy *string
@@ -173,7 +173,7 @@ func (r ApiApiProjectsIdRoleBindingsGetRequest) ActorType(actorType string) ApiA
 	return r
 }
 
-func (r ApiApiProjectsIdRoleBindingsGetRequest) Execute() (ControllersPaginatedProjectRoleBindings, *_nethttp.Response, error) {
+func (r ApiApiProjectsIdRoleBindingsGetRequest) Execute() (*ControllersPaginatedProjectRoleBindings, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdRoleBindingsGetExecute(r)
 }
 
@@ -182,11 +182,11 @@ ApiProjectsIdRoleBindingsGet List ProjectRoleBindings
 
 Lists ProjectRoleBindings
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Project ID (must be valid UUID)
  @return ApiApiProjectsIdRoleBindingsGetRequest
 */
-func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGet(ctx _context.Context, id string) ApiApiProjectsIdRoleBindingsGetRequest {
+func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGet(ctx context.Context, id string) ApiApiProjectsIdRoleBindingsGetRequest {
 	return ApiApiProjectsIdRoleBindingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -196,25 +196,25 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGet(ctx _contex
 
 // Execute executes the request
 //  @return ControllersPaginatedProjectRoleBindings
-func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGetExecute(r ApiApiProjectsIdRoleBindingsGetRequest) (ControllersPaginatedProjectRoleBindings, *_nethttp.Response, error) {
+func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGetExecute(r ApiApiProjectsIdRoleBindingsGetRequest) (*ControllersPaginatedProjectRoleBindings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedProjectRoleBindings
+		localVarReturnValue  *ControllersPaginatedProjectRoleBindings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectRoleBindingsApiService.ApiProjectsIdRoleBindingsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -269,15 +269,15 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGetExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -286,7 +286,7 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGetExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -297,7 +297,7 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsGetExecute(r Ap
 }
 
 type ApiApiProjectsIdRoleBindingsPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ProjectRoleBindingsApiService
 	id string
 	body *ControllersUpsertProjectRoleBindingRequest
@@ -309,7 +309,7 @@ func (r ApiApiProjectsIdRoleBindingsPutRequest) Body(body ControllersUpsertProje
 	return r
 }
 
-func (r ApiApiProjectsIdRoleBindingsPutRequest) Execute() (ModelsProjectRoleBinding, *_nethttp.Response, error) {
+func (r ApiApiProjectsIdRoleBindingsPutRequest) Execute() (*ModelsProjectRoleBinding, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdRoleBindingsPutExecute(r)
 }
 
@@ -318,11 +318,11 @@ ApiProjectsIdRoleBindingsPut Create ProjectRoleBinding
 
 Creates a new ProjectRoleBinding
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Project ID (must be valid UUID)
  @return ApiApiProjectsIdRoleBindingsPutRequest
 */
-func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPut(ctx _context.Context, id string) ApiApiProjectsIdRoleBindingsPutRequest {
+func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPut(ctx context.Context, id string) ApiApiProjectsIdRoleBindingsPutRequest {
 	return ApiApiProjectsIdRoleBindingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -332,25 +332,25 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPut(ctx _contex
 
 // Execute executes the request
 //  @return ModelsProjectRoleBinding
-func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPutExecute(r ApiApiProjectsIdRoleBindingsPutRequest) (ModelsProjectRoleBinding, *_nethttp.Response, error) {
+func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPutExecute(r ApiApiProjectsIdRoleBindingsPutRequest) (*ModelsProjectRoleBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsProjectRoleBinding
+		localVarReturnValue  *ModelsProjectRoleBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectRoleBindingsApiService.ApiProjectsIdRoleBindingsPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -398,15 +398,15 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPutExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -415,7 +415,7 @@ func (a *ProjectRoleBindingsApiService) ApiProjectsIdRoleBindingsPutExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

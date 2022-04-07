@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApplicationConfigurationOverrides** | Pointer to **map[string]string** |  | [optional] 
 **ApplicationConfigurationTemplateId** | Pointer to **string** |  | [optional] 
-**DataServiceId** | Pointer to **string** |  | [optional] 
 **DeploymentTargetId** | Pointer to **string** |  | [optional] 
 **DnsZone** | Pointer to **string** |  | [optional] 
 **ImageId** | Pointer to **string** |  | [optional] 
@@ -18,7 +17,6 @@ Name | Type | Description | Notes
 **ScheduledBackup** | Pointer to [**ControllersCreateDeploymentScheduledBackup**](ControllersCreateDeploymentScheduledBackup.md) |  | [optional] 
 **ServiceType** | Pointer to **string** |  | [optional] 
 **StorageOptionsTemplateId** | Pointer to **string** |  | [optional] 
-**VersionId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -88,31 +86,6 @@ SetApplicationConfigurationTemplateId sets ApplicationConfigurationTemplateId fi
 `func (o *ControllersCreateProjectDeployment) HasApplicationConfigurationTemplateId() bool`
 
 HasApplicationConfigurationTemplateId returns a boolean if a field has been set.
-
-### GetDataServiceId
-
-`func (o *ControllersCreateProjectDeployment) GetDataServiceId() string`
-
-GetDataServiceId returns the DataServiceId field if non-nil, zero value otherwise.
-
-### GetDataServiceIdOk
-
-`func (o *ControllersCreateProjectDeployment) GetDataServiceIdOk() (*string, bool)`
-
-GetDataServiceIdOk returns a tuple with the DataServiceId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataServiceId
-
-`func (o *ControllersCreateProjectDeployment) SetDataServiceId(v string)`
-
-SetDataServiceId sets DataServiceId field to given value.
-
-### HasDataServiceId
-
-`func (o *ControllersCreateProjectDeployment) HasDataServiceId() bool`
-
-HasDataServiceId returns a boolean if a field has been set.
 
 ### GetDeploymentTargetId
 
@@ -388,31 +361,6 @@ SetStorageOptionsTemplateId sets StorageOptionsTemplateId field to given value.
 `func (o *ControllersCreateProjectDeployment) HasStorageOptionsTemplateId() bool`
 
 HasStorageOptionsTemplateId returns a boolean if a field has been set.
-
-### GetVersionId
-
-`func (o *ControllersCreateProjectDeployment) GetVersionId() string`
-
-GetVersionId returns the VersionId field if non-nil, zero value otherwise.
-
-### GetVersionIdOk
-
-`func (o *ControllersCreateProjectDeployment) GetVersionIdOk() (*string, bool)`
-
-GetVersionIdOk returns a tuple with the VersionId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVersionId
-
-`func (o *ControllersCreateProjectDeployment) SetVersionId(v string)`
-
-SetVersionId sets VersionId field to given value.
-
-### HasVersionId
-
-`func (o *ControllersCreateProjectDeployment) HasVersionId() bool`
-
-HasVersionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

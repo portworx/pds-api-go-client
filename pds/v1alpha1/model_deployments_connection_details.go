@@ -17,7 +17,7 @@ import (
 // DeploymentsConnectionDetails struct for DeploymentsConnectionDetails
 type DeploymentsConnectionDetails struct {
 	// Nodes of the data service.
-	Nodes *[]string `json:"nodes,omitempty"`
+	Nodes []string `json:"nodes,omitempty"`
 	// Ports provided by the data service (name and number).
 	Ports *map[string]int32 `json:"ports,omitempty"`
 }
@@ -45,12 +45,12 @@ func (o *DeploymentsConnectionDetails) GetNodes() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Nodes
+	return o.Nodes
 }
 
 // GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentsConnectionDetails) GetNodesOk() (*[]string, bool) {
+func (o *DeploymentsConnectionDetails) GetNodesOk() ([]string, bool) {
 	if o == nil || o.Nodes == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *DeploymentsConnectionDetails) HasNodes() bool {
 
 // SetNodes gets a reference to the given []string and assigns it to the Nodes field.
 func (o *DeploymentsConnectionDetails) SetNodes(v []string) {
-	o.Nodes = &v
+	o.Nodes = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.

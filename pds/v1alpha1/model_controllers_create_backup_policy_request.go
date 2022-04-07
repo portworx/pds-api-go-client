@@ -19,7 +19,7 @@ type ControllersCreateBackupPolicyRequest struct {
 	// Name of the backup policy. Must be unique for the given tenant.
 	Name *string `json:"name,omitempty"`
 	// An array of the backup schedules. Must be non-empty.
-	Schedules *[]ModelsBackupSchedule `json:"schedules,omitempty"`
+	Schedules []ModelsBackupSchedule `json:"schedules,omitempty"`
 }
 
 // NewControllersCreateBackupPolicyRequest instantiates a new ControllersCreateBackupPolicyRequest object
@@ -77,12 +77,12 @@ func (o *ControllersCreateBackupPolicyRequest) GetSchedules() []ModelsBackupSche
 		var ret []ModelsBackupSchedule
 		return ret
 	}
-	return *o.Schedules
+	return o.Schedules
 }
 
 // GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateBackupPolicyRequest) GetSchedulesOk() (*[]ModelsBackupSchedule, bool) {
+func (o *ControllersCreateBackupPolicyRequest) GetSchedulesOk() ([]ModelsBackupSchedule, bool) {
 	if o == nil || o.Schedules == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *ControllersCreateBackupPolicyRequest) HasSchedules() bool {
 
 // SetSchedules gets a reference to the given []ModelsBackupSchedule and assigns it to the Schedules field.
 func (o *ControllersCreateBackupPolicyRequest) SetSchedules(v []ModelsBackupSchedule) {
-	o.Schedules = &v
+	o.Schedules = v
 }
 
 func (o ControllersCreateBackupPolicyRequest) MarshalJSON() ([]byte, error) {

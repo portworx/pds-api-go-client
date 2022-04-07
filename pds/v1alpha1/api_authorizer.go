@@ -12,22 +12,22 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // AuthorizerApiService AuthorizerApi service
 type AuthorizerApiService service
 
 type ApiApiAuthorizerPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *AuthorizerApiService
 	body *ModelsAuthorizerRequest
 }
@@ -38,7 +38,7 @@ func (r ApiApiAuthorizerPostRequest) Body(body ModelsAuthorizerRequest) ApiApiAu
 	return r
 }
 
-func (r ApiApiAuthorizerPostRequest) Execute() (ModelsAuthorizerResponse, *_nethttp.Response, error) {
+func (r ApiApiAuthorizerPostRequest) Execute() (*ModelsAuthorizerResponse, *http.Response, error) {
 	return r.ApiService.ApiAuthorizerPostExecute(r)
 }
 
@@ -47,10 +47,10 @@ ApiAuthorizerPost Authorize operation
 
 Check if the provided operation is allowed
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiAuthorizerPostRequest
 */
-func (a *AuthorizerApiService) ApiAuthorizerPost(ctx _context.Context) ApiApiAuthorizerPostRequest {
+func (a *AuthorizerApiService) ApiAuthorizerPost(ctx context.Context) ApiApiAuthorizerPostRequest {
 	return ApiApiAuthorizerPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,24 +59,24 @@ func (a *AuthorizerApiService) ApiAuthorizerPost(ctx _context.Context) ApiApiAut
 
 // Execute executes the request
 //  @return ModelsAuthorizerResponse
-func (a *AuthorizerApiService) ApiAuthorizerPostExecute(r ApiApiAuthorizerPostRequest) (ModelsAuthorizerResponse, *_nethttp.Response, error) {
+func (a *AuthorizerApiService) ApiAuthorizerPostExecute(r ApiApiAuthorizerPostRequest) (*ModelsAuthorizerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsAuthorizerResponse
+		localVarReturnValue  *ModelsAuthorizerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizerApiService.ApiAuthorizerPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/authorizer"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -124,15 +124,15 @@ func (a *AuthorizerApiService) ApiAuthorizerPostExecute(r ApiApiAuthorizerPostRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -141,7 +141,7 @@ func (a *AuthorizerApiService) ApiAuthorizerPostExecute(r ApiApiAuthorizerPostRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

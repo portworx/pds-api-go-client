@@ -39,8 +39,8 @@ func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdConnectionInfoGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdConnectionInfoGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdConnectionInfoGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@ func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdCredentialsGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdCredentialsGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdDelete
 
-> ApiDeploymentsIdDelete(ctx, id).LocalOnly(localOnly).Execute()
+> ApiDeploymentsIdDelete(ctx, id).Force(force).Execute()
 
 Delete Deployment
 
@@ -177,11 +177,11 @@ import (
 
 func main() {
     id := "id_example" // string | Deployment ID (must be a valid UUID)
-    localOnly := true // bool | Set to true to only delete the Deployment object in the database (does not delete any actual resources) (optional)
+    force := "force_example" // string | Delete deployment even if the deletion job fails on any deployment targets (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdDelete(context.Background(), id).LocalOnly(localOnly).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdDelete(context.Background(), id).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,7 +205,7 @@ Other parameters are passed through a pointer to a apiApiDeploymentsIdDeleteRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **localOnly** | **bool** | Set to true to only delete the Deployment object in the database (does not delete any actual resources) | 
+ **force** | **string** | Delete deployment even if the deletion job fails on any deployment targets | 
 
 ### Return type
 
@@ -249,8 +249,8 @@ func main() {
     id := "id_example" // string | Deployment ID (either id or deployment_id field)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -321,8 +321,8 @@ func main() {
     localOnly := true // bool | Set to true to only update the Deployment object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdPut(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdPut(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -393,8 +393,8 @@ func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiDeploymentsIdStatusGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdStatusGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -474,8 +474,8 @@ func main() {
     state := "state_example" // string | Filter results by Deployment state (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -557,8 +557,8 @@ func main() {
     localOnly := true // bool | Set to true to only create the Deployment object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DeploymentsApi.ApiProjectsIdDeploymentsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiProjectsIdDeploymentsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

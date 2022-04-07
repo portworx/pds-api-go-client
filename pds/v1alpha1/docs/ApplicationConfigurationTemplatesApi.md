@@ -36,8 +36,8 @@ func main() {
     id := "id_example" // string | ApplicationConfigurationTemplate ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     id := "id_example" // string | ApplicationConfigurationTemplate ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateApplicationConfigurationTemplateRequest() // ControllersUpdateApplicationConfigurationTemplateRequest | Request body containing updated template
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationTemplatesApi.ApiApplicationConfigurationTemplatesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,8 +252,8 @@ func main() {
     dataServiceId := "dataServiceId_example" // string | Filter results by DataService ID (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,8 +329,8 @@ func main() {
     body := *openapiclient.NewControllersCreateApplicationConfigurationTemplatesRequest() // ControllersCreateApplicationConfigurationTemplatesRequest | Request body containing the application configuration template
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesPost(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

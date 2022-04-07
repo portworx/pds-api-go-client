@@ -16,10 +16,10 @@ import (
 
 // DeploymentsConnectionInfo struct for DeploymentsConnectionInfo
 type DeploymentsConnectionInfo struct {
-	ClusterDetails *map[string]interface{} `json:"clusterDetails,omitempty"`
+	ClusterDetails map[string]interface{} `json:"clusterDetails,omitempty"`
 	ConnectionDetails *DeploymentsConnectionDetails `json:"connectionDetails,omitempty"`
-	NotReadyPods *[]DeploymentsPodInfo `json:"notReadyPods,omitempty"`
-	Pods *[]DeploymentsPodInfo `json:"pods,omitempty"`
+	NotReadyPods []DeploymentsPodInfo `json:"notReadyPods,omitempty"`
+	Pods []DeploymentsPodInfo `json:"pods,omitempty"`
 }
 
 // NewDeploymentsConnectionInfo instantiates a new DeploymentsConnectionInfo object
@@ -45,12 +45,12 @@ func (o *DeploymentsConnectionInfo) GetClusterDetails() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ClusterDetails
+	return o.ClusterDetails
 }
 
 // GetClusterDetailsOk returns a tuple with the ClusterDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentsConnectionInfo) GetClusterDetailsOk() (*map[string]interface{}, bool) {
+func (o *DeploymentsConnectionInfo) GetClusterDetailsOk() (map[string]interface{}, bool) {
 	if o == nil || o.ClusterDetails == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *DeploymentsConnectionInfo) HasClusterDetails() bool {
 
 // SetClusterDetails gets a reference to the given map[string]interface{} and assigns it to the ClusterDetails field.
 func (o *DeploymentsConnectionInfo) SetClusterDetails(v map[string]interface{}) {
-	o.ClusterDetails = &v
+	o.ClusterDetails = v
 }
 
 // GetConnectionDetails returns the ConnectionDetails field value if set, zero value otherwise.
@@ -109,12 +109,12 @@ func (o *DeploymentsConnectionInfo) GetNotReadyPods() []DeploymentsPodInfo {
 		var ret []DeploymentsPodInfo
 		return ret
 	}
-	return *o.NotReadyPods
+	return o.NotReadyPods
 }
 
 // GetNotReadyPodsOk returns a tuple with the NotReadyPods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentsConnectionInfo) GetNotReadyPodsOk() (*[]DeploymentsPodInfo, bool) {
+func (o *DeploymentsConnectionInfo) GetNotReadyPodsOk() ([]DeploymentsPodInfo, bool) {
 	if o == nil || o.NotReadyPods == nil {
 		return nil, false
 	}
@@ -132,7 +132,7 @@ func (o *DeploymentsConnectionInfo) HasNotReadyPods() bool {
 
 // SetNotReadyPods gets a reference to the given []DeploymentsPodInfo and assigns it to the NotReadyPods field.
 func (o *DeploymentsConnectionInfo) SetNotReadyPods(v []DeploymentsPodInfo) {
-	o.NotReadyPods = &v
+	o.NotReadyPods = v
 }
 
 // GetPods returns the Pods field value if set, zero value otherwise.
@@ -141,12 +141,12 @@ func (o *DeploymentsConnectionInfo) GetPods() []DeploymentsPodInfo {
 		var ret []DeploymentsPodInfo
 		return ret
 	}
-	return *o.Pods
+	return o.Pods
 }
 
 // GetPodsOk returns a tuple with the Pods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentsConnectionInfo) GetPodsOk() (*[]DeploymentsPodInfo, bool) {
+func (o *DeploymentsConnectionInfo) GetPodsOk() ([]DeploymentsPodInfo, bool) {
 	if o == nil || o.Pods == nil {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *DeploymentsConnectionInfo) HasPods() bool {
 
 // SetPods gets a reference to the given []DeploymentsPodInfo and assigns it to the Pods field.
 func (o *DeploymentsConnectionInfo) SetPods(v []DeploymentsPodInfo) {
-	o.Pods = &v
+	o.Pods = v
 }
 
 func (o DeploymentsConnectionInfo) MarshalJSON() ([]byte, error) {

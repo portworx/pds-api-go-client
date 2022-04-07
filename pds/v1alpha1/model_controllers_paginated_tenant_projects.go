@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedTenantProjects struct for ControllersPaginatedTenantProjects
 type ControllersPaginatedTenantProjects struct {
-	Data *[]ModelsProject `json:"data,omitempty"`
+	Data []ModelsProject `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedTenantProjects) GetData() []ModelsProject {
 		var ret []ModelsProject
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedTenantProjects) GetDataOk() (*[]ModelsProject, bool) {
+func (o *ControllersPaginatedTenantProjects) GetDataOk() ([]ModelsProject, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedTenantProjects) HasData() bool {
 
 // SetData gets a reference to the given []ModelsProject and assigns it to the Data field.
 func (o *ControllersPaginatedTenantProjects) SetData(v []ModelsProject) {
-	o.Data = &v
+	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

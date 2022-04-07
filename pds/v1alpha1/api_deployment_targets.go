@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // DeploymentTargetsApiService DeploymentTargetsApi service
 type DeploymentTargetsApiService service
 
 type ApiApiDeploymentTargetsIdCredentialsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 }
 
 
-func (r ApiApiDeploymentTargetsIdCredentialsGetRequest) Execute() (ControllersDeploymentTargetCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiApiDeploymentTargetsIdCredentialsGetRequest) Execute() (*ControllersDeploymentTargetCredentialsResponse, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdCredentialsGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiDeploymentTargetsIdCredentialsGet Get join credentials of a DeploymentTarget
 
 Fetches the join credentials of a DeploymentTarget
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdCredentialsGetRequest
 */
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGet(ctx _context.Context, id string) ApiApiDeploymentTargetsIdCredentialsGetRequest {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGet(ctx context.Context, id string) ApiApiDeploymentTargetsIdCredentialsGetRequest {
 	return ApiApiDeploymentTargetsIdCredentialsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGet(ctx _
 
 // Execute executes the request
 //  @return ControllersDeploymentTargetCredentialsResponse
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecute(r ApiApiDeploymentTargetsIdCredentialsGetRequest) (ControllersDeploymentTargetCredentialsResponse, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecute(r ApiApiDeploymentTargetsIdCredentialsGetRequest) (*ControllersDeploymentTargetCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersDeploymentTargetCredentialsResponse
+		localVarReturnValue  *ControllersDeploymentTargetCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiDeploymentTargetsIdCredentialsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -146,13 +146,13 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecut
 }
 
 type ApiApiDeploymentTargetsIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 }
 
 
-func (r ApiApiDeploymentTargetsIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiDeploymentTargetsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdDeleteExecute(r)
 }
 
@@ -161,11 +161,11 @@ ApiDeploymentTargetsIdDelete Delete DeploymentTarget
 
 Deletes a single DeploymentTarget.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdDeleteRequest
 */
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDelete(ctx _context.Context, id string) ApiApiDeploymentTargetsIdDeleteRequest {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDelete(ctx context.Context, id string) ApiApiDeploymentTargetsIdDeleteRequest {
 	return ApiApiDeploymentTargetsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -174,24 +174,24 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDelete(ctx _context.
 }
 
 // Execute executes the request
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDeleteExecute(r ApiApiDeploymentTargetsIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDeleteExecute(r ApiApiDeploymentTargetsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiDeploymentTargetsIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -234,15 +234,15 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDeleteExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -253,13 +253,13 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDeleteExecute(r ApiA
 }
 
 type ApiApiDeploymentTargetsIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 }
 
 
-func (r ApiApiDeploymentTargetsIdGetRequest) Execute() (ModelsDeploymentTarget, *_nethttp.Response, error) {
+func (r ApiApiDeploymentTargetsIdGetRequest) Execute() (*ModelsDeploymentTarget, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdGetExecute(r)
 }
 
@@ -268,11 +268,11 @@ ApiDeploymentTargetsIdGet Get DeploymentTarget
 
 Fetches a single DeploymentTarget
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdGetRequest
 */
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGet(ctx _context.Context, id string) ApiApiDeploymentTargetsIdGetRequest {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGet(ctx context.Context, id string) ApiApiDeploymentTargetsIdGetRequest {
 	return ApiApiDeploymentTargetsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -282,25 +282,25 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGet(ctx _context.Con
 
 // Execute executes the request
 //  @return ModelsDeploymentTarget
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiDeploymentTargetsIdGetRequest) (ModelsDeploymentTarget, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiDeploymentTargetsIdGetRequest) (*ModelsDeploymentTarget, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsDeploymentTarget
+		localVarReturnValue  *ModelsDeploymentTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiDeploymentTargetsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -343,15 +343,15 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -360,7 +360,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiD
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -371,7 +371,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiD
 }
 
 type ApiApiDeploymentTargetsIdHeartbeatPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 	body *ControllersDeploymentTargetHeartbeatRequest
@@ -383,7 +383,7 @@ func (r ApiApiDeploymentTargetsIdHeartbeatPostRequest) Body(body ControllersDepl
 	return r
 }
 
-func (r ApiApiDeploymentTargetsIdHeartbeatPostRequest) Execute() (ControllersDeploymentTargetHeartbeatResponse, *_nethttp.Response, error) {
+func (r ApiApiDeploymentTargetsIdHeartbeatPostRequest) Execute() (*ControllersDeploymentTargetHeartbeatResponse, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdHeartbeatPostExecute(r)
 }
 
@@ -392,11 +392,11 @@ ApiDeploymentTargetsIdHeartbeatPost Make DeploymentTarget heart beat request
 
 Makes control plane aware that DeploymentTarget is still alive
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdHeartbeatPostRequest
 */
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPost(ctx _context.Context, id string) ApiApiDeploymentTargetsIdHeartbeatPostRequest {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPost(ctx context.Context, id string) ApiApiDeploymentTargetsIdHeartbeatPostRequest {
 	return ApiApiDeploymentTargetsIdHeartbeatPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -406,25 +406,25 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPost(ctx _c
 
 // Execute executes the request
 //  @return ControllersDeploymentTargetHeartbeatResponse
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute(r ApiApiDeploymentTargetsIdHeartbeatPostRequest) (ControllersDeploymentTargetHeartbeatResponse, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute(r ApiApiDeploymentTargetsIdHeartbeatPostRequest) (*ControllersDeploymentTargetHeartbeatResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersDeploymentTargetHeartbeatResponse
+		localVarReturnValue  *ControllersDeploymentTargetHeartbeatResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiDeploymentTargetsIdHeartbeatPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/heartbeat"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -472,15 +472,15 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -489,7 +489,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -500,7 +500,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute
 }
 
 type ApiApiDeploymentTargetsIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 	body *ControllersUpdateDeploymentTargetRequest
@@ -512,7 +512,7 @@ func (r ApiApiDeploymentTargetsIdPutRequest) Body(body ControllersUpdateDeployme
 	return r
 }
 
-func (r ApiApiDeploymentTargetsIdPutRequest) Execute() (ModelsDeploymentTarget, *_nethttp.Response, error) {
+func (r ApiApiDeploymentTargetsIdPutRequest) Execute() (*ModelsDeploymentTarget, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdPutExecute(r)
 }
 
@@ -521,11 +521,11 @@ ApiDeploymentTargetsIdPut Update DeploymentTarget
 
 Updates existing DeploymentTarget
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdPutRequest
 */
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPut(ctx _context.Context, id string) ApiApiDeploymentTargetsIdPutRequest {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPut(ctx context.Context, id string) ApiApiDeploymentTargetsIdPutRequest {
 	return ApiApiDeploymentTargetsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -535,25 +535,25 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPut(ctx _context.Con
 
 // Execute executes the request
 //  @return ModelsDeploymentTarget
-func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiDeploymentTargetsIdPutRequest) (ModelsDeploymentTarget, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiDeploymentTargetsIdPutRequest) (*ModelsDeploymentTarget, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsDeploymentTarget
+		localVarReturnValue  *ModelsDeploymentTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiDeploymentTargetsIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -601,15 +601,15 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -618,7 +618,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiD
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -629,7 +629,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiD
 }
 
 type ApiApiProjectsIdDeploymentTargetsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 	sortBy *string
@@ -671,7 +671,7 @@ func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Name(name string) ApiApiPro
 	return r
 }
 
-func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Execute() (ControllersPaginatedDeploymentTargets, *_nethttp.Response, error) {
+func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Execute() (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdDeploymentTargetsGetExecute(r)
 }
 
@@ -680,11 +680,11 @@ ApiProjectsIdDeploymentTargetsGet List Project's DeploymentTargets
 
 Lists DeploymentTargets belonging to the Project
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Project ID (must be valid UUID)
  @return ApiApiProjectsIdDeploymentTargetsGetRequest
 */
-func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGet(ctx _context.Context, id string) ApiApiProjectsIdDeploymentTargetsGetRequest {
+func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGet(ctx context.Context, id string) ApiApiProjectsIdDeploymentTargetsGetRequest {
 	return ApiApiProjectsIdDeploymentTargetsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -694,25 +694,25 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGet(ctx _con
 
 // Execute executes the request
 //  @return ControllersPaginatedDeploymentTargets
-func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r ApiApiProjectsIdDeploymentTargetsGetRequest) (ControllersPaginatedDeploymentTargets, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r ApiApiProjectsIdDeploymentTargetsGetRequest) (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedDeploymentTargets
+		localVarReturnValue  *ControllersPaginatedDeploymentTargets
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiProjectsIdDeploymentTargetsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}/deployment-targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -773,15 +773,15 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -790,7 +790,7 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -801,7 +801,7 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r
 }
 
 type ApiApiTenantsIdDeploymentTargetsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 	sortBy *string
@@ -843,7 +843,7 @@ func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Name(name string) ApiApiTena
 	return r
 }
 
-func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Execute() (ControllersPaginatedDeploymentTargets, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Execute() (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdDeploymentTargetsGetExecute(r)
 }
 
@@ -852,11 +852,11 @@ ApiTenantsIdDeploymentTargetsGet List Tenant's DeploymentTargets
 
 Lists Tenant's DeploymentTargets
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdDeploymentTargetsGetRequest
 */
-func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGet(ctx _context.Context, id string) ApiApiTenantsIdDeploymentTargetsGetRequest {
+func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGet(ctx context.Context, id string) ApiApiTenantsIdDeploymentTargetsGetRequest {
 	return ApiApiTenantsIdDeploymentTargetsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -866,25 +866,25 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGet(ctx _cont
 
 // Execute executes the request
 //  @return ControllersPaginatedDeploymentTargets
-func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r ApiApiTenantsIdDeploymentTargetsGetRequest) (ControllersPaginatedDeploymentTargets, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r ApiApiTenantsIdDeploymentTargetsGetRequest) (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedDeploymentTargets
+		localVarReturnValue  *ControllersPaginatedDeploymentTargets
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiTenantsIdDeploymentTargetsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/deployment-targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -945,15 +945,15 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -962,7 +962,7 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -973,7 +973,7 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r 
 }
 
 type ApiApiTenantsIdDeploymentTargetsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
 	body *ControllersCreateTenantDeploymentTarget
@@ -985,7 +985,7 @@ func (r ApiApiTenantsIdDeploymentTargetsPostRequest) Body(body ControllersCreate
 	return r
 }
 
-func (r ApiApiTenantsIdDeploymentTargetsPostRequest) Execute() (ModelsDeploymentTarget, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdDeploymentTargetsPostRequest) Execute() (*ModelsDeploymentTarget, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdDeploymentTargetsPostExecute(r)
 }
 
@@ -994,11 +994,11 @@ ApiTenantsIdDeploymentTargetsPost Create DeploymentTarget
 
 Creates a new DeploymentTarget
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdDeploymentTargetsPostRequest
 */
-func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPost(ctx _context.Context, id string) ApiApiTenantsIdDeploymentTargetsPostRequest {
+func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPost(ctx context.Context, id string) ApiApiTenantsIdDeploymentTargetsPostRequest {
 	return ApiApiTenantsIdDeploymentTargetsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1008,25 +1008,25 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPost(ctx _con
 
 // Execute executes the request
 //  @return ModelsDeploymentTarget
-func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPostExecute(r ApiApiTenantsIdDeploymentTargetsPostRequest) (ModelsDeploymentTarget, *_nethttp.Response, error) {
+func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPostExecute(r ApiApiTenantsIdDeploymentTargetsPostRequest) (*ModelsDeploymentTarget, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsDeploymentTarget
+		localVarReturnValue  *ModelsDeploymentTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiTenantsIdDeploymentTargetsPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/deployment-targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -1074,15 +1074,15 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPostExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1091,7 +1091,7 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPostExecute(r
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

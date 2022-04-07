@@ -24,7 +24,7 @@ type ModelsTask struct {
 	Description *string `json:"description,omitempty"`
 	// ID is auto generated on creation
 	Id *int32 `json:"id,omitempty"`
-	Log *[]string `json:"log,omitempty"`
+	Log []string `json:"log,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	Status *string `json:"status,omitempty"`
 	TenantId *string `json:"tenant_id,omitempty"`
@@ -248,12 +248,12 @@ func (o *ModelsTask) GetLog() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Log
+	return o.Log
 }
 
 // GetLogOk returns a tuple with the Log field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsTask) GetLogOk() (*[]string, bool) {
+func (o *ModelsTask) GetLogOk() ([]string, bool) {
 	if o == nil || o.Log == nil {
 		return nil, false
 	}
@@ -271,7 +271,7 @@ func (o *ModelsTask) HasLog() bool {
 
 // SetLog gets a reference to the given []string and assigns it to the Log field.
 func (o *ModelsTask) SetLog(v []string) {
-	o.Log = &v
+	o.Log = v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.

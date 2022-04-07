@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // BackupCredentialsApiService BackupCredentialsApi service
 type BackupCredentialsApiService service
 
 type ApiApiBackupCredentialsIdCredentialsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupCredentialsApiService
 	id string
 }
 
 
-func (r ApiApiBackupCredentialsIdCredentialsGetRequest) Execute() (ControllersPartialCredentials, *_nethttp.Response, error) {
+func (r ApiApiBackupCredentialsIdCredentialsGetRequest) Execute() (*ControllersPartialCredentials, *http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdCredentialsGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiBackupCredentialsIdCredentialsGet Get cloud configuration for BackupCredentia
 
 Get cloud configuration for BackupCredentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupCredentials ID (must be valid UUID)
  @return ApiApiBackupCredentialsIdCredentialsGetRequest
 */
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGet(ctx _context.Context, id string) ApiApiBackupCredentialsIdCredentialsGetRequest {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGet(ctx context.Context, id string) ApiApiBackupCredentialsIdCredentialsGetRequest {
 	return ApiApiBackupCredentialsIdCredentialsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGet(ctx _
 
 // Execute executes the request
 //  @return ControllersPartialCredentials
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecute(r ApiApiBackupCredentialsIdCredentialsGetRequest) (ControllersPartialCredentials, *_nethttp.Response, error) {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecute(r ApiApiBackupCredentialsIdCredentialsGetRequest) (*ControllersPartialCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPartialCredentials
+		localVarReturnValue  *ControllersPartialCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupCredentialsApiService.ApiBackupCredentialsIdCredentialsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -146,13 +146,13 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecut
 }
 
 type ApiApiBackupCredentialsIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupCredentialsApiService
 	id string
 }
 
 
-func (r ApiApiBackupCredentialsIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiBackupCredentialsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdDeleteExecute(r)
 }
 
@@ -161,11 +161,11 @@ ApiBackupCredentialsIdDelete Delete BackupCredentials
 
 Removes a single BackupCredential
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupCredentials ID (must be valid UUID)
  @return ApiApiBackupCredentialsIdDeleteRequest
 */
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDelete(ctx _context.Context, id string) ApiApiBackupCredentialsIdDeleteRequest {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDelete(ctx context.Context, id string) ApiApiBackupCredentialsIdDeleteRequest {
 	return ApiApiBackupCredentialsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -174,24 +174,24 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDelete(ctx _context.
 }
 
 // Execute executes the request
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDeleteExecute(r ApiApiBackupCredentialsIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDeleteExecute(r ApiApiBackupCredentialsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupCredentialsApiService.ApiBackupCredentialsIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -234,15 +234,15 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDeleteExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -253,13 +253,13 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDeleteExecute(r ApiA
 }
 
 type ApiApiBackupCredentialsIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupCredentialsApiService
 	id string
 }
 
 
-func (r ApiApiBackupCredentialsIdGetRequest) Execute() (ModelsBackupCredentials, *_nethttp.Response, error) {
+func (r ApiApiBackupCredentialsIdGetRequest) Execute() (*ModelsBackupCredentials, *http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdGetExecute(r)
 }
 
@@ -268,11 +268,11 @@ ApiBackupCredentialsIdGet Get BackupCredentials
 
 Fetches a single BackupCredentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupCredentials ID (must be valid UUID)
  @return ApiApiBackupCredentialsIdGetRequest
 */
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGet(ctx _context.Context, id string) ApiApiBackupCredentialsIdGetRequest {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGet(ctx context.Context, id string) ApiApiBackupCredentialsIdGetRequest {
 	return ApiApiBackupCredentialsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -282,25 +282,25 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGet(ctx _context.Con
 
 // Execute executes the request
 //  @return ModelsBackupCredentials
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiBackupCredentialsIdGetRequest) (ModelsBackupCredentials, *_nethttp.Response, error) {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiBackupCredentialsIdGetRequest) (*ModelsBackupCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackupCredentials
+		localVarReturnValue  *ModelsBackupCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupCredentialsApiService.ApiBackupCredentialsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -343,15 +343,15 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -360,7 +360,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiB
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -371,7 +371,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiB
 }
 
 type ApiApiBackupCredentialsIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupCredentialsApiService
 	id string
 	body *ControllersUpdateBackupCredentialsRequest
@@ -383,7 +383,7 @@ func (r ApiApiBackupCredentialsIdPutRequest) Body(body ControllersUpdateBackupCr
 	return r
 }
 
-func (r ApiApiBackupCredentialsIdPutRequest) Execute() (ModelsBackupCredentials, *_nethttp.Response, error) {
+func (r ApiApiBackupCredentialsIdPutRequest) Execute() (*ModelsBackupCredentials, *http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdPutExecute(r)
 }
 
@@ -392,11 +392,11 @@ ApiBackupCredentialsIdPut Update BackupCredentials
 
 Updates an existing instance of BackupCredentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupCredentials ID (must be UUID)
  @return ApiApiBackupCredentialsIdPutRequest
 */
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPut(ctx _context.Context, id string) ApiApiBackupCredentialsIdPutRequest {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPut(ctx context.Context, id string) ApiApiBackupCredentialsIdPutRequest {
 	return ApiApiBackupCredentialsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -406,25 +406,25 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPut(ctx _context.Con
 
 // Execute executes the request
 //  @return ModelsBackupCredentials
-func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiBackupCredentialsIdPutRequest) (ModelsBackupCredentials, *_nethttp.Response, error) {
+func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiBackupCredentialsIdPutRequest) (*ModelsBackupCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackupCredentials
+		localVarReturnValue  *ModelsBackupCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupCredentialsApiService.ApiBackupCredentialsIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -472,15 +472,15 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -489,7 +489,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiB
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -500,7 +500,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiB
 }
 
 type ApiApiTenantsIdBackupCredentialsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupCredentialsApiService
 	id string
 	sortBy *string
@@ -542,7 +542,7 @@ func (r ApiApiTenantsIdBackupCredentialsGetRequest) Type_(type_ string) ApiApiTe
 	return r
 }
 
-func (r ApiApiTenantsIdBackupCredentialsGetRequest) Execute() (ControllersPaginatedBackupCredentials, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdBackupCredentialsGetRequest) Execute() (*ControllersPaginatedBackupCredentials, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdBackupCredentialsGetExecute(r)
 }
 
@@ -551,11 +551,11 @@ ApiTenantsIdBackupCredentialsGet List BackupCredentials
 
 Lists BackupCredentials visible to the caller
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdBackupCredentialsGetRequest
 */
-func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGet(ctx _context.Context, id string) ApiApiTenantsIdBackupCredentialsGetRequest {
+func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGet(ctx context.Context, id string) ApiApiTenantsIdBackupCredentialsGetRequest {
 	return ApiApiTenantsIdBackupCredentialsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -565,25 +565,25 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGet(ctx _cont
 
 // Execute executes the request
 //  @return ControllersPaginatedBackupCredentials
-func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r ApiApiTenantsIdBackupCredentialsGetRequest) (ControllersPaginatedBackupCredentials, *_nethttp.Response, error) {
+func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r ApiApiTenantsIdBackupCredentialsGetRequest) (*ControllersPaginatedBackupCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedBackupCredentials
+		localVarReturnValue  *ControllersPaginatedBackupCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupCredentialsApiService.ApiTenantsIdBackupCredentialsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -644,15 +644,15 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -661,7 +661,7 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -672,7 +672,7 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r 
 }
 
 type ApiApiTenantsIdBackupCredentialsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupCredentialsApiService
 	id string
 	body *ControllersCreateBackupCredentialsRequest
@@ -684,7 +684,7 @@ func (r ApiApiTenantsIdBackupCredentialsPostRequest) Body(body ControllersCreate
 	return r
 }
 
-func (r ApiApiTenantsIdBackupCredentialsPostRequest) Execute() (ModelsBackupCredentials, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdBackupCredentialsPostRequest) Execute() (*ModelsBackupCredentials, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdBackupCredentialsPostExecute(r)
 }
 
@@ -693,11 +693,11 @@ ApiTenantsIdBackupCredentialsPost Create BackupCredentials
 
 Creates a new BackupCredentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdBackupCredentialsPostRequest
 */
-func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPost(ctx _context.Context, id string) ApiApiTenantsIdBackupCredentialsPostRequest {
+func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPost(ctx context.Context, id string) ApiApiTenantsIdBackupCredentialsPostRequest {
 	return ApiApiTenantsIdBackupCredentialsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -707,25 +707,25 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPost(ctx _con
 
 // Execute executes the request
 //  @return ModelsBackupCredentials
-func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPostExecute(r ApiApiTenantsIdBackupCredentialsPostRequest) (ModelsBackupCredentials, *_nethttp.Response, error) {
+func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPostExecute(r ApiApiTenantsIdBackupCredentialsPostRequest) (*ModelsBackupCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackupCredentials
+		localVarReturnValue  *ModelsBackupCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupCredentialsApiService.ApiTenantsIdBackupCredentialsPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -773,15 +773,15 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPostExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -790,7 +790,7 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPostExecute(r
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

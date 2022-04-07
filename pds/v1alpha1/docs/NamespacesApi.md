@@ -42,8 +42,8 @@ func main() {
     status := "status_example" // string | Filter results by Namespace status (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.ApiDeploymentTargetsIdNamespacesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NamespacesApi.ApiDeploymentTargetsIdNamespacesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiDeploymentTargetsIdNamespacesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -119,8 +119,8 @@ func main() {
     body := *openapiclient.NewControllersCreateNamespace() // ControllersCreateNamespace | Request body containing the new namespace
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.ApiDeploymentTargetsIdNamespacesPost(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NamespacesApi.ApiDeploymentTargetsIdNamespacesPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiDeploymentTargetsIdNamespacesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,8 +190,8 @@ func main() {
     id := "id_example" // string | Namespace ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.ApiNamespacesIdDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NamespacesApi.ApiNamespacesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -258,8 +258,8 @@ func main() {
     id := "id_example" // string | Namespace ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.ApiNamespacesIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NamespacesApi.ApiNamespacesIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,8 +329,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateNamespaceRequest() // ControllersUpdateNamespaceRequest | Object with partial update of fields (status)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.ApiNamespacesIdPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NamespacesApi.ApiNamespacesIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiNamespacesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

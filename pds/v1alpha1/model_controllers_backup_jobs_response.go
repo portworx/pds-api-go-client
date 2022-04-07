@@ -16,7 +16,7 @@ import (
 
 // ControllersBackupJobsResponse struct for ControllersBackupJobsResponse
 type ControllersBackupJobsResponse struct {
-	Data *[]ControllersBackupJobStatus `json:"data,omitempty"`
+	Data []ControllersBackupJobStatus `json:"data,omitempty"`
 }
 
 // NewControllersBackupJobsResponse instantiates a new ControllersBackupJobsResponse object
@@ -42,12 +42,12 @@ func (o *ControllersBackupJobsResponse) GetData() []ControllersBackupJobStatus {
 		var ret []ControllersBackupJobStatus
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersBackupJobsResponse) GetDataOk() (*[]ControllersBackupJobStatus, bool) {
+func (o *ControllersBackupJobsResponse) GetDataOk() ([]ControllersBackupJobStatus, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ControllersBackupJobsResponse) HasData() bool {
 
 // SetData gets a reference to the given []ControllersBackupJobStatus and assigns it to the Data field.
 func (o *ControllersBackupJobsResponse) SetData(v []ControllersBackupJobStatus) {
-	o.Data = &v
+	o.Data = v
 }
 
 func (o ControllersBackupJobsResponse) MarshalJSON() ([]byte, error) {

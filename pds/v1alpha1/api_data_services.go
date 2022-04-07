@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // DataServicesApiService DataServicesApi service
 type DataServicesApiService service
 
 type ApiApiDataServicesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DataServicesApiService
 	sortBy *string
 	limit *string
@@ -93,7 +93,7 @@ func (r ApiApiDataServicesGetRequest) ComingSoon(comingSoon bool) ApiApiDataServ
 	return r
 }
 
-func (r ApiApiDataServicesGetRequest) Execute() (ControllersPaginatedDataServices, *_nethttp.Response, error) {
+func (r ApiApiDataServicesGetRequest) Execute() (*ControllersPaginatedDataServices, *http.Response, error) {
 	return r.ApiService.ApiDataServicesGetExecute(r)
 }
 
@@ -102,10 +102,10 @@ ApiDataServicesGet List Data Services
 
 Lists Data Services
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDataServicesGetRequest
 */
-func (a *DataServicesApiService) ApiDataServicesGet(ctx _context.Context) ApiApiDataServicesGetRequest {
+func (a *DataServicesApiService) ApiDataServicesGet(ctx context.Context) ApiApiDataServicesGetRequest {
 	return ApiApiDataServicesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -114,24 +114,24 @@ func (a *DataServicesApiService) ApiDataServicesGet(ctx _context.Context) ApiApi
 
 // Execute executes the request
 //  @return ControllersPaginatedDataServices
-func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesGetRequest) (ControllersPaginatedDataServices, *_nethttp.Response, error) {
+func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesGetRequest) (*ControllersPaginatedDataServices, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedDataServices
+		localVarReturnValue  *ControllersPaginatedDataServices
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataServicesApiService.ApiDataServicesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/data-services"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -204,15 +204,15 @@ func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -221,7 +221,7 @@ func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -232,13 +232,13 @@ func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesG
 }
 
 type ApiApiDataServicesIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DataServicesApiService
 	id string
 }
 
 
-func (r ApiApiDataServicesIdGetRequest) Execute() (ModelsDataService, *_nethttp.Response, error) {
+func (r ApiApiDataServicesIdGetRequest) Execute() (*ModelsDataService, *http.Response, error) {
 	return r.ApiService.ApiDataServicesIdGetExecute(r)
 }
 
@@ -247,11 +247,11 @@ ApiDataServicesIdGet Get Data Service
 
 Fetches a single Data Service
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Data Service ID (must be a valid UUID)
  @return ApiApiDataServicesIdGetRequest
 */
-func (a *DataServicesApiService) ApiDataServicesIdGet(ctx _context.Context, id string) ApiApiDataServicesIdGetRequest {
+func (a *DataServicesApiService) ApiDataServicesIdGet(ctx context.Context, id string) ApiApiDataServicesIdGetRequest {
 	return ApiApiDataServicesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -261,25 +261,25 @@ func (a *DataServicesApiService) ApiDataServicesIdGet(ctx _context.Context, id s
 
 // Execute executes the request
 //  @return ModelsDataService
-func (a *DataServicesApiService) ApiDataServicesIdGetExecute(r ApiApiDataServicesIdGetRequest) (ModelsDataService, *_nethttp.Response, error) {
+func (a *DataServicesApiService) ApiDataServicesIdGetExecute(r ApiApiDataServicesIdGetRequest) (*ModelsDataService, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsDataService
+		localVarReturnValue  *ModelsDataService
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataServicesApiService.ApiDataServicesIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/data-services/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -322,15 +322,15 @@ func (a *DataServicesApiService) ApiDataServicesIdGetExecute(r ApiApiDataService
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -339,7 +339,7 @@ func (a *DataServicesApiService) ApiDataServicesIdGetExecute(r ApiApiDataService
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -13,46 +13,31 @@ paths:
       parameters:
       - description: 'A given Accounts attribute to sort results by (one of: id, name,
           created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Accounts id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Accounts name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -92,13 +77,11 @@ paths:
       description: Fetches a single Account
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -116,13 +99,11 @@ paths:
       description: Update DNS details for desired account
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -133,6 +114,7 @@ paths:
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Update DNS Details
@@ -145,13 +127,11 @@ paths:
         to non-existing users in the future.
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -183,13 +163,11 @@ paths:
       description: Returns MAAS details for desired account
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -206,16 +184,15 @@ paths:
       description: Updates MAAS details for desired account
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Update MAAS details
@@ -226,13 +203,11 @@ paths:
       description: Removes a single AccountRoleBinding
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -243,6 +218,7 @@ paths:
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete AccountRoleBinding
@@ -253,46 +229,32 @@ paths:
       description: Lists AccountRoleBinding
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given AccountRoleBinding attribute to sort results by (one
           of: role_name, actor_id)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by AccountRoleBinding assigned role name
-        explode: true
         in: query
         name: role_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by AccountRoleBinding actor id
-        explode: true
         in: query
         name: actor_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by AccountRoleBinding actor type
-        explode: true
         in: query
         name: actor_type
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -310,13 +272,11 @@ paths:
         for (actor_id, actor_type) already exists.
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -342,55 +302,38 @@ paths:
       description: Lists Tenants visible to the caller and belonging to the Account.
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Tenant attribute to sort results by (one of: id, name,
           created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Tenant id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Tenant name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -408,55 +351,38 @@ paths:
       description: Lists Account Users
       parameters:
       - description: Account ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given User attribute to sort results by (one of: id, email,
           created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by User id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by User email
-        explode: true
         in: query
         name: email
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -474,16 +400,15 @@ paths:
       description: Removes a single ApplicationConfigurationTemplate
       parameters:
       - description: ApplicationConfigurationTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete ApplicationConfigurationTemplates
@@ -493,13 +418,11 @@ paths:
       description: Fetches a single ApplicationConfigurationTemplate
       parameters:
       - description: ApplicationConfigurationTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -516,13 +439,11 @@ paths:
       description: Updates existing ApplicationConfigurationTemplate
       parameters:
       - description: ApplicationConfigurationTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -571,16 +492,15 @@ paths:
       description: Removes a single BackupCredential
       parameters:
       - description: BackupCredentials ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete BackupCredentials
@@ -590,13 +510,11 @@ paths:
       description: Fetches a single BackupCredentials
       parameters:
       - description: BackupCredentials ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -613,13 +531,11 @@ paths:
       description: Updates an existing instance of BackupCredentials
       parameters:
       - description: BackupCredentials ID (must be UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -645,13 +561,11 @@ paths:
       description: Get cloud configuration for BackupCredentials
       parameters:
       - description: BackupCredentials ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -669,13 +583,11 @@ paths:
       description: Fetches a BackupJob
       parameters:
       - description: BackupJob ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -693,16 +605,15 @@ paths:
       description: Removes a single BackupPolicy
       parameters:
       - description: BackupPolicy ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete BackupPolicies
@@ -712,13 +623,11 @@ paths:
       description: Fetches a single BackupPolicy
       parameters:
       - description: BackupPolicy ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -735,13 +644,11 @@ paths:
       description: Updates existing BackupPolicy
       parameters:
       - description: BackupPolicy ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -767,25 +674,21 @@ paths:
       description: Removes a single BackupTarget
       parameters:
       - description: BackupTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Delete backup target even if the deletion job fails on any deployment
           targets
-        explode: true
         in: query
         name: force
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete BackupTargets
@@ -795,13 +698,11 @@ paths:
       description: Fetches a single BackupTarget
       parameters:
       - description: BackupTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -818,13 +719,11 @@ paths:
       description: Updates existing BackupTarget
       parameters:
       - description: BackupTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -850,87 +749,58 @@ paths:
       description: Lists Backups belonging to the BackupTarget.
       parameters:
       - description: BackupTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Backup attribute to sort results by (one of: id, cluster_resource_name,
           created_at, backup_type, backup_level)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup cluster_resource_name
-        explode: true
         in: query
         name: cluster_resource_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup state
-        explode: true
         in: query
         name: state
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup suspend flag
-        explode: true
         in: query
         name: suspend
-        required: false
         schema:
           type: string
-        style: form
       - description: 'Filter results by Backup type (one of: adhoc,scheduled)'
-        explode: true
         in: query
         name: backup_type
-        required: false
         schema:
           type: string
-        style: form
       - description: 'Filter results by Backup type (one of: snapshot,incremental)'
-        explode: true
         in: query
         name: backup_level
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -948,16 +818,15 @@ paths:
       description: Retries to sync failed BackupTargetState
       parameters:
       - description: BackupTargetState ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Retry sync of a BackupTarget
@@ -968,63 +837,43 @@ paths:
       description: Lists BackupTarget's BackupTargetStates
       parameters:
       - description: Backup Target ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: 'A given BackupTargetState attribute to sort results by (one
           of: state, deployment_target_id, backup_target_id)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupTarget ID
-        explode: true
         in: query
         name: backup_target_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DeploymentTarget ID
-        explode: true
         in: query
         name: deployment_target_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by state
-        explode: true
         in: query
         name: state
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -1042,25 +891,21 @@ paths:
       description: Deletes an existing database deployment Backup
       parameters:
       - description: Backup ID (must be a valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Set to true to only delete the Backup object in the database
           (does not delete any actual resources)
-        explode: false
         in: header
         name: Local-Only
-        required: false
         schema:
           type: boolean
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete Backup
@@ -1070,13 +915,11 @@ paths:
       description: Fetches a single Backup
       parameters:
       - description: Backup ID (must be a valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1093,22 +936,17 @@ paths:
       description: Updates an existing database Backup
       parameters:
       - description: Backup ID (must be UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Set to true to only update the Backup object in the database
           (does not create any actual resources)
-        explode: false
         in: header
         name: Local-Only
-        required: false
         schema:
           type: boolean
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1134,13 +972,11 @@ paths:
       description: Retrieves a list of BackupJobs associated to this Backup
       parameters:
       - description: Backup ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1153,92 +989,87 @@ paths:
       summary: List Backup's Jobs
       tags:
       - BackupJobs
+  /api/backups/{id}/jobs/{name}:
+    delete:
+      description: Deletes an existing job for scheduled backups
+      parameters:
+      - description: Backup ID (must be a valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Backup job name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Backup jobs
+      tags:
+      - Backups
   /api/data-services:
     get:
       description: Lists Data Services
       parameters:
       - description: 'A given Data Service attribute to sort results by (one of: id,
           name, short_name, resource_type, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Data Service ID
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Data Service name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Data Service short name
-        explode: true
         in: query
         name: short_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Data Service resource type
-        explode: true
         in: query
         name: resource_type
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results based on incremental backup eligibility
-        explode: true
         in: query
         name: has_incremental_backup
-        required: false
         schema:
           type: boolean
-        style: form
       - description: Filter results based on vault full backup eligibility
-        explode: true
         in: query
         name: has_full_backup
-        required: false
         schema:
           type: boolean
-        style: form
       - description: Filter results based on 'Coming soon' flag
-        explode: true
         in: query
         name: coming_soon
-        required: false
         schema:
           type: boolean
-        style: form
       responses:
         "200":
           content:
@@ -1256,13 +1087,11 @@ paths:
       description: Fetches a single Data Service
       parameters:
       - description: Data Service ID (must be a valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1280,55 +1109,38 @@ paths:
       description: Lists Versions belonging to the Data Service.
       parameters:
       - description: Data Service ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Version attribute to sort results by (one of: id, name,
           created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Version id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Version's name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -1346,13 +1158,11 @@ paths:
       description: Fetches a database Task
       parameters:
       - description: Task ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1370,13 +1180,11 @@ paths:
       description: Deletes a single DeploymentTarget.
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
@@ -1394,13 +1202,11 @@ paths:
       description: Fetches a single DeploymentTarget
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1417,13 +1223,11 @@ paths:
       description: Updates existing DeploymentTarget
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1449,13 +1253,11 @@ paths:
       description: Fetches the join credentials of a DeploymentTarget
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1473,13 +1275,11 @@ paths:
       description: Makes control plane aware that DeploymentTarget is still alive
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1505,63 +1305,43 @@ paths:
       description: List DeploymentTarget's Namespaces
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Namespace attribute to sort results by (one of: id,
           name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Namespace ID
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Namespace name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Namespace status
-        explode: true
         in: query
         name: status
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -1578,13 +1358,11 @@ paths:
       description: Creates a new Namespace
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1616,25 +1394,21 @@ paths:
       description: Deletes an existing database Deployment
       parameters:
       - description: Deployment ID (must be a valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
-      - description: Set to true to only delete the Deployment object in the database
-          (does not delete any actual resources)
-        explode: false
-        in: header
-        name: Local-Only
-        required: false
+      - description: Delete deployment even if the deletion job fails on any deployment
+          targets
+        in: query
+        name: force
         schema:
-          type: boolean
-        style: simple
+          type: string
       responses:
-        "204":
+        "202":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete Deployment
@@ -1644,13 +1418,11 @@ paths:
       description: Fetches a data service Deployment
       parameters:
       - description: Deployment ID (either id or deployment_id field)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1667,22 +1439,17 @@ paths:
       description: Updates an existing database Deployment
       parameters:
       - description: Deployment ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Set to true to only update the Deployment object in the database
           (does not create any actual resources)
-        explode: false
         in: header
         name: Local-Only
-        required: false
         schema:
           type: boolean
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1708,87 +1475,58 @@ paths:
       description: Lists Backups belonging to the Deployment.
       parameters:
       - description: Deployment ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Backup attribute to sort results by (one of: id, cluster_resource_name,
           created_at, backup_type, backup_level)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup cluster_resource_name
-        explode: true
         in: query
         name: cluster_resource_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup state
-        explode: true
         in: query
         name: state
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Backup suspend flag
-        explode: true
         in: query
         name: suspend
-        required: false
         schema:
           type: string
-        style: form
       - description: 'Filter results by Backup type (one of: adhoc,scheduled)'
-        explode: true
         in: query
         name: backup_type
-        required: false
         schema:
           type: string
-        style: form
       - description: 'Filter results by Backup type (one of: snapshot,incremental)'
-        explode: true
         in: query
         name: backup_level
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -1805,22 +1543,17 @@ paths:
       description: Creates a new database Backup
       parameters:
       - description: Deployment ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Set to true to only create the Backup object in the database
           (does not create any actual resources)
-        explode: false
         in: header
         name: Local-Only
-        required: false
         schema:
           type: boolean
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1846,13 +1579,11 @@ paths:
       description: Returns connection information for the given Deployment
       parameters:
       - description: Deployment ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1870,13 +1601,11 @@ paths:
       description: Returns credentials to authenticate to the given Deployment
       parameters:
       - description: Deployment ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1894,13 +1623,11 @@ paths:
       description: Retrieves status information on the given Deployment
       parameters:
       - description: Deployment ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1926,6 +1653,7 @@ paths:
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete GlobalRoleBinding
@@ -1937,37 +1665,25 @@ paths:
       parameters:
       - description: 'A given GlobalRoleBinding attribute to sort results by (one
           of: role_name, actor_id)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by GlobalRoleBinding assigned role name
-        explode: true
         in: query
         name: role_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by GlobalRoleBinding actor id
-        explode: true
         in: query
         name: actor_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by GlobalRoleBinding actor type
-        explode: true
         in: query
         name: actor_type
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -2007,13 +1723,11 @@ paths:
       description: Fetches a single Image
       parameters:
       - description: Image ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2031,13 +1745,11 @@ paths:
       description: Deletes a single Namespace.
       parameters:
       - description: Namespace ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
@@ -2055,13 +1767,11 @@ paths:
       description: Fetches a single Namespace
       parameters:
       - description: Namespace ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2078,13 +1788,11 @@ paths:
       description: Update namespace
       parameters:
       - description: Namespace ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2110,13 +1818,11 @@ paths:
       description: Fetches a single Project
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2134,63 +1840,43 @@ paths:
       description: Lists DeploymentTargets belonging to the Project
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given DeploymentTarget attribute to sort results by (one of:
           id, name)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DeploymentTarget ID
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Cluster ID
-        explode: true
         in: query
         name: cluster_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DeploymentTarget name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -2208,103 +1894,68 @@ paths:
       description: Lists Deployments belonging to the Project.
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Deployment attribute to sort results by (one of: id,
           name, cluster_resource_name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment cluster_resource_name
-        explode: true
         in: query
         name: cluster_resource_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment data_service_id
-        explode: true
         in: query
         name: data_service_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment deployment_target_id
-        explode: true
         in: query
         name: deployment_target_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment image_id
-        explode: true
         in: query
         name: image_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment namespace_id
-        explode: true
         in: query
         name: namespace_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Deployment state
-        explode: true
         in: query
         name: state
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -2321,22 +1972,17 @@ paths:
       description: Creates a new data service Deployment
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Set to true to only create the Deployment object in the database
           (does not create any actual resources)
-        explode: false
         in: header
         name: Local-Only
-        required: false
         schema:
           type: boolean
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2362,13 +2008,11 @@ paths:
       description: Removes a single ProjectRoleBinding
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2379,6 +2023,7 @@ paths:
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete ProjectRoleBinding
@@ -2389,46 +2034,32 @@ paths:
       description: Lists ProjectRoleBindings
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given ProjectRoleBinding attribute to sort results by (one
           of: role_name, actor_id)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ProjectRoleBinding assigned role name
-        explode: true
         in: query
         name: role_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ProjectRoleBinding actor id
-        explode: true
         in: query
         name: actor_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ProjectRoleBinding actor type
-        explode: true
         in: query
         name: actor_type
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -2445,13 +2076,11 @@ paths:
       description: Creates a new ProjectRoleBinding
       parameters:
       - description: Project ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2477,16 +2106,15 @@ paths:
       description: Removes a single ResourceSettingsTemplate
       parameters:
       - description: ResourceSettingsTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete ResourceSettingsTemplates
@@ -2496,13 +2124,11 @@ paths:
       description: Fetches a single ResourceSettingsTemplate
       parameters:
       - description: ResourceSettingsTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2519,13 +2145,11 @@ paths:
       description: Updates existing ResourceSettingsTemplate
       parameters:
       - description: ResourceSettingsTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2566,16 +2190,15 @@ paths:
       description: Removes a single ServiceAccount
       parameters:
       - description: ServiceAccount ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete ServiceAccounts
@@ -2585,13 +2208,11 @@ paths:
       description: Fetches a single ServiceAccount
       parameters:
       - description: ServiceAccount ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2609,13 +2230,11 @@ paths:
       description: Fetches the token of a ServiceAccount
       parameters:
       - description: ServiceAccount ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2633,16 +2252,15 @@ paths:
       description: Removes a single StorageOptionsTemplate
       parameters:
       - description: StorageOptionsTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete StorageOptionsTemplates
@@ -2652,13 +2270,11 @@ paths:
       description: Fetches a single StorageOptionsTemplate
       parameters:
       - description: StorageOptionsTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2675,13 +2291,11 @@ paths:
       description: Updates existing StorageOptionsTemplate
       parameters:
       - description: StorageOptionsTemplate ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2707,13 +2321,11 @@ paths:
       description: Fetches a single Team
       parameters:
       - description: Team ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2731,13 +2343,11 @@ paths:
       description: Fetches a single Tenant
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2755,63 +2365,43 @@ paths:
       description: Lists ApplicationConfigurationTemplates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given ApplicationConfigurationTemplates attribute to sort
           results by (one of: id, name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ApplicationConfigurationTemplates id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ApplicationConfigurationTemplates name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DataService ID
-        explode: true
         in: query
         name: data_service_id
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -2828,13 +2418,11 @@ paths:
       description: Creates a new ApplicationConfigurationTemplates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2860,63 +2448,43 @@ paths:
       description: Lists BackupCredentials visible to the caller
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given BackupCredentials attribute to sort results by (one
           of: id, name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupCredentials id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupCredentials name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupCredentials type
-        explode: true
         in: query
         name: type
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -2933,13 +2501,11 @@ paths:
       description: Creates a new BackupCredentials
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2965,55 +2531,38 @@ paths:
       description: Lists BackupPolicies
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given BackupPolicy attribute to sort results by (one of: id,
           name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupPolicy id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupPolicy name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3030,13 +2579,11 @@ paths:
       description: Creates a new BackupPolicy
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3062,87 +2609,58 @@ paths:
       description: Lists Tenant's BackupTargets
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: 'A given BackupTarget attribute to sort results by (one of: id,
           name, type, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupTarget ID
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupTarget name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupTarget type
-        explode: true
         in: query
         name: type
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by bucket
-        explode: true
         in: query
         name: bucket
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by region
-        explode: true
         in: query
         name: region
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by BackupCredentials ID
-        explode: true
         in: query
         name: backup_credentials_id
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3159,13 +2677,11 @@ paths:
       description: Creates a new BackupTarget
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3191,63 +2707,43 @@ paths:
       description: Lists Tenant's DeploymentTargets
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given DeploymentTarget attribute to sort results by (one of:
           id, name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DeploymentTarget ID
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Cluster ID
-        explode: true
         in: query
         name: cluster_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DeploymentTarget name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3264,13 +2760,11 @@ paths:
       description: Creates a new DeploymentTarget
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3296,13 +2790,11 @@ paths:
       description: Get DNS details/credentials for Tenant
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3320,55 +2812,38 @@ paths:
       description: Lists Projects visible to the caller and belonging to the Tenant.
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Project attribute to sort results by (one of: id, name,
           created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Project id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Project name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3386,63 +2861,43 @@ paths:
       description: Lists ResourceSettingsTemplates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given ResourceSettingsTemplates attribute to sort results
           by (one of: id, name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ResourceSettingsTemplates id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ResourceSettingsTemplates name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by DataService ID
-        explode: true
         in: query
         name: data_service_id
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3459,13 +2914,11 @@ paths:
       description: Creates a new ResourceSettingsTemplates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3491,13 +2944,11 @@ paths:
       description: Removes a single TenantRoleBinding
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3508,6 +2959,7 @@ paths:
       responses:
         "204":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Delete TenantRoleBinding
@@ -3518,46 +2970,32 @@ paths:
       description: Lists TenantRoleBindings
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given TenantRoleBinding attribute to sort results by (one
           of: role_name, actor_id)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by TenantRoleBinding assigned role name
-        explode: true
         in: query
         name: role_name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by TenantRoleBinding actor id
-        explode: true
         in: query
         name: actor_id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by TenantRoleBinding actor type
-        explode: true
         in: query
         name: actor_type
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3574,13 +3012,11 @@ paths:
       description: Creates a new TenantRoleBinding
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3606,16 +3042,15 @@ paths:
       description: Populates a tenant scope with default templates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "201":
           content: {}
+          description: ""
       security:
       - ApiKeyAuth: []
       summary: Seed default templates
@@ -3626,63 +3061,43 @@ paths:
       description: List Tenant's ServiceAccounts
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given ServiceAccount attribute to sort results by (one of:
           name, id, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ServiceAccount name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ServiceAccount id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by ServiceAccount token
-        explode: true
         in: query
         name: token
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3699,13 +3114,11 @@ paths:
       description: Creates a new ServiceAccount
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3731,55 +3144,38 @@ paths:
       description: Lists StorageOptionsTemplates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given StorageOptionsTemplates attribute to sort results by
           (one of: id, name, created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by StorageOptionsTemplates id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by StorageOptionsTemplates name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3796,13 +3192,11 @@ paths:
       description: Creates a new StorageOptionsTemplates
       parameters:
       - description: Tenant ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3828,13 +3222,11 @@ paths:
       description: Fetches a single User
       parameters:
       - description: User ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3853,30 +3245,22 @@ paths:
         of other users.
       parameters:
       - description: User ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given AccountRoleBinding attribute to sort results by (allowed:
           role_name)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by AccountRoleBinding assigned role_name
-        explode: true
         in: query
         name: role_name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3909,13 +3293,11 @@ paths:
       description: Fetches a single Version
       parameters:
       - description: Version ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3933,55 +3315,38 @@ paths:
       description: Lists Images belonging to a Version.
       parameters:
       - description: Version ID (must be valid UUID)
-        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
-        style: simple
       - description: 'A given Image attribute to sort results by (one of: id, name,
           created_at)'
-        explode: true
         in: query
         name: sort_by
-        required: false
         schema:
           type: string
-        style: form
       - description: Maximum number of rows to return (could be less)
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: string
-        style: form
       - description: Use a token returned by a previous query to continue listing
           with the next batch of rows
-        explode: true
         in: query
         name: continuation
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Image id
-        explode: true
         in: query
         name: id
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter results by Image's name
-        explode: true
         in: query
         name: name
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -4211,8 +3576,6 @@ components:
           type: object
         application_configuration_template_id:
           type: string
-        data_service_id:
-          type: string
         deployment_target_id:
           type: string
         dns_zone:
@@ -4239,8 +3602,6 @@ components:
         service_type:
           type: string
         storage_options_template_id:
-          type: string
-        version_id:
           type: string
       type: object
     controllers.CreateTenantBackupTarget:

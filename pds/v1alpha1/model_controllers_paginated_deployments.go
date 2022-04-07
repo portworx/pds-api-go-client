@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedDeployments struct for ControllersPaginatedDeployments
 type ControllersPaginatedDeployments struct {
-	Data *[]ModelsDeployment `json:"data,omitempty"`
+	Data []ModelsDeployment `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedDeployments) GetData() []ModelsDeployment {
 		var ret []ModelsDeployment
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedDeployments) GetDataOk() (*[]ModelsDeployment, bool) {
+func (o *ControllersPaginatedDeployments) GetDataOk() ([]ModelsDeployment, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedDeployments) HasData() bool {
 
 // SetData gets a reference to the given []ModelsDeployment and assigns it to the Data field.
 func (o *ControllersPaginatedDeployments) SetData(v []ModelsDeployment) {
-	o.Data = &v
+	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

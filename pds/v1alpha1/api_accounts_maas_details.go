@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // AccountsMAASDetailsApiService AccountsMAASDetailsApi service
 type AccountsMAASDetailsApiService service
 
 type ApiApiAccountsIdMaasDetailsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *AccountsMAASDetailsApiService
 	id string
 }
 
 
-func (r ApiApiAccountsIdMaasDetailsGetRequest) Execute() (ModelsMAASDetails, *_nethttp.Response, error) {
+func (r ApiApiAccountsIdMaasDetailsGetRequest) Execute() (*ModelsMAASDetails, *http.Response, error) {
 	return r.ApiService.ApiAccountsIdMaasDetailsGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiAccountsIdMaasDetailsGet Get MAAS details
 
 Returns MAAS details for desired account
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdMaasDetailsGetRequest
 */
-func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGet(ctx _context.Context, id string) ApiApiAccountsIdMaasDetailsGetRequest {
+func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGet(ctx context.Context, id string) ApiApiAccountsIdMaasDetailsGetRequest {
 	return ApiApiAccountsIdMaasDetailsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGet(ctx _context
 
 // Execute executes the request
 //  @return ModelsMAASDetails
-func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r ApiApiAccountsIdMaasDetailsGetRequest) (ModelsMAASDetails, *_nethttp.Response, error) {
+func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r ApiApiAccountsIdMaasDetailsGetRequest) (*ModelsMAASDetails, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsMAASDetails
+		localVarReturnValue  *ModelsMAASDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsMAASDetailsApiService.ApiAccountsIdMaasDetailsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/maas-details"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -146,13 +146,13 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r Api
 }
 
 type ApiApiAccountsIdMaasDetailsPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *AccountsMAASDetailsApiService
 	id string
 }
 
 
-func (r ApiApiAccountsIdMaasDetailsPutRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiAccountsIdMaasDetailsPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiAccountsIdMaasDetailsPutExecute(r)
 }
 
@@ -161,11 +161,11 @@ ApiAccountsIdMaasDetailsPut Update MAAS details
 
 Updates MAAS details for desired account
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)
  @return ApiApiAccountsIdMaasDetailsPutRequest
 */
-func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPut(ctx _context.Context, id string) ApiApiAccountsIdMaasDetailsPutRequest {
+func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPut(ctx context.Context, id string) ApiApiAccountsIdMaasDetailsPutRequest {
 	return ApiApiAccountsIdMaasDetailsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -174,24 +174,24 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPut(ctx _context
 }
 
 // Execute executes the request
-func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPutExecute(r ApiApiAccountsIdMaasDetailsPutRequest) (*_nethttp.Response, error) {
+func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPutExecute(r ApiApiAccountsIdMaasDetailsPutRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsMAASDetailsApiService.ApiAccountsIdMaasDetailsPut")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/maas-details"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -234,15 +234,15 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPutExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

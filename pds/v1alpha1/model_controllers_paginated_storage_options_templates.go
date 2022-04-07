@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedStorageOptionsTemplates struct for ControllersPaginatedStorageOptionsTemplates
 type ControllersPaginatedStorageOptionsTemplates struct {
-	Data *[]ModelsStorageOptionsTemplate `json:"data,omitempty"`
+	Data []ModelsStorageOptionsTemplate `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedStorageOptionsTemplates) GetData() []ModelsStorageO
 		var ret []ModelsStorageOptionsTemplate
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedStorageOptionsTemplates) GetDataOk() (*[]ModelsStorageOptionsTemplate, bool) {
+func (o *ControllersPaginatedStorageOptionsTemplates) GetDataOk() ([]ModelsStorageOptionsTemplate, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedStorageOptionsTemplates) HasData() bool {
 
 // SetData gets a reference to the given []ModelsStorageOptionsTemplate and assigns it to the Data field.
 func (o *ControllersPaginatedStorageOptionsTemplates) SetData(v []ModelsStorageOptionsTemplate) {
-	o.Data = &v
+	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

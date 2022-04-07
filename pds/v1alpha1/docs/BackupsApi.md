@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApiBackupTargetsIdBackupsGet**](BackupsApi.md#ApiBackupTargetsIdBackupsGet) | **Get** /api/backup-targets/{id}/backups | List BackupTarget&#39;s Backups
 [**ApiBackupsIdDelete**](BackupsApi.md#ApiBackupsIdDelete) | **Delete** /api/backups/{id} | Delete Backup
 [**ApiBackupsIdGet**](BackupsApi.md#ApiBackupsIdGet) | **Get** /api/backups/{id} | Get Backup
+[**ApiBackupsIdJobsNameDelete**](BackupsApi.md#ApiBackupsIdJobsNameDelete) | **Delete** /api/backups/{id}/jobs/{name} | Delete Backup jobs
 [**ApiBackupsIdPut**](BackupsApi.md#ApiBackupsIdPut) | **Put** /api/backups/{id} | Update Backup
 [**ApiDeploymentsIdBackupsGet**](BackupsApi.md#ApiDeploymentsIdBackupsGet) | **Get** /api/deployments/{id}/backups | List Deployment&#39;s Backups
 [**ApiDeploymentsIdBackupsPost**](BackupsApi.md#ApiDeploymentsIdBackupsPost) | **Post** /api/deployments/{id}/backups | Create Backup
@@ -46,8 +47,8 @@ func main() {
     backupLevel := "backupLevel_example" // string | Filter results by Backup type (one of: snapshot,incremental) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupsApi.ApiBackupTargetsIdBackupsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiBackupTargetsIdBackupsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupTargetsIdBackupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,8 +127,8 @@ func main() {
     localOnly := true // bool | Set to true to only delete the Backup object in the database (does not delete any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupsApi.ApiBackupsIdDelete(context.Background(), id).LocalOnly(localOnly).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiBackupsIdDelete(context.Background(), id).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,8 +196,8 @@ func main() {
     id := "id_example" // string | Backup ID (must be a valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupsApi.ApiBackupsIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiBackupsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -241,6 +242,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ApiBackupsIdJobsNameDelete
+
+> ApiBackupsIdJobsNameDelete(ctx, id, name).Execute()
+
+Delete Backup jobs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Backup ID (must be a valid UUID)
+    name := "name_example" // string | Backup job name
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiBackupsIdJobsNameDelete(context.Background(), id, name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupsIdJobsNameDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Backup ID (must be a valid UUID) | 
+**name** | **string** | Backup job name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiBackupsIdJobsNameDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiBackupsIdPut
 
 > ModelsBackup ApiBackupsIdPut(ctx, id).Body(body).LocalOnly(localOnly).Execute()
@@ -267,8 +339,8 @@ func main() {
     localOnly := true // bool | Set to true to only update the Backup object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupsApi.ApiBackupsIdPut(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiBackupsIdPut(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,8 +420,8 @@ func main() {
     backupLevel := "backupLevel_example" // string | Filter results by Backup type (one of: snapshot,incremental) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupsApi.ApiDeploymentsIdBackupsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiDeploymentsIdBackupsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiDeploymentsIdBackupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,8 +501,8 @@ func main() {
     localOnly := true // bool | Set to true to only create the Backup object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupsApi.ApiDeploymentsIdBackupsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsApi.ApiDeploymentsIdBackupsPost(context.Background(), id).Body(body).LocalOnly(localOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiDeploymentsIdBackupsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

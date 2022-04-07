@@ -37,8 +37,8 @@ func main() {
     id := "id_example" // string | BackupCredentials ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupCredentialsApi.ApiBackupCredentialsIdCredentialsGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupCredentialsApi.ApiBackupCredentialsIdCredentialsGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiBackupCredentialsIdCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     id := "id_example" // string | BackupCredentials ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupCredentialsApi.ApiBackupCredentialsIdDelete(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupCredentialsApi.ApiBackupCredentialsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiBackupCredentialsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     id := "id_example" // string | BackupCredentials ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupCredentialsApi.ApiBackupCredentialsIdGet(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupCredentialsApi.ApiBackupCredentialsIdGet(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiBackupCredentialsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     body := *openapiclient.NewControllersUpdateBackupCredentialsRequest() // ControllersUpdateBackupCredentialsRequest | Request body containing the backup credentials config
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupCredentialsApi.ApiBackupCredentialsIdPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupCredentialsApi.ApiBackupCredentialsIdPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiBackupCredentialsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -323,8 +323,8 @@ func main() {
     type_ := "type__example" // string | Filter results by BackupCredentials type (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
     body := *openapiclient.NewControllersCreateBackupCredentialsRequest() // ControllersCreateBackupCredentialsRequest | Request body containing the backup credentials config
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BackupCredentialsApi.ApiTenantsIdBackupCredentialsPost(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupCredentialsApi.ApiTenantsIdBackupCredentialsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiTenantsIdBackupCredentialsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

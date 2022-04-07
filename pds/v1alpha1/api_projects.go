@@ -12,29 +12,29 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // ProjectsApiService ProjectsApi service
 type ProjectsApiService service
 
 type ApiApiProjectsIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ProjectsApiService
 	id string
 }
 
 
-func (r ApiApiProjectsIdGetRequest) Execute() (ModelsProject, *_nethttp.Response, error) {
+func (r ApiApiProjectsIdGetRequest) Execute() (*ModelsProject, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdGetExecute(r)
 }
 
@@ -43,11 +43,11 @@ ApiProjectsIdGet Get Project
 
 Fetches a single Project
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Project ID (must be valid UUID)
  @return ApiApiProjectsIdGetRequest
 */
-func (a *ProjectsApiService) ApiProjectsIdGet(ctx _context.Context, id string) ApiApiProjectsIdGetRequest {
+func (a *ProjectsApiService) ApiProjectsIdGet(ctx context.Context, id string) ApiApiProjectsIdGetRequest {
 	return ApiApiProjectsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,25 @@ func (a *ProjectsApiService) ApiProjectsIdGet(ctx _context.Context, id string) A
 
 // Execute executes the request
 //  @return ModelsProject
-func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetRequest) (ModelsProject, *_nethttp.Response, error) {
+func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetRequest) (*ModelsProject, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsProject
+		localVarReturnValue  *ModelsProject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ApiProjectsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -118,15 +118,15 @@ func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -146,7 +146,7 @@ func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetReques
 }
 
 type ApiApiTenantsIdProjectsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *ProjectsApiService
 	id string
 	sortBy *string
@@ -182,7 +182,7 @@ func (r ApiApiTenantsIdProjectsGetRequest) Name(name string) ApiApiTenantsIdProj
 	return r
 }
 
-func (r ApiApiTenantsIdProjectsGetRequest) Execute() (ControllersPaginatedTenantProjects, *_nethttp.Response, error) {
+func (r ApiApiTenantsIdProjectsGetRequest) Execute() (*ControllersPaginatedTenantProjects, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdProjectsGetExecute(r)
 }
 
@@ -191,11 +191,11 @@ ApiTenantsIdProjectsGet List Tenant's Projects
 
 Lists Projects visible to the caller and belonging to the Tenant.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)
  @return ApiApiTenantsIdProjectsGetRequest
 */
-func (a *ProjectsApiService) ApiTenantsIdProjectsGet(ctx _context.Context, id string) ApiApiTenantsIdProjectsGetRequest {
+func (a *ProjectsApiService) ApiTenantsIdProjectsGet(ctx context.Context, id string) ApiApiTenantsIdProjectsGetRequest {
 	return ApiApiTenantsIdProjectsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -205,25 +205,25 @@ func (a *ProjectsApiService) ApiTenantsIdProjectsGet(ctx _context.Context, id st
 
 // Execute executes the request
 //  @return ControllersPaginatedTenantProjects
-func (a *ProjectsApiService) ApiTenantsIdProjectsGetExecute(r ApiApiTenantsIdProjectsGetRequest) (ControllersPaginatedTenantProjects, *_nethttp.Response, error) {
+func (a *ProjectsApiService) ApiTenantsIdProjectsGetExecute(r ApiApiTenantsIdProjectsGetRequest) (*ControllersPaginatedTenantProjects, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedTenantProjects
+		localVarReturnValue  *ControllersPaginatedTenantProjects
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ApiTenantsIdProjectsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/projects"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -281,15 +281,15 @@ func (a *ProjectsApiService) ApiTenantsIdProjectsGetExecute(r ApiApiTenantsIdPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -298,7 +298,7 @@ func (a *ProjectsApiService) ApiTenantsIdProjectsGetExecute(r ApiApiTenantsIdPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

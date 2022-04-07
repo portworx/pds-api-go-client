@@ -33,8 +33,8 @@ func main() {
     body := *openapiclient.NewModelsDNSDetails() // ModelsDNSDetails | Request body containing a new DNS details
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsDNSApi.ApiAccountsIdDnsDetailsPut(context.Background(), id).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsDNSApi.ApiAccountsIdDnsDetailsPut(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsDNSApi.ApiAccountsIdDnsDetailsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

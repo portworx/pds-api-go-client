@@ -12,22 +12,22 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // AuthenticationApiService AuthenticationApi service
 type AuthenticationApiService service
 
 type ApiAuthAuthorizationCodePostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *AuthenticationApiService
 	body *ControllersAuthorizationCodeRequest
 }
@@ -38,7 +38,7 @@ func (r ApiAuthAuthorizationCodePostRequest) Body(body ControllersAuthorizationC
 	return r
 }
 
-func (r ApiAuthAuthorizationCodePostRequest) Execute() (ControllersOIDCTokenResponse, *_nethttp.Response, error) {
+func (r ApiAuthAuthorizationCodePostRequest) Execute() (*ControllersOIDCTokenResponse, *http.Response, error) {
 	return r.ApiService.AuthAuthorizationCodePostExecute(r)
 }
 
@@ -50,10 +50,10 @@ Exchanges the Authorization Code from the OAuth2 server for an ID Token which is
 **Authenticating for later requests using the ID token:**
 `Authorization: Bearer {id_token}`
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthAuthorizationCodePostRequest
 */
-func (a *AuthenticationApiService) AuthAuthorizationCodePost(ctx _context.Context) ApiAuthAuthorizationCodePostRequest {
+func (a *AuthenticationApiService) AuthAuthorizationCodePost(ctx context.Context) ApiAuthAuthorizationCodePostRequest {
 	return ApiAuthAuthorizationCodePostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,24 +62,24 @@ func (a *AuthenticationApiService) AuthAuthorizationCodePost(ctx _context.Contex
 
 // Execute executes the request
 //  @return ControllersOIDCTokenResponse
-func (a *AuthenticationApiService) AuthAuthorizationCodePostExecute(r ApiAuthAuthorizationCodePostRequest) (ControllersOIDCTokenResponse, *_nethttp.Response, error) {
+func (a *AuthenticationApiService) AuthAuthorizationCodePostExecute(r ApiAuthAuthorizationCodePostRequest) (*ControllersOIDCTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersOIDCTokenResponse
+		localVarReturnValue  *ControllersOIDCTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticationApiService.AuthAuthorizationCodePost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/auth/authorization-code"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -113,15 +113,15 @@ func (a *AuthenticationApiService) AuthAuthorizationCodePostExecute(r ApiAuthAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -130,7 +130,7 @@ func (a *AuthenticationApiService) AuthAuthorizationCodePostExecute(r ApiAuthAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -141,12 +141,12 @@ func (a *AuthenticationApiService) AuthAuthorizationCodePostExecute(r ApiAuthAut
 }
 
 type ApiAuthOidcInfoGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *AuthenticationApiService
 }
 
 
-func (r ApiAuthOidcInfoGetRequest) Execute() (ControllersOIDCInfoResponse, *_nethttp.Response, error) {
+func (r ApiAuthOidcInfoGetRequest) Execute() (*ControllersOIDCInfoResponse, *http.Response, error) {
 	return r.ApiService.AuthOidcInfoGetExecute(r)
 }
 
@@ -155,10 +155,10 @@ AuthOidcInfoGet OIDC info
 
 Returns OIDC configuration for the frontend.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthOidcInfoGetRequest
 */
-func (a *AuthenticationApiService) AuthOidcInfoGet(ctx _context.Context) ApiAuthOidcInfoGetRequest {
+func (a *AuthenticationApiService) AuthOidcInfoGet(ctx context.Context) ApiAuthOidcInfoGetRequest {
 	return ApiAuthOidcInfoGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -167,24 +167,24 @@ func (a *AuthenticationApiService) AuthOidcInfoGet(ctx _context.Context) ApiAuth
 
 // Execute executes the request
 //  @return ControllersOIDCInfoResponse
-func (a *AuthenticationApiService) AuthOidcInfoGetExecute(r ApiAuthOidcInfoGetRequest) (ControllersOIDCInfoResponse, *_nethttp.Response, error) {
+func (a *AuthenticationApiService) AuthOidcInfoGetExecute(r ApiAuthOidcInfoGetRequest) (*ControllersOIDCInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersOIDCInfoResponse
+		localVarReturnValue  *ControllersOIDCInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticationApiService.AuthOidcInfoGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/auth/oidc-info"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -213,15 +213,15 @@ func (a *AuthenticationApiService) AuthOidcInfoGetExecute(r ApiAuthOidcInfoGetRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -230,7 +230,7 @@ func (a *AuthenticationApiService) AuthOidcInfoGetExecute(r ApiAuthOidcInfoGetRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -241,7 +241,7 @@ func (a *AuthenticationApiService) AuthOidcInfoGetExecute(r ApiAuthOidcInfoGetRe
 }
 
 type ApiAuthRefreshTokenPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *AuthenticationApiService
 	body *ControllersRefreshTokenRequest
 }
@@ -252,17 +252,17 @@ func (r ApiAuthRefreshTokenPostRequest) Body(body ControllersRefreshTokenRequest
 	return r
 }
 
-func (r ApiAuthRefreshTokenPostRequest) Execute() (ControllersOIDCTokenResponse, *_nethttp.Response, error) {
+func (r ApiAuthRefreshTokenPostRequest) Execute() (*ControllersOIDCTokenResponse, *http.Response, error) {
 	return r.ApiService.AuthRefreshTokenPostExecute(r)
 }
 
 /*
 AuthRefreshTokenPost Use refresh token to generate new tokens.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthRefreshTokenPostRequest
 */
-func (a *AuthenticationApiService) AuthRefreshTokenPost(ctx _context.Context) ApiAuthRefreshTokenPostRequest {
+func (a *AuthenticationApiService) AuthRefreshTokenPost(ctx context.Context) ApiAuthRefreshTokenPostRequest {
 	return ApiAuthRefreshTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -271,24 +271,24 @@ func (a *AuthenticationApiService) AuthRefreshTokenPost(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return ControllersOIDCTokenResponse
-func (a *AuthenticationApiService) AuthRefreshTokenPostExecute(r ApiAuthRefreshTokenPostRequest) (ControllersOIDCTokenResponse, *_nethttp.Response, error) {
+func (a *AuthenticationApiService) AuthRefreshTokenPostExecute(r ApiAuthRefreshTokenPostRequest) (*ControllersOIDCTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersOIDCTokenResponse
+		localVarReturnValue  *ControllersOIDCTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticationApiService.AuthRefreshTokenPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/auth/refresh-token"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -322,15 +322,15 @@ func (a *AuthenticationApiService) AuthRefreshTokenPostExecute(r ApiAuthRefreshT
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -339,7 +339,7 @@ func (a *AuthenticationApiService) AuthRefreshTokenPostExecute(r ApiAuthRefreshT
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

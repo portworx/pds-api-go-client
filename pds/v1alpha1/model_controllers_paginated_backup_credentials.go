@@ -16,7 +16,7 @@ import (
 
 // ControllersPaginatedBackupCredentials struct for ControllersPaginatedBackupCredentials
 type ControllersPaginatedBackupCredentials struct {
-	Data *[]ModelsBackupCredentials `json:"data,omitempty"`
+	Data []ModelsBackupCredentials `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
@@ -43,12 +43,12 @@ func (o *ControllersPaginatedBackupCredentials) GetData() []ModelsBackupCredenti
 		var ret []ModelsBackupCredentials
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupCredentials) GetDataOk() (*[]ModelsBackupCredentials, bool) {
+func (o *ControllersPaginatedBackupCredentials) GetDataOk() ([]ModelsBackupCredentials, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ControllersPaginatedBackupCredentials) HasData() bool {
 
 // SetData gets a reference to the given []ModelsBackupCredentials and assigns it to the Data field.
 func (o *ControllersPaginatedBackupCredentials) SetData(v []ModelsBackupCredentials) {
-	o.Data = &v
+	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.

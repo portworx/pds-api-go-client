@@ -32,8 +32,8 @@ func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultTemplatesApi.ApiTenantsIdSeedDefaultTemplatesPost(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultTemplatesApi.ApiTenantsIdSeedDefaultTemplatesPost(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiTenantsIdSeedDefaultTemplatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

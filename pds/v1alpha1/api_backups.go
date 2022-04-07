@@ -12,23 +12,23 @@ package pds
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // BackupsApiService BackupsApi service
 type BackupsApiService service
 
 type ApiApiBackupTargetsIdBackupsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupsApiService
 	id string
 	sortBy *string
@@ -88,7 +88,7 @@ func (r ApiApiBackupTargetsIdBackupsGetRequest) BackupLevel(backupLevel string) 
 	return r
 }
 
-func (r ApiApiBackupTargetsIdBackupsGetRequest) Execute() (ControllersPaginatedBackups, *_nethttp.Response, error) {
+func (r ApiApiBackupTargetsIdBackupsGetRequest) Execute() (*ControllersPaginatedBackups, *http.Response, error) {
 	return r.ApiService.ApiBackupTargetsIdBackupsGetExecute(r)
 }
 
@@ -97,11 +97,11 @@ ApiBackupTargetsIdBackupsGet List BackupTarget's Backups
 
 Lists Backups belonging to the BackupTarget.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id BackupTarget ID (must be valid UUID)
  @return ApiApiBackupTargetsIdBackupsGetRequest
 */
-func (a *BackupsApiService) ApiBackupTargetsIdBackupsGet(ctx _context.Context, id string) ApiApiBackupTargetsIdBackupsGetRequest {
+func (a *BackupsApiService) ApiBackupTargetsIdBackupsGet(ctx context.Context, id string) ApiApiBackupTargetsIdBackupsGetRequest {
 	return ApiApiBackupTargetsIdBackupsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -111,25 +111,25 @@ func (a *BackupsApiService) ApiBackupTargetsIdBackupsGet(ctx _context.Context, i
 
 // Execute executes the request
 //  @return ControllersPaginatedBackups
-func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTargetsIdBackupsGetRequest) (ControllersPaginatedBackups, *_nethttp.Response, error) {
+func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTargetsIdBackupsGetRequest) (*ControllersPaginatedBackups, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedBackups
+		localVarReturnValue  *ControllersPaginatedBackups
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiBackupTargetsIdBackupsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backup-targets/{id}/backups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -199,15 +199,15 @@ func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -216,7 +216,7 @@ func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -227,7 +227,7 @@ func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTa
 }
 
 type ApiApiBackupsIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupsApiService
 	id string
 	localOnly *bool
@@ -239,7 +239,7 @@ func (r ApiApiBackupsIdDeleteRequest) LocalOnly(localOnly bool) ApiApiBackupsIdD
 	return r
 }
 
-func (r ApiApiBackupsIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiApiBackupsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupsIdDeleteExecute(r)
 }
 
@@ -248,11 +248,11 @@ ApiBackupsIdDelete Delete Backup
 
 Deletes an existing database deployment Backup
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Backup ID (must be a valid UUID)
  @return ApiApiBackupsIdDeleteRequest
 */
-func (a *BackupsApiService) ApiBackupsIdDelete(ctx _context.Context, id string) ApiApiBackupsIdDeleteRequest {
+func (a *BackupsApiService) ApiBackupsIdDelete(ctx context.Context, id string) ApiApiBackupsIdDeleteRequest {
 	return ApiApiBackupsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -261,24 +261,24 @@ func (a *BackupsApiService) ApiBackupsIdDelete(ctx _context.Context, id string) 
 }
 
 // Execute executes the request
-func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiBackupsIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -324,15 +324,15 @@ func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -343,13 +343,13 @@ func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteReq
 }
 
 type ApiApiBackupsIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupsApiService
 	id string
 }
 
 
-func (r ApiApiBackupsIdGetRequest) Execute() (ModelsBackup, *_nethttp.Response, error) {
+func (r ApiApiBackupsIdGetRequest) Execute() (*ModelsBackup, *http.Response, error) {
 	return r.ApiService.ApiBackupsIdGetExecute(r)
 }
 
@@ -358,11 +358,11 @@ ApiBackupsIdGet Get Backup
 
 Fetches a single Backup
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Backup ID (must be a valid UUID)
  @return ApiApiBackupsIdGetRequest
 */
-func (a *BackupsApiService) ApiBackupsIdGet(ctx _context.Context, id string) ApiApiBackupsIdGetRequest {
+func (a *BackupsApiService) ApiBackupsIdGet(ctx context.Context, id string) ApiApiBackupsIdGetRequest {
 	return ApiApiBackupsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -372,25 +372,25 @@ func (a *BackupsApiService) ApiBackupsIdGet(ctx _context.Context, id string) Api
 
 // Execute executes the request
 //  @return ModelsBackup
-func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) (ModelsBackup, *_nethttp.Response, error) {
+func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) (*ModelsBackup, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackup
+		localVarReturnValue  *ModelsBackup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiBackupsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -433,15 +433,15 @@ func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -450,7 +450,7 @@ func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -460,8 +460,119 @@ func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiApiBackupsIdJobsNameDeleteRequest struct {
+	ctx context.Context
+	ApiService *BackupsApiService
+	id string
+	name string
+}
+
+
+func (r ApiApiBackupsIdJobsNameDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ApiBackupsIdJobsNameDeleteExecute(r)
+}
+
+/*
+ApiBackupsIdJobsNameDelete Delete Backup jobs
+
+Deletes an existing job for scheduled backups
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Backup ID (must be a valid UUID)
+ @param name Backup job name
+ @return ApiApiBackupsIdJobsNameDeleteRequest
+*/
+func (a *BackupsApiService) ApiBackupsIdJobsNameDelete(ctx context.Context, id string, name string) ApiApiBackupsIdJobsNameDeleteRequest {
+	return ApiApiBackupsIdJobsNameDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+		name: name,
+	}
+}
+
+// Execute executes the request
+func (a *BackupsApiService) ApiBackupsIdJobsNameDeleteExecute(r ApiApiBackupsIdJobsNameDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiBackupsIdJobsNameDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/backups/{id}/jobs/{name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterToString(r.name, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiApiBackupsIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupsApiService
 	id string
 	body *ControllersUpdateBackupRequest
@@ -479,7 +590,7 @@ func (r ApiApiBackupsIdPutRequest) LocalOnly(localOnly bool) ApiApiBackupsIdPutR
 	return r
 }
 
-func (r ApiApiBackupsIdPutRequest) Execute() (ModelsBackup, *_nethttp.Response, error) {
+func (r ApiApiBackupsIdPutRequest) Execute() (*ModelsBackup, *http.Response, error) {
 	return r.ApiService.ApiBackupsIdPutExecute(r)
 }
 
@@ -488,11 +599,11 @@ ApiBackupsIdPut Update Backup
 
 Updates an existing database Backup
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Backup ID (must be UUID)
  @return ApiApiBackupsIdPutRequest
 */
-func (a *BackupsApiService) ApiBackupsIdPut(ctx _context.Context, id string) ApiApiBackupsIdPutRequest {
+func (a *BackupsApiService) ApiBackupsIdPut(ctx context.Context, id string) ApiApiBackupsIdPutRequest {
 	return ApiApiBackupsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -502,25 +613,25 @@ func (a *BackupsApiService) ApiBackupsIdPut(ctx _context.Context, id string) Api
 
 // Execute executes the request
 //  @return ModelsBackup
-func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) (ModelsBackup, *_nethttp.Response, error) {
+func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) (*ModelsBackup, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackup
+		localVarReturnValue  *ModelsBackup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiBackupsIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -571,15 +682,15 @@ func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -588,7 +699,7 @@ func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -599,7 +710,7 @@ func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) 
 }
 
 type ApiApiDeploymentsIdBackupsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupsApiService
 	id string
 	sortBy *string
@@ -659,7 +770,7 @@ func (r ApiApiDeploymentsIdBackupsGetRequest) BackupLevel(backupLevel string) Ap
 	return r
 }
 
-func (r ApiApiDeploymentsIdBackupsGetRequest) Execute() (ControllersPaginatedBackups, *_nethttp.Response, error) {
+func (r ApiApiDeploymentsIdBackupsGetRequest) Execute() (*ControllersPaginatedBackups, *http.Response, error) {
 	return r.ApiService.ApiDeploymentsIdBackupsGetExecute(r)
 }
 
@@ -668,11 +779,11 @@ ApiDeploymentsIdBackupsGet List Deployment's Backups
 
 Lists Backups belonging to the Deployment.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Deployment ID (must be valid UUID)
  @return ApiApiDeploymentsIdBackupsGetRequest
 */
-func (a *BackupsApiService) ApiDeploymentsIdBackupsGet(ctx _context.Context, id string) ApiApiDeploymentsIdBackupsGetRequest {
+func (a *BackupsApiService) ApiDeploymentsIdBackupsGet(ctx context.Context, id string) ApiApiDeploymentsIdBackupsGetRequest {
 	return ApiApiDeploymentsIdBackupsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -682,25 +793,25 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsGet(ctx _context.Context, id 
 
 // Execute executes the request
 //  @return ControllersPaginatedBackups
-func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeploymentsIdBackupsGetRequest) (ControllersPaginatedBackups, *_nethttp.Response, error) {
+func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeploymentsIdBackupsGetRequest) (*ControllersPaginatedBackups, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ControllersPaginatedBackups
+		localVarReturnValue  *ControllersPaginatedBackups
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiDeploymentsIdBackupsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployments/{id}/backups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
 		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
@@ -770,15 +881,15 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeployment
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -787,7 +898,7 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeployment
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -798,7 +909,7 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeployment
 }
 
 type ApiApiDeploymentsIdBackupsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BackupsApiService
 	id string
 	body *ControllersCreateDeploymentBackup
@@ -816,7 +927,7 @@ func (r ApiApiDeploymentsIdBackupsPostRequest) LocalOnly(localOnly bool) ApiApiD
 	return r
 }
 
-func (r ApiApiDeploymentsIdBackupsPostRequest) Execute() (ModelsBackup, *_nethttp.Response, error) {
+func (r ApiApiDeploymentsIdBackupsPostRequest) Execute() (*ModelsBackup, *http.Response, error) {
 	return r.ApiService.ApiDeploymentsIdBackupsPostExecute(r)
 }
 
@@ -825,11 +936,11 @@ ApiDeploymentsIdBackupsPost Create Backup
 
 Creates a new database Backup
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Deployment ID (must be valid UUID)
  @return ApiApiDeploymentsIdBackupsPostRequest
 */
-func (a *BackupsApiService) ApiDeploymentsIdBackupsPost(ctx _context.Context, id string) ApiApiDeploymentsIdBackupsPostRequest {
+func (a *BackupsApiService) ApiDeploymentsIdBackupsPost(ctx context.Context, id string) ApiApiDeploymentsIdBackupsPostRequest {
 	return ApiApiDeploymentsIdBackupsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -839,25 +950,25 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsPost(ctx _context.Context, id
 
 // Execute executes the request
 //  @return ModelsBackup
-func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymentsIdBackupsPostRequest) (ModelsBackup, *_nethttp.Response, error) {
+func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymentsIdBackupsPostRequest) (*ModelsBackup, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  ModelsBackup
+		localVarReturnValue  *ModelsBackup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ApiDeploymentsIdBackupsPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/deployments/{id}/backups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.body == nil {
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
@@ -908,15 +1019,15 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -925,7 +1036,7 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
