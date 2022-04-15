@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiVersion** | Pointer to **string** |  | [optional] 
+**Features** | Pointer to **map[string]string** |  | [optional] 
 **HelmChartVersion** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetApiVersion sets ApiVersion field to given value.
 `func (o *ControllersAPIVersionResponse) HasApiVersion() bool`
 
 HasApiVersion returns a boolean if a field has been set.
+
+### GetFeatures
+
+`func (o *ControllersAPIVersionResponse) GetFeatures() map[string]string`
+
+GetFeatures returns the Features field if non-nil, zero value otherwise.
+
+### GetFeaturesOk
+
+`func (o *ControllersAPIVersionResponse) GetFeaturesOk() (*map[string]string, bool)`
+
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatures
+
+`func (o *ControllersAPIVersionResponse) SetFeatures(v map[string]string)`
+
+SetFeatures sets Features field to given value.
+
+### HasFeatures
+
+`func (o *ControllersAPIVersionResponse) HasFeatures() bool`
+
+HasFeatures returns a boolean if a field has been set.
 
 ### GetHelmChartVersion
 

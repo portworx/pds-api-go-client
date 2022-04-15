@@ -3496,12 +3496,18 @@ components:
       type: object
     controllers.APIVersionResponse:
       example:
+        features:
+          key: features
         helm_chart_version: Helm chart version
         api_version: API server version
       properties:
         api_version:
           example: API server version
           type: string
+        features:
+          additionalProperties:
+            type: string
+          type: object
         helm_chart_version:
           example: Helm chart version
           type: string

@@ -17,6 +17,7 @@ import (
 // ControllersAPIVersionResponse struct for ControllersAPIVersionResponse
 type ControllersAPIVersionResponse struct {
 	ApiVersion *string `json:"api_version,omitempty"`
+	Features *map[string]string `json:"features,omitempty"`
 	HelmChartVersion *string `json:"helm_chart_version,omitempty"`
 }
 
@@ -69,6 +70,38 @@ func (o *ControllersAPIVersionResponse) SetApiVersion(v string) {
 	o.ApiVersion = &v
 }
 
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *ControllersAPIVersionResponse) GetFeatures() map[string]string {
+	if o == nil || o.Features == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersAPIVersionResponse) GetFeaturesOk() (*map[string]string, bool) {
+	if o == nil || o.Features == nil {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *ControllersAPIVersionResponse) HasFeatures() bool {
+	if o != nil && o.Features != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given map[string]string and assigns it to the Features field.
+func (o *ControllersAPIVersionResponse) SetFeatures(v map[string]string) {
+	o.Features = &v
+}
+
 // GetHelmChartVersion returns the HelmChartVersion field value if set, zero value otherwise.
 func (o *ControllersAPIVersionResponse) GetHelmChartVersion() string {
 	if o == nil || o.HelmChartVersion == nil {
@@ -105,6 +138,9 @@ func (o ControllersAPIVersionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApiVersion != nil {
 		toSerialize["api_version"] = o.ApiVersion
+	}
+	if o.Features != nil {
+		toSerialize["features"] = o.Features
 	}
 	if o.HelmChartVersion != nil {
 		toSerialize["helm_chart_version"] = o.HelmChartVersion
