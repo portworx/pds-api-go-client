@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ApiBackupTargetsIdPut**](BackupTargetsApi.md#ApiBackupTargetsIdPut) | **Put** /api/backup-targets/{id} | Update BackupTarget
 [**ApiBackupTargetsIdRetryPost**](BackupTargetsApi.md#ApiBackupTargetsIdRetryPost) | **Post** /api/backup-targets/{id}/retry | Retry sync of a BackupTarget
 [**ApiBackupTargetsIdStatesGet**](BackupTargetsApi.md#ApiBackupTargetsIdStatesGet) | **Get** /api/backup-targets/{id}/states | List BackupTarget&#39;s BackupTargetStates
+[**ApiProjectsIdBackupTargetsGet**](BackupTargetsApi.md#ApiProjectsIdBackupTargetsGet) | **Get** /api/projects/{id}/backup-targets | List Project&#39;s BackupTargets
 [**ApiTenantsIdBackupTargetsGet**](BackupTargetsApi.md#ApiTenantsIdBackupTargetsGet) | **Get** /api/tenants/{id}/backup-targets | List Tenant&#39;s BackupTargets
 [**ApiTenantsIdBackupTargetsPost**](BackupTargetsApi.md#ApiTenantsIdBackupTargetsPost) | **Post** /api/tenants/{id}/backup-targets | Create BackupTarget
 
@@ -361,6 +362,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ControllersPaginatedBackupTargetStates**](ControllersPaginatedBackupTargetStates.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectsIdBackupTargetsGet
+
+> ControllersPaginatedBackupTargets ApiProjectsIdBackupTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).DeploymentTargetId(deploymentTargetId).BackupCredentialsId(backupCredentialsId).Execute()
+
+List Project's BackupTargets
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    sortBy := "sortBy_example" // string | A given BackupTarget attribute to sort results by (one of: id, name, type, created_at) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
+    id2 := "id_example" // string | Filter results by BackupTarget ID (optional)
+    name := "name_example" // string | Filter results by BackupTarget name (optional)
+    type_ := "type__example" // string | Filter results by BackupTarget type (optional)
+    bucket := "bucket_example" // string | Filter results by bucket (optional)
+    region := "region_example" // string | Filter results by region (optional)
+    deploymentTargetId := "deploymentTargetId_example" // string | Filter results by deployment ID where the backup target is available. (optional)
+    backupCredentialsId := "backupCredentialsId_example" // string | Filter results by BackupCredentials ID (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupTargetsApi.ApiProjectsIdBackupTargetsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).DeploymentTargetId(deploymentTargetId).BackupCredentialsId(backupCredentialsId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiProjectsIdBackupTargetsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiProjectsIdBackupTargetsGet`: ControllersPaginatedBackupTargets
+    fmt.Fprintf(os.Stdout, "Response from `BackupTargetsApi.ApiProjectsIdBackupTargetsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdBackupTargetsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sortBy** | **string** | A given BackupTarget attribute to sort results by (one of: id, name, type, created_at) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
+ **id2** | **string** | Filter results by BackupTarget ID | 
+ **name** | **string** | Filter results by BackupTarget name | 
+ **type_** | **string** | Filter results by BackupTarget type | 
+ **bucket** | **string** | Filter results by bucket | 
+ **region** | **string** | Filter results by region | 
+ **deploymentTargetId** | **string** | Filter results by deployment ID where the backup target is available. | 
+ **backupCredentialsId** | **string** | Filter results by BackupCredentials ID | 
+
+### Return type
+
+[**ControllersPaginatedBackupTargets**](ControllersPaginatedBackupTargets.md)
 
 ### Authorization
 

@@ -118,6 +118,7 @@ Class | Method | HTTP request | Description
 *BackupTargetsApi* | [**ApiBackupTargetsIdPut**](docs/BackupTargetsApi.md#apibackuptargetsidput) | **Put** /api/backup-targets/{id} | Update BackupTarget
 *BackupTargetsApi* | [**ApiBackupTargetsIdRetryPost**](docs/BackupTargetsApi.md#apibackuptargetsidretrypost) | **Post** /api/backup-targets/{id}/retry | Retry sync of a BackupTarget
 *BackupTargetsApi* | [**ApiBackupTargetsIdStatesGet**](docs/BackupTargetsApi.md#apibackuptargetsidstatesget) | **Get** /api/backup-targets/{id}/states | List BackupTarget&#39;s BackupTargetStates
+*BackupTargetsApi* | [**ApiProjectsIdBackupTargetsGet**](docs/BackupTargetsApi.md#apiprojectsidbackuptargetsget) | **Get** /api/projects/{id}/backup-targets | List Project&#39;s BackupTargets
 *BackupTargetsApi* | [**ApiTenantsIdBackupTargetsGet**](docs/BackupTargetsApi.md#apitenantsidbackuptargetsget) | **Get** /api/tenants/{id}/backup-targets | List Tenant&#39;s BackupTargets
 *BackupTargetsApi* | [**ApiTenantsIdBackupTargetsPost**](docs/BackupTargetsApi.md#apitenantsidbackuptargetspost) | **Post** /api/tenants/{id}/backup-targets | Create BackupTarget
 *BackupsApi* | [**ApiBackupTargetsIdBackupsGet**](docs/BackupsApi.md#apibackuptargetsidbackupsget) | **Get** /api/backup-targets/{id}/backups | List BackupTarget&#39;s Backups

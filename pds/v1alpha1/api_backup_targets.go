@@ -669,6 +669,214 @@ func (a *BackupTargetsApiService) ApiBackupTargetsIdStatesGetExecute(r ApiApiBac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiApiProjectsIdBackupTargetsGetRequest struct {
+	ctx context.Context
+	ApiService *BackupTargetsApiService
+	id string
+	sortBy *string
+	limit *string
+	continuation *string
+	id2 *string
+	name *string
+	type_ *string
+	bucket *string
+	region *string
+	deploymentTargetId *string
+	backupCredentialsId *string
+}
+
+// A given BackupTarget attribute to sort results by (one of: id, name, type, created_at)
+func (r ApiApiProjectsIdBackupTargetsGetRequest) SortBy(sortBy string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.sortBy = &sortBy
+	return r
+}
+// Maximum number of rows to return (could be less)
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Limit(limit string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.limit = &limit
+	return r
+}
+// Use a token returned by a previous query to continue listing with the next batch of rows
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Continuation(continuation string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.continuation = &continuation
+	return r
+}
+// Filter results by BackupTarget ID
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Id2(id2 string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.id2 = &id2
+	return r
+}
+// Filter results by BackupTarget name
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Name(name string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.name = &name
+	return r
+}
+// Filter results by BackupTarget type
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Type_(type_ string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.type_ = &type_
+	return r
+}
+// Filter results by bucket
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Bucket(bucket string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.bucket = &bucket
+	return r
+}
+// Filter results by region
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Region(region string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.region = &region
+	return r
+}
+// Filter results by deployment ID where the backup target is available.
+func (r ApiApiProjectsIdBackupTargetsGetRequest) DeploymentTargetId(deploymentTargetId string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.deploymentTargetId = &deploymentTargetId
+	return r
+}
+// Filter results by BackupCredentials ID
+func (r ApiApiProjectsIdBackupTargetsGetRequest) BackupCredentialsId(backupCredentialsId string) ApiApiProjectsIdBackupTargetsGetRequest {
+	r.backupCredentialsId = &backupCredentialsId
+	return r
+}
+
+func (r ApiApiProjectsIdBackupTargetsGetRequest) Execute() (*ControllersPaginatedBackupTargets, *http.Response, error) {
+	return r.ApiService.ApiProjectsIdBackupTargetsGetExecute(r)
+}
+
+/*
+ApiProjectsIdBackupTargetsGet List Project's BackupTargets
+
+Lists BackupTargets belonging to the Project
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Project ID (must be valid UUID)
+ @return ApiApiProjectsIdBackupTargetsGetRequest
+*/
+func (a *BackupTargetsApiService) ApiProjectsIdBackupTargetsGet(ctx context.Context, id string) ApiApiProjectsIdBackupTargetsGetRequest {
+	return ApiApiProjectsIdBackupTargetsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ControllersPaginatedBackupTargets
+func (a *BackupTargetsApiService) ApiProjectsIdBackupTargetsGetExecute(r ApiApiProjectsIdBackupTargetsGetRequest) (*ControllersPaginatedBackupTargets, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ControllersPaginatedBackupTargets
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupTargetsApiService.ApiProjectsIdBackupTargetsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/projects/{id}/backup-targets"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.sortBy != nil {
+		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+	}
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.continuation != nil {
+		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+	}
+	if r.id2 != nil {
+		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.type_ != nil {
+		localVarQueryParams.Add("type", parameterToString(*r.type_, ""))
+	}
+	if r.bucket != nil {
+		localVarQueryParams.Add("bucket", parameterToString(*r.bucket, ""))
+	}
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.deploymentTargetId != nil {
+		localVarQueryParams.Add("deployment_target_id", parameterToString(*r.deploymentTargetId, ""))
+	}
+	if r.backupCredentialsId != nil {
+		localVarQueryParams.Add("backup_credentials_id", parameterToString(*r.backupCredentialsId, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiApiTenantsIdBackupTargetsGetRequest struct {
 	ctx context.Context
 	ApiService *BackupTargetsApiService

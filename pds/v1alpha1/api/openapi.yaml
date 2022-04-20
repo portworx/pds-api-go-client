@@ -1835,6 +1835,80 @@ paths:
       summary: Get Project
       tags:
       - Projects
+  /api/projects/{id}/backup-targets:
+    get:
+      description: Lists BackupTargets belonging to the Project
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupTarget attribute to sort results by (one of: id,
+          name, type, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupTarget ID
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupTarget name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by BackupTarget type
+        in: query
+        name: type
+        schema:
+          type: string
+      - description: Filter results by bucket
+        in: query
+        name: bucket
+        schema:
+          type: string
+      - description: Filter results by region
+        in: query
+        name: region
+        schema:
+          type: string
+      - description: Filter results by deployment ID where the backup target is available.
+        in: query
+        name: deployment_target_id
+        schema:
+          type: string
+      - description: Filter results by BackupCredentials ID
+        in: query
+        name: backup_credentials_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedBackupTargets'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Project's BackupTargets
+      tags:
+      - BackupTargets
   /api/projects/{id}/deployment-targets:
     get:
       description: Lists DeploymentTargets belonging to the Project
