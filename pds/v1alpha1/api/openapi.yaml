@@ -4907,6 +4907,22 @@ components:
           example: Name of the assigned account role
           type: string
       type: object
+    deployments.Condition:
+      example:
+        reason: reason
+        message: message
+        type: type
+        status: status
+      properties:
+        message:
+          type: string
+        reason:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+      type: object
     deployments.ConnectionDetails:
       example:
         nodes:
@@ -4987,12 +5003,62 @@ components:
           description: Node hosting this pod.
           type: string
       type: object
+    deployments.ResourceConditions:
+      example:
+        resource:
+          apiGroup: apiGroup
+          kind: kind
+          name: name
+        conditions:
+        - reason: reason
+          message: message
+          type: type
+          status: status
+        - reason: reason
+          message: message
+          type: type
+          status: status
+      properties:
+        conditions:
+          items:
+            $ref: '#/components/schemas/deployments.Condition'
+          type: array
+        resource:
+          $ref: '#/components/schemas/v1.TypedLocalObjectReference'
+      type: object
     deployments.Status:
       example:
         replicas: 6
         health: Healthy
         initialized: "Yes"
         readyReplicas: 0
+        resources:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
       properties:
         health:
           enum:
@@ -5012,6 +5078,10 @@ components:
           type: integer
         replicas:
           type: integer
+        resources:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceConditions'
+          type: array
       type: object
     models.AWSDetails:
       example:
@@ -6171,6 +6241,26 @@ components:
           items:
             type: string
           type: array
+      type: object
+    v1.TypedLocalObjectReference:
+      example:
+        apiGroup: apiGroup
+        kind: kind
+        name: name
+      properties:
+        apiGroup:
+          description: |-
+            APIGroup is the group for the resource being referenced.
+            If APIGroup is not specified, the specified Kind must be in the core API group.
+            For any other third-party types, APIGroup is required.
+            +optional
+          type: string
+        kind:
+          description: Kind is the type of resource being referenced
+          type: string
+        name:
+          description: Name is the name of resource being referenced
+          type: string
       type: object
   securitySchemes:
     ApiKeyAuth:

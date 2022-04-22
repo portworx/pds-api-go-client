@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Initialized** | Pointer to **string** |  | [optional] 
 **ReadyReplicas** | Pointer to **int32** |  | [optional] 
 **Replicas** | Pointer to **int32** |  | [optional] 
+**Resources** | Pointer to [**[]DeploymentsResourceConditions**](DeploymentsResourceConditions.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetReplicas sets Replicas field to given value.
 `func (o *DeploymentsStatus) HasReplicas() bool`
 
 HasReplicas returns a boolean if a field has been set.
+
+### GetResources
+
+`func (o *DeploymentsStatus) GetResources() []DeploymentsResourceConditions`
+
+GetResources returns the Resources field if non-nil, zero value otherwise.
+
+### GetResourcesOk
+
+`func (o *DeploymentsStatus) GetResourcesOk() (*[]DeploymentsResourceConditions, bool)`
+
+GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResources
+
+`func (o *DeploymentsStatus) SetResources(v []DeploymentsResourceConditions)`
+
+SetResources sets Resources field to given value.
+
+### HasResources
+
+`func (o *DeploymentsStatus) HasResources() bool`
+
+HasResources returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

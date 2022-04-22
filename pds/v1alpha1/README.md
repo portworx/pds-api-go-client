@@ -268,10 +268,12 @@ Class | Method | HTTP request | Description
  - [ControllersWhoAmIResponse](docs/ControllersWhoAmIResponse.md)
  - [ControllersWhoAmIServiceAccount](docs/ControllersWhoAmIServiceAccount.md)
  - [ControllersWhoAmIUser](docs/ControllersWhoAmIUser.md)
+ - [DeploymentsCondition](docs/DeploymentsCondition.md)
  - [DeploymentsConnectionDetails](docs/DeploymentsConnectionDetails.md)
  - [DeploymentsConnectionInfo](docs/DeploymentsConnectionInfo.md)
  - [DeploymentsCredentials](docs/DeploymentsCredentials.md)
  - [DeploymentsPodInfo](docs/DeploymentsPodInfo.md)
+ - [DeploymentsResourceConditions](docs/DeploymentsResourceConditions.md)
  - [DeploymentsStatus](docs/DeploymentsStatus.md)
  - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
  - [ModelsAccount](docs/ModelsAccount.md)
@@ -312,6 +314,7 @@ Class | Method | HTTP request | Description
  - [ModelsUser](docs/ModelsUser.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
 
 ## Documentation For Authorization

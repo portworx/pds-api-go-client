@@ -20,6 +20,7 @@ type DeploymentsStatus struct {
 	Initialized *string `json:"initialized,omitempty"`
 	ReadyReplicas *int32 `json:"readyReplicas,omitempty"`
 	Replicas *int32 `json:"replicas,omitempty"`
+	Resources []DeploymentsResourceConditions `json:"resources,omitempty"`
 }
 
 // NewDeploymentsStatus instantiates a new DeploymentsStatus object
@@ -167,6 +168,38 @@ func (o *DeploymentsStatus) SetReplicas(v int32) {
 	o.Replicas = &v
 }
 
+// GetResources returns the Resources field value if set, zero value otherwise.
+func (o *DeploymentsStatus) GetResources() []DeploymentsResourceConditions {
+	if o == nil || o.Resources == nil {
+		var ret []DeploymentsResourceConditions
+		return ret
+	}
+	return o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentsStatus) GetResourcesOk() ([]DeploymentsResourceConditions, bool) {
+	if o == nil || o.Resources == nil {
+		return nil, false
+	}
+	return o.Resources, true
+}
+
+// HasResources returns a boolean if a field has been set.
+func (o *DeploymentsStatus) HasResources() bool {
+	if o != nil && o.Resources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given []DeploymentsResourceConditions and assigns it to the Resources field.
+func (o *DeploymentsStatus) SetResources(v []DeploymentsResourceConditions) {
+	o.Resources = v
+}
+
 func (o DeploymentsStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Health != nil {
@@ -180,6 +213,9 @@ func (o DeploymentsStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.Replicas != nil {
 		toSerialize["replicas"] = o.Replicas
+	}
+	if o.Resources != nil {
+		toSerialize["resources"] = o.Resources
 	}
 	return json.Marshal(toSerialize)
 }
