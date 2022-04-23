@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ApiDataServicesGet
 
-> ControllersPaginatedDataServices ApiDataServicesGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).ResourceType(resourceType).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
+> ControllersPaginatedDataServices ApiDataServicesGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).Kind(kind).ResourceType(resourceType).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
 
 List Data Services
 
@@ -30,12 +30,13 @@ import (
 )
 
 func main() {
-    sortBy := "sortBy_example" // string | A given Data Service attribute to sort results by (one of: id, name, short_name, resource_type, created_at) (optional)
+    sortBy := "sortBy_example" // string | A given Data Service attribute to sort results by (one of: id, name, short_name, kind, resource_type, created_at) (optional)
     limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id := "id_example" // string | Filter results by Data Service ID (optional)
     name := "name_example" // string | Filter results by Data Service name (optional)
     shortName := "shortName_example" // string | Filter results by Data Service short name (optional)
+    kind := "kind_example" // string | Filter results by Data Service kind (optional)
     resourceType := "resourceType_example" // string | Filter results by Data Service resource type (optional)
     hasIncrementalBackup := true // bool | Filter results based on incremental backup eligibility (optional)
     hasFullBackup := true // bool | Filter results based on vault full backup eligibility (optional)
@@ -43,7 +44,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataServicesApi.ApiDataServicesGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).ResourceType(resourceType).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
+    resp, r, err := apiClient.DataServicesApi.ApiDataServicesGet(context.Background()).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).Kind(kind).ResourceType(resourceType).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataServicesApi.ApiDataServicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,12 +65,13 @@ Other parameters are passed through a pointer to a apiApiDataServicesGetRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sortBy** | **string** | A given Data Service attribute to sort results by (one of: id, name, short_name, resource_type, created_at) | 
+ **sortBy** | **string** | A given Data Service attribute to sort results by (one of: id, name, short_name, kind, resource_type, created_at) | 
  **limit** | **string** | Maximum number of rows to return (could be less) | 
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id** | **string** | Filter results by Data Service ID | 
  **name** | **string** | Filter results by Data Service name | 
  **shortName** | **string** | Filter results by Data Service short name | 
+ **kind** | **string** | Filter results by Data Service kind | 
  **resourceType** | **string** | Filter results by Data Service resource type | 
  **hasIncrementalBackup** | **bool** | Filter results based on incremental backup eligibility | 
  **hasFullBackup** | **bool** | Filter results based on vault full backup eligibility | 

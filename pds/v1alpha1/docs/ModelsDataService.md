@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **HasFullBackup** | Pointer to **bool** |  | [optional] 
 **HasIncrementalBackup** | Pointer to **bool** |  | [optional] 
 **Id** | Pointer to **string** | ID is auto generated on creation | [optional] 
+**Kind** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NodesLimitations** | Pointer to **string** |  | [optional] 
 **ResourceType** | Pointer to **string** |  | [optional] 
@@ -158,6 +159,31 @@ SetId sets Id field to given value.
 `func (o *ModelsDataService) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetKind
+
+`func (o *ModelsDataService) GetKind() string`
+
+GetKind returns the Kind field if non-nil, zero value otherwise.
+
+### GetKindOk
+
+`func (o *ModelsDataService) GetKindOk() (*string, bool)`
+
+GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKind
+
+`func (o *ModelsDataService) SetKind(v string)`
+
+SetKind sets Kind field to given value.
+
+### HasKind
+
+`func (o *ModelsDataService) HasKind() bool`
+
+HasKind returns a boolean if a field has been set.
 
 ### GetName
 

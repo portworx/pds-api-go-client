@@ -1019,7 +1019,7 @@ paths:
       description: Lists Data Services
       parameters:
       - description: 'A given Data Service attribute to sort results by (one of: id,
-          name, short_name, resource_type, created_at)'
+          name, short_name, kind, resource_type, created_at)'
         in: query
         name: sort_by
         schema:
@@ -1048,6 +1048,11 @@ paths:
       - description: Filter results by Data Service short name
         in: query
         name: short_name
+        schema:
+          type: string
+      - description: Filter results by Data Service kind
+        in: query
+        name: kind
         schema:
           type: string
       - description: Filter results by Data Service resource type
@@ -4067,6 +4072,7 @@ components:
         data:
         - coming_soon: true
           updated_at: updated_at
+          kind: kind
           name: name
           resource_type: resource_type
           created_at: created_at
@@ -4077,6 +4083,7 @@ components:
           has_full_backup: true
         - coming_soon: true
           updated_at: updated_at
+          kind: kind
           name: name
           resource_type: resource_type
           created_at: created_at
@@ -5541,6 +5548,7 @@ components:
       example:
         coming_soon: true
         updated_at: updated_at
+        kind: kind
         name: name
         resource_type: resource_type
         created_at: created_at
@@ -5561,6 +5569,8 @@ components:
           type: boolean
         id:
           description: ID is auto generated on creation
+          type: string
+        kind:
           type: string
         name:
           type: string
