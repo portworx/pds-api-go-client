@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidget) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidheartbeatpost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
+*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdMetadataPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidmetadatapost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdPut**](docs/DeploymentTargetsApi.md#apideploymenttargetsidput) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
 *DeploymentTargetsApi* | [**ApiProjectsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apiprojectsiddeploymenttargetsget) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
 *DeploymentTargetsApi* | [**ApiTenantsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apitenantsiddeploymenttargetsget) | **Get** /api/tenants/{id}/deployment-targets | List Tenant&#39;s DeploymentTargets
@@ -217,6 +218,7 @@ Class | Method | HTTP request | Description
  - [ControllersDeploymentTargetCredentialsResponse](docs/ControllersDeploymentTargetCredentialsResponse.md)
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
+ - [ControllersDeploymentTargetMetadataRequest](docs/ControllersDeploymentTargetMetadataRequest.md)
  - [ControllersInvitationRequest](docs/ControllersInvitationRequest.md)
  - [ControllersOIDCInfoResponse](docs/ControllersOIDCInfoResponse.md)
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)

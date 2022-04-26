@@ -1305,6 +1305,34 @@ paths:
       tags:
       - DeploymentTargets
       x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/metadata:
+    post:
+      description: Handles DeploymentTarget metadata by updating relevant tables in
+        DB
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.DeploymentTargetMetadataRequest'
+        description: Object with target cluster ID
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: ""
+      security:
+      - ApiKeyAuth: []
+      summary: Update DeploymentTarget metadata
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
   /api/deployment-targets/{id}/namespaces:
     get:
       description: List DeploymentTarget's Namespaces
@@ -3741,6 +3769,13 @@ components:
         cluster_id:
           type: string
         name:
+          type: string
+      type: object
+    controllers.DeploymentTargetMetadataRequest:
+      properties:
+        cluster_id:
+          type: string
+        pds_chart_version:
           type: string
       type: object
     controllers.OIDCInfoResponse:
