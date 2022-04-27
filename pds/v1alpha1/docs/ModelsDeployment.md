@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DataServiceId** | Pointer to **string** | DataServiceID type of data service (models.DataService). | [optional] 
 **DeploymentTargetId** | Pointer to **string** | DeploymentTargetID on which target the data service is deployed (models.DeploymentTarget). | [optional] 
 **DnsZone** | Pointer to **string** | DNSZone domain which this deployment should be a part of (eg pds-eap.io). | [optional] 
+**Error** | Pointer to [**ModelsErrorData**](ModelsErrorData.md) |  | [optional] 
 **Id** | Pointer to **string** | ID is auto generated on creation | [optional] 
 **ImageId** | Pointer to **string** | ImageID image of data service (models.Image). | [optional] 
 **Initialize** | Pointer to **string** | Initialize used to control startup scripts. | [optional] 
@@ -246,6 +247,31 @@ SetDnsZone sets DnsZone field to given value.
 `func (o *ModelsDeployment) HasDnsZone() bool`
 
 HasDnsZone returns a boolean if a field has been set.
+
+### GetError
+
+`func (o *ModelsDeployment) GetError() ModelsErrorData`
+
+GetError returns the Error field if non-nil, zero value otherwise.
+
+### GetErrorOk
+
+`func (o *ModelsDeployment) GetErrorOk() (*ModelsErrorData, bool)`
+
+GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *ModelsDeployment) SetError(v ModelsErrorData)`
+
+SetError sets Error field to given value.
+
+### HasError
+
+`func (o *ModelsDeployment) HasError() bool`
+
+HasError returns a boolean if a field has been set.
 
 ### GetId
 

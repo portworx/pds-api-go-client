@@ -32,6 +32,7 @@ type ModelsDeployment struct {
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
 	// DNSZone domain which this deployment should be a part of (eg pds-eap.io).
 	DnsZone *string `json:"dns_zone,omitempty"`
+	Error *ModelsErrorData `json:"error,omitempty"`
 	// ID is auto generated on creation
 	Id *string `json:"id,omitempty"`
 	// ImageID image of data service (models.Image).
@@ -333,6 +334,38 @@ func (o *ModelsDeployment) HasDnsZone() bool {
 // SetDnsZone gets a reference to the given string and assigns it to the DnsZone field.
 func (o *ModelsDeployment) SetDnsZone(v string) {
 	o.DnsZone = &v
+}
+
+// GetError returns the Error field value if set, zero value otherwise.
+func (o *ModelsDeployment) GetError() ModelsErrorData {
+	if o == nil || o.Error == nil {
+		var ret ModelsErrorData
+		return ret
+	}
+	return *o.Error
+}
+
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeployment) GetErrorOk() (*ModelsErrorData, bool) {
+	if o == nil || o.Error == nil {
+		return nil, false
+	}
+	return o.Error, true
+}
+
+// HasError returns a boolean if a field has been set.
+func (o *ModelsDeployment) HasError() bool {
+	if o != nil && o.Error != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetError gets a reference to the given ModelsErrorData and assigns it to the Error field.
+func (o *ModelsDeployment) SetError(v ModelsErrorData) {
+	o.Error = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -840,6 +873,9 @@ func (o ModelsDeployment) MarshalJSON() ([]byte, error) {
 	}
 	if o.DnsZone != nil {
 		toSerialize["dns_zone"] = o.DnsZone
+	}
+	if o.Error != nil {
+		toSerialize["error"] = o.Error
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id

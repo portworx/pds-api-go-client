@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ApiDeploymentTargetsIdConfigGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdConfigGet) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 [**ApiDeploymentTargetsIdCredentialsGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdCredentialsGet) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 [**ApiDeploymentTargetsIdDelete**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdDelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
 [**ApiDeploymentTargetsIdGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdGet) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
@@ -14,6 +15,76 @@ Method | HTTP request | Description
 [**ApiTenantsIdDeploymentTargetsGet**](DeploymentTargetsApi.md#ApiTenantsIdDeploymentTargetsGet) | **Get** /api/tenants/{id}/deployment-targets | List Tenant&#39;s DeploymentTargets
 [**ApiTenantsIdDeploymentTargetsPost**](DeploymentTargetsApi.md#ApiTenantsIdDeploymentTargetsPost) | **Post** /api/tenants/{id}/deployment-targets | Create DeploymentTarget
 
+
+
+## ApiDeploymentTargetsIdConfigGet
+
+> ControllersTargetClusterConfigResponse ApiDeploymentTargetsIdConfigGet(ctx, id).Execute()
+
+Get configuration values for a DeploymentTarget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdConfigGet(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdConfigGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiDeploymentTargetsIdConfigGet`: ControllersTargetClusterConfigResponse
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentTargetsApi.ApiDeploymentTargetsIdConfigGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | DeploymentTarget ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentTargetsIdConfigGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ControllersTargetClusterConfigResponse**](ControllersTargetClusterConfigResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ApiDeploymentTargetsIdCredentialsGet

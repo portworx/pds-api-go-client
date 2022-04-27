@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
 *DefaultTemplatesApi* | [**ApiTenantsIdSeedDefaultTemplatesPost**](docs/DefaultTemplatesApi.md#apitenantsidseeddefaulttemplatespost) | **Post** /api/tenants/{id}/seed-default-templates | Seed default templates
+*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdConfigGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidconfigget) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidget) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
@@ -253,6 +254,7 @@ Class | Method | HTTP request | Description
  - [ControllersRefreshTokenRequest](docs/ControllersRefreshTokenRequest.md)
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
+ - [ControllersTargetClusterConfigResponse](docs/ControllersTargetClusterConfigResponse.md)
  - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
  - [ControllersUpdateBackupCredentialsRequest](docs/ControllersUpdateBackupCredentialsRequest.md)
  - [ControllersUpdateBackupPolicyRequest](docs/ControllersUpdateBackupPolicyRequest.md)
@@ -298,6 +300,7 @@ Class | Method | HTTP request | Description
  - [ModelsDeploymentResources](docs/ModelsDeploymentResources.md)
  - [ModelsDeploymentStorageOptions](docs/ModelsDeploymentStorageOptions.md)
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
+ - [ModelsErrorData](docs/ModelsErrorData.md)
  - [ModelsGlobalRoleBinding](docs/ModelsGlobalRoleBinding.md)
  - [ModelsImage](docs/ModelsImage.md)
  - [ModelsMAASDetails](docs/ModelsMAASDetails.md)
