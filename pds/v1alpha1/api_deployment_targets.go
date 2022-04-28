@@ -159,11 +159,13 @@ func (r ApiApiDeploymentTargetsIdCredentialsGetRequest) Execute() (*ControllersD
 /*
 ApiDeploymentTargetsIdCredentialsGet Get join credentials of a DeploymentTarget
 
-Fetches the join credentials of a DeploymentTarget
+Deprecated, use GET /api/deployment-targets/{id}/config instead
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdCredentialsGetRequest
+
+Deprecated
 */
 func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGet(ctx context.Context, id string) ApiApiDeploymentTargetsIdCredentialsGetRequest {
 	return ApiApiDeploymentTargetsIdCredentialsGetRequest{
@@ -175,6 +177,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGet(ctx c
 
 // Execute executes the request
 //  @return ControllersDeploymentTargetCredentialsResponse
+// Deprecated
 func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecute(r ApiApiDeploymentTargetsIdCredentialsGetRequest) (*ControllersDeploymentTargetCredentialsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

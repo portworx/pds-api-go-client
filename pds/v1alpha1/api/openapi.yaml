@@ -1277,7 +1277,8 @@ paths:
       - DeploymentTargets
   /api/deployment-targets/{id}/credentials:
     get:
-      description: Fetches the join credentials of a DeploymentTarget
+      deprecated: true
+      description: Deprecated, use GET /api/deployment-targets/{id}/config instead
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
         in: path
@@ -4670,9 +4671,18 @@ components:
       type: object
     controllers.TargetClusterConfigResponse:
       example:
+        teleport_join_token: teleport_join_token
+        teleport_proxy_addr: teleport_proxy_addr
         observability_url: observability_url
+        teleport_ca_pin: teleport_ca_pin
       properties:
         observability_url:
+          type: string
+        teleport_ca_pin:
+          type: string
+        teleport_join_token:
+          type: string
+        teleport_proxy_addr:
           type: string
       type: object
     controllers.UpdateApplicationConfigurationTemplateRequest:

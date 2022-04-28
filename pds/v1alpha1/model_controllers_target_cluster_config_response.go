@@ -17,6 +17,9 @@ import (
 // ControllersTargetClusterConfigResponse struct for ControllersTargetClusterConfigResponse
 type ControllersTargetClusterConfigResponse struct {
 	ObservabilityUrl *string `json:"observability_url,omitempty"`
+	TeleportCaPin *string `json:"teleport_ca_pin,omitempty"`
+	TeleportJoinToken *string `json:"teleport_join_token,omitempty"`
+	TeleportProxyAddr *string `json:"teleport_proxy_addr,omitempty"`
 }
 
 // NewControllersTargetClusterConfigResponse instantiates a new ControllersTargetClusterConfigResponse object
@@ -68,10 +71,115 @@ func (o *ControllersTargetClusterConfigResponse) SetObservabilityUrl(v string) {
 	o.ObservabilityUrl = &v
 }
 
+// GetTeleportCaPin returns the TeleportCaPin field value if set, zero value otherwise.
+func (o *ControllersTargetClusterConfigResponse) GetTeleportCaPin() string {
+	if o == nil || o.TeleportCaPin == nil {
+		var ret string
+		return ret
+	}
+	return *o.TeleportCaPin
+}
+
+// GetTeleportCaPinOk returns a tuple with the TeleportCaPin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersTargetClusterConfigResponse) GetTeleportCaPinOk() (*string, bool) {
+	if o == nil || o.TeleportCaPin == nil {
+		return nil, false
+	}
+	return o.TeleportCaPin, true
+}
+
+// HasTeleportCaPin returns a boolean if a field has been set.
+func (o *ControllersTargetClusterConfigResponse) HasTeleportCaPin() bool {
+	if o != nil && o.TeleportCaPin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTeleportCaPin gets a reference to the given string and assigns it to the TeleportCaPin field.
+func (o *ControllersTargetClusterConfigResponse) SetTeleportCaPin(v string) {
+	o.TeleportCaPin = &v
+}
+
+// GetTeleportJoinToken returns the TeleportJoinToken field value if set, zero value otherwise.
+func (o *ControllersTargetClusterConfigResponse) GetTeleportJoinToken() string {
+	if o == nil || o.TeleportJoinToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.TeleportJoinToken
+}
+
+// GetTeleportJoinTokenOk returns a tuple with the TeleportJoinToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersTargetClusterConfigResponse) GetTeleportJoinTokenOk() (*string, bool) {
+	if o == nil || o.TeleportJoinToken == nil {
+		return nil, false
+	}
+	return o.TeleportJoinToken, true
+}
+
+// HasTeleportJoinToken returns a boolean if a field has been set.
+func (o *ControllersTargetClusterConfigResponse) HasTeleportJoinToken() bool {
+	if o != nil && o.TeleportJoinToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTeleportJoinToken gets a reference to the given string and assigns it to the TeleportJoinToken field.
+func (o *ControllersTargetClusterConfigResponse) SetTeleportJoinToken(v string) {
+	o.TeleportJoinToken = &v
+}
+
+// GetTeleportProxyAddr returns the TeleportProxyAddr field value if set, zero value otherwise.
+func (o *ControllersTargetClusterConfigResponse) GetTeleportProxyAddr() string {
+	if o == nil || o.TeleportProxyAddr == nil {
+		var ret string
+		return ret
+	}
+	return *o.TeleportProxyAddr
+}
+
+// GetTeleportProxyAddrOk returns a tuple with the TeleportProxyAddr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersTargetClusterConfigResponse) GetTeleportProxyAddrOk() (*string, bool) {
+	if o == nil || o.TeleportProxyAddr == nil {
+		return nil, false
+	}
+	return o.TeleportProxyAddr, true
+}
+
+// HasTeleportProxyAddr returns a boolean if a field has been set.
+func (o *ControllersTargetClusterConfigResponse) HasTeleportProxyAddr() bool {
+	if o != nil && o.TeleportProxyAddr != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTeleportProxyAddr gets a reference to the given string and assigns it to the TeleportProxyAddr field.
+func (o *ControllersTargetClusterConfigResponse) SetTeleportProxyAddr(v string) {
+	o.TeleportProxyAddr = &v
+}
+
 func (o ControllersTargetClusterConfigResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ObservabilityUrl != nil {
 		toSerialize["observability_url"] = o.ObservabilityUrl
+	}
+	if o.TeleportCaPin != nil {
+		toSerialize["teleport_ca_pin"] = o.TeleportCaPin
+	}
+	if o.TeleportJoinToken != nil {
+		toSerialize["teleport_join_token"] = o.TeleportJoinToken
+	}
+	if o.TeleportProxyAddr != nil {
+		toSerialize["teleport_proxy_addr"] = o.TeleportProxyAddr
 	}
 	return json.Marshal(toSerialize)
 }
