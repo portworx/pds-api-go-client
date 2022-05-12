@@ -4084,6 +4084,7 @@ components:
         - suspend: true
           tenant_id: tenant_id
           data_service_id: data_service_id
+          deployment_name: deployment_name
           backup_target_id: backup_target_id
           backup_type: adhoc
           created_at: created_at
@@ -4093,6 +4094,8 @@ components:
           reclaim_policy: retain
           schedule: schedule
           account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
           updated_at: updated_at
           project_id: project_id
           deployment_id: deployment_id
@@ -4101,6 +4104,7 @@ components:
         - suspend: true
           tenant_id: tenant_id
           data_service_id: data_service_id
+          deployment_name: deployment_name
           backup_target_id: backup_target_id
           backup_type: adhoc
           created_at: created_at
@@ -4110,6 +4114,8 @@ components:
           reclaim_policy: retain
           schedule: schedule
           account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
           updated_at: updated_at
           project_id: project_id
           deployment_id: deployment_id
@@ -5292,6 +5298,7 @@ components:
         suspend: true
         tenant_id: tenant_id
         data_service_id: data_service_id
+        deployment_name: deployment_name
         backup_target_id: backup_target_id
         backup_type: adhoc
         created_at: created_at
@@ -5301,6 +5308,8 @@ components:
         reclaim_policy: retain
         schedule: schedule
         account_id: account_id
+        deployment_target_id: deployment_target_id
+        namespace_id: namespace_id
         updated_at: updated_at
         project_id: project_id
         deployment_id: deployment_id
@@ -5332,6 +5341,13 @@ components:
           type: string
         deployment_id:
           type: string
+        deployment_name:
+          description: DeploymentName name of the deployment to give the user more
+            info in cases when the deployment has already been deleted.
+          type: string
+        deployment_target_id:
+          description: DeploymentTargetID on which target the backup is created (models.DeploymentTarget).
+          type: string
         id:
           description: ID is auto generated on creation
           type: string
@@ -5339,6 +5355,9 @@ components:
           description: JobHistoryLimit is a number of retained backup jobs. Must be
             1 or greater.
           type: integer
+        namespace_id:
+          description: NamespaceID in which namespace the Backup CR is created (models.Namespace).
+          type: string
         project_id:
           type: string
         reclaim_policy:

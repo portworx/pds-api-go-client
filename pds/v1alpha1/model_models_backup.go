@@ -26,10 +26,16 @@ type ModelsBackup struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	DataServiceId *string `json:"data_service_id,omitempty"`
 	DeploymentId *string `json:"deployment_id,omitempty"`
+	// DeploymentName name of the deployment to give the user more info in cases when the deployment has already been deleted.
+	DeploymentName *string `json:"deployment_name,omitempty"`
+	// DeploymentTargetID on which target the backup is created (models.DeploymentTarget).
+	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
 	// ID is auto generated on creation
 	Id *string `json:"id,omitempty"`
 	// JobHistoryLimit is a number of retained backup jobs. Must be 1 or greater.
 	JobHistoryLimit *int32 `json:"job_history_limit,omitempty"`
+	// NamespaceID in which namespace the Backup CR is created (models.Namespace).
+	NamespaceId *string `json:"namespace_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	// ReclaimPolicy decides if the volume snapshots should get deleted when a Backup CR gets deleted.
 	ReclaimPolicy *string `json:"reclaim_policy,omitempty"`
@@ -317,6 +323,70 @@ func (o *ModelsBackup) SetDeploymentId(v string) {
 	o.DeploymentId = &v
 }
 
+// GetDeploymentName returns the DeploymentName field value if set, zero value otherwise.
+func (o *ModelsBackup) GetDeploymentName() string {
+	if o == nil || o.DeploymentName == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentName
+}
+
+// GetDeploymentNameOk returns a tuple with the DeploymentName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsBackup) GetDeploymentNameOk() (*string, bool) {
+	if o == nil || o.DeploymentName == nil {
+		return nil, false
+	}
+	return o.DeploymentName, true
+}
+
+// HasDeploymentName returns a boolean if a field has been set.
+func (o *ModelsBackup) HasDeploymentName() bool {
+	if o != nil && o.DeploymentName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentName gets a reference to the given string and assigns it to the DeploymentName field.
+func (o *ModelsBackup) SetDeploymentName(v string) {
+	o.DeploymentName = &v
+}
+
+// GetDeploymentTargetId returns the DeploymentTargetId field value if set, zero value otherwise.
+func (o *ModelsBackup) GetDeploymentTargetId() string {
+	if o == nil || o.DeploymentTargetId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentTargetId
+}
+
+// GetDeploymentTargetIdOk returns a tuple with the DeploymentTargetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsBackup) GetDeploymentTargetIdOk() (*string, bool) {
+	if o == nil || o.DeploymentTargetId == nil {
+		return nil, false
+	}
+	return o.DeploymentTargetId, true
+}
+
+// HasDeploymentTargetId returns a boolean if a field has been set.
+func (o *ModelsBackup) HasDeploymentTargetId() bool {
+	if o != nil && o.DeploymentTargetId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentTargetId gets a reference to the given string and assigns it to the DeploymentTargetId field.
+func (o *ModelsBackup) SetDeploymentTargetId(v string) {
+	o.DeploymentTargetId = &v
+}
+
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsBackup) GetId() string {
 	if o == nil || o.Id == nil {
@@ -379,6 +449,38 @@ func (o *ModelsBackup) HasJobHistoryLimit() bool {
 // SetJobHistoryLimit gets a reference to the given int32 and assigns it to the JobHistoryLimit field.
 func (o *ModelsBackup) SetJobHistoryLimit(v int32) {
 	o.JobHistoryLimit = &v
+}
+
+// GetNamespaceId returns the NamespaceId field value if set, zero value otherwise.
+func (o *ModelsBackup) GetNamespaceId() string {
+	if o == nil || o.NamespaceId == nil {
+		var ret string
+		return ret
+	}
+	return *o.NamespaceId
+}
+
+// GetNamespaceIdOk returns a tuple with the NamespaceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsBackup) GetNamespaceIdOk() (*string, bool) {
+	if o == nil || o.NamespaceId == nil {
+		return nil, false
+	}
+	return o.NamespaceId, true
+}
+
+// HasNamespaceId returns a boolean if a field has been set.
+func (o *ModelsBackup) HasNamespaceId() bool {
+	if o != nil && o.NamespaceId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespaceId gets a reference to the given string and assigns it to the NamespaceId field.
+func (o *ModelsBackup) SetNamespaceId(v string) {
+	o.NamespaceId = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -631,11 +733,20 @@ func (o ModelsBackup) MarshalJSON() ([]byte, error) {
 	if o.DeploymentId != nil {
 		toSerialize["deployment_id"] = o.DeploymentId
 	}
+	if o.DeploymentName != nil {
+		toSerialize["deployment_name"] = o.DeploymentName
+	}
+	if o.DeploymentTargetId != nil {
+		toSerialize["deployment_target_id"] = o.DeploymentTargetId
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if o.JobHistoryLimit != nil {
 		toSerialize["job_history_limit"] = o.JobHistoryLimit
+	}
+	if o.NamespaceId != nil {
+		toSerialize["namespace_id"] = o.NamespaceId
 	}
 	if o.ProjectId != nil {
 		toSerialize["project_id"] = o.ProjectId
