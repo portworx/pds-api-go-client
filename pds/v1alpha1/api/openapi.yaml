@@ -1180,6 +1180,78 @@ paths:
       summary: Get Task
       tags:
       - Tasks
+  /api/default-templates/application-configuration:
+    get:
+      description: Lists Default ApplicationConfigurationTemplates
+      parameters:
+      - description: Filter results by DataService ID
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.ApplicationConfigurationTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Default ApplicationConfigurationTemplates
+      tags:
+      - DefaultTemplates
+  /api/default-templates/backup-policies:
+    get:
+      description: Lists Default BackupPolicies
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.BackupPolicies'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Default BackupPolicies
+      tags:
+      - DefaultTemplates
+  /api/default-templates/resource-settings:
+    get:
+      description: Lists Default ResourceSettingsTemplates
+      parameters:
+      - description: Filter results by DataService ID
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.ResourceSettingsTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Default ResourceSettingsTemplates
+      tags:
+      - DefaultTemplates
+  /api/default-templates/storage-options:
+    get:
+      description: Lists Default StorageOptionsTemplates
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.StorageOptionsTemplates'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Default StorageOptionsTemplates
+      tags:
+      - DefaultTemplates
   /api/deployment-targets/{id}:
     delete:
       description: Deletes a single DeploymentTarget.
@@ -3167,25 +3239,6 @@ paths:
       tags:
       - TenantRoleBindings
       x-codegen-request-body-name: body
-  /api/tenants/{id}/seed-default-templates:
-    post:
-      description: Populates a tenant scope with default templates
-      parameters:
-      - description: Tenant ID (must be valid UUID)
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      responses:
-        "201":
-          content: {}
-          description: ""
-      security:
-      - ApiKeyAuth: []
-      summary: Seed default templates
-      tags:
-      - DefaultTemplates
   /api/tenants/{id}/service-accounts:
     get:
       description: List Tenant's ServiceAccounts
@@ -3642,6 +3695,43 @@ components:
           example: Helm chart version
           type: string
       type: object
+    controllers.ApplicationConfigurationTemplates:
+      example:
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - deploy_time: true
+            value: value
+            key: key
+          - deploy_time: true
+            value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - deploy_time: true
+            value: value
+            key: key
+          - deploy_time: true
+            value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          type: array
+      type: object
     controllers.AuthorizationCodeRequest:
       properties:
         AuthCode:
@@ -3678,6 +3768,45 @@ components:
         data:
           items:
             $ref: '#/components/schemas/controllers.BackupJobStatus'
+          type: array
+      type: object
+    controllers.BackupPolicies:
+      example:
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupPolicy'
           type: array
       type: object
     controllers.CreateDeploymentBackup:
@@ -4643,6 +4772,39 @@ components:
         refreshToken:
           type: string
       type: object
+    controllers.ResourceSettingsTemplates:
+      example:
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          type: array
+      type: object
     controllers.ServiceAccountResponse:
       example:
         tenant_id: tenant_id
@@ -4674,6 +4836,35 @@ components:
       properties:
         token:
           type: string
+      type: object
+    controllers.StorageOptionsTemplates:
+      example:
+        data:
+        - tenant_id: tenant_id
+          fg: true
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+        - tenant_id: tenant_id
+          fg: true
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.StorageOptionsTemplate'
+          type: array
       type: object
     controllers.TargetClusterConfigResponse:
       example:

@@ -130,7 +130,10 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
-*DefaultTemplatesApi* | [**ApiTenantsIdSeedDefaultTemplatesPost**](docs/DefaultTemplatesApi.md#apitenantsidseeddefaulttemplatespost) | **Post** /api/tenants/{id}/seed-default-templates | Seed default templates
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationTemplates
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List Default BackupPolicies
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsTemplates
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesStorageOptionsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesstorageoptionsget) | **Get** /api/default-templates/storage-options | List Default StorageOptionsTemplates
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdConfigGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidconfigget) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
@@ -199,9 +202,11 @@ Class | Method | HTTP request | Description
  - [AuthClaims](docs/AuthClaims.md)
  - [ConstraintPagination](docs/ConstraintPagination.md)
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
+ - [ControllersApplicationConfigurationTemplates](docs/ControllersApplicationConfigurationTemplates.md)
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
  - [ControllersBackupJobStatus](docs/ControllersBackupJobStatus.md)
  - [ControllersBackupJobsResponse](docs/ControllersBackupJobsResponse.md)
+ - [ControllersBackupPolicies](docs/ControllersBackupPolicies.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
  - [ControllersCreateApplicationConfigurationTemplatesRequest](docs/ControllersCreateApplicationConfigurationTemplatesRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
@@ -252,8 +257,10 @@ Class | Method | HTTP request | Description
  - [ControllersPartialS3CompatibleCredentials](docs/ControllersPartialS3CompatibleCredentials.md)
  - [ControllersPartialS3Credentials](docs/ControllersPartialS3Credentials.md)
  - [ControllersRefreshTokenRequest](docs/ControllersRefreshTokenRequest.md)
+ - [ControllersResourceSettingsTemplates](docs/ControllersResourceSettingsTemplates.md)
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
+ - [ControllersStorageOptionsTemplates](docs/ControllersStorageOptionsTemplates.md)
  - [ControllersTargetClusterConfigResponse](docs/ControllersTargetClusterConfigResponse.md)
  - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
  - [ControllersUpdateBackupCredentialsRequest](docs/ControllersUpdateBackupCredentialsRequest.md)

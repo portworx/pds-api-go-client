@@ -16,7 +16,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -27,54 +26,61 @@ var (
 // DefaultTemplatesApiService DefaultTemplatesApi service
 type DefaultTemplatesApiService service
 
-type ApiApiTenantsIdSeedDefaultTemplatesPostRequest struct {
+type ApiApiDefaultTemplatesApplicationConfigurationGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultTemplatesApiService
-	id string
+	dataServiceId *string
 }
 
+// Filter results by DataService ID
+func (r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) DataServiceId(dataServiceId string) ApiApiDefaultTemplatesApplicationConfigurationGetRequest {
+	r.dataServiceId = &dataServiceId
+	return r
+}
 
-func (r ApiApiTenantsIdSeedDefaultTemplatesPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ApiTenantsIdSeedDefaultTemplatesPostExecute(r)
+func (r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) Execute() (*ControllersApplicationConfigurationTemplates, *http.Response, error) {
+	return r.ApiService.ApiDefaultTemplatesApplicationConfigurationGetExecute(r)
 }
 
 /*
-ApiTenantsIdSeedDefaultTemplatesPost Seed default templates
+ApiDefaultTemplatesApplicationConfigurationGet List Default ApplicationConfigurationTemplates
 
-Populates a tenant scope with default templates
+Lists Default ApplicationConfigurationTemplates
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Tenant ID (must be valid UUID)
- @return ApiApiTenantsIdSeedDefaultTemplatesPostRequest
+ @return ApiApiDefaultTemplatesApplicationConfigurationGetRequest
 */
-func (a *DefaultTemplatesApiService) ApiTenantsIdSeedDefaultTemplatesPost(ctx context.Context, id string) ApiApiTenantsIdSeedDefaultTemplatesPostRequest {
-	return ApiApiTenantsIdSeedDefaultTemplatesPostRequest{
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGet(ctx context.Context) ApiApiDefaultTemplatesApplicationConfigurationGetRequest {
+	return ApiApiDefaultTemplatesApplicationConfigurationGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *DefaultTemplatesApiService) ApiTenantsIdSeedDefaultTemplatesPostExecute(r ApiApiTenantsIdSeedDefaultTemplatesPostRequest) (*http.Response, error) {
+//  @return ControllersApplicationConfigurationTemplates
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGetExecute(r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) (*ControllersApplicationConfigurationTemplates, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ControllersApplicationConfigurationTemplates
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiTenantsIdSeedDefaultTemplatesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesApplicationConfigurationGet")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/tenants/{id}/seed-default-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath := localBasePath + "/api/default-templates/application-configuration"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.dataServiceId != nil {
+		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -85,7 +91,7 @@ func (a *DefaultTemplatesApiService) ApiTenantsIdSeedDefaultTemplatesPostExecute
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -108,19 +114,19 @@ func (a *DefaultTemplatesApiService) ApiTenantsIdSeedDefaultTemplatesPostExecute
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -128,8 +134,368 @@ func (a *DefaultTemplatesApiService) ApiTenantsIdSeedDefaultTemplatesPostExecute
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiDefaultTemplatesBackupPoliciesGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultTemplatesApiService
+}
+
+
+func (r ApiApiDefaultTemplatesBackupPoliciesGetRequest) Execute() (*ControllersBackupPolicies, *http.Response, error) {
+	return r.ApiService.ApiDefaultTemplatesBackupPoliciesGetExecute(r)
+}
+
+/*
+ApiDefaultTemplatesBackupPoliciesGet List Default BackupPolicies
+
+Lists Default BackupPolicies
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiDefaultTemplatesBackupPoliciesGetRequest
+*/
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGet(ctx context.Context) ApiApiDefaultTemplatesBackupPoliciesGetRequest {
+	return ApiApiDefaultTemplatesBackupPoliciesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ControllersBackupPolicies
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute(r ApiApiDefaultTemplatesBackupPoliciesGetRequest) (*ControllersBackupPolicies, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ControllersBackupPolicies
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesBackupPoliciesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/default-templates/backup-policies"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiDefaultTemplatesResourceSettingsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultTemplatesApiService
+	dataServiceId *string
+}
+
+// Filter results by DataService ID
+func (r ApiApiDefaultTemplatesResourceSettingsGetRequest) DataServiceId(dataServiceId string) ApiApiDefaultTemplatesResourceSettingsGetRequest {
+	r.dataServiceId = &dataServiceId
+	return r
+}
+
+func (r ApiApiDefaultTemplatesResourceSettingsGetRequest) Execute() (*ControllersResourceSettingsTemplates, *http.Response, error) {
+	return r.ApiService.ApiDefaultTemplatesResourceSettingsGetExecute(r)
+}
+
+/*
+ApiDefaultTemplatesResourceSettingsGet List Default ResourceSettingsTemplates
+
+Lists Default ResourceSettingsTemplates
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiDefaultTemplatesResourceSettingsGetRequest
+*/
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGet(ctx context.Context) ApiApiDefaultTemplatesResourceSettingsGetRequest {
+	return ApiApiDefaultTemplatesResourceSettingsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ControllersResourceSettingsTemplates
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecute(r ApiApiDefaultTemplatesResourceSettingsGetRequest) (*ControllersResourceSettingsTemplates, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ControllersResourceSettingsTemplates
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesResourceSettingsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/default-templates/resource-settings"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.dataServiceId != nil {
+		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiDefaultTemplatesStorageOptionsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultTemplatesApiService
+}
+
+
+func (r ApiApiDefaultTemplatesStorageOptionsGetRequest) Execute() (*ControllersStorageOptionsTemplates, *http.Response, error) {
+	return r.ApiService.ApiDefaultTemplatesStorageOptionsGetExecute(r)
+}
+
+/*
+ApiDefaultTemplatesStorageOptionsGet List Default StorageOptionsTemplates
+
+Lists Default StorageOptionsTemplates
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiDefaultTemplatesStorageOptionsGetRequest
+*/
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGet(ctx context.Context) ApiApiDefaultTemplatesStorageOptionsGetRequest {
+	return ApiApiDefaultTemplatesStorageOptionsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ControllersStorageOptionsTemplates
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute(r ApiApiDefaultTemplatesStorageOptionsGetRequest) (*ControllersStorageOptionsTemplates, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ControllersStorageOptionsTemplates
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesStorageOptionsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/default-templates/storage-options"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
