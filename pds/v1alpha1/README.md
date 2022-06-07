@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
 *DeploymentsApi* | [**ApiDeploymentsIdConnectionInfoGet**](docs/DeploymentsApi.md#apideploymentsidconnectioninfoget) | **Get** /api/deployments/{id}/connection-info | Deployment Connection Information
 *DeploymentsApi* | [**ApiDeploymentsIdCredentialsGet**](docs/DeploymentsApi.md#apideploymentsidcredentialsget) | **Get** /api/deployments/{id}/credentials | Deployment Credentials
 *DeploymentsApi* | [**ApiDeploymentsIdDelete**](docs/DeploymentsApi.md#apideploymentsiddelete) | **Delete** /api/deployments/{id} | Delete Deployment
+*DeploymentsApi* | [**ApiDeploymentsIdEventsGet**](docs/DeploymentsApi.md#apideploymentsideventsget) | **Get** /api/deployments/{id}/events | Get Deployment Events
 *DeploymentsApi* | [**ApiDeploymentsIdGet**](docs/DeploymentsApi.md#apideploymentsidget) | **Get** /api/deployments/{id} | Get Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdPut**](docs/DeploymentsApi.md#apideploymentsidput) | **Put** /api/deployments/{id} | Update Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdStatusGet**](docs/DeploymentsApi.md#apideploymentsidstatusget) | **Get** /api/deployments/{id}/status | Get Deployment Status
@@ -225,6 +226,7 @@ Class | Method | HTTP request | Description
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
  - [ControllersDeploymentTargetMetadataRequest](docs/ControllersDeploymentTargetMetadataRequest.md)
+ - [ControllersEventsResponse](docs/ControllersEventsResponse.md)
  - [ControllersInvitationRequest](docs/ControllersInvitationRequest.md)
  - [ControllersOIDCInfoResponse](docs/ControllersOIDCInfoResponse.md)
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)
@@ -260,6 +262,7 @@ Class | Method | HTTP request | Description
  - [ControllersResourceSettingsTemplates](docs/ControllersResourceSettingsTemplates.md)
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
+ - [ControllersStatusResponse](docs/ControllersStatusResponse.md)
  - [ControllersStorageOptionsTemplates](docs/ControllersStorageOptionsTemplates.md)
  - [ControllersTargetClusterConfigResponse](docs/ControllersTargetClusterConfigResponse.md)
  - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
@@ -285,7 +288,8 @@ Class | Method | HTTP request | Description
  - [DeploymentsCredentials](docs/DeploymentsCredentials.md)
  - [DeploymentsPodInfo](docs/DeploymentsPodInfo.md)
  - [DeploymentsResourceConditions](docs/DeploymentsResourceConditions.md)
- - [DeploymentsStatus](docs/DeploymentsStatus.md)
+ - [DeploymentsResourceEvent](docs/DeploymentsResourceEvent.md)
+ - [DeploymentsResourceEvents](docs/DeploymentsResourceEvents.md)
  - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountRoleBinding](docs/ModelsAccountRoleBinding.md)

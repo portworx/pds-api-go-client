@@ -1746,6 +1746,28 @@ paths:
       summary: Deployment Credentials
       tags:
       - Deployments
+  /api/deployments/{id}/events:
+    get:
+      description: Retrieves events of the given Deployment
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/controllers.eventsResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get Deployment Events
+      tags:
+      - Deployments
   /api/deployments/{id}/status:
     get:
       description: Retrieves status information on the given Deployment
@@ -1761,7 +1783,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/deployments.Status'
+                $ref: '#/components/schemas/controllers.statusResponse'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -5136,12 +5158,112 @@ components:
         name:
           type: string
       type: object
+    controllers.eventsResponse:
+      example:
+        resourceEvents:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          events:
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          events:
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+      properties:
+        resourceEvents:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceEvents'
+          type: array
+      type: object
     controllers.invitationRequest:
       properties:
         email:
           type: string
         role_name:
           type: string
+      type: object
+    controllers.statusResponse:
+      example:
+        replicas: 6
+        health: Healthy
+        initialized: "Yes"
+        readyReplicas: 0
+        resources:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+      properties:
+        health:
+          enum:
+          - Healthy
+          - Down
+          - Degraded
+          type: string
+        initialized:
+          enum:
+          - "Yes"
+          - "No"
+          - Unknown
+          - Pending
+          - Manual
+          type: string
+        readyReplicas:
+          type: integer
+        replicas:
+          type: integer
+        resources:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceConditions'
+          type: array
       type: object
     controllers.updateBackupCredentialsRequest:
       properties:
@@ -5312,62 +5434,69 @@ components:
         resource:
           $ref: '#/components/schemas/v1.TypedLocalObjectReference'
       type: object
-    deployments.Status:
+    deployments.ResourceEvent:
       example:
-        replicas: 6
-        health: Healthy
-        initialized: "Yes"
-        readyReplicas: 0
-        resources:
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
+        reason: FailedScheduling
+        name: cas-events-0h35cp-0.16f4c1e217362a3e
+        action: Scheduling
+        message: 0/3 nodes are available
+        type: Normal
+        timestamp: timestamp
       properties:
-        health:
-          enum:
-          - Healthy
-          - Down
-          - Degraded
+        action:
+          description: Action that was taken/failed regarding to the given object.
+          example: Scheduling
           type: string
-        initialized:
-          enum:
-          - "Yes"
-          - "No"
-          - Unknown
-          - Pending
-          - Manual
+        message:
+          description: Message is a human-readable description of the status of this
+            operation.
+          example: 0/3 nodes are available
           type: string
-        readyReplicas:
-          type: integer
-        replicas:
-          type: integer
-        resources:
+        name:
+          description: Name of the Event resource in target cluster.
+          example: cas-events-0h35cp-0.16f4c1e217362a3e
+          type: string
+        reason:
+          description: Reason is a short, machine understandable string that gives
+            the reason for the transition into the object's current status.
+          example: FailedScheduling
+          type: string
+        timestamp:
+          description: Timestamp informs about when did the event occur most recently.
+          type: string
+        type:
+          description: Type of this event , new types could be added in the future.
+          enum:
+          - Normal
+          - Warning
+          type: string
+      type: object
+    deployments.ResourceEvents:
+      example:
+        resource:
+          apiGroup: apiGroup
+          kind: kind
+          name: name
+        events:
+        - reason: FailedScheduling
+          name: cas-events-0h35cp-0.16f4c1e217362a3e
+          action: Scheduling
+          message: 0/3 nodes are available
+          type: Normal
+          timestamp: timestamp
+        - reason: FailedScheduling
+          name: cas-events-0h35cp-0.16f4c1e217362a3e
+          action: Scheduling
+          message: 0/3 nodes are available
+          type: Normal
+          timestamp: timestamp
+      properties:
+        events:
           items:
-            $ref: '#/components/schemas/deployments.ResourceConditions'
+            $ref: '#/components/schemas/deployments.ResourceEvent'
           type: array
+        resource:
+          $ref: '#/components/schemas/v1.TypedLocalObjectReference'
       type: object
     models.AWSDetails:
       example:

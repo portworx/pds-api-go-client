@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApiDeploymentsIdConnectionInfoGet**](DeploymentsApi.md#ApiDeploymentsIdConnectionInfoGet) | **Get** /api/deployments/{id}/connection-info | Deployment Connection Information
 [**ApiDeploymentsIdCredentialsGet**](DeploymentsApi.md#ApiDeploymentsIdCredentialsGet) | **Get** /api/deployments/{id}/credentials | Deployment Credentials
 [**ApiDeploymentsIdDelete**](DeploymentsApi.md#ApiDeploymentsIdDelete) | **Delete** /api/deployments/{id} | Delete Deployment
+[**ApiDeploymentsIdEventsGet**](DeploymentsApi.md#ApiDeploymentsIdEventsGet) | **Get** /api/deployments/{id}/events | Get Deployment Events
 [**ApiDeploymentsIdGet**](DeploymentsApi.md#ApiDeploymentsIdGet) | **Get** /api/deployments/{id} | Get Deployment
 [**ApiDeploymentsIdPut**](DeploymentsApi.md#ApiDeploymentsIdPut) | **Put** /api/deployments/{id} | Update Deployment
 [**ApiDeploymentsIdStatusGet**](DeploymentsApi.md#ApiDeploymentsIdStatusGet) | **Get** /api/deployments/{id}/status | Get Deployment Status
@@ -225,6 +226,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ApiDeploymentsIdEventsGet
+
+> ControllersEventsResponse ApiDeploymentsIdEventsGet(ctx, id).Execute()
+
+Get Deployment Events
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Deployment ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdEventsGet(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdEventsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiDeploymentsIdEventsGet`: ControllersEventsResponse
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdEventsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Deployment ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentsIdEventsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ControllersEventsResponse**](ControllersEventsResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiDeploymentsIdGet
 
 > ModelsDeployment ApiDeploymentsIdGet(ctx, id).Execute()
@@ -371,7 +442,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdStatusGet
 
-> DeploymentsStatus ApiDeploymentsIdStatusGet(ctx, id).Execute()
+> ControllersStatusResponse ApiDeploymentsIdStatusGet(ctx, id).Execute()
 
 Get Deployment Status
 
@@ -399,7 +470,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdStatusGet`: DeploymentsStatus
+    // response from `ApiDeploymentsIdStatusGet`: ControllersStatusResponse
     fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdStatusGet`: %v\n", resp)
 }
 ```
@@ -423,7 +494,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeploymentsStatus**](DeploymentsStatus.md)
+[**ControllersStatusResponse**](ControllersStatusResponse.md)
 
 ### Authorization
 
