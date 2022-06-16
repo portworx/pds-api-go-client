@@ -311,6 +311,7 @@ Class | Method | HTTP request | Description
  - [ModelsDeploymentResources](docs/ModelsDeploymentResources.md)
  - [ModelsDeploymentStorageOptions](docs/ModelsDeploymentStorageOptions.md)
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
+ - [ModelsDeploymentTargetMetadata](docs/ModelsDeploymentTargetMetadata.md)
  - [ModelsErrorData](docs/ModelsErrorData.md)
  - [ModelsGlobalRoleBinding](docs/ModelsGlobalRoleBinding.md)
  - [ModelsImage](docs/ModelsImage.md)

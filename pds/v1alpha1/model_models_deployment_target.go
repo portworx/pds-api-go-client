@@ -23,6 +23,7 @@ type ModelsDeploymentTarget struct {
 	// ID is auto generated on creation
 	Id *string `json:"id,omitempty"`
 	LastHealthCheck *string `json:"last_health_check,omitempty"`
+	Metadata *ModelsDeploymentTargetMetadata `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Status *string `json:"status,omitempty"`
 	TenantId *string `json:"tenant_id,omitempty"`
@@ -207,6 +208,38 @@ func (o *ModelsDeploymentTarget) SetLastHealthCheck(v string) {
 	o.LastHealthCheck = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *ModelsDeploymentTarget) GetMetadata() ModelsDeploymentTargetMetadata {
+	if o == nil || o.Metadata == nil {
+		var ret ModelsDeploymentTargetMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTarget) GetMetadataOk() (*ModelsDeploymentTargetMetadata, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *ModelsDeploymentTarget) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given ModelsDeploymentTargetMetadata and assigns it to the Metadata field.
+func (o *ModelsDeploymentTarget) SetMetadata(v ModelsDeploymentTargetMetadata) {
+	o.Metadata = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsDeploymentTarget) GetName() string {
 	if o == nil || o.Name == nil {
@@ -351,6 +384,9 @@ func (o ModelsDeploymentTarget) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastHealthCheck != nil {
 		toSerialize["last_health_check"] = o.LastHealthCheck
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
