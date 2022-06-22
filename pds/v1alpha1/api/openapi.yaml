@@ -4324,6 +4324,7 @@ components:
           cluster_id: cluster_id
           metadata:
             pds_chart_version: pds_chart_version
+            px_service_namespace: px_service_namespace
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -4335,6 +4336,7 @@ components:
           cluster_id: cluster_id
           metadata:
             pds_chart_version: pds_chart_version
+            px_service_namespace: px_service_namespace
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -6186,6 +6188,7 @@ components:
         cluster_id: cluster_id
         metadata:
           pds_chart_version: pds_chart_version
+          px_service_namespace: px_service_namespace
         account_id: account_id
         updated_at: updated_at
         name: name
@@ -6221,8 +6224,11 @@ components:
     models.DeploymentTargetMetadata:
       example:
         pds_chart_version: pds_chart_version
+        px_service_namespace: px_service_namespace
       properties:
         pds_chart_version:
+          type: string
+        px_service_namespace:
           type: string
       type: object
     models.ErrorData:

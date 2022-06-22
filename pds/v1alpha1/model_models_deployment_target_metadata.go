@@ -17,6 +17,7 @@ import (
 // ModelsDeploymentTargetMetadata struct for ModelsDeploymentTargetMetadata
 type ModelsDeploymentTargetMetadata struct {
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
+	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 }
 
 // NewModelsDeploymentTargetMetadata instantiates a new ModelsDeploymentTargetMetadata object
@@ -68,10 +69,45 @@ func (o *ModelsDeploymentTargetMetadata) SetPdsChartVersion(v string) {
 	o.PdsChartVersion = &v
 }
 
+// GetPxServiceNamespace returns the PxServiceNamespace field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetMetadata) GetPxServiceNamespace() string {
+	if o == nil || o.PxServiceNamespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.PxServiceNamespace
+}
+
+// GetPxServiceNamespaceOk returns a tuple with the PxServiceNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetMetadata) GetPxServiceNamespaceOk() (*string, bool) {
+	if o == nil || o.PxServiceNamespace == nil {
+		return nil, false
+	}
+	return o.PxServiceNamespace, true
+}
+
+// HasPxServiceNamespace returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetMetadata) HasPxServiceNamespace() bool {
+	if o != nil && o.PxServiceNamespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPxServiceNamespace gets a reference to the given string and assigns it to the PxServiceNamespace field.
+func (o *ModelsDeploymentTargetMetadata) SetPxServiceNamespace(v string) {
+	o.PxServiceNamespace = &v
+}
+
 func (o ModelsDeploymentTargetMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PdsChartVersion != nil {
 		toSerialize["pds_chart_version"] = o.PdsChartVersion
+	}
+	if o.PxServiceNamespace != nil {
+		toSerialize["px_service_namespace"] = o.PxServiceNamespace
 	}
 	return json.Marshal(toSerialize)
 }
