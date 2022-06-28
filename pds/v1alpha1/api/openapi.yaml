@@ -3951,6 +3951,8 @@ components:
           type: string
         pds_chart_version:
           type: string
+        px_service_namespace:
+          type: string
       type: object
     controllers.OIDCInfoResponse:
       example:

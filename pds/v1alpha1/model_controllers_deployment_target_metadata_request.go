@@ -18,6 +18,7 @@ import (
 type ControllersDeploymentTargetMetadataRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty"`
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
+	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 }
 
 // NewControllersDeploymentTargetMetadataRequest instantiates a new ControllersDeploymentTargetMetadataRequest object
@@ -101,6 +102,38 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetPdsChartVersion(v string
 	o.PdsChartVersion = &v
 }
 
+// GetPxServiceNamespace returns the PxServiceNamespace field value if set, zero value otherwise.
+func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespace() string {
+	if o == nil || o.PxServiceNamespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.PxServiceNamespace
+}
+
+// GetPxServiceNamespaceOk returns a tuple with the PxServiceNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespaceOk() (*string, bool) {
+	if o == nil || o.PxServiceNamespace == nil {
+		return nil, false
+	}
+	return o.PxServiceNamespace, true
+}
+
+// HasPxServiceNamespace returns a boolean if a field has been set.
+func (o *ControllersDeploymentTargetMetadataRequest) HasPxServiceNamespace() bool {
+	if o != nil && o.PxServiceNamespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPxServiceNamespace gets a reference to the given string and assigns it to the PxServiceNamespace field.
+func (o *ControllersDeploymentTargetMetadataRequest) SetPxServiceNamespace(v string) {
+	o.PxServiceNamespace = &v
+}
+
 func (o ControllersDeploymentTargetMetadataRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClusterId != nil {
@@ -108,6 +141,9 @@ func (o ControllersDeploymentTargetMetadataRequest) MarshalJSON() ([]byte, error
 	}
 	if o.PdsChartVersion != nil {
 		toSerialize["pds_chart_version"] = o.PdsChartVersion
+	}
+	if o.PxServiceNamespace != nil {
+		toSerialize["px_service_namespace"] = o.PxServiceNamespace
 	}
 	return json.Marshal(toSerialize)
 }
