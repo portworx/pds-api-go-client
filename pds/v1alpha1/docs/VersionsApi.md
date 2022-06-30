@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ApiDataServicesIdVersionsGet
 
-> ControllersPaginatedVersions ApiDataServicesIdVersionsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+> ControllersPaginatedVersions ApiDataServicesIdVersionsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Enabled(enabled).Execute()
 
 List Data Service's Versions
 
@@ -36,10 +36,11 @@ func main() {
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by Version id (optional)
     name := "name_example" // string | Filter results by Version's name (optional)
+    enabled := true // bool | Filter results by Version's enabled parameter (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VersionsApi.ApiDataServicesIdVersionsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    resp, r, err := apiClient.VersionsApi.ApiDataServicesIdVersionsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Enabled(enabled).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VersionsApi.ApiDataServicesIdVersionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by Version id | 
  **name** | **string** | Filter results by Version&#39;s name | 
+ **enabled** | **bool** | Filter results by Version&#39;s enabled parameter | 
 
 ### Return type
 

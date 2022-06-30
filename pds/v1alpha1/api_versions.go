@@ -36,6 +36,7 @@ type ApiApiDataServicesIdVersionsGetRequest struct {
 	continuation *string
 	id2 *string
 	name *string
+	enabled *bool
 }
 
 // A given Version attribute to sort results by (one of: id, name, created_at)
@@ -61,6 +62,11 @@ func (r ApiApiDataServicesIdVersionsGetRequest) Id2(id2 string) ApiApiDataServic
 // Filter results by Version&#39;s name
 func (r ApiApiDataServicesIdVersionsGetRequest) Name(name string) ApiApiDataServicesIdVersionsGetRequest {
 	r.name = &name
+	return r
+}
+// Filter results by Version&#39;s enabled parameter
+func (r ApiApiDataServicesIdVersionsGetRequest) Enabled(enabled bool) ApiApiDataServicesIdVersionsGetRequest {
+	r.enabled = &enabled
 	return r
 }
 
@@ -121,6 +127,9 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataSer
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.enabled != nil {
+		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
