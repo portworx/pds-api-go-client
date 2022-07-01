@@ -317,6 +317,7 @@ Class | Method | HTTP request | Description
  - [ModelsImage](docs/ModelsImage.md)
  - [ModelsMAASDetails](docs/ModelsMAASDetails.md)
  - [ModelsNamespace](docs/ModelsNamespace.md)
+ - [ModelsNodeRestrictions](docs/ModelsNodeRestrictions.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
  - [ModelsResourceSettingsTemplate](docs/ModelsResourceSettingsTemplate.md)

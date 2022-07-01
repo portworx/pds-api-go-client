@@ -25,6 +25,8 @@ type ModelsDataService struct {
 	Id *string `json:"id,omitempty"`
 	Kind *string `json:"kind,omitempty"`
 	Name *string `json:"name,omitempty"`
+	NodeRestrictions *ModelsNodeRestrictions `json:"node_restrictions,omitempty"`
+	// TODO DS-2341 Remove this field once everything is implemented to use the NodeRestrictions.
 	NodesLimitations *string `json:"nodes_limitations,omitempty"`
 	ResourceType *string `json:"resource_type,omitempty"`
 	ShortName *string `json:"short_name,omitempty"`
@@ -273,6 +275,38 @@ func (o *ModelsDataService) SetName(v string) {
 	o.Name = &v
 }
 
+// GetNodeRestrictions returns the NodeRestrictions field value if set, zero value otherwise.
+func (o *ModelsDataService) GetNodeRestrictions() ModelsNodeRestrictions {
+	if o == nil || o.NodeRestrictions == nil {
+		var ret ModelsNodeRestrictions
+		return ret
+	}
+	return *o.NodeRestrictions
+}
+
+// GetNodeRestrictionsOk returns a tuple with the NodeRestrictions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDataService) GetNodeRestrictionsOk() (*ModelsNodeRestrictions, bool) {
+	if o == nil || o.NodeRestrictions == nil {
+		return nil, false
+	}
+	return o.NodeRestrictions, true
+}
+
+// HasNodeRestrictions returns a boolean if a field has been set.
+func (o *ModelsDataService) HasNodeRestrictions() bool {
+	if o != nil && o.NodeRestrictions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodeRestrictions gets a reference to the given ModelsNodeRestrictions and assigns it to the NodeRestrictions field.
+func (o *ModelsDataService) SetNodeRestrictions(v ModelsNodeRestrictions) {
+	o.NodeRestrictions = &v
+}
+
 // GetNodesLimitations returns the NodesLimitations field value if set, zero value otherwise.
 func (o *ModelsDataService) GetNodesLimitations() string {
 	if o == nil || o.NodesLimitations == nil {
@@ -423,6 +457,9 @@ func (o ModelsDataService) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.NodeRestrictions != nil {
+		toSerialize["node_restrictions"] = o.NodeRestrictions
 	}
 	if o.NodesLimitations != nil {
 		toSerialize["nodes_limitations"] = o.NodesLimitations
