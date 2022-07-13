@@ -17,6 +17,7 @@ import (
 // ControllersDeploymentTargetMetadataRequest struct for ControllersDeploymentTargetMetadataRequest
 type ControllersDeploymentTargetMetadataRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty"`
+	KubeApiVersion *string `json:"kube_api_version,omitempty"`
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
 	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 }
@@ -68,6 +69,38 @@ func (o *ControllersDeploymentTargetMetadataRequest) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *ControllersDeploymentTargetMetadataRequest) SetClusterId(v string) {
 	o.ClusterId = &v
+}
+
+// GetKubeApiVersion returns the KubeApiVersion field value if set, zero value otherwise.
+func (o *ControllersDeploymentTargetMetadataRequest) GetKubeApiVersion() string {
+	if o == nil || o.KubeApiVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KubeApiVersion
+}
+
+// GetKubeApiVersionOk returns a tuple with the KubeApiVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersDeploymentTargetMetadataRequest) GetKubeApiVersionOk() (*string, bool) {
+	if o == nil || o.KubeApiVersion == nil {
+		return nil, false
+	}
+	return o.KubeApiVersion, true
+}
+
+// HasKubeApiVersion returns a boolean if a field has been set.
+func (o *ControllersDeploymentTargetMetadataRequest) HasKubeApiVersion() bool {
+	if o != nil && o.KubeApiVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeApiVersion gets a reference to the given string and assigns it to the KubeApiVersion field.
+func (o *ControllersDeploymentTargetMetadataRequest) SetKubeApiVersion(v string) {
+	o.KubeApiVersion = &v
 }
 
 // GetPdsChartVersion returns the PdsChartVersion field value if set, zero value otherwise.
@@ -138,6 +171,9 @@ func (o ControllersDeploymentTargetMetadataRequest) MarshalJSON() ([]byte, error
 	toSerialize := map[string]interface{}{}
 	if o.ClusterId != nil {
 		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if o.KubeApiVersion != nil {
+		toSerialize["kube_api_version"] = o.KubeApiVersion
 	}
 	if o.PdsChartVersion != nil {
 		toSerialize["pds_chart_version"] = o.PdsChartVersion

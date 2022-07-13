@@ -16,6 +16,7 @@ import (
 
 // ModelsDeploymentTargetMetadata struct for ModelsDeploymentTargetMetadata
 type ModelsDeploymentTargetMetadata struct {
+	KubeApiVersion *string `json:"kube_api_version,omitempty"`
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
 	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 }
@@ -35,6 +36,38 @@ func NewModelsDeploymentTargetMetadata() *ModelsDeploymentTargetMetadata {
 func NewModelsDeploymentTargetMetadataWithDefaults() *ModelsDeploymentTargetMetadata {
 	this := ModelsDeploymentTargetMetadata{}
 	return &this
+}
+
+// GetKubeApiVersion returns the KubeApiVersion field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersion() string {
+	if o == nil || o.KubeApiVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.KubeApiVersion
+}
+
+// GetKubeApiVersionOk returns a tuple with the KubeApiVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersionOk() (*string, bool) {
+	if o == nil || o.KubeApiVersion == nil {
+		return nil, false
+	}
+	return o.KubeApiVersion, true
+}
+
+// HasKubeApiVersion returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetMetadata) HasKubeApiVersion() bool {
+	if o != nil && o.KubeApiVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeApiVersion gets a reference to the given string and assigns it to the KubeApiVersion field.
+func (o *ModelsDeploymentTargetMetadata) SetKubeApiVersion(v string) {
+	o.KubeApiVersion = &v
 }
 
 // GetPdsChartVersion returns the PdsChartVersion field value if set, zero value otherwise.
@@ -103,6 +136,9 @@ func (o *ModelsDeploymentTargetMetadata) SetPxServiceNamespace(v string) {
 
 func (o ModelsDeploymentTargetMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.KubeApiVersion != nil {
+		toSerialize["kube_api_version"] = o.KubeApiVersion
+	}
 	if o.PdsChartVersion != nil {
 		toSerialize["pds_chart_version"] = o.PdsChartVersion
 	}

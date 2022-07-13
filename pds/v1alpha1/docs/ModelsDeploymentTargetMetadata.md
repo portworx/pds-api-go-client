@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**KubeApiVersion** | Pointer to **string** |  | [optional] 
 **PdsChartVersion** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewModelsDeploymentTargetMetadataWithDefaults instantiates a new ModelsDeploymentTargetMetadata object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKubeApiVersion
+
+`func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersion() string`
+
+GetKubeApiVersion returns the KubeApiVersion field if non-nil, zero value otherwise.
+
+### GetKubeApiVersionOk
+
+`func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersionOk() (*string, bool)`
+
+GetKubeApiVersionOk returns a tuple with the KubeApiVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKubeApiVersion
+
+`func (o *ModelsDeploymentTargetMetadata) SetKubeApiVersion(v string)`
+
+SetKubeApiVersion sets KubeApiVersion field to given value.
+
+### HasKubeApiVersion
+
+`func (o *ModelsDeploymentTargetMetadata) HasKubeApiVersion() bool`
+
+HasKubeApiVersion returns a boolean if a field has been set.
 
 ### GetPdsChartVersion
 

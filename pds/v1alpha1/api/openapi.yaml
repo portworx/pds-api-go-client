@@ -3954,6 +3954,8 @@ components:
       properties:
         cluster_id:
           type: string
+        kube_api_version:
+          type: string
         pds_chart_version:
           type: string
         px_service_namespace:
@@ -4346,6 +4348,7 @@ components:
         - tenant_id: tenant_id
           cluster_id: cluster_id
           metadata:
+            kube_api_version: kube_api_version
             pds_chart_version: pds_chart_version
             px_service_namespace: px_service_namespace
           account_id: account_id
@@ -4358,6 +4361,7 @@ components:
         - tenant_id: tenant_id
           cluster_id: cluster_id
           metadata:
+            kube_api_version: kube_api_version
             pds_chart_version: pds_chart_version
             px_service_namespace: px_service_namespace
           account_id: account_id
@@ -6224,6 +6228,7 @@ components:
         tenant_id: tenant_id
         cluster_id: cluster_id
         metadata:
+          kube_api_version: kube_api_version
           pds_chart_version: pds_chart_version
           px_service_namespace: px_service_namespace
         account_id: account_id
@@ -6260,9 +6265,12 @@ components:
       type: object
     models.DeploymentTargetMetadata:
       example:
+        kube_api_version: kube_api_version
         pds_chart_version: pds_chart_version
         px_service_namespace: px_service_namespace
       properties:
+        kube_api_version:
+          type: string
         pds_chart_version:
           type: string
         px_service_namespace:
