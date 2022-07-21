@@ -3956,6 +3956,15 @@ components:
           type: string
         kube_api_version:
           type: string
+        kube_platform:
+          enum:
+          - unknown
+          - aws
+          - azure
+          - gcp
+          - ocp
+          - generic
+          type: string
         pds_chart_version:
           type: string
         px_service_namespace:
@@ -4351,6 +4360,7 @@ components:
             kube_api_version: kube_api_version
             pds_chart_version: pds_chart_version
             px_service_namespace: px_service_namespace
+            kube_platform: kube_platform
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -4364,6 +4374,7 @@ components:
             kube_api_version: kube_api_version
             pds_chart_version: pds_chart_version
             px_service_namespace: px_service_namespace
+            kube_platform: kube_platform
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -6231,6 +6242,7 @@ components:
           kube_api_version: kube_api_version
           pds_chart_version: pds_chart_version
           px_service_namespace: px_service_namespace
+          kube_platform: kube_platform
         account_id: account_id
         updated_at: updated_at
         name: name
@@ -6268,8 +6280,11 @@ components:
         kube_api_version: kube_api_version
         pds_chart_version: pds_chart_version
         px_service_namespace: px_service_namespace
+        kube_platform: kube_platform
       properties:
         kube_api_version:
+          type: string
+        kube_platform:
           type: string
         pds_chart_version:
           type: string

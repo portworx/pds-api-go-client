@@ -17,6 +17,7 @@ import (
 // ModelsDeploymentTargetMetadata struct for ModelsDeploymentTargetMetadata
 type ModelsDeploymentTargetMetadata struct {
 	KubeApiVersion *string `json:"kube_api_version,omitempty"`
+	KubePlatform *string `json:"kube_platform,omitempty"`
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
 	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 }
@@ -68,6 +69,38 @@ func (o *ModelsDeploymentTargetMetadata) HasKubeApiVersion() bool {
 // SetKubeApiVersion gets a reference to the given string and assigns it to the KubeApiVersion field.
 func (o *ModelsDeploymentTargetMetadata) SetKubeApiVersion(v string) {
 	o.KubeApiVersion = &v
+}
+
+// GetKubePlatform returns the KubePlatform field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetMetadata) GetKubePlatform() string {
+	if o == nil || o.KubePlatform == nil {
+		var ret string
+		return ret
+	}
+	return *o.KubePlatform
+}
+
+// GetKubePlatformOk returns a tuple with the KubePlatform field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetMetadata) GetKubePlatformOk() (*string, bool) {
+	if o == nil || o.KubePlatform == nil {
+		return nil, false
+	}
+	return o.KubePlatform, true
+}
+
+// HasKubePlatform returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetMetadata) HasKubePlatform() bool {
+	if o != nil && o.KubePlatform != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKubePlatform gets a reference to the given string and assigns it to the KubePlatform field.
+func (o *ModelsDeploymentTargetMetadata) SetKubePlatform(v string) {
+	o.KubePlatform = &v
 }
 
 // GetPdsChartVersion returns the PdsChartVersion field value if set, zero value otherwise.
@@ -138,6 +171,9 @@ func (o ModelsDeploymentTargetMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.KubeApiVersion != nil {
 		toSerialize["kube_api_version"] = o.KubeApiVersion
+	}
+	if o.KubePlatform != nil {
+		toSerialize["kube_platform"] = o.KubePlatform
 	}
 	if o.PdsChartVersion != nil {
 		toSerialize["pds_chart_version"] = o.PdsChartVersion

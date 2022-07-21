@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** |  | [optional] 
 **KubeApiVersion** | Pointer to **string** |  | [optional] 
+**KubePlatform** | Pointer to **string** |  | [optional] 
 **PdsChartVersion** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetKubeApiVersion sets KubeApiVersion field to given value.
 `func (o *ControllersDeploymentTargetMetadataRequest) HasKubeApiVersion() bool`
 
 HasKubeApiVersion returns a boolean if a field has been set.
+
+### GetKubePlatform
+
+`func (o *ControllersDeploymentTargetMetadataRequest) GetKubePlatform() string`
+
+GetKubePlatform returns the KubePlatform field if non-nil, zero value otherwise.
+
+### GetKubePlatformOk
+
+`func (o *ControllersDeploymentTargetMetadataRequest) GetKubePlatformOk() (*string, bool)`
+
+GetKubePlatformOk returns a tuple with the KubePlatform field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKubePlatform
+
+`func (o *ControllersDeploymentTargetMetadataRequest) SetKubePlatform(v string)`
+
+SetKubePlatform sets KubePlatform field to given value.
+
+### HasKubePlatform
+
+`func (o *ControllersDeploymentTargetMetadataRequest) HasKubePlatform() bool`
+
+HasKubePlatform returns a boolean if a field has been set.
 
 ### GetPdsChartVersion
 
