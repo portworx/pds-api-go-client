@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsPut**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsput) | **Put** /api/accounts/{id}/role-bindings | Create/Update AccountRoleBinding
 *AccountRoleBindingsApi* | [**ApiUsersIdAccountRoleBindingsGet**](docs/AccountRoleBindingsApi.md#apiusersidaccountrolebindingsget) | **Get** /api/users/{id}/account-role-bindings | List AccountRoleBindings of a given user
 *AccountsApi* | [**ApiAccountsGet**](docs/AccountsApi.md#apiaccountsget) | **Get** /api/accounts | List Accounts
+*AccountsApi* | [**ApiAccountsIdEulaPut**](docs/AccountsApi.md#apiaccountsideulaput) | **Put** /api/accounts/{id}/eula | Accept EULA
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
@@ -203,6 +204,7 @@ Class | Method | HTTP request | Description
  - [AuthClaims](docs/AuthClaims.md)
  - [ConstraintPagination](docs/ConstraintPagination.md)
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
+ - [ControllersAcceptEULARequest](docs/ControllersAcceptEULARequest.md)
  - [ControllersApplicationConfigurationTemplates](docs/ControllersApplicationConfigurationTemplates.md)
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
  - [ControllersBackupJobStatus](docs/ControllersBackupJobStatus.md)
@@ -312,6 +314,7 @@ Class | Method | HTTP request | Description
  - [ModelsDeploymentStorageOptions](docs/ModelsDeploymentStorageOptions.md)
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
  - [ModelsDeploymentTargetMetadata](docs/ModelsDeploymentTargetMetadata.md)
+ - [ModelsEULADetails](docs/ModelsEULADetails.md)
  - [ModelsErrorData](docs/ModelsErrorData.md)
  - [ModelsGlobalRoleBinding](docs/ModelsGlobalRoleBinding.md)
  - [ModelsImage](docs/ModelsImage.md)

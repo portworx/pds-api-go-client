@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiAccountsGet**](AccountsApi.md#ApiAccountsGet) | **Get** /api/accounts | List Accounts
+[**ApiAccountsIdEulaPut**](AccountsApi.md#ApiAccountsIdEulaPut) | **Put** /api/accounts/{id}/eula | Accept EULA
 [**ApiAccountsIdGet**](AccountsApi.md#ApiAccountsIdGet) | **Get** /api/accounts/{id} | Get Account
 [**ApiAccountsIdUsersGet**](AccountsApi.md#ApiAccountsIdUsersGet) | **Get** /api/accounts/{id}/users | List Account Users
 [**ApiAccountsPost**](AccountsApi.md#ApiAccountsPost) | **Post** /api/accounts | Create Account
@@ -79,6 +80,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiAccountsIdEulaPut
+
+> ApiAccountsIdEulaPut(ctx, id).Body(body).Execute()
+
+Accept EULA
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Account ID (must be valid UUID)
+    body := *openapiclient.NewControllersAcceptEULARequest() // ControllersAcceptEULARequest | Request body containing the version of the EULA.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsIdEulaPut(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdEulaPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Account ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiAccountsIdEulaPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersAcceptEULARequest**](ControllersAcceptEULARequest.md) | Request body containing the version of the EULA. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
