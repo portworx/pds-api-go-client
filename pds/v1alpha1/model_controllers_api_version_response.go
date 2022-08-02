@@ -19,6 +19,7 @@ type ControllersAPIVersionResponse struct {
 	ApiVersion *string `json:"api_version,omitempty"`
 	Features *map[string]string `json:"features,omitempty"`
 	HelmChartVersion *string `json:"helm_chart_version,omitempty"`
+	PdsBuildNumber *int32 `json:"pds_build_number,omitempty"`
 }
 
 // NewControllersAPIVersionResponse instantiates a new ControllersAPIVersionResponse object
@@ -134,6 +135,38 @@ func (o *ControllersAPIVersionResponse) SetHelmChartVersion(v string) {
 	o.HelmChartVersion = &v
 }
 
+// GetPdsBuildNumber returns the PdsBuildNumber field value if set, zero value otherwise.
+func (o *ControllersAPIVersionResponse) GetPdsBuildNumber() int32 {
+	if o == nil || o.PdsBuildNumber == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PdsBuildNumber
+}
+
+// GetPdsBuildNumberOk returns a tuple with the PdsBuildNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersAPIVersionResponse) GetPdsBuildNumberOk() (*int32, bool) {
+	if o == nil || o.PdsBuildNumber == nil {
+		return nil, false
+	}
+	return o.PdsBuildNumber, true
+}
+
+// HasPdsBuildNumber returns a boolean if a field has been set.
+func (o *ControllersAPIVersionResponse) HasPdsBuildNumber() bool {
+	if o != nil && o.PdsBuildNumber != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPdsBuildNumber gets a reference to the given int32 and assigns it to the PdsBuildNumber field.
+func (o *ControllersAPIVersionResponse) SetPdsBuildNumber(v int32) {
+	o.PdsBuildNumber = &v
+}
+
 func (o ControllersAPIVersionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApiVersion != nil {
@@ -144,6 +177,9 @@ func (o ControllersAPIVersionResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.HelmChartVersion != nil {
 		toSerialize["helm_chart_version"] = o.HelmChartVersion
+	}
+	if o.PdsBuildNumber != nil {
+		toSerialize["pds_build_number"] = o.PdsBuildNumber
 	}
 	return json.Marshal(toSerialize)
 }

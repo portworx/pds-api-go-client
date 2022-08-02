@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ApiVersion** | Pointer to **string** |  | [optional] 
 **Features** | Pointer to **map[string]string** |  | [optional] 
 **HelmChartVersion** | Pointer to **string** |  | [optional] 
+**PdsBuildNumber** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetHelmChartVersion sets HelmChartVersion field to given value.
 `func (o *ControllersAPIVersionResponse) HasHelmChartVersion() bool`
 
 HasHelmChartVersion returns a boolean if a field has been set.
+
+### GetPdsBuildNumber
+
+`func (o *ControllersAPIVersionResponse) GetPdsBuildNumber() int32`
+
+GetPdsBuildNumber returns the PdsBuildNumber field if non-nil, zero value otherwise.
+
+### GetPdsBuildNumberOk
+
+`func (o *ControllersAPIVersionResponse) GetPdsBuildNumberOk() (*int32, bool)`
+
+GetPdsBuildNumberOk returns a tuple with the PdsBuildNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdsBuildNumber
+
+`func (o *ControllersAPIVersionResponse) SetPdsBuildNumber(v int32)`
+
+SetPdsBuildNumber sets PdsBuildNumber field to given value.
+
+### HasPdsBuildNumber
+
+`func (o *ControllersAPIVersionResponse) HasPdsBuildNumber() bool`
+
+HasPdsBuildNumber returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
