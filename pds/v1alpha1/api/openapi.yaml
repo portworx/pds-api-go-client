@@ -6180,7 +6180,7 @@ components:
           type: string
         dns_zone:
           description: DNSZone domain which this deployment should be a part of (eg
-            pds-eap.io).
+            pds-dns.io).
           type: string
         error:
           $ref: '#/components/schemas/models.ErrorData'
