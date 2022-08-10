@@ -1046,7 +1046,7 @@ paths:
       description: Lists Data Services
       parameters:
       - description: 'A given Data Service attribute to sort results by (one of: id,
-          name, short_name, kind, resource_type, created_at)'
+          name, short_name, created_at)'
         in: query
         name: sort_by
         schema:
@@ -1075,16 +1075,6 @@ paths:
       - description: Filter results by Data Service short name
         in: query
         name: short_name
-        schema:
-          type: string
-      - description: Filter results by Data Service kind
-        in: query
-        name: kind
-        schema:
-          type: string
-      - description: Filter results by Data Service resource type
-        in: query
-        name: resource_type
         schema:
           type: string
       - description: Filter results based on incremental backup eligibility
@@ -4349,9 +4339,7 @@ components:
             - 0
             downsize_enabled: true
           updated_at: updated_at
-          kind: kind
           name: name
-          resource_type: resource_type
           created_at: created_at
           nodes_limitations: nodes_limitations
           short_name: short_name
@@ -4368,9 +4356,7 @@ components:
             - 0
             downsize_enabled: true
           updated_at: updated_at
-          kind: kind
           name: name
-          resource_type: resource_type
           created_at: created_at
           nodes_limitations: nodes_limitations
           short_name: short_name
@@ -6070,9 +6056,7 @@ components:
           - 0
           downsize_enabled: true
         updated_at: updated_at
-        kind: kind
         name: name
-        resource_type: resource_type
         created_at: created_at
         nodes_limitations: nodes_limitations
         short_name: short_name
@@ -6092,8 +6076,6 @@ components:
         id:
           description: ID is auto generated on creation
           type: string
-        kind:
-          type: string
         name:
           type: string
         node_restrictions:
@@ -6101,8 +6083,6 @@ components:
         nodes_limitations:
           description: TODO DS-2341 Remove this field once everything is implemented
             to use the NodeRestrictions.
-          type: string
-        resource_type:
           type: string
         short_name:
           type: string
