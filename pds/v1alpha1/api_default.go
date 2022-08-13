@@ -23,53 +23,50 @@ var (
 	_ context.Context
 )
 
-// APIVersionApiService APIVersionApi service
-type APIVersionApiService service
+// DefaultApiService DefaultApi service
+type DefaultApiService service
 
-type ApiApiVersionGetRequest struct {
+type ApiApiMetadataGetRequest struct {
 	ctx context.Context
-	ApiService *APIVersionApiService
+	ApiService *DefaultApiService
 }
 
 
-func (r ApiApiVersionGetRequest) Execute() (*ControllersAPIVersionResponse, *http.Response, error) {
-	return r.ApiService.ApiVersionGetExecute(r)
+func (r ApiApiMetadataGetRequest) Execute() (*ControllersAPIMetadataResponse, *http.Response, error) {
+	return r.ApiService.ApiMetadataGetExecute(r)
 }
 
 /*
-ApiVersionGet Get version information
+ApiMetadataGet Get metadata information
 
-Get version information about this server
+Get metadata about this server
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiVersionGetRequest
-
-Deprecated
+ @return ApiApiMetadataGetRequest
 */
-func (a *APIVersionApiService) ApiVersionGet(ctx context.Context) ApiApiVersionGetRequest {
-	return ApiApiVersionGetRequest{
+func (a *DefaultApiService) ApiMetadataGet(ctx context.Context) ApiApiMetadataGetRequest {
+	return ApiApiMetadataGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ControllersAPIVersionResponse
-// Deprecated
-func (a *APIVersionApiService) ApiVersionGetExecute(r ApiApiVersionGetRequest) (*ControllersAPIVersionResponse, *http.Response, error) {
+//  @return ControllersAPIMetadataResponse
+func (a *DefaultApiService) ApiMetadataGetExecute(r ApiApiMetadataGetRequest) (*ControllersAPIMetadataResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersAPIVersionResponse
+		localVarReturnValue  *ControllersAPIMetadataResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIVersionApiService.ApiVersionGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiMetadataGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/version"
+	localVarPath := localBasePath + "/api/metadata"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

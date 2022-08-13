@@ -1912,6 +1912,19 @@ paths:
       summary: Get Image
       tags:
       - Images
+  /api/metadata:
+    get:
+      description: Get metadata about this server
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.APIMetadataResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get metadata information
   /api/namespaces/{id}:
     delete:
       description: Deletes a single Namespace.
@@ -3502,6 +3515,7 @@ paths:
       - AccountRoleBindings
   /api/version:
     get:
+      deprecated: true
       description: Get version information about this server
       responses:
         "200":
@@ -3720,6 +3734,23 @@ components:
       properties:
         continuation:
           type: string
+      type: object
+    controllers.APIMetadataResponse:
+      example:
+        features:
+          key: features
+        pds_build_number: 0
+        helm_chart_version: Helm chart version
+      properties:
+        features:
+          additionalProperties:
+            type: string
+          type: object
+        helm_chart_version:
+          example: Helm chart version
+          type: string
+        pds_build_number:
+          type: integer
       type: object
     controllers.APIVersionResponse:
       example:

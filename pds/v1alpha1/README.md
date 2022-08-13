@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
+*DefaultApi* | [**ApiMetadataGet**](docs/DefaultApi.md#apimetadataget) | **Get** /api/metadata | Get metadata information
 *DefaultTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationTemplates
 *DefaultTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List Default BackupPolicies
 *DefaultTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsTemplates
@@ -203,6 +204,7 @@ Class | Method | HTTP request | Description
 
  - [AuthClaims](docs/AuthClaims.md)
  - [ConstraintPagination](docs/ConstraintPagination.md)
+ - [ControllersAPIMetadataResponse](docs/ControllersAPIMetadataResponse.md)
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
  - [ControllersAcceptEULARequest](docs/ControllersAcceptEULARequest.md)
  - [ControllersApplicationConfigurationTemplates](docs/ControllersApplicationConfigurationTemplates.md)
