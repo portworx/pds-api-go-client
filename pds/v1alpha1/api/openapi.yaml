@@ -3,7 +3,6 @@ info:
   contact: {}
   description: Portworx Data Services API Server
   title: PDS API
-  version: 3.0.1
 servers:
 - url: /
 paths:
