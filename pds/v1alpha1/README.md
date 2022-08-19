@@ -131,7 +131,6 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
-*DefaultApi* | [**ApiMetadataGet**](docs/DefaultApi.md#apimetadataget) | **Get** /api/metadata | Get metadata information
 *DefaultTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationTemplates
 *DefaultTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List Default BackupPolicies
 *DefaultTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsTemplates
@@ -160,6 +159,7 @@ Class | Method | HTTP request | Description
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsPut**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsput) | **Put** /api/global-role-bindings | Set GlobalRoleBinding
 *ImagesApi* | [**ApiImagesIdGet**](docs/ImagesApi.md#apiimagesidget) | **Get** /api/images/{id} | Get Image
 *ImagesApi* | [**ApiVersionsIdImagesGet**](docs/ImagesApi.md#apiversionsidimagesget) | **Get** /api/versions/{id}/images | List Version&#39;s Images
+*MetadataApi* | [**ApiMetadataGet**](docs/MetadataApi.md#apimetadataget) | **Get** /api/metadata | Get metadata information
 *NamespacesApi* | [**ApiDeploymentTargetsIdNamespacesGet**](docs/NamespacesApi.md#apideploymenttargetsidnamespacesget) | **Get** /api/deployment-targets/{id}/namespaces | List DeploymentTarget&#39;s Namespaces
 *NamespacesApi* | [**ApiDeploymentTargetsIdNamespacesPost**](docs/NamespacesApi.md#apideploymenttargetsidnamespacespost) | **Post** /api/deployment-targets/{id}/namespaces | Create Namespace
 *NamespacesApi* | [**ApiNamespacesIdDelete**](docs/NamespacesApi.md#apinamespacesiddelete) | **Delete** /api/namespaces/{id} | Delete Namespace
