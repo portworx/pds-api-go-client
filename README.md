@@ -2,7 +2,7 @@
 
 This is a Go client for the Portworx Data Services [API](https://prod.pds.portworx.com/swagger/index.html).
 
-Iinformation about Portworx Data Services in general can be found [here](https://portworx.com/products/portworx-data-services/).
+Information about Portworx Data Services in general can be found [here](https://portworx.com/products/portworx-data-services/).
 
 ## Documentation
 
