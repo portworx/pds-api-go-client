@@ -73,4 +73,5 @@ jobs:
         add: 'pds/'
         default_author: github_actions
         message: 'Update client for `${{ steps.latest-revision.outputs.short-sha }}`'
+        commit: --signoff
         push: true
