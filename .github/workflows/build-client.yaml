@@ -25,6 +25,11 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+    - name: Remove File
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: pds/
+
     - name: Docker Login
       uses: docker/login-action@v1
       with:
