@@ -1,20 +1,8 @@
 name: Build client
 on:
-  # GitHub recognizes when pushes are performed by a workflow, so this won't lead to endless circular runs.
-  push:
-    branches:
-    - master
-
-  # Trigger every night.
-  schedule:
-    - cron: '0 0 * * *'
-
   # Trigger by updates from other repos.
   repository_dispatch:
     types: [client-update]
-
-  # Allow manual trigger.
-  workflow_dispatch:
 
 jobs:
   client:
@@ -36,20 +24,10 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Find latest SHA
-      id: latest-revision
-      run: |
-        API_SHA_SHORT=$(curl -s \
-          --header "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
-          -H 'Accept: application/vnd.github.v3+json' \
-          'https://api.github.com/repos/portworx/pds-api/branches/master'  \
-          | jq -r '.commit.sha[:7]')
-        echo "::set-output name=short-sha::${API_SHA_SHORT}"
-
     - name: Pull openapi image
       id: image
       run: |
-        IMAGE=portworx/pds-api:openapi-dev-${{ steps.latest-revision.outputs.short-sha }}
+        IMAGE=portworx/pds-api:openapi-dev-${{ github.event.client_payload.sha }}
         docker pull ${IMAGE}
         echo "::set-output name=name::${IMAGE}"
 
@@ -72,6 +50,6 @@ jobs:
       with:
         add: 'pds/'
         default_author: github_actions
-        message: 'Update client for `${{ steps.latest-revision.outputs.short-sha }}`'
+        message: 'Update client for `${{ github.event.client_payload.sha }}`'
         commit: --signoff
         push: true
