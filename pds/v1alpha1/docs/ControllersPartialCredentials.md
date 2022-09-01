@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Azure** | Pointer to [**ControllersPartialAzureCredentials**](ControllersPartialAzureCredentials.md) |  | [optional] 
+**Google** | Pointer to [**ControllersPartialGoogleCredentials**](ControllersPartialGoogleCredentials.md) |  | [optional] 
 **S3** | Pointer to [**ControllersPartialS3Credentials**](ControllersPartialS3Credentials.md) |  | [optional] 
 **S3Compatible** | Pointer to [**ControllersPartialS3CompatibleCredentials**](ControllersPartialS3CompatibleCredentials.md) |  | [optional] 
 
@@ -51,6 +52,31 @@ SetAzure sets Azure field to given value.
 `func (o *ControllersPartialCredentials) HasAzure() bool`
 
 HasAzure returns a boolean if a field has been set.
+
+### GetGoogle
+
+`func (o *ControllersPartialCredentials) GetGoogle() ControllersPartialGoogleCredentials`
+
+GetGoogle returns the Google field if non-nil, zero value otherwise.
+
+### GetGoogleOk
+
+`func (o *ControllersPartialCredentials) GetGoogleOk() (*ControllersPartialGoogleCredentials, bool)`
+
+GetGoogleOk returns a tuple with the Google field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogle
+
+`func (o *ControllersPartialCredentials) SetGoogle(v ControllersPartialGoogleCredentials)`
+
+SetGoogle sets Google field to given value.
+
+### HasGoogle
+
+`func (o *ControllersPartialCredentials) HasGoogle() bool`
+
+HasGoogle returns a boolean if a field has been set.
 
 ### GetS3
 

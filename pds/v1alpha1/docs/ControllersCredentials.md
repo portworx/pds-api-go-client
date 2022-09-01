@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Azure** | Pointer to [**ModelsAzureCredentials**](ModelsAzureCredentials.md) |  | [optional] 
+**Google** | Pointer to [**ModelsGoogleCredentials**](ModelsGoogleCredentials.md) |  | [optional] 
 **S3** | Pointer to [**ModelsS3Credentials**](ModelsS3Credentials.md) |  | [optional] 
 **S3Compatible** | Pointer to [**ModelsS3CompatibleCredentials**](ModelsS3CompatibleCredentials.md) |  | [optional] 
 
@@ -51,6 +52,31 @@ SetAzure sets Azure field to given value.
 `func (o *ControllersCredentials) HasAzure() bool`
 
 HasAzure returns a boolean if a field has been set.
+
+### GetGoogle
+
+`func (o *ControllersCredentials) GetGoogle() ModelsGoogleCredentials`
+
+GetGoogle returns the Google field if non-nil, zero value otherwise.
+
+### GetGoogleOk
+
+`func (o *ControllersCredentials) GetGoogleOk() (*ModelsGoogleCredentials, bool)`
+
+GetGoogleOk returns a tuple with the Google field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogle
+
+`func (o *ControllersCredentials) SetGoogle(v ModelsGoogleCredentials)`
+
+SetGoogle sets Google field to given value.
+
+### HasGoogle
+
+`func (o *ControllersCredentials) HasGoogle() bool`
+
+HasGoogle returns a boolean if a field has been set.
 
 ### GetS3
 

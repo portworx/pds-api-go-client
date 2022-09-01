@@ -17,6 +17,7 @@ import (
 // ControllersCredentials struct for ControllersCredentials
 type ControllersCredentials struct {
 	Azure *ModelsAzureCredentials `json:"azure,omitempty"`
+	Google *ModelsGoogleCredentials `json:"google,omitempty"`
 	S3 *ModelsS3Credentials `json:"s3,omitempty"`
 	S3Compatible *ModelsS3CompatibleCredentials `json:"s3_compatible,omitempty"`
 }
@@ -68,6 +69,38 @@ func (o *ControllersCredentials) HasAzure() bool {
 // SetAzure gets a reference to the given ModelsAzureCredentials and assigns it to the Azure field.
 func (o *ControllersCredentials) SetAzure(v ModelsAzureCredentials) {
 	o.Azure = &v
+}
+
+// GetGoogle returns the Google field value if set, zero value otherwise.
+func (o *ControllersCredentials) GetGoogle() ModelsGoogleCredentials {
+	if o == nil || o.Google == nil {
+		var ret ModelsGoogleCredentials
+		return ret
+	}
+	return *o.Google
+}
+
+// GetGoogleOk returns a tuple with the Google field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersCredentials) GetGoogleOk() (*ModelsGoogleCredentials, bool) {
+	if o == nil || o.Google == nil {
+		return nil, false
+	}
+	return o.Google, true
+}
+
+// HasGoogle returns a boolean if a field has been set.
+func (o *ControllersCredentials) HasGoogle() bool {
+	if o != nil && o.Google != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogle gets a reference to the given ModelsGoogleCredentials and assigns it to the Google field.
+func (o *ControllersCredentials) SetGoogle(v ModelsGoogleCredentials) {
+	o.Google = &v
 }
 
 // GetS3 returns the S3 field value if set, zero value otherwise.
@@ -138,6 +171,9 @@ func (o ControllersCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Azure != nil {
 		toSerialize["azure"] = o.Azure
+	}
+	if o.Google != nil {
+		toSerialize["google"] = o.Google
 	}
 	if o.S3 != nil {
 		toSerialize["s3"] = o.S3

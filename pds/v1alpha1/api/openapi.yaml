@@ -3969,6 +3969,8 @@ components:
       properties:
         azure:
           $ref: '#/components/schemas/models.AzureCredentials'
+        google:
+          $ref: '#/components/schemas/models.GoogleCredentials'
         s3:
           $ref: '#/components/schemas/models.S3Credentials'
         s3_compatible:
@@ -4855,15 +4857,27 @@ components:
         s3_compatible:
           endpoint: endpoint
           access_key: access_key
+        google:
+          project_id: project_id
         azure:
           account_name: account_name
       properties:
         azure:
           $ref: '#/components/schemas/controllers.PartialAzureCredentials'
+        google:
+          $ref: '#/components/schemas/controllers.PartialGoogleCredentials'
         s3:
           $ref: '#/components/schemas/controllers.PartialS3Credentials'
         s3_compatible:
           $ref: '#/components/schemas/controllers.PartialS3CompatibleCredentials'
+      type: object
+    controllers.PartialGoogleCredentials:
+      example:
+        project_id: project_id
+      properties:
+        project_id:
+          description: Project ID of the Google Cloud project.
+          type: string
       type: object
     controllers.PartialS3CompatibleCredentials:
       example:
@@ -6387,6 +6401,15 @@ components:
         actor_type:
           type: string
         role_name:
+          type: string
+      type: object
+    models.GoogleCredentials:
+      properties:
+        json_key:
+          description: JSON key for the Google Storage account.
+          type: string
+        project_id:
+          description: Project ID of the Google project.
           type: string
       type: object
     models.Image:
