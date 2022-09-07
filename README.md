@@ -7,7 +7,7 @@ Information about Portworx Data Services in general can be found [here](https://
 ## Documentation
 
 Full documentation with installation and examples can be found [here](https://github.com/portworx/pds-api-go-client/blob/master/pds/v1alpha1/README.md).
-
+  
 ## Manually generating the client
 
 It's possible to manually generate this client using the following command:
