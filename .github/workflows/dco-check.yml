@@ -1,0 +1,15 @@
+name: DCO Check
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  DCO_Check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: DCO Check
+        uses: tisonkun/actions-dco@v1.1
