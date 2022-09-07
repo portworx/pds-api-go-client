@@ -3601,6 +3601,58 @@ paths:
       summary: List Version's Images
       tags:
       - Images
+  /api/versions/{id}/latest-patch:
+    post:
+      description: Get the latest patch version for the given version.
+      parameters:
+      - description: Version ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Version'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get latest patch version.
+      tags:
+      - Versions
+  /api/versions/{id}/list-compatible:
+    post:
+      description: List all supported compatible major/minor versions.
+      parameters:
+      - description: Version ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: List latest patch versions of compatible major/minor versions
+          for the given version
+        in: query
+        name: latest
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/models.Version'
+                type: array
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List compatible versions.
+      tags:
+      - Versions
   /api/whoami:
     get:
       description: Fetches a details of the current calling actor (user or service

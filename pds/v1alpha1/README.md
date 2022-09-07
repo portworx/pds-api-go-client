@@ -197,6 +197,8 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**ApiUsersIdGet**](docs/UsersApi.md#apiusersidget) | **Get** /api/users/{id} | Get User
 *VersionsApi* | [**ApiDataServicesIdVersionsGet**](docs/VersionsApi.md#apidataservicesidversionsget) | **Get** /api/data-services/{id}/versions | List Data Service&#39;s Versions
 *VersionsApi* | [**ApiVersionsIdGet**](docs/VersionsApi.md#apiversionsidget) | **Get** /api/versions/{id} | Get Version
+*VersionsApi* | [**ApiVersionsIdLatestPatchPost**](docs/VersionsApi.md#apiversionsidlatestpatchpost) | **Post** /api/versions/{id}/latest-patch | Get latest patch version.
+*VersionsApi* | [**ApiVersionsIdListCompatiblePost**](docs/VersionsApi.md#apiversionsidlistcompatiblepost) | **Post** /api/versions/{id}/list-compatible | List compatible versions.
 *WhoAmIApi* | [**ApiWhoamiGet**](docs/WhoAmIApi.md#apiwhoamiget) | **Get** /api/whoami | Get Current Actor
 
 
