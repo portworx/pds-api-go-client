@@ -1,0 +1,17 @@
+name: Test PERSONAL_ACCESS_TOKEN
+on:
+  # Allow manual trigger.
+  workflow_dispatch:
+
+jobs:
+  test-gh-api-token:
+    name: Test PERSONAL_ACCESS_TOKEN
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout other repo
+        uses: actions/checkout@v2.3.4
+        with:
+          repository: portworx/pds-api
+          ref: master
+          path: source-repo
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
