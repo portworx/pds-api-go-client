@@ -1,52 +1,52 @@
-# ControllersBackupPolicies
+# ControllersResourceSettingsSamples
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsBackupPolicy**](ModelsBackupPolicy.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsResourceSettingsSample**](ModelsResourceSettingsSample.md) |  | [optional] 
 
 ## Methods
 
-### NewControllersBackupPolicies
+### NewControllersResourceSettingsSamples
 
-`func NewControllersBackupPolicies() *ControllersBackupPolicies`
+`func NewControllersResourceSettingsSamples() *ControllersResourceSettingsSamples`
 
-NewControllersBackupPolicies instantiates a new ControllersBackupPolicies object
+NewControllersResourceSettingsSamples instantiates a new ControllersResourceSettingsSamples object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersBackupPoliciesWithDefaults
+### NewControllersResourceSettingsSamplesWithDefaults
 
-`func NewControllersBackupPoliciesWithDefaults() *ControllersBackupPolicies`
+`func NewControllersResourceSettingsSamplesWithDefaults() *ControllersResourceSettingsSamples`
 
-NewControllersBackupPoliciesWithDefaults instantiates a new ControllersBackupPolicies object
+NewControllersResourceSettingsSamplesWithDefaults instantiates a new ControllersResourceSettingsSamples object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersBackupPolicies) GetData() []ModelsBackupPolicy`
+`func (o *ControllersResourceSettingsSamples) GetData() []ModelsResourceSettingsSample`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersBackupPolicies) GetDataOk() (*[]ModelsBackupPolicy, bool)`
+`func (o *ControllersResourceSettingsSamples) GetDataOk() (*[]ModelsResourceSettingsSample, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersBackupPolicies) SetData(v []ModelsBackupPolicy)`
+`func (o *ControllersResourceSettingsSamples) SetData(v []ModelsResourceSettingsSample)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersBackupPolicies) HasData() bool`
+`func (o *ControllersResourceSettingsSamples) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 

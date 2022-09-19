@@ -4,18 +4,18 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiDefaultTemplatesApplicationConfigurationGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesApplicationConfigurationGet) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationTemplates
-[**ApiDefaultTemplatesBackupPoliciesGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesBackupPoliciesGet) | **Get** /api/default-templates/backup-policies | List Default BackupPolicies
-[**ApiDefaultTemplatesResourceSettingsGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesResourceSettingsGet) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsTemplates
-[**ApiDefaultTemplatesStorageOptionsGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesStorageOptionsGet) | **Get** /api/default-templates/storage-options | List Default StorageOptionsTemplates
+[**ApiDefaultTemplatesApplicationConfigurationGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesApplicationConfigurationGet) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationSamples
+[**ApiDefaultTemplatesBackupPoliciesGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesBackupPoliciesGet) | **Get** /api/default-templates/backup-policies | List Default BackupPolicySamples
+[**ApiDefaultTemplatesResourceSettingsGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesResourceSettingsGet) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsSamples
+[**ApiDefaultTemplatesStorageOptionsGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesStorageOptionsGet) | **Get** /api/default-templates/storage-options | List Default StorageOptionsSamples
 
 
 
 ## ApiDefaultTemplatesApplicationConfigurationGet
 
-> ControllersApplicationConfigurationTemplates ApiDefaultTemplatesApplicationConfigurationGet(ctx).DataServiceId(dataServiceId).Execute()
+> ControllersApplicationConfigurationSamples ApiDefaultTemplatesApplicationConfigurationGet(ctx).DataServiceId(dataServiceId).Execute()
 
-List Default ApplicationConfigurationTemplates
+List Default ApplicationConfigurationSamples
 
 
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDefaultTemplatesApplicationConfigurationGet`: ControllersApplicationConfigurationTemplates
+    // response from `ApiDefaultTemplatesApplicationConfigurationGet`: ControllersApplicationConfigurationSamples
     fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersApplicationConfigurationTemplates**](ControllersApplicationConfigurationTemplates.md)
+[**ControllersApplicationConfigurationSamples**](ControllersApplicationConfigurationSamples.md)
 
 ### Authorization
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 
 ## ApiDefaultTemplatesBackupPoliciesGet
 
-> ControllersBackupPolicies ApiDefaultTemplatesBackupPoliciesGet(ctx).Execute()
+> ControllersBackupPolicySamples ApiDefaultTemplatesBackupPoliciesGet(ctx).Execute()
 
-List Default BackupPolicies
+List Default BackupPolicySamples
 
 
 
@@ -106,7 +106,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDefaultTemplatesBackupPoliciesGet`: ControllersBackupPolicies
+    // response from `ApiDefaultTemplatesBackupPoliciesGet`: ControllersBackupPolicySamples
     fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet`: %v\n", resp)
 }
 ```
@@ -122,7 +122,7 @@ Other parameters are passed through a pointer to a apiApiDefaultTemplatesBackupP
 
 ### Return type
 
-[**ControllersBackupPolicies**](ControllersBackupPolicies.md)
+[**ControllersBackupPolicySamples**](ControllersBackupPolicySamples.md)
 
 ### Authorization
 
@@ -140,9 +140,9 @@ Other parameters are passed through a pointer to a apiApiDefaultTemplatesBackupP
 
 ## ApiDefaultTemplatesResourceSettingsGet
 
-> ControllersResourceSettingsTemplates ApiDefaultTemplatesResourceSettingsGet(ctx).DataServiceId(dataServiceId).Execute()
+> ControllersResourceSettingsSamples ApiDefaultTemplatesResourceSettingsGet(ctx).DataServiceId(dataServiceId).Execute()
 
-List Default ResourceSettingsTemplates
+List Default ResourceSettingsSamples
 
 
 
@@ -168,7 +168,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesResourceSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDefaultTemplatesResourceSettingsGet`: ControllersResourceSettingsTemplates
+    // response from `ApiDefaultTemplatesResourceSettingsGet`: ControllersResourceSettingsSamples
     fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesResourceSettingsGet`: %v\n", resp)
 }
 ```
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersResourceSettingsTemplates**](ControllersResourceSettingsTemplates.md)
+[**ControllersResourceSettingsSamples**](ControllersResourceSettingsSamples.md)
 
 ### Authorization
 
@@ -206,9 +206,9 @@ Name | Type | Description  | Notes
 
 ## ApiDefaultTemplatesStorageOptionsGet
 
-> ControllersStorageOptionsTemplates ApiDefaultTemplatesStorageOptionsGet(ctx).Execute()
+> ControllersStorageOptionsSamples ApiDefaultTemplatesStorageOptionsGet(ctx).Execute()
 
-List Default StorageOptionsTemplates
+List Default StorageOptionsSamples
 
 
 
@@ -233,7 +233,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesStorageOptionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDefaultTemplatesStorageOptionsGet`: ControllersStorageOptionsTemplates
+    // response from `ApiDefaultTemplatesStorageOptionsGet`: ControllersStorageOptionsSamples
     fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesStorageOptionsGet`: %v\n", resp)
 }
 ```
@@ -249,7 +249,7 @@ Other parameters are passed through a pointer to a apiApiDefaultTemplatesStorage
 
 ### Return type
 
-[**ControllersStorageOptionsTemplates**](ControllersStorageOptionsTemplates.md)
+[**ControllersStorageOptionsSamples**](ControllersStorageOptionsSamples.md)
 
 ### Authorization
 

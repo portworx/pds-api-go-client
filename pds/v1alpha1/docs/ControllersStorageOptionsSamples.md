@@ -1,52 +1,52 @@
-# ControllersResourceSettingsTemplates
+# ControllersStorageOptionsSamples
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsResourceSettingsTemplate**](ModelsResourceSettingsTemplate.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsStorageOptionsSample**](ModelsStorageOptionsSample.md) |  | [optional] 
 
 ## Methods
 
-### NewControllersResourceSettingsTemplates
+### NewControllersStorageOptionsSamples
 
-`func NewControllersResourceSettingsTemplates() *ControllersResourceSettingsTemplates`
+`func NewControllersStorageOptionsSamples() *ControllersStorageOptionsSamples`
 
-NewControllersResourceSettingsTemplates instantiates a new ControllersResourceSettingsTemplates object
+NewControllersStorageOptionsSamples instantiates a new ControllersStorageOptionsSamples object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersResourceSettingsTemplatesWithDefaults
+### NewControllersStorageOptionsSamplesWithDefaults
 
-`func NewControllersResourceSettingsTemplatesWithDefaults() *ControllersResourceSettingsTemplates`
+`func NewControllersStorageOptionsSamplesWithDefaults() *ControllersStorageOptionsSamples`
 
-NewControllersResourceSettingsTemplatesWithDefaults instantiates a new ControllersResourceSettingsTemplates object
+NewControllersStorageOptionsSamplesWithDefaults instantiates a new ControllersStorageOptionsSamples object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersResourceSettingsTemplates) GetData() []ModelsResourceSettingsTemplate`
+`func (o *ControllersStorageOptionsSamples) GetData() []ModelsStorageOptionsSample`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersResourceSettingsTemplates) GetDataOk() (*[]ModelsResourceSettingsTemplate, bool)`
+`func (o *ControllersStorageOptionsSamples) GetDataOk() (*[]ModelsStorageOptionsSample, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersResourceSettingsTemplates) SetData(v []ModelsResourceSettingsTemplate)`
+`func (o *ControllersStorageOptionsSamples) SetData(v []ModelsStorageOptionsSample)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersResourceSettingsTemplates) HasData() bool`
+`func (o *ControllersStorageOptionsSamples) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 

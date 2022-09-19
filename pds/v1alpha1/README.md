@@ -131,10 +131,10 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationTemplates
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List Default BackupPolicies
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsTemplates
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesStorageOptionsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesstorageoptionsget) | **Get** /api/default-templates/storage-options | List Default StorageOptionsTemplates
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationSamples
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List Default BackupPolicySamples
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsSamples
+*DefaultTemplatesApi* | [**ApiDefaultTemplatesStorageOptionsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesstorageoptionsget) | **Get** /api/default-templates/storage-options | List Default StorageOptionsSamples
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdConfigGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidconfigget) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
@@ -209,11 +209,11 @@ Class | Method | HTTP request | Description
  - [ControllersAPIMetadataResponse](docs/ControllersAPIMetadataResponse.md)
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
  - [ControllersAcceptEULARequest](docs/ControllersAcceptEULARequest.md)
- - [ControllersApplicationConfigurationTemplates](docs/ControllersApplicationConfigurationTemplates.md)
+ - [ControllersApplicationConfigurationSamples](docs/ControllersApplicationConfigurationSamples.md)
  - [ControllersAuthorizationCodeRequest](docs/ControllersAuthorizationCodeRequest.md)
  - [ControllersBackupJobStatus](docs/ControllersBackupJobStatus.md)
  - [ControllersBackupJobsResponse](docs/ControllersBackupJobsResponse.md)
- - [ControllersBackupPolicies](docs/ControllersBackupPolicies.md)
+ - [ControllersBackupPolicySamples](docs/ControllersBackupPolicySamples.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
  - [ControllersCreateApplicationConfigurationTemplatesRequest](docs/ControllersCreateApplicationConfigurationTemplatesRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
@@ -266,11 +266,11 @@ Class | Method | HTTP request | Description
  - [ControllersPartialS3CompatibleCredentials](docs/ControllersPartialS3CompatibleCredentials.md)
  - [ControllersPartialS3Credentials](docs/ControllersPartialS3Credentials.md)
  - [ControllersRefreshTokenRequest](docs/ControllersRefreshTokenRequest.md)
- - [ControllersResourceSettingsTemplates](docs/ControllersResourceSettingsTemplates.md)
+ - [ControllersResourceSettingsSamples](docs/ControllersResourceSettingsSamples.md)
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
  - [ControllersStatusResponse](docs/ControllersStatusResponse.md)
- - [ControllersStorageOptionsTemplates](docs/ControllersStorageOptionsTemplates.md)
+ - [ControllersStorageOptionsSamples](docs/ControllersStorageOptionsSamples.md)
  - [ControllersTargetClusterConfigResponse](docs/ControllersTargetClusterConfigResponse.md)
  - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
  - [ControllersUpdateBackupCredentialsRequest](docs/ControllersUpdateBackupCredentialsRequest.md)
@@ -300,6 +300,7 @@ Class | Method | HTTP request | Description
  - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountRoleBinding](docs/ModelsAccountRoleBinding.md)
+ - [ModelsApplicationConfigurationSample](docs/ModelsApplicationConfigurationSample.md)
  - [ModelsApplicationConfigurationTemplate](docs/ModelsApplicationConfigurationTemplate.md)
  - [ModelsAuthorizerRequest](docs/ModelsAuthorizerRequest.md)
  - [ModelsAuthorizerResponse](docs/ModelsAuthorizerResponse.md)
@@ -308,6 +309,7 @@ Class | Method | HTTP request | Description
  - [ModelsBackupCredentials](docs/ModelsBackupCredentials.md)
  - [ModelsBackupJob](docs/ModelsBackupJob.md)
  - [ModelsBackupPolicy](docs/ModelsBackupPolicy.md)
+ - [ModelsBackupPolicySample](docs/ModelsBackupPolicySample.md)
  - [ModelsBackupSchedule](docs/ModelsBackupSchedule.md)
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
@@ -329,10 +331,12 @@ Class | Method | HTTP request | Description
  - [ModelsNodeRestrictions](docs/ModelsNodeRestrictions.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
+ - [ModelsResourceSettingsSample](docs/ModelsResourceSettingsSample.md)
  - [ModelsResourceSettingsTemplate](docs/ModelsResourceSettingsTemplate.md)
  - [ModelsS3CompatibleCredentials](docs/ModelsS3CompatibleCredentials.md)
  - [ModelsS3Credentials](docs/ModelsS3Credentials.md)
  - [ModelsServiceAccount](docs/ModelsServiceAccount.md)
+ - [ModelsStorageOptionsSample](docs/ModelsStorageOptionsSample.md)
  - [ModelsStorageOptionsTemplate](docs/ModelsStorageOptionsTemplate.md)
  - [ModelsTask](docs/ModelsTask.md)
  - [ModelsTeam](docs/ModelsTeam.md)

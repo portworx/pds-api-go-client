@@ -1203,7 +1203,7 @@ paths:
       - Tasks
   /api/default-templates/application-configuration:
     get:
-      description: Lists Default ApplicationConfigurationTemplates
+      description: Lists Default ApplicationConfigurationSamples
       parameters:
       - description: Filter results by DataService ID
         in: query
@@ -1215,31 +1215,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.ApplicationConfigurationTemplates'
+                $ref: '#/components/schemas/controllers.ApplicationConfigurationSamples'
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default ApplicationConfigurationTemplates
+      summary: List Default ApplicationConfigurationSamples
       tags:
       - DefaultTemplates
   /api/default-templates/backup-policies:
     get:
-      description: Lists Default BackupPolicies
+      description: Lists Default BackupPolicySamples
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.BackupPolicies'
+                $ref: '#/components/schemas/controllers.BackupPolicySamples'
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default BackupPolicies
+      summary: List Default BackupPolicySamples
       tags:
       - DefaultTemplates
   /api/default-templates/resource-settings:
     get:
-      description: Lists Default ResourceSettingsTemplates
+      description: Lists Default ResourceSettingsSamples
       parameters:
       - description: Filter results by DataService ID
         in: query
@@ -1251,26 +1251,26 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.ResourceSettingsTemplates'
+                $ref: '#/components/schemas/controllers.ResourceSettingsSamples'
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default ResourceSettingsTemplates
+      summary: List Default ResourceSettingsSamples
       tags:
       - DefaultTemplates
   /api/default-templates/storage-options:
     get:
-      description: Lists Default StorageOptionsTemplates
+      description: Lists Default StorageOptionsSamples
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.StorageOptionsTemplates'
+                $ref: '#/components/schemas/controllers.StorageOptionsSamples'
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default StorageOptionsTemplates
+      summary: List Default StorageOptionsSamples
       tags:
       - DefaultTemplates
   /api/deployment-targets/{id}:
@@ -3826,13 +3826,10 @@ components:
         pds_build_number:
           type: integer
       type: object
-    controllers.ApplicationConfigurationTemplates:
+    controllers.ApplicationConfigurationSamples:
       example:
         data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
+        - data_service_id: data_service_id
           config_items:
           - deploy_time: true
             value: value
@@ -3841,12 +3838,7 @@ components:
             value: value
             key: key
           name: name
-          created_at: created_at
-          id: id
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
+        - data_service_id: data_service_id
           config_items:
           - deploy_time: true
             value: value
@@ -3855,12 +3847,10 @@ components:
             value: value
             key: key
           name: name
-          created_at: created_at
-          id: id
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+            $ref: '#/components/schemas/models.ApplicationConfigurationSample'
           type: array
       type: object
     controllers.AuthorizationCodeRequest:
@@ -3901,13 +3891,10 @@ components:
             $ref: '#/components/schemas/controllers.BackupJobStatus'
           type: array
       type: object
-    controllers.BackupPolicies:
+    controllers.BackupPolicySamples:
       example:
         data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          schedules:
+        - schedules:
           - schedule: schedule
             retention_count: 0
             id: id
@@ -3917,12 +3904,7 @@ components:
             id: id
             type: incremental
           name: name
-          created_at: created_at
-          id: id
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          schedules:
+        - schedules:
           - schedule: schedule
             retention_count: 0
             id: id
@@ -3932,12 +3914,10 @@ components:
             id: id
             type: incremental
           name: name
-          created_at: created_at
-          id: id
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.BackupPolicy'
+            $ref: '#/components/schemas/models.BackupPolicySample'
           type: array
       type: object
     controllers.CreateDeploymentBackup:
@@ -4960,37 +4940,27 @@ components:
         refreshToken:
           type: string
       type: object
-    controllers.ResourceSettingsTemplates:
+    controllers.ResourceSettingsSamples:
       example:
         data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
+        - data_service_id: data_service_id
           storage_request: storage_request
           cpu_limit: cpu_limit
           name: name
-          created_at: created_at
           memory_request: memory_request
-          id: id
           memory_limit: memory_limit
           cpu_request: cpu_request
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
+        - data_service_id: data_service_id
           storage_request: storage_request
           cpu_limit: cpu_limit
           name: name
-          created_at: created_at
           memory_request: memory_request
-          id: id
           memory_limit: memory_limit
           cpu_request: cpu_request
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+            $ref: '#/components/schemas/models.ResourceSettingsSample'
           type: array
       type: object
     controllers.ServiceAccountResponse:
@@ -5025,33 +4995,23 @@ components:
         token:
           type: string
       type: object
-    controllers.StorageOptionsTemplates:
+    controllers.StorageOptionsSamples:
       example:
         data:
-        - tenant_id: tenant_id
-          fg: true
-          account_id: account_id
-          updated_at: updated_at
+        - fg: true
           name: name
-          created_at: created_at
           repl: 0
-          id: id
           secure: true
           fs: xfs
-        - tenant_id: tenant_id
-          fg: true
-          account_id: account_id
-          updated_at: updated_at
+        - fg: true
           name: name
-          created_at: created_at
           repl: 0
-          id: id
           secure: true
           fs: xfs
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.StorageOptionsTemplate'
+            $ref: '#/components/schemas/models.StorageOptionsSample'
           type: array
       type: object
     controllers.TargetClusterConfigResponse:
@@ -5723,6 +5683,29 @@ components:
         role_name:
           type: string
       type: object
+    models.ApplicationConfigurationSample:
+      example:
+        data_service_id: data_service_id
+        config_items:
+        - deploy_time: true
+          value: value
+          key: key
+        - deploy_time: true
+          value: value
+          key: key
+        name: name
+      properties:
+        config_items:
+          items:
+            $ref: '#/components/schemas/models.ConfigItem'
+          type: array
+        data_service_id:
+          type: string
+        name:
+          description: Name of the template. Must be unique for a specific data service
+            within the tenant scope.
+          type: string
+      type: object
     models.ApplicationConfigurationTemplate:
       example:
         tenant_id: tenant_id
@@ -5743,7 +5726,6 @@ components:
         account_id:
           type: string
         config_items:
-          description: List of configuration items.
           items:
             $ref: '#/components/schemas/models.ConfigItem'
           type: array
@@ -5986,7 +5968,7 @@ components:
           description: Name of the backup policy. Must be unique for the given tenant.
           type: string
         schedules:
-          description: An array of the backup schedules. Must be non-empty.
+          description: A list of the backup schedules. Must be non-empty.
           items:
             $ref: '#/components/schemas/models.BackupSchedule'
           type: array
@@ -5995,6 +5977,28 @@ components:
         updated_at:
           description: UpdatedAt is autogenerated on update
           type: string
+      type: object
+    models.BackupPolicySample:
+      example:
+        schedules:
+        - schedule: schedule
+          retention_count: 0
+          id: id
+          type: incremental
+        - schedule: schedule
+          retention_count: 0
+          id: id
+          type: incremental
+        name: name
+      properties:
+        name:
+          description: Name of the backup policy. Must be unique for the given tenant.
+          type: string
+        schedules:
+          description: A list of the backup schedules. Must be non-empty.
+          items:
+            $ref: '#/components/schemas/models.BackupSchedule'
+          type: array
       type: object
     models.BackupSchedule:
       example:
@@ -6605,6 +6609,43 @@ components:
         role_name:
           type: string
       type: object
+    models.ResourceSettingsSample:
+      example:
+        data_service_id: data_service_id
+        storage_request: storage_request
+        cpu_limit: cpu_limit
+        name: name
+        memory_request: memory_request
+        memory_limit: memory_limit
+        cpu_request: cpu_request
+      properties:
+        cpu_limit:
+          description: Maximal amount of CPU cores the deployment will have access
+            to inside k8s.
+          type: string
+        cpu_request:
+          description: Minimal amount of CPU cores the deployment will get reserved
+            inside k8s.
+          type: string
+        data_service_id:
+          type: string
+        memory_limit:
+          description: Maximal amount of RAM the deployment will have access to inside
+            k8s.
+          type: string
+        memory_request:
+          description: Minimal amount of RAM the deployment will get reserved inside
+            k8s.
+          type: string
+        name:
+          description: Name of the template. Must be unique for a specific data service
+            within the tenant scope.
+          type: string
+        storage_request:
+          description: Amount of disk space the deployment will get reserved inside
+            k8s.
+          type: string
+      type: object
     models.ResourceSettingsTemplate:
       example:
         tenant_id: tenant_id
@@ -6708,6 +6749,36 @@ components:
         updated_at:
           description: UpdatedAt is autogenerated on update
           type: string
+      type: object
+    models.StorageOptionsSample:
+      example:
+        fg: true
+        name: name
+        repl: 0
+        secure: true
+        fs: xfs
+      properties:
+        fg:
+          description: This option enforces volume group policy. If a volume belonging
+            to a group cannot find nodes for its replication sets which don’t have
+            other volumes of same group, the volume creation will fail.
+          type: boolean
+        fs:
+          description: Filesystem to be laid out.
+          enum:
+          - xfs
+          - ext4
+          type: string
+        name:
+          description: Name of the template. Must be unique within the tenant scope.
+          type: string
+        repl:
+          description: Replication factor for the volume.
+          type: integer
+        secure:
+          description: Flag to create an encrypted volume. Currently, not supported
+            (should be set to `false`).
+          type: boolean
       type: object
     models.StorageOptionsTemplate:
       example:

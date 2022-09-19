@@ -38,14 +38,14 @@ func (r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) DataServiceId(
 	return r
 }
 
-func (r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) Execute() (*ControllersApplicationConfigurationTemplates, *http.Response, error) {
+func (r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) Execute() (*ControllersApplicationConfigurationSamples, *http.Response, error) {
 	return r.ApiService.ApiDefaultTemplatesApplicationConfigurationGetExecute(r)
 }
 
 /*
-ApiDefaultTemplatesApplicationConfigurationGet List Default ApplicationConfigurationTemplates
+ApiDefaultTemplatesApplicationConfigurationGet List Default ApplicationConfigurationSamples
 
-Lists Default ApplicationConfigurationTemplates
+Lists Default ApplicationConfigurationSamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesApplicationConfigurationGetRequest
@@ -58,13 +58,13 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfiguration
 }
 
 // Execute executes the request
-//  @return ControllersApplicationConfigurationTemplates
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGetExecute(r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) (*ControllersApplicationConfigurationTemplates, *http.Response, error) {
+//  @return ControllersApplicationConfigurationSamples
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGetExecute(r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) (*ControllersApplicationConfigurationSamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersApplicationConfigurationTemplates
+		localVarReturnValue  *ControllersApplicationConfigurationSamples
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesApplicationConfigurationGet")
@@ -155,14 +155,14 @@ type ApiApiDefaultTemplatesBackupPoliciesGetRequest struct {
 }
 
 
-func (r ApiApiDefaultTemplatesBackupPoliciesGetRequest) Execute() (*ControllersBackupPolicies, *http.Response, error) {
+func (r ApiApiDefaultTemplatesBackupPoliciesGetRequest) Execute() (*ControllersBackupPolicySamples, *http.Response, error) {
 	return r.ApiService.ApiDefaultTemplatesBackupPoliciesGetExecute(r)
 }
 
 /*
-ApiDefaultTemplatesBackupPoliciesGet List Default BackupPolicies
+ApiDefaultTemplatesBackupPoliciesGet List Default BackupPolicySamples
 
-Lists Default BackupPolicies
+Lists Default BackupPolicySamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesBackupPoliciesGetRequest
@@ -175,13 +175,13 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGet(ctx co
 }
 
 // Execute executes the request
-//  @return ControllersBackupPolicies
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute(r ApiApiDefaultTemplatesBackupPoliciesGetRequest) (*ControllersBackupPolicies, *http.Response, error) {
+//  @return ControllersBackupPolicySamples
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute(r ApiApiDefaultTemplatesBackupPoliciesGetRequest) (*ControllersBackupPolicySamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersBackupPolicies
+		localVarReturnValue  *ControllersBackupPolicySamples
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesBackupPoliciesGet")
@@ -275,14 +275,14 @@ func (r ApiApiDefaultTemplatesResourceSettingsGetRequest) DataServiceId(dataServ
 	return r
 }
 
-func (r ApiApiDefaultTemplatesResourceSettingsGetRequest) Execute() (*ControllersResourceSettingsTemplates, *http.Response, error) {
+func (r ApiApiDefaultTemplatesResourceSettingsGetRequest) Execute() (*ControllersResourceSettingsSamples, *http.Response, error) {
 	return r.ApiService.ApiDefaultTemplatesResourceSettingsGetExecute(r)
 }
 
 /*
-ApiDefaultTemplatesResourceSettingsGet List Default ResourceSettingsTemplates
+ApiDefaultTemplatesResourceSettingsGet List Default ResourceSettingsSamples
 
-Lists Default ResourceSettingsTemplates
+Lists Default ResourceSettingsSamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesResourceSettingsGetRequest
@@ -295,13 +295,13 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGet(ctx 
 }
 
 // Execute executes the request
-//  @return ControllersResourceSettingsTemplates
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecute(r ApiApiDefaultTemplatesResourceSettingsGetRequest) (*ControllersResourceSettingsTemplates, *http.Response, error) {
+//  @return ControllersResourceSettingsSamples
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecute(r ApiApiDefaultTemplatesResourceSettingsGetRequest) (*ControllersResourceSettingsSamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersResourceSettingsTemplates
+		localVarReturnValue  *ControllersResourceSettingsSamples
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesResourceSettingsGet")
@@ -392,14 +392,14 @@ type ApiApiDefaultTemplatesStorageOptionsGetRequest struct {
 }
 
 
-func (r ApiApiDefaultTemplatesStorageOptionsGetRequest) Execute() (*ControllersStorageOptionsTemplates, *http.Response, error) {
+func (r ApiApiDefaultTemplatesStorageOptionsGetRequest) Execute() (*ControllersStorageOptionsSamples, *http.Response, error) {
 	return r.ApiService.ApiDefaultTemplatesStorageOptionsGetExecute(r)
 }
 
 /*
-ApiDefaultTemplatesStorageOptionsGet List Default StorageOptionsTemplates
+ApiDefaultTemplatesStorageOptionsGet List Default StorageOptionsSamples
 
-Lists Default StorageOptionsTemplates
+Lists Default StorageOptionsSamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesStorageOptionsGetRequest
@@ -412,13 +412,13 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGet(ctx co
 }
 
 // Execute executes the request
-//  @return ControllersStorageOptionsTemplates
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute(r ApiApiDefaultTemplatesStorageOptionsGetRequest) (*ControllersStorageOptionsTemplates, *http.Response, error) {
+//  @return ControllersStorageOptionsSamples
+func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute(r ApiApiDefaultTemplatesStorageOptionsGetRequest) (*ControllersStorageOptionsSamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersStorageOptionsTemplates
+		localVarReturnValue  *ControllersStorageOptionsSamples
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesStorageOptionsGet")
