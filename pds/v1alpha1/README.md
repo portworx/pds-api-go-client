@@ -131,10 +131,6 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationSamples
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List Default BackupPolicySamples
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsSamples
-*DefaultTemplatesApi* | [**ApiDefaultTemplatesStorageOptionsGet**](docs/DefaultTemplatesApi.md#apidefaulttemplatesstorageoptionsget) | **Get** /api/default-templates/storage-options | List Default StorageOptionsSamples
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdConfigGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidconfigget) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
@@ -176,6 +172,10 @@ Class | Method | HTTP request | Description
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesGet**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatesget) | **Get** /api/tenants/{id}/resource-settings-templates | List ResourceSettingsTemplates
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplates
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
+*SampleTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List ApplicationConfigurationSamples
+*SampleTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List BackupPolicySamples
+*SampleTemplatesApi* | [**ApiDefaultTemplatesResourceSettingsGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesresourcesettingsget) | **Get** /api/default-templates/resource-settings | List ResourceSettingsSamples
+*SampleTemplatesApi* | [**ApiDefaultTemplatesStorageOptionsGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesstorageoptionsget) | **Get** /api/default-templates/storage-options | List StorageOptionsSamples
 *ServiceAccountsApi* | [**ApiServiceAccountsIdDelete**](docs/ServiceAccountsApi.md#apiserviceaccountsiddelete) | **Delete** /api/service-accounts/{id} | Delete ServiceAccounts
 *ServiceAccountsApi* | [**ApiServiceAccountsIdGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidget) | **Get** /api/service-accounts/{id} | Get ServiceAccounts
 *ServiceAccountsApi* | [**ApiServiceAccountsIdTokenGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidtokenget) | **Get** /api/service-accounts/{id}/token | Get token of a ServiceAccount

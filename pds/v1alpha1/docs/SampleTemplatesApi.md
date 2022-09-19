@@ -1,13 +1,13 @@
-# \DefaultTemplatesApi
+# \SampleTemplatesApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiDefaultTemplatesApplicationConfigurationGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesApplicationConfigurationGet) | **Get** /api/default-templates/application-configuration | List Default ApplicationConfigurationSamples
-[**ApiDefaultTemplatesBackupPoliciesGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesBackupPoliciesGet) | **Get** /api/default-templates/backup-policies | List Default BackupPolicySamples
-[**ApiDefaultTemplatesResourceSettingsGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesResourceSettingsGet) | **Get** /api/default-templates/resource-settings | List Default ResourceSettingsSamples
-[**ApiDefaultTemplatesStorageOptionsGet**](DefaultTemplatesApi.md#ApiDefaultTemplatesStorageOptionsGet) | **Get** /api/default-templates/storage-options | List Default StorageOptionsSamples
+[**ApiDefaultTemplatesApplicationConfigurationGet**](SampleTemplatesApi.md#ApiDefaultTemplatesApplicationConfigurationGet) | **Get** /api/default-templates/application-configuration | List ApplicationConfigurationSamples
+[**ApiDefaultTemplatesBackupPoliciesGet**](SampleTemplatesApi.md#ApiDefaultTemplatesBackupPoliciesGet) | **Get** /api/default-templates/backup-policies | List BackupPolicySamples
+[**ApiDefaultTemplatesResourceSettingsGet**](SampleTemplatesApi.md#ApiDefaultTemplatesResourceSettingsGet) | **Get** /api/default-templates/resource-settings | List ResourceSettingsSamples
+[**ApiDefaultTemplatesStorageOptionsGet**](SampleTemplatesApi.md#ApiDefaultTemplatesStorageOptionsGet) | **Get** /api/default-templates/storage-options | List StorageOptionsSamples
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > ControllersApplicationConfigurationSamples ApiDefaultTemplatesApplicationConfigurationGet(ctx).DataServiceId(dataServiceId).Execute()
 
-List Default ApplicationConfigurationSamples
+List ApplicationConfigurationSamples
 
 
 
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet(context.Background()).DataServiceId(dataServiceId).Execute()
+    resp, r, err := apiClient.SampleTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet(context.Background()).DataServiceId(dataServiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SampleTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiDefaultTemplatesApplicationConfigurationGet`: ControllersApplicationConfigurationSamples
-    fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SampleTemplatesApi.ApiDefaultTemplatesApplicationConfigurationGet`: %v\n", resp)
 }
 ```
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 > ControllersBackupPolicySamples ApiDefaultTemplatesBackupPoliciesGet(ctx).Execute()
 
-List Default BackupPolicySamples
+List BackupPolicySamples
 
 
 
@@ -101,13 +101,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet(context.Background()).Execute()
+    resp, r, err := apiClient.SampleTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SampleTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiDefaultTemplatesBackupPoliciesGet`: ControllersBackupPolicySamples
-    fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SampleTemplatesApi.ApiDefaultTemplatesBackupPoliciesGet`: %v\n", resp)
 }
 ```
 
@@ -142,7 +142,7 @@ Other parameters are passed through a pointer to a apiApiDefaultTemplatesBackupP
 
 > ControllersResourceSettingsSamples ApiDefaultTemplatesResourceSettingsGet(ctx).DataServiceId(dataServiceId).Execute()
 
-List Default ResourceSettingsSamples
+List ResourceSettingsSamples
 
 
 
@@ -163,13 +163,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultTemplatesApi.ApiDefaultTemplatesResourceSettingsGet(context.Background()).DataServiceId(dataServiceId).Execute()
+    resp, r, err := apiClient.SampleTemplatesApi.ApiDefaultTemplatesResourceSettingsGet(context.Background()).DataServiceId(dataServiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesResourceSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SampleTemplatesApi.ApiDefaultTemplatesResourceSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiDefaultTemplatesResourceSettingsGet`: ControllersResourceSettingsSamples
-    fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesResourceSettingsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SampleTemplatesApi.ApiDefaultTemplatesResourceSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 > ControllersStorageOptionsSamples ApiDefaultTemplatesStorageOptionsGet(ctx).Execute()
 
-List Default StorageOptionsSamples
+List StorageOptionsSamples
 
 
 
@@ -228,13 +228,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultTemplatesApi.ApiDefaultTemplatesStorageOptionsGet(context.Background()).Execute()
+    resp, r, err := apiClient.SampleTemplatesApi.ApiDefaultTemplatesStorageOptionsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultTemplatesApi.ApiDefaultTemplatesStorageOptionsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SampleTemplatesApi.ApiDefaultTemplatesStorageOptionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiDefaultTemplatesStorageOptionsGet`: ControllersStorageOptionsSamples
-    fmt.Fprintf(os.Stdout, "Response from `DefaultTemplatesApi.ApiDefaultTemplatesStorageOptionsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SampleTemplatesApi.ApiDefaultTemplatesStorageOptionsGet`: %v\n", resp)
 }
 ```
 

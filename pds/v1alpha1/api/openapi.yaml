@@ -1203,7 +1203,7 @@ paths:
       - Tasks
   /api/default-templates/application-configuration:
     get:
-      description: Lists Default ApplicationConfigurationSamples
+      description: Lists ApplicationConfigurationSamples
       parameters:
       - description: Filter results by DataService ID
         in: query
@@ -1219,12 +1219,12 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default ApplicationConfigurationSamples
+      summary: List ApplicationConfigurationSamples
       tags:
-      - DefaultTemplates
+      - SampleTemplates
   /api/default-templates/backup-policies:
     get:
-      description: Lists Default BackupPolicySamples
+      description: Lists BackupPolicySamples
       responses:
         "200":
           content:
@@ -1234,12 +1234,12 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default BackupPolicySamples
+      summary: List BackupPolicySamples
       tags:
-      - DefaultTemplates
+      - SampleTemplates
   /api/default-templates/resource-settings:
     get:
-      description: Lists Default ResourceSettingsSamples
+      description: Lists ResourceSettingsSamples
       parameters:
       - description: Filter results by DataService ID
         in: query
@@ -1255,12 +1255,12 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default ResourceSettingsSamples
+      summary: List ResourceSettingsSamples
       tags:
-      - DefaultTemplates
+      - SampleTemplates
   /api/default-templates/storage-options:
     get:
-      description: Lists Default StorageOptionsSamples
+      description: Lists StorageOptionsSamples
       responses:
         "200":
           content:
@@ -1270,9 +1270,9 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List Default StorageOptionsSamples
+      summary: List StorageOptionsSamples
       tags:
-      - DefaultTemplates
+      - SampleTemplates
   /api/deployment-targets/{id}:
     delete:
       description: Deletes a single DeploymentTarget.

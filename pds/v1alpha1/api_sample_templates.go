@@ -23,12 +23,12 @@ var (
 	_ context.Context
 )
 
-// DefaultTemplatesApiService DefaultTemplatesApi service
-type DefaultTemplatesApiService service
+// SampleTemplatesApiService SampleTemplatesApi service
+type SampleTemplatesApiService service
 
 type ApiApiDefaultTemplatesApplicationConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultTemplatesApiService
+	ApiService *SampleTemplatesApiService
 	dataServiceId *string
 }
 
@@ -43,14 +43,14 @@ func (r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) Execute() (*Co
 }
 
 /*
-ApiDefaultTemplatesApplicationConfigurationGet List Default ApplicationConfigurationSamples
+ApiDefaultTemplatesApplicationConfigurationGet List ApplicationConfigurationSamples
 
-Lists Default ApplicationConfigurationSamples
+Lists ApplicationConfigurationSamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesApplicationConfigurationGetRequest
 */
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGet(ctx context.Context) ApiApiDefaultTemplatesApplicationConfigurationGetRequest {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGet(ctx context.Context) ApiApiDefaultTemplatesApplicationConfigurationGetRequest {
 	return ApiApiDefaultTemplatesApplicationConfigurationGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfiguration
 
 // Execute executes the request
 //  @return ControllersApplicationConfigurationSamples
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGetExecute(r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) (*ControllersApplicationConfigurationSamples, *http.Response, error) {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationGetExecute(r ApiApiDefaultTemplatesApplicationConfigurationGetRequest) (*ControllersApplicationConfigurationSamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfiguration
 		localVarReturnValue  *ControllersApplicationConfigurationSamples
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesApplicationConfigurationGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SampleTemplatesApiService.ApiDefaultTemplatesApplicationConfigurationGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -151,7 +151,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesApplicationConfiguration
 
 type ApiApiDefaultTemplatesBackupPoliciesGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultTemplatesApiService
+	ApiService *SampleTemplatesApiService
 }
 
 
@@ -160,14 +160,14 @@ func (r ApiApiDefaultTemplatesBackupPoliciesGetRequest) Execute() (*ControllersB
 }
 
 /*
-ApiDefaultTemplatesBackupPoliciesGet List Default BackupPolicySamples
+ApiDefaultTemplatesBackupPoliciesGet List BackupPolicySamples
 
-Lists Default BackupPolicySamples
+Lists BackupPolicySamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesBackupPoliciesGetRequest
 */
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGet(ctx context.Context) ApiApiDefaultTemplatesBackupPoliciesGetRequest {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGet(ctx context.Context) ApiApiDefaultTemplatesBackupPoliciesGetRequest {
 	return ApiApiDefaultTemplatesBackupPoliciesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -176,7 +176,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGet(ctx co
 
 // Execute executes the request
 //  @return ControllersBackupPolicySamples
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute(r ApiApiDefaultTemplatesBackupPoliciesGetRequest) (*ControllersBackupPolicySamples, *http.Response, error) {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute(r ApiApiDefaultTemplatesBackupPoliciesGetRequest) (*ControllersBackupPolicySamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -184,7 +184,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute
 		localVarReturnValue  *ControllersBackupPolicySamples
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesBackupPoliciesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SampleTemplatesApiService.ApiDefaultTemplatesBackupPoliciesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -265,7 +265,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute
 
 type ApiApiDefaultTemplatesResourceSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultTemplatesApiService
+	ApiService *SampleTemplatesApiService
 	dataServiceId *string
 }
 
@@ -280,14 +280,14 @@ func (r ApiApiDefaultTemplatesResourceSettingsGetRequest) Execute() (*Controller
 }
 
 /*
-ApiDefaultTemplatesResourceSettingsGet List Default ResourceSettingsSamples
+ApiDefaultTemplatesResourceSettingsGet List ResourceSettingsSamples
 
-Lists Default ResourceSettingsSamples
+Lists ResourceSettingsSamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesResourceSettingsGetRequest
 */
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGet(ctx context.Context) ApiApiDefaultTemplatesResourceSettingsGetRequest {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesResourceSettingsGet(ctx context.Context) ApiApiDefaultTemplatesResourceSettingsGetRequest {
 	return ApiApiDefaultTemplatesResourceSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -296,7 +296,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGet(ctx 
 
 // Execute executes the request
 //  @return ControllersResourceSettingsSamples
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecute(r ApiApiDefaultTemplatesResourceSettingsGetRequest) (*ControllersResourceSettingsSamples, *http.Response, error) {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecute(r ApiApiDefaultTemplatesResourceSettingsGetRequest) (*ControllersResourceSettingsSamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -304,7 +304,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecu
 		localVarReturnValue  *ControllersResourceSettingsSamples
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesResourceSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SampleTemplatesApiService.ApiDefaultTemplatesResourceSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -388,7 +388,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecu
 
 type ApiApiDefaultTemplatesStorageOptionsGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultTemplatesApiService
+	ApiService *SampleTemplatesApiService
 }
 
 
@@ -397,14 +397,14 @@ func (r ApiApiDefaultTemplatesStorageOptionsGetRequest) Execute() (*ControllersS
 }
 
 /*
-ApiDefaultTemplatesStorageOptionsGet List Default StorageOptionsSamples
+ApiDefaultTemplatesStorageOptionsGet List StorageOptionsSamples
 
-Lists Default StorageOptionsSamples
+Lists StorageOptionsSamples
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiDefaultTemplatesStorageOptionsGetRequest
 */
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGet(ctx context.Context) ApiApiDefaultTemplatesStorageOptionsGetRequest {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesStorageOptionsGet(ctx context.Context) ApiApiDefaultTemplatesStorageOptionsGetRequest {
 	return ApiApiDefaultTemplatesStorageOptionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -413,7 +413,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGet(ctx co
 
 // Execute executes the request
 //  @return ControllersStorageOptionsSamples
-func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute(r ApiApiDefaultTemplatesStorageOptionsGetRequest) (*ControllersStorageOptionsSamples, *http.Response, error) {
+func (a *SampleTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute(r ApiApiDefaultTemplatesStorageOptionsGetRequest) (*ControllersStorageOptionsSamples, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -421,7 +421,7 @@ func (a *DefaultTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute
 		localVarReturnValue  *ControllersStorageOptionsSamples
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultTemplatesApiService.ApiDefaultTemplatesStorageOptionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SampleTemplatesApiService.ApiDefaultTemplatesStorageOptionsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
