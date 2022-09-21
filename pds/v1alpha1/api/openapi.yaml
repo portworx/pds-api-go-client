@@ -1804,7 +1804,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/controllers.statusResponse'
+                $ref: '#/components/schemas/controllers.StatusResponse'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -4995,6 +4995,72 @@ components:
         token:
           type: string
       type: object
+    controllers.StatusResponse:
+      example:
+        replicas: 6
+        health: Healthy
+        initialized: "Yes"
+        readyReplicas: 0
+        resources:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+        status: Available
+      properties:
+        health:
+          enum:
+          - Healthy
+          - Down
+          - Degraded
+          type: string
+        initialized:
+          enum:
+          - "Yes"
+          - "No"
+          - Unknown
+          - Pending
+          - Manual
+          type: string
+        readyReplicas:
+          type: integer
+        replicas:
+          type: integer
+        resources:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceConditions'
+          type: array
+        status:
+          enum:
+          - Available
+          - Partially Available
+          - Unavailable
+          - Deploying
+          - Unknown
+          type: string
+      type: object
     controllers.StorageOptionsSamples:
       example:
         data:
@@ -5339,63 +5405,6 @@ components:
           type: string
         role_name:
           type: string
-      type: object
-    controllers.statusResponse:
-      example:
-        replicas: 6
-        health: Healthy
-        initialized: "Yes"
-        readyReplicas: 0
-        resources:
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
-      properties:
-        health:
-          enum:
-          - Healthy
-          - Down
-          - Degraded
-          type: string
-        initialized:
-          enum:
-          - "Yes"
-          - "No"
-          - Unknown
-          - Pending
-          - Manual
-          type: string
-        readyReplicas:
-          type: integer
-        replicas:
-          type: integer
-        resources:
-          items:
-            $ref: '#/components/schemas/deployments.ResourceConditions'
-          type: array
       type: object
     controllers.updateBackupCredentialsRequest:
       properties:

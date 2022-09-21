@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ReadyReplicas** | Pointer to **int32** |  | [optional] 
 **Replicas** | Pointer to **int32** |  | [optional] 
 **Resources** | Pointer to [**[]DeploymentsResourceConditions**](DeploymentsResourceConditions.md) |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetResources sets Resources field to given value.
 `func (o *ControllersStatusResponse) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *ControllersStatusResponse) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ControllersStatusResponse) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ControllersStatusResponse) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *ControllersStatusResponse) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
