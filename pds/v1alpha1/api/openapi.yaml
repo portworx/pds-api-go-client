@@ -113,7 +113,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Update DNS Details
@@ -140,7 +140,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Accept EULA
@@ -218,7 +218,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Update MAAS details
@@ -244,7 +244,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete AccountRoleBinding
@@ -434,7 +434,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete ApplicationConfigurationTemplates
@@ -526,7 +526,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete BackupCredentials
@@ -639,7 +639,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete BackupPolicies
@@ -714,7 +714,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete BackupTargets
@@ -852,7 +852,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Retry sync of a BackupTarget
@@ -931,7 +931,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete Backup
@@ -1034,7 +1034,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete Backup jobs
@@ -1468,7 +1468,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Update DeploymentTarget metadata
@@ -1583,7 +1583,7 @@ paths:
       responses:
         "202":
           content: {}
-          description: ""
+          description: Accepted
       security:
       - ApiKeyAuth: []
       summary: Delete Deployment
@@ -1850,7 +1850,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete GlobalRoleBinding
@@ -2309,7 +2309,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete ProjectRoleBinding
@@ -2400,7 +2400,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete ResourceSettingsTemplates
@@ -2484,7 +2484,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete ServiceAccounts
@@ -2546,7 +2546,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete StorageOptionsTemplates
@@ -3245,7 +3245,7 @@ paths:
       responses:
         "204":
           content: {}
-          description: ""
+          description: No Content
       security:
       - ApiKeyAuth: []
       summary: Delete TenantRoleBinding
@@ -5253,6 +5253,7 @@ components:
         fg:
           type: boolean
         fs:
+          description: Filesystem to be laid out.
           enum:
           - xfs
           - ext4
@@ -5261,6 +5262,7 @@ components:
           description: See models.StorageOptionsTemplate for more information.
           type: string
         repl:
+          description: Replication factor for the volume.
           type: integer
         secure:
           type: boolean
@@ -5408,6 +5410,7 @@ components:
         fg:
           type: boolean
         fs:
+          description: Filesystem to be laid out.
           enum:
           - xfs
           - ext4
@@ -5416,6 +5419,7 @@ components:
           description: See models.StorageOptionsTemplate for more information.
           type: string
         repl:
+          description: Replication factor for the volume.
           type: integer
         secure:
           type: boolean
@@ -6517,7 +6521,8 @@ components:
         message: message
       properties:
         code:
-          description: Predefined API error code.
+          description: More detailed specification of the error when the 'state' is
+            in one of the failed states.
           type: string
         details:
           description: More detailed error message possibly containing the root cause.

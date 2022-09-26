@@ -17,9 +17,11 @@ import (
 // ControllersUpdateStorageOptionsTemplateRequest struct for ControllersUpdateStorageOptionsTemplateRequest
 type ControllersUpdateStorageOptionsTemplateRequest struct {
 	Fg *bool `json:"fg,omitempty"`
+	// Filesystem to be laid out.
 	Fs *string `json:"fs,omitempty"`
 	// See models.StorageOptionsTemplate for more information.
 	Name *string `json:"name,omitempty"`
+	// Replication factor for the volume.
 	Repl *int32 `json:"repl,omitempty"`
 	Secure *bool `json:"secure,omitempty"`
 }

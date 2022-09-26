@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fg** | Pointer to **bool** |  | [optional] 
-**Fs** | Pointer to **string** |  | [optional] 
+**Fs** | Pointer to **string** | Filesystem to be laid out. | [optional] 
 **Name** | Pointer to **string** | See models.StorageOptionsTemplate for more information. | [optional] 
-**Repl** | Pointer to **int32** |  | [optional] 
+**Repl** | Pointer to **int32** | Replication factor for the volume. | [optional] 
 **Secure** | Pointer to **bool** |  | [optional] 
 
 ## Methods
