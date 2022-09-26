@@ -195,16 +195,17 @@ Class | Method | HTTP request | Description
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
 *UsersApi* | [**ApiUsersIdGet**](docs/UsersApi.md#apiusersidget) | **Get** /api/users/{id} | Get User
+*VersionsApi* | [**ApiCompatibleVersionsGet**](docs/VersionsApi.md#apicompatibleversionsget) | **Get** /api/compatible-versions | List compatible versions
 *VersionsApi* | [**ApiDataServicesIdVersionsGet**](docs/VersionsApi.md#apidataservicesidversionsget) | **Get** /api/data-services/{id}/versions | List Data Service&#39;s Versions
 *VersionsApi* | [**ApiVersionsIdGet**](docs/VersionsApi.md#apiversionsidget) | **Get** /api/versions/{id} | Get Version
-*VersionsApi* | [**ApiVersionsIdLatestPatchPost**](docs/VersionsApi.md#apiversionsidlatestpatchpost) | **Post** /api/versions/{id}/latest-patch | Get latest patch version.
-*VersionsApi* | [**ApiVersionsIdListCompatiblePost**](docs/VersionsApi.md#apiversionsidlistcompatiblepost) | **Post** /api/versions/{id}/list-compatible | List compatible versions.
 *WhoAmIApi* | [**ApiWhoamiGet**](docs/WhoAmIApi.md#apiwhoamiget) | **Get** /api/whoami | Get Current Actor
 
 
 ## Documentation For Models
 
  - [AuthClaims](docs/AuthClaims.md)
+ - [CompatibilityCompatibleVersion](docs/CompatibilityCompatibleVersion.md)
+ - [CompatibilityCompatibleVersions](docs/CompatibilityCompatibleVersions.md)
  - [ConstraintPagination](docs/ConstraintPagination.md)
  - [ControllersAPIMetadataResponse](docs/ControllersAPIMetadataResponse.md)
  - [ControllersAPIVersionResponse](docs/ControllersAPIVersionResponse.md)
@@ -214,6 +215,7 @@ Class | Method | HTTP request | Description
  - [ControllersBackupJobStatus](docs/ControllersBackupJobStatus.md)
  - [ControllersBackupJobsResponse](docs/ControllersBackupJobsResponse.md)
  - [ControllersBackupPolicySamples](docs/ControllersBackupPolicySamples.md)
+ - [ControllersCompatibleVersionsResponse](docs/ControllersCompatibleVersionsResponse.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
  - [ControllersCreateApplicationConfigurationTemplatesRequest](docs/ControllersCreateApplicationConfigurationTemplatesRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)

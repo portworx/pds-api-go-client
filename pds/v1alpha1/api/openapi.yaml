@@ -1040,6 +1040,32 @@ paths:
       summary: Delete Backup jobs
       tags:
       - Backups
+  /api/compatible-versions:
+    get:
+      description: Lists what versions are compatible for other versions.
+      parameters:
+      - description: Filter results by data_service_id
+        in: query
+        name: data_service_id
+        schema:
+          type: string
+      - description: Filter results by version_id
+        in: query
+        name: version_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.CompatibleVersionsResponse'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List compatible versions
+      tags:
+      - Versions
   /api/data-services:
     get:
       description: Lists Data Services
@@ -3601,58 +3627,6 @@ paths:
       summary: List Version's Images
       tags:
       - Images
-  /api/versions/{id}/latest-patch:
-    post:
-      description: Get the latest patch version for the given version.
-      parameters:
-      - description: Version ID (must be valid UUID)
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/models.Version'
-          description: OK
-      security:
-      - ApiKeyAuth: []
-      summary: Get latest patch version.
-      tags:
-      - Versions
-  /api/versions/{id}/list-compatible:
-    post:
-      description: List all supported compatible major/minor versions.
-      parameters:
-      - description: Version ID (must be valid UUID)
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      - description: List latest patch versions of compatible major/minor versions
-          for the given version
-        in: query
-        name: latest
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/models.Version'
-                type: array
-          description: OK
-      security:
-      - ApiKeyAuth: []
-      summary: List compatible versions.
-      tags:
-      - Versions
   /api/whoami:
     get:
       description: Fetches a details of the current calling actor (user or service
@@ -3779,6 +3753,60 @@ components:
           type: array
         sub:
           description: Subject identifier. Unique ID of this account.
+          type: string
+      type: object
+    compatibility.CompatibleVersion:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          description: ID of a Version entity.
+          type: string
+        name:
+          description: Name of a Version entity.
+          type: string
+      type: object
+    compatibility.CompatibleVersions:
+      example:
+        compatible:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        data_service_name: data_service_name
+        latest_compatible_patch:
+          name: name
+          id: id
+        version_name: version_name
+        data_service_id: data_service_id
+        latest_compatible:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        version_id: version_id
+      properties:
+        compatible:
+          description: Compatible contains all compatible versions.
+          items:
+            $ref: '#/components/schemas/compatibility.CompatibleVersion'
+          type: array
+        data_service_id:
+          type: string
+        data_service_name:
+          type: string
+        latest_compatible:
+          description: LatestCompatible contains the latest patch versions of compatible
+            major/minor versions.
+          items:
+            $ref: '#/components/schemas/compatibility.CompatibleVersion'
+          type: array
+        latest_compatible_patch:
+          $ref: '#/components/schemas/compatibility.CompatibleVersion'
+        version_id:
+          type: string
+        version_name:
           type: string
       type: object
     constraint.Pagination:
@@ -3918,6 +3946,49 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.BackupPolicySample'
+          type: array
+      type: object
+    controllers.CompatibleVersionsResponse:
+      example:
+        data:
+        - compatible:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          data_service_name: data_service_name
+          latest_compatible_patch:
+            name: name
+            id: id
+          version_name: version_name
+          data_service_id: data_service_id
+          latest_compatible:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          version_id: version_id
+        - compatible:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          data_service_name: data_service_name
+          latest_compatible_patch:
+            name: name
+            id: id
+          version_name: version_name
+          data_service_id: data_service_id
+          latest_compatible:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          version_id: version_id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/compatibility.CompatibleVersions'
           type: array
       type: object
     controllers.CreateDeploymentBackup:
