@@ -17,9 +17,12 @@ import (
 // ModelsApplicationConfigurationSample struct for ModelsApplicationConfigurationSample
 type ModelsApplicationConfigurationSample struct {
 	ConfigItems []ModelsConfigItem `json:"config_items,omitempty"`
+	Created *string `json:"created,omitempty"`
 	DataServiceId *string `json:"data_service_id,omitempty"`
 	// Name of the template. Must be unique for a specific data service within the tenant scope.
 	Name *string `json:"name,omitempty"`
+	Updated *string `json:"updated,omitempty"`
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewModelsApplicationConfigurationSample instantiates a new ModelsApplicationConfigurationSample object
@@ -69,6 +72,38 @@ func (o *ModelsApplicationConfigurationSample) HasConfigItems() bool {
 // SetConfigItems gets a reference to the given []ModelsConfigItem and assigns it to the ConfigItems field.
 func (o *ModelsApplicationConfigurationSample) SetConfigItems(v []ModelsConfigItem) {
 	o.ConfigItems = v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *ModelsApplicationConfigurationSample) GetCreated() string {
+	if o == nil || o.Created == nil {
+		var ret string
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsApplicationConfigurationSample) GetCreatedOk() (*string, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *ModelsApplicationConfigurationSample) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given string and assigns it to the Created field.
+func (o *ModelsApplicationConfigurationSample) SetCreated(v string) {
+	o.Created = &v
 }
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
@@ -135,16 +170,89 @@ func (o *ModelsApplicationConfigurationSample) SetName(v string) {
 	o.Name = &v
 }
 
+// GetUpdated returns the Updated field value if set, zero value otherwise.
+func (o *ModelsApplicationConfigurationSample) GetUpdated() string {
+	if o == nil || o.Updated == nil {
+		var ret string
+		return ret
+	}
+	return *o.Updated
+}
+
+// GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsApplicationConfigurationSample) GetUpdatedOk() (*string, bool) {
+	if o == nil || o.Updated == nil {
+		return nil, false
+	}
+	return o.Updated, true
+}
+
+// HasUpdated returns a boolean if a field has been set.
+func (o *ModelsApplicationConfigurationSample) HasUpdated() bool {
+	if o != nil && o.Updated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdated gets a reference to the given string and assigns it to the Updated field.
+func (o *ModelsApplicationConfigurationSample) SetUpdated(v string) {
+	o.Updated = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ModelsApplicationConfigurationSample) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsApplicationConfigurationSample) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ModelsApplicationConfigurationSample) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *ModelsApplicationConfigurationSample) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o ModelsApplicationConfigurationSample) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ConfigItems != nil {
 		toSerialize["config_items"] = o.ConfigItems
+	}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
 	}
 	if o.DataServiceId != nil {
 		toSerialize["data_service_id"] = o.DataServiceId
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Updated != nil {
+		toSerialize["updated"] = o.Updated
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

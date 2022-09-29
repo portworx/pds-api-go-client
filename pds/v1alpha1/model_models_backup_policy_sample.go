@@ -16,10 +16,13 @@ import (
 
 // ModelsBackupPolicySample struct for ModelsBackupPolicySample
 type ModelsBackupPolicySample struct {
+	Created *string `json:"created,omitempty"`
 	// Name of the backup policy. Must be unique for the given tenant.
 	Name *string `json:"name,omitempty"`
 	// A list of the backup schedules. Must be non-empty.
 	Schedules []ModelsBackupSchedule `json:"schedules,omitempty"`
+	Updated *string `json:"updated,omitempty"`
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewModelsBackupPolicySample instantiates a new ModelsBackupPolicySample object
@@ -37,6 +40,38 @@ func NewModelsBackupPolicySample() *ModelsBackupPolicySample {
 func NewModelsBackupPolicySampleWithDefaults() *ModelsBackupPolicySample {
 	this := ModelsBackupPolicySample{}
 	return &this
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *ModelsBackupPolicySample) GetCreated() string {
+	if o == nil || o.Created == nil {
+		var ret string
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsBackupPolicySample) GetCreatedOk() (*string, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *ModelsBackupPolicySample) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given string and assigns it to the Created field.
+func (o *ModelsBackupPolicySample) SetCreated(v string) {
+	o.Created = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -103,13 +138,86 @@ func (o *ModelsBackupPolicySample) SetSchedules(v []ModelsBackupSchedule) {
 	o.Schedules = v
 }
 
+// GetUpdated returns the Updated field value if set, zero value otherwise.
+func (o *ModelsBackupPolicySample) GetUpdated() string {
+	if o == nil || o.Updated == nil {
+		var ret string
+		return ret
+	}
+	return *o.Updated
+}
+
+// GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsBackupPolicySample) GetUpdatedOk() (*string, bool) {
+	if o == nil || o.Updated == nil {
+		return nil, false
+	}
+	return o.Updated, true
+}
+
+// HasUpdated returns a boolean if a field has been set.
+func (o *ModelsBackupPolicySample) HasUpdated() bool {
+	if o != nil && o.Updated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdated gets a reference to the given string and assigns it to the Updated field.
+func (o *ModelsBackupPolicySample) SetUpdated(v string) {
+	o.Updated = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ModelsBackupPolicySample) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsBackupPolicySample) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ModelsBackupPolicySample) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *ModelsBackupPolicySample) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o ModelsBackupPolicySample) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
 	if o.Schedules != nil {
 		toSerialize["schedules"] = o.Schedules
+	}
+	if o.Updated != nil {
+		toSerialize["updated"] = o.Updated
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

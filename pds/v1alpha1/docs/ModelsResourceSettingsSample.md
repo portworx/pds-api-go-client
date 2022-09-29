@@ -6,11 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CpuLimit** | Pointer to **string** | Maximal amount of CPU cores the deployment will have access to inside k8s. | [optional] 
 **CpuRequest** | Pointer to **string** | Minimal amount of CPU cores the deployment will get reserved inside k8s. | [optional] 
+**Created** | Pointer to **string** |  | [optional] 
 **DataServiceId** | Pointer to **string** |  | [optional] 
 **MemoryLimit** | Pointer to **string** | Maximal amount of RAM the deployment will have access to inside k8s. | [optional] 
 **MemoryRequest** | Pointer to **string** | Minimal amount of RAM the deployment will get reserved inside k8s. | [optional] 
 **Name** | Pointer to **string** | Name of the template. Must be unique for a specific data service within the tenant scope. | [optional] 
 **StorageRequest** | Pointer to **string** | Amount of disk space the deployment will get reserved inside k8s. | [optional] 
+**Updated** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -80,6 +83,31 @@ SetCpuRequest sets CpuRequest field to given value.
 `func (o *ModelsResourceSettingsSample) HasCpuRequest() bool`
 
 HasCpuRequest returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *ModelsResourceSettingsSample) GetCreated() string`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *ModelsResourceSettingsSample) GetCreatedOk() (*string, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *ModelsResourceSettingsSample) SetCreated(v string)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *ModelsResourceSettingsSample) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
 
 ### GetDataServiceId
 
@@ -205,6 +233,56 @@ SetStorageRequest sets StorageRequest field to given value.
 `func (o *ModelsResourceSettingsSample) HasStorageRequest() bool`
 
 HasStorageRequest returns a boolean if a field has been set.
+
+### GetUpdated
+
+`func (o *ModelsResourceSettingsSample) GetUpdated() string`
+
+GetUpdated returns the Updated field if non-nil, zero value otherwise.
+
+### GetUpdatedOk
+
+`func (o *ModelsResourceSettingsSample) GetUpdatedOk() (*string, bool)`
+
+GetUpdatedOk returns a tuple with the Updated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdated
+
+`func (o *ModelsResourceSettingsSample) SetUpdated(v string)`
+
+SetUpdated sets Updated field to given value.
+
+### HasUpdated
+
+`func (o *ModelsResourceSettingsSample) HasUpdated() bool`
+
+HasUpdated returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *ModelsResourceSettingsSample) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *ModelsResourceSettingsSample) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *ModelsResourceSettingsSample) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *ModelsResourceSettingsSample) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

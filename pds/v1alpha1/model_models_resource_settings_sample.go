@@ -20,6 +20,7 @@ type ModelsResourceSettingsSample struct {
 	CpuLimit *string `json:"cpu_limit,omitempty"`
 	// Minimal amount of CPU cores the deployment will get reserved inside k8s.
 	CpuRequest *string `json:"cpu_request,omitempty"`
+	Created *string `json:"created,omitempty"`
 	DataServiceId *string `json:"data_service_id,omitempty"`
 	// Maximal amount of RAM the deployment will have access to inside k8s.
 	MemoryLimit *string `json:"memory_limit,omitempty"`
@@ -29,6 +30,8 @@ type ModelsResourceSettingsSample struct {
 	Name *string `json:"name,omitempty"`
 	// Amount of disk space the deployment will get reserved inside k8s.
 	StorageRequest *string `json:"storage_request,omitempty"`
+	Updated *string `json:"updated,omitempty"`
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewModelsResourceSettingsSample instantiates a new ModelsResourceSettingsSample object
@@ -110,6 +113,38 @@ func (o *ModelsResourceSettingsSample) HasCpuRequest() bool {
 // SetCpuRequest gets a reference to the given string and assigns it to the CpuRequest field.
 func (o *ModelsResourceSettingsSample) SetCpuRequest(v string) {
 	o.CpuRequest = &v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *ModelsResourceSettingsSample) GetCreated() string {
+	if o == nil || o.Created == nil {
+		var ret string
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsResourceSettingsSample) GetCreatedOk() (*string, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *ModelsResourceSettingsSample) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given string and assigns it to the Created field.
+func (o *ModelsResourceSettingsSample) SetCreated(v string) {
+	o.Created = &v
 }
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
@@ -272,6 +307,70 @@ func (o *ModelsResourceSettingsSample) SetStorageRequest(v string) {
 	o.StorageRequest = &v
 }
 
+// GetUpdated returns the Updated field value if set, zero value otherwise.
+func (o *ModelsResourceSettingsSample) GetUpdated() string {
+	if o == nil || o.Updated == nil {
+		var ret string
+		return ret
+	}
+	return *o.Updated
+}
+
+// GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsResourceSettingsSample) GetUpdatedOk() (*string, bool) {
+	if o == nil || o.Updated == nil {
+		return nil, false
+	}
+	return o.Updated, true
+}
+
+// HasUpdated returns a boolean if a field has been set.
+func (o *ModelsResourceSettingsSample) HasUpdated() bool {
+	if o != nil && o.Updated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdated gets a reference to the given string and assigns it to the Updated field.
+func (o *ModelsResourceSettingsSample) SetUpdated(v string) {
+	o.Updated = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ModelsResourceSettingsSample) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsResourceSettingsSample) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ModelsResourceSettingsSample) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *ModelsResourceSettingsSample) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o ModelsResourceSettingsSample) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CpuLimit != nil {
@@ -279,6 +378,9 @@ func (o ModelsResourceSettingsSample) MarshalJSON() ([]byte, error) {
 	}
 	if o.CpuRequest != nil {
 		toSerialize["cpu_request"] = o.CpuRequest
+	}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
 	}
 	if o.DataServiceId != nil {
 		toSerialize["data_service_id"] = o.DataServiceId
@@ -294,6 +396,12 @@ func (o ModelsResourceSettingsSample) MarshalJSON() ([]byte, error) {
 	}
 	if o.StorageRequest != nil {
 		toSerialize["storage_request"] = o.StorageRequest
+	}
+	if o.Updated != nil {
+		toSerialize["updated"] = o.Updated
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

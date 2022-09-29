@@ -3865,7 +3865,10 @@ components:
           - deploy_time: true
             value: value
             key: key
+          created: created
           name: name
+          updated: updated
+          version: 0
         - data_service_id: data_service_id
           config_items:
           - deploy_time: true
@@ -3874,7 +3877,10 @@ components:
           - deploy_time: true
             value: value
             key: key
+          created: created
           name: name
+          updated: updated
+          version: 0
       properties:
         data:
           items:
@@ -3922,7 +3928,8 @@ components:
     controllers.BackupPolicySamples:
       example:
         data:
-        - schedules:
+        - created: created
+          schedules:
           - schedule: schedule
             retention_count: 0
             id: id
@@ -3932,7 +3939,10 @@ components:
             id: id
             type: incremental
           name: name
-        - schedules:
+          updated: updated
+          version: 0
+        - created: created
+          schedules:
           - schedule: schedule
             retention_count: 0
             id: id
@@ -3942,6 +3952,8 @@ components:
             id: id
             type: incremental
           name: name
+          updated: updated
+          version: 0
       properties:
         data:
           items:
@@ -5016,17 +5028,23 @@ components:
         data:
         - data_service_id: data_service_id
           storage_request: storage_request
+          created: created
           cpu_limit: cpu_limit
           name: name
           memory_request: memory_request
           memory_limit: memory_limit
+          updated: updated
+          version: 0
           cpu_request: cpu_request
         - data_service_id: data_service_id
           storage_request: storage_request
+          created: created
           cpu_limit: cpu_limit
           name: name
           memory_request: memory_request
           memory_limit: memory_limit
+          updated: updated
+          version: 0
           cpu_request: cpu_request
       properties:
         data:
@@ -5136,15 +5154,21 @@ components:
       example:
         data:
         - fg: true
+          created: created
           name: name
           repl: 0
           secure: true
           fs: xfs
+          updated: updated
+          version: 6
         - fg: true
+          created: created
           name: name
           repl: 0
           secure: true
           fs: xfs
+          updated: updated
+          version: 6
       properties:
         data:
           items:
@@ -5777,18 +5801,27 @@ components:
         - deploy_time: true
           value: value
           key: key
+        created: created
         name: name
+        updated: updated
+        version: 0
       properties:
         config_items:
           items:
             $ref: '#/components/schemas/models.ConfigItem'
           type: array
+        created:
+          type: string
         data_service_id:
           type: string
         name:
           description: Name of the template. Must be unique for a specific data service
             within the tenant scope.
           type: string
+        updated:
+          type: string
+        version:
+          type: integer
       type: object
     models.ApplicationConfigurationTemplate:
       example:
@@ -6064,6 +6097,7 @@ components:
       type: object
     models.BackupPolicySample:
       example:
+        created: created
         schedules:
         - schedule: schedule
           retention_count: 0
@@ -6074,7 +6108,11 @@ components:
           id: id
           type: incremental
         name: name
+        updated: updated
+        version: 0
       properties:
+        created:
+          type: string
         name:
           description: Name of the backup policy. Must be unique for the given tenant.
           type: string
@@ -6083,6 +6121,10 @@ components:
           items:
             $ref: '#/components/schemas/models.BackupSchedule'
           type: array
+        updated:
+          type: string
+        version:
+          type: integer
       type: object
     models.BackupSchedule:
       example:
@@ -6698,10 +6740,13 @@ components:
       example:
         data_service_id: data_service_id
         storage_request: storage_request
+        created: created
         cpu_limit: cpu_limit
         name: name
         memory_request: memory_request
         memory_limit: memory_limit
+        updated: updated
+        version: 0
         cpu_request: cpu_request
       properties:
         cpu_limit:
@@ -6711,6 +6756,8 @@ components:
         cpu_request:
           description: Minimal amount of CPU cores the deployment will get reserved
             inside k8s.
+          type: string
+        created:
           type: string
         data_service_id:
           type: string
@@ -6730,6 +6777,10 @@ components:
           description: Amount of disk space the deployment will get reserved inside
             k8s.
           type: string
+        updated:
+          type: string
+        version:
+          type: integer
       type: object
     models.ResourceSettingsTemplate:
       example:
@@ -6838,11 +6889,16 @@ components:
     models.StorageOptionsSample:
       example:
         fg: true
+        created: created
         name: name
         repl: 0
         secure: true
         fs: xfs
+        updated: updated
+        version: 6
       properties:
+        created:
+          type: string
         fg:
           description: This option enforces volume group policy. If a volume belonging
             to a group cannot find nodes for its replication sets which don’t have
@@ -6864,6 +6920,10 @@ components:
           description: Flag to create an encrypted volume. Currently, not supported
             (should be set to `false`).
           type: boolean
+        updated:
+          type: string
+        version:
+          type: integer
       type: object
     models.StorageOptionsTemplate:
       example:

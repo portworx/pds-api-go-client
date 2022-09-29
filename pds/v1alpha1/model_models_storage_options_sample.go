@@ -16,6 +16,7 @@ import (
 
 // ModelsStorageOptionsSample struct for ModelsStorageOptionsSample
 type ModelsStorageOptionsSample struct {
+	Created *string `json:"created,omitempty"`
 	// This option enforces volume group policy. If a volume belonging to a group cannot find nodes for its replication sets which don’t have other volumes of same group, the volume creation will fail.
 	Fg *bool `json:"fg,omitempty"`
 	// Filesystem to be laid out.
@@ -26,6 +27,8 @@ type ModelsStorageOptionsSample struct {
 	Repl *int32 `json:"repl,omitempty"`
 	// Flag to create an encrypted volume. Currently, not supported (should be set to `false`).
 	Secure *bool `json:"secure,omitempty"`
+	Updated *string `json:"updated,omitempty"`
+	Version *int32 `json:"version,omitempty"`
 }
 
 // NewModelsStorageOptionsSample instantiates a new ModelsStorageOptionsSample object
@@ -43,6 +46,38 @@ func NewModelsStorageOptionsSample() *ModelsStorageOptionsSample {
 func NewModelsStorageOptionsSampleWithDefaults() *ModelsStorageOptionsSample {
 	this := ModelsStorageOptionsSample{}
 	return &this
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *ModelsStorageOptionsSample) GetCreated() string {
+	if o == nil || o.Created == nil {
+		var ret string
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsStorageOptionsSample) GetCreatedOk() (*string, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *ModelsStorageOptionsSample) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given string and assigns it to the Created field.
+func (o *ModelsStorageOptionsSample) SetCreated(v string) {
+	o.Created = &v
 }
 
 // GetFg returns the Fg field value if set, zero value otherwise.
@@ -205,8 +240,75 @@ func (o *ModelsStorageOptionsSample) SetSecure(v bool) {
 	o.Secure = &v
 }
 
+// GetUpdated returns the Updated field value if set, zero value otherwise.
+func (o *ModelsStorageOptionsSample) GetUpdated() string {
+	if o == nil || o.Updated == nil {
+		var ret string
+		return ret
+	}
+	return *o.Updated
+}
+
+// GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsStorageOptionsSample) GetUpdatedOk() (*string, bool) {
+	if o == nil || o.Updated == nil {
+		return nil, false
+	}
+	return o.Updated, true
+}
+
+// HasUpdated returns a boolean if a field has been set.
+func (o *ModelsStorageOptionsSample) HasUpdated() bool {
+	if o != nil && o.Updated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdated gets a reference to the given string and assigns it to the Updated field.
+func (o *ModelsStorageOptionsSample) SetUpdated(v string) {
+	o.Updated = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ModelsStorageOptionsSample) GetVersion() int32 {
+	if o == nil || o.Version == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsStorageOptionsSample) GetVersionOk() (*int32, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ModelsStorageOptionsSample) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *ModelsStorageOptionsSample) SetVersion(v int32) {
+	o.Version = &v
+}
+
 func (o ModelsStorageOptionsSample) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
+	}
 	if o.Fg != nil {
 		toSerialize["fg"] = o.Fg
 	}
@@ -221,6 +323,12 @@ func (o ModelsStorageOptionsSample) MarshalJSON() ([]byte, error) {
 	}
 	if o.Secure != nil {
 		toSerialize["secure"] = o.Secure
+	}
+	if o.Updated != nil {
+		toSerialize["updated"] = o.Updated
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }
