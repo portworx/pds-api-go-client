@@ -1,4 +1,4 @@
-# ControllersPaginatedImages
+# ModelsPaginatedResultModelsImage
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewControllersPaginatedImages
+### NewModelsPaginatedResultModelsImage
 
-`func NewControllersPaginatedImages() *ControllersPaginatedImages`
+`func NewModelsPaginatedResultModelsImage() *ModelsPaginatedResultModelsImage`
 
-NewControllersPaginatedImages instantiates a new ControllersPaginatedImages object
+NewModelsPaginatedResultModelsImage instantiates a new ModelsPaginatedResultModelsImage object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersPaginatedImagesWithDefaults
+### NewModelsPaginatedResultModelsImageWithDefaults
 
-`func NewControllersPaginatedImagesWithDefaults() *ControllersPaginatedImages`
+`func NewModelsPaginatedResultModelsImageWithDefaults() *ModelsPaginatedResultModelsImage`
 
-NewControllersPaginatedImagesWithDefaults instantiates a new ControllersPaginatedImages object
+NewModelsPaginatedResultModelsImageWithDefaults instantiates a new ModelsPaginatedResultModelsImage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedImages) GetData() []ModelsImage`
+`func (o *ModelsPaginatedResultModelsImage) GetData() []ModelsImage`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedImages) GetDataOk() (*[]ModelsImage, bool)`
+`func (o *ModelsPaginatedResultModelsImage) GetDataOk() (*[]ModelsImage, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedImages) SetData(v []ModelsImage)`
+`func (o *ModelsPaginatedResultModelsImage) SetData(v []ModelsImage)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersPaginatedImages) HasData() bool`
+`func (o *ModelsPaginatedResultModelsImage) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 
 ### GetPagination
 
-`func (o *ControllersPaginatedImages) GetPagination() ConstraintPagination`
+`func (o *ModelsPaginatedResultModelsImage) GetPagination() ConstraintPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *ControllersPaginatedImages) GetPaginationOk() (*ConstraintPagination, bool)`
+`func (o *ModelsPaginatedResultModelsImage) GetPaginationOk() (*ConstraintPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *ControllersPaginatedImages) SetPagination(v ConstraintPagination)`
+`func (o *ModelsPaginatedResultModelsImage) SetPagination(v ConstraintPagination)`
 
 SetPagination sets Pagination field to given value.
 
 ### HasPagination
 
-`func (o *ControllersPaginatedImages) HasPagination() bool`
+`func (o *ModelsPaginatedResultModelsImage) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
 

@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersPaginatedImages struct for ControllersPaginatedImages
-type ControllersPaginatedImages struct {
+// ModelsPaginatedResultModelsImage struct for ModelsPaginatedResultModelsImage
+type ModelsPaginatedResultModelsImage struct {
 	Data []ModelsImage `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
-// NewControllersPaginatedImages instantiates a new ControllersPaginatedImages object
+// NewModelsPaginatedResultModelsImage instantiates a new ModelsPaginatedResultModelsImage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersPaginatedImages() *ControllersPaginatedImages {
-	this := ControllersPaginatedImages{}
+func NewModelsPaginatedResultModelsImage() *ModelsPaginatedResultModelsImage {
+	this := ModelsPaginatedResultModelsImage{}
 	return &this
 }
 
-// NewControllersPaginatedImagesWithDefaults instantiates a new ControllersPaginatedImages object
+// NewModelsPaginatedResultModelsImageWithDefaults instantiates a new ModelsPaginatedResultModelsImage object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersPaginatedImagesWithDefaults() *ControllersPaginatedImages {
-	this := ControllersPaginatedImages{}
+func NewModelsPaginatedResultModelsImageWithDefaults() *ModelsPaginatedResultModelsImage {
+	this := ModelsPaginatedResultModelsImage{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedImages) GetData() []ModelsImage {
+func (o *ModelsPaginatedResultModelsImage) GetData() []ModelsImage {
 	if o == nil || o.Data == nil {
 		var ret []ModelsImage
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersPaginatedImages) GetData() []ModelsImage {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedImages) GetDataOk() ([]ModelsImage, bool) {
+func (o *ModelsPaginatedResultModelsImage) GetDataOk() ([]ModelsImage, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersPaginatedImages) GetDataOk() ([]ModelsImage, bool) {
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *ControllersPaginatedImages) HasData() bool {
+func (o *ModelsPaginatedResultModelsImage) HasData() bool {
 	if o != nil && o.Data != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersPaginatedImages) HasData() bool {
 }
 
 // SetData gets a reference to the given []ModelsImage and assigns it to the Data field.
-func (o *ControllersPaginatedImages) SetData(v []ModelsImage) {
+func (o *ModelsPaginatedResultModelsImage) SetData(v []ModelsImage) {
 	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *ControllersPaginatedImages) GetPagination() ConstraintPagination {
+func (o *ModelsPaginatedResultModelsImage) GetPagination() ConstraintPagination {
 	if o == nil || o.Pagination == nil {
 		var ret ConstraintPagination
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersPaginatedImages) GetPagination() ConstraintPagination {
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedImages) GetPaginationOk() (*ConstraintPagination, bool) {
+func (o *ModelsPaginatedResultModelsImage) GetPaginationOk() (*ConstraintPagination, bool) {
 	if o == nil || o.Pagination == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersPaginatedImages) GetPaginationOk() (*ConstraintPagination, b
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *ControllersPaginatedImages) HasPagination() bool {
+func (o *ModelsPaginatedResultModelsImage) HasPagination() bool {
 	if o != nil && o.Pagination != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersPaginatedImages) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given ConstraintPagination and assigns it to the Pagination field.
-func (o *ControllersPaginatedImages) SetPagination(v ConstraintPagination) {
+func (o *ModelsPaginatedResultModelsImage) SetPagination(v ConstraintPagination) {
 	o.Pagination = &v
 }
 
-func (o ControllersPaginatedImages) MarshalJSON() ([]byte, error) {
+func (o ModelsPaginatedResultModelsImage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -112,38 +112,38 @@ func (o ControllersPaginatedImages) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersPaginatedImages struct {
-	value *ControllersPaginatedImages
+type NullableModelsPaginatedResultModelsImage struct {
+	value *ModelsPaginatedResultModelsImage
 	isSet bool
 }
 
-func (v NullableControllersPaginatedImages) Get() *ControllersPaginatedImages {
+func (v NullableModelsPaginatedResultModelsImage) Get() *ModelsPaginatedResultModelsImage {
 	return v.value
 }
 
-func (v *NullableControllersPaginatedImages) Set(val *ControllersPaginatedImages) {
+func (v *NullableModelsPaginatedResultModelsImage) Set(val *ModelsPaginatedResultModelsImage) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersPaginatedImages) IsSet() bool {
+func (v NullableModelsPaginatedResultModelsImage) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersPaginatedImages) Unset() {
+func (v *NullableModelsPaginatedResultModelsImage) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersPaginatedImages(val *ControllersPaginatedImages) *NullableControllersPaginatedImages {
-	return &NullableControllersPaginatedImages{value: val, isSet: true}
+func NewNullableModelsPaginatedResultModelsImage(val *ModelsPaginatedResultModelsImage) *NullableModelsPaginatedResultModelsImage {
+	return &NullableModelsPaginatedResultModelsImage{value: val, isSet: true}
 }
 
-func (v NullableControllersPaginatedImages) MarshalJSON() ([]byte, error) {
+func (v NullableModelsPaginatedResultModelsImage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersPaginatedImages) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsPaginatedResultModelsImage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

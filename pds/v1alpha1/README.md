@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsDelete**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsdelete) | **Delete** /api/global-role-bindings | Delete GlobalRoleBinding
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsGet**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsget) | **Get** /api/global-role-bindings | List GlobalRoleBindings
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsPut**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsput) | **Put** /api/global-role-bindings | Set GlobalRoleBinding
+*ImagesApi* | [**ApiImagesGet**](docs/ImagesApi.md#apiimagesget) | **Get** /api/images | List Images
 *ImagesApi* | [**ApiImagesIdGet**](docs/ImagesApi.md#apiimagesidget) | **Get** /api/images/{id} | Get Image
 *ImagesApi* | [**ApiVersionsIdImagesGet**](docs/ImagesApi.md#apiversionsidimagesget) | **Get** /api/versions/{id}/images | List Version&#39;s Images
 *MetadataApi* | [**ApiMetadataGet**](docs/MetadataApi.md#apimetadataget) | **Get** /api/metadata | Get metadata information
@@ -251,7 +252,6 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedDeploymentTargets](docs/ControllersPaginatedDeploymentTargets.md)
  - [ControllersPaginatedDeployments](docs/ControllersPaginatedDeployments.md)
  - [ControllersPaginatedGlobalRoleBindings](docs/ControllersPaginatedGlobalRoleBindings.md)
- - [ControllersPaginatedImages](docs/ControllersPaginatedImages.md)
  - [ControllersPaginatedNamespaces](docs/ControllersPaginatedNamespaces.md)
  - [ControllersPaginatedProjectRoleBindings](docs/ControllersPaginatedProjectRoleBindings.md)
  - [ControllersPaginatedResourceSettingsTemplates](docs/ControllersPaginatedResourceSettingsTemplates.md)
@@ -331,6 +331,7 @@ Class | Method | HTTP request | Description
  - [ModelsMAASDetails](docs/ModelsMAASDetails.md)
  - [ModelsNamespace](docs/ModelsNamespace.md)
  - [ModelsNodeRestrictions](docs/ModelsNodeRestrictions.md)
+ - [ModelsPaginatedResultModelsImage](docs/ModelsPaginatedResultModelsImage.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
  - [ModelsResourceSettingsSample](docs/ModelsResourceSettingsSample.md)
