@@ -20,6 +20,7 @@ type ControllersDeploymentTargetMetadataRequest struct {
 	KubeApiVersion *string `json:"kube_api_version,omitempty"`
 	KubePlatform *string `json:"kube_platform,omitempty"`
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
+	PxCsiEnabled *string `json:"px_csi_enabled,omitempty"`
 	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 }
 
@@ -168,6 +169,38 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetPdsChartVersion(v string
 	o.PdsChartVersion = &v
 }
 
+// GetPxCsiEnabled returns the PxCsiEnabled field value if set, zero value otherwise.
+func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabled() string {
+	if o == nil || o.PxCsiEnabled == nil {
+		var ret string
+		return ret
+	}
+	return *o.PxCsiEnabled
+}
+
+// GetPxCsiEnabledOk returns a tuple with the PxCsiEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabledOk() (*string, bool) {
+	if o == nil || o.PxCsiEnabled == nil {
+		return nil, false
+	}
+	return o.PxCsiEnabled, true
+}
+
+// HasPxCsiEnabled returns a boolean if a field has been set.
+func (o *ControllersDeploymentTargetMetadataRequest) HasPxCsiEnabled() bool {
+	if o != nil && o.PxCsiEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPxCsiEnabled gets a reference to the given string and assigns it to the PxCsiEnabled field.
+func (o *ControllersDeploymentTargetMetadataRequest) SetPxCsiEnabled(v string) {
+	o.PxCsiEnabled = &v
+}
+
 // GetPxServiceNamespace returns the PxServiceNamespace field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespace() string {
 	if o == nil || o.PxServiceNamespace == nil {
@@ -213,6 +246,9 @@ func (o ControllersDeploymentTargetMetadataRequest) MarshalJSON() ([]byte, error
 	}
 	if o.PdsChartVersion != nil {
 		toSerialize["pds_chart_version"] = o.PdsChartVersion
+	}
+	if o.PxCsiEnabled != nil {
+		toSerialize["px_csi_enabled"] = o.PxCsiEnabled
 	}
 	if o.PxServiceNamespace != nil {
 		toSerialize["px_service_namespace"] = o.PxServiceNamespace

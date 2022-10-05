@@ -4185,6 +4185,12 @@ components:
           type: string
         pds_chart_version:
           type: string
+        px_csi_enabled:
+          enum:
+          - unknown
+          - "yes"
+          - "no"
+          type: string
         px_service_namespace:
           type: string
       type: object
@@ -4581,6 +4587,7 @@ components:
             pds_chart_version: pds_chart_version
             px_service_namespace: px_service_namespace
             kube_platform: kube_platform
+            px_csi_enabled: px_csi_enabled
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -4595,6 +4602,7 @@ components:
             pds_chart_version: pds_chart_version
             px_service_namespace: px_service_namespace
             kube_platform: kube_platform
+            px_csi_enabled: px_csi_enabled
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -6514,6 +6522,7 @@ components:
           pds_chart_version: pds_chart_version
           px_service_namespace: px_service_namespace
           kube_platform: kube_platform
+          px_csi_enabled: px_csi_enabled
         account_id: account_id
         updated_at: updated_at
         name: name
@@ -6552,12 +6561,15 @@ components:
         pds_chart_version: pds_chart_version
         px_service_namespace: px_service_namespace
         kube_platform: kube_platform
+        px_csi_enabled: px_csi_enabled
       properties:
         kube_api_version:
           type: string
         kube_platform:
           type: string
         pds_chart_version:
+          type: string
+        px_csi_enabled:
           type: string
         px_service_namespace:
           type: string

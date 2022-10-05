@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **KubeApiVersion** | Pointer to **string** |  | [optional] 
 **KubePlatform** | Pointer to **string** |  | [optional] 
 **PdsChartVersion** | Pointer to **string** |  | [optional] 
+**PxCsiEnabled** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetPdsChartVersion sets PdsChartVersion field to given value.
 `func (o *ControllersDeploymentTargetMetadataRequest) HasPdsChartVersion() bool`
 
 HasPdsChartVersion returns a boolean if a field has been set.
+
+### GetPxCsiEnabled
+
+`func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabled() string`
+
+GetPxCsiEnabled returns the PxCsiEnabled field if non-nil, zero value otherwise.
+
+### GetPxCsiEnabledOk
+
+`func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabledOk() (*string, bool)`
+
+GetPxCsiEnabledOk returns a tuple with the PxCsiEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPxCsiEnabled
+
+`func (o *ControllersDeploymentTargetMetadataRequest) SetPxCsiEnabled(v string)`
+
+SetPxCsiEnabled sets PxCsiEnabled field to given value.
+
+### HasPxCsiEnabled
+
+`func (o *ControllersDeploymentTargetMetadataRequest) HasPxCsiEnabled() bool`
+
+HasPxCsiEnabled returns a boolean if a field has been set.
 
 ### GetPxServiceNamespace
 
