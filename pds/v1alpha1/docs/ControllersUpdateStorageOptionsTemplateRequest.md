@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Fg** | Pointer to **bool** |  | [optional] 
 **Fs** | Pointer to **string** | Filesystem to be laid out. | [optional] 
 **Name** | Pointer to **string** | See models.StorageOptionsTemplate for more information. | [optional] 
+**Provisioner** | Pointer to **string** | Portworx volume provisioner. Valid values are: \&quot;pxd.portworx.com\&quot; for PX CSI, \&quot;kubernetes.io/portworx-volume\&quot; for PX in-tree or \&quot;auto\&quot; for auto-detect | [optional] 
 **Repl** | Pointer to **int32** | Replication factor for the volume. | [optional] 
 **Secure** | Pointer to **bool** |  | [optional] 
 
@@ -103,6 +104,31 @@ SetName sets Name field to given value.
 `func (o *ControllersUpdateStorageOptionsTemplateRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetProvisioner
+
+`func (o *ControllersUpdateStorageOptionsTemplateRequest) GetProvisioner() string`
+
+GetProvisioner returns the Provisioner field if non-nil, zero value otherwise.
+
+### GetProvisionerOk
+
+`func (o *ControllersUpdateStorageOptionsTemplateRequest) GetProvisionerOk() (*string, bool)`
+
+GetProvisionerOk returns a tuple with the Provisioner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioner
+
+`func (o *ControllersUpdateStorageOptionsTemplateRequest) SetProvisioner(v string)`
+
+SetProvisioner sets Provisioner field to given value.
+
+### HasProvisioner
+
+`func (o *ControllersUpdateStorageOptionsTemplateRequest) HasProvisioner() bool`
+
+HasProvisioner returns a boolean if a field has been set.
 
 ### GetRepl
 

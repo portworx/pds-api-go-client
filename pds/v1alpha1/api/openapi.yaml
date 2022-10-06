@@ -4862,6 +4862,7 @@ components:
         data:
         - tenant_id: tenant_id
           fg: true
+          provisioner: pxd.portworx.com
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -4872,6 +4873,7 @@ components:
           fs: xfs
         - tenant_id: tenant_id
           fg: true
+          provisioner: pxd.portworx.com
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -5178,6 +5180,7 @@ components:
       example:
         data:
         - fg: true
+          provisioner: pxd.portworx.com
           created: created
           name: name
           repl: 0
@@ -5186,6 +5189,7 @@ components:
           updated: updated
           version: 6
         - fg: true
+          provisioner: pxd.portworx.com
           created: created
           name: name
           repl: 0
@@ -5308,6 +5312,15 @@ components:
           type: string
         name:
           description: See models.StorageOptionsTemplate for more information.
+          type: string
+        provisioner:
+          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
+            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
+            auto-detect'
+          enum:
+          - pxd.portworx.com
+          - kubernetes.io/portworx-volume
+          - auto
           type: string
         repl:
           description: Replication factor for the volume.
@@ -5465,6 +5478,15 @@ components:
           type: string
         name:
           description: See models.StorageOptionsTemplate for more information.
+          type: string
+        provisioner:
+          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
+            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
+            auto-detect'
+          enum:
+          - pxd.portworx.com
+          - kubernetes.io/portworx-volume
+          - auto
           type: string
         repl:
           description: Replication factor for the volume.
@@ -6950,6 +6972,7 @@ components:
     models.StorageOptionsSample:
       example:
         fg: true
+        provisioner: pxd.portworx.com
         created: created
         name: name
         repl: 0
@@ -6974,6 +6997,15 @@ components:
         name:
           description: Name of the template. Must be unique within the tenant scope.
           type: string
+        provisioner:
+          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
+            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
+            auto-detect'
+          enum:
+          - pxd.portworx.com
+          - kubernetes.io/portworx-volume
+          - auto
+          type: string
         repl:
           description: Replication factor for the volume.
           type: integer
@@ -6990,6 +7022,7 @@ components:
       example:
         tenant_id: tenant_id
         fg: true
+        provisioner: pxd.portworx.com
         account_id: account_id
         updated_at: updated_at
         name: name
@@ -7020,6 +7053,15 @@ components:
           type: string
         name:
           description: Name of the template. Must be unique within the tenant scope.
+          type: string
+        provisioner:
+          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
+            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
+            auto-detect'
+          enum:
+          - pxd.portworx.com
+          - kubernetes.io/portworx-volume
+          - auto
           type: string
         repl:
           description: Replication factor for the volume.

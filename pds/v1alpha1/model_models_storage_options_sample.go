@@ -23,6 +23,8 @@ type ModelsStorageOptionsSample struct {
 	Fs *string `json:"fs,omitempty"`
 	// Name of the template. Must be unique within the tenant scope.
 	Name *string `json:"name,omitempty"`
+	// Portworx volume provisioner. Valid values are: \"pxd.portworx.com\" for PX CSI, \"kubernetes.io/portworx-volume\" for PX in-tree or \"auto\" for auto-detect
+	Provisioner *string `json:"provisioner,omitempty"`
 	// Replication factor for the volume.
 	Repl *int32 `json:"repl,omitempty"`
 	// Flag to create an encrypted volume. Currently, not supported (should be set to `false`).
@@ -176,6 +178,38 @@ func (o *ModelsStorageOptionsSample) SetName(v string) {
 	o.Name = &v
 }
 
+// GetProvisioner returns the Provisioner field value if set, zero value otherwise.
+func (o *ModelsStorageOptionsSample) GetProvisioner() string {
+	if o == nil || o.Provisioner == nil {
+		var ret string
+		return ret
+	}
+	return *o.Provisioner
+}
+
+// GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsStorageOptionsSample) GetProvisionerOk() (*string, bool) {
+	if o == nil || o.Provisioner == nil {
+		return nil, false
+	}
+	return o.Provisioner, true
+}
+
+// HasProvisioner returns a boolean if a field has been set.
+func (o *ModelsStorageOptionsSample) HasProvisioner() bool {
+	if o != nil && o.Provisioner != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioner gets a reference to the given string and assigns it to the Provisioner field.
+func (o *ModelsStorageOptionsSample) SetProvisioner(v string) {
+	o.Provisioner = &v
+}
+
 // GetRepl returns the Repl field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetRepl() int32 {
 	if o == nil || o.Repl == nil {
@@ -317,6 +351,9 @@ func (o ModelsStorageOptionsSample) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Provisioner != nil {
+		toSerialize["provisioner"] = o.Provisioner
 	}
 	if o.Repl != nil {
 		toSerialize["repl"] = o.Repl
