@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **PdsChartVersion** | Pointer to **string** |  | [optional] 
 **PxCsiEnabled** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
+**PxVersion** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetPxServiceNamespace sets PxServiceNamespace field to given value.
 `func (o *ModelsDeploymentTargetMetadata) HasPxServiceNamespace() bool`
 
 HasPxServiceNamespace returns a boolean if a field has been set.
+
+### GetPxVersion
+
+`func (o *ModelsDeploymentTargetMetadata) GetPxVersion() string`
+
+GetPxVersion returns the PxVersion field if non-nil, zero value otherwise.
+
+### GetPxVersionOk
+
+`func (o *ModelsDeploymentTargetMetadata) GetPxVersionOk() (*string, bool)`
+
+GetPxVersionOk returns a tuple with the PxVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPxVersion
+
+`func (o *ModelsDeploymentTargetMetadata) SetPxVersion(v string)`
+
+SetPxVersion sets PxVersion field to given value.
+
+### HasPxVersion
+
+`func (o *ModelsDeploymentTargetMetadata) HasPxVersion() bool`
+
+HasPxVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

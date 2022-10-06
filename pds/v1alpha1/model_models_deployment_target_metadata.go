@@ -21,6 +21,7 @@ type ModelsDeploymentTargetMetadata struct {
 	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
 	PxCsiEnabled *string `json:"px_csi_enabled,omitempty"`
 	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
+	PxVersion *string `json:"px_version,omitempty"`
 }
 
 // NewModelsDeploymentTargetMetadata instantiates a new ModelsDeploymentTargetMetadata object
@@ -200,6 +201,38 @@ func (o *ModelsDeploymentTargetMetadata) SetPxServiceNamespace(v string) {
 	o.PxServiceNamespace = &v
 }
 
+// GetPxVersion returns the PxVersion field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetMetadata) GetPxVersion() string {
+	if o == nil || o.PxVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.PxVersion
+}
+
+// GetPxVersionOk returns a tuple with the PxVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetMetadata) GetPxVersionOk() (*string, bool) {
+	if o == nil || o.PxVersion == nil {
+		return nil, false
+	}
+	return o.PxVersion, true
+}
+
+// HasPxVersion returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetMetadata) HasPxVersion() bool {
+	if o != nil && o.PxVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPxVersion gets a reference to the given string and assigns it to the PxVersion field.
+func (o *ModelsDeploymentTargetMetadata) SetPxVersion(v string) {
+	o.PxVersion = &v
+}
+
 func (o ModelsDeploymentTargetMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.KubeApiVersion != nil {
@@ -216,6 +249,9 @@ func (o ModelsDeploymentTargetMetadata) MarshalJSON() ([]byte, error) {
 	}
 	if o.PxServiceNamespace != nil {
 		toSerialize["px_service_namespace"] = o.PxServiceNamespace
+	}
+	if o.PxVersion != nil {
+		toSerialize["px_version"] = o.PxVersion
 	}
 	return json.Marshal(toSerialize)
 }

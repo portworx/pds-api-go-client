@@ -4193,6 +4193,8 @@ components:
           type: string
         px_service_namespace:
           type: string
+        px_version:
+          type: string
       type: object
     controllers.OIDCInfoResponse:
       example:
@@ -4588,6 +4590,7 @@ components:
             px_service_namespace: px_service_namespace
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
+            px_version: px_version
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -4603,6 +4606,7 @@ components:
             px_service_namespace: px_service_namespace
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
+            px_version: px_version
           account_id: account_id
           updated_at: updated_at
           name: name
@@ -6545,6 +6549,7 @@ components:
           px_service_namespace: px_service_namespace
           kube_platform: kube_platform
           px_csi_enabled: px_csi_enabled
+          px_version: px_version
         account_id: account_id
         updated_at: updated_at
         name: name
@@ -6584,6 +6589,7 @@ components:
         px_service_namespace: px_service_namespace
         kube_platform: kube_platform
         px_csi_enabled: px_csi_enabled
+        px_version: px_version
       properties:
         kube_api_version:
           type: string
@@ -6594,6 +6600,8 @@ components:
         px_csi_enabled:
           type: string
         px_service_namespace:
+          type: string
+        px_version:
           type: string
       type: object
     models.EULADetails:
