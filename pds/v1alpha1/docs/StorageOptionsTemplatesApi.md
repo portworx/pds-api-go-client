@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdStorageOptionsTemplatesGet
 
-> ControllersPaginatedStorageOptionsTemplates ApiTenantsIdStorageOptionsTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+> ControllersPaginatedStorageOptionsTemplates ApiTenantsIdStorageOptionsTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Provisioner(provisioner).Execute()
 
 List StorageOptionsTemplates
 
@@ -249,10 +249,11 @@ func main() {
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
     id2 := "id_example" // string | Filter results by StorageOptionsTemplates id (optional)
     name := "name_example" // string | Filter results by StorageOptionsTemplates name (optional)
+    provisioner := []string{"Provisioner_example"} // []string | Filter results by StorageOptionsTemplates provisioner (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+    resp, r, err := apiClient.StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Provisioner(provisioner).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,6 +284,7 @@ Name | Type | Description  | Notes
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
  **id2** | **string** | Filter results by StorageOptionsTemplates id | 
  **name** | **string** | Filter results by StorageOptionsTemplates name | 
+ **provisioner** | **[]string** | Filter results by StorageOptionsTemplates provisioner | 
 
 ### Return type
 

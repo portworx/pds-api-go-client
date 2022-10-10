@@ -390,6 +390,7 @@ type ApiApiTenantsIdStorageOptionsTemplatesGetRequest struct {
 	continuation *string
 	id2 *string
 	name *string
+	provisioner *[]string
 }
 
 // A given StorageOptionsTemplates attribute to sort results by (one of: id, name, created_at)
@@ -415,6 +416,11 @@ func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Id2(id2 string) ApiApi
 // Filter results by StorageOptionsTemplates name
 func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Name(name string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	r.name = &name
+	return r
+}
+// Filter results by StorageOptionsTemplates provisioner
+func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Provisioner(provisioner []string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
+	r.provisioner = &provisioner
 	return r
 }
 
@@ -475,6 +481,9 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.provisioner != nil {
+		localVarQueryParams.Add("provisioner", parameterToString(*r.provisioner, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

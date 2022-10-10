@@ -3492,6 +3492,19 @@ paths:
         name: name
         schema:
           type: string
+      - description: Filter results by StorageOptionsTemplates provisioner
+        explode: false
+        in: query
+        name: provisioner
+        schema:
+          items:
+            enum:
+            - pxd.portworx.com
+            - kubernetes.io/portworx-volume
+            - auto
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
