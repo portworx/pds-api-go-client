@@ -2522,7 +2522,9 @@ paths:
       - Roles
   /api/service-accounts/{id}:
     delete:
-      description: Removes a single ServiceAccount
+      deprecated: true
+      description: Removes a single ServiceAccount (will be replaced by service level
+        API keys)
       parameters:
       - description: ServiceAccount ID (must be valid UUID)
         in: path
@@ -2540,7 +2542,9 @@ paths:
       tags:
       - ServiceAccounts
     get:
-      description: Fetches a single ServiceAccount
+      deprecated: true
+      description: Fetches a single ServiceAccount (will be replaced by service level
+        API keys)
       parameters:
       - description: ServiceAccount ID (must be valid UUID)
         in: path
@@ -2562,7 +2566,9 @@ paths:
       - ServiceAccounts
   /api/service-accounts/{id}/token:
     get:
-      description: Fetches the token of a ServiceAccount
+      deprecated: true
+      description: Fetches the token of a ServiceAccount (will be replaced by service
+        level API keys)
       parameters:
       - description: ServiceAccount ID (must be valid UUID)
         in: path
@@ -3374,7 +3380,9 @@ paths:
       x-codegen-request-body-name: body
   /api/tenants/{id}/service-accounts:
     get:
-      description: List Tenant's ServiceAccounts
+      deprecated: true
+      description: List Tenant's ServiceAccounts (will be replaced by service level
+        API keys)
       parameters:
       - description: Tenant ID (must be valid UUID)
         in: path
@@ -3427,7 +3435,9 @@ paths:
       tags:
       - ServiceAccounts
     post:
-      description: Creates a new ServiceAccount
+      deprecated: true
+      description: Creates a new ServiceAccount (will be replaced by service level
+        API keys)
       parameters:
       - description: Tenant ID (must be valid UUID)
         in: path
