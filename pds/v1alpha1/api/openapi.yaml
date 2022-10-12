@@ -4717,6 +4717,7 @@ components:
           - load_balancer_source_ranges
           storage_options:
             fg: true
+            provisioner: provisioner
             repl: 6
             secure: true
             fs: fs
@@ -4755,6 +4756,7 @@ components:
           - load_balancer_source_ranges
           storage_options:
             fg: true
+            provisioner: provisioner
             repl: 6
             secure: true
             fs: fs
@@ -6482,6 +6484,7 @@ components:
         - load_balancer_source_ranges
         storage_options:
           fg: true
+          provisioner: provisioner
           repl: 6
           secure: true
           fs: fs
@@ -6603,6 +6606,7 @@ components:
     models.DeploymentStorageOptions:
       example:
         fg: true
+        provisioner: provisioner
         repl: 6
         secure: true
         fs: fs
@@ -6610,6 +6614,8 @@ components:
         fg:
           type: boolean
         fs:
+          type: string
+        provisioner:
           type: string
         repl:
           type: integer

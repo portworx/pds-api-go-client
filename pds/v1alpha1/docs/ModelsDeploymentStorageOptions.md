@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fg** | Pointer to **bool** |  | [optional] 
 **Fs** | Pointer to **string** |  | [optional] 
+**Provisioner** | Pointer to **string** |  | [optional] 
 **Repl** | Pointer to **int32** |  | [optional] 
 **Secure** | Pointer to **bool** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetFs sets Fs field to given value.
 `func (o *ModelsDeploymentStorageOptions) HasFs() bool`
 
 HasFs returns a boolean if a field has been set.
+
+### GetProvisioner
+
+`func (o *ModelsDeploymentStorageOptions) GetProvisioner() string`
+
+GetProvisioner returns the Provisioner field if non-nil, zero value otherwise.
+
+### GetProvisionerOk
+
+`func (o *ModelsDeploymentStorageOptions) GetProvisionerOk() (*string, bool)`
+
+GetProvisionerOk returns a tuple with the Provisioner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioner
+
+`func (o *ModelsDeploymentStorageOptions) SetProvisioner(v string)`
+
+SetProvisioner sets Provisioner field to given value.
+
+### HasProvisioner
+
+`func (o *ModelsDeploymentStorageOptions) HasProvisioner() bool`
+
+HasProvisioner returns a boolean if a field has been set.
 
 ### GetRepl
 
