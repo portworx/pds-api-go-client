@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApiAccountsGet**](AccountsApi.md#ApiAccountsGet) | **Get** /api/accounts | List Accounts
 [**ApiAccountsIdEulaPut**](AccountsApi.md#ApiAccountsIdEulaPut) | **Put** /api/accounts/{id}/eula | Accept EULA
 [**ApiAccountsIdGet**](AccountsApi.md#ApiAccountsIdGet) | **Get** /api/accounts/{id} | Get Account
+[**ApiAccountsIdGlobalConfigPut**](AccountsApi.md#ApiAccountsIdGlobalConfigPut) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
 [**ApiAccountsIdUsersGet**](AccountsApi.md#ApiAccountsIdUsersGet) | **Get** /api/accounts/{id}/users | List Account Users
 [**ApiAccountsPost**](AccountsApi.md#ApiAccountsPost) | **Post** /api/accounts | Create Account
 
@@ -220,6 +221,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiAccountsIdGlobalConfigPut
+
+> ApiAccountsIdGlobalConfigPut(ctx, id).Body(body).Execute()
+
+Update AccountGlobalConfig
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Account ID (must be valid UUID)
+    body := *openapiclient.NewControllersUpdateGlobalConfigRequest() // ControllersUpdateGlobalConfigRequest | Request body containing the global config values. Empty values are ignored.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsIdGlobalConfigPut(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdGlobalConfigPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Account ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiAccountsIdGlobalConfigPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersUpdateGlobalConfigRequest**](ControllersUpdateGlobalConfigRequest.md) | Request body containing the global config values. Empty values are ignored. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

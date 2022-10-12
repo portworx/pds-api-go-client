@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ApiAccountsGet**](docs/AccountsApi.md#apiaccountsget) | **Get** /api/accounts | List Accounts
 *AccountsApi* | [**ApiAccountsIdEulaPut**](docs/AccountsApi.md#apiaccountsideulaput) | **Put** /api/accounts/{id}/eula | Accept EULA
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
+*AccountsApi* | [**ApiAccountsIdGlobalConfigPut**](docs/AccountsApi.md#apiaccountsidglobalconfigput) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
 *AccountsDNSApi* | [**ApiAccountsIdDnsDetailsPut**](docs/AccountsDNSApi.md#apiaccountsiddnsdetailsput) | **Put** /api/accounts/{id}/dns-details | Update DNS Details
@@ -282,6 +283,7 @@ Class | Method | HTTP request | Description
  - [ControllersUpdateDeploymentRequest](docs/ControllersUpdateDeploymentRequest.md)
  - [ControllersUpdateDeploymentScheduledBackup](docs/ControllersUpdateDeploymentScheduledBackup.md)
  - [ControllersUpdateDeploymentTargetRequest](docs/ControllersUpdateDeploymentTargetRequest.md)
+ - [ControllersUpdateGlobalConfigRequest](docs/ControllersUpdateGlobalConfigRequest.md)
  - [ControllersUpdateNamespaceRequest](docs/ControllersUpdateNamespaceRequest.md)
  - [ControllersUpdateResourceSettingsTemplateRequest](docs/ControllersUpdateResourceSettingsTemplateRequest.md)
  - [ControllersUpdateStorageOptionsTemplateRequest](docs/ControllersUpdateStorageOptionsTemplateRequest.md)
@@ -301,6 +303,7 @@ Class | Method | HTTP request | Description
  - [DeploymentsResourceEvents](docs/DeploymentsResourceEvents.md)
  - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
  - [ModelsAccount](docs/ModelsAccount.md)
+ - [ModelsAccountGlobalConfig](docs/ModelsAccountGlobalConfig.md)
  - [ModelsAccountRoleBinding](docs/ModelsAccountRoleBinding.md)
  - [ModelsApplicationConfigurationSample](docs/ModelsApplicationConfigurationSample.md)
  - [ModelsApplicationConfigurationTemplate](docs/ModelsApplicationConfigurationTemplate.md)
