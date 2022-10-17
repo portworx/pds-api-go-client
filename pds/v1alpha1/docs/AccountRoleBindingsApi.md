@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## ApiAccountsIdRoleBindingsDelete
 
-> ApiAccountsIdRoleBindingsDelete(ctx, id).ActorType(actorType).Execute()
+> ApiAccountsIdRoleBindingsDelete(ctx, id).Body(body).Execute()
 
 Delete AccountRoleBinding
 
@@ -104,11 +104,11 @@ import (
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    actorType := "actorType_example" // string | AccountRoleBinding actor type (optional)
+    body := *openapiclient.NewControllersDeleteAccountRoleBindingRequest() // ControllersDeleteAccountRoleBindingRequest | Request body containing the account role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
+    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +132,7 @@ Other parameters are passed through a pointer to a apiApiAccountsIdRoleBindingsD
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **actorType** | **string** | AccountRoleBinding actor type | 
+ **body** | [**ControllersDeleteAccountRoleBindingRequest**](ControllersDeleteAccountRoleBindingRequest.md) | Request body containing the account role binding | 
 
 ### Return type
 

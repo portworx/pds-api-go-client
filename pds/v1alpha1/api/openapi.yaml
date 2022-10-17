@@ -266,9 +266,9 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-        description: AccountRoleBinding actor type
-        required: false
+              $ref: '#/components/schemas/controllers.deleteAccountRoleBindingRequest'
+        description: Request body containing the account role binding
+        required: true
       responses:
         "204":
           content: {}
@@ -278,7 +278,7 @@ paths:
       summary: Delete AccountRoleBinding
       tags:
       - AccountRoleBindings
-      x-codegen-request-body-name: actor_type
+      x-codegen-request-body-name: body
     get:
       description: Lists AccountRoleBinding
       parameters:
@@ -5560,6 +5560,13 @@ components:
         cluster_id:
           type: string
         name:
+          type: string
+      type: object
+    controllers.deleteAccountRoleBindingRequest:
+      properties:
+        actor_id:
+          type: string
+        actor_type:
           type: string
       type: object
     controllers.eventsResponse:
