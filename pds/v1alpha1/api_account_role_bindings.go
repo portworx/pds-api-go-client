@@ -149,11 +149,11 @@ type ApiApiAccountsIdRoleBindingsDeleteRequest struct {
 	ctx context.Context
 	ApiService *AccountRoleBindingsApiService
 	id string
-	body *ControllersDeleteAccountRoleBindingRequest
+	body *RequestsDeleteRoleBindingRequest
 }
 
 // Request body containing the account role binding
-func (r ApiApiAccountsIdRoleBindingsDeleteRequest) Body(body ControllersDeleteAccountRoleBindingRequest) ApiApiAccountsIdRoleBindingsDeleteRequest {
+func (r ApiApiAccountsIdRoleBindingsDeleteRequest) Body(body RequestsDeleteRoleBindingRequest) ApiApiAccountsIdRoleBindingsDeleteRequest {
 	r.body = &body
 	return r
 }

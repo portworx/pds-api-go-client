@@ -232,7 +232,6 @@ Class | Method | HTTP request | Description
  - [ControllersCreateTenantBackupTarget](docs/ControllersCreateTenantBackupTarget.md)
  - [ControllersCreateTenantDeploymentTarget](docs/ControllersCreateTenantDeploymentTarget.md)
  - [ControllersCredentials](docs/ControllersCredentials.md)
- - [ControllersDeleteAccountRoleBindingRequest](docs/ControllersDeleteAccountRoleBindingRequest.md)
  - [ControllersDeploymentTargetCredentialsResponse](docs/ControllersDeploymentTargetCredentialsResponse.md)
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
@@ -352,6 +351,7 @@ Class | Method | HTTP request | Description
  - [ModelsUser](docs/ModelsUser.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
 

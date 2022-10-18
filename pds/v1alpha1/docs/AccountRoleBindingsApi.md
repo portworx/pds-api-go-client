@@ -104,7 +104,7 @@ import (
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    body := *openapiclient.NewControllersDeleteAccountRoleBindingRequest() // ControllersDeleteAccountRoleBindingRequest | Request body containing the account role binding
+    body := *openapiclient.NewRequestsDeleteRoleBindingRequest() // RequestsDeleteRoleBindingRequest | Request body containing the account role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -132,7 +132,7 @@ Other parameters are passed through a pointer to a apiApiAccountsIdRoleBindingsD
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersDeleteAccountRoleBindingRequest**](ControllersDeleteAccountRoleBindingRequest.md) | Request body containing the account role binding | 
+ **body** | [**RequestsDeleteRoleBindingRequest**](RequestsDeleteRoleBindingRequest.md) | Request body containing the account role binding | 
 
 ### Return type
 

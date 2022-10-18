@@ -266,7 +266,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.deleteAccountRoleBindingRequest'
+              $ref: '#/components/schemas/requests.DeleteRoleBindingRequest'
         description: Request body containing the account role binding
         required: true
       responses:
@@ -1872,9 +1872,9 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-        description: GlobalRoleBinding actor type
-        required: false
+              $ref: '#/components/schemas/requests.DeleteRoleBindingRequest'
+        description: Request body containing the global role binding
+        required: true
       responses:
         "204":
           content: {}
@@ -1884,7 +1884,7 @@ paths:
       summary: Delete GlobalRoleBinding
       tags:
       - GlobalRoleBindings
-      x-codegen-request-body-name: actor_type
+      x-codegen-request-body-name: body
     get:
       description: Lists GlobalRoleBindings
       parameters:
@@ -2380,9 +2380,9 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-        description: ProjectRoleBinding actor type
-        required: false
+              $ref: '#/components/schemas/requests.DeleteRoleBindingRequest'
+        description: Request body containing the project role binding
+        required: true
       responses:
         "204":
           content: {}
@@ -2392,7 +2392,7 @@ paths:
       summary: Delete ProjectRoleBinding
       tags:
       - ProjectRoleBindings
-      x-codegen-request-body-name: actor_type
+      x-codegen-request-body-name: body
     get:
       description: Lists ProjectRoleBindings
       parameters:
@@ -3322,9 +3322,9 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-        description: TenantRoleBinding actor type
-        required: false
+              $ref: '#/components/schemas/requests.DeleteRoleBindingRequest'
+        description: Request body containing the tenant role binding
+        required: true
       responses:
         "204":
           content: {}
@@ -3334,7 +3334,7 @@ paths:
       summary: Delete TenantRoleBinding
       tags:
       - TenantRoleBindings
-      x-codegen-request-body-name: actor_type
+      x-codegen-request-body-name: body
     get:
       description: Lists TenantRoleBindings
       parameters:
@@ -5562,13 +5562,6 @@ components:
         name:
           type: string
       type: object
-    controllers.deleteAccountRoleBindingRequest:
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-      type: object
     controllers.eventsResponse:
       example:
         resourceEvents:
@@ -7364,6 +7357,13 @@ components:
           items:
             type: string
           type: array
+      type: object
+    requests.DeleteRoleBindingRequest:
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
       type: object
     v1.TypedLocalObjectReference:
       example:

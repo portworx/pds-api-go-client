@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiGlobalRoleBindingsDelete
 
-> ApiGlobalRoleBindingsDelete(ctx).ActorType(actorType).Execute()
+> ApiGlobalRoleBindingsDelete(ctx).Body(body).Execute()
 
 Delete GlobalRoleBinding
 
@@ -31,11 +31,11 @@ import (
 )
 
 func main() {
-    actorType := "actorType_example" // string | GlobalRoleBinding actor type (optional)
+    body := *openapiclient.NewRequestsDeleteRoleBindingRequest() // RequestsDeleteRoleBindingRequest | Request body containing the global role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete(context.Background()).ActorType(actorType).Execute()
+    resp, r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiApiGlobalRoleBindingsDelet
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **actorType** | **string** | GlobalRoleBinding actor type | 
+ **body** | [**RequestsDeleteRoleBindingRequest**](RequestsDeleteRoleBindingRequest.md) | Request body containing the global role binding | 
 
 ### Return type
 

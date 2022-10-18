@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersDeleteAccountRoleBindingRequest struct for ControllersDeleteAccountRoleBindingRequest
-type ControllersDeleteAccountRoleBindingRequest struct {
+// RequestsDeleteRoleBindingRequest struct for RequestsDeleteRoleBindingRequest
+type RequestsDeleteRoleBindingRequest struct {
 	ActorId *string `json:"actor_id,omitempty"`
 	ActorType *string `json:"actor_type,omitempty"`
 }
 
-// NewControllersDeleteAccountRoleBindingRequest instantiates a new ControllersDeleteAccountRoleBindingRequest object
+// NewRequestsDeleteRoleBindingRequest instantiates a new RequestsDeleteRoleBindingRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersDeleteAccountRoleBindingRequest() *ControllersDeleteAccountRoleBindingRequest {
-	this := ControllersDeleteAccountRoleBindingRequest{}
+func NewRequestsDeleteRoleBindingRequest() *RequestsDeleteRoleBindingRequest {
+	this := RequestsDeleteRoleBindingRequest{}
 	return &this
 }
 
-// NewControllersDeleteAccountRoleBindingRequestWithDefaults instantiates a new ControllersDeleteAccountRoleBindingRequest object
+// NewRequestsDeleteRoleBindingRequestWithDefaults instantiates a new RequestsDeleteRoleBindingRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersDeleteAccountRoleBindingRequestWithDefaults() *ControllersDeleteAccountRoleBindingRequest {
-	this := ControllersDeleteAccountRoleBindingRequest{}
+func NewRequestsDeleteRoleBindingRequestWithDefaults() *RequestsDeleteRoleBindingRequest {
+	this := RequestsDeleteRoleBindingRequest{}
 	return &this
 }
 
 // GetActorId returns the ActorId field value if set, zero value otherwise.
-func (o *ControllersDeleteAccountRoleBindingRequest) GetActorId() string {
+func (o *RequestsDeleteRoleBindingRequest) GetActorId() string {
 	if o == nil || o.ActorId == nil {
 		var ret string
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersDeleteAccountRoleBindingRequest) GetActorId() string {
 
 // GetActorIdOk returns a tuple with the ActorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersDeleteAccountRoleBindingRequest) GetActorIdOk() (*string, bool) {
+func (o *RequestsDeleteRoleBindingRequest) GetActorIdOk() (*string, bool) {
 	if o == nil || o.ActorId == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersDeleteAccountRoleBindingRequest) GetActorIdOk() (*string, bo
 }
 
 // HasActorId returns a boolean if a field has been set.
-func (o *ControllersDeleteAccountRoleBindingRequest) HasActorId() bool {
+func (o *RequestsDeleteRoleBindingRequest) HasActorId() bool {
 	if o != nil && o.ActorId != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersDeleteAccountRoleBindingRequest) HasActorId() bool {
 }
 
 // SetActorId gets a reference to the given string and assigns it to the ActorId field.
-func (o *ControllersDeleteAccountRoleBindingRequest) SetActorId(v string) {
+func (o *RequestsDeleteRoleBindingRequest) SetActorId(v string) {
 	o.ActorId = &v
 }
 
 // GetActorType returns the ActorType field value if set, zero value otherwise.
-func (o *ControllersDeleteAccountRoleBindingRequest) GetActorType() string {
+func (o *RequestsDeleteRoleBindingRequest) GetActorType() string {
 	if o == nil || o.ActorType == nil {
 		var ret string
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersDeleteAccountRoleBindingRequest) GetActorType() string {
 
 // GetActorTypeOk returns a tuple with the ActorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersDeleteAccountRoleBindingRequest) GetActorTypeOk() (*string, bool) {
+func (o *RequestsDeleteRoleBindingRequest) GetActorTypeOk() (*string, bool) {
 	if o == nil || o.ActorType == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersDeleteAccountRoleBindingRequest) GetActorTypeOk() (*string, 
 }
 
 // HasActorType returns a boolean if a field has been set.
-func (o *ControllersDeleteAccountRoleBindingRequest) HasActorType() bool {
+func (o *RequestsDeleteRoleBindingRequest) HasActorType() bool {
 	if o != nil && o.ActorType != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersDeleteAccountRoleBindingRequest) HasActorType() bool {
 }
 
 // SetActorType gets a reference to the given string and assigns it to the ActorType field.
-func (o *ControllersDeleteAccountRoleBindingRequest) SetActorType(v string) {
+func (o *RequestsDeleteRoleBindingRequest) SetActorType(v string) {
 	o.ActorType = &v
 }
 
-func (o ControllersDeleteAccountRoleBindingRequest) MarshalJSON() ([]byte, error) {
+func (o RequestsDeleteRoleBindingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ActorId != nil {
 		toSerialize["actor_id"] = o.ActorId
@@ -112,38 +112,38 @@ func (o ControllersDeleteAccountRoleBindingRequest) MarshalJSON() ([]byte, error
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersDeleteAccountRoleBindingRequest struct {
-	value *ControllersDeleteAccountRoleBindingRequest
+type NullableRequestsDeleteRoleBindingRequest struct {
+	value *RequestsDeleteRoleBindingRequest
 	isSet bool
 }
 
-func (v NullableControllersDeleteAccountRoleBindingRequest) Get() *ControllersDeleteAccountRoleBindingRequest {
+func (v NullableRequestsDeleteRoleBindingRequest) Get() *RequestsDeleteRoleBindingRequest {
 	return v.value
 }
 
-func (v *NullableControllersDeleteAccountRoleBindingRequest) Set(val *ControllersDeleteAccountRoleBindingRequest) {
+func (v *NullableRequestsDeleteRoleBindingRequest) Set(val *RequestsDeleteRoleBindingRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersDeleteAccountRoleBindingRequest) IsSet() bool {
+func (v NullableRequestsDeleteRoleBindingRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersDeleteAccountRoleBindingRequest) Unset() {
+func (v *NullableRequestsDeleteRoleBindingRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersDeleteAccountRoleBindingRequest(val *ControllersDeleteAccountRoleBindingRequest) *NullableControllersDeleteAccountRoleBindingRequest {
-	return &NullableControllersDeleteAccountRoleBindingRequest{value: val, isSet: true}
+func NewNullableRequestsDeleteRoleBindingRequest(val *RequestsDeleteRoleBindingRequest) *NullableRequestsDeleteRoleBindingRequest {
+	return &NullableRequestsDeleteRoleBindingRequest{value: val, isSet: true}
 }
 
-func (v NullableControllersDeleteAccountRoleBindingRequest) MarshalJSON() ([]byte, error) {
+func (v NullableRequestsDeleteRoleBindingRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersDeleteAccountRoleBindingRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableRequestsDeleteRoleBindingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

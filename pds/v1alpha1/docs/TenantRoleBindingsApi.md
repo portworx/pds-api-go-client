@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiTenantsIdRoleBindingsDelete
 
-> ApiTenantsIdRoleBindingsDelete(ctx, id).ActorType(actorType).Execute()
+> ApiTenantsIdRoleBindingsDelete(ctx, id).Body(body).Execute()
 
 Delete TenantRoleBinding
 
@@ -32,11 +32,11 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    actorType := "actorType_example" // string | TenantRoleBinding actor type (optional)
+    body := *openapiclient.NewRequestsDeleteRoleBindingRequest() // RequestsDeleteRoleBindingRequest | Request body containing the tenant role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
+    resp, r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +60,7 @@ Other parameters are passed through a pointer to a apiApiTenantsIdRoleBindingsDe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **actorType** | **string** | TenantRoleBinding actor type | 
+ **body** | [**RequestsDeleteRoleBindingRequest**](RequestsDeleteRoleBindingRequest.md) | Request body containing the tenant role binding | 
 
 ### Return type
 

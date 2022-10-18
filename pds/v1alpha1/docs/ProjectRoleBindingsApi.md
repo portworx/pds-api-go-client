@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiProjectsIdRoleBindingsDelete
 
-> ApiProjectsIdRoleBindingsDelete(ctx, id).ActorType(actorType).Execute()
+> ApiProjectsIdRoleBindingsDelete(ctx, id).Body(body).Execute()
 
 Delete ProjectRoleBinding
 
@@ -32,11 +32,11 @@ import (
 
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
-    actorType := "actorType_example" // string | ProjectRoleBinding actor type (optional)
+    body := *openapiclient.NewRequestsDeleteRoleBindingRequest() // RequestsDeleteRoleBindingRequest | Request body containing the project role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsDelete(context.Background(), id).ActorType(actorType).Execute()
+    resp, r, err := apiClient.ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +60,7 @@ Other parameters are passed through a pointer to a apiApiProjectsIdRoleBindingsD
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **actorType** | **string** | ProjectRoleBinding actor type | 
+ **body** | [**RequestsDeleteRoleBindingRequest**](RequestsDeleteRoleBindingRequest.md) | Request body containing the project role binding | 
 
 ### Return type
 
