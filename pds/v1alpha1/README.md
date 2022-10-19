@@ -196,6 +196,11 @@ Class | Method | HTTP request | Description
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
+*UserAPIKeyApi* | [**ApiUserApiKeyGet**](docs/UserAPIKeyApi.md#apiuserapikeyget) | **Get** /api/user-api-key | List UserAPIKeys
+*UserAPIKeyApi* | [**ApiUserApiKeyIdDelete**](docs/UserAPIKeyApi.md#apiuserapikeyiddelete) | **Delete** /api/user-api-key/{id} | Delete UserAPIKey
+*UserAPIKeyApi* | [**ApiUserApiKeyIdGet**](docs/UserAPIKeyApi.md#apiuserapikeyidget) | **Get** /api/user-api-key/{id} | Get UserAPIKey
+*UserAPIKeyApi* | [**ApiUserApiKeyIdPatch**](docs/UserAPIKeyApi.md#apiuserapikeyidpatch) | **Patch** /api/user-api-key/{id} | Patch UserAPIKey
+*UserAPIKeyApi* | [**ApiUserApiKeyPost**](docs/UserAPIKeyApi.md#apiuserapikeypost) | **Post** /api/user-api-key | Create UserAPIKey
 *UsersApi* | [**ApiUsersIdGet**](docs/UsersApi.md#apiusersidget) | **Get** /api/users/{id} | Get User
 *VersionsApi* | [**ApiCompatibleVersionsGet**](docs/VersionsApi.md#apicompatibleversionsget) | **Get** /api/compatible-versions | List compatible versions
 *VersionsApi* | [**ApiDataServicesIdVersionsGet**](docs/VersionsApi.md#apidataservicesidversionsget) | **Get** /api/data-services/{id}/versions | List Data Service&#39;s Versions
@@ -335,6 +340,7 @@ Class | Method | HTTP request | Description
  - [ModelsNamespace](docs/ModelsNamespace.md)
  - [ModelsNodeRestrictions](docs/ModelsNodeRestrictions.md)
  - [ModelsPaginatedResultModelsImage](docs/ModelsPaginatedResultModelsImage.md)
+ - [ModelsPaginatedResultModelsUserAPIKey](docs/ModelsPaginatedResultModelsUserAPIKey.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
  - [ModelsResourceSettingsSample](docs/ModelsResourceSettingsSample.md)
@@ -349,9 +355,12 @@ Class | Method | HTTP request | Description
  - [ModelsTenant](docs/ModelsTenant.md)
  - [ModelsTenantRoleBinding](docs/ModelsTenantRoleBinding.md)
  - [ModelsUser](docs/ModelsUser.md)
+ - [ModelsUserAPIKey](docs/ModelsUserAPIKey.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [RequestsCreateUserAPIKeyRequest](docs/RequestsCreateUserAPIKeyRequest.md)
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
+ - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
 

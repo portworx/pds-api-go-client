@@ -111,6 +111,8 @@ type APIClient struct {
 
 	TenantsApi *TenantsApiService
 
+	UserAPIKeyApi *UserAPIKeyApiService
+
 	UsersApi *UsersApiService
 
 	VersionsApi *VersionsApiService
@@ -165,6 +167,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.TenantRoleBindingsApi = (*TenantRoleBindingsApiService)(&c.common)
 	c.TenantsApi = (*TenantsApiService)(&c.common)
+	c.UserAPIKeyApi = (*UserAPIKeyApiService)(&c.common)
 	c.UsersApi = (*UsersApiService)(&c.common)
 	c.VersionsApi = (*VersionsApiService)(&c.common)
 	c.WhoAmIApi = (*WhoAmIApiService)(&c.common)
