@@ -4779,8 +4779,11 @@ components:
           cluster_id: cluster_id
           metadata:
             kube_api_version: kube_api_version
+            px_status: px_status
             pds_chart_version: pds_chart_version
+            pds_features: pds_features
             px_service_namespace: px_service_namespace
+            pds_operator_version: pds_operator_version
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
@@ -4789,14 +4792,18 @@ components:
           name: name
           created_at: created_at
           last_health_check: last_health_check
+          last_operator_heartbeat: last_operator_heartbeat
           id: id
           status: status
         - tenant_id: tenant_id
           cluster_id: cluster_id
           metadata:
             kube_api_version: kube_api_version
+            px_status: px_status
             pds_chart_version: pds_chart_version
+            pds_features: pds_features
             px_service_namespace: px_service_namespace
+            pds_operator_version: pds_operator_version
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
@@ -4805,6 +4812,7 @@ components:
           name: name
           created_at: created_at
           last_health_check: last_health_check
+          last_operator_heartbeat: last_operator_heartbeat
           id: id
           status: status
       properties:
@@ -6766,8 +6774,11 @@ components:
         cluster_id: cluster_id
         metadata:
           kube_api_version: kube_api_version
+          px_status: px_status
           pds_chart_version: pds_chart_version
+          pds_features: pds_features
           px_service_namespace: px_service_namespace
+          pds_operator_version: pds_operator_version
           kube_platform: kube_platform
           px_csi_enabled: px_csi_enabled
           px_version: px_version
@@ -6776,6 +6787,7 @@ components:
         name: name
         created_at: created_at
         last_health_check: last_health_check
+        last_operator_heartbeat: last_operator_heartbeat
         id: id
         status: status
       properties:
@@ -6790,6 +6802,8 @@ components:
           description: ID is auto generated on creation
           type: string
         last_health_check:
+          type: string
+        last_operator_heartbeat:
           type: string
         metadata:
           $ref: '#/components/schemas/models.DeploymentTargetMetadata'
@@ -6806,8 +6820,11 @@ components:
     models.DeploymentTargetMetadata:
       example:
         kube_api_version: kube_api_version
+        px_status: px_status
         pds_chart_version: pds_chart_version
+        pds_features: pds_features
         px_service_namespace: px_service_namespace
+        pds_operator_version: pds_operator_version
         kube_platform: kube_platform
         px_csi_enabled: px_csi_enabled
         px_version: px_version
@@ -6818,9 +6835,15 @@ components:
           type: string
         pds_chart_version:
           type: string
+        pds_features:
+          type: string
+        pds_operator_version:
+          type: string
         px_csi_enabled:
           type: string
         px_service_namespace:
+          type: string
+        px_status:
           type: string
         px_version:
           type: string

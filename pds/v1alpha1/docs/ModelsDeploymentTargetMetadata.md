@@ -7,8 +7,11 @@ Name | Type | Description | Notes
 **KubeApiVersion** | Pointer to **string** |  | [optional] 
 **KubePlatform** | Pointer to **string** |  | [optional] 
 **PdsChartVersion** | Pointer to **string** |  | [optional] 
+**PdsFeatures** | Pointer to **string** |  | [optional] 
+**PdsOperatorVersion** | Pointer to **string** |  | [optional] 
 **PxCsiEnabled** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
+**PxStatus** | Pointer to **string** |  | [optional] 
 **PxVersion** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -105,6 +108,56 @@ SetPdsChartVersion sets PdsChartVersion field to given value.
 
 HasPdsChartVersion returns a boolean if a field has been set.
 
+### GetPdsFeatures
+
+`func (o *ModelsDeploymentTargetMetadata) GetPdsFeatures() string`
+
+GetPdsFeatures returns the PdsFeatures field if non-nil, zero value otherwise.
+
+### GetPdsFeaturesOk
+
+`func (o *ModelsDeploymentTargetMetadata) GetPdsFeaturesOk() (*string, bool)`
+
+GetPdsFeaturesOk returns a tuple with the PdsFeatures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdsFeatures
+
+`func (o *ModelsDeploymentTargetMetadata) SetPdsFeatures(v string)`
+
+SetPdsFeatures sets PdsFeatures field to given value.
+
+### HasPdsFeatures
+
+`func (o *ModelsDeploymentTargetMetadata) HasPdsFeatures() bool`
+
+HasPdsFeatures returns a boolean if a field has been set.
+
+### GetPdsOperatorVersion
+
+`func (o *ModelsDeploymentTargetMetadata) GetPdsOperatorVersion() string`
+
+GetPdsOperatorVersion returns the PdsOperatorVersion field if non-nil, zero value otherwise.
+
+### GetPdsOperatorVersionOk
+
+`func (o *ModelsDeploymentTargetMetadata) GetPdsOperatorVersionOk() (*string, bool)`
+
+GetPdsOperatorVersionOk returns a tuple with the PdsOperatorVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdsOperatorVersion
+
+`func (o *ModelsDeploymentTargetMetadata) SetPdsOperatorVersion(v string)`
+
+SetPdsOperatorVersion sets PdsOperatorVersion field to given value.
+
+### HasPdsOperatorVersion
+
+`func (o *ModelsDeploymentTargetMetadata) HasPdsOperatorVersion() bool`
+
+HasPdsOperatorVersion returns a boolean if a field has been set.
+
 ### GetPxCsiEnabled
 
 `func (o *ModelsDeploymentTargetMetadata) GetPxCsiEnabled() string`
@@ -154,6 +207,31 @@ SetPxServiceNamespace sets PxServiceNamespace field to given value.
 `func (o *ModelsDeploymentTargetMetadata) HasPxServiceNamespace() bool`
 
 HasPxServiceNamespace returns a boolean if a field has been set.
+
+### GetPxStatus
+
+`func (o *ModelsDeploymentTargetMetadata) GetPxStatus() string`
+
+GetPxStatus returns the PxStatus field if non-nil, zero value otherwise.
+
+### GetPxStatusOk
+
+`func (o *ModelsDeploymentTargetMetadata) GetPxStatusOk() (*string, bool)`
+
+GetPxStatusOk returns a tuple with the PxStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPxStatus
+
+`func (o *ModelsDeploymentTargetMetadata) SetPxStatus(v string)`
+
+SetPxStatus sets PxStatus field to given value.
+
+### HasPxStatus
+
+`func (o *ModelsDeploymentTargetMetadata) HasPxStatus() bool`
+
+HasPxStatus returns a boolean if a field has been set.
 
 ### GetPxVersion
 
