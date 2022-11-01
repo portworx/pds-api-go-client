@@ -5778,7 +5778,7 @@ components:
           description: Specify what data service versions are available for deployment
             for this account.
           enum:
-          - '''all'''
+          - all
           type: string
       type: object
     controllers.upsertAccountRoleBindingRequest:
