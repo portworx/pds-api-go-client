@@ -1477,8 +1477,7 @@ paths:
       x-codegen-request-body-name: body
   /api/deployment-targets/{id}/metadata:
     post:
-      description: Handles DeploymentTarget metadata by updating relevant tables in
-        DB
+      description: Handles DeploymentTarget metadata created by PDS/Platform agent
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
         in: path
@@ -1591,6 +1590,33 @@ paths:
       summary: Create Namespace
       tags:
       - Namespaces
+      x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/operator-metadata:
+    patch:
+      description: Handles DeploymentTarget metadata created by target operator
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.UpdateOperatorMetadataRequest'
+        description: Body with the new metadata.
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Update target operator metadata
+      tags:
+      - DeploymentTargets
       x-codegen-request-body-name: body
   /api/deployments/{id}:
     delete:
@@ -7602,6 +7628,17 @@ components:
           type: boolean
         name:
           description: The name of the UserAPIKey.
+          type: string
+      type: object
+    requests.UpdateOperatorMetadataRequest:
+      properties:
+        cluster_id:
+          type: string
+        pds_features:
+          type: string
+        pds_operator_version:
+          type: string
+        px_status:
           type: string
       type: object
     v1.TypedLocalObjectReference:
