@@ -1591,6 +1591,37 @@ paths:
       tags:
       - Namespaces
       x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/operator-heartbeat:
+    post:
+      description: Makes control plane aware that DeploymentTarget's operator is still
+        alive
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.DeploymentTargetHeartbeatRequest'
+        description: Object with target cluster ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.DeploymentTargetHeartbeatResponse'
+          description: Object with heart beat response
+      security:
+      - ApiKeyAuth: []
+      summary: Make DeploymentTarget operator heart beat request
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
   /api/deployment-targets/{id}/operator-metadata:
     patch:
       description: Handles DeploymentTarget metadata created by target operator

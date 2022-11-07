@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**ApiDeploymentTargetsIdGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdGet) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 [**ApiDeploymentTargetsIdHeartbeatPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdHeartbeatPost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 [**ApiDeploymentTargetsIdMetadataPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdMetadataPost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
+[**ApiDeploymentTargetsIdOperatorHeartbeatPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdOperatorHeartbeatPost) | **Post** /api/deployment-targets/{id}/operator-heartbeat | Make DeploymentTarget operator heart beat request
 [**ApiDeploymentTargetsIdOperatorMetadataPatch**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdOperatorMetadataPatch) | **Patch** /api/deployment-targets/{id}/operator-metadata | Update target operator metadata
 [**ApiDeploymentTargetsIdPut**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdPut) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
 [**ApiProjectsIdDeploymentTargetsGet**](DeploymentTargetsApi.md#ApiProjectsIdDeploymentTargetsGet) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
@@ -432,6 +433,78 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiDeploymentTargetsIdOperatorHeartbeatPost
+
+> ControllersDeploymentTargetHeartbeatResponse ApiDeploymentTargetsIdOperatorHeartbeatPost(ctx, id).Body(body).Execute()
+
+Make DeploymentTarget operator heart beat request
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
+    body := *openapiclient.NewControllersDeploymentTargetHeartbeatRequest() // ControllersDeploymentTargetHeartbeatRequest | Object with target cluster ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdOperatorHeartbeatPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdOperatorHeartbeatPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiDeploymentTargetsIdOperatorHeartbeatPost`: ControllersDeploymentTargetHeartbeatResponse
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentTargetsApi.ApiDeploymentTargetsIdOperatorHeartbeatPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | DeploymentTarget ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentTargetsIdOperatorHeartbeatPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersDeploymentTargetHeartbeatRequest**](ControllersDeploymentTargetHeartbeatRequest.md) | Object with target cluster ID | 
+
+### Return type
+
+[**ControllersDeploymentTargetHeartbeatResponse**](ControllersDeploymentTargetHeartbeatResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
