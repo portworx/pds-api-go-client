@@ -2237,7 +2237,7 @@ paths:
       - ApiKeyAuth: []
       summary: Patch Project
       tags:
-      - Tenants
+      - Projects
       x-codegen-request-body-name: body
   /api/projects/{id}/backup-targets:
     get:
@@ -3369,6 +3369,35 @@ paths:
       summary: List Tenant's Projects
       tags:
       - Projects
+    post:
+      description: Creates a Project for a Tenant.
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.CreateProjectRequest'
+        description: Request body containing the project values
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Project'
+          description: Created
+      security:
+      - ApiKeyAuth: []
+      summary: Create Project
+      tags:
+      - Projects
+      x-codegen-request-body-name: body
   /api/tenants/{id}/resource-settings-templates:
     get:
       description: Lists ResourceSettingsTemplates

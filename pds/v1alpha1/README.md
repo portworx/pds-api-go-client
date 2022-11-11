@@ -169,7 +169,9 @@ Class | Method | HTTP request | Description
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsget) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
 *ProjectsApi* | [**ApiProjectsIdGet**](docs/ProjectsApi.md#apiprojectsidget) | **Get** /api/projects/{id} | Get Project
+*ProjectsApi* | [**ApiProjectsIdPatch**](docs/ProjectsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
 *ProjectsApi* | [**ApiTenantsIdProjectsGet**](docs/ProjectsApi.md#apitenantsidprojectsget) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
+*ProjectsApi* | [**ApiTenantsIdProjectsPost**](docs/ProjectsApi.md#apitenantsidprojectspost) | **Post** /api/tenants/{id}/projects | Create Project
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdDelete**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesiddelete) | **Delete** /api/resource-settings-templates/{id} | Delete ResourceSettingsTemplates
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdGet**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidget) | **Get** /api/resource-settings-templates/{id} | Get ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
@@ -197,7 +199,6 @@ Class | Method | HTTP request | Description
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
 *TenantsApi* | [**ApiAccountsIdTenantsPost**](docs/TenantsApi.md#apiaccountsidtenantspost) | **Post** /api/accounts/{id}/tenants | Create Tenant
-*TenantsApi* | [**ApiProjectsIdPatch**](docs/TenantsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
 *TenantsApi* | [**ApiTenantsIdPatch**](docs/TenantsApi.md#apitenantsidpatch) | **Patch** /api/tenants/{id} | Patch Tenant

@@ -5,7 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiProjectsIdGet**](ProjectsApi.md#ApiProjectsIdGet) | **Get** /api/projects/{id} | Get Project
+[**ApiProjectsIdPatch**](ProjectsApi.md#ApiProjectsIdPatch) | **Patch** /api/projects/{id} | Patch Project
 [**ApiTenantsIdProjectsGet**](ProjectsApi.md#ApiTenantsIdProjectsGet) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
+[**ApiTenantsIdProjectsPost**](ProjectsApi.md#ApiTenantsIdProjectsPost) | **Post** /api/tenants/{id}/projects | Create Project
 
 
 
@@ -60,6 +62,78 @@ Other parameters are passed through a pointer to a apiApiProjectsIdGetRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+### Return type
+
+[**ModelsProject**](ModelsProject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectsIdPatch
+
+> ModelsProject ApiProjectsIdPatch(ctx, id).Body(body).Execute()
+
+Patch Project
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    body := *openapiclient.NewRequestsPatchProjectRequest() // RequestsPatchProjectRequest | Request body containing the new project values
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectsApi.ApiProjectsIdPatch(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiProjectsIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiProjectsIdPatch`: ModelsProject
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ApiProjectsIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsPatchProjectRequest**](RequestsPatchProjectRequest.md) | Request body containing the new project values | 
 
 ### Return type
 
@@ -144,6 +218,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ControllersPaginatedTenantProjects**](ControllersPaginatedTenantProjects.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiTenantsIdProjectsPost
+
+> ModelsProject ApiTenantsIdProjectsPost(ctx, id).Body(body).Execute()
+
+Create Project
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Tenant ID (must be valid UUID)
+    body := *openapiclient.NewRequestsCreateProjectRequest() // RequestsCreateProjectRequest | Request body containing the project values
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectsApi.ApiTenantsIdProjectsPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiTenantsIdProjectsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiTenantsIdProjectsPost`: ModelsProject
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ApiTenantsIdProjectsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Tenant ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiTenantsIdProjectsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsCreateProjectRequest**](RequestsCreateProjectRequest.md) | Request body containing the project values | 
+
+### Return type
+
+[**ModelsProject**](ModelsProject.md)
 
 ### Authorization
 
