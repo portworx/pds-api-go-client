@@ -2786,6 +2786,35 @@ paths:
       summary: Get Tenant
       tags:
       - Tenants
+    patch:
+      description: Patches a Tenant
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.PatchTenantRequest'
+        description: Request body containing the new tenant values
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Tenant'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Patch Tenant
+      tags:
+      - Tenants
+      x-codegen-request-body-name: body
   /api/tenants/{id}/application-configuration-templates:
     get:
       description: Lists ApplicationConfigurationTemplates
@@ -7636,6 +7665,12 @@ components:
             type: string
           type: array
       type: object
+    requests.CreateTenantRequest:
+      properties:
+        name:
+          description: Name of the Tenant. Must be unique within an Account.
+          type: string
+      type: object
     requests.CreateUserAPIKeyRequest:
       properties:
         expires_at:
@@ -7650,6 +7685,12 @@ components:
         actor_id:
           type: string
         actor_type:
+          type: string
+      type: object
+    requests.PatchTenantRequest:
+      properties:
+        name:
+          description: Name of the Tenant. Must be unique within an Account.
           type: string
       type: object
     requests.PatchUserAPIKeyRequest:

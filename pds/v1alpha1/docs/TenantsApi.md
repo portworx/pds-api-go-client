@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApiAccountsIdTenantsGet**](TenantsApi.md#ApiAccountsIdTenantsGet) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
 [**ApiTenantsIdDnsDetailsGet**](TenantsApi.md#ApiTenantsIdDnsDetailsGet) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 [**ApiTenantsIdGet**](TenantsApi.md#ApiTenantsIdGet) | **Get** /api/tenants/{id} | Get Tenant
+[**ApiTenantsIdPatch**](TenantsApi.md#ApiTenantsIdPatch) | **Patch** /api/tenants/{id} | Patch Tenant
 
 
 
@@ -211,6 +212,78 @@ Other parameters are passed through a pointer to a apiApiTenantsIdGetRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+### Return type
+
+[**ModelsTenant**](ModelsTenant.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiTenantsIdPatch
+
+> ModelsTenant ApiTenantsIdPatch(ctx, id).Body(body).Execute()
+
+Patch Tenant
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Tenant ID (must be valid UUID)
+    body := *openapiclient.NewRequestsPatchTenantRequest() // RequestsPatchTenantRequest | Request body containing the new tenant values
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TenantsApi.ApiTenantsIdPatch(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.ApiTenantsIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiTenantsIdPatch`: ModelsTenant
+    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.ApiTenantsIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Tenant ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiTenantsIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsPatchTenantRequest**](RequestsPatchTenantRequest.md) | Request body containing the new tenant values | 
 
 ### Return type
 
