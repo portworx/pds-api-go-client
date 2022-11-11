@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiAccountsIdTenantsGet**](TenantsApi.md#ApiAccountsIdTenantsGet) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
+[**ApiAccountsIdTenantsPost**](TenantsApi.md#ApiAccountsIdTenantsPost) | **Post** /api/accounts/{id}/tenants | Create Tenant
 [**ApiTenantsIdDnsDetailsGet**](TenantsApi.md#ApiTenantsIdDnsDetailsGet) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 [**ApiTenantsIdGet**](TenantsApi.md#ApiTenantsIdGet) | **Get** /api/tenants/{id} | Get Tenant
 [**ApiTenantsIdPatch**](TenantsApi.md#ApiTenantsIdPatch) | **Patch** /api/tenants/{id} | Patch Tenant
@@ -76,6 +77,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ControllersPaginatedAccountTenants**](ControllersPaginatedAccountTenants.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiAccountsIdTenantsPost
+
+> ModelsTenant ApiAccountsIdTenantsPost(ctx, id).Body(body).Execute()
+
+Create Tenant
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Account ID (must be valid UUID)
+    body := *openapiclient.NewRequestsCreateTenantRequest() // RequestsCreateTenantRequest | Request body containing the tenant values
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TenantsApi.ApiAccountsIdTenantsPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.ApiAccountsIdTenantsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiAccountsIdTenantsPost`: ModelsTenant
+    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.ApiAccountsIdTenantsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Account ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiAccountsIdTenantsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsCreateTenantRequest**](RequestsCreateTenantRequest.md) | Request body containing the tenant values | 
+
+### Return type
+
+[**ModelsTenant**](ModelsTenant.md)
 
 ### Authorization
 

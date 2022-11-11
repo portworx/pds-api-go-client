@@ -400,6 +400,35 @@ paths:
       summary: List Account's Tenants
       tags:
       - Tenants
+    post:
+      description: Creates a Tenant for an Account.
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.CreateTenantRequest'
+        description: Request body containing the tenant values
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Tenant'
+          description: Created
+      security:
+      - ApiKeyAuth: []
+      summary: Create Tenant
+      tags:
+      - Tenants
+      x-codegen-request-body-name: body
   /api/accounts/{id}/users:
     get:
       description: Lists Account Users

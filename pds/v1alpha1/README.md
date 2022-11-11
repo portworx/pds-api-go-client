@@ -196,6 +196,7 @@ Class | Method | HTTP request | Description
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsget) | **Get** /api/tenants/{id}/role-bindings | List TenantRoleBindings
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
+*TenantsApi* | [**ApiAccountsIdTenantsPost**](docs/TenantsApi.md#apiaccountsidtenantspost) | **Post** /api/accounts/{id}/tenants | Create Tenant
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
 *TenantsApi* | [**ApiTenantsIdPatch**](docs/TenantsApi.md#apitenantsidpatch) | **Patch** /api/tenants/{id} | Patch Tenant
