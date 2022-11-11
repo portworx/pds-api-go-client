@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiAccountsIdTenantsGet**](TenantsApi.md#ApiAccountsIdTenantsGet) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
 [**ApiAccountsIdTenantsPost**](TenantsApi.md#ApiAccountsIdTenantsPost) | **Post** /api/accounts/{id}/tenants | Create Tenant
+[**ApiProjectsIdPatch**](TenantsApi.md#ApiProjectsIdPatch) | **Patch** /api/projects/{id} | Patch Project
 [**ApiTenantsIdDnsDetailsGet**](TenantsApi.md#ApiTenantsIdDnsDetailsGet) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 [**ApiTenantsIdGet**](TenantsApi.md#ApiTenantsIdGet) | **Get** /api/tenants/{id} | Get Tenant
 [**ApiTenantsIdPatch**](TenantsApi.md#ApiTenantsIdPatch) | **Patch** /api/tenants/{id} | Patch Tenant
@@ -149,6 +150,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelsTenant**](ModelsTenant.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectsIdPatch
+
+> ModelsProject ApiProjectsIdPatch(ctx, id).Body(body).Execute()
+
+Patch Project
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    body := *openapiclient.NewRequestsPatchProjectRequest() // RequestsPatchProjectRequest | Request body containing the new project values
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TenantsApi.ApiProjectsIdPatch(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.ApiProjectsIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiProjectsIdPatch`: ModelsProject
+    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.ApiProjectsIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsPatchProjectRequest**](RequestsPatchProjectRequest.md) | Request body containing the new project values | 
+
+### Return type
+
+[**ModelsProject**](ModelsProject.md)
 
 ### Authorization
 

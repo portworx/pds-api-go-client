@@ -197,6 +197,7 @@ Class | Method | HTTP request | Description
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
 *TenantsApi* | [**ApiAccountsIdTenantsPost**](docs/TenantsApi.md#apiaccountsidtenantspost) | **Post** /api/accounts/{id}/tenants | Create Tenant
+*TenantsApi* | [**ApiProjectsIdPatch**](docs/TenantsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
 *TenantsApi* | [**ApiTenantsIdPatch**](docs/TenantsApi.md#apitenantsidpatch) | **Patch** /api/tenants/{id} | Patch Tenant
@@ -362,9 +363,11 @@ Class | Method | HTTP request | Description
  - [ModelsUserAPIKey](docs/ModelsUserAPIKey.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [RequestsCreateProjectRequest](docs/RequestsCreateProjectRequest.md)
  - [RequestsCreateTenantRequest](docs/RequestsCreateTenantRequest.md)
  - [RequestsCreateUserAPIKeyRequest](docs/RequestsCreateUserAPIKeyRequest.md)
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
+ - [RequestsPatchProjectRequest](docs/RequestsPatchProjectRequest.md)
  - [RequestsPatchTenantRequest](docs/RequestsPatchTenantRequest.md)
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)

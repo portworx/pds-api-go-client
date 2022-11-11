@@ -2210,6 +2210,35 @@ paths:
       summary: Get Project
       tags:
       - Projects
+    patch:
+      description: Patches a Project
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.PatchProjectRequest'
+        description: Request body containing the new project values
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Project'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Patch Project
+      tags:
+      - Tenants
+      x-codegen-request-body-name: body
   /api/projects/{id}/backup-targets:
     get:
       description: Lists BackupTargets belonging to the Project
@@ -7694,6 +7723,12 @@ components:
             type: string
           type: array
       type: object
+    requests.CreateProjectRequest:
+      properties:
+        name:
+          description: Name of the Project. Must be unique within a Tenant.
+          type: string
+      type: object
     requests.CreateTenantRequest:
       properties:
         name:
@@ -7714,6 +7749,12 @@ components:
         actor_id:
           type: string
         actor_type:
+          type: string
+      type: object
+    requests.PatchProjectRequest:
+      properties:
+        name:
+          description: Name of the Project. Must be unique within a Tenant.
           type: string
       type: object
     requests.PatchTenantRequest:
