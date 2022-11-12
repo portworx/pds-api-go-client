@@ -63,14 +63,14 @@ func (r ApiApiAccountsGetRequest) Name(name string) ApiApiAccountsGetRequest {
 	return r
 }
 
-func (r ApiApiAccountsGetRequest) Execute() (*ControllersPaginatedAccounts, *http.Response, error) {
+func (r ApiApiAccountsGetRequest) Execute() (*ModelsPaginatedResultModelsAccount, *http.Response, error) {
 	return r.ApiService.ApiAccountsGetExecute(r)
 }
 
 /*
 ApiAccountsGet List Accounts
 
-Lists Accounts visible to the caller.
+Lists Accounts.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiAccountsGetRequest
@@ -83,13 +83,13 @@ func (a *AccountsApiService) ApiAccountsGet(ctx context.Context) ApiApiAccountsG
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedAccounts
-func (a *AccountsApiService) ApiAccountsGetExecute(r ApiApiAccountsGetRequest) (*ControllersPaginatedAccounts, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsAccount
+func (a *AccountsApiService) ApiAccountsGetExecute(r ApiApiAccountsGetRequest) (*ModelsPaginatedResultModelsAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedAccounts
+		localVarReturnValue  *ModelsPaginatedResultModelsAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ApiAccountsGet")
@@ -577,7 +577,7 @@ func (r ApiApiAccountsIdUsersGetRequest) Email(email string) ApiApiAccountsIdUse
 	return r
 }
 
-func (r ApiApiAccountsIdUsersGetRequest) Execute() (*ControllersPaginatedUsers, *http.Response, error) {
+func (r ApiApiAccountsIdUsersGetRequest) Execute() (*ModelsPaginatedResultModelsUser, *http.Response, error) {
 	return r.ApiService.ApiAccountsIdUsersGetExecute(r)
 }
 
@@ -599,13 +599,13 @@ func (a *AccountsApiService) ApiAccountsIdUsersGet(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedUsers
-func (a *AccountsApiService) ApiAccountsIdUsersGetExecute(r ApiApiAccountsIdUsersGetRequest) (*ControllersPaginatedUsers, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsUser
+func (a *AccountsApiService) ApiAccountsIdUsersGetExecute(r ApiApiAccountsIdUsersGetRequest) (*ModelsPaginatedResultModelsUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedUsers
+		localVarReturnValue  *ModelsPaginatedResultModelsUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ApiAccountsIdUsersGet")
@@ -777,6 +777,169 @@ func (a *AccountsApiService) ApiAccountsPostExecute(r ApiApiAccountsPostRequest)
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiUsersIdAccountsGetRequest struct {
+	ctx context.Context
+	ApiService *AccountsApiService
+	id string
+	sortBy *string
+	limit *string
+	continuation *string
+	id2 *string
+	name *string
+}
+
+// A given Accounts attribute to sort results by (one of: id, name, created_at)
+func (r ApiApiUsersIdAccountsGetRequest) SortBy(sortBy string) ApiApiUsersIdAccountsGetRequest {
+	r.sortBy = &sortBy
+	return r
+}
+// Maximum number of rows to return (could be less)
+func (r ApiApiUsersIdAccountsGetRequest) Limit(limit string) ApiApiUsersIdAccountsGetRequest {
+	r.limit = &limit
+	return r
+}
+// Use a token returned by a previous query to continue listing with the next batch of rows
+func (r ApiApiUsersIdAccountsGetRequest) Continuation(continuation string) ApiApiUsersIdAccountsGetRequest {
+	r.continuation = &continuation
+	return r
+}
+// Filter results by Accounts id
+func (r ApiApiUsersIdAccountsGetRequest) Id2(id2 string) ApiApiUsersIdAccountsGetRequest {
+	r.id2 = &id2
+	return r
+}
+// Filter results by Accounts name
+func (r ApiApiUsersIdAccountsGetRequest) Name(name string) ApiApiUsersIdAccountsGetRequest {
+	r.name = &name
+	return r
+}
+
+func (r ApiApiUsersIdAccountsGetRequest) Execute() (*ModelsPaginatedResultModelsAccount, *http.Response, error) {
+	return r.ApiService.ApiUsersIdAccountsGetExecute(r)
+}
+
+/*
+ApiUsersIdAccountsGet List User Accounts
+
+Lists Accounts visible to a User.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id User ID (must be valid UUID)
+ @return ApiApiUsersIdAccountsGetRequest
+*/
+func (a *AccountsApiService) ApiUsersIdAccountsGet(ctx context.Context, id string) ApiApiUsersIdAccountsGetRequest {
+	return ApiApiUsersIdAccountsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ModelsPaginatedResultModelsAccount
+func (a *AccountsApiService) ApiUsersIdAccountsGetExecute(r ApiApiUsersIdAccountsGetRequest) (*ModelsPaginatedResultModelsAccount, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelsPaginatedResultModelsAccount
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ApiUsersIdAccountsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/users/{id}/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.sortBy != nil {
+		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+	}
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.continuation != nil {
+		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+	}
+	if r.id2 != nil {
+		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

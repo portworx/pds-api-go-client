@@ -8,7 +8,7 @@ servers:
 paths:
   /api/accounts:
     get:
-      description: Lists Accounts visible to the caller.
+      description: Lists Accounts.
       parameters:
       - description: 'A given Accounts attribute to sort results by (one of: id, name,
           created_at)'
@@ -42,7 +42,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedAccounts'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Account'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -471,7 +471,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedUsers'
+                $ref: '#/components/schemas/models.PaginatedResult-models_User'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -2579,6 +2579,55 @@ paths:
       tags:
       - ProjectRoleBindings
       x-codegen-request-body-name: body
+  /api/projects/{id}/users:
+    get:
+      description: Lists Project Users
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given User attribute to sort results by (one of: id, email,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by User id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by User email
+        in: query
+        name: email
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_User'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Project Users
+      tags:
+      - Projects
   /api/resource-settings-templates/{id}:
     delete:
       description: Removes a single ResourceSettingsTemplate
@@ -3322,7 +3371,7 @@ paths:
       - Tenants
   /api/tenants/{id}/projects:
     get:
-      description: Lists Projects visible to the caller and belonging to the Tenant.
+      description: Lists Projects belonging to the Tenant.
       parameters:
       - description: Tenant ID (must be valid UUID)
         in: path
@@ -3362,7 +3411,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedTenantProjects'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Project'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3951,6 +4000,110 @@ paths:
       summary: List AccountRoleBindings of a given user
       tags:
       - AccountRoleBindings
+  /api/users/{id}/accounts:
+    get:
+      description: Lists Accounts visible to a User.
+      parameters:
+      - description: User ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Accounts attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Accounts id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Accounts name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_Account'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List User Accounts
+      tags:
+      - Accounts
+  /api/users/{id}/tenants/{tenantid}/projects:
+    get:
+      description: Lists User's Projects belonging to a Tenant.
+      parameters:
+      - description: User ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: tenantid
+        required: true
+        schema:
+          type: string
+      - description: 'A given Project attribute to sort results by (one of: id, name,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by Project id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by Project name
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_Project'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List User's Projects
+      tags:
+      - Projects
   /api/version:
     get:
       deprecated: true
@@ -4643,37 +4796,6 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
-    controllers.PaginatedAccounts:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - global_config:
-            version_availability: version_availability
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          eula:
-            accepted_version: accepted_version
-            accepted: true
-          id: id
-        - global_config:
-            version_availability: version_availability
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          eula:
-            accepted_version: accepted_version
-            accepted: true
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Account'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
     controllers.PaginatedApplicationConfigurationTemplates:
       example:
         pagination:
@@ -5270,31 +5392,6 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
-    controllers.PaginatedTenantProjects:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Project'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
     controllers.PaginatedTenantRoleBindings:
       example:
         data:
@@ -5311,31 +5408,6 @@ components:
           items:
             $ref: '#/components/schemas/models.TenantRoleBinding'
           type: array
-      type: object
-    controllers.PaginatedUsers:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - updated_at: updated_at
-          created_at: created_at
-          external_id: external_id
-          id: id
-          email: email
-          issuer: issuer
-        - updated_at: updated_at
-          created_at: created_at
-          external_id: external_id
-          id: id
-          email: email
-          issuer: issuer
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.User'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedVersions:
       example:
@@ -7170,6 +7242,37 @@ components:
             type: integer
           type: array
       type: object
+    models.PaginatedResult-models_Account:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - global_config:
+            version_availability: version_availability
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          eula:
+            accepted_version: accepted_version
+            accepted: true
+          id: id
+        - global_config:
+            version_availability: version_availability
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          eula:
+            accepted_version: accepted_version
+            accepted: true
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Account'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
     models.PaginatedResult-models_Image:
       example:
         pagination:
@@ -7199,6 +7302,56 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.Image'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_Project:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Project'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_User:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - updated_at: updated_at
+          created_at: created_at
+          external_id: external_id
+          id: id
+          email: email
+          issuer: issuer
+        - updated_at: updated_at
+          created_at: created_at
+          external_id: external_id
+          id: id
+          email: email
+          issuer: issuer
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.User'
           type: array
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'

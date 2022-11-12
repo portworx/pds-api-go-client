@@ -1,78 +1,78 @@
-# ControllersPaginatedAccounts
+# ModelsPaginatedResultModelsProject
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsAccount**](ModelsAccount.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsProject**](ModelsProject.md) |  | [optional] 
 **Pagination** | Pointer to [**ConstraintPagination**](ConstraintPagination.md) |  | [optional] 
 
 ## Methods
 
-### NewControllersPaginatedAccounts
+### NewModelsPaginatedResultModelsProject
 
-`func NewControllersPaginatedAccounts() *ControllersPaginatedAccounts`
+`func NewModelsPaginatedResultModelsProject() *ModelsPaginatedResultModelsProject`
 
-NewControllersPaginatedAccounts instantiates a new ControllersPaginatedAccounts object
+NewModelsPaginatedResultModelsProject instantiates a new ModelsPaginatedResultModelsProject object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersPaginatedAccountsWithDefaults
+### NewModelsPaginatedResultModelsProjectWithDefaults
 
-`func NewControllersPaginatedAccountsWithDefaults() *ControllersPaginatedAccounts`
+`func NewModelsPaginatedResultModelsProjectWithDefaults() *ModelsPaginatedResultModelsProject`
 
-NewControllersPaginatedAccountsWithDefaults instantiates a new ControllersPaginatedAccounts object
+NewModelsPaginatedResultModelsProjectWithDefaults instantiates a new ModelsPaginatedResultModelsProject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedAccounts) GetData() []ModelsAccount`
+`func (o *ModelsPaginatedResultModelsProject) GetData() []ModelsProject`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedAccounts) GetDataOk() (*[]ModelsAccount, bool)`
+`func (o *ModelsPaginatedResultModelsProject) GetDataOk() (*[]ModelsProject, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedAccounts) SetData(v []ModelsAccount)`
+`func (o *ModelsPaginatedResultModelsProject) SetData(v []ModelsProject)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersPaginatedAccounts) HasData() bool`
+`func (o *ModelsPaginatedResultModelsProject) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 
 ### GetPagination
 
-`func (o *ControllersPaginatedAccounts) GetPagination() ConstraintPagination`
+`func (o *ModelsPaginatedResultModelsProject) GetPagination() ConstraintPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *ControllersPaginatedAccounts) GetPaginationOk() (*ConstraintPagination, bool)`
+`func (o *ModelsPaginatedResultModelsProject) GetPaginationOk() (*ConstraintPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *ControllersPaginatedAccounts) SetPagination(v ConstraintPagination)`
+`func (o *ModelsPaginatedResultModelsProject) SetPagination(v ConstraintPagination)`
 
 SetPagination sets Pagination field to given value.
 
 ### HasPagination
 
-`func (o *ControllersPaginatedAccounts) HasPagination() bool`
+`func (o *ModelsPaginatedResultModelsProject) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
 

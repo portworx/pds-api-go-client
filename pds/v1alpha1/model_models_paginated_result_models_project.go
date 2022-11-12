@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersPaginatedTenantProjects struct for ControllersPaginatedTenantProjects
-type ControllersPaginatedTenantProjects struct {
+// ModelsPaginatedResultModelsProject struct for ModelsPaginatedResultModelsProject
+type ModelsPaginatedResultModelsProject struct {
 	Data []ModelsProject `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
-// NewControllersPaginatedTenantProjects instantiates a new ControllersPaginatedTenantProjects object
+// NewModelsPaginatedResultModelsProject instantiates a new ModelsPaginatedResultModelsProject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersPaginatedTenantProjects() *ControllersPaginatedTenantProjects {
-	this := ControllersPaginatedTenantProjects{}
+func NewModelsPaginatedResultModelsProject() *ModelsPaginatedResultModelsProject {
+	this := ModelsPaginatedResultModelsProject{}
 	return &this
 }
 
-// NewControllersPaginatedTenantProjectsWithDefaults instantiates a new ControllersPaginatedTenantProjects object
+// NewModelsPaginatedResultModelsProjectWithDefaults instantiates a new ModelsPaginatedResultModelsProject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersPaginatedTenantProjectsWithDefaults() *ControllersPaginatedTenantProjects {
-	this := ControllersPaginatedTenantProjects{}
+func NewModelsPaginatedResultModelsProjectWithDefaults() *ModelsPaginatedResultModelsProject {
+	this := ModelsPaginatedResultModelsProject{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedTenantProjects) GetData() []ModelsProject {
+func (o *ModelsPaginatedResultModelsProject) GetData() []ModelsProject {
 	if o == nil || o.Data == nil {
 		var ret []ModelsProject
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersPaginatedTenantProjects) GetData() []ModelsProject {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedTenantProjects) GetDataOk() ([]ModelsProject, bool) {
+func (o *ModelsPaginatedResultModelsProject) GetDataOk() ([]ModelsProject, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersPaginatedTenantProjects) GetDataOk() ([]ModelsProject, bool)
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *ControllersPaginatedTenantProjects) HasData() bool {
+func (o *ModelsPaginatedResultModelsProject) HasData() bool {
 	if o != nil && o.Data != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersPaginatedTenantProjects) HasData() bool {
 }
 
 // SetData gets a reference to the given []ModelsProject and assigns it to the Data field.
-func (o *ControllersPaginatedTenantProjects) SetData(v []ModelsProject) {
+func (o *ModelsPaginatedResultModelsProject) SetData(v []ModelsProject) {
 	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *ControllersPaginatedTenantProjects) GetPagination() ConstraintPagination {
+func (o *ModelsPaginatedResultModelsProject) GetPagination() ConstraintPagination {
 	if o == nil || o.Pagination == nil {
 		var ret ConstraintPagination
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersPaginatedTenantProjects) GetPagination() ConstraintPaginatio
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedTenantProjects) GetPaginationOk() (*ConstraintPagination, bool) {
+func (o *ModelsPaginatedResultModelsProject) GetPaginationOk() (*ConstraintPagination, bool) {
 	if o == nil || o.Pagination == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersPaginatedTenantProjects) GetPaginationOk() (*ConstraintPagin
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *ControllersPaginatedTenantProjects) HasPagination() bool {
+func (o *ModelsPaginatedResultModelsProject) HasPagination() bool {
 	if o != nil && o.Pagination != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersPaginatedTenantProjects) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given ConstraintPagination and assigns it to the Pagination field.
-func (o *ControllersPaginatedTenantProjects) SetPagination(v ConstraintPagination) {
+func (o *ModelsPaginatedResultModelsProject) SetPagination(v ConstraintPagination) {
 	o.Pagination = &v
 }
 
-func (o ControllersPaginatedTenantProjects) MarshalJSON() ([]byte, error) {
+func (o ModelsPaginatedResultModelsProject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -112,38 +112,38 @@ func (o ControllersPaginatedTenantProjects) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersPaginatedTenantProjects struct {
-	value *ControllersPaginatedTenantProjects
+type NullableModelsPaginatedResultModelsProject struct {
+	value *ModelsPaginatedResultModelsProject
 	isSet bool
 }
 
-func (v NullableControllersPaginatedTenantProjects) Get() *ControllersPaginatedTenantProjects {
+func (v NullableModelsPaginatedResultModelsProject) Get() *ModelsPaginatedResultModelsProject {
 	return v.value
 }
 
-func (v *NullableControllersPaginatedTenantProjects) Set(val *ControllersPaginatedTenantProjects) {
+func (v *NullableModelsPaginatedResultModelsProject) Set(val *ModelsPaginatedResultModelsProject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersPaginatedTenantProjects) IsSet() bool {
+func (v NullableModelsPaginatedResultModelsProject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersPaginatedTenantProjects) Unset() {
+func (v *NullableModelsPaginatedResultModelsProject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersPaginatedTenantProjects(val *ControllersPaginatedTenantProjects) *NullableControllersPaginatedTenantProjects {
-	return &NullableControllersPaginatedTenantProjects{value: val, isSet: true}
+func NewNullableModelsPaginatedResultModelsProject(val *ModelsPaginatedResultModelsProject) *NullableModelsPaginatedResultModelsProject {
+	return &NullableModelsPaginatedResultModelsProject{value: val, isSet: true}
 }
 
-func (v NullableControllersPaginatedTenantProjects) MarshalJSON() ([]byte, error) {
+func (v NullableModelsPaginatedResultModelsProject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersPaginatedTenantProjects) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsPaginatedResultModelsProject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ApiAccountsIdGlobalConfigPut**](docs/AccountsApi.md#apiaccountsidglobalconfigput) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
+*AccountsApi* | [**ApiUsersIdAccountsGet**](docs/AccountsApi.md#apiusersidaccountsget) | **Get** /api/users/{id}/accounts | List User Accounts
 *AccountsDNSApi* | [**ApiAccountsIdDnsDetailsPut**](docs/AccountsDNSApi.md#apiaccountsiddnsdetailsput) | **Put** /api/accounts/{id}/dns-details | Update DNS Details
 *AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsGet**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsget) | **Get** /api/accounts/{id}/maas-details | Get MAAS details
 *AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsPut**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsput) | **Put** /api/accounts/{id}/maas-details | Update MAAS details
@@ -170,8 +171,10 @@ Class | Method | HTTP request | Description
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
 *ProjectsApi* | [**ApiProjectsIdGet**](docs/ProjectsApi.md#apiprojectsidget) | **Get** /api/projects/{id} | Get Project
 *ProjectsApi* | [**ApiProjectsIdPatch**](docs/ProjectsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
+*ProjectsApi* | [**ApiProjectsIdUsersGet**](docs/ProjectsApi.md#apiprojectsidusersget) | **Get** /api/projects/{id}/users | List Project Users
 *ProjectsApi* | [**ApiTenantsIdProjectsGet**](docs/ProjectsApi.md#apitenantsidprojectsget) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
 *ProjectsApi* | [**ApiTenantsIdProjectsPost**](docs/ProjectsApi.md#apitenantsidprojectspost) | **Post** /api/tenants/{id}/projects | Create Project
+*ProjectsApi* | [**ApiUsersIdTenantsTenantidProjectsGet**](docs/ProjectsApi.md#apiusersidtenantstenantidprojectsget) | **Get** /api/users/{id}/tenants/{tenantid}/projects | List User&#39;s Projects
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdDelete**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesiddelete) | **Delete** /api/resource-settings-templates/{id} | Delete ResourceSettingsTemplates
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdGet**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidget) | **Get** /api/resource-settings-templates/{id} | Get ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
@@ -253,7 +256,6 @@ Class | Method | HTTP request | Description
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)
  - [ControllersPaginatedAccountRoleBindings](docs/ControllersPaginatedAccountRoleBindings.md)
  - [ControllersPaginatedAccountTenants](docs/ControllersPaginatedAccountTenants.md)
- - [ControllersPaginatedAccounts](docs/ControllersPaginatedAccounts.md)
  - [ControllersPaginatedApplicationConfigurationTemplates](docs/ControllersPaginatedApplicationConfigurationTemplates.md)
  - [ControllersPaginatedBackupCredentials](docs/ControllersPaginatedBackupCredentials.md)
  - [ControllersPaginatedBackupPolicies](docs/ControllersPaginatedBackupPolicies.md)
@@ -270,9 +272,7 @@ Class | Method | HTTP request | Description
  - [ControllersPaginatedRoles](docs/ControllersPaginatedRoles.md)
  - [ControllersPaginatedServiceAccounts](docs/ControllersPaginatedServiceAccounts.md)
  - [ControllersPaginatedStorageOptionsTemplates](docs/ControllersPaginatedStorageOptionsTemplates.md)
- - [ControllersPaginatedTenantProjects](docs/ControllersPaginatedTenantProjects.md)
  - [ControllersPaginatedTenantRoleBindings](docs/ControllersPaginatedTenantRoleBindings.md)
- - [ControllersPaginatedUsers](docs/ControllersPaginatedUsers.md)
  - [ControllersPaginatedVersions](docs/ControllersPaginatedVersions.md)
  - [ControllersPartialAzureCredentials](docs/ControllersPartialAzureCredentials.md)
  - [ControllersPartialCredentials](docs/ControllersPartialCredentials.md)
@@ -345,7 +345,10 @@ Class | Method | HTTP request | Description
  - [ModelsMAASDetails](docs/ModelsMAASDetails.md)
  - [ModelsNamespace](docs/ModelsNamespace.md)
  - [ModelsNodeRestrictions](docs/ModelsNodeRestrictions.md)
+ - [ModelsPaginatedResultModelsAccount](docs/ModelsPaginatedResultModelsAccount.md)
  - [ModelsPaginatedResultModelsImage](docs/ModelsPaginatedResultModelsImage.md)
+ - [ModelsPaginatedResultModelsProject](docs/ModelsPaginatedResultModelsProject.md)
+ - [ModelsPaginatedResultModelsUser](docs/ModelsPaginatedResultModelsUser.md)
  - [ModelsPaginatedResultModelsUserAPIKey](docs/ModelsPaginatedResultModelsUserAPIKey.md)
  - [ModelsProject](docs/ModelsProject.md)
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
