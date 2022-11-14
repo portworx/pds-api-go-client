@@ -683,3 +683,166 @@ func (a *TenantsApiService) ApiTenantsIdPatchExecute(r ApiApiTenantsIdPatchReque
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiApiTenantsIdUsersGetRequest struct {
+	ctx context.Context
+	ApiService *TenantsApiService
+	id string
+	sortBy *string
+	limit *string
+	continuation *string
+	id2 *string
+	email *string
+}
+
+// A given User attribute to sort results by (one of: id, email, created_at)
+func (r ApiApiTenantsIdUsersGetRequest) SortBy(sortBy string) ApiApiTenantsIdUsersGetRequest {
+	r.sortBy = &sortBy
+	return r
+}
+// Maximum number of rows to return (could be less)
+func (r ApiApiTenantsIdUsersGetRequest) Limit(limit string) ApiApiTenantsIdUsersGetRequest {
+	r.limit = &limit
+	return r
+}
+// Use a token returned by a previous query to continue listing with the next batch of rows
+func (r ApiApiTenantsIdUsersGetRequest) Continuation(continuation string) ApiApiTenantsIdUsersGetRequest {
+	r.continuation = &continuation
+	return r
+}
+// Filter results by User id
+func (r ApiApiTenantsIdUsersGetRequest) Id2(id2 string) ApiApiTenantsIdUsersGetRequest {
+	r.id2 = &id2
+	return r
+}
+// Filter results by User email
+func (r ApiApiTenantsIdUsersGetRequest) Email(email string) ApiApiTenantsIdUsersGetRequest {
+	r.email = &email
+	return r
+}
+
+func (r ApiApiTenantsIdUsersGetRequest) Execute() (*ModelsPaginatedResultModelsUser, *http.Response, error) {
+	return r.ApiService.ApiTenantsIdUsersGetExecute(r)
+}
+
+/*
+ApiTenantsIdUsersGet List Tenant Users
+
+Lists Tenant Users
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Tenant ID (must be valid UUID)
+ @return ApiApiTenantsIdUsersGetRequest
+*/
+func (a *TenantsApiService) ApiTenantsIdUsersGet(ctx context.Context, id string) ApiApiTenantsIdUsersGetRequest {
+	return ApiApiTenantsIdUsersGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ModelsPaginatedResultModelsUser
+func (a *TenantsApiService) ApiTenantsIdUsersGetExecute(r ApiApiTenantsIdUsersGetRequest) (*ModelsPaginatedResultModelsUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelsPaginatedResultModelsUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.ApiTenantsIdUsersGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/tenants/{id}/users"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.sortBy != nil {
+		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+	}
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.continuation != nil {
+		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+	}
+	if r.id2 != nil {
+		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+	}
+	if r.email != nil {
+		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

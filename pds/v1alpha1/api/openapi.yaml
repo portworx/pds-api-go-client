@@ -3806,6 +3806,55 @@ paths:
       tags:
       - StorageOptionsTemplates
       x-codegen-request-body-name: body
+  /api/tenants/{id}/users:
+    get:
+      description: Lists Tenant Users
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given User attribute to sort results by (one of: id, email,
+          created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by User id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by User email
+        in: query
+        name: email
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_User'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Tenant Users
+      tags:
+      - Tenants
   /api/user-api-key:
     get:
       description: Lists UserAPIKeys

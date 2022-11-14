@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ApiTenantsIdDnsDetailsGet**](TenantsApi.md#ApiTenantsIdDnsDetailsGet) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 [**ApiTenantsIdGet**](TenantsApi.md#ApiTenantsIdGet) | **Get** /api/tenants/{id} | Get Tenant
 [**ApiTenantsIdPatch**](TenantsApi.md#ApiTenantsIdPatch) | **Patch** /api/tenants/{id} | Patch Tenant
+[**ApiTenantsIdUsersGet**](TenantsApi.md#ApiTenantsIdUsersGet) | **Get** /api/tenants/{id}/users | List Tenant Users
 
 
 
@@ -361,6 +362,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelsTenant**](ModelsTenant.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiTenantsIdUsersGet
+
+> ModelsPaginatedResultModelsUser ApiTenantsIdUsersGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).Execute()
+
+List Tenant Users
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Tenant ID (must be valid UUID)
+    sortBy := "sortBy_example" // string | A given User attribute to sort results by (one of: id, email, created_at) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
+    id2 := "id_example" // string | Filter results by User id (optional)
+    email := "email_example" // string | Filter results by User email (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TenantsApi.ApiTenantsIdUsersGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.ApiTenantsIdUsersGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiTenantsIdUsersGet`: ModelsPaginatedResultModelsUser
+    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.ApiTenantsIdUsersGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Tenant ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiTenantsIdUsersGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sortBy** | **string** | A given User attribute to sort results by (one of: id, email, created_at) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
+ **id2** | **string** | Filter results by User id | 
+ **email** | **string** | Filter results by User email | 
+
+### Return type
+
+[**ModelsPaginatedResultModelsUser**](ModelsPaginatedResultModelsUser.md)
 
 ### Authorization
 

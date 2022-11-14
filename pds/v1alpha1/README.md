@@ -205,6 +205,7 @@ Class | Method | HTTP request | Description
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
 *TenantsApi* | [**ApiTenantsIdPatch**](docs/TenantsApi.md#apitenantsidpatch) | **Patch** /api/tenants/{id} | Patch Tenant
+*TenantsApi* | [**ApiTenantsIdUsersGet**](docs/TenantsApi.md#apitenantsidusersget) | **Get** /api/tenants/{id}/users | List Tenant Users
 *UserAPIKeyApi* | [**ApiUserApiKeyGet**](docs/UserAPIKeyApi.md#apiuserapikeyget) | **Get** /api/user-api-key | List UserAPIKeys
 *UserAPIKeyApi* | [**ApiUserApiKeyIdDelete**](docs/UserAPIKeyApi.md#apiuserapikeyiddelete) | **Delete** /api/user-api-key/{id} | Delete UserAPIKey
 *UserAPIKeyApi* | [**ApiUserApiKeyIdGet**](docs/UserAPIKeyApi.md#apiuserapikeyidget) | **Get** /api/user-api-key/{id} | Get UserAPIKey
