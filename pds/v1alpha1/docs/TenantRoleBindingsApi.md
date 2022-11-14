@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiTenantsIdRoleBindingsDelete**](TenantRoleBindingsApi.md#ApiTenantsIdRoleBindingsDelete) | **Delete** /api/tenants/{id}/role-bindings | Delete TenantRoleBinding
 [**ApiTenantsIdRoleBindingsGet**](TenantRoleBindingsApi.md#ApiTenantsIdRoleBindingsGet) | **Get** /api/tenants/{id}/role-bindings | List TenantRoleBindings
 [**ApiTenantsIdRoleBindingsPut**](TenantRoleBindingsApi.md#ApiTenantsIdRoleBindingsPut) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
+[**ApiUsersIdAccountsAccountidTenantRoleBindingsGet**](TenantRoleBindingsApi.md#ApiUsersIdAccountsAccountidTenantRoleBindingsGet) | **Get** /api/users/{id}/accounts/{accountid}/tenant-role-bindings | List User&#39;s TenantRoleBindings
 
 
 
@@ -294,6 +295,83 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiUsersIdAccountsAccountidTenantRoleBindingsGet
+
+> ControllersPaginatedTenantRoleBindings ApiUsersIdAccountsAccountidTenantRoleBindingsGet(ctx, id, accountid).SortBy(sortBy).RoleName(roleName).Execute()
+
+List User's TenantRoleBindings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | User ID (must be valid UUID)
+    accountid := "accountid_example" // string | Account ID (must be valid UUID)
+    sortBy := "sortBy_example" // string | A given TenantRoleBinding attribute to sort results by (allowed: role_name) (optional)
+    roleName := "roleName_example" // string | Filter results by role_name (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TenantRoleBindingsApi.ApiUsersIdAccountsAccountidTenantRoleBindingsGet(context.Background(), id, accountid).SortBy(sortBy).RoleName(roleName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiUsersIdAccountsAccountidTenantRoleBindingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiUsersIdAccountsAccountidTenantRoleBindingsGet`: ControllersPaginatedTenantRoleBindings
+    fmt.Fprintf(os.Stdout, "Response from `TenantRoleBindingsApi.ApiUsersIdAccountsAccountidTenantRoleBindingsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | User ID (must be valid UUID) | 
+**accountid** | **string** | Account ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiUsersIdAccountsAccountidTenantRoleBindingsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **sortBy** | **string** | A given TenantRoleBinding attribute to sort results by (allowed: role_name) | 
+ **roleName** | **string** | Filter results by role_name | 
+
+### Return type
+
+[**ControllersPaginatedTenantRoleBindings**](ControllersPaginatedTenantRoleBindings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

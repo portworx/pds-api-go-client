@@ -4089,8 +4089,7 @@ paths:
       - Users
   /api/users/{id}/account-role-bindings:
     get:
-      description: Every user can read its own bindings. Only pds-admin can read bindings
-        of other users.
+      description: Lists the AccountRoleBindings of a User.
       parameters:
       - description: User ID (must be valid UUID)
         in: path
@@ -4104,7 +4103,7 @@ paths:
         name: sort_by
         schema:
           type: string
-      - description: Filter results by AccountRoleBinding assigned role_name
+      - description: Filter results by role_name
         in: query
         name: role_name
         schema:
@@ -4118,7 +4117,7 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: List AccountRoleBindings of a given user
+      summary: List User's AccountRoleBindings
       tags:
       - AccountRoleBindings
   /api/users/{id}/accounts:
@@ -4170,6 +4169,84 @@ paths:
       summary: List User Accounts
       tags:
       - Accounts
+  /api/users/{id}/accounts/{accountid}/tenant-role-bindings:
+    get:
+      description: Lists the TenantRoleBindings of a User for a specific Account.
+      parameters:
+      - description: User ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: accountid
+        required: true
+        schema:
+          type: string
+      - description: 'A given TenantRoleBinding attribute to sort results by (allowed:
+          role_name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by role_name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedTenantRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List User's TenantRoleBindings
+      tags:
+      - TenantRoleBindings
+  /api/users/{id}/tenants/{tenantid}/project-role-bindings:
+    get:
+      description: Lists the ProjectRoleBindings of a User for a specific Tenant.
+      parameters:
+      - description: User ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: tenantid
+        required: true
+        schema:
+          type: string
+      - description: 'A given ProjectRoleBinding attribute to sort results by (allowed:
+          role_name)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by role_name
+        in: query
+        name: role_name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.PaginatedProjectRoleBindings'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List User's ProjectRoleBindings
+      tags:
+      - ProjectRoleBindings
   /api/users/{id}/tenants/{tenantid}/projects:
     get:
       description: Lists User's Projects belonging to a Tenant.

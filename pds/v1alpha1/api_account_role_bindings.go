@@ -559,7 +559,7 @@ func (r ApiApiUsersIdAccountRoleBindingsGetRequest) SortBy(sortBy string) ApiApi
 	r.sortBy = &sortBy
 	return r
 }
-// Filter results by AccountRoleBinding assigned role_name
+// Filter results by role_name
 func (r ApiApiUsersIdAccountRoleBindingsGetRequest) RoleName(roleName string) ApiApiUsersIdAccountRoleBindingsGetRequest {
 	r.roleName = &roleName
 	return r
@@ -570,9 +570,9 @@ func (r ApiApiUsersIdAccountRoleBindingsGetRequest) Execute() (*ControllersPagin
 }
 
 /*
-ApiUsersIdAccountRoleBindingsGet List AccountRoleBindings of a given user
+ApiUsersIdAccountRoleBindingsGet List User's AccountRoleBindings
 
-Every user can read its own bindings. Only pds-admin can read bindings of other users.
+Lists the AccountRoleBindings of a User.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id User ID (must be valid UUID)

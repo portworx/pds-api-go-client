@@ -83,7 +83,7 @@ Class | Method | HTTP request | Description
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsDelete**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsdelete) | **Delete** /api/accounts/{id}/role-bindings | Delete AccountRoleBinding
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsGet**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsget) | **Get** /api/accounts/{id}/role-bindings | List AccountRoleBinding
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsPut**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsput) | **Put** /api/accounts/{id}/role-bindings | Create/Update AccountRoleBinding
-*AccountRoleBindingsApi* | [**ApiUsersIdAccountRoleBindingsGet**](docs/AccountRoleBindingsApi.md#apiusersidaccountrolebindingsget) | **Get** /api/users/{id}/account-role-bindings | List AccountRoleBindings of a given user
+*AccountRoleBindingsApi* | [**ApiUsersIdAccountRoleBindingsGet**](docs/AccountRoleBindingsApi.md#apiusersidaccountrolebindingsget) | **Get** /api/users/{id}/account-role-bindings | List User&#39;s AccountRoleBindings
 *AccountsApi* | [**ApiAccountsGet**](docs/AccountsApi.md#apiaccountsget) | **Get** /api/accounts | List Accounts
 *AccountsApi* | [**ApiAccountsIdEulaPut**](docs/AccountsApi.md#apiaccountsideulaput) | **Put** /api/accounts/{id}/eula | Accept EULA
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsDelete**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsdelete) | **Delete** /api/projects/{id}/role-bindings | Delete ProjectRoleBinding
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsget) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
+*ProjectRoleBindingsApi* | [**ApiUsersIdTenantsTenantidProjectRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiusersidtenantstenantidprojectrolebindingsget) | **Get** /api/users/{id}/tenants/{tenantid}/project-role-bindings | List User&#39;s ProjectRoleBindings
 *ProjectsApi* | [**ApiProjectsIdGet**](docs/ProjectsApi.md#apiprojectsidget) | **Get** /api/projects/{id} | Get Project
 *ProjectsApi* | [**ApiProjectsIdPatch**](docs/ProjectsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
 *ProjectsApi* | [**ApiProjectsIdUsersGet**](docs/ProjectsApi.md#apiprojectsidusersget) | **Get** /api/projects/{id}/users | List Project Users
@@ -202,6 +203,7 @@ Class | Method | HTTP request | Description
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsDelete**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsdelete) | **Delete** /api/tenants/{id}/role-bindings | Delete TenantRoleBinding
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsget) | **Get** /api/tenants/{id}/role-bindings | List TenantRoleBindings
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
+*TenantRoleBindingsApi* | [**ApiUsersIdAccountsAccountidTenantRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apiusersidaccountsaccountidtenantrolebindingsget) | **Get** /api/users/{id}/accounts/{accountid}/tenant-role-bindings | List User&#39;s TenantRoleBindings
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
 *TenantsApi* | [**ApiAccountsIdTenantsPost**](docs/TenantsApi.md#apiaccountsidtenantspost) | **Post** /api/accounts/{id}/tenants | Create Tenant
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant

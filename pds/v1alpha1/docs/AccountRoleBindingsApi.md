@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ApiAccountsIdRoleBindingsDelete**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsDelete) | **Delete** /api/accounts/{id}/role-bindings | Delete AccountRoleBinding
 [**ApiAccountsIdRoleBindingsGet**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsGet) | **Get** /api/accounts/{id}/role-bindings | List AccountRoleBinding
 [**ApiAccountsIdRoleBindingsPut**](AccountRoleBindingsApi.md#ApiAccountsIdRoleBindingsPut) | **Put** /api/accounts/{id}/role-bindings | Create/Update AccountRoleBinding
-[**ApiUsersIdAccountRoleBindingsGet**](AccountRoleBindingsApi.md#ApiUsersIdAccountRoleBindingsGet) | **Get** /api/users/{id}/account-role-bindings | List AccountRoleBindings of a given user
+[**ApiUsersIdAccountRoleBindingsGet**](AccountRoleBindingsApi.md#ApiUsersIdAccountRoleBindingsGet) | **Get** /api/users/{id}/account-role-bindings | List User&#39;s AccountRoleBindings
 
 
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 > ControllersPaginatedAccountRoleBindings ApiUsersIdAccountRoleBindingsGet(ctx, id).SortBy(sortBy).RoleName(roleName).Execute()
 
-List AccountRoleBindings of a given user
+List User's AccountRoleBindings
 
 
 
@@ -325,7 +325,7 @@ import (
 func main() {
     id := "id_example" // string | User ID (must be valid UUID)
     sortBy := "sortBy_example" // string | A given AccountRoleBinding attribute to sort results by (allowed: role_name) (optional)
-    roleName := "roleName_example" // string | Filter results by AccountRoleBinding assigned role_name (optional)
+    roleName := "roleName_example" // string | Filter results by role_name (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **sortBy** | **string** | A given AccountRoleBinding attribute to sort results by (allowed: role_name) | 
- **roleName** | **string** | Filter results by AccountRoleBinding assigned role_name | 
+ **roleName** | **string** | Filter results by role_name | 
 
 ### Return type
 

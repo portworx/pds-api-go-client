@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiProjectsIdRoleBindingsDelete**](ProjectRoleBindingsApi.md#ApiProjectsIdRoleBindingsDelete) | **Delete** /api/projects/{id}/role-bindings | Delete ProjectRoleBinding
 [**ApiProjectsIdRoleBindingsGet**](ProjectRoleBindingsApi.md#ApiProjectsIdRoleBindingsGet) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 [**ApiProjectsIdRoleBindingsPut**](ProjectRoleBindingsApi.md#ApiProjectsIdRoleBindingsPut) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
+[**ApiUsersIdTenantsTenantidProjectRoleBindingsGet**](ProjectRoleBindingsApi.md#ApiUsersIdTenantsTenantidProjectRoleBindingsGet) | **Get** /api/users/{id}/tenants/{tenantid}/project-role-bindings | List User&#39;s ProjectRoleBindings
 
 
 
@@ -294,6 +295,83 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiUsersIdTenantsTenantidProjectRoleBindingsGet
+
+> ControllersPaginatedProjectRoleBindings ApiUsersIdTenantsTenantidProjectRoleBindingsGet(ctx, id, tenantid).SortBy(sortBy).RoleName(roleName).Execute()
+
+List User's ProjectRoleBindings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | User ID (must be valid UUID)
+    tenantid := "tenantid_example" // string | Tenant ID (must be valid UUID)
+    sortBy := "sortBy_example" // string | A given ProjectRoleBinding attribute to sort results by (allowed: role_name) (optional)
+    roleName := "roleName_example" // string | Filter results by role_name (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectRoleBindingsApi.ApiUsersIdTenantsTenantidProjectRoleBindingsGet(context.Background(), id, tenantid).SortBy(sortBy).RoleName(roleName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectRoleBindingsApi.ApiUsersIdTenantsTenantidProjectRoleBindingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiUsersIdTenantsTenantidProjectRoleBindingsGet`: ControllersPaginatedProjectRoleBindings
+    fmt.Fprintf(os.Stdout, "Response from `ProjectRoleBindingsApi.ApiUsersIdTenantsTenantidProjectRoleBindingsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | User ID (must be valid UUID) | 
+**tenantid** | **string** | Tenant ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiUsersIdTenantsTenantidProjectRoleBindingsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **sortBy** | **string** | A given ProjectRoleBinding attribute to sort results by (allowed: role_name) | 
+ **roleName** | **string** | Filter results by role_name | 
+
+### Return type
+
+[**ControllersPaginatedProjectRoleBindings**](ControllersPaginatedProjectRoleBindings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
