@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**ApiNamespacesIdDelete**](docs/NamespacesApi.md#apinamespacesiddelete) | **Delete** /api/namespaces/{id} | Delete Namespace
 *NamespacesApi* | [**ApiNamespacesIdGet**](docs/NamespacesApi.md#apinamespacesidget) | **Get** /api/namespaces/{id} | Get Namespace
 *NamespacesApi* | [**ApiNamespacesIdPut**](docs/NamespacesApi.md#apinamespacesidput) | **Put** /api/namespaces/{id} | Update namespace
+*ProjectRoleBindingsApi* | [**ApiProjectsIdInvitationsPost**](docs/ProjectRoleBindingsApi.md#apiprojectsidinvitationspost) | **Post** /api/projects/{id}/invitations | Create Project Invitation
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsDelete**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsdelete) | **Delete** /api/projects/{id}/role-bindings | Delete ProjectRoleBinding
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsget) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
@@ -197,6 +198,7 @@ Class | Method | HTTP request | Description
 *StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesPost**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatespost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplates
 *TasksApi* | [**ApiDbTasksIdGet**](docs/TasksApi.md#apidbtasksidget) | **Get** /api/db-tasks/{id} | Get Task
 *TeamsApi* | [**ApiTeamsIdGet**](docs/TeamsApi.md#apiteamsidget) | **Get** /api/teams/{id} | Get Team
+*TenantRoleBindingsApi* | [**ApiTenantsIdInvitationsPost**](docs/TenantRoleBindingsApi.md#apitenantsidinvitationspost) | **Post** /api/tenants/{id}/invitations | Create Tenant Invitation
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsDelete**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsdelete) | **Delete** /api/tenants/{id}/role-bindings | Delete TenantRoleBinding
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsget) | **Get** /api/tenants/{id}/role-bindings | List TenantRoleBindings
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding

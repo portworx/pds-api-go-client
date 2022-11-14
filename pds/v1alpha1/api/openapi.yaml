@@ -2481,6 +2481,42 @@ paths:
       tags:
       - Deployments
       x-codegen-request-body-name: body
+  /api/projects/{id}/invitations:
+    post:
+      description: Adds project role binding to existing user.
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.invitationRequest'
+        description: Request body containing the invitation details.
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: The project role binding has been created.
+        "400":
+          content: {}
+          description: The request doesn't contain valid invitation details.
+        "404":
+          content: {}
+          description: The user with specified email doesn't exist.
+        "422":
+          content: {}
+          description: The user is already assigned to this project.
+      security:
+      - ApiKeyAuth: []
+      summary: Create Project Invitation
+      tags:
+      - ProjectRoleBindings
+      x-codegen-request-body-name: Body
   /api/projects/{id}/role-bindings:
     delete:
       description: Removes a single ProjectRoleBinding
@@ -3369,6 +3405,42 @@ paths:
       summary: Get DNS details for Tenant
       tags:
       - Tenants
+  /api/tenants/{id}/invitations:
+    post:
+      description: Adds tenant role binding to existing user.
+      parameters:
+      - description: Tenant ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.invitationRequest'
+        description: Request body containing the invitation details.
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: The tenant role binding has been created.
+        "400":
+          content: {}
+          description: The request doesn't contain valid invitation details.
+        "404":
+          content: {}
+          description: The user with specified email doesn't exist.
+        "422":
+          content: {}
+          description: The user is already assigned to this tenant.
+      security:
+      - ApiKeyAuth: []
+      summary: Create Tenant Invitation
+      tags:
+      - TenantRoleBindings
+      x-codegen-request-body-name: Body
   /api/tenants/{id}/projects:
     get:
       description: Lists Projects belonging to the Tenant.
