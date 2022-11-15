@@ -171,8 +171,10 @@ Class | Method | HTTP request | Description
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsget) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
 *ProjectRoleBindingsApi* | [**ApiUsersIdTenantsTenantidProjectRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiusersidtenantstenantidprojectrolebindingsget) | **Get** /api/users/{id}/tenants/{tenantid}/project-role-bindings | List User&#39;s ProjectRoleBindings
+*ProjectsApi* | [**ApiProjectsIdAssignDeploymentTargetsPost**](docs/ProjectsApi.md#apiprojectsidassigndeploymenttargetspost) | **Post** /api/projects/{id}/assign-deployment-targets | Assign Deployment Targets to Project
 *ProjectsApi* | [**ApiProjectsIdGet**](docs/ProjectsApi.md#apiprojectsidget) | **Get** /api/projects/{id} | Get Project
 *ProjectsApi* | [**ApiProjectsIdPatch**](docs/ProjectsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
+*ProjectsApi* | [**ApiProjectsIdUnassignDeploymentTargetsPost**](docs/ProjectsApi.md#apiprojectsidunassigndeploymenttargetspost) | **Post** /api/projects/{id}/unassign-deployment-targets | Unassign Deployment Targets from Project
 *ProjectsApi* | [**ApiProjectsIdUsersGet**](docs/ProjectsApi.md#apiprojectsidusersget) | **Get** /api/projects/{id}/users | List Project Users
 *ProjectsApi* | [**ApiTenantsIdProjectsGet**](docs/ProjectsApi.md#apitenantsidprojectsget) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
 *ProjectsApi* | [**ApiTenantsIdProjectsPost**](docs/ProjectsApi.md#apitenantsidprojectspost) | **Post** /api/tenants/{id}/projects | Create Project
@@ -377,6 +379,7 @@ Class | Method | HTTP request | Description
  - [RequestsCreateTenantRequest](docs/RequestsCreateTenantRequest.md)
  - [RequestsCreateUserAPIKeyRequest](docs/RequestsCreateUserAPIKeyRequest.md)
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
+ - [RequestsDeploymentTargetIDArrayRequest](docs/RequestsDeploymentTargetIDArrayRequest.md)
  - [RequestsInvitationAccountRequest](docs/RequestsInvitationAccountRequest.md)
  - [RequestsInvitationProjectRequest](docs/RequestsInvitationProjectRequest.md)
  - [RequestsInvitationTenantRequest](docs/RequestsInvitationTenantRequest.md)
