@@ -190,7 +190,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.invitationRequest'
+              $ref: '#/components/schemas/requests.InvitationAccountRequest'
         description: Request body containing the invitation details.
         required: true
       responses:
@@ -2495,7 +2495,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.invitationRequest'
+              $ref: '#/components/schemas/requests.InvitationProjectRequest'
         description: Request body containing the invitation details.
         required: true
       responses:
@@ -3419,7 +3419,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.invitationRequest'
+              $ref: '#/components/schemas/requests.InvitationTenantRequest'
         description: Request body containing the invitation details.
         required: true
       responses:
@@ -6249,13 +6249,6 @@ components:
             $ref: '#/components/schemas/deployments.ResourceEvents'
           type: array
       type: object
-    controllers.invitationRequest:
-      properties:
-        email:
-          type: string
-        role_name:
-          type: string
-      type: object
     controllers.updateBackupCredentialsRequest:
       properties:
         credentials:
@@ -8207,6 +8200,27 @@ components:
         actor_id:
           type: string
         actor_type:
+          type: string
+      type: object
+    requests.InvitationAccountRequest:
+      properties:
+        email:
+          type: string
+        role_name:
+          type: string
+      type: object
+    requests.InvitationProjectRequest:
+      properties:
+        email:
+          type: string
+        role_name:
+          type: string
+      type: object
+    requests.InvitationTenantRequest:
+      properties:
+        email:
+          type: string
+        role_name:
           type: string
       type: object
     requests.PatchProjectRequest:

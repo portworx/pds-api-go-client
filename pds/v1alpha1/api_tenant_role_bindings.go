@@ -31,11 +31,11 @@ type ApiApiTenantsIdInvitationsPostRequest struct {
 	ctx context.Context
 	ApiService *TenantRoleBindingsApiService
 	id string
-	body *ControllersInvitationRequest
+	body *RequestsInvitationTenantRequest
 }
 
 // Request body containing the invitation details.
-func (r ApiApiTenantsIdInvitationsPostRequest) Body(body ControllersInvitationRequest) ApiApiTenantsIdInvitationsPostRequest {
+func (r ApiApiTenantsIdInvitationsPostRequest) Body(body RequestsInvitationTenantRequest) ApiApiTenantsIdInvitationsPostRequest {
 	r.body = &body
 	return r
 }

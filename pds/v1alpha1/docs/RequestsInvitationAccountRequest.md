@@ -1,4 +1,4 @@
-# ControllersInvitationRequest
+# RequestsInvitationAccountRequest
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewControllersInvitationRequest
+### NewRequestsInvitationAccountRequest
 
-`func NewControllersInvitationRequest() *ControllersInvitationRequest`
+`func NewRequestsInvitationAccountRequest() *RequestsInvitationAccountRequest`
 
-NewControllersInvitationRequest instantiates a new ControllersInvitationRequest object
+NewRequestsInvitationAccountRequest instantiates a new RequestsInvitationAccountRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersInvitationRequestWithDefaults
+### NewRequestsInvitationAccountRequestWithDefaults
 
-`func NewControllersInvitationRequestWithDefaults() *ControllersInvitationRequest`
+`func NewRequestsInvitationAccountRequestWithDefaults() *RequestsInvitationAccountRequest`
 
-NewControllersInvitationRequestWithDefaults instantiates a new ControllersInvitationRequest object
+NewRequestsInvitationAccountRequestWithDefaults instantiates a new RequestsInvitationAccountRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetEmail
 
-`func (o *ControllersInvitationRequest) GetEmail() string`
+`func (o *RequestsInvitationAccountRequest) GetEmail() string`
 
 GetEmail returns the Email field if non-nil, zero value otherwise.
 
 ### GetEmailOk
 
-`func (o *ControllersInvitationRequest) GetEmailOk() (*string, bool)`
+`func (o *RequestsInvitationAccountRequest) GetEmailOk() (*string, bool)`
 
 GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEmail
 
-`func (o *ControllersInvitationRequest) SetEmail(v string)`
+`func (o *RequestsInvitationAccountRequest) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
 
 ### HasEmail
 
-`func (o *ControllersInvitationRequest) HasEmail() bool`
+`func (o *RequestsInvitationAccountRequest) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
 
 ### GetRoleName
 
-`func (o *ControllersInvitationRequest) GetRoleName() string`
+`func (o *RequestsInvitationAccountRequest) GetRoleName() string`
 
 GetRoleName returns the RoleName field if non-nil, zero value otherwise.
 
 ### GetRoleNameOk
 
-`func (o *ControllersInvitationRequest) GetRoleNameOk() (*string, bool)`
+`func (o *RequestsInvitationAccountRequest) GetRoleNameOk() (*string, bool)`
 
 GetRoleNameOk returns a tuple with the RoleName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoleName
 
-`func (o *ControllersInvitationRequest) SetRoleName(v string)`
+`func (o *RequestsInvitationAccountRequest) SetRoleName(v string)`
 
 SetRoleName sets RoleName field to given value.
 
 ### HasRoleName
 
-`func (o *ControllersInvitationRequest) HasRoleName() bool`
+`func (o *RequestsInvitationAccountRequest) HasRoleName() bool`
 
 HasRoleName returns a boolean if a field has been set.
 

@@ -34,7 +34,7 @@ import (
 
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
-    body := *openapiclient.NewControllersInvitationRequest() // ControllersInvitationRequest | Request body containing the invitation details.
+    body := *openapiclient.NewRequestsInvitationProjectRequest() // RequestsInvitationProjectRequest | Request body containing the invitation details.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -62,7 +62,7 @@ Other parameters are passed through a pointer to a apiApiProjectsIdInvitationsPo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersInvitationRequest**](ControllersInvitationRequest.md) | Request body containing the invitation details. | 
+ **body** | [**RequestsInvitationProjectRequest**](RequestsInvitationProjectRequest.md) | Request body containing the invitation details. | 
 
 ### Return type
 

@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersInvitationRequest struct for ControllersInvitationRequest
-type ControllersInvitationRequest struct {
+// RequestsInvitationAccountRequest struct for RequestsInvitationAccountRequest
+type RequestsInvitationAccountRequest struct {
 	Email *string `json:"email,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
 }
 
-// NewControllersInvitationRequest instantiates a new ControllersInvitationRequest object
+// NewRequestsInvitationAccountRequest instantiates a new RequestsInvitationAccountRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersInvitationRequest() *ControllersInvitationRequest {
-	this := ControllersInvitationRequest{}
+func NewRequestsInvitationAccountRequest() *RequestsInvitationAccountRequest {
+	this := RequestsInvitationAccountRequest{}
 	return &this
 }
 
-// NewControllersInvitationRequestWithDefaults instantiates a new ControllersInvitationRequest object
+// NewRequestsInvitationAccountRequestWithDefaults instantiates a new RequestsInvitationAccountRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersInvitationRequestWithDefaults() *ControllersInvitationRequest {
-	this := ControllersInvitationRequest{}
+func NewRequestsInvitationAccountRequestWithDefaults() *RequestsInvitationAccountRequest {
+	this := RequestsInvitationAccountRequest{}
 	return &this
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
-func (o *ControllersInvitationRequest) GetEmail() string {
+func (o *RequestsInvitationAccountRequest) GetEmail() string {
 	if o == nil || o.Email == nil {
 		var ret string
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersInvitationRequest) GetEmail() string {
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersInvitationRequest) GetEmailOk() (*string, bool) {
+func (o *RequestsInvitationAccountRequest) GetEmailOk() (*string, bool) {
 	if o == nil || o.Email == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersInvitationRequest) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *ControllersInvitationRequest) HasEmail() bool {
+func (o *RequestsInvitationAccountRequest) HasEmail() bool {
 	if o != nil && o.Email != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersInvitationRequest) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given string and assigns it to the Email field.
-func (o *ControllersInvitationRequest) SetEmail(v string) {
+func (o *RequestsInvitationAccountRequest) SetEmail(v string) {
 	o.Email = &v
 }
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
-func (o *ControllersInvitationRequest) GetRoleName() string {
+func (o *RequestsInvitationAccountRequest) GetRoleName() string {
 	if o == nil || o.RoleName == nil {
 		var ret string
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersInvitationRequest) GetRoleName() string {
 
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersInvitationRequest) GetRoleNameOk() (*string, bool) {
+func (o *RequestsInvitationAccountRequest) GetRoleNameOk() (*string, bool) {
 	if o == nil || o.RoleName == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersInvitationRequest) GetRoleNameOk() (*string, bool) {
 }
 
 // HasRoleName returns a boolean if a field has been set.
-func (o *ControllersInvitationRequest) HasRoleName() bool {
+func (o *RequestsInvitationAccountRequest) HasRoleName() bool {
 	if o != nil && o.RoleName != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersInvitationRequest) HasRoleName() bool {
 }
 
 // SetRoleName gets a reference to the given string and assigns it to the RoleName field.
-func (o *ControllersInvitationRequest) SetRoleName(v string) {
+func (o *RequestsInvitationAccountRequest) SetRoleName(v string) {
 	o.RoleName = &v
 }
 
-func (o ControllersInvitationRequest) MarshalJSON() ([]byte, error) {
+func (o RequestsInvitationAccountRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
@@ -112,38 +112,38 @@ func (o ControllersInvitationRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersInvitationRequest struct {
-	value *ControllersInvitationRequest
+type NullableRequestsInvitationAccountRequest struct {
+	value *RequestsInvitationAccountRequest
 	isSet bool
 }
 
-func (v NullableControllersInvitationRequest) Get() *ControllersInvitationRequest {
+func (v NullableRequestsInvitationAccountRequest) Get() *RequestsInvitationAccountRequest {
 	return v.value
 }
 
-func (v *NullableControllersInvitationRequest) Set(val *ControllersInvitationRequest) {
+func (v *NullableRequestsInvitationAccountRequest) Set(val *RequestsInvitationAccountRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersInvitationRequest) IsSet() bool {
+func (v NullableRequestsInvitationAccountRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersInvitationRequest) Unset() {
+func (v *NullableRequestsInvitationAccountRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersInvitationRequest(val *ControllersInvitationRequest) *NullableControllersInvitationRequest {
-	return &NullableControllersInvitationRequest{value: val, isSet: true}
+func NewNullableRequestsInvitationAccountRequest(val *RequestsInvitationAccountRequest) *NullableRequestsInvitationAccountRequest {
+	return &NullableRequestsInvitationAccountRequest{value: val, isSet: true}
 }
 
-func (v NullableControllersInvitationRequest) MarshalJSON() ([]byte, error) {
+func (v NullableRequestsInvitationAccountRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersInvitationRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableRequestsInvitationAccountRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
