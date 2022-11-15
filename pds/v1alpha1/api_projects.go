@@ -27,6 +27,124 @@ var (
 // ProjectsApiService ProjectsApi service
 type ProjectsApiService service
 
+type ApiApiProjectsIdAssignBackupTargetsPostRequest struct {
+	ctx context.Context
+	ApiService *ProjectsApiService
+	id string
+	body *RequestsBackupTargetIDArrayRequest
+}
+
+// Request body containing the backup target IDs to assign to the project.
+func (r ApiApiProjectsIdAssignBackupTargetsPostRequest) Body(body RequestsBackupTargetIDArrayRequest) ApiApiProjectsIdAssignBackupTargetsPostRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiApiProjectsIdAssignBackupTargetsPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ApiProjectsIdAssignBackupTargetsPostExecute(r)
+}
+
+/*
+ApiProjectsIdAssignBackupTargetsPost Assign Backup Targets to Project
+
+Assigns backup targets to a project.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Project ID (must be valid UUID)
+ @return ApiApiProjectsIdAssignBackupTargetsPostRequest
+*/
+func (a *ProjectsApiService) ApiProjectsIdAssignBackupTargetsPost(ctx context.Context, id string) ApiApiProjectsIdAssignBackupTargetsPostRequest {
+	return ApiApiProjectsIdAssignBackupTargetsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ProjectsApiService) ApiProjectsIdAssignBackupTargetsPostExecute(r ApiApiProjectsIdAssignBackupTargetsPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ApiProjectsIdAssignBackupTargetsPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/projects/{id}/assign-backup-targets"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiApiProjectsIdAssignDeploymentTargetsPostRequest struct {
 	ctx context.Context
 	ApiService *ProjectsApiService
@@ -390,6 +508,124 @@ func (a *ProjectsApiService) ApiProjectsIdPatchExecute(r ApiApiProjectsIdPatchRe
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiProjectsIdUnassignBackupTargetsPostRequest struct {
+	ctx context.Context
+	ApiService *ProjectsApiService
+	id string
+	body *RequestsBackupTargetIDArrayRequest
+}
+
+// Request body containing the backup target IDs to unassign from the project.
+func (r ApiApiProjectsIdUnassignBackupTargetsPostRequest) Body(body RequestsBackupTargetIDArrayRequest) ApiApiProjectsIdUnassignBackupTargetsPostRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiApiProjectsIdUnassignBackupTargetsPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ApiProjectsIdUnassignBackupTargetsPostExecute(r)
+}
+
+/*
+ApiProjectsIdUnassignBackupTargetsPost Unassign Backup Targets from Project
+
+Unassigns backup targets from a project.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Project ID (must be valid UUID)
+ @return ApiApiProjectsIdUnassignBackupTargetsPostRequest
+*/
+func (a *ProjectsApiService) ApiProjectsIdUnassignBackupTargetsPost(ctx context.Context, id string) ApiApiProjectsIdUnassignBackupTargetsPostRequest {
+	return ApiApiProjectsIdUnassignBackupTargetsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ProjectsApiService) ApiProjectsIdUnassignBackupTargetsPostExecute(r ApiApiProjectsIdUnassignBackupTargetsPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ApiProjectsIdUnassignBackupTargetsPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/projects/{id}/unassign-backup-targets"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiApiProjectsIdUnassignDeploymentTargetsPostRequest struct {

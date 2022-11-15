@@ -4,15 +4,87 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ApiProjectsIdAssignBackupTargetsPost**](ProjectsApi.md#ApiProjectsIdAssignBackupTargetsPost) | **Post** /api/projects/{id}/assign-backup-targets | Assign Backup Targets to Project
 [**ApiProjectsIdAssignDeploymentTargetsPost**](ProjectsApi.md#ApiProjectsIdAssignDeploymentTargetsPost) | **Post** /api/projects/{id}/assign-deployment-targets | Assign Deployment Targets to Project
 [**ApiProjectsIdGet**](ProjectsApi.md#ApiProjectsIdGet) | **Get** /api/projects/{id} | Get Project
 [**ApiProjectsIdPatch**](ProjectsApi.md#ApiProjectsIdPatch) | **Patch** /api/projects/{id} | Patch Project
+[**ApiProjectsIdUnassignBackupTargetsPost**](ProjectsApi.md#ApiProjectsIdUnassignBackupTargetsPost) | **Post** /api/projects/{id}/unassign-backup-targets | Unassign Backup Targets from Project
 [**ApiProjectsIdUnassignDeploymentTargetsPost**](ProjectsApi.md#ApiProjectsIdUnassignDeploymentTargetsPost) | **Post** /api/projects/{id}/unassign-deployment-targets | Unassign Deployment Targets from Project
 [**ApiProjectsIdUsersGet**](ProjectsApi.md#ApiProjectsIdUsersGet) | **Get** /api/projects/{id}/users | List Project Users
 [**ApiTenantsIdProjectsGet**](ProjectsApi.md#ApiTenantsIdProjectsGet) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
 [**ApiTenantsIdProjectsPost**](ProjectsApi.md#ApiTenantsIdProjectsPost) | **Post** /api/tenants/{id}/projects | Create Project
 [**ApiUsersIdTenantsTenantidProjectsGet**](ProjectsApi.md#ApiUsersIdTenantsTenantidProjectsGet) | **Get** /api/users/{id}/tenants/{tenantid}/projects | List User&#39;s Projects
 
+
+
+## ApiProjectsIdAssignBackupTargetsPost
+
+> ApiProjectsIdAssignBackupTargetsPost(ctx, id).Body(body).Execute()
+
+Assign Backup Targets to Project
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    body := *openapiclient.NewRequestsBackupTargetIDArrayRequest() // RequestsBackupTargetIDArrayRequest | Request body containing the backup target IDs to assign to the project.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectsApi.ApiProjectsIdAssignBackupTargetsPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiProjectsIdAssignBackupTargetsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdAssignBackupTargetsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsBackupTargetIDArrayRequest**](RequestsBackupTargetIDArrayRequest.md) | Request body containing the backup target IDs to assign to the project. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ApiProjectsIdAssignDeploymentTargetsPost
@@ -221,6 +293,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectsIdUnassignBackupTargetsPost
+
+> ApiProjectsIdUnassignBackupTargetsPost(ctx, id).Body(body).Execute()
+
+Unassign Backup Targets from Project
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    body := *openapiclient.NewRequestsBackupTargetIDArrayRequest() // RequestsBackupTargetIDArrayRequest | Request body containing the backup target IDs to unassign from the project.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectsApi.ApiProjectsIdUnassignBackupTargetsPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ApiProjectsIdUnassignBackupTargetsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdUnassignBackupTargetsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsBackupTargetIDArrayRequest**](RequestsBackupTargetIDArrayRequest.md) | Request body containing the backup target IDs to unassign from the project. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

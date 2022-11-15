@@ -2239,6 +2239,34 @@ paths:
       tags:
       - Projects
       x-codegen-request-body-name: body
+  /api/projects/{id}/assign-backup-targets:
+    post:
+      description: Assigns backup targets to a project.
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.BackupTargetIDArrayRequest'
+        description: Request body containing the backup target IDs to assign to the
+          project.
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Assign Backup Targets to Project
+      tags:
+      - Projects
+      x-codegen-request-body-name: Body
   /api/projects/{id}/assign-deployment-targets:
     post:
       description: Assigns deployment targets to a project.
@@ -2643,6 +2671,34 @@ paths:
       tags:
       - ProjectRoleBindings
       x-codegen-request-body-name: body
+  /api/projects/{id}/unassign-backup-targets:
+    post:
+      description: Unassigns backup targets from a project.
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.BackupTargetIDArrayRequest'
+        description: Request body containing the backup target IDs to unassign from
+          the project.
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Unassign Backup Targets from Project
+      tags:
+      - Projects
+      x-codegen-request-body-name: Body
   /api/projects/{id}/unassign-deployment-targets:
     post:
       description: Unassigns deployment targets from a project.
@@ -8226,6 +8282,13 @@ components:
         name:
           type: string
         permissions:
+          items:
+            type: string
+          type: array
+      type: object
+    requests.BackupTargetIDArrayRequest:
+      properties:
+        backup_target_ids:
           items:
             type: string
           type: array
