@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersPaginatedServiceAccounts struct for ControllersPaginatedServiceAccounts
-type ControllersPaginatedServiceAccounts struct {
+// ModelsPaginatedResultModelsServiceAccount struct for ModelsPaginatedResultModelsServiceAccount
+type ModelsPaginatedResultModelsServiceAccount struct {
 	Data []ModelsServiceAccount `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
-// NewControllersPaginatedServiceAccounts instantiates a new ControllersPaginatedServiceAccounts object
+// NewModelsPaginatedResultModelsServiceAccount instantiates a new ModelsPaginatedResultModelsServiceAccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersPaginatedServiceAccounts() *ControllersPaginatedServiceAccounts {
-	this := ControllersPaginatedServiceAccounts{}
+func NewModelsPaginatedResultModelsServiceAccount() *ModelsPaginatedResultModelsServiceAccount {
+	this := ModelsPaginatedResultModelsServiceAccount{}
 	return &this
 }
 
-// NewControllersPaginatedServiceAccountsWithDefaults instantiates a new ControllersPaginatedServiceAccounts object
+// NewModelsPaginatedResultModelsServiceAccountWithDefaults instantiates a new ModelsPaginatedResultModelsServiceAccount object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersPaginatedServiceAccountsWithDefaults() *ControllersPaginatedServiceAccounts {
-	this := ControllersPaginatedServiceAccounts{}
+func NewModelsPaginatedResultModelsServiceAccountWithDefaults() *ModelsPaginatedResultModelsServiceAccount {
+	this := ModelsPaginatedResultModelsServiceAccount{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedServiceAccounts) GetData() []ModelsServiceAccount {
+func (o *ModelsPaginatedResultModelsServiceAccount) GetData() []ModelsServiceAccount {
 	if o == nil || o.Data == nil {
 		var ret []ModelsServiceAccount
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersPaginatedServiceAccounts) GetData() []ModelsServiceAccount {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedServiceAccounts) GetDataOk() ([]ModelsServiceAccount, bool) {
+func (o *ModelsPaginatedResultModelsServiceAccount) GetDataOk() ([]ModelsServiceAccount, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersPaginatedServiceAccounts) GetDataOk() ([]ModelsServiceAccoun
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *ControllersPaginatedServiceAccounts) HasData() bool {
+func (o *ModelsPaginatedResultModelsServiceAccount) HasData() bool {
 	if o != nil && o.Data != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersPaginatedServiceAccounts) HasData() bool {
 }
 
 // SetData gets a reference to the given []ModelsServiceAccount and assigns it to the Data field.
-func (o *ControllersPaginatedServiceAccounts) SetData(v []ModelsServiceAccount) {
+func (o *ModelsPaginatedResultModelsServiceAccount) SetData(v []ModelsServiceAccount) {
 	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *ControllersPaginatedServiceAccounts) GetPagination() ConstraintPagination {
+func (o *ModelsPaginatedResultModelsServiceAccount) GetPagination() ConstraintPagination {
 	if o == nil || o.Pagination == nil {
 		var ret ConstraintPagination
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersPaginatedServiceAccounts) GetPagination() ConstraintPaginati
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedServiceAccounts) GetPaginationOk() (*ConstraintPagination, bool) {
+func (o *ModelsPaginatedResultModelsServiceAccount) GetPaginationOk() (*ConstraintPagination, bool) {
 	if o == nil || o.Pagination == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersPaginatedServiceAccounts) GetPaginationOk() (*ConstraintPagi
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *ControllersPaginatedServiceAccounts) HasPagination() bool {
+func (o *ModelsPaginatedResultModelsServiceAccount) HasPagination() bool {
 	if o != nil && o.Pagination != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersPaginatedServiceAccounts) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given ConstraintPagination and assigns it to the Pagination field.
-func (o *ControllersPaginatedServiceAccounts) SetPagination(v ConstraintPagination) {
+func (o *ModelsPaginatedResultModelsServiceAccount) SetPagination(v ConstraintPagination) {
 	o.Pagination = &v
 }
 
-func (o ControllersPaginatedServiceAccounts) MarshalJSON() ([]byte, error) {
+func (o ModelsPaginatedResultModelsServiceAccount) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -112,38 +112,38 @@ func (o ControllersPaginatedServiceAccounts) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersPaginatedServiceAccounts struct {
-	value *ControllersPaginatedServiceAccounts
+type NullableModelsPaginatedResultModelsServiceAccount struct {
+	value *ModelsPaginatedResultModelsServiceAccount
 	isSet bool
 }
 
-func (v NullableControllersPaginatedServiceAccounts) Get() *ControllersPaginatedServiceAccounts {
+func (v NullableModelsPaginatedResultModelsServiceAccount) Get() *ModelsPaginatedResultModelsServiceAccount {
 	return v.value
 }
 
-func (v *NullableControllersPaginatedServiceAccounts) Set(val *ControllersPaginatedServiceAccounts) {
+func (v *NullableModelsPaginatedResultModelsServiceAccount) Set(val *ModelsPaginatedResultModelsServiceAccount) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersPaginatedServiceAccounts) IsSet() bool {
+func (v NullableModelsPaginatedResultModelsServiceAccount) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersPaginatedServiceAccounts) Unset() {
+func (v *NullableModelsPaginatedResultModelsServiceAccount) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersPaginatedServiceAccounts(val *ControllersPaginatedServiceAccounts) *NullableControllersPaginatedServiceAccounts {
-	return &NullableControllersPaginatedServiceAccounts{value: val, isSet: true}
+func NewNullableModelsPaginatedResultModelsServiceAccount(val *ModelsPaginatedResultModelsServiceAccount) *NullableModelsPaginatedResultModelsServiceAccount {
+	return &NullableModelsPaginatedResultModelsServiceAccount{value: val, isSet: true}
 }
 
-func (v NullableControllersPaginatedServiceAccounts) MarshalJSON() ([]byte, error) {
+func (v NullableModelsPaginatedResultModelsServiceAccount) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersPaginatedServiceAccounts) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsPaginatedResultModelsServiceAccount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

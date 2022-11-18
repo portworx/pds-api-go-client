@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdDeploymentsGet
 
-> ControllersPaginatedDeployments ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
+> ModelsPaginatedResultModelsDeployment ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
 
 List Project's Deployments
 
@@ -551,7 +551,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdDeploymentsGet`: ControllersPaginatedDeployments
+    // response from `ApiProjectsIdDeploymentsGet`: ModelsPaginatedResultModelsDeployment
     fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiProjectsIdDeploymentsGet`: %v\n", resp)
 }
 ```
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedDeployments**](ControllersPaginatedDeployments.md)
+[**ModelsPaginatedResultModelsDeployment**](ModelsPaginatedResultModelsDeployment.md)
 
 ### Authorization
 

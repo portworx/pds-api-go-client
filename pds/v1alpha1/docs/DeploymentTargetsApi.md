@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdDeploymentTargetsGet
 
-> ControllersPaginatedDeploymentTargets ApiProjectsIdDeploymentTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
+> ModelsPaginatedResultModelsDeploymentTarget ApiProjectsIdDeploymentTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
 
 List Project's DeploymentTargets
 
@@ -689,7 +689,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiProjectsIdDeploymentTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdDeploymentTargetsGet`: ControllersPaginatedDeploymentTargets
+    // response from `ApiProjectsIdDeploymentTargetsGet`: ModelsPaginatedResultModelsDeploymentTarget
     fmt.Fprintf(os.Stdout, "Response from `DeploymentTargetsApi.ApiProjectsIdDeploymentTargetsGet`: %v\n", resp)
 }
 ```
@@ -719,7 +719,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedDeploymentTargets**](ControllersPaginatedDeploymentTargets.md)
+[**ModelsPaginatedResultModelsDeploymentTarget**](ModelsPaginatedResultModelsDeploymentTarget.md)
 
 ### Authorization
 
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdDeploymentTargetsGet
 
-> ControllersPaginatedDeploymentTargets ApiTenantsIdDeploymentTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
+> ModelsPaginatedResultModelsDeploymentTarget ApiTenantsIdDeploymentTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterId(clusterId).Name(name).Execute()
 
 List Tenant's DeploymentTargets
 
@@ -771,7 +771,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdDeploymentTargetsGet`: ControllersPaginatedDeploymentTargets
+    // response from `ApiTenantsIdDeploymentTargetsGet`: ModelsPaginatedResultModelsDeploymentTarget
     fmt.Fprintf(os.Stdout, "Response from `DeploymentTargetsApi.ApiTenantsIdDeploymentTargetsGet`: %v\n", resp)
 }
 ```
@@ -801,7 +801,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedDeploymentTargets**](ControllersPaginatedDeploymentTargets.md)
+[**ModelsPaginatedResultModelsDeploymentTarget**](ModelsPaginatedResultModelsDeploymentTarget.md)
 
 ### Authorization
 

@@ -424,7 +424,7 @@ func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Provisioner(provisione
 	return r
 }
 
-func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Execute() (*ControllersPaginatedStorageOptionsTemplates, *http.Response, error) {
+func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Execute() (*ModelsPaginatedResultModelsStorageOptionsTemplate, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdStorageOptionsTemplatesGetExecute(r)
 }
 
@@ -446,13 +446,13 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedStorageOptionsTemplates
-func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesGetExecute(r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) (*ControllersPaginatedStorageOptionsTemplates, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsStorageOptionsTemplate
+func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesGetExecute(r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) (*ModelsPaginatedResultModelsStorageOptionsTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedStorageOptionsTemplates
+		localVarReturnValue  *ModelsPaginatedResultModelsStorageOptionsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageOptionsTemplatesApiService.ApiTenantsIdStorageOptionsTemplatesGet")

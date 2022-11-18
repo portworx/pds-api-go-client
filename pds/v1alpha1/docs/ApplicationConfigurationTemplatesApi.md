@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdApplicationConfigurationTemplatesGet
 
-> ControllersPaginatedApplicationConfigurationTemplates ApiTenantsIdApplicationConfigurationTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
+> ModelsPaginatedResultModelsApplicationConfigurationTemplate ApiTenantsIdApplicationConfigurationTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
 
 List ApplicationConfigurationTemplates
 
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdApplicationConfigurationTemplatesGet`: ControllersPaginatedApplicationConfigurationTemplates
+    // response from `ApiTenantsIdApplicationConfigurationTemplatesGet`: ModelsPaginatedResultModelsApplicationConfigurationTemplate
     fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationTemplatesApi.ApiTenantsIdApplicationConfigurationTemplatesGet`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedApplicationConfigurationTemplates**](ControllersPaginatedApplicationConfigurationTemplates.md)
+[**ModelsPaginatedResultModelsApplicationConfigurationTemplate**](ModelsPaginatedResultModelsApplicationConfigurationTemplate.md)
 
 ### Authorization
 

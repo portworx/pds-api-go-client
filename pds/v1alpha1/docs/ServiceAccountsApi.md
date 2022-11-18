@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdServiceAccountsGet
 
-> ControllersPaginatedServiceAccounts ApiTenantsIdServiceAccountsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Name(name).Id2(id2).Token(token).Execute()
+> ModelsPaginatedResultModelsServiceAccount ApiTenantsIdServiceAccountsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Name(name).Id2(id2).Token(token).Execute()
 
 List Tenant's ServiceAccounts
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ApiTenantsIdServiceAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdServiceAccountsGet`: ControllersPaginatedServiceAccounts
+    // response from `ApiTenantsIdServiceAccountsGet`: ModelsPaginatedResultModelsServiceAccount
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ApiTenantsIdServiceAccountsGet`: %v\n", resp)
 }
 ```
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedServiceAccounts**](ControllersPaginatedServiceAccounts.md)
+[**ModelsPaginatedResultModelsServiceAccount**](ModelsPaginatedResultModelsServiceAccount.md)
 
 ### Authorization
 

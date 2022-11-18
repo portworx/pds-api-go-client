@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## ApiDataServicesIdVersionsGet
 
-> ControllersPaginatedVersions ApiDataServicesIdVersionsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Enabled(enabled).Execute()
+> ModelsPaginatedResultModelsVersion ApiDataServicesIdVersionsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Enabled(enabled).Execute()
 
 List Data Service's Versions
 
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `VersionsApi.ApiDataServicesIdVersionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataServicesIdVersionsGet`: ControllersPaginatedVersions
+    // response from `ApiDataServicesIdVersionsGet`: ModelsPaginatedResultModelsVersion
     fmt.Fprintf(os.Stdout, "Response from `VersionsApi.ApiDataServicesIdVersionsGet`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedVersions**](ControllersPaginatedVersions.md)
+[**ModelsPaginatedResultModelsVersion**](ModelsPaginatedResultModelsVersion.md)
 
 ### Authorization
 

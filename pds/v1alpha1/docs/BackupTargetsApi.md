@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdBackupTargetsGet
 
-> ControllersPaginatedBackupTargets ApiProjectsIdBackupTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).DeploymentTargetId(deploymentTargetId).BackupCredentialsId(backupCredentialsId).Execute()
+> ModelsPaginatedResultModelsBackupTarget ApiProjectsIdBackupTargetsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).DeploymentTargetId(deploymentTargetId).BackupCredentialsId(backupCredentialsId).Execute()
 
 List Project's BackupTargets
 
@@ -417,7 +417,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiProjectsIdBackupTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdBackupTargetsGet`: ControllersPaginatedBackupTargets
+    // response from `ApiProjectsIdBackupTargetsGet`: ModelsPaginatedResultModelsBackupTarget
     fmt.Fprintf(os.Stdout, "Response from `BackupTargetsApi.ApiProjectsIdBackupTargetsGet`: %v\n", resp)
 }
 ```
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedBackupTargets**](ControllersPaginatedBackupTargets.md)
+[**ModelsPaginatedResultModelsBackupTarget**](ModelsPaginatedResultModelsBackupTarget.md)
 
 ### Authorization
 
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupTargetsGet
 
-> ControllersPaginatedBackupTargets ApiTenantsIdBackupTargetsGet(ctx, id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).BackupCredentialsId(backupCredentialsId).Execute()
+> ModelsPaginatedResultModelsBackupTarget ApiTenantsIdBackupTargetsGet(ctx, id).Limit(limit).Continuation(continuation).SortBy(sortBy).Id2(id2).Name(name).Type_(type_).Bucket(bucket).Region(region).BackupCredentialsId(backupCredentialsId).Execute()
 
 List Tenant's BackupTargets
 
@@ -506,7 +506,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupTargetsApi.ApiTenantsIdBackupTargetsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdBackupTargetsGet`: ControllersPaginatedBackupTargets
+    // response from `ApiTenantsIdBackupTargetsGet`: ModelsPaginatedResultModelsBackupTarget
     fmt.Fprintf(os.Stdout, "Response from `BackupTargetsApi.ApiTenantsIdBackupTargetsGet`: %v\n", resp)
 }
 ```
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedBackupTargets**](ControllersPaginatedBackupTargets.md)
+[**ModelsPaginatedResultModelsBackupTarget**](ModelsPaginatedResultModelsBackupTarget.md)
 
 ### Authorization
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## ApiBackupTargetsIdBackupsGet
 
-> ControllersPaginatedBackups ApiBackupTargetsIdBackupsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
+> ModelsPaginatedResultModelsBackup ApiBackupTargetsIdBackupsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
 
 List BackupTarget's Backups
 
@@ -53,7 +53,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupTargetsIdBackupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiBackupTargetsIdBackupsGet`: ControllersPaginatedBackups
+    // response from `ApiBackupTargetsIdBackupsGet`: ModelsPaginatedResultModelsBackup
     fmt.Fprintf(os.Stdout, "Response from `BackupsApi.ApiBackupTargetsIdBackupsGet`: %v\n", resp)
 }
 ```
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedBackups**](ControllersPaginatedBackups.md)
+[**ModelsPaginatedResultModelsBackup**](ModelsPaginatedResultModelsBackup.md)
 
 ### Authorization
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdBackupsGet
 
-> ControllersPaginatedBackups ApiDeploymentsIdBackupsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
+> ModelsPaginatedResultModelsBackup ApiDeploymentsIdBackupsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).State(state).Suspend(suspend).BackupType(backupType).BackupLevel(backupLevel).Execute()
 
 List Deployment's Backups
 
@@ -426,7 +426,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiDeploymentsIdBackupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdBackupsGet`: ControllersPaginatedBackups
+    // response from `ApiDeploymentsIdBackupsGet`: ModelsPaginatedResultModelsBackup
     fmt.Fprintf(os.Stdout, "Response from `BackupsApi.ApiDeploymentsIdBackupsGet`: %v\n", resp)
 }
 ```
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedBackups**](ControllersPaginatedBackups.md)
+[**ModelsPaginatedResultModelsBackup**](ModelsPaginatedResultModelsBackup.md)
 
 ### Authorization
 

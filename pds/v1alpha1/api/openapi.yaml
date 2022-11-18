@@ -393,7 +393,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedAccountTenants'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Tenant'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -889,7 +889,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedBackups'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Backup'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -1179,7 +1179,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedDataServices'
+                $ref: '#/components/schemas/models.PaginatedResult-models_DataService'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -1255,7 +1255,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedVersions'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Version'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -1578,7 +1578,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedNamespaces'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Namespace'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -1821,7 +1821,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedBackups'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Backup'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -2362,7 +2362,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedBackupTargets'
+                $ref: '#/components/schemas/models.PaginatedResult-models_BackupTarget'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -2416,7 +2416,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedDeploymentTargets'
+                $ref: '#/components/schemas/models.PaginatedResult-models_DeploymentTarget'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -2495,7 +2495,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedDeployments'
+                $ref: '#/components/schemas/models.PaginatedResult-models_Deployment'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3117,7 +3117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedApplicationConfigurationTemplates'
+                $ref: '#/components/schemas/models.PaginatedResult-models_ApplicationConfigurationTemplate'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3200,7 +3200,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedBackupCredentials'
+                $ref: '#/components/schemas/models.PaginatedResult-models_BackupCredentials'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3278,7 +3278,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedBackupPolicies'
+                $ref: '#/components/schemas/models.PaginatedResult-models_BackupPolicy'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3376,7 +3376,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedBackupTargets'
+                $ref: '#/components/schemas/models.PaginatedResult-models_BackupTarget'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3459,7 +3459,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedDeploymentTargets'
+                $ref: '#/components/schemas/models.PaginatedResult-models_DeploymentTarget'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3678,7 +3678,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedResourceSettingsTemplates'
+                $ref: '#/components/schemas/models.PaginatedResult-models_ResourceSettingsTemplate'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3861,7 +3861,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedServiceAccounts'
+                $ref: '#/components/schemas/models.PaginatedResult-models_ServiceAccount'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -3954,7 +3954,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/controllers.PaginatedStorageOptionsTemplates'
+                $ref: '#/components/schemas/models.PaginatedResult-models_StorageOptionsTemplate'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -5138,140 +5138,6 @@ components:
             $ref: '#/components/schemas/models.AccountRoleBinding'
           type: array
       type: object
-    controllers.PaginatedAccountTenants:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-        - account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Tenant'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedApplicationConfigurationTemplates:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
-          config_items:
-          - deploy_time: true
-            value: value
-            key: key
-          - deploy_time: true
-            value: value
-            key: key
-          name: name
-          created_at: created_at
-          id: id
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
-          config_items:
-          - deploy_time: true
-            value: value
-            key: key
-          - deploy_time: true
-            value: value
-            key: key
-          name: name
-          created_at: created_at
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedBackupCredentials:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-          type: azure
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-          type: azure
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.BackupCredentials'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedBackupPolicies:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          schedules:
-          - schedule: schedule
-            retention_count: 0
-            id: id
-            type: incremental
-          - schedule: schedule
-            retention_count: 0
-            id: id
-            type: incremental
-          name: name
-          created_at: created_at
-          id: id
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          schedules:
-          - schedule: schedule
-            retention_count: 0
-            id: id
-            type: incremental
-          - schedule: schedule
-            retention_count: 0
-            id: id
-            type: incremental
-          name: name
-          created_at: created_at
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.BackupPolicy'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
     controllers.PaginatedBackupTargetStates:
       example:
         data:
@@ -5297,283 +5163,6 @@ components:
             $ref: '#/components/schemas/models.BackupTargetState'
           type: array
       type: object
-    controllers.PaginatedBackupTargets:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - bucket: bucket
-          tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          backup_credentials_id: backup_credentials_id
-          name: name
-          created_at: created_at
-          id: id
-          region: region
-          type: azure
-        - bucket: bucket
-          tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          backup_credentials_id: backup_credentials_id
-          name: name
-          created_at: created_at
-          id: id
-          region: region
-          type: azure
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.BackupTarget'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedBackups:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - suspend: true
-          tenant_id: tenant_id
-          data_service_id: data_service_id
-          deployment_name: deployment_name
-          backup_target_id: backup_target_id
-          backup_type: adhoc
-          created_at: created_at
-          cluster_resource_name: cluster_resource_name
-          backup_level: snapshot
-          job_history_limit: 0
-          reclaim_policy: retain
-          schedule: schedule
-          account_id: account_id
-          deployment_target_id: deployment_target_id
-          namespace_id: namespace_id
-          updated_at: updated_at
-          project_id: project_id
-          deployment_id: deployment_id
-          id: id
-          state: created
-        - suspend: true
-          tenant_id: tenant_id
-          data_service_id: data_service_id
-          deployment_name: deployment_name
-          backup_target_id: backup_target_id
-          backup_type: adhoc
-          created_at: created_at
-          cluster_resource_name: cluster_resource_name
-          backup_level: snapshot
-          job_history_limit: 0
-          reclaim_policy: retain
-          schedule: schedule
-          account_id: account_id
-          deployment_target_id: deployment_target_id
-          namespace_id: namespace_id
-          updated_at: updated_at
-          project_id: project_id
-          deployment_id: deployment_id
-          id: id
-          state: created
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Backup'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedDataServices:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - coming_soon: true
-          node_restrictions:
-            simple_config:
-            - 6
-            - 6
-            resize_disabled:
-            - 0
-            - 0
-            downsize_enabled: true
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          nodes_limitations: nodes_limitations
-          short_name: short_name
-          id: id
-          has_incremental_backup: true
-          has_full_backup: true
-        - coming_soon: true
-          node_restrictions:
-            simple_config:
-            - 6
-            - 6
-            resize_disabled:
-            - 0
-            - 0
-            downsize_enabled: true
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          nodes_limitations: nodes_limitations
-          short_name: short_name
-          id: id
-          has_incremental_backup: true
-          has_full_backup: true
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.DataService'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedDeploymentTargets:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          cluster_id: cluster_id
-          metadata:
-            kube_api_version: kube_api_version
-            px_status: px_status
-            pds_chart_version: pds_chart_version
-            pds_features: pds_features
-            px_service_namespace: px_service_namespace
-            pds_operator_version: pds_operator_version
-            kube_platform: kube_platform
-            px_csi_enabled: px_csi_enabled
-            px_version: px_version
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          last_health_check: last_health_check
-          last_operator_heartbeat: last_operator_heartbeat
-          id: id
-          status: status
-        - tenant_id: tenant_id
-          cluster_id: cluster_id
-          metadata:
-            kube_api_version: kube_api_version
-            px_status: px_status
-            pds_chart_version: pds_chart_version
-            pds_features: pds_features
-            px_service_namespace: px_service_namespace
-            pds_operator_version: pds_operator_version
-            kube_platform: kube_platform
-            px_csi_enabled: px_csi_enabled
-            px_version: px_version
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          last_health_check: last_health_check
-          last_operator_heartbeat: last_operator_heartbeat
-          id: id
-          status: status
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.DeploymentTarget'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedDeployments:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          data_service_id: data_service_id
-          configuration: '{}'
-          connection_details: '{}'
-          created_at: created_at
-          resources:
-            storage_request: storage_request
-            cpu_limit: cpu_limit
-            memory_request: memory_request
-            memory_limit: memory_limit
-            cpu_request: cpu_request
-          cluster_resource_name: cluster_resource_name
-          version_id: version_id
-          error:
-            code: code
-            details: details
-            message: message
-          service_type: ClusterIP
-          account_id: account_id
-          deployment_target_id: deployment_target_id
-          namespace_id: namespace_id
-          updated_at: updated_at
-          project_id: project_id
-          dns_zone: dns_zone
-          name: name
-          id: id
-          initialize: Once
-          node_count: 0
-          state: created
-          image_id: image_id
-          load_balancer_source_ranges:
-          - load_balancer_source_ranges
-          - load_balancer_source_ranges
-          storage_options:
-            fg: true
-            provisioner: provisioner
-            repl: 6
-            secure: true
-            fs: fs
-        - tenant_id: tenant_id
-          data_service_id: data_service_id
-          configuration: '{}'
-          connection_details: '{}'
-          created_at: created_at
-          resources:
-            storage_request: storage_request
-            cpu_limit: cpu_limit
-            memory_request: memory_request
-            memory_limit: memory_limit
-            cpu_request: cpu_request
-          cluster_resource_name: cluster_resource_name
-          version_id: version_id
-          error:
-            code: code
-            details: details
-            message: message
-          service_type: ClusterIP
-          account_id: account_id
-          deployment_target_id: deployment_target_id
-          namespace_id: namespace_id
-          updated_at: updated_at
-          project_id: project_id
-          dns_zone: dns_zone
-          name: name
-          id: id
-          initialize: Once
-          node_count: 0
-          state: created
-          image_id: image_id
-          load_balancer_source_ranges:
-          - load_balancer_source_ranges
-          - load_balancer_source_ranges
-          storage_options:
-            fg: true
-            provisioner: provisioner
-            repl: 6
-            secure: true
-            fs: fs
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Deployment'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
     controllers.PaginatedGlobalRoleBindings:
       example:
         data:
@@ -5588,35 +5177,6 @@ components:
           items:
             $ref: '#/components/schemas/models.GlobalRoleBinding'
           type: array
-      type: object
-    controllers.PaginatedNamespaces:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          deployment_target_id: deployment_target_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-          status: status
-        - tenant_id: tenant_id
-          account_id: account_id
-          deployment_target_id: deployment_target_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-          status: status
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Namespace'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedProjectRoleBindings:
       example:
@@ -5634,43 +5194,6 @@ components:
           items:
             $ref: '#/components/schemas/models.ProjectRoleBinding'
           type: array
-      type: object
-    controllers.PaginatedResourceSettingsTemplates:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
-          storage_request: storage_request
-          cpu_limit: cpu_limit
-          name: name
-          created_at: created_at
-          memory_request: memory_request
-          id: id
-          memory_limit: memory_limit
-          cpu_request: cpu_request
-        - tenant_id: tenant_id
-          account_id: account_id
-          data_service_id: data_service_id
-          updated_at: updated_at
-          storage_request: storage_request
-          cpu_limit: cpu_limit
-          name: name
-          created_at: created_at
-          memory_request: memory_request
-          id: id
-          memory_limit: memory_limit
-          cpu_request: cpu_request
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.ResourceSettingsTemplate'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PaginatedRoles:
       example:
@@ -5697,66 +5220,6 @@ components:
             $ref: '#/components/schemas/policy.Role'
           type: array
       type: object
-    controllers.PaginatedServiceAccounts:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-        - tenant_id: tenant_id
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.ServiceAccount'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
-    controllers.PaginatedStorageOptionsTemplates:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - tenant_id: tenant_id
-          fg: true
-          provisioner: pxd.portworx.com
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          repl: 0
-          id: id
-          secure: true
-          fs: xfs
-        - tenant_id: tenant_id
-          fg: true
-          provisioner: pxd.portworx.com
-          account_id: account_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          repl: 0
-          id: id
-          secure: true
-          fs: xfs
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.StorageOptionsTemplate'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
-      type: object
     controllers.PaginatedTenantRoleBindings:
       example:
         data:
@@ -5773,31 +5236,6 @@ components:
           items:
             $ref: '#/components/schemas/models.TenantRoleBinding'
           type: array
-      type: object
-    controllers.PaginatedVersions:
-      example:
-        pagination:
-          continuation: continuation
-        data:
-        - data_service_id: data_service_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-          enabled: true
-        - data_service_id: data_service_id
-          updated_at: updated_at
-          name: name
-          created_at: created_at
-          id: id
-          enabled: true
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/models.Version'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/constraint.Pagination'
       type: object
     controllers.PartialAzureCredentials:
       example:
@@ -7631,6 +7069,394 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
+    models.PaginatedResult-models_ApplicationConfigurationTemplate:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - deploy_time: true
+            value: value
+            key: key
+          - deploy_time: true
+            value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          config_items:
+          - deploy_time: true
+            value: value
+            key: key
+          - deploy_time: true
+            value: value
+            key: key
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_Backup:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - suspend: true
+          tenant_id: tenant_id
+          data_service_id: data_service_id
+          deployment_name: deployment_name
+          backup_target_id: backup_target_id
+          backup_type: adhoc
+          created_at: created_at
+          cluster_resource_name: cluster_resource_name
+          backup_level: snapshot
+          job_history_limit: 0
+          reclaim_policy: retain
+          schedule: schedule
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          deployment_id: deployment_id
+          id: id
+          state: created
+        - suspend: true
+          tenant_id: tenant_id
+          data_service_id: data_service_id
+          deployment_name: deployment_name
+          backup_target_id: backup_target_id
+          backup_type: adhoc
+          created_at: created_at
+          cluster_resource_name: cluster_resource_name
+          backup_level: snapshot
+          job_history_limit: 0
+          reclaim_policy: retain
+          schedule: schedule
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          deployment_id: deployment_id
+          id: id
+          state: created
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Backup'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_BackupCredentials:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          type: azure
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          type: azure
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupCredentials'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_BackupPolicy:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          schedules:
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          - schedule: schedule
+            retention_count: 0
+            id: id
+            type: incremental
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupPolicy'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_BackupTarget:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - bucket: bucket
+          tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          backup_credentials_id: backup_credentials_id
+          name: name
+          created_at: created_at
+          id: id
+          region: region
+          type: azure
+        - bucket: bucket
+          tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          backup_credentials_id: backup_credentials_id
+          name: name
+          created_at: created_at
+          id: id
+          region: region
+          type: azure
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupTarget'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_DataService:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - coming_soon: true
+          node_restrictions:
+            simple_config:
+            - 6
+            - 6
+            resize_disabled:
+            - 0
+            - 0
+            downsize_enabled: true
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          nodes_limitations: nodes_limitations
+          short_name: short_name
+          id: id
+          has_incremental_backup: true
+          has_full_backup: true
+        - coming_soon: true
+          node_restrictions:
+            simple_config:
+            - 6
+            - 6
+            resize_disabled:
+            - 0
+            - 0
+            downsize_enabled: true
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          nodes_limitations: nodes_limitations
+          short_name: short_name
+          id: id
+          has_incremental_backup: true
+          has_full_backup: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.DataService'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_Deployment:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          data_service_id: data_service_id
+          configuration: '{}'
+          connection_details: '{}'
+          created_at: created_at
+          resources:
+            storage_request: storage_request
+            cpu_limit: cpu_limit
+            memory_request: memory_request
+            memory_limit: memory_limit
+            cpu_request: cpu_request
+          cluster_resource_name: cluster_resource_name
+          version_id: version_id
+          error:
+            code: code
+            details: details
+            message: message
+          service_type: ClusterIP
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          dns_zone: dns_zone
+          name: name
+          id: id
+          initialize: Once
+          node_count: 0
+          state: created
+          image_id: image_id
+          load_balancer_source_ranges:
+          - load_balancer_source_ranges
+          - load_balancer_source_ranges
+          storage_options:
+            fg: true
+            provisioner: provisioner
+            repl: 6
+            secure: true
+            fs: fs
+        - tenant_id: tenant_id
+          data_service_id: data_service_id
+          configuration: '{}'
+          connection_details: '{}'
+          created_at: created_at
+          resources:
+            storage_request: storage_request
+            cpu_limit: cpu_limit
+            memory_request: memory_request
+            memory_limit: memory_limit
+            cpu_request: cpu_request
+          cluster_resource_name: cluster_resource_name
+          version_id: version_id
+          error:
+            code: code
+            details: details
+            message: message
+          service_type: ClusterIP
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          dns_zone: dns_zone
+          name: name
+          id: id
+          initialize: Once
+          node_count: 0
+          state: created
+          image_id: image_id
+          load_balancer_source_ranges:
+          - load_balancer_source_ranges
+          - load_balancer_source_ranges
+          storage_options:
+            fg: true
+            provisioner: provisioner
+            repl: 6
+            secure: true
+            fs: fs
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Deployment'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_DeploymentTarget:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          cluster_id: cluster_id
+          metadata:
+            kube_api_version: kube_api_version
+            px_status: px_status
+            pds_chart_version: pds_chart_version
+            pds_features: pds_features
+            px_service_namespace: px_service_namespace
+            pds_operator_version: pds_operator_version
+            kube_platform: kube_platform
+            px_csi_enabled: px_csi_enabled
+            px_version: px_version
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          last_health_check: last_health_check
+          last_operator_heartbeat: last_operator_heartbeat
+          id: id
+          status: status
+        - tenant_id: tenant_id
+          cluster_id: cluster_id
+          metadata:
+            kube_api_version: kube_api_version
+            px_status: px_status
+            pds_chart_version: pds_chart_version
+            pds_features: pds_features
+            px_service_namespace: px_service_namespace
+            pds_operator_version: pds_operator_version
+            kube_platform: kube_platform
+            px_csi_enabled: px_csi_enabled
+            px_version: px_version
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          last_health_check: last_health_check
+          last_operator_heartbeat: last_operator_heartbeat
+          id: id
+          status: status
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.DeploymentTarget'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
     models.PaginatedResult-models_Image:
       example:
         pagination:
@@ -7664,6 +7490,35 @@ components:
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
       type: object
+    models.PaginatedResult-models_Namespace:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          status: status
+        - tenant_id: tenant_id
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          status: status
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Namespace'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
     models.PaginatedResult-models_Project:
       example:
         pagination:
@@ -7685,6 +7540,103 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.Project'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_ResourceSettingsTemplate:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+        - tenant_id: tenant_id
+          account_id: account_id
+          data_service_id: data_service_id
+          updated_at: updated_at
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          name: name
+          created_at: created_at
+          memory_request: memory_request
+          id: id
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ResourceSettingsTemplate'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_ServiceAccount:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+        - tenant_id: tenant_id
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ServiceAccount'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_StorageOptionsTemplate:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - tenant_id: tenant_id
+          fg: true
+          provisioner: pxd.portworx.com
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+        - tenant_id: tenant_id
+          fg: true
+          provisioner: pxd.portworx.com
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          repl: 0
+          id: id
+          secure: true
+          fs: xfs
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.StorageOptionsTemplate'
           type: array
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
@@ -7762,6 +7714,31 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.UserAPIKey'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_Version:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - data_service_id: data_service_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          enabled: true
+        - data_service_id: data_service_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          enabled: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.Version'
           type: array
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'

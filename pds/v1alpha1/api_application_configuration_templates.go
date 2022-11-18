@@ -424,7 +424,7 @@ func (r ApiApiTenantsIdApplicationConfigurationTemplatesGetRequest) DataServiceI
 	return r
 }
 
-func (r ApiApiTenantsIdApplicationConfigurationTemplatesGetRequest) Execute() (*ControllersPaginatedApplicationConfigurationTemplates, *http.Response, error) {
+func (r ApiApiTenantsIdApplicationConfigurationTemplatesGetRequest) Execute() (*ModelsPaginatedResultModelsApplicationConfigurationTemplate, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdApplicationConfigurationTemplatesGetExecute(r)
 }
 
@@ -446,13 +446,13 @@ func (a *ApplicationConfigurationTemplatesApiService) ApiTenantsIdApplicationCon
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedApplicationConfigurationTemplates
-func (a *ApplicationConfigurationTemplatesApiService) ApiTenantsIdApplicationConfigurationTemplatesGetExecute(r ApiApiTenantsIdApplicationConfigurationTemplatesGetRequest) (*ControllersPaginatedApplicationConfigurationTemplates, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsApplicationConfigurationTemplate
+func (a *ApplicationConfigurationTemplatesApiService) ApiTenantsIdApplicationConfigurationTemplatesGetExecute(r ApiApiTenantsIdApplicationConfigurationTemplatesGetRequest) (*ModelsPaginatedResultModelsApplicationConfigurationTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedApplicationConfigurationTemplates
+		localVarReturnValue  *ModelsPaginatedResultModelsApplicationConfigurationTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationTemplatesApiService.ApiTenantsIdApplicationConfigurationTemplatesGet")

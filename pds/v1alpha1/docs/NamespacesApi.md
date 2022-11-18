@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ApiDeploymentTargetsIdNamespacesGet
 
-> ControllersPaginatedNamespaces ApiDeploymentTargetsIdNamespacesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
+> ModelsPaginatedResultModelsNamespace ApiDeploymentTargetsIdNamespacesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Status(status).Execute()
 
 List DeploymentTarget's Namespaces
 
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ApiDeploymentTargetsIdNamespacesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentTargetsIdNamespacesGet`: ControllersPaginatedNamespaces
+    // response from `ApiDeploymentTargetsIdNamespacesGet`: ModelsPaginatedResultModelsNamespace
     fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.ApiDeploymentTargetsIdNamespacesGet`: %v\n", resp)
 }
 ```
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedNamespaces**](ControllersPaginatedNamespaces.md)
+[**ModelsPaginatedResultModelsNamespace**](ModelsPaginatedResultModelsNamespace.md)
 
 ### Authorization
 

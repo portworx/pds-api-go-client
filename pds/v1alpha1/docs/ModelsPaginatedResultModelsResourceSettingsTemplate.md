@@ -1,4 +1,4 @@
-# ControllersPaginatedResourceSettingsTemplates
+# ModelsPaginatedResultModelsResourceSettingsTemplate
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewControllersPaginatedResourceSettingsTemplates
+### NewModelsPaginatedResultModelsResourceSettingsTemplate
 
-`func NewControllersPaginatedResourceSettingsTemplates() *ControllersPaginatedResourceSettingsTemplates`
+`func NewModelsPaginatedResultModelsResourceSettingsTemplate() *ModelsPaginatedResultModelsResourceSettingsTemplate`
 
-NewControllersPaginatedResourceSettingsTemplates instantiates a new ControllersPaginatedResourceSettingsTemplates object
+NewModelsPaginatedResultModelsResourceSettingsTemplate instantiates a new ModelsPaginatedResultModelsResourceSettingsTemplate object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersPaginatedResourceSettingsTemplatesWithDefaults
+### NewModelsPaginatedResultModelsResourceSettingsTemplateWithDefaults
 
-`func NewControllersPaginatedResourceSettingsTemplatesWithDefaults() *ControllersPaginatedResourceSettingsTemplates`
+`func NewModelsPaginatedResultModelsResourceSettingsTemplateWithDefaults() *ModelsPaginatedResultModelsResourceSettingsTemplate`
 
-NewControllersPaginatedResourceSettingsTemplatesWithDefaults instantiates a new ControllersPaginatedResourceSettingsTemplates object
+NewModelsPaginatedResultModelsResourceSettingsTemplateWithDefaults instantiates a new ModelsPaginatedResultModelsResourceSettingsTemplate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) GetData() []ModelsResourceSettingsTemplate`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) GetData() []ModelsResourceSettingsTemplate`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) GetDataOk() (*[]ModelsResourceSettingsTemplate, bool)`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) GetDataOk() (*[]ModelsResourceSettingsTemplate, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) SetData(v []ModelsResourceSettingsTemplate)`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) SetData(v []ModelsResourceSettingsTemplate)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) HasData() bool`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 
 ### GetPagination
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) GetPagination() ConstraintPagination`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) GetPagination() ConstraintPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) GetPaginationOk() (*ConstraintPagination, bool)`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) GetPaginationOk() (*ConstraintPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) SetPagination(v ConstraintPagination)`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) SetPagination(v ConstraintPagination)`
 
 SetPagination sets Pagination field to given value.
 
 ### HasPagination
 
-`func (o *ControllersPaginatedResourceSettingsTemplates) HasPagination() bool`
+`func (o *ModelsPaginatedResultModelsResourceSettingsTemplate) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
 

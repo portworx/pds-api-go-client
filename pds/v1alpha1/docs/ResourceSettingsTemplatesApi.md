@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdResourceSettingsTemplatesGet
 
-> ControllersPaginatedResourceSettingsTemplates ApiTenantsIdResourceSettingsTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
+> ModelsPaginatedResultModelsResourceSettingsTemplate ApiTenantsIdResourceSettingsTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).DataServiceId(dataServiceId).Execute()
 
 List ResourceSettingsTemplates
 
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdResourceSettingsTemplatesGet`: ControllersPaginatedResourceSettingsTemplates
+    // response from `ApiTenantsIdResourceSettingsTemplatesGet`: ModelsPaginatedResultModelsResourceSettingsTemplate
     fmt.Fprintf(os.Stdout, "Response from `ResourceSettingsTemplatesApi.ApiTenantsIdResourceSettingsTemplatesGet`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedResourceSettingsTemplates**](ControllersPaginatedResourceSettingsTemplates.md)
+[**ModelsPaginatedResultModelsResourceSettingsTemplate**](ModelsPaginatedResultModelsResourceSettingsTemplate.md)
 
 ### Authorization
 

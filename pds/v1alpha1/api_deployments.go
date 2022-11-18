@@ -944,7 +944,7 @@ func (r ApiApiProjectsIdDeploymentsGetRequest) State(state string) ApiApiProject
 	return r
 }
 
-func (r ApiApiProjectsIdDeploymentsGetRequest) Execute() (*ControllersPaginatedDeployments, *http.Response, error) {
+func (r ApiApiProjectsIdDeploymentsGetRequest) Execute() (*ModelsPaginatedResultModelsDeployment, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdDeploymentsGetExecute(r)
 }
 
@@ -966,13 +966,13 @@ func (a *DeploymentsApiService) ApiProjectsIdDeploymentsGet(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedDeployments
-func (a *DeploymentsApiService) ApiProjectsIdDeploymentsGetExecute(r ApiApiProjectsIdDeploymentsGetRequest) (*ControllersPaginatedDeployments, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsDeployment
+func (a *DeploymentsApiService) ApiProjectsIdDeploymentsGetExecute(r ApiApiProjectsIdDeploymentsGetRequest) (*ModelsPaginatedResultModelsDeployment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedDeployments
+		localVarReturnValue  *ModelsPaginatedResultModelsDeployment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.ApiProjectsIdDeploymentsGet")

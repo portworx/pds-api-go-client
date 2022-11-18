@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ApiDataServicesGet
 
-> ControllersPaginatedDataServices ApiDataServicesGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
+> ModelsPaginatedResultModelsDataService ApiDataServicesGet(ctx).SortBy(sortBy).Limit(limit).Continuation(continuation).Id(id).Name(name).ShortName(shortName).HasIncrementalBackup(hasIncrementalBackup).HasFullBackup(hasFullBackup).ComingSoon(comingSoon).Execute()
 
 List Data Services
 
@@ -47,7 +47,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataServicesApi.ApiDataServicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataServicesGet`: ControllersPaginatedDataServices
+    // response from `ApiDataServicesGet`: ModelsPaginatedResultModelsDataService
     fmt.Fprintf(os.Stdout, "Response from `DataServicesApi.ApiDataServicesGet`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedDataServices**](ControllersPaginatedDataServices.md)
+[**ModelsPaginatedResultModelsDataService**](ModelsPaginatedResultModelsDataService.md)
 
 ### Authorization
 

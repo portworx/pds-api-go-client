@@ -422,7 +422,7 @@ func (r ApiApiTenantsIdServiceAccountsGetRequest) Token(token string) ApiApiTena
 	return r
 }
 
-func (r ApiApiTenantsIdServiceAccountsGetRequest) Execute() (*ControllersPaginatedServiceAccounts, *http.Response, error) {
+func (r ApiApiTenantsIdServiceAccountsGetRequest) Execute() (*ModelsPaginatedResultModelsServiceAccount, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdServiceAccountsGetExecute(r)
 }
 
@@ -446,14 +446,14 @@ func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGet(ctx context.C
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedServiceAccounts
+//  @return ModelsPaginatedResultModelsServiceAccount
 // Deprecated
-func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiApiTenantsIdServiceAccountsGetRequest) (*ControllersPaginatedServiceAccounts, *http.Response, error) {
+func (a *ServiceAccountsApiService) ApiTenantsIdServiceAccountsGetExecute(r ApiApiTenantsIdServiceAccountsGetRequest) (*ModelsPaginatedResultModelsServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedServiceAccounts
+		localVarReturnValue  *ModelsPaginatedResultModelsServiceAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ApiTenantsIdServiceAccountsGet")

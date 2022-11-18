@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersPaginatedBackupPolicies struct for ControllersPaginatedBackupPolicies
-type ControllersPaginatedBackupPolicies struct {
+// ModelsPaginatedResultModelsBackupPolicy struct for ModelsPaginatedResultModelsBackupPolicy
+type ModelsPaginatedResultModelsBackupPolicy struct {
 	Data []ModelsBackupPolicy `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
-// NewControllersPaginatedBackupPolicies instantiates a new ControllersPaginatedBackupPolicies object
+// NewModelsPaginatedResultModelsBackupPolicy instantiates a new ModelsPaginatedResultModelsBackupPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersPaginatedBackupPolicies() *ControllersPaginatedBackupPolicies {
-	this := ControllersPaginatedBackupPolicies{}
+func NewModelsPaginatedResultModelsBackupPolicy() *ModelsPaginatedResultModelsBackupPolicy {
+	this := ModelsPaginatedResultModelsBackupPolicy{}
 	return &this
 }
 
-// NewControllersPaginatedBackupPoliciesWithDefaults instantiates a new ControllersPaginatedBackupPolicies object
+// NewModelsPaginatedResultModelsBackupPolicyWithDefaults instantiates a new ModelsPaginatedResultModelsBackupPolicy object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersPaginatedBackupPoliciesWithDefaults() *ControllersPaginatedBackupPolicies {
-	this := ControllersPaginatedBackupPolicies{}
+func NewModelsPaginatedResultModelsBackupPolicyWithDefaults() *ModelsPaginatedResultModelsBackupPolicy {
+	this := ModelsPaginatedResultModelsBackupPolicy{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedBackupPolicies) GetData() []ModelsBackupPolicy {
+func (o *ModelsPaginatedResultModelsBackupPolicy) GetData() []ModelsBackupPolicy {
 	if o == nil || o.Data == nil {
 		var ret []ModelsBackupPolicy
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersPaginatedBackupPolicies) GetData() []ModelsBackupPolicy {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupPolicies) GetDataOk() ([]ModelsBackupPolicy, bool) {
+func (o *ModelsPaginatedResultModelsBackupPolicy) GetDataOk() ([]ModelsBackupPolicy, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersPaginatedBackupPolicies) GetDataOk() ([]ModelsBackupPolicy, 
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *ControllersPaginatedBackupPolicies) HasData() bool {
+func (o *ModelsPaginatedResultModelsBackupPolicy) HasData() bool {
 	if o != nil && o.Data != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersPaginatedBackupPolicies) HasData() bool {
 }
 
 // SetData gets a reference to the given []ModelsBackupPolicy and assigns it to the Data field.
-func (o *ControllersPaginatedBackupPolicies) SetData(v []ModelsBackupPolicy) {
+func (o *ModelsPaginatedResultModelsBackupPolicy) SetData(v []ModelsBackupPolicy) {
 	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *ControllersPaginatedBackupPolicies) GetPagination() ConstraintPagination {
+func (o *ModelsPaginatedResultModelsBackupPolicy) GetPagination() ConstraintPagination {
 	if o == nil || o.Pagination == nil {
 		var ret ConstraintPagination
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersPaginatedBackupPolicies) GetPagination() ConstraintPaginatio
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupPolicies) GetPaginationOk() (*ConstraintPagination, bool) {
+func (o *ModelsPaginatedResultModelsBackupPolicy) GetPaginationOk() (*ConstraintPagination, bool) {
 	if o == nil || o.Pagination == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersPaginatedBackupPolicies) GetPaginationOk() (*ConstraintPagin
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *ControllersPaginatedBackupPolicies) HasPagination() bool {
+func (o *ModelsPaginatedResultModelsBackupPolicy) HasPagination() bool {
 	if o != nil && o.Pagination != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersPaginatedBackupPolicies) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given ConstraintPagination and assigns it to the Pagination field.
-func (o *ControllersPaginatedBackupPolicies) SetPagination(v ConstraintPagination) {
+func (o *ModelsPaginatedResultModelsBackupPolicy) SetPagination(v ConstraintPagination) {
 	o.Pagination = &v
 }
 
-func (o ControllersPaginatedBackupPolicies) MarshalJSON() ([]byte, error) {
+func (o ModelsPaginatedResultModelsBackupPolicy) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -112,38 +112,38 @@ func (o ControllersPaginatedBackupPolicies) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersPaginatedBackupPolicies struct {
-	value *ControllersPaginatedBackupPolicies
+type NullableModelsPaginatedResultModelsBackupPolicy struct {
+	value *ModelsPaginatedResultModelsBackupPolicy
 	isSet bool
 }
 
-func (v NullableControllersPaginatedBackupPolicies) Get() *ControllersPaginatedBackupPolicies {
+func (v NullableModelsPaginatedResultModelsBackupPolicy) Get() *ModelsPaginatedResultModelsBackupPolicy {
 	return v.value
 }
 
-func (v *NullableControllersPaginatedBackupPolicies) Set(val *ControllersPaginatedBackupPolicies) {
+func (v *NullableModelsPaginatedResultModelsBackupPolicy) Set(val *ModelsPaginatedResultModelsBackupPolicy) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersPaginatedBackupPolicies) IsSet() bool {
+func (v NullableModelsPaginatedResultModelsBackupPolicy) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersPaginatedBackupPolicies) Unset() {
+func (v *NullableModelsPaginatedResultModelsBackupPolicy) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersPaginatedBackupPolicies(val *ControllersPaginatedBackupPolicies) *NullableControllersPaginatedBackupPolicies {
-	return &NullableControllersPaginatedBackupPolicies{value: val, isSet: true}
+func NewNullableModelsPaginatedResultModelsBackupPolicy(val *ModelsPaginatedResultModelsBackupPolicy) *NullableModelsPaginatedResultModelsBackupPolicy {
+	return &NullableModelsPaginatedResultModelsBackupPolicy{value: val, isSet: true}
 }
 
-func (v NullableControllersPaginatedBackupPolicies) MarshalJSON() ([]byte, error) {
+func (v NullableModelsPaginatedResultModelsBackupPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersPaginatedBackupPolicies) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsPaginatedResultModelsBackupPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

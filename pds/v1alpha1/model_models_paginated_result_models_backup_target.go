@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersPaginatedBackupTargets struct for ControllersPaginatedBackupTargets
-type ControllersPaginatedBackupTargets struct {
+// ModelsPaginatedResultModelsBackupTarget struct for ModelsPaginatedResultModelsBackupTarget
+type ModelsPaginatedResultModelsBackupTarget struct {
 	Data []ModelsBackupTarget `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
-// NewControllersPaginatedBackupTargets instantiates a new ControllersPaginatedBackupTargets object
+// NewModelsPaginatedResultModelsBackupTarget instantiates a new ModelsPaginatedResultModelsBackupTarget object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersPaginatedBackupTargets() *ControllersPaginatedBackupTargets {
-	this := ControllersPaginatedBackupTargets{}
+func NewModelsPaginatedResultModelsBackupTarget() *ModelsPaginatedResultModelsBackupTarget {
+	this := ModelsPaginatedResultModelsBackupTarget{}
 	return &this
 }
 
-// NewControllersPaginatedBackupTargetsWithDefaults instantiates a new ControllersPaginatedBackupTargets object
+// NewModelsPaginatedResultModelsBackupTargetWithDefaults instantiates a new ModelsPaginatedResultModelsBackupTarget object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersPaginatedBackupTargetsWithDefaults() *ControllersPaginatedBackupTargets {
-	this := ControllersPaginatedBackupTargets{}
+func NewModelsPaginatedResultModelsBackupTargetWithDefaults() *ModelsPaginatedResultModelsBackupTarget {
+	this := ModelsPaginatedResultModelsBackupTarget{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedBackupTargets) GetData() []ModelsBackupTarget {
+func (o *ModelsPaginatedResultModelsBackupTarget) GetData() []ModelsBackupTarget {
 	if o == nil || o.Data == nil {
 		var ret []ModelsBackupTarget
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersPaginatedBackupTargets) GetData() []ModelsBackupTarget {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupTargets) GetDataOk() ([]ModelsBackupTarget, bool) {
+func (o *ModelsPaginatedResultModelsBackupTarget) GetDataOk() ([]ModelsBackupTarget, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersPaginatedBackupTargets) GetDataOk() ([]ModelsBackupTarget, b
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *ControllersPaginatedBackupTargets) HasData() bool {
+func (o *ModelsPaginatedResultModelsBackupTarget) HasData() bool {
 	if o != nil && o.Data != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersPaginatedBackupTargets) HasData() bool {
 }
 
 // SetData gets a reference to the given []ModelsBackupTarget and assigns it to the Data field.
-func (o *ControllersPaginatedBackupTargets) SetData(v []ModelsBackupTarget) {
+func (o *ModelsPaginatedResultModelsBackupTarget) SetData(v []ModelsBackupTarget) {
 	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *ControllersPaginatedBackupTargets) GetPagination() ConstraintPagination {
+func (o *ModelsPaginatedResultModelsBackupTarget) GetPagination() ConstraintPagination {
 	if o == nil || o.Pagination == nil {
 		var ret ConstraintPagination
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersPaginatedBackupTargets) GetPagination() ConstraintPagination
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedBackupTargets) GetPaginationOk() (*ConstraintPagination, bool) {
+func (o *ModelsPaginatedResultModelsBackupTarget) GetPaginationOk() (*ConstraintPagination, bool) {
 	if o == nil || o.Pagination == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersPaginatedBackupTargets) GetPaginationOk() (*ConstraintPagina
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *ControllersPaginatedBackupTargets) HasPagination() bool {
+func (o *ModelsPaginatedResultModelsBackupTarget) HasPagination() bool {
 	if o != nil && o.Pagination != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersPaginatedBackupTargets) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given ConstraintPagination and assigns it to the Pagination field.
-func (o *ControllersPaginatedBackupTargets) SetPagination(v ConstraintPagination) {
+func (o *ModelsPaginatedResultModelsBackupTarget) SetPagination(v ConstraintPagination) {
 	o.Pagination = &v
 }
 
-func (o ControllersPaginatedBackupTargets) MarshalJSON() ([]byte, error) {
+func (o ModelsPaginatedResultModelsBackupTarget) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -112,38 +112,38 @@ func (o ControllersPaginatedBackupTargets) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersPaginatedBackupTargets struct {
-	value *ControllersPaginatedBackupTargets
+type NullableModelsPaginatedResultModelsBackupTarget struct {
+	value *ModelsPaginatedResultModelsBackupTarget
 	isSet bool
 }
 
-func (v NullableControllersPaginatedBackupTargets) Get() *ControllersPaginatedBackupTargets {
+func (v NullableModelsPaginatedResultModelsBackupTarget) Get() *ModelsPaginatedResultModelsBackupTarget {
 	return v.value
 }
 
-func (v *NullableControllersPaginatedBackupTargets) Set(val *ControllersPaginatedBackupTargets) {
+func (v *NullableModelsPaginatedResultModelsBackupTarget) Set(val *ModelsPaginatedResultModelsBackupTarget) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersPaginatedBackupTargets) IsSet() bool {
+func (v NullableModelsPaginatedResultModelsBackupTarget) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersPaginatedBackupTargets) Unset() {
+func (v *NullableModelsPaginatedResultModelsBackupTarget) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersPaginatedBackupTargets(val *ControllersPaginatedBackupTargets) *NullableControllersPaginatedBackupTargets {
-	return &NullableControllersPaginatedBackupTargets{value: val, isSet: true}
+func NewNullableModelsPaginatedResultModelsBackupTarget(val *ModelsPaginatedResultModelsBackupTarget) *NullableModelsPaginatedResultModelsBackupTarget {
+	return &NullableModelsPaginatedResultModelsBackupTarget{value: val, isSet: true}
 }
 
-func (v NullableControllersPaginatedBackupTargets) MarshalJSON() ([]byte, error) {
+func (v NullableModelsPaginatedResultModelsBackupTarget) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersPaginatedBackupTargets) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsPaginatedResultModelsBackupTarget) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

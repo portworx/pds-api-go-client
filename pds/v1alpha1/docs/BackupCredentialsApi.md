@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupCredentialsGet
 
-> ControllersPaginatedBackupCredentials ApiTenantsIdBackupCredentialsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Execute()
+> ModelsPaginatedResultModelsBackupCredentials ApiTenantsIdBackupCredentialsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Type_(type_).Execute()
 
 List BackupCredentials
 
@@ -329,7 +329,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdBackupCredentialsGet`: ControllersPaginatedBackupCredentials
+    // response from `ApiTenantsIdBackupCredentialsGet`: ModelsPaginatedResultModelsBackupCredentials
     fmt.Fprintf(os.Stdout, "Response from `BackupCredentialsApi.ApiTenantsIdBackupCredentialsGet`: %v\n", resp)
 }
 ```
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedBackupCredentials**](ControllersPaginatedBackupCredentials.md)
+[**ModelsPaginatedResultModelsBackupCredentials**](ModelsPaginatedResultModelsBackupCredentials.md)
 
 ### Authorization
 

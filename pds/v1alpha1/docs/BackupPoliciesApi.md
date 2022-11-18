@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdBackupPoliciesGet
 
-> ControllersPaginatedBackupPolicies ApiTenantsIdBackupPoliciesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+> ModelsPaginatedResultModelsBackupPolicy ApiTenantsIdBackupPoliciesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
 
 List BackupPolicies
 
@@ -257,7 +257,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupPoliciesApi.ApiTenantsIdBackupPoliciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdBackupPoliciesGet`: ControllersPaginatedBackupPolicies
+    // response from `ApiTenantsIdBackupPoliciesGet`: ModelsPaginatedResultModelsBackupPolicy
     fmt.Fprintf(os.Stdout, "Response from `BackupPoliciesApi.ApiTenantsIdBackupPoliciesGet`: %v\n", resp)
 }
 ```
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedBackupPolicies**](ControllersPaginatedBackupPolicies.md)
+[**ModelsPaginatedResultModelsBackupPolicy**](ModelsPaginatedResultModelsBackupPolicy.md)
 
 ### Authorization
 

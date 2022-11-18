@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// ControllersPaginatedNamespaces struct for ControllersPaginatedNamespaces
-type ControllersPaginatedNamespaces struct {
+// ModelsPaginatedResultModelsNamespace struct for ModelsPaginatedResultModelsNamespace
+type ModelsPaginatedResultModelsNamespace struct {
 	Data []ModelsNamespace `json:"data,omitempty"`
 	Pagination *ConstraintPagination `json:"pagination,omitempty"`
 }
 
-// NewControllersPaginatedNamespaces instantiates a new ControllersPaginatedNamespaces object
+// NewModelsPaginatedResultModelsNamespace instantiates a new ModelsPaginatedResultModelsNamespace object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersPaginatedNamespaces() *ControllersPaginatedNamespaces {
-	this := ControllersPaginatedNamespaces{}
+func NewModelsPaginatedResultModelsNamespace() *ModelsPaginatedResultModelsNamespace {
+	this := ModelsPaginatedResultModelsNamespace{}
 	return &this
 }
 
-// NewControllersPaginatedNamespacesWithDefaults instantiates a new ControllersPaginatedNamespaces object
+// NewModelsPaginatedResultModelsNamespaceWithDefaults instantiates a new ModelsPaginatedResultModelsNamespace object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersPaginatedNamespacesWithDefaults() *ControllersPaginatedNamespaces {
-	this := ControllersPaginatedNamespaces{}
+func NewModelsPaginatedResultModelsNamespaceWithDefaults() *ModelsPaginatedResultModelsNamespace {
+	this := ModelsPaginatedResultModelsNamespace{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedNamespaces) GetData() []ModelsNamespace {
+func (o *ModelsPaginatedResultModelsNamespace) GetData() []ModelsNamespace {
 	if o == nil || o.Data == nil {
 		var ret []ModelsNamespace
 		return ret
@@ -48,7 +48,7 @@ func (o *ControllersPaginatedNamespaces) GetData() []ModelsNamespace {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedNamespaces) GetDataOk() ([]ModelsNamespace, bool) {
+func (o *ModelsPaginatedResultModelsNamespace) GetDataOk() ([]ModelsNamespace, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ControllersPaginatedNamespaces) GetDataOk() ([]ModelsNamespace, bool) {
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *ControllersPaginatedNamespaces) HasData() bool {
+func (o *ModelsPaginatedResultModelsNamespace) HasData() bool {
 	if o != nil && o.Data != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *ControllersPaginatedNamespaces) HasData() bool {
 }
 
 // SetData gets a reference to the given []ModelsNamespace and assigns it to the Data field.
-func (o *ControllersPaginatedNamespaces) SetData(v []ModelsNamespace) {
+func (o *ModelsPaginatedResultModelsNamespace) SetData(v []ModelsNamespace) {
 	o.Data = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *ControllersPaginatedNamespaces) GetPagination() ConstraintPagination {
+func (o *ModelsPaginatedResultModelsNamespace) GetPagination() ConstraintPagination {
 	if o == nil || o.Pagination == nil {
 		var ret ConstraintPagination
 		return ret
@@ -80,7 +80,7 @@ func (o *ControllersPaginatedNamespaces) GetPagination() ConstraintPagination {
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedNamespaces) GetPaginationOk() (*ConstraintPagination, bool) {
+func (o *ModelsPaginatedResultModelsNamespace) GetPaginationOk() (*ConstraintPagination, bool) {
 	if o == nil || o.Pagination == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *ControllersPaginatedNamespaces) GetPaginationOk() (*ConstraintPaginatio
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *ControllersPaginatedNamespaces) HasPagination() bool {
+func (o *ModelsPaginatedResultModelsNamespace) HasPagination() bool {
 	if o != nil && o.Pagination != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *ControllersPaginatedNamespaces) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given ConstraintPagination and assigns it to the Pagination field.
-func (o *ControllersPaginatedNamespaces) SetPagination(v ConstraintPagination) {
+func (o *ModelsPaginatedResultModelsNamespace) SetPagination(v ConstraintPagination) {
 	o.Pagination = &v
 }
 
-func (o ControllersPaginatedNamespaces) MarshalJSON() ([]byte, error) {
+func (o ModelsPaginatedResultModelsNamespace) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -112,38 +112,38 @@ func (o ControllersPaginatedNamespaces) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersPaginatedNamespaces struct {
-	value *ControllersPaginatedNamespaces
+type NullableModelsPaginatedResultModelsNamespace struct {
+	value *ModelsPaginatedResultModelsNamespace
 	isSet bool
 }
 
-func (v NullableControllersPaginatedNamespaces) Get() *ControllersPaginatedNamespaces {
+func (v NullableModelsPaginatedResultModelsNamespace) Get() *ModelsPaginatedResultModelsNamespace {
 	return v.value
 }
 
-func (v *NullableControllersPaginatedNamespaces) Set(val *ControllersPaginatedNamespaces) {
+func (v *NullableModelsPaginatedResultModelsNamespace) Set(val *ModelsPaginatedResultModelsNamespace) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersPaginatedNamespaces) IsSet() bool {
+func (v NullableModelsPaginatedResultModelsNamespace) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersPaginatedNamespaces) Unset() {
+func (v *NullableModelsPaginatedResultModelsNamespace) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersPaginatedNamespaces(val *ControllersPaginatedNamespaces) *NullableControllersPaginatedNamespaces {
-	return &NullableControllersPaginatedNamespaces{value: val, isSet: true}
+func NewNullableModelsPaginatedResultModelsNamespace(val *ModelsPaginatedResultModelsNamespace) *NullableModelsPaginatedResultModelsNamespace {
+	return &NullableModelsPaginatedResultModelsNamespace{value: val, isSet: true}
 }
 
-func (v NullableControllersPaginatedNamespaces) MarshalJSON() ([]byte, error) {
+func (v NullableModelsPaginatedResultModelsNamespace) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersPaginatedNamespaces) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsPaginatedResultModelsNamespace) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

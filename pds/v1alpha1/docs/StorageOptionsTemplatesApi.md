@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdStorageOptionsTemplatesGet
 
-> ControllersPaginatedStorageOptionsTemplates ApiTenantsIdStorageOptionsTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Provisioner(provisioner).Execute()
+> ModelsPaginatedResultModelsStorageOptionsTemplate ApiTenantsIdStorageOptionsTemplatesGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Provisioner(provisioner).Execute()
 
 List StorageOptionsTemplates
 
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdStorageOptionsTemplatesGet`: ControllersPaginatedStorageOptionsTemplates
+    // response from `ApiTenantsIdStorageOptionsTemplatesGet`: ModelsPaginatedResultModelsStorageOptionsTemplate
     fmt.Fprintf(os.Stdout, "Response from `StorageOptionsTemplatesApi.ApiTenantsIdStorageOptionsTemplatesGet`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedStorageOptionsTemplates**](ControllersPaginatedStorageOptionsTemplates.md)
+[**ModelsPaginatedResultModelsStorageOptionsTemplate**](ModelsPaginatedResultModelsStorageOptionsTemplate.md)
 
 ### Authorization
 

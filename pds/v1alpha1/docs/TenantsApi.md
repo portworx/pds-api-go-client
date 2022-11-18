@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## ApiAccountsIdTenantsGet
 
-> ControllersPaginatedAccountTenants ApiAccountsIdTenantsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
+> ModelsPaginatedResultModelsTenant ApiAccountsIdTenantsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
 
 List Account's Tenants
 
@@ -49,7 +49,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.ApiAccountsIdTenantsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiAccountsIdTenantsGet`: ControllersPaginatedAccountTenants
+    // response from `ApiAccountsIdTenantsGet`: ModelsPaginatedResultModelsTenant
     fmt.Fprintf(os.Stdout, "Response from `TenantsApi.ApiAccountsIdTenantsGet`: %v\n", resp)
 }
 ```
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersPaginatedAccountTenants**](ControllersPaginatedAccountTenants.md)
+[**ModelsPaginatedResultModelsTenant**](ModelsPaginatedResultModelsTenant.md)
 
 ### Authorization
 

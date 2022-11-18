@@ -1,78 +1,78 @@
-# ControllersPaginatedBackupTargets
+# ModelsPaginatedResultModelsDataService
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsBackupTarget**](ModelsBackupTarget.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsDataService**](ModelsDataService.md) |  | [optional] 
 **Pagination** | Pointer to [**ConstraintPagination**](ConstraintPagination.md) |  | [optional] 
 
 ## Methods
 
-### NewControllersPaginatedBackupTargets
+### NewModelsPaginatedResultModelsDataService
 
-`func NewControllersPaginatedBackupTargets() *ControllersPaginatedBackupTargets`
+`func NewModelsPaginatedResultModelsDataService() *ModelsPaginatedResultModelsDataService`
 
-NewControllersPaginatedBackupTargets instantiates a new ControllersPaginatedBackupTargets object
+NewModelsPaginatedResultModelsDataService instantiates a new ModelsPaginatedResultModelsDataService object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersPaginatedBackupTargetsWithDefaults
+### NewModelsPaginatedResultModelsDataServiceWithDefaults
 
-`func NewControllersPaginatedBackupTargetsWithDefaults() *ControllersPaginatedBackupTargets`
+`func NewModelsPaginatedResultModelsDataServiceWithDefaults() *ModelsPaginatedResultModelsDataService`
 
-NewControllersPaginatedBackupTargetsWithDefaults instantiates a new ControllersPaginatedBackupTargets object
+NewModelsPaginatedResultModelsDataServiceWithDefaults instantiates a new ModelsPaginatedResultModelsDataService object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedBackupTargets) GetData() []ModelsBackupTarget`
+`func (o *ModelsPaginatedResultModelsDataService) GetData() []ModelsDataService`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedBackupTargets) GetDataOk() (*[]ModelsBackupTarget, bool)`
+`func (o *ModelsPaginatedResultModelsDataService) GetDataOk() (*[]ModelsDataService, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedBackupTargets) SetData(v []ModelsBackupTarget)`
+`func (o *ModelsPaginatedResultModelsDataService) SetData(v []ModelsDataService)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersPaginatedBackupTargets) HasData() bool`
+`func (o *ModelsPaginatedResultModelsDataService) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 
 ### GetPagination
 
-`func (o *ControllersPaginatedBackupTargets) GetPagination() ConstraintPagination`
+`func (o *ModelsPaginatedResultModelsDataService) GetPagination() ConstraintPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *ControllersPaginatedBackupTargets) GetPaginationOk() (*ConstraintPagination, bool)`
+`func (o *ModelsPaginatedResultModelsDataService) GetPaginationOk() (*ConstraintPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *ControllersPaginatedBackupTargets) SetPagination(v ConstraintPagination)`
+`func (o *ModelsPaginatedResultModelsDataService) SetPagination(v ConstraintPagination)`
 
 SetPagination sets Pagination field to given value.
 
 ### HasPagination
 
-`func (o *ControllersPaginatedBackupTargets) HasPagination() bool`
+`func (o *ModelsPaginatedResultModelsDataService) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
 

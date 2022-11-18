@@ -202,7 +202,7 @@ func (r ApiApiDataServicesIdVersionsGetRequest) Enabled(enabled bool) ApiApiData
 	return r
 }
 
-func (r ApiApiDataServicesIdVersionsGetRequest) Execute() (*ControllersPaginatedVersions, *http.Response, error) {
+func (r ApiApiDataServicesIdVersionsGetRequest) Execute() (*ModelsPaginatedResultModelsVersion, *http.Response, error) {
 	return r.ApiService.ApiDataServicesIdVersionsGetExecute(r)
 }
 
@@ -224,13 +224,13 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGet(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedVersions
-func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataServicesIdVersionsGetRequest) (*ControllersPaginatedVersions, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsVersion
+func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataServicesIdVersionsGetRequest) (*ModelsPaginatedResultModelsVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedVersions
+		localVarReturnValue  *ModelsPaginatedResultModelsVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VersionsApiService.ApiDataServicesIdVersionsGet")

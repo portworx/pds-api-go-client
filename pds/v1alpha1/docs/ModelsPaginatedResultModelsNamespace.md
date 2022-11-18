@@ -1,78 +1,78 @@
-# ControllersPaginatedBackupCredentials
+# ModelsPaginatedResultModelsNamespace
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsBackupCredentials**](ModelsBackupCredentials.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsNamespace**](ModelsNamespace.md) |  | [optional] 
 **Pagination** | Pointer to [**ConstraintPagination**](ConstraintPagination.md) |  | [optional] 
 
 ## Methods
 
-### NewControllersPaginatedBackupCredentials
+### NewModelsPaginatedResultModelsNamespace
 
-`func NewControllersPaginatedBackupCredentials() *ControllersPaginatedBackupCredentials`
+`func NewModelsPaginatedResultModelsNamespace() *ModelsPaginatedResultModelsNamespace`
 
-NewControllersPaginatedBackupCredentials instantiates a new ControllersPaginatedBackupCredentials object
+NewModelsPaginatedResultModelsNamespace instantiates a new ModelsPaginatedResultModelsNamespace object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersPaginatedBackupCredentialsWithDefaults
+### NewModelsPaginatedResultModelsNamespaceWithDefaults
 
-`func NewControllersPaginatedBackupCredentialsWithDefaults() *ControllersPaginatedBackupCredentials`
+`func NewModelsPaginatedResultModelsNamespaceWithDefaults() *ModelsPaginatedResultModelsNamespace`
 
-NewControllersPaginatedBackupCredentialsWithDefaults instantiates a new ControllersPaginatedBackupCredentials object
+NewModelsPaginatedResultModelsNamespaceWithDefaults instantiates a new ModelsPaginatedResultModelsNamespace object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedBackupCredentials) GetData() []ModelsBackupCredentials`
+`func (o *ModelsPaginatedResultModelsNamespace) GetData() []ModelsNamespace`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedBackupCredentials) GetDataOk() (*[]ModelsBackupCredentials, bool)`
+`func (o *ModelsPaginatedResultModelsNamespace) GetDataOk() (*[]ModelsNamespace, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedBackupCredentials) SetData(v []ModelsBackupCredentials)`
+`func (o *ModelsPaginatedResultModelsNamespace) SetData(v []ModelsNamespace)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersPaginatedBackupCredentials) HasData() bool`
+`func (o *ModelsPaginatedResultModelsNamespace) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 
 ### GetPagination
 
-`func (o *ControllersPaginatedBackupCredentials) GetPagination() ConstraintPagination`
+`func (o *ModelsPaginatedResultModelsNamespace) GetPagination() ConstraintPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *ControllersPaginatedBackupCredentials) GetPaginationOk() (*ConstraintPagination, bool)`
+`func (o *ModelsPaginatedResultModelsNamespace) GetPaginationOk() (*ConstraintPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *ControllersPaginatedBackupCredentials) SetPagination(v ConstraintPagination)`
+`func (o *ModelsPaginatedResultModelsNamespace) SetPagination(v ConstraintPagination)`
 
 SetPagination sets Pagination field to given value.
 
 ### HasPagination
 
-`func (o *ControllersPaginatedBackupCredentials) HasPagination() bool`
+`func (o *ModelsPaginatedResultModelsNamespace) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
 

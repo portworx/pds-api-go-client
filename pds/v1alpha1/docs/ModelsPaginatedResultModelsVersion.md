@@ -1,78 +1,78 @@
-# ControllersPaginatedAccountTenants
+# ModelsPaginatedResultModelsVersion
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsTenant**](ModelsTenant.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsVersion**](ModelsVersion.md) |  | [optional] 
 **Pagination** | Pointer to [**ConstraintPagination**](ConstraintPagination.md) |  | [optional] 
 
 ## Methods
 
-### NewControllersPaginatedAccountTenants
+### NewModelsPaginatedResultModelsVersion
 
-`func NewControllersPaginatedAccountTenants() *ControllersPaginatedAccountTenants`
+`func NewModelsPaginatedResultModelsVersion() *ModelsPaginatedResultModelsVersion`
 
-NewControllersPaginatedAccountTenants instantiates a new ControllersPaginatedAccountTenants object
+NewModelsPaginatedResultModelsVersion instantiates a new ModelsPaginatedResultModelsVersion object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersPaginatedAccountTenantsWithDefaults
+### NewModelsPaginatedResultModelsVersionWithDefaults
 
-`func NewControllersPaginatedAccountTenantsWithDefaults() *ControllersPaginatedAccountTenants`
+`func NewModelsPaginatedResultModelsVersionWithDefaults() *ModelsPaginatedResultModelsVersion`
 
-NewControllersPaginatedAccountTenantsWithDefaults instantiates a new ControllersPaginatedAccountTenants object
+NewModelsPaginatedResultModelsVersionWithDefaults instantiates a new ModelsPaginatedResultModelsVersion object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedAccountTenants) GetData() []ModelsTenant`
+`func (o *ModelsPaginatedResultModelsVersion) GetData() []ModelsVersion`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedAccountTenants) GetDataOk() (*[]ModelsTenant, bool)`
+`func (o *ModelsPaginatedResultModelsVersion) GetDataOk() (*[]ModelsVersion, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedAccountTenants) SetData(v []ModelsTenant)`
+`func (o *ModelsPaginatedResultModelsVersion) SetData(v []ModelsVersion)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *ControllersPaginatedAccountTenants) HasData() bool`
+`func (o *ModelsPaginatedResultModelsVersion) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 
 ### GetPagination
 
-`func (o *ControllersPaginatedAccountTenants) GetPagination() ConstraintPagination`
+`func (o *ModelsPaginatedResultModelsVersion) GetPagination() ConstraintPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *ControllersPaginatedAccountTenants) GetPaginationOk() (*ConstraintPagination, bool)`
+`func (o *ModelsPaginatedResultModelsVersion) GetPaginationOk() (*ConstraintPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *ControllersPaginatedAccountTenants) SetPagination(v ConstraintPagination)`
+`func (o *ModelsPaginatedResultModelsVersion) SetPagination(v ConstraintPagination)`
 
 SetPagination sets Pagination field to given value.
 
 ### HasPagination
 
-`func (o *ControllersPaginatedAccountTenants) HasPagination() bool`
+`func (o *ModelsPaginatedResultModelsVersion) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
 

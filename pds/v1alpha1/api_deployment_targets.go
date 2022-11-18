@@ -1157,7 +1157,7 @@ func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Name(name string) ApiApiPro
 	return r
 }
 
-func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Execute() (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
+func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Execute() (*ModelsPaginatedResultModelsDeploymentTarget, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdDeploymentTargetsGetExecute(r)
 }
 
@@ -1179,13 +1179,13 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGet(ctx cont
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedDeploymentTargets
-func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r ApiApiProjectsIdDeploymentTargetsGetRequest) (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsDeploymentTarget
+func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r ApiApiProjectsIdDeploymentTargetsGetRequest) (*ModelsPaginatedResultModelsDeploymentTarget, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedDeploymentTargets
+		localVarReturnValue  *ModelsPaginatedResultModelsDeploymentTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiProjectsIdDeploymentTargetsGet")
@@ -1329,7 +1329,7 @@ func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Name(name string) ApiApiTena
 	return r
 }
 
-func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Execute() (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
+func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Execute() (*ModelsPaginatedResultModelsDeploymentTarget, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdDeploymentTargetsGetExecute(r)
 }
 
@@ -1351,13 +1351,13 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGet(ctx conte
 }
 
 // Execute executes the request
-//  @return ControllersPaginatedDeploymentTargets
-func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r ApiApiTenantsIdDeploymentTargetsGetRequest) (*ControllersPaginatedDeploymentTargets, *http.Response, error) {
+//  @return ModelsPaginatedResultModelsDeploymentTarget
+func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r ApiApiTenantsIdDeploymentTargetsGetRequest) (*ModelsPaginatedResultModelsDeploymentTarget, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersPaginatedDeploymentTargets
+		localVarReturnValue  *ModelsPaginatedResultModelsDeploymentTarget
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiTenantsIdDeploymentTargetsGet")
