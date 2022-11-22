@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**ApiAccountsIdGlobalConfigPut**](AccountsApi.md#ApiAccountsIdGlobalConfigPut) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
 [**ApiAccountsIdUsersGet**](AccountsApi.md#ApiAccountsIdUsersGet) | **Get** /api/accounts/{id}/users | List Account Users
 [**ApiAccountsPost**](AccountsApi.md#ApiAccountsPost) | **Post** /api/accounts | Create Account
-[**ApiUsersIdAccountsGet**](AccountsApi.md#ApiUsersIdAccountsGet) | **Get** /api/users/{id}/accounts | List User Accounts
 
 
 
@@ -437,86 +436,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ApiUsersIdAccountsGet
-
-> ModelsPaginatedResultModelsAccount ApiUsersIdAccountsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
-
-List User Accounts
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "id_example" // string | User ID (must be valid UUID)
-    sortBy := "sortBy_example" // string | A given Accounts attribute to sort results by (one of: id, name, created_at) (optional)
-    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
-    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
-    id2 := "id_example" // string | Filter results by Accounts id (optional)
-    name := "name_example" // string | Filter results by Accounts name (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.ApiUsersIdAccountsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Name(name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiUsersIdAccountsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApiUsersIdAccountsGet`: ModelsPaginatedResultModelsAccount
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ApiUsersIdAccountsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | User ID (must be valid UUID) | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApiUsersIdAccountsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **sortBy** | **string** | A given Accounts attribute to sort results by (one of: id, name, created_at) | 
- **limit** | **string** | Maximum number of rows to return (could be less) | 
- **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
- **id2** | **string** | Filter results by Accounts id | 
- **name** | **string** | Filter results by Accounts name | 
-
-### Return type
-
-[**ModelsPaginatedResultModelsAccount**](ModelsPaginatedResultModelsAccount.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

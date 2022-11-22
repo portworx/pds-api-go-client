@@ -90,7 +90,6 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ApiAccountsIdGlobalConfigPut**](docs/AccountsApi.md#apiaccountsidglobalconfigput) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
-*AccountsApi* | [**ApiUsersIdAccountsGet**](docs/AccountsApi.md#apiusersidaccountsget) | **Get** /api/users/{id}/accounts | List User Accounts
 *AccountsDNSApi* | [**ApiAccountsIdDnsDetailsPut**](docs/AccountsDNSApi.md#apiaccountsiddnsdetailsput) | **Put** /api/accounts/{id}/dns-details | Update DNS Details
 *AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsGet**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsget) | **Get** /api/accounts/{id}/maas-details | Get MAAS details
 *AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsPut**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsput) | **Put** /api/accounts/{id}/maas-details | Update MAAS details
@@ -166,21 +165,11 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**ApiNamespacesIdDelete**](docs/NamespacesApi.md#apinamespacesiddelete) | **Delete** /api/namespaces/{id} | Delete Namespace
 *NamespacesApi* | [**ApiNamespacesIdGet**](docs/NamespacesApi.md#apinamespacesidget) | **Get** /api/namespaces/{id} | Get Namespace
 *NamespacesApi* | [**ApiNamespacesIdPut**](docs/NamespacesApi.md#apinamespacesidput) | **Put** /api/namespaces/{id} | Update namespace
-*ProjectRoleBindingsApi* | [**ApiProjectsIdInvitationsPost**](docs/ProjectRoleBindingsApi.md#apiprojectsidinvitationspost) | **Post** /api/projects/{id}/invitations | Create Project Invitation
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsDelete**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsdelete) | **Delete** /api/projects/{id}/role-bindings | Delete ProjectRoleBinding
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsget) | **Get** /api/projects/{id}/role-bindings | List ProjectRoleBindings
 *ProjectRoleBindingsApi* | [**ApiProjectsIdRoleBindingsPut**](docs/ProjectRoleBindingsApi.md#apiprojectsidrolebindingsput) | **Put** /api/projects/{id}/role-bindings | Create ProjectRoleBinding
-*ProjectRoleBindingsApi* | [**ApiUsersIdTenantsTenantidProjectRoleBindingsGet**](docs/ProjectRoleBindingsApi.md#apiusersidtenantstenantidprojectrolebindingsget) | **Get** /api/users/{id}/tenants/{tenantid}/project-role-bindings | List User&#39;s ProjectRoleBindings
-*ProjectsApi* | [**ApiProjectsIdAssignBackupTargetsPost**](docs/ProjectsApi.md#apiprojectsidassignbackuptargetspost) | **Post** /api/projects/{id}/assign-backup-targets | Assign Backup Targets to Project
-*ProjectsApi* | [**ApiProjectsIdAssignDeploymentTargetsPost**](docs/ProjectsApi.md#apiprojectsidassigndeploymenttargetspost) | **Post** /api/projects/{id}/assign-deployment-targets | Assign Deployment Targets to Project
 *ProjectsApi* | [**ApiProjectsIdGet**](docs/ProjectsApi.md#apiprojectsidget) | **Get** /api/projects/{id} | Get Project
-*ProjectsApi* | [**ApiProjectsIdPatch**](docs/ProjectsApi.md#apiprojectsidpatch) | **Patch** /api/projects/{id} | Patch Project
-*ProjectsApi* | [**ApiProjectsIdUnassignBackupTargetsPost**](docs/ProjectsApi.md#apiprojectsidunassignbackuptargetspost) | **Post** /api/projects/{id}/unassign-backup-targets | Unassign Backup Targets from Project
-*ProjectsApi* | [**ApiProjectsIdUnassignDeploymentTargetsPost**](docs/ProjectsApi.md#apiprojectsidunassigndeploymenttargetspost) | **Post** /api/projects/{id}/unassign-deployment-targets | Unassign Deployment Targets from Project
-*ProjectsApi* | [**ApiProjectsIdUsersGet**](docs/ProjectsApi.md#apiprojectsidusersget) | **Get** /api/projects/{id}/users | List Project Users
 *ProjectsApi* | [**ApiTenantsIdProjectsGet**](docs/ProjectsApi.md#apitenantsidprojectsget) | **Get** /api/tenants/{id}/projects | List Tenant&#39;s Projects
-*ProjectsApi* | [**ApiTenantsIdProjectsPost**](docs/ProjectsApi.md#apitenantsidprojectspost) | **Post** /api/tenants/{id}/projects | Create Project
-*ProjectsApi* | [**ApiUsersIdTenantsTenantidProjectsGet**](docs/ProjectsApi.md#apiusersidtenantstenantidprojectsget) | **Get** /api/users/{id}/tenants/{tenantid}/projects | List User&#39;s Projects
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdDelete**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesiddelete) | **Delete** /api/resource-settings-templates/{id} | Delete ResourceSettingsTemplates
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdGet**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidget) | **Get** /api/resource-settings-templates/{id} | Get ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
@@ -203,18 +192,12 @@ Class | Method | HTTP request | Description
 *StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesPost**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatespost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplates
 *TasksApi* | [**ApiDbTasksIdGet**](docs/TasksApi.md#apidbtasksidget) | **Get** /api/db-tasks/{id} | Get Task
 *TeamsApi* | [**ApiTeamsIdGet**](docs/TeamsApi.md#apiteamsidget) | **Get** /api/teams/{id} | Get Team
-*TenantRoleBindingsApi* | [**ApiTenantsIdInvitationsPost**](docs/TenantRoleBindingsApi.md#apitenantsidinvitationspost) | **Post** /api/tenants/{id}/invitations | Create Tenant Invitation
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsDelete**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsdelete) | **Delete** /api/tenants/{id}/role-bindings | Delete TenantRoleBinding
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsget) | **Get** /api/tenants/{id}/role-bindings | List TenantRoleBindings
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsPut**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsput) | **Put** /api/tenants/{id}/role-bindings | Create TenantRoleBinding
-*TenantRoleBindingsApi* | [**ApiUsersIdAccountsAccountidTenantRoleBindingsGet**](docs/TenantRoleBindingsApi.md#apiusersidaccountsaccountidtenantrolebindingsget) | **Get** /api/users/{id}/accounts/{accountid}/tenant-role-bindings | List User&#39;s TenantRoleBindings
 *TenantsApi* | [**ApiAccountsIdTenantsGet**](docs/TenantsApi.md#apiaccountsidtenantsget) | **Get** /api/accounts/{id}/tenants | List Account&#39;s Tenants
-*TenantsApi* | [**ApiAccountsIdTenantsPost**](docs/TenantsApi.md#apiaccountsidtenantspost) | **Post** /api/accounts/{id}/tenants | Create Tenant
 *TenantsApi* | [**ApiTenantsIdDnsDetailsGet**](docs/TenantsApi.md#apitenantsiddnsdetailsget) | **Get** /api/tenants/{id}/dns-details | Get DNS details for Tenant
 *TenantsApi* | [**ApiTenantsIdGet**](docs/TenantsApi.md#apitenantsidget) | **Get** /api/tenants/{id} | Get Tenant
-*TenantsApi* | [**ApiTenantsIdPatch**](docs/TenantsApi.md#apitenantsidpatch) | **Patch** /api/tenants/{id} | Patch Tenant
-*TenantsApi* | [**ApiTenantsIdUsersGet**](docs/TenantsApi.md#apitenantsidusersget) | **Get** /api/tenants/{id}/users | List Tenant Users
-*TenantsApi* | [**ApiUsersIdAccountsAccountidTenantsGet**](docs/TenantsApi.md#apiusersidaccountsaccountidtenantsget) | **Get** /api/users/{id}/accounts/{accountid}/tenants | List Tenants for Account
 *UserAPIKeyApi* | [**ApiUserApiKeyGet**](docs/UserAPIKeyApi.md#apiuserapikeyget) | **Get** /api/user-api-key | List UserAPIKeys
 *UserAPIKeyApi* | [**ApiUserApiKeyIdDelete**](docs/UserAPIKeyApi.md#apiuserapikeyiddelete) | **Delete** /api/user-api-key/{id} | Delete UserAPIKey
 *UserAPIKeyApi* | [**ApiUserApiKeyIdGet**](docs/UserAPIKeyApi.md#apiuserapikeyidget) | **Get** /api/user-api-key/{id} | Get UserAPIKey
@@ -376,17 +359,9 @@ Class | Method | HTTP request | Description
  - [ModelsUserAPIKey](docs/ModelsUserAPIKey.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
- - [RequestsBackupTargetIDArrayRequest](docs/RequestsBackupTargetIDArrayRequest.md)
- - [RequestsCreateProjectRequest](docs/RequestsCreateProjectRequest.md)
- - [RequestsCreateTenantRequest](docs/RequestsCreateTenantRequest.md)
  - [RequestsCreateUserAPIKeyRequest](docs/RequestsCreateUserAPIKeyRequest.md)
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
- - [RequestsDeploymentTargetIDArrayRequest](docs/RequestsDeploymentTargetIDArrayRequest.md)
  - [RequestsInvitationAccountRequest](docs/RequestsInvitationAccountRequest.md)
- - [RequestsInvitationProjectRequest](docs/RequestsInvitationProjectRequest.md)
- - [RequestsInvitationTenantRequest](docs/RequestsInvitationTenantRequest.md)
- - [RequestsPatchProjectRequest](docs/RequestsPatchProjectRequest.md)
- - [RequestsPatchTenantRequest](docs/RequestsPatchTenantRequest.md)
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
