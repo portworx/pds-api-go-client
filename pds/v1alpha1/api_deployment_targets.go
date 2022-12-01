@@ -27,6 +27,124 @@ var (
 // DeploymentTargetsApiService DeploymentTargetsApi service
 type DeploymentTargetsApiService service
 
+type ApiApiDeploymentTargetsIdAgentMetadataPatchRequest struct {
+	ctx context.Context
+	ApiService *DeploymentTargetsApiService
+	id string
+	body *RequestsPatchDeploymentTargetsAgentMetadataRequest
+}
+
+// Object with target cluster ID
+func (r ApiApiDeploymentTargetsIdAgentMetadataPatchRequest) Body(body RequestsPatchDeploymentTargetsAgentMetadataRequest) ApiApiDeploymentTargetsIdAgentMetadataPatchRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiApiDeploymentTargetsIdAgentMetadataPatchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ApiDeploymentTargetsIdAgentMetadataPatchExecute(r)
+}
+
+/*
+ApiDeploymentTargetsIdAgentMetadataPatch Patch DeploymentTarget agent-metadata
+
+Patches the DeploymentTarget agent-metadata
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id DeploymentTarget ID (must be valid UUID)
+ @return ApiApiDeploymentTargetsIdAgentMetadataPatchRequest
+*/
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdAgentMetadataPatch(ctx context.Context, id string) ApiApiDeploymentTargetsIdAgentMetadataPatchRequest {
+	return ApiApiDeploymentTargetsIdAgentMetadataPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdAgentMetadataPatchExecute(r ApiApiDeploymentTargetsIdAgentMetadataPatchRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentTargetsApiService.ApiDeploymentTargetsIdAgentMetadataPatch")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/deployment-targets/{id}/agent-metadata"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiApiDeploymentTargetsIdConfigGetRequest struct {
 	ctx context.Context
 	ApiService *DeploymentTargetsApiService
@@ -641,10 +759,13 @@ func (r ApiApiDeploymentTargetsIdMetadataPostRequest) Execute() (*http.Response,
 ApiDeploymentTargetsIdMetadataPost Update DeploymentTarget metadata
 
 Handles DeploymentTarget metadata created by PDS/Platform agent
+Deprecated, Use PATCH api/deployment-targets/{id}/agent-metadata instead
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id DeploymentTarget ID (must be valid UUID)
  @return ApiApiDeploymentTargetsIdMetadataPostRequest
+
+Deprecated
 */
 func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdMetadataPost(ctx context.Context, id string) ApiApiDeploymentTargetsIdMetadataPostRequest {
 	return ApiApiDeploymentTargetsIdMetadataPostRequest{
@@ -655,6 +776,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdMetadataPost(ctx con
 }
 
 // Execute executes the request
+// Deprecated
 func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdMetadataPostExecute(r ApiApiDeploymentTargetsIdMetadataPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

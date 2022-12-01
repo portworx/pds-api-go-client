@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ApiDeploymentTargetsIdAgentMetadataPatch**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdAgentMetadataPatch) | **Patch** /api/deployment-targets/{id}/agent-metadata | Patch DeploymentTarget agent-metadata
 [**ApiDeploymentTargetsIdConfigGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdConfigGet) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 [**ApiDeploymentTargetsIdCredentialsGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdCredentialsGet) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 [**ApiDeploymentTargetsIdDelete**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdDelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
@@ -17,6 +18,76 @@ Method | HTTP request | Description
 [**ApiTenantsIdDeploymentTargetsGet**](DeploymentTargetsApi.md#ApiTenantsIdDeploymentTargetsGet) | **Get** /api/tenants/{id}/deployment-targets | List Tenant&#39;s DeploymentTargets
 [**ApiTenantsIdDeploymentTargetsPost**](DeploymentTargetsApi.md#ApiTenantsIdDeploymentTargetsPost) | **Post** /api/tenants/{id}/deployment-targets | Create DeploymentTarget
 
+
+
+## ApiDeploymentTargetsIdAgentMetadataPatch
+
+> ApiDeploymentTargetsIdAgentMetadataPatch(ctx, id).Body(body).Execute()
+
+Patch DeploymentTarget agent-metadata
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
+    body := *openapiclient.NewRequestsPatchDeploymentTargetsAgentMetadataRequest() // RequestsPatchDeploymentTargetsAgentMetadataRequest | Object with target cluster ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdAgentMetadataPatch(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdAgentMetadataPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | DeploymentTarget ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentTargetsIdAgentMetadataPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsPatchDeploymentTargetsAgentMetadataRequest**](RequestsPatchDeploymentTargetsAgentMetadataRequest.md) | Object with target cluster ID | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ApiDeploymentTargetsIdConfigGet

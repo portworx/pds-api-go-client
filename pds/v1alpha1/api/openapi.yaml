@@ -1400,6 +1400,33 @@ paths:
       tags:
       - DeploymentTargets
       x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/agent-metadata:
+    patch:
+      description: Patches the DeploymentTarget agent-metadata
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.PatchDeploymentTargetsAgentMetadataRequest'
+        description: Object with target cluster ID
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Patch DeploymentTarget agent-metadata
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
   /api/deployment-targets/{id}/config:
     get:
       description: Fetches the config values for a DeploymentTarget
@@ -1477,7 +1504,10 @@ paths:
       x-codegen-request-body-name: body
   /api/deployment-targets/{id}/metadata:
     post:
-      description: Handles DeploymentTarget metadata created by PDS/Platform agent
+      deprecated: true
+      description: |-
+        Handles DeploymentTarget metadata created by PDS/Platform agent
+        Deprecated, Use PATCH api/deployment-targets/{id}/agent-metadata instead
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
         in: path
@@ -7649,6 +7679,19 @@ components:
         email:
           type: string
         role_name:
+          type: string
+      type: object
+    requests.PatchDeploymentTargetsAgentMetadataRequest:
+      properties:
+        kube_api_version:
+          type: string
+        kube_platform:
+          type: string
+        px_csi_enabled:
+          type: string
+        px_service_namespace:
+          type: string
+        px_version:
           type: string
       type: object
     requests.PatchUserAPIKeyRequest:
