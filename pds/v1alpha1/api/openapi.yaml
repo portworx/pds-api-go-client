@@ -5216,6 +5216,11 @@ components:
           enum:
           - all
           type: string
+        version_updatability:
+          description: Specify what data service versions are updatable for this account.
+          enum:
+          - all
+          type: string
       type: object
     controllers.upsertAccountRoleBindingRequest:
       properties:
@@ -5452,6 +5457,7 @@ components:
     models.Account:
       example:
         global_config:
+          version_updatability: version_updatability
           version_availability: version_availability
         updated_at: updated_at
         name: name
@@ -5479,11 +5485,15 @@ components:
       type: object
     models.AccountGlobalConfig:
       example:
+        version_updatability: version_updatability
         version_availability: version_availability
       properties:
         version_availability:
           description: Specify what data service versions are available for deployment
             for this account.
+          type: string
+        version_updatability:
+          description: Specify what data service versions are updatable for this account.
           type: string
       type: object
     models.AccountRoleBinding:
@@ -6439,6 +6449,7 @@ components:
           continuation: continuation
         data:
         - global_config:
+            version_updatability: version_updatability
             version_availability: version_availability
           updated_at: updated_at
           name: name
@@ -6448,6 +6459,7 @@ components:
             accepted: true
           id: id
         - global_config:
+            version_updatability: version_updatability
             version_availability: version_availability
           updated_at: updated_at
           name: name

@@ -18,6 +18,8 @@ import (
 type ControllersUpdateGlobalConfigRequest struct {
 	// Specify what data service versions are available for deployment for this account.
 	VersionAvailability *string `json:"version_availability,omitempty"`
+	// Specify what data service versions are updatable for this account.
+	VersionUpdatability *string `json:"version_updatability,omitempty"`
 }
 
 // NewControllersUpdateGlobalConfigRequest instantiates a new ControllersUpdateGlobalConfigRequest object
@@ -69,10 +71,45 @@ func (o *ControllersUpdateGlobalConfigRequest) SetVersionAvailability(v string) 
 	o.VersionAvailability = &v
 }
 
+// GetVersionUpdatability returns the VersionUpdatability field value if set, zero value otherwise.
+func (o *ControllersUpdateGlobalConfigRequest) GetVersionUpdatability() string {
+	if o == nil || o.VersionUpdatability == nil {
+		var ret string
+		return ret
+	}
+	return *o.VersionUpdatability
+}
+
+// GetVersionUpdatabilityOk returns a tuple with the VersionUpdatability field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersUpdateGlobalConfigRequest) GetVersionUpdatabilityOk() (*string, bool) {
+	if o == nil || o.VersionUpdatability == nil {
+		return nil, false
+	}
+	return o.VersionUpdatability, true
+}
+
+// HasVersionUpdatability returns a boolean if a field has been set.
+func (o *ControllersUpdateGlobalConfigRequest) HasVersionUpdatability() bool {
+	if o != nil && o.VersionUpdatability != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersionUpdatability gets a reference to the given string and assigns it to the VersionUpdatability field.
+func (o *ControllersUpdateGlobalConfigRequest) SetVersionUpdatability(v string) {
+	o.VersionUpdatability = &v
+}
+
 func (o ControllersUpdateGlobalConfigRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.VersionAvailability != nil {
 		toSerialize["version_availability"] = o.VersionAvailability
+	}
+	if o.VersionUpdatability != nil {
+		toSerialize["version_updatability"] = o.VersionUpdatability
 	}
 	return json.Marshal(toSerialize)
 }
