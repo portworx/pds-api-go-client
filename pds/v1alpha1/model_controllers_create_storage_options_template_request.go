@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// ControllersCreateStorageOptionsTemplatesRequest struct for ControllersCreateStorageOptionsTemplatesRequest
-type ControllersCreateStorageOptionsTemplatesRequest struct {
+// ControllersCreateStorageOptionsTemplateRequest struct for ControllersCreateStorageOptionsTemplateRequest
+type ControllersCreateStorageOptionsTemplateRequest struct {
 	Fg *bool `json:"fg,omitempty"`
 	// Filesystem to be laid out.
 	Fs *string `json:"fs,omitempty"`
@@ -28,25 +28,25 @@ type ControllersCreateStorageOptionsTemplatesRequest struct {
 	Secure *bool `json:"secure,omitempty"`
 }
 
-// NewControllersCreateStorageOptionsTemplatesRequest instantiates a new ControllersCreateStorageOptionsTemplatesRequest object
+// NewControllersCreateStorageOptionsTemplateRequest instantiates a new ControllersCreateStorageOptionsTemplateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersCreateStorageOptionsTemplatesRequest() *ControllersCreateStorageOptionsTemplatesRequest {
-	this := ControllersCreateStorageOptionsTemplatesRequest{}
+func NewControllersCreateStorageOptionsTemplateRequest() *ControllersCreateStorageOptionsTemplateRequest {
+	this := ControllersCreateStorageOptionsTemplateRequest{}
 	return &this
 }
 
-// NewControllersCreateStorageOptionsTemplatesRequestWithDefaults instantiates a new ControllersCreateStorageOptionsTemplatesRequest object
+// NewControllersCreateStorageOptionsTemplateRequestWithDefaults instantiates a new ControllersCreateStorageOptionsTemplateRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersCreateStorageOptionsTemplatesRequestWithDefaults() *ControllersCreateStorageOptionsTemplatesRequest {
-	this := ControllersCreateStorageOptionsTemplatesRequest{}
+func NewControllersCreateStorageOptionsTemplateRequestWithDefaults() *ControllersCreateStorageOptionsTemplateRequest {
+	this := ControllersCreateStorageOptionsTemplateRequest{}
 	return &this
 }
 
 // GetFg returns the Fg field value if set, zero value otherwise.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFg() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetFg() bool {
 	if o == nil || o.Fg == nil {
 		var ret bool
 		return ret
@@ -56,7 +56,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFg() bool {
 
 // GetFgOk returns a tuple with the Fg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFgOk() (*bool, bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetFgOk() (*bool, bool) {
 	if o == nil || o.Fg == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFgOk() (*bool, bool
 }
 
 // HasFg returns a boolean if a field has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) HasFg() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) HasFg() bool {
 	if o != nil && o.Fg != nil {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) HasFg() bool {
 }
 
 // SetFg gets a reference to the given bool and assigns it to the Fg field.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) SetFg(v bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) SetFg(v bool) {
 	o.Fg = &v
 }
 
 // GetFs returns the Fs field value if set, zero value otherwise.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFs() string {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetFs() string {
 	if o == nil || o.Fs == nil {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFs() string {
 
 // GetFsOk returns a tuple with the Fs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFsOk() (*string, bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetFsOk() (*string, bool) {
 	if o == nil || o.Fs == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFsOk() (*string, bo
 }
 
 // HasFs returns a boolean if a field has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) HasFs() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) HasFs() bool {
 	if o != nil && o.Fs != nil {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) HasFs() bool {
 }
 
 // SetFs gets a reference to the given string and assigns it to the Fs field.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) SetFs(v string) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) SetFs(v string) {
 	o.Fs = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetName() string {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -120,7 +120,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetNameOk() (*string, bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetNameOk() (*string, 
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) HasName() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -137,12 +137,12 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) SetName(v string) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) SetName(v string) {
 	o.Name = &v
 }
 
 // GetProvisioner returns the Provisioner field value if set, zero value otherwise.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetProvisioner() string {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetProvisioner() string {
 	if o == nil || o.Provisioner == nil {
 		var ret string
 		return ret
@@ -152,7 +152,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetProvisioner() strin
 
 // GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetProvisionerOk() (*string, bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetProvisionerOk() (*string, bool) {
 	if o == nil || o.Provisioner == nil {
 		return nil, false
 	}
@@ -160,7 +160,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetProvisionerOk() (*s
 }
 
 // HasProvisioner returns a boolean if a field has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) HasProvisioner() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) HasProvisioner() bool {
 	if o != nil && o.Provisioner != nil {
 		return true
 	}
@@ -169,12 +169,12 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) HasProvisioner() bool 
 }
 
 // SetProvisioner gets a reference to the given string and assigns it to the Provisioner field.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) SetProvisioner(v string) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) SetProvisioner(v string) {
 	o.Provisioner = &v
 }
 
 // GetRepl returns the Repl field value if set, zero value otherwise.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetRepl() int32 {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetRepl() int32 {
 	if o == nil || o.Repl == nil {
 		var ret int32
 		return ret
@@ -184,7 +184,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetRepl() int32 {
 
 // GetReplOk returns a tuple with the Repl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetReplOk() (*int32, bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetReplOk() (*int32, bool) {
 	if o == nil || o.Repl == nil {
 		return nil, false
 	}
@@ -192,7 +192,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetReplOk() (*int32, b
 }
 
 // HasRepl returns a boolean if a field has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) HasRepl() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) HasRepl() bool {
 	if o != nil && o.Repl != nil {
 		return true
 	}
@@ -201,12 +201,12 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) HasRepl() bool {
 }
 
 // SetRepl gets a reference to the given int32 and assigns it to the Repl field.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) SetRepl(v int32) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) SetRepl(v int32) {
 	o.Repl = &v
 }
 
 // GetSecure returns the Secure field value if set, zero value otherwise.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetSecure() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetSecure() bool {
 	if o == nil || o.Secure == nil {
 		var ret bool
 		return ret
@@ -216,7 +216,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetSecure() bool {
 
 // GetSecureOk returns a tuple with the Secure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) GetSecureOk() (*bool, bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) GetSecureOk() (*bool, bool) {
 	if o == nil || o.Secure == nil {
 		return nil, false
 	}
@@ -224,7 +224,7 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) GetSecureOk() (*bool, 
 }
 
 // HasSecure returns a boolean if a field has been set.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) HasSecure() bool {
+func (o *ControllersCreateStorageOptionsTemplateRequest) HasSecure() bool {
 	if o != nil && o.Secure != nil {
 		return true
 	}
@@ -233,11 +233,11 @@ func (o *ControllersCreateStorageOptionsTemplatesRequest) HasSecure() bool {
 }
 
 // SetSecure gets a reference to the given bool and assigns it to the Secure field.
-func (o *ControllersCreateStorageOptionsTemplatesRequest) SetSecure(v bool) {
+func (o *ControllersCreateStorageOptionsTemplateRequest) SetSecure(v bool) {
 	o.Secure = &v
 }
 
-func (o ControllersCreateStorageOptionsTemplatesRequest) MarshalJSON() ([]byte, error) {
+func (o ControllersCreateStorageOptionsTemplateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Fg != nil {
 		toSerialize["fg"] = o.Fg
@@ -260,38 +260,38 @@ func (o ControllersCreateStorageOptionsTemplatesRequest) MarshalJSON() ([]byte, 
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersCreateStorageOptionsTemplatesRequest struct {
-	value *ControllersCreateStorageOptionsTemplatesRequest
+type NullableControllersCreateStorageOptionsTemplateRequest struct {
+	value *ControllersCreateStorageOptionsTemplateRequest
 	isSet bool
 }
 
-func (v NullableControllersCreateStorageOptionsTemplatesRequest) Get() *ControllersCreateStorageOptionsTemplatesRequest {
+func (v NullableControllersCreateStorageOptionsTemplateRequest) Get() *ControllersCreateStorageOptionsTemplateRequest {
 	return v.value
 }
 
-func (v *NullableControllersCreateStorageOptionsTemplatesRequest) Set(val *ControllersCreateStorageOptionsTemplatesRequest) {
+func (v *NullableControllersCreateStorageOptionsTemplateRequest) Set(val *ControllersCreateStorageOptionsTemplateRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersCreateStorageOptionsTemplatesRequest) IsSet() bool {
+func (v NullableControllersCreateStorageOptionsTemplateRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersCreateStorageOptionsTemplatesRequest) Unset() {
+func (v *NullableControllersCreateStorageOptionsTemplateRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersCreateStorageOptionsTemplatesRequest(val *ControllersCreateStorageOptionsTemplatesRequest) *NullableControllersCreateStorageOptionsTemplatesRequest {
-	return &NullableControllersCreateStorageOptionsTemplatesRequest{value: val, isSet: true}
+func NewNullableControllersCreateStorageOptionsTemplateRequest(val *ControllersCreateStorageOptionsTemplateRequest) *NullableControllersCreateStorageOptionsTemplateRequest {
+	return &NullableControllersCreateStorageOptionsTemplateRequest{value: val, isSet: true}
 }
 
-func (v NullableControllersCreateStorageOptionsTemplatesRequest) MarshalJSON() ([]byte, error) {
+func (v NullableControllersCreateStorageOptionsTemplateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersCreateStorageOptionsTemplatesRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableControllersCreateStorageOptionsTemplateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -2871,7 +2871,7 @@ paths:
       tags:
       - ApplicationConfigurationTemplates
     post:
-      description: Creates a new ApplicationConfigurationTemplates
+      description: Creates a new ApplicationConfigurationTemplate
       parameters:
       - description: Tenant ID (must be valid UUID)
         in: path
@@ -2883,7 +2883,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.createApplicationConfigurationTemplatesRequest'
+              $ref: '#/components/schemas/controllers.createApplicationConfigurationTemplateRequest'
         description: Request body containing the application configuration template
         required: true
       responses:
@@ -2892,10 +2892,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.ApplicationConfigurationTemplate'
-          description: The created ApplicationConfigurationTemplates will be returned
+          description: The created ApplicationConfigurationTemplate will be returned
       security:
       - ApiKeyAuth: []
-      summary: Create ApplicationConfigurationTemplates
+      summary: Create ApplicationConfigurationTemplate
       tags:
       - ApplicationConfigurationTemplates
       x-codegen-request-body-name: body
@@ -3367,7 +3367,7 @@ paths:
       tags:
       - ResourceSettingsTemplates
     post:
-      description: Creates a new ResourceSettingsTemplates
+      description: Creates a new ResourceSettingsTemplate
       parameters:
       - description: Tenant ID (must be valid UUID)
         in: path
@@ -3379,7 +3379,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.createResourceSettingsTemplatesRequest'
+              $ref: '#/components/schemas/controllers.createResourceSettingsTemplateRequest'
         description: Request body containing the resource settings template
         required: true
       responses:
@@ -3388,10 +3388,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.ResourceSettingsTemplate'
-          description: The created ResourceSettingsTemplates will be returned
+          description: The created ResourceSettingsTemplate will be returned
       security:
       - ApiKeyAuth: []
-      summary: Create ResourceSettingsTemplates
+      summary: Create ResourceSettingsTemplate
       tags:
       - ResourceSettingsTemplates
       x-codegen-request-body-name: body
@@ -3643,7 +3643,7 @@ paths:
       tags:
       - StorageOptionsTemplates
     post:
-      description: Creates a new StorageOptionsTemplates
+      description: Creates a new StorageOptionsTemplate
       parameters:
       - description: Tenant ID (must be valid UUID)
         in: path
@@ -3655,7 +3655,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.createStorageOptionsTemplatesRequest'
+              $ref: '#/components/schemas/controllers.createStorageOptionsTemplateRequest'
         description: Request body containing the storage options template
         required: true
       responses:
@@ -3667,7 +3667,7 @@ paths:
           description: The created StorageOptionsTemplates will be returned
       security:
       - ApiKeyAuth: []
-      summary: Create StorageOptionsTemplates
+      summary: Create StorageOptionsTemplate
       tags:
       - StorageOptionsTemplates
       x-codegen-request-body-name: body
@@ -5054,7 +5054,7 @@ components:
           description: Name of the account.
           type: string
       type: object
-    controllers.createApplicationConfigurationTemplatesRequest:
+    controllers.createApplicationConfigurationTemplateRequest:
       properties:
         config_items:
           items:
@@ -5092,7 +5092,7 @@ components:
           description: Name of the namespace
           type: string
       type: object
-    controllers.createResourceSettingsTemplatesRequest:
+    controllers.createResourceSettingsTemplateRequest:
       properties:
         cpu_limit:
           type: string
@@ -5116,7 +5116,7 @@ components:
           example: Name of the service account
           type: string
       type: object
-    controllers.createStorageOptionsTemplatesRequest:
+    controllers.createStorageOptionsTemplateRequest:
       properties:
         fg:
           type: boolean

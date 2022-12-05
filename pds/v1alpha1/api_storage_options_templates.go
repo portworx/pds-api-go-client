@@ -557,11 +557,11 @@ type ApiApiTenantsIdStorageOptionsTemplatesPostRequest struct {
 	ctx context.Context
 	ApiService *StorageOptionsTemplatesApiService
 	id string
-	body *ControllersCreateStorageOptionsTemplatesRequest
+	body *ControllersCreateStorageOptionsTemplateRequest
 }
 
 // Request body containing the storage options template
-func (r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) Body(body ControllersCreateStorageOptionsTemplatesRequest) ApiApiTenantsIdStorageOptionsTemplatesPostRequest {
+func (r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) Body(body ControllersCreateStorageOptionsTemplateRequest) ApiApiTenantsIdStorageOptionsTemplatesPostRequest {
 	r.body = &body
 	return r
 }
@@ -571,9 +571,9 @@ func (r ApiApiTenantsIdStorageOptionsTemplatesPostRequest) Execute() (*ModelsSto
 }
 
 /*
-ApiTenantsIdStorageOptionsTemplatesPost Create StorageOptionsTemplates
+ApiTenantsIdStorageOptionsTemplatesPost Create StorageOptionsTemplate
 
-Creates a new StorageOptionsTemplates
+Creates a new StorageOptionsTemplate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)

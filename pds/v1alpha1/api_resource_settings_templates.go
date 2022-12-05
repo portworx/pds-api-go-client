@@ -557,11 +557,11 @@ type ApiApiTenantsIdResourceSettingsTemplatesPostRequest struct {
 	ctx context.Context
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
-	body *ControllersCreateResourceSettingsTemplatesRequest
+	body *ControllersCreateResourceSettingsTemplateRequest
 }
 
 // Request body containing the resource settings template
-func (r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) Body(body ControllersCreateResourceSettingsTemplatesRequest) ApiApiTenantsIdResourceSettingsTemplatesPostRequest {
+func (r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) Body(body ControllersCreateResourceSettingsTemplateRequest) ApiApiTenantsIdResourceSettingsTemplatesPostRequest {
 	r.body = &body
 	return r
 }
@@ -571,9 +571,9 @@ func (r ApiApiTenantsIdResourceSettingsTemplatesPostRequest) Execute() (*ModelsR
 }
 
 /*
-ApiTenantsIdResourceSettingsTemplatesPost Create ResourceSettingsTemplates
+ApiTenantsIdResourceSettingsTemplatesPost Create ResourceSettingsTemplate
 
-Creates a new ResourceSettingsTemplates
+Creates a new ResourceSettingsTemplate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)

@@ -14,33 +14,33 @@ import (
 	"encoding/json"
 )
 
-// ControllersCreateApplicationConfigurationTemplatesRequest struct for ControllersCreateApplicationConfigurationTemplatesRequest
-type ControllersCreateApplicationConfigurationTemplatesRequest struct {
+// ControllersCreateApplicationConfigurationTemplateRequest struct for ControllersCreateApplicationConfigurationTemplateRequest
+type ControllersCreateApplicationConfigurationTemplateRequest struct {
 	ConfigItems []ModelsConfigItem `json:"config_items,omitempty"`
 	DataServiceId *string `json:"data_service_id,omitempty"`
 	// See models.ApplicationConfigurationTemplate for more information.
 	Name *string `json:"name,omitempty"`
 }
 
-// NewControllersCreateApplicationConfigurationTemplatesRequest instantiates a new ControllersCreateApplicationConfigurationTemplatesRequest object
+// NewControllersCreateApplicationConfigurationTemplateRequest instantiates a new ControllersCreateApplicationConfigurationTemplateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersCreateApplicationConfigurationTemplatesRequest() *ControllersCreateApplicationConfigurationTemplatesRequest {
-	this := ControllersCreateApplicationConfigurationTemplatesRequest{}
+func NewControllersCreateApplicationConfigurationTemplateRequest() *ControllersCreateApplicationConfigurationTemplateRequest {
+	this := ControllersCreateApplicationConfigurationTemplateRequest{}
 	return &this
 }
 
-// NewControllersCreateApplicationConfigurationTemplatesRequestWithDefaults instantiates a new ControllersCreateApplicationConfigurationTemplatesRequest object
+// NewControllersCreateApplicationConfigurationTemplateRequestWithDefaults instantiates a new ControllersCreateApplicationConfigurationTemplateRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersCreateApplicationConfigurationTemplatesRequestWithDefaults() *ControllersCreateApplicationConfigurationTemplatesRequest {
-	this := ControllersCreateApplicationConfigurationTemplatesRequest{}
+func NewControllersCreateApplicationConfigurationTemplateRequestWithDefaults() *ControllersCreateApplicationConfigurationTemplateRequest {
+	this := ControllersCreateApplicationConfigurationTemplateRequest{}
 	return &this
 }
 
 // GetConfigItems returns the ConfigItems field value if set, zero value otherwise.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetConfigItems() []ModelsConfigItem {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetConfigItems() []ModelsConfigItem {
 	if o == nil || o.ConfigItems == nil {
 		var ret []ModelsConfigItem
 		return ret
@@ -50,7 +50,7 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetConfigIte
 
 // GetConfigItemsOk returns a tuple with the ConfigItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
 	if o == nil || o.ConfigItems == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetConfigIte
 }
 
 // HasConfigItems returns a boolean if a field has been set.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) HasConfigItems() bool {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) HasConfigItems() bool {
 	if o != nil && o.ConfigItems != nil {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) HasConfigIte
 }
 
 // SetConfigItems gets a reference to the given []ModelsConfigItem and assigns it to the ConfigItems field.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) SetConfigItems(v []ModelsConfigItem) {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) SetConfigItems(v []ModelsConfigItem) {
 	o.ConfigItems = v
 }
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetDataServiceId() string {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetDataServiceId() string {
 	if o == nil || o.DataServiceId == nil {
 		var ret string
 		return ret
@@ -82,7 +82,7 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetDataServi
 
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetDataServiceIdOk() (*string, bool) {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetDataServiceIdOk() (*string, bool) {
 	if o == nil || o.DataServiceId == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetDataServi
 }
 
 // HasDataServiceId returns a boolean if a field has been set.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) HasDataServiceId() bool {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) HasDataServiceId() bool {
 	if o != nil && o.DataServiceId != nil {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) HasDataServi
 }
 
 // SetDataServiceId gets a reference to the given string and assigns it to the DataServiceId field.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) SetDataServiceId(v string) {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) SetDataServiceId(v string) {
 	o.DataServiceId = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetName() string {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetName() st
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetNameOk() (*string, bool) {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) GetNameOk() 
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) HasName() bool {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -131,11 +131,11 @@ func (o *ControllersCreateApplicationConfigurationTemplatesRequest) HasName() bo
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ControllersCreateApplicationConfigurationTemplatesRequest) SetName(v string) {
+func (o *ControllersCreateApplicationConfigurationTemplateRequest) SetName(v string) {
 	o.Name = &v
 }
 
-func (o ControllersCreateApplicationConfigurationTemplatesRequest) MarshalJSON() ([]byte, error) {
+func (o ControllersCreateApplicationConfigurationTemplateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ConfigItems != nil {
 		toSerialize["config_items"] = o.ConfigItems
@@ -149,38 +149,38 @@ func (o ControllersCreateApplicationConfigurationTemplatesRequest) MarshalJSON()
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersCreateApplicationConfigurationTemplatesRequest struct {
-	value *ControllersCreateApplicationConfigurationTemplatesRequest
+type NullableControllersCreateApplicationConfigurationTemplateRequest struct {
+	value *ControllersCreateApplicationConfigurationTemplateRequest
 	isSet bool
 }
 
-func (v NullableControllersCreateApplicationConfigurationTemplatesRequest) Get() *ControllersCreateApplicationConfigurationTemplatesRequest {
+func (v NullableControllersCreateApplicationConfigurationTemplateRequest) Get() *ControllersCreateApplicationConfigurationTemplateRequest {
 	return v.value
 }
 
-func (v *NullableControllersCreateApplicationConfigurationTemplatesRequest) Set(val *ControllersCreateApplicationConfigurationTemplatesRequest) {
+func (v *NullableControllersCreateApplicationConfigurationTemplateRequest) Set(val *ControllersCreateApplicationConfigurationTemplateRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersCreateApplicationConfigurationTemplatesRequest) IsSet() bool {
+func (v NullableControllersCreateApplicationConfigurationTemplateRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersCreateApplicationConfigurationTemplatesRequest) Unset() {
+func (v *NullableControllersCreateApplicationConfigurationTemplateRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersCreateApplicationConfigurationTemplatesRequest(val *ControllersCreateApplicationConfigurationTemplatesRequest) *NullableControllersCreateApplicationConfigurationTemplatesRequest {
-	return &NullableControllersCreateApplicationConfigurationTemplatesRequest{value: val, isSet: true}
+func NewNullableControllersCreateApplicationConfigurationTemplateRequest(val *ControllersCreateApplicationConfigurationTemplateRequest) *NullableControllersCreateApplicationConfigurationTemplateRequest {
+	return &NullableControllersCreateApplicationConfigurationTemplateRequest{value: val, isSet: true}
 }
 
-func (v NullableControllersCreateApplicationConfigurationTemplatesRequest) MarshalJSON() ([]byte, error) {
+func (v NullableControllersCreateApplicationConfigurationTemplateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersCreateApplicationConfigurationTemplatesRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableControllersCreateApplicationConfigurationTemplateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

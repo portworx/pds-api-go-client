@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ApiStorageOptionsTemplatesIdGet**](StorageOptionsTemplatesApi.md#ApiStorageOptionsTemplatesIdGet) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
 [**ApiStorageOptionsTemplatesIdPut**](StorageOptionsTemplatesApi.md#ApiStorageOptionsTemplatesIdPut) | **Put** /api/storage-options-templates/{id} | Update StorageOptionsTemplate
 [**ApiTenantsIdStorageOptionsTemplatesGet**](StorageOptionsTemplatesApi.md#ApiTenantsIdStorageOptionsTemplatesGet) | **Get** /api/tenants/{id}/storage-options-templates | List StorageOptionsTemplates
-[**ApiTenantsIdStorageOptionsTemplatesPost**](StorageOptionsTemplatesApi.md#ApiTenantsIdStorageOptionsTemplatesPost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplates
+[**ApiTenantsIdStorageOptionsTemplatesPost**](StorageOptionsTemplatesApi.md#ApiTenantsIdStorageOptionsTemplatesPost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplate
 
 
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 > ModelsStorageOptionsTemplate ApiTenantsIdStorageOptionsTemplatesPost(ctx, id).Body(body).Execute()
 
-Create StorageOptionsTemplates
+Create StorageOptionsTemplate
 
 
 
@@ -326,7 +326,7 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    body := *openapiclient.NewControllersCreateStorageOptionsTemplatesRequest() // ControllersCreateStorageOptionsTemplatesRequest | Request body containing the storage options template
+    body := *openapiclient.NewControllersCreateStorageOptionsTemplateRequest() // ControllersCreateStorageOptionsTemplateRequest | Request body containing the storage options template
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -356,7 +356,7 @@ Other parameters are passed through a pointer to a apiApiTenantsIdStorageOptions
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersCreateStorageOptionsTemplatesRequest**](ControllersCreateStorageOptionsTemplatesRequest.md) | Request body containing the storage options template | 
+ **body** | [**ControllersCreateStorageOptionsTemplateRequest**](ControllersCreateStorageOptionsTemplateRequest.md) | Request body containing the storage options template | 
 
 ### Return type
 

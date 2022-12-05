@@ -1,4 +1,4 @@
-# ControllersCreateStorageOptionsTemplatesRequest
+# ControllersCreateStorageOptionsTemplateRequest
 
 ## Properties
 
@@ -13,170 +13,170 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewControllersCreateStorageOptionsTemplatesRequest
+### NewControllersCreateStorageOptionsTemplateRequest
 
-`func NewControllersCreateStorageOptionsTemplatesRequest() *ControllersCreateStorageOptionsTemplatesRequest`
+`func NewControllersCreateStorageOptionsTemplateRequest() *ControllersCreateStorageOptionsTemplateRequest`
 
-NewControllersCreateStorageOptionsTemplatesRequest instantiates a new ControllersCreateStorageOptionsTemplatesRequest object
+NewControllersCreateStorageOptionsTemplateRequest instantiates a new ControllersCreateStorageOptionsTemplateRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersCreateStorageOptionsTemplatesRequestWithDefaults
+### NewControllersCreateStorageOptionsTemplateRequestWithDefaults
 
-`func NewControllersCreateStorageOptionsTemplatesRequestWithDefaults() *ControllersCreateStorageOptionsTemplatesRequest`
+`func NewControllersCreateStorageOptionsTemplateRequestWithDefaults() *ControllersCreateStorageOptionsTemplateRequest`
 
-NewControllersCreateStorageOptionsTemplatesRequestWithDefaults instantiates a new ControllersCreateStorageOptionsTemplatesRequest object
+NewControllersCreateStorageOptionsTemplateRequestWithDefaults instantiates a new ControllersCreateStorageOptionsTemplateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFg
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFg() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetFg() bool`
 
 GetFg returns the Fg field if non-nil, zero value otherwise.
 
 ### GetFgOk
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFgOk() (*bool, bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetFgOk() (*bool, bool)`
 
 GetFgOk returns a tuple with the Fg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFg
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) SetFg(v bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) SetFg(v bool)`
 
 SetFg sets Fg field to given value.
 
 ### HasFg
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) HasFg() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) HasFg() bool`
 
 HasFg returns a boolean if a field has been set.
 
 ### GetFs
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFs() string`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetFs() string`
 
 GetFs returns the Fs field if non-nil, zero value otherwise.
 
 ### GetFsOk
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetFsOk() (*string, bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetFsOk() (*string, bool)`
 
 GetFsOk returns a tuple with the Fs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFs
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) SetFs(v string)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) SetFs(v string)`
 
 SetFs sets Fs field to given value.
 
 ### HasFs
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) HasFs() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) HasFs() bool`
 
 HasFs returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetName() string`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetNameOk() (*string, bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) SetName(v string)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) HasName() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetProvisioner
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetProvisioner() string`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetProvisioner() string`
 
 GetProvisioner returns the Provisioner field if non-nil, zero value otherwise.
 
 ### GetProvisionerOk
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetProvisionerOk() (*string, bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetProvisionerOk() (*string, bool)`
 
 GetProvisionerOk returns a tuple with the Provisioner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvisioner
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) SetProvisioner(v string)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) SetProvisioner(v string)`
 
 SetProvisioner sets Provisioner field to given value.
 
 ### HasProvisioner
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) HasProvisioner() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) HasProvisioner() bool`
 
 HasProvisioner returns a boolean if a field has been set.
 
 ### GetRepl
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetRepl() int32`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetRepl() int32`
 
 GetRepl returns the Repl field if non-nil, zero value otherwise.
 
 ### GetReplOk
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetReplOk() (*int32, bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetReplOk() (*int32, bool)`
 
 GetReplOk returns a tuple with the Repl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRepl
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) SetRepl(v int32)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) SetRepl(v int32)`
 
 SetRepl sets Repl field to given value.
 
 ### HasRepl
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) HasRepl() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) HasRepl() bool`
 
 HasRepl returns a boolean if a field has been set.
 
 ### GetSecure
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetSecure() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetSecure() bool`
 
 GetSecure returns the Secure field if non-nil, zero value otherwise.
 
 ### GetSecureOk
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) GetSecureOk() (*bool, bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) GetSecureOk() (*bool, bool)`
 
 GetSecureOk returns a tuple with the Secure field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecure
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) SetSecure(v bool)`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) SetSecure(v bool)`
 
 SetSecure sets Secure field to given value.
 
 ### HasSecure
 
-`func (o *ControllersCreateStorageOptionsTemplatesRequest) HasSecure() bool`
+`func (o *ControllersCreateStorageOptionsTemplateRequest) HasSecure() bool`
 
 HasSecure returns a boolean if a field has been set.
 

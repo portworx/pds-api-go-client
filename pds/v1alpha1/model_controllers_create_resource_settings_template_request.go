@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// ControllersCreateResourceSettingsTemplatesRequest struct for ControllersCreateResourceSettingsTemplatesRequest
-type ControllersCreateResourceSettingsTemplatesRequest struct {
+// ControllersCreateResourceSettingsTemplateRequest struct for ControllersCreateResourceSettingsTemplateRequest
+type ControllersCreateResourceSettingsTemplateRequest struct {
 	CpuLimit *string `json:"cpu_limit,omitempty"`
 	CpuRequest *string `json:"cpu_request,omitempty"`
 	DataServiceId *string `json:"data_service_id,omitempty"`
@@ -26,25 +26,25 @@ type ControllersCreateResourceSettingsTemplatesRequest struct {
 	StorageRequest *string `json:"storage_request,omitempty"`
 }
 
-// NewControllersCreateResourceSettingsTemplatesRequest instantiates a new ControllersCreateResourceSettingsTemplatesRequest object
+// NewControllersCreateResourceSettingsTemplateRequest instantiates a new ControllersCreateResourceSettingsTemplateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersCreateResourceSettingsTemplatesRequest() *ControllersCreateResourceSettingsTemplatesRequest {
-	this := ControllersCreateResourceSettingsTemplatesRequest{}
+func NewControllersCreateResourceSettingsTemplateRequest() *ControllersCreateResourceSettingsTemplateRequest {
+	this := ControllersCreateResourceSettingsTemplateRequest{}
 	return &this
 }
 
-// NewControllersCreateResourceSettingsTemplatesRequestWithDefaults instantiates a new ControllersCreateResourceSettingsTemplatesRequest object
+// NewControllersCreateResourceSettingsTemplateRequestWithDefaults instantiates a new ControllersCreateResourceSettingsTemplateRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersCreateResourceSettingsTemplatesRequestWithDefaults() *ControllersCreateResourceSettingsTemplatesRequest {
-	this := ControllersCreateResourceSettingsTemplatesRequest{}
+func NewControllersCreateResourceSettingsTemplateRequestWithDefaults() *ControllersCreateResourceSettingsTemplateRequest {
+	this := ControllersCreateResourceSettingsTemplateRequest{}
 	return &this
 }
 
 // GetCpuLimit returns the CpuLimit field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuLimit() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuLimit() string {
 	if o == nil || o.CpuLimit == nil {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuLimit() string
 
 // GetCpuLimitOk returns a tuple with the CpuLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuLimitOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuLimitOk() (*string, bool) {
 	if o == nil || o.CpuLimit == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuLimitOk() (*st
 }
 
 // HasCpuLimit returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasCpuLimit() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasCpuLimit() bool {
 	if o != nil && o.CpuLimit != nil {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasCpuLimit() bool {
 }
 
 // SetCpuLimit gets a reference to the given string and assigns it to the CpuLimit field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetCpuLimit(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetCpuLimit(v string) {
 	o.CpuLimit = &v
 }
 
 // GetCpuRequest returns the CpuRequest field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuRequest() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuRequest() string {
 	if o == nil || o.CpuRequest == nil {
 		var ret string
 		return ret
@@ -86,7 +86,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuRequest() stri
 
 // GetCpuRequestOk returns a tuple with the CpuRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuRequestOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuRequestOk() (*string, bool) {
 	if o == nil || o.CpuRequest == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuRequestOk() (*
 }
 
 // HasCpuRequest returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasCpuRequest() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasCpuRequest() bool {
 	if o != nil && o.CpuRequest != nil {
 		return true
 	}
@@ -103,12 +103,12 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasCpuRequest() bool
 }
 
 // SetCpuRequest gets a reference to the given string and assigns it to the CpuRequest field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetCpuRequest(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetCpuRequest(v string) {
 	o.CpuRequest = &v
 }
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetDataServiceId() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetDataServiceId() string {
 	if o == nil || o.DataServiceId == nil {
 		var ret string
 		return ret
@@ -118,7 +118,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetDataServiceId() s
 
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetDataServiceIdOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetDataServiceIdOk() (*string, bool) {
 	if o == nil || o.DataServiceId == nil {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetDataServiceIdOk()
 }
 
 // HasDataServiceId returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasDataServiceId() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasDataServiceId() bool {
 	if o != nil && o.DataServiceId != nil {
 		return true
 	}
@@ -135,12 +135,12 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasDataServiceId() b
 }
 
 // SetDataServiceId gets a reference to the given string and assigns it to the DataServiceId field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetDataServiceId(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetDataServiceId(v string) {
 	o.DataServiceId = &v
 }
 
 // GetMemoryLimit returns the MemoryLimit field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryLimit() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryLimit() string {
 	if o == nil || o.MemoryLimit == nil {
 		var ret string
 		return ret
@@ -150,7 +150,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryLimit() str
 
 // GetMemoryLimitOk returns a tuple with the MemoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryLimitOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryLimitOk() (*string, bool) {
 	if o == nil || o.MemoryLimit == nil {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryLimitOk() (
 }
 
 // HasMemoryLimit returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasMemoryLimit() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasMemoryLimit() bool {
 	if o != nil && o.MemoryLimit != nil {
 		return true
 	}
@@ -167,12 +167,12 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasMemoryLimit() boo
 }
 
 // SetMemoryLimit gets a reference to the given string and assigns it to the MemoryLimit field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetMemoryLimit(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetMemoryLimit(v string) {
 	o.MemoryLimit = &v
 }
 
 // GetMemoryRequest returns the MemoryRequest field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryRequest() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryRequest() string {
 	if o == nil || o.MemoryRequest == nil {
 		var ret string
 		return ret
@@ -182,7 +182,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryRequest() s
 
 // GetMemoryRequestOk returns a tuple with the MemoryRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryRequestOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryRequestOk() (*string, bool) {
 	if o == nil || o.MemoryRequest == nil {
 		return nil, false
 	}
@@ -190,7 +190,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryRequestOk()
 }
 
 // HasMemoryRequest returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasMemoryRequest() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasMemoryRequest() bool {
 	if o != nil && o.MemoryRequest != nil {
 		return true
 	}
@@ -199,12 +199,12 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasMemoryRequest() b
 }
 
 // SetMemoryRequest gets a reference to the given string and assigns it to the MemoryRequest field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetMemoryRequest(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetMemoryRequest(v string) {
 	o.MemoryRequest = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetName() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -214,7 +214,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetNameOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -222,7 +222,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetNameOk() (*string
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasName() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -231,12 +231,12 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetName(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetName(v string) {
 	o.Name = &v
 }
 
 // GetStorageRequest returns the StorageRequest field value if set, zero value otherwise.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetStorageRequest() string {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetStorageRequest() string {
 	if o == nil || o.StorageRequest == nil {
 		var ret string
 		return ret
@@ -246,7 +246,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetStorageRequest() 
 
 // GetStorageRequestOk returns a tuple with the StorageRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) GetStorageRequestOk() (*string, bool) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) GetStorageRequestOk() (*string, bool) {
 	if o == nil || o.StorageRequest == nil {
 		return nil, false
 	}
@@ -254,7 +254,7 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) GetStorageRequestOk(
 }
 
 // HasStorageRequest returns a boolean if a field has been set.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) HasStorageRequest() bool {
+func (o *ControllersCreateResourceSettingsTemplateRequest) HasStorageRequest() bool {
 	if o != nil && o.StorageRequest != nil {
 		return true
 	}
@@ -263,11 +263,11 @@ func (o *ControllersCreateResourceSettingsTemplatesRequest) HasStorageRequest() 
 }
 
 // SetStorageRequest gets a reference to the given string and assigns it to the StorageRequest field.
-func (o *ControllersCreateResourceSettingsTemplatesRequest) SetStorageRequest(v string) {
+func (o *ControllersCreateResourceSettingsTemplateRequest) SetStorageRequest(v string) {
 	o.StorageRequest = &v
 }
 
-func (o ControllersCreateResourceSettingsTemplatesRequest) MarshalJSON() ([]byte, error) {
+func (o ControllersCreateResourceSettingsTemplateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CpuLimit != nil {
 		toSerialize["cpu_limit"] = o.CpuLimit
@@ -293,38 +293,38 @@ func (o ControllersCreateResourceSettingsTemplatesRequest) MarshalJSON() ([]byte
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersCreateResourceSettingsTemplatesRequest struct {
-	value *ControllersCreateResourceSettingsTemplatesRequest
+type NullableControllersCreateResourceSettingsTemplateRequest struct {
+	value *ControllersCreateResourceSettingsTemplateRequest
 	isSet bool
 }
 
-func (v NullableControllersCreateResourceSettingsTemplatesRequest) Get() *ControllersCreateResourceSettingsTemplatesRequest {
+func (v NullableControllersCreateResourceSettingsTemplateRequest) Get() *ControllersCreateResourceSettingsTemplateRequest {
 	return v.value
 }
 
-func (v *NullableControllersCreateResourceSettingsTemplatesRequest) Set(val *ControllersCreateResourceSettingsTemplatesRequest) {
+func (v *NullableControllersCreateResourceSettingsTemplateRequest) Set(val *ControllersCreateResourceSettingsTemplateRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersCreateResourceSettingsTemplatesRequest) IsSet() bool {
+func (v NullableControllersCreateResourceSettingsTemplateRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersCreateResourceSettingsTemplatesRequest) Unset() {
+func (v *NullableControllersCreateResourceSettingsTemplateRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersCreateResourceSettingsTemplatesRequest(val *ControllersCreateResourceSettingsTemplatesRequest) *NullableControllersCreateResourceSettingsTemplatesRequest {
-	return &NullableControllersCreateResourceSettingsTemplatesRequest{value: val, isSet: true}
+func NewNullableControllersCreateResourceSettingsTemplateRequest(val *ControllersCreateResourceSettingsTemplateRequest) *NullableControllersCreateResourceSettingsTemplateRequest {
+	return &NullableControllersCreateResourceSettingsTemplateRequest{value: val, isSet: true}
 }
 
-func (v NullableControllersCreateResourceSettingsTemplatesRequest) MarshalJSON() ([]byte, error) {
+func (v NullableControllersCreateResourceSettingsTemplateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersCreateResourceSettingsTemplatesRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableControllersCreateResourceSettingsTemplateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

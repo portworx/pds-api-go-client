@@ -557,11 +557,11 @@ type ApiApiTenantsIdApplicationConfigurationTemplatesPostRequest struct {
 	ctx context.Context
 	ApiService *ApplicationConfigurationTemplatesApiService
 	id string
-	body *ControllersCreateApplicationConfigurationTemplatesRequest
+	body *ControllersCreateApplicationConfigurationTemplateRequest
 }
 
 // Request body containing the application configuration template
-func (r ApiApiTenantsIdApplicationConfigurationTemplatesPostRequest) Body(body ControllersCreateApplicationConfigurationTemplatesRequest) ApiApiTenantsIdApplicationConfigurationTemplatesPostRequest {
+func (r ApiApiTenantsIdApplicationConfigurationTemplatesPostRequest) Body(body ControllersCreateApplicationConfigurationTemplateRequest) ApiApiTenantsIdApplicationConfigurationTemplatesPostRequest {
 	r.body = &body
 	return r
 }
@@ -571,9 +571,9 @@ func (r ApiApiTenantsIdApplicationConfigurationTemplatesPostRequest) Execute() (
 }
 
 /*
-ApiTenantsIdApplicationConfigurationTemplatesPost Create ApplicationConfigurationTemplates
+ApiTenantsIdApplicationConfigurationTemplatesPost Create ApplicationConfigurationTemplate
 
-Creates a new ApplicationConfigurationTemplates
+Creates a new ApplicationConfigurationTemplate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Tenant ID (must be valid UUID)

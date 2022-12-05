@@ -97,7 +97,7 @@ Class | Method | HTTP request | Description
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdGet**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidget) | **Get** /api/application-configuration-templates/{id} | Get ApplicationConfigurationTemplate
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdPut**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidput) | **Put** /api/application-configuration-templates/{id} | Update ApplicationConfigurationTemplate
 *ApplicationConfigurationTemplatesApi* | [**ApiTenantsIdApplicationConfigurationTemplatesGet**](docs/ApplicationConfigurationTemplatesApi.md#apitenantsidapplicationconfigurationtemplatesget) | **Get** /api/tenants/{id}/application-configuration-templates | List ApplicationConfigurationTemplates
-*ApplicationConfigurationTemplatesApi* | [**ApiTenantsIdApplicationConfigurationTemplatesPost**](docs/ApplicationConfigurationTemplatesApi.md#apitenantsidapplicationconfigurationtemplatespost) | **Post** /api/tenants/{id}/application-configuration-templates | Create ApplicationConfigurationTemplates
+*ApplicationConfigurationTemplatesApi* | [**ApiTenantsIdApplicationConfigurationTemplatesPost**](docs/ApplicationConfigurationTemplatesApi.md#apitenantsidapplicationconfigurationtemplatespost) | **Post** /api/tenants/{id}/application-configuration-templates | Create ApplicationConfigurationTemplate
 *AuthenticationApi* | [**AuthAuthorizationCodePost**](docs/AuthenticationApi.md#authauthorizationcodepost) | **Post** /auth/authorization-code | Authorization code exchange
 *AuthenticationApi* | [**AuthOidcInfoGet**](docs/AuthenticationApi.md#authoidcinfoget) | **Get** /auth/oidc-info | OIDC info
 *AuthenticationApi* | [**AuthRefreshTokenPost**](docs/AuthenticationApi.md#authrefreshtokenpost) | **Post** /auth/refresh-token | Use refresh token to generate new tokens.
@@ -175,7 +175,7 @@ Class | Method | HTTP request | Description
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdGet**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidget) | **Get** /api/resource-settings-templates/{id} | Get ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesGet**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatesget) | **Get** /api/tenants/{id}/resource-settings-templates | List ResourceSettingsTemplates
-*ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplates
+*ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplate
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
 *SampleTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List ApplicationConfigurationSamples
 *SampleTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List BackupPolicySamples
@@ -190,7 +190,7 @@ Class | Method | HTTP request | Description
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdGet**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidget) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdPut**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidput) | **Put** /api/storage-options-templates/{id} | Update StorageOptionsTemplate
 *StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesGet**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatesget) | **Get** /api/tenants/{id}/storage-options-templates | List StorageOptionsTemplates
-*StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesPost**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatespost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplates
+*StorageOptionsTemplatesApi* | [**ApiTenantsIdStorageOptionsTemplatesPost**](docs/StorageOptionsTemplatesApi.md#apitenantsidstorageoptionstemplatespost) | **Post** /api/tenants/{id}/storage-options-templates | Create StorageOptionsTemplate
 *TasksApi* | [**ApiDbTasksIdGet**](docs/TasksApi.md#apidbtasksidget) | **Get** /api/db-tasks/{id} | Get Task
 *TeamsApi* | [**ApiTeamsIdGet**](docs/TeamsApi.md#apiteamsidget) | **Get** /api/teams/{id} | Get Team
 *TenantRoleBindingsApi* | [**ApiTenantsIdRoleBindingsDelete**](docs/TenantRoleBindingsApi.md#apitenantsidrolebindingsdelete) | **Delete** /api/tenants/{id}/role-bindings | Delete TenantRoleBinding
@@ -227,16 +227,16 @@ Class | Method | HTTP request | Description
  - [ControllersBackupPolicySamples](docs/ControllersBackupPolicySamples.md)
  - [ControllersCompatibleVersionsResponse](docs/ControllersCompatibleVersionsResponse.md)
  - [ControllersCreateAccountRequest](docs/ControllersCreateAccountRequest.md)
- - [ControllersCreateApplicationConfigurationTemplatesRequest](docs/ControllersCreateApplicationConfigurationTemplatesRequest.md)
+ - [ControllersCreateApplicationConfigurationTemplateRequest](docs/ControllersCreateApplicationConfigurationTemplateRequest.md)
  - [ControllersCreateBackupCredentialsRequest](docs/ControllersCreateBackupCredentialsRequest.md)
  - [ControllersCreateBackupPolicyRequest](docs/ControllersCreateBackupPolicyRequest.md)
  - [ControllersCreateDeploymentBackup](docs/ControllersCreateDeploymentBackup.md)
  - [ControllersCreateDeploymentScheduledBackup](docs/ControllersCreateDeploymentScheduledBackup.md)
  - [ControllersCreateNamespace](docs/ControllersCreateNamespace.md)
  - [ControllersCreateProjectDeployment](docs/ControllersCreateProjectDeployment.md)
- - [ControllersCreateResourceSettingsTemplatesRequest](docs/ControllersCreateResourceSettingsTemplatesRequest.md)
+ - [ControllersCreateResourceSettingsTemplateRequest](docs/ControllersCreateResourceSettingsTemplateRequest.md)
  - [ControllersCreateServiceAccountRequest](docs/ControllersCreateServiceAccountRequest.md)
- - [ControllersCreateStorageOptionsTemplatesRequest](docs/ControllersCreateStorageOptionsTemplatesRequest.md)
+ - [ControllersCreateStorageOptionsTemplateRequest](docs/ControllersCreateStorageOptionsTemplateRequest.md)
  - [ControllersCreateTenantBackupTarget](docs/ControllersCreateTenantBackupTarget.md)
  - [ControllersCreateTenantDeploymentTarget](docs/ControllersCreateTenantDeploymentTarget.md)
  - [ControllersCredentials](docs/ControllersCredentials.md)

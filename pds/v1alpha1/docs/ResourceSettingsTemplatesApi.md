@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ApiResourceSettingsTemplatesIdGet**](ResourceSettingsTemplatesApi.md#ApiResourceSettingsTemplatesIdGet) | **Get** /api/resource-settings-templates/{id} | Get ResourceSettingsTemplate
 [**ApiResourceSettingsTemplatesIdPut**](ResourceSettingsTemplatesApi.md#ApiResourceSettingsTemplatesIdPut) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
 [**ApiTenantsIdResourceSettingsTemplatesGet**](ResourceSettingsTemplatesApi.md#ApiTenantsIdResourceSettingsTemplatesGet) | **Get** /api/tenants/{id}/resource-settings-templates | List ResourceSettingsTemplates
-[**ApiTenantsIdResourceSettingsTemplatesPost**](ResourceSettingsTemplatesApi.md#ApiTenantsIdResourceSettingsTemplatesPost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplates
+[**ApiTenantsIdResourceSettingsTemplatesPost**](ResourceSettingsTemplatesApi.md#ApiTenantsIdResourceSettingsTemplatesPost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplate
 
 
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 > ModelsResourceSettingsTemplate ApiTenantsIdResourceSettingsTemplatesPost(ctx, id).Body(body).Execute()
 
-Create ResourceSettingsTemplates
+Create ResourceSettingsTemplate
 
 
 
@@ -326,7 +326,7 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    body := *openapiclient.NewControllersCreateResourceSettingsTemplatesRequest() // ControllersCreateResourceSettingsTemplatesRequest | Request body containing the resource settings template
+    body := *openapiclient.NewControllersCreateResourceSettingsTemplateRequest() // ControllersCreateResourceSettingsTemplateRequest | Request body containing the resource settings template
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -356,7 +356,7 @@ Other parameters are passed through a pointer to a apiApiTenantsIdResourceSettin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersCreateResourceSettingsTemplatesRequest**](ControllersCreateResourceSettingsTemplatesRequest.md) | Request body containing the resource settings template | 
+ **body** | [**ControllersCreateResourceSettingsTemplateRequest**](ControllersCreateResourceSettingsTemplateRequest.md) | Request body containing the resource settings template | 
 
 ### Return type
 

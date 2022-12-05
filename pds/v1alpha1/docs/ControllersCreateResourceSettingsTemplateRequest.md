@@ -1,4 +1,4 @@
-# ControllersCreateResourceSettingsTemplatesRequest
+# ControllersCreateResourceSettingsTemplateRequest
 
 ## Properties
 
@@ -14,195 +14,195 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewControllersCreateResourceSettingsTemplatesRequest
+### NewControllersCreateResourceSettingsTemplateRequest
 
-`func NewControllersCreateResourceSettingsTemplatesRequest() *ControllersCreateResourceSettingsTemplatesRequest`
+`func NewControllersCreateResourceSettingsTemplateRequest() *ControllersCreateResourceSettingsTemplateRequest`
 
-NewControllersCreateResourceSettingsTemplatesRequest instantiates a new ControllersCreateResourceSettingsTemplatesRequest object
+NewControllersCreateResourceSettingsTemplateRequest instantiates a new ControllersCreateResourceSettingsTemplateRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersCreateResourceSettingsTemplatesRequestWithDefaults
+### NewControllersCreateResourceSettingsTemplateRequestWithDefaults
 
-`func NewControllersCreateResourceSettingsTemplatesRequestWithDefaults() *ControllersCreateResourceSettingsTemplatesRequest`
+`func NewControllersCreateResourceSettingsTemplateRequestWithDefaults() *ControllersCreateResourceSettingsTemplateRequest`
 
-NewControllersCreateResourceSettingsTemplatesRequestWithDefaults instantiates a new ControllersCreateResourceSettingsTemplatesRequest object
+NewControllersCreateResourceSettingsTemplateRequestWithDefaults instantiates a new ControllersCreateResourceSettingsTemplateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCpuLimit
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuLimit() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuLimit() string`
 
 GetCpuLimit returns the CpuLimit field if non-nil, zero value otherwise.
 
 ### GetCpuLimitOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuLimitOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuLimitOk() (*string, bool)`
 
 GetCpuLimitOk returns a tuple with the CpuLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpuLimit
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetCpuLimit(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetCpuLimit(v string)`
 
 SetCpuLimit sets CpuLimit field to given value.
 
 ### HasCpuLimit
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasCpuLimit() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasCpuLimit() bool`
 
 HasCpuLimit returns a boolean if a field has been set.
 
 ### GetCpuRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuRequest() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuRequest() string`
 
 GetCpuRequest returns the CpuRequest field if non-nil, zero value otherwise.
 
 ### GetCpuRequestOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetCpuRequestOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetCpuRequestOk() (*string, bool)`
 
 GetCpuRequestOk returns a tuple with the CpuRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpuRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetCpuRequest(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetCpuRequest(v string)`
 
 SetCpuRequest sets CpuRequest field to given value.
 
 ### HasCpuRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasCpuRequest() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasCpuRequest() bool`
 
 HasCpuRequest returns a boolean if a field has been set.
 
 ### GetDataServiceId
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetDataServiceId() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetDataServiceId() string`
 
 GetDataServiceId returns the DataServiceId field if non-nil, zero value otherwise.
 
 ### GetDataServiceIdOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetDataServiceIdOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetDataServiceIdOk() (*string, bool)`
 
 GetDataServiceIdOk returns a tuple with the DataServiceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataServiceId
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetDataServiceId(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetDataServiceId(v string)`
 
 SetDataServiceId sets DataServiceId field to given value.
 
 ### HasDataServiceId
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasDataServiceId() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasDataServiceId() bool`
 
 HasDataServiceId returns a boolean if a field has been set.
 
 ### GetMemoryLimit
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryLimit() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryLimit() string`
 
 GetMemoryLimit returns the MemoryLimit field if non-nil, zero value otherwise.
 
 ### GetMemoryLimitOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryLimitOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryLimitOk() (*string, bool)`
 
 GetMemoryLimitOk returns a tuple with the MemoryLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemoryLimit
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetMemoryLimit(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetMemoryLimit(v string)`
 
 SetMemoryLimit sets MemoryLimit field to given value.
 
 ### HasMemoryLimit
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasMemoryLimit() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasMemoryLimit() bool`
 
 HasMemoryLimit returns a boolean if a field has been set.
 
 ### GetMemoryRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryRequest() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryRequest() string`
 
 GetMemoryRequest returns the MemoryRequest field if non-nil, zero value otherwise.
 
 ### GetMemoryRequestOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetMemoryRequestOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetMemoryRequestOk() (*string, bool)`
 
 GetMemoryRequestOk returns a tuple with the MemoryRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemoryRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetMemoryRequest(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetMemoryRequest(v string)`
 
 SetMemoryRequest sets MemoryRequest field to given value.
 
 ### HasMemoryRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasMemoryRequest() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasMemoryRequest() bool`
 
 HasMemoryRequest returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetName() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetNameOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetName(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasName() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetStorageRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetStorageRequest() string`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetStorageRequest() string`
 
 GetStorageRequest returns the StorageRequest field if non-nil, zero value otherwise.
 
 ### GetStorageRequestOk
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) GetStorageRequestOk() (*string, bool)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) GetStorageRequestOk() (*string, bool)`
 
 GetStorageRequestOk returns a tuple with the StorageRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorageRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) SetStorageRequest(v string)`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) SetStorageRequest(v string)`
 
 SetStorageRequest sets StorageRequest field to given value.
 
 ### HasStorageRequest
 
-`func (o *ControllersCreateResourceSettingsTemplatesRequest) HasStorageRequest() bool`
+`func (o *ControllersCreateResourceSettingsTemplateRequest) HasStorageRequest() bool`
 
 HasStorageRequest returns a boolean if a field has been set.
 

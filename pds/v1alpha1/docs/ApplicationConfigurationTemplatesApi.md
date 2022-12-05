@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ApiApplicationConfigurationTemplatesIdGet**](ApplicationConfigurationTemplatesApi.md#ApiApplicationConfigurationTemplatesIdGet) | **Get** /api/application-configuration-templates/{id} | Get ApplicationConfigurationTemplate
 [**ApiApplicationConfigurationTemplatesIdPut**](ApplicationConfigurationTemplatesApi.md#ApiApplicationConfigurationTemplatesIdPut) | **Put** /api/application-configuration-templates/{id} | Update ApplicationConfigurationTemplate
 [**ApiTenantsIdApplicationConfigurationTemplatesGet**](ApplicationConfigurationTemplatesApi.md#ApiTenantsIdApplicationConfigurationTemplatesGet) | **Get** /api/tenants/{id}/application-configuration-templates | List ApplicationConfigurationTemplates
-[**ApiTenantsIdApplicationConfigurationTemplatesPost**](ApplicationConfigurationTemplatesApi.md#ApiTenantsIdApplicationConfigurationTemplatesPost) | **Post** /api/tenants/{id}/application-configuration-templates | Create ApplicationConfigurationTemplates
+[**ApiTenantsIdApplicationConfigurationTemplatesPost**](ApplicationConfigurationTemplatesApi.md#ApiTenantsIdApplicationConfigurationTemplatesPost) | **Post** /api/tenants/{id}/application-configuration-templates | Create ApplicationConfigurationTemplate
 
 
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 > ModelsApplicationConfigurationTemplate ApiTenantsIdApplicationConfigurationTemplatesPost(ctx, id).Body(body).Execute()
 
-Create ApplicationConfigurationTemplates
+Create ApplicationConfigurationTemplate
 
 
 
@@ -326,7 +326,7 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    body := *openapiclient.NewControllersCreateApplicationConfigurationTemplatesRequest() // ControllersCreateApplicationConfigurationTemplatesRequest | Request body containing the application configuration template
+    body := *openapiclient.NewControllersCreateApplicationConfigurationTemplateRequest() // ControllersCreateApplicationConfigurationTemplateRequest | Request body containing the application configuration template
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -356,7 +356,7 @@ Other parameters are passed through a pointer to a apiApiTenantsIdApplicationCon
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersCreateApplicationConfigurationTemplatesRequest**](ControllersCreateApplicationConfigurationTemplatesRequest.md) | Request body containing the application configuration template | 
+ **body** | [**ControllersCreateApplicationConfigurationTemplateRequest**](ControllersCreateApplicationConfigurationTemplateRequest.md) | Request body containing the application configuration template | 
 
 ### Return type
 
