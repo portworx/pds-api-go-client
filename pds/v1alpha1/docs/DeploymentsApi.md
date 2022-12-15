@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdDeploymentsGet
 
-> ModelsPaginatedResultModelsDeployment ApiProjectsIdDeploymentsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
+> ModelsPaginatedResultModelsDeployment ApiProjectsIdDeploymentsGet(ctx, id).Expand(expand).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
 
 List Project's Deployments
 
@@ -532,6 +532,7 @@ import (
 
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
+    expand := "expand_example" // string | Expand the result with related entities (allowed values: deployment_target, namespace) (optional)
     sortBy := "sortBy_example" // string | A given Deployment attribute to sort results by (one of: id, name, cluster_resource_name, created_at) (optional)
     limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
@@ -546,7 +547,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
+    resp, r, err := apiClient.DeploymentsApi.ApiProjectsIdDeploymentsGet(context.Background(), id).Expand(expand).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).ClusterResourceName(clusterResourceName).DataServiceId(dataServiceId).DeploymentTargetId(deploymentTargetId).ImageId(imageId).Name(name).NamespaceId(namespaceId).State(state).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiProjectsIdDeploymentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -572,6 +573,7 @@ Other parameters are passed through a pointer to a apiApiProjectsIdDeploymentsGe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **expand** | **string** | Expand the result with related entities (allowed values: deployment_target, namespace) | 
  **sortBy** | **string** | A given Deployment attribute to sort results by (one of: id, name, cluster_resource_name, created_at) | 
  **limit** | **string** | Maximum number of rows to return (could be less) | 
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 

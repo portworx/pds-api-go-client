@@ -2349,6 +2349,12 @@ paths:
         required: true
         schema:
           type: string
+      - description: 'Expand the result with related entities (allowed values: deployment_target,
+          namespace)'
+        in: query
+        name: expand
+        schema:
+          type: string
       - description: 'A given Deployment attribute to sort results by (one of: id,
           name, cluster_resource_name, created_at)'
         in: query
@@ -6042,35 +6048,20 @@ components:
     models.Deployment:
       example:
         tenant_id: tenant_id
-        data_service_id: data_service_id
         configuration: '{}'
         connection_details: '{}'
         created_at: created_at
-        resources:
-          storage_request: storage_request
-          cpu_limit: cpu_limit
-          memory_request: memory_request
-          memory_limit: memory_limit
-          cpu_request: cpu_request
-        cluster_resource_name: cluster_resource_name
-        version_id: version_id
         error:
           code: code
           details: details
           message: message
-        service_type: ClusterIP
-        account_id: account_id
         deployment_target_id: deployment_target_id
-        namespace_id: namespace_id
         updated_at: updated_at
         project_id: project_id
         dns_zone: dns_zone
-        name: name
         id: id
-        initialize: Once
         node_count: 0
         state: created
-        image_id: image_id
         load_balancer_source_ranges:
         - load_balancer_source_ranges
         - load_balancer_source_ranges
@@ -6080,6 +6071,51 @@ components:
           repl: 6
           secure: true
           fs: fs
+        data_service_id: data_service_id
+        resources:
+          storage_request: storage_request
+          cpu_limit: cpu_limit
+          memory_request: memory_request
+          memory_limit: memory_limit
+          cpu_request: cpu_request
+        cluster_resource_name: cluster_resource_name
+        version_id: version_id
+        service_type: ClusterIP
+        account_id: account_id
+        namespace_id: namespace_id
+        name: name
+        namespace:
+          tenant_id: tenant_id
+          account_id: account_id
+          deployment_target_id: deployment_target_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
+          status: status
+        initialize: Once
+        image_id: image_id
+        deployment_target:
+          tenant_id: tenant_id
+          cluster_id: cluster_id
+          metadata:
+            kube_api_version: kube_api_version
+            px_status: px_status
+            pds_chart_version: pds_chart_version
+            pds_features: pds_features
+            px_service_namespace: px_service_namespace
+            pds_operator_version: pds_operator_version
+            kube_platform: kube_platform
+            px_csi_enabled: px_csi_enabled
+            px_version: px_version
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          last_health_check: last_health_check
+          last_operator_heartbeat: last_operator_heartbeat
+          id: id
+          status: status
       properties:
         account_id:
           description: AccountID which account the deployment belongs to (models.Account).
@@ -6104,6 +6140,8 @@ components:
         data_service_id:
           description: DataServiceID type of data service (models.DataService).
           type: string
+        deployment_target:
+          $ref: '#/components/schemas/models.DeploymentTarget'
         deployment_target_id:
           description: DeploymentTargetID on which target the data service is deployed
             (models.DeploymentTarget).
@@ -6137,6 +6175,8 @@ components:
         name:
           description: Name given by user when creating the deployment.
           type: string
+        namespace:
+          $ref: '#/components/schemas/models.Namespace'
         namespace_id:
           description: NamespaceID in which namespace the data service is deployed
             (models.Namespace).
@@ -6726,35 +6766,20 @@ components:
           continuation: continuation
         data:
         - tenant_id: tenant_id
-          data_service_id: data_service_id
           configuration: '{}'
           connection_details: '{}'
           created_at: created_at
-          resources:
-            storage_request: storage_request
-            cpu_limit: cpu_limit
-            memory_request: memory_request
-            memory_limit: memory_limit
-            cpu_request: cpu_request
-          cluster_resource_name: cluster_resource_name
-          version_id: version_id
           error:
             code: code
             details: details
             message: message
-          service_type: ClusterIP
-          account_id: account_id
           deployment_target_id: deployment_target_id
-          namespace_id: namespace_id
           updated_at: updated_at
           project_id: project_id
           dns_zone: dns_zone
-          name: name
           id: id
-          initialize: Once
           node_count: 0
           state: created
-          image_id: image_id
           load_balancer_source_ranges:
           - load_balancer_source_ranges
           - load_balancer_source_ranges
@@ -6764,36 +6789,66 @@ components:
             repl: 6
             secure: true
             fs: fs
+          data_service_id: data_service_id
+          resources:
+            storage_request: storage_request
+            cpu_limit: cpu_limit
+            memory_request: memory_request
+            memory_limit: memory_limit
+            cpu_request: cpu_request
+          cluster_resource_name: cluster_resource_name
+          version_id: version_id
+          service_type: ClusterIP
+          account_id: account_id
+          namespace_id: namespace_id
+          name: name
+          namespace:
+            tenant_id: tenant_id
+            account_id: account_id
+            deployment_target_id: deployment_target_id
+            updated_at: updated_at
+            name: name
+            created_at: created_at
+            id: id
+            status: status
+          initialize: Once
+          image_id: image_id
+          deployment_target:
+            tenant_id: tenant_id
+            cluster_id: cluster_id
+            metadata:
+              kube_api_version: kube_api_version
+              px_status: px_status
+              pds_chart_version: pds_chart_version
+              pds_features: pds_features
+              px_service_namespace: px_service_namespace
+              pds_operator_version: pds_operator_version
+              kube_platform: kube_platform
+              px_csi_enabled: px_csi_enabled
+              px_version: px_version
+            account_id: account_id
+            updated_at: updated_at
+            name: name
+            created_at: created_at
+            last_health_check: last_health_check
+            last_operator_heartbeat: last_operator_heartbeat
+            id: id
+            status: status
         - tenant_id: tenant_id
-          data_service_id: data_service_id
           configuration: '{}'
           connection_details: '{}'
           created_at: created_at
-          resources:
-            storage_request: storage_request
-            cpu_limit: cpu_limit
-            memory_request: memory_request
-            memory_limit: memory_limit
-            cpu_request: cpu_request
-          cluster_resource_name: cluster_resource_name
-          version_id: version_id
           error:
             code: code
             details: details
             message: message
-          service_type: ClusterIP
-          account_id: account_id
           deployment_target_id: deployment_target_id
-          namespace_id: namespace_id
           updated_at: updated_at
           project_id: project_id
           dns_zone: dns_zone
-          name: name
           id: id
-          initialize: Once
           node_count: 0
           state: created
-          image_id: image_id
           load_balancer_source_ranges:
           - load_balancer_source_ranges
           - load_balancer_source_ranges
@@ -6803,6 +6858,51 @@ components:
             repl: 6
             secure: true
             fs: fs
+          data_service_id: data_service_id
+          resources:
+            storage_request: storage_request
+            cpu_limit: cpu_limit
+            memory_request: memory_request
+            memory_limit: memory_limit
+            cpu_request: cpu_request
+          cluster_resource_name: cluster_resource_name
+          version_id: version_id
+          service_type: ClusterIP
+          account_id: account_id
+          namespace_id: namespace_id
+          name: name
+          namespace:
+            tenant_id: tenant_id
+            account_id: account_id
+            deployment_target_id: deployment_target_id
+            updated_at: updated_at
+            name: name
+            created_at: created_at
+            id: id
+            status: status
+          initialize: Once
+          image_id: image_id
+          deployment_target:
+            tenant_id: tenant_id
+            cluster_id: cluster_id
+            metadata:
+              kube_api_version: kube_api_version
+              px_status: px_status
+              pds_chart_version: pds_chart_version
+              pds_features: pds_features
+              px_service_namespace: px_service_namespace
+              pds_operator_version: pds_operator_version
+              kube_platform: kube_platform
+              px_csi_enabled: px_csi_enabled
+              px_version: px_version
+            account_id: account_id
+            updated_at: updated_at
+            name: name
+            created_at: created_at
+            last_health_check: last_health_check
+            last_operator_heartbeat: last_operator_heartbeat
+            id: id
+            status: status
       properties:
         data:
           items:
