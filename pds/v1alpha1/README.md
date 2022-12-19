@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *AccountRoleBindingsApi* | [**ApiAccountsIdRoleBindingsPut**](docs/AccountRoleBindingsApi.md#apiaccountsidrolebindingsput) | **Put** /api/accounts/{id}/role-bindings | Create/Update AccountRoleBinding
 *AccountRoleBindingsApi* | [**ApiUsersIdAccountRoleBindingsGet**](docs/AccountRoleBindingsApi.md#apiusersidaccountrolebindingsget) | **Get** /api/users/{id}/account-role-bindings | List User&#39;s AccountRoleBindings
 *AccountsApi* | [**ApiAccountsGet**](docs/AccountsApi.md#apiaccountsget) | **Get** /api/accounts | List Accounts
+*AccountsApi* | [**ApiAccountsIdAccountRoleInvitationsGet**](docs/AccountsApi.md#apiaccountsidaccountroleinvitationsget) | **Get** /api/accounts/{id}/account-role-invitations | List Account Role Invitations
 *AccountsApi* | [**ApiAccountsIdEulaPut**](docs/AccountsApi.md#apiaccountsideulaput) | **Put** /api/accounts/{id}/eula | Accept EULA
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
 *AccountsApi* | [**ApiAccountsIdGlobalConfigPut**](docs/AccountsApi.md#apiaccountsidglobalconfigput) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
@@ -93,6 +94,8 @@ Class | Method | HTTP request | Description
 *AccountsDNSApi* | [**ApiAccountsIdDnsDetailsPut**](docs/AccountsDNSApi.md#apiaccountsiddnsdetailsput) | **Put** /api/accounts/{id}/dns-details | Update DNS Details
 *AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsGet**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsget) | **Get** /api/accounts/{id}/maas-details | Get MAAS details
 *AccountsMAASDetailsApi* | [**ApiAccountsIdMaasDetailsPut**](docs/AccountsMAASDetailsApi.md#apiaccountsidmaasdetailsput) | **Put** /api/accounts/{id}/maas-details | Update MAAS details
+*AccountsRoleInvitationsApi* | [**ApiAccountRoleInvitationsIdDelete**](docs/AccountsRoleInvitationsApi.md#apiaccountroleinvitationsiddelete) | **Delete** /api/account-role-invitations/{id} | Delete AccountRoleInvitation
+*AccountsRoleInvitationsApi* | [**ApiAccountRoleInvitationsIdPatch**](docs/AccountsRoleInvitationsApi.md#apiaccountroleinvitationsidpatch) | **Patch** /api/account-role-invitations/{id} | Patch AccountRoleInvitation role_name
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdDelete**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesiddelete) | **Delete** /api/application-configuration-templates/{id} | Delete ApplicationConfigurationTemplates
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdGet**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidget) | **Get** /api/application-configuration-templates/{id} | Get ApplicationConfigurationTemplate
 *ApplicationConfigurationTemplatesApi* | [**ApiApplicationConfigurationTemplatesIdPut**](docs/ApplicationConfigurationTemplatesApi.md#apiapplicationconfigurationtemplatesidput) | **Put** /api/application-configuration-templates/{id} | Update ApplicationConfigurationTemplate
@@ -295,6 +298,7 @@ Class | Method | HTTP request | Description
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountGlobalConfig](docs/ModelsAccountGlobalConfig.md)
  - [ModelsAccountRoleBinding](docs/ModelsAccountRoleBinding.md)
+ - [ModelsAccountRoleInvitation](docs/ModelsAccountRoleInvitation.md)
  - [ModelsApplicationConfigurationSample](docs/ModelsApplicationConfigurationSample.md)
  - [ModelsApplicationConfigurationTemplate](docs/ModelsApplicationConfigurationTemplate.md)
  - [ModelsAuthorizerRequest](docs/ModelsAuthorizerRequest.md)
@@ -325,6 +329,7 @@ Class | Method | HTTP request | Description
  - [ModelsNamespace](docs/ModelsNamespace.md)
  - [ModelsNodeRestrictions](docs/ModelsNodeRestrictions.md)
  - [ModelsPaginatedResultModelsAccount](docs/ModelsPaginatedResultModelsAccount.md)
+ - [ModelsPaginatedResultModelsAccountRoleInvitation](docs/ModelsPaginatedResultModelsAccountRoleInvitation.md)
  - [ModelsPaginatedResultModelsApplicationConfigurationTemplate](docs/ModelsPaginatedResultModelsApplicationConfigurationTemplate.md)
  - [ModelsPaginatedResultModelsBackup](docs/ModelsPaginatedResultModelsBackup.md)
  - [ModelsPaginatedResultModelsBackupCredentials](docs/ModelsPaginatedResultModelsBackupCredentials.md)
@@ -363,6 +368,7 @@ Class | Method | HTTP request | Description
  - [RequestsCreateUserAPIKeyRequest](docs/RequestsCreateUserAPIKeyRequest.md)
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
  - [RequestsInvitationAccountRequest](docs/RequestsInvitationAccountRequest.md)
+ - [RequestsPatchAccountRoleInvitationRequest](docs/RequestsPatchAccountRoleInvitationRequest.md)
  - [RequestsPatchDeploymentTargetsAgentMetadataRequest](docs/RequestsPatchDeploymentTargetsAgentMetadataRequest.md)
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)

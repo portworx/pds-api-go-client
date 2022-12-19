@@ -59,6 +59,8 @@ type APIClient struct {
 
 	AccountsMAASDetailsApi *AccountsMAASDetailsApiService
 
+	AccountsRoleInvitationsApi *AccountsRoleInvitationsApiService
+
 	ApplicationConfigurationTemplatesApi *ApplicationConfigurationTemplatesApiService
 
 	AuthenticationApi *AuthenticationApiService
@@ -141,6 +143,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountsApi = (*AccountsApiService)(&c.common)
 	c.AccountsDNSApi = (*AccountsDNSApiService)(&c.common)
 	c.AccountsMAASDetailsApi = (*AccountsMAASDetailsApiService)(&c.common)
+	c.AccountsRoleInvitationsApi = (*AccountsRoleInvitationsApiService)(&c.common)
 	c.ApplicationConfigurationTemplatesApi = (*ApplicationConfigurationTemplatesApiService)(&c.common)
 	c.AuthenticationApi = (*AuthenticationApiService)(&c.common)
 	c.AuthorizerApi = (*AuthorizerApiService)(&c.common)
