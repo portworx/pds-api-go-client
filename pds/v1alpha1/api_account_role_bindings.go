@@ -47,7 +47,7 @@ func (r ApiApiAccountsIdInvitationsPostRequest) Execute() (*http.Response, error
 /*
 ApiAccountsIdInvitationsPost Create Invitation
 
-Adds role binding to existing user. The plan is to send invites to non-existing users in the future.
+Adds role binding to existing user, and creates invitation if user does not exist.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID (must be valid UUID)

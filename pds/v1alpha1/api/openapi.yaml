@@ -271,8 +271,8 @@ paths:
       x-codegen-request-body-name: Body
   /api/accounts/{id}/invitations:
     post:
-      description: Adds role binding to existing user. The plan is to send invites
-        to non-existing users in the future.
+      description: Adds role binding to existing user, and creates invitation if user
+        does not exist.
       parameters:
       - description: Account ID (must be valid UUID)
         in: path
