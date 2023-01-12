@@ -7953,6 +7953,8 @@ components:
           type: string
         kube_platform:
           type: string
+        pds_chart_version:
+          type: string
         px_csi_enabled:
           type: string
         px_service_namespace:

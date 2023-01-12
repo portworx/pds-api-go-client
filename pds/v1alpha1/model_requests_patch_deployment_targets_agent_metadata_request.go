@@ -18,6 +18,7 @@ import (
 type RequestsPatchDeploymentTargetsAgentMetadataRequest struct {
 	KubeApiVersion *string `json:"kube_api_version,omitempty"`
 	KubePlatform *string `json:"kube_platform,omitempty"`
+	PdsChartVersion *string `json:"pds_chart_version,omitempty"`
 	PxCsiEnabled *string `json:"px_csi_enabled,omitempty"`
 	PxServiceNamespace *string `json:"px_service_namespace,omitempty"`
 	PxVersion *string `json:"px_version,omitempty"`
@@ -102,6 +103,38 @@ func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) HasKubePlatform() b
 // SetKubePlatform gets a reference to the given string and assigns it to the KubePlatform field.
 func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) SetKubePlatform(v string) {
 	o.KubePlatform = &v
+}
+
+// GetPdsChartVersion returns the PdsChartVersion field value if set, zero value otherwise.
+func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) GetPdsChartVersion() string {
+	if o == nil || o.PdsChartVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.PdsChartVersion
+}
+
+// GetPdsChartVersionOk returns a tuple with the PdsChartVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) GetPdsChartVersionOk() (*string, bool) {
+	if o == nil || o.PdsChartVersion == nil {
+		return nil, false
+	}
+	return o.PdsChartVersion, true
+}
+
+// HasPdsChartVersion returns a boolean if a field has been set.
+func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) HasPdsChartVersion() bool {
+	if o != nil && o.PdsChartVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPdsChartVersion gets a reference to the given string and assigns it to the PdsChartVersion field.
+func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) SetPdsChartVersion(v string) {
+	o.PdsChartVersion = &v
 }
 
 // GetPxCsiEnabled returns the PxCsiEnabled field value if set, zero value otherwise.
@@ -207,6 +240,9 @@ func (o RequestsPatchDeploymentTargetsAgentMetadataRequest) MarshalJSON() ([]byt
 	}
 	if o.KubePlatform != nil {
 		toSerialize["kube_platform"] = o.KubePlatform
+	}
+	if o.PdsChartVersion != nil {
+		toSerialize["pds_chart_version"] = o.PdsChartVersion
 	}
 	if o.PxCsiEnabled != nil {
 		toSerialize["px_csi_enabled"] = o.PxCsiEnabled

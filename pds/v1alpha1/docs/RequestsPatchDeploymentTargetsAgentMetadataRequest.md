@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **KubeApiVersion** | Pointer to **string** |  | [optional] 
 **KubePlatform** | Pointer to **string** |  | [optional] 
+**PdsChartVersion** | Pointer to **string** |  | [optional] 
 **PxCsiEnabled** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
 **PxVersion** | Pointer to **string** |  | [optional] 
@@ -78,6 +79,31 @@ SetKubePlatform sets KubePlatform field to given value.
 `func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) HasKubePlatform() bool`
 
 HasKubePlatform returns a boolean if a field has been set.
+
+### GetPdsChartVersion
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) GetPdsChartVersion() string`
+
+GetPdsChartVersion returns the PdsChartVersion field if non-nil, zero value otherwise.
+
+### GetPdsChartVersionOk
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) GetPdsChartVersionOk() (*string, bool)`
+
+GetPdsChartVersionOk returns a tuple with the PdsChartVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdsChartVersion
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) SetPdsChartVersion(v string)`
+
+SetPdsChartVersion sets PdsChartVersion field to given value.
+
+### HasPdsChartVersion
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) HasPdsChartVersion() bool`
+
+HasPdsChartVersion returns a boolean if a field has been set.
 
 ### GetPxCsiEnabled
 
