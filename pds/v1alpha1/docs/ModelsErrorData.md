@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** | More detailed specification of the error when the &#39;state&#39; is in one of the failed states. | [optional] 
+**Code** | Pointer to **string** | Predefined API error code. | [optional] 
 **Details** | Pointer to **string** | More detailed error message possibly containing the root cause. | [optional] 
 **Message** | Pointer to **string** | High level human-readable error message determined by the ErrorCode. | [optional] 
 
