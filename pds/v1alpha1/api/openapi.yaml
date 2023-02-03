@@ -5153,6 +5153,9 @@ components:
         name:
           description: Name of the account.
           type: string
+        subdomain:
+          description: (optional) Account subdomain name.
+          type: string
       type: object
     controllers.createApplicationConfigurationTemplateRequest:
       properties:
