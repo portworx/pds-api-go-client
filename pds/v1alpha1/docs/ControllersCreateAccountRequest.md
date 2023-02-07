@@ -4,9 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BaasFeaturesEnabled** | Pointer to **bool** | Whether BAAS should be enabled for this account. | [optional] 
 **DnsDetails** | Pointer to [**ModelsDNSDetails**](ModelsDNSDetails.md) |  | [optional] 
 **MaasDetails** | Pointer to [**ModelsMAASDetails**](ModelsMAASDetails.md) |  | [optional] 
 **Name** | Pointer to **string** | Name of the account. | [optional] 
+**PdsFeaturesEnabled** | Pointer to **bool** | Whether PDS should be enabled for this account. | [optional] 
+**PxoneFeaturesEnabled** | Pointer to **bool** | Whether PX-ONE should be enabled for this account. | [optional] 
 **Subdomain** | Pointer to **string** | (optional) Account subdomain name. | [optional] 
 
 ## Methods
@@ -27,6 +30,31 @@ will change when the set of required properties is changed
 NewControllersCreateAccountRequestWithDefaults instantiates a new ControllersCreateAccountRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBaasFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) GetBaasFeaturesEnabled() bool`
+
+GetBaasFeaturesEnabled returns the BaasFeaturesEnabled field if non-nil, zero value otherwise.
+
+### GetBaasFeaturesEnabledOk
+
+`func (o *ControllersCreateAccountRequest) GetBaasFeaturesEnabledOk() (*bool, bool)`
+
+GetBaasFeaturesEnabledOk returns a tuple with the BaasFeaturesEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBaasFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) SetBaasFeaturesEnabled(v bool)`
+
+SetBaasFeaturesEnabled sets BaasFeaturesEnabled field to given value.
+
+### HasBaasFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) HasBaasFeaturesEnabled() bool`
+
+HasBaasFeaturesEnabled returns a boolean if a field has been set.
 
 ### GetDnsDetails
 
@@ -102,6 +130,56 @@ SetName sets Name field to given value.
 `func (o *ControllersCreateAccountRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetPdsFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) GetPdsFeaturesEnabled() bool`
+
+GetPdsFeaturesEnabled returns the PdsFeaturesEnabled field if non-nil, zero value otherwise.
+
+### GetPdsFeaturesEnabledOk
+
+`func (o *ControllersCreateAccountRequest) GetPdsFeaturesEnabledOk() (*bool, bool)`
+
+GetPdsFeaturesEnabledOk returns a tuple with the PdsFeaturesEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdsFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) SetPdsFeaturesEnabled(v bool)`
+
+SetPdsFeaturesEnabled sets PdsFeaturesEnabled field to given value.
+
+### HasPdsFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) HasPdsFeaturesEnabled() bool`
+
+HasPdsFeaturesEnabled returns a boolean if a field has been set.
+
+### GetPxoneFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) GetPxoneFeaturesEnabled() bool`
+
+GetPxoneFeaturesEnabled returns the PxoneFeaturesEnabled field if non-nil, zero value otherwise.
+
+### GetPxoneFeaturesEnabledOk
+
+`func (o *ControllersCreateAccountRequest) GetPxoneFeaturesEnabledOk() (*bool, bool)`
+
+GetPxoneFeaturesEnabledOk returns a tuple with the PxoneFeaturesEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPxoneFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) SetPxoneFeaturesEnabled(v bool)`
+
+SetPxoneFeaturesEnabled sets PxoneFeaturesEnabled field to given value.
+
+### HasPxoneFeaturesEnabled
+
+`func (o *ControllersCreateAccountRequest) HasPxoneFeaturesEnabled() bool`
+
+HasPxoneFeaturesEnabled returns a boolean if a field has been set.
 
 ### GetSubdomain
 
