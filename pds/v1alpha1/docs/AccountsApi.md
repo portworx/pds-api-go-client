@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## ApiAccountsIdAccountRoleInvitationsGet
 
-> ModelsPaginatedResultModelsAccountRoleInvitation ApiAccountsIdAccountRoleInvitationsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).Execute()
+> ModelsPaginatedResultModelsAccountRoleInvitation ApiAccountsIdAccountRoleInvitationsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).RoleName(roleName).Execute()
 
 List Account Role Invitations
 
@@ -110,15 +110,16 @@ import (
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    sortBy := "sortBy_example" // string | A given User attribute to sort results by (one of: id, email, created_at) (optional)
+    sortBy := "sortBy_example" // string | A given User attribute to sort results by (one of: id, email, role_name, created_at) (optional)
     limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
     continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
-    id2 := "id_example" // string | Filter results by User id (optional)
+    id2 := "id_example" // string | Filter results by invitation id (optional)
     email := "email_example" // string | Filter results by User email (optional)
+    roleName := "roleName_example" // string | Filter results by assigned role name (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.ApiAccountsIdAccountRoleInvitationsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).Execute()
+    resp, r, err := apiClient.AccountsApi.ApiAccountsIdAccountRoleInvitationsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).Email(email).RoleName(roleName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdAccountRoleInvitationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,11 +145,12 @@ Other parameters are passed through a pointer to a apiApiAccountsIdAccountRoleIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | A given User attribute to sort results by (one of: id, email, created_at) | 
+ **sortBy** | **string** | A given User attribute to sort results by (one of: id, email, role_name, created_at) | 
  **limit** | **string** | Maximum number of rows to return (could be less) | 
  **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
- **id2** | **string** | Filter results by User id | 
+ **id2** | **string** | Filter results by invitation id | 
  **email** | **string** | Filter results by User email | 
+ **roleName** | **string** | Filter results by assigned role name | 
 
 ### Return type
 

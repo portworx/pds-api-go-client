@@ -195,9 +195,10 @@ type ApiApiAccountsIdAccountRoleInvitationsGetRequest struct {
 	continuation *string
 	id2 *string
 	email *string
+	roleName *string
 }
 
-// A given User attribute to sort results by (one of: id, email, created_at)
+// A given User attribute to sort results by (one of: id, email, role_name, created_at)
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) SortBy(sortBy string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.sortBy = &sortBy
 	return r
@@ -212,7 +213,7 @@ func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Continuation(continuat
 	r.continuation = &continuation
 	return r
 }
-// Filter results by User id
+// Filter results by invitation id
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Id2(id2 string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.id2 = &id2
 	return r
@@ -220,6 +221,11 @@ func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Id2(id2 string) ApiApi
 // Filter results by User email
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Email(email string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.email = &email
+	return r
+}
+// Filter results by assigned role name
+func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) RoleName(roleName string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
+	r.roleName = &roleName
 	return r
 }
 
@@ -280,6 +286,9 @@ func (a *AccountsApiService) ApiAccountsIdAccountRoleInvitationsGetExecute(r Api
 	}
 	if r.email != nil {
 		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+	}
+	if r.roleName != nil {
+		localVarQueryParams.Add("role_name", parameterToString(*r.roleName, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

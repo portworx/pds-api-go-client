@@ -149,7 +149,7 @@ paths:
         schema:
           type: string
       - description: 'A given User attribute to sort results by (one of: id, email,
-          created_at)'
+          role_name, created_at)'
         in: query
         name: sort_by
         schema:
@@ -165,7 +165,7 @@ paths:
         name: continuation
         schema:
           type: string
-      - description: Filter results by User id
+      - description: Filter results by invitation id
         in: query
         name: id
         schema:
@@ -173,6 +173,11 @@ paths:
       - description: Filter results by User email
         in: query
         name: email
+        schema:
+          type: string
+      - description: Filter results by assigned role name
+        in: query
+        name: role_name
         schema:
           type: string
       responses:
