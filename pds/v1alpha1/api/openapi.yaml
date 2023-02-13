@@ -732,6 +732,24 @@ paths:
       tags:
       - BackupCredentials
   /api/backup-jobs/{id}:
+    delete:
+      description: Removes a single BackupJob
+      parameters:
+      - description: BackupJob ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Delete BackupJob
+      tags:
+      - BackupJobs
     get:
       description: Fetches a BackupJob
       parameters:
@@ -753,6 +771,35 @@ paths:
       summary: Get BackupJob
       tags:
       - BackupJobs
+    put:
+      description: Updates a BackupJob if ID exists, Creates new BackupJob if not
+      parameters:
+      - description: BackupJob ID (must be UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.PutBackupJobRequest'
+        description: Request body containing backup job details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.BackupJob'
+          description: The upserted BackupJob will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Upsert BackupJob
+      tags:
+      - BackupJobs
+      x-codegen-request-body-name: body
   /api/backup-policies/{id}:
     delete:
       description: Removes a single BackupPolicy
@@ -8153,6 +8200,63 @@ components:
         name:
           description: The name of the UserAPIKey.
           type: string
+      type: object
+    requests.PutBackupJobRequest:
+      properties:
+        backup_id:
+          description: BackupID which backup created the snapshot (nullable).
+          type: string
+        backup_spec:
+          description: BackupSpecJSON is the specification of the Backup in JSON format
+            at the time the snapshot was taken.
+          items:
+            type: integer
+          type: array
+        cloud_credential_name:
+          description: CloudCredentialName credentials to access snapshot.
+          type: string
+        cloud_snap_id:
+          description: CloudSnapID snapshot of the backup volume.
+          type: string
+        completion_status:
+          description: CompletionStatus of the backup job.
+          enum:
+          - Active
+          - Succeeded
+          - Failed
+          type: string
+        completion_time:
+          type: string
+        data_service_spec:
+          description: BackupSpecJSON is the specification of the Backup in JSON format
+            at the time the snapshot was taken.
+          items:
+            type: integer
+          type: array
+        deployment_id:
+          description: DeploymentID which deployment was backed up (nullable).
+          type: string
+        error_code:
+          enum:
+          - JobFailed
+          - VolumeSnapshotFailed
+          - PXCloudCredentialsNotFound
+          type: string
+        error_message:
+          type: string
+        file_size:
+          description: FileSize of the CloudSnap image.
+          type: integer
+        name:
+          description: Name of the BackupJob.
+          type: string
+        project_id:
+          description: ProjectID which created the snapshot (required).
+          type: string
+        start_time:
+          type: string
+      required:
+      - project_id
       type: object
     requests.UpdateOperatorMetadataRequest:
       properties:

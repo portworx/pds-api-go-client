@@ -111,7 +111,9 @@ Class | Method | HTTP request | Description
 *BackupCredentialsApi* | [**ApiBackupCredentialsIdPut**](docs/BackupCredentialsApi.md#apibackupcredentialsidput) | **Put** /api/backup-credentials/{id} | Update BackupCredentials
 *BackupCredentialsApi* | [**ApiTenantsIdBackupCredentialsGet**](docs/BackupCredentialsApi.md#apitenantsidbackupcredentialsget) | **Get** /api/tenants/{id}/backup-credentials | List BackupCredentials
 *BackupCredentialsApi* | [**ApiTenantsIdBackupCredentialsPost**](docs/BackupCredentialsApi.md#apitenantsidbackupcredentialspost) | **Post** /api/tenants/{id}/backup-credentials | Create BackupCredentials
+*BackupJobsApi* | [**ApiBackupJobsIdDelete**](docs/BackupJobsApi.md#apibackupjobsiddelete) | **Delete** /api/backup-jobs/{id} | Delete BackupJob
 *BackupJobsApi* | [**ApiBackupJobsIdGet**](docs/BackupJobsApi.md#apibackupjobsidget) | **Get** /api/backup-jobs/{id} | Get BackupJob
+*BackupJobsApi* | [**ApiBackupJobsIdPut**](docs/BackupJobsApi.md#apibackupjobsidput) | **Put** /api/backup-jobs/{id} | Upsert BackupJob
 *BackupJobsApi* | [**ApiBackupsIdJobsGet**](docs/BackupJobsApi.md#apibackupsidjobsget) | **Get** /api/backups/{id}/jobs | List Backup&#39;s Jobs
 *BackupPoliciesApi* | [**ApiBackupPoliciesIdDelete**](docs/BackupPoliciesApi.md#apibackuppoliciesiddelete) | **Delete** /api/backup-policies/{id} | Delete BackupPolicies
 *BackupPoliciesApi* | [**ApiBackupPoliciesIdGet**](docs/BackupPoliciesApi.md#apibackuppoliciesidget) | **Get** /api/backup-policies/{id} | Get BackupPolicy
@@ -371,6 +373,7 @@ Class | Method | HTTP request | Description
  - [RequestsPatchAccountRoleInvitationRequest](docs/RequestsPatchAccountRoleInvitationRequest.md)
  - [RequestsPatchDeploymentTargetsAgentMetadataRequest](docs/RequestsPatchDeploymentTargetsAgentMetadataRequest.md)
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
+ - [RequestsPutBackupJobRequest](docs/RequestsPutBackupJobRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
