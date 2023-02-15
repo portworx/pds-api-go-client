@@ -2098,6 +2098,35 @@ paths:
       summary: Get Deployment Status
       tags:
       - Deployments
+  /api/deployments/{id}/update-manifest:
+    post:
+      description: |-
+        Upsert On Deployment Manifest
+        Always returns the record with higher timestamp with given DeploymentID
+      parameters:
+      - description: Deployment ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.UpsertDeploymentManifestRequest'
+        description: Body with the Deployment Manifest
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Post DeploymentManifest
+      tags:
+      - DeploymentManifests
+      x-codegen-request-body-name: body
   /api/global-role-bindings:
     delete:
       description: Removes a single GlobalRoleBindings
@@ -8276,6 +8305,14 @@ components:
         pds_operator_version:
           type: string
         px_status:
+          type: string
+      type: object
+    requests.UpsertDeploymentManifestRequest:
+      properties:
+        manifest:
+          properties: {}
+          type: object
+        timestamp:
           type: string
       type: object
     v1.TypedLocalObjectReference:
