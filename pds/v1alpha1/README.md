@@ -182,6 +182,8 @@ Class | Method | HTTP request | Description
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesGet**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatesget) | **Get** /api/tenants/{id}/resource-settings-templates | List ResourceSettingsTemplates
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplate
+*RestoresApi* | [**ApiRestoresIdGet**](docs/RestoresApi.md#apirestoresidget) | **Get** /api/restores/{id} | Get Restore
+*RestoresApi* | [**ApiRestoresIdUpdateStatusPost**](docs/RestoresApi.md#apirestoresidupdatestatuspost) | **Post** /api/restores/{id}/update-status | Update Restore Status
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
 *SampleTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List ApplicationConfigurationSamples
 *SampleTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List BackupPolicySamples
@@ -355,6 +357,7 @@ Class | Method | HTTP request | Description
  - [ModelsProjectRoleBinding](docs/ModelsProjectRoleBinding.md)
  - [ModelsResourceSettingsSample](docs/ModelsResourceSettingsSample.md)
  - [ModelsResourceSettingsTemplate](docs/ModelsResourceSettingsTemplate.md)
+ - [ModelsRestore](docs/ModelsRestore.md)
  - [ModelsS3CompatibleCredentials](docs/ModelsS3CompatibleCredentials.md)
  - [ModelsS3Credentials](docs/ModelsS3Credentials.md)
  - [ModelsServiceAccount](docs/ModelsServiceAccount.md)
@@ -376,6 +379,7 @@ Class | Method | HTTP request | Description
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsPutBackupJobRequest](docs/RequestsPutBackupJobRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
+ - [RequestsUpdateRestoreStatusRequest](docs/RequestsUpdateRestoreStatusRequest.md)
  - [RequestsUpsertDeploymentManifestRequest](docs/RequestsUpsertDeploymentManifestRequest.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
