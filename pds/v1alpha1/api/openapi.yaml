@@ -2069,7 +2069,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/controllers.eventsResponse'
+                $ref: '#/components/schemas/controllers.EventsResponse'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -4704,6 +4704,49 @@ components:
         px_version:
           type: string
       type: object
+    controllers.EventsResponse:
+      example:
+        resourceEvents:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          events:
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          events:
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+      properties:
+        resourceEvents:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceEvents'
+          type: array
+      type: object
     controllers.OIDCInfoResponse:
       example:
         authUrl: https://release-staging.portworx.dev/landing/login
@@ -5395,49 +5438,6 @@ components:
           type: string
         name:
           type: string
-      type: object
-    controllers.eventsResponse:
-      example:
-        resourceEvents:
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          events:
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          events:
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-      properties:
-        resourceEvents:
-          items:
-            $ref: '#/components/schemas/deployments.ResourceEvents'
-          type: array
       type: object
     controllers.updateBackupCredentialsRequest:
       properties:
