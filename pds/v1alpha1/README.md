@@ -182,6 +182,7 @@ Class | Method | HTTP request | Description
 *ResourceSettingsTemplatesApi* | [**ApiResourceSettingsTemplatesIdPut**](docs/ResourceSettingsTemplatesApi.md#apiresourcesettingstemplatesidput) | **Put** /api/resource-settings-templates/{id} | Update ResourceSettingsTemplate
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesGet**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatesget) | **Get** /api/tenants/{id}/resource-settings-templates | List ResourceSettingsTemplates
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplate
+*RestoresApi* | [**ApiBackupJobsIdRestorePost**](docs/RestoresApi.md#apibackupjobsidrestorepost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 *RestoresApi* | [**ApiRestoresIdGet**](docs/RestoresApi.md#apirestoresidget) | **Get** /api/restores/{id} | Get Restore
 *RestoresApi* | [**ApiRestoresIdUpdateStatusPost**](docs/RestoresApi.md#apirestoresidupdatestatuspost) | **Post** /api/restores/{id}/update-status | Update Restore Status
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
@@ -371,6 +372,7 @@ Class | Method | HTTP request | Description
  - [ModelsUserAPIKey](docs/ModelsUserAPIKey.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [RequestsCreateRestoreRequest](docs/RequestsCreateRestoreRequest.md)
  - [RequestsCreateUserAPIKeyRequest](docs/RequestsCreateUserAPIKeyRequest.md)
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
  - [RequestsInvitationAccountRequest](docs/RequestsInvitationAccountRequest.md)
