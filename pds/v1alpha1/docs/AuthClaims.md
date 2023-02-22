@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Aud** | Pointer to **string** | Audience is the intended recipient of the token. | [optional] 
 **Email** | Pointer to **string** | Email of this account. | [optional] 
 **Groups** | Pointer to **[]string** | (optional) Groups in which this account is part of. | [optional] 
 **Iss** | Pointer to **string** | Issuer is the token issuer. For self-signed token do not prefix with &#x60;https://&#x60;. | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewAuthClaimsWithDefaults instantiates a new AuthClaims object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAud
+
+`func (o *AuthClaims) GetAud() string`
+
+GetAud returns the Aud field if non-nil, zero value otherwise.
+
+### GetAudOk
+
+`func (o *AuthClaims) GetAudOk() (*string, bool)`
+
+GetAudOk returns a tuple with the Aud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAud
+
+`func (o *AuthClaims) SetAud(v string)`
+
+SetAud sets Aud field to given value.
+
+### HasAud
+
+`func (o *AuthClaims) HasAud() bool`
+
+HasAud returns a boolean if a field has been set.
 
 ### GetEmail
 

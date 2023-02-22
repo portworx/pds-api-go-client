@@ -4307,6 +4307,7 @@ components:
   schemas:
     auth.Claims:
       example:
+        aud: aud
         sub: sub
         roles:
         - roles
@@ -4318,6 +4319,9 @@ components:
         - groups
         email: email
       properties:
+        aud:
+          description: Audience is the intended recipient of the token.
+          type: string
         email:
           description: Email of this account.
           type: string
@@ -4800,6 +4804,7 @@ components:
       example:
         expiresIn: expiresIn
         claims:
+          aud: aud
           sub: sub
           roles:
           - roles
