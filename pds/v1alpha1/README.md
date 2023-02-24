@@ -148,6 +148,7 @@ Class | Method | HTTP request | Description
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdOperatorHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidoperatorheartbeatpost) | **Post** /api/deployment-targets/{id}/operator-heartbeat | Make DeploymentTarget operator heart beat request
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdOperatorMetadataPatch**](docs/DeploymentTargetsApi.md#apideploymenttargetsidoperatormetadatapatch) | **Patch** /api/deployment-targets/{id}/operator-metadata | Update target operator metadata
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdPut**](docs/DeploymentTargetsApi.md#apideploymenttargetsidput) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
+*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdUpdateCapabilitiesPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidupdatecapabilitiespost) | **Post** /api/deployment-targets/{id}/update-capabilities | Update target capabilities
 *DeploymentTargetsApi* | [**ApiProjectsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apiprojectsiddeploymenttargetsget) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
 *DeploymentTargetsApi* | [**ApiTenantsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apitenantsiddeploymenttargetsget) | **Get** /api/tenants/{id}/deployment-targets | List Tenant&#39;s DeploymentTargets
 *DeploymentTargetsApi* | [**ApiTenantsIdDeploymentTargetsPost**](docs/DeploymentTargetsApi.md#apitenantsiddeploymenttargetspost) | **Post** /api/tenants/{id}/deployment-targets | Create DeploymentTarget
@@ -325,6 +326,7 @@ Class | Method | HTTP request | Description
  - [ModelsDeploymentResources](docs/ModelsDeploymentResources.md)
  - [ModelsDeploymentStorageOptions](docs/ModelsDeploymentStorageOptions.md)
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
+ - [ModelsDeploymentTargetCapabilities](docs/ModelsDeploymentTargetCapabilities.md)
  - [ModelsDeploymentTargetMetadata](docs/ModelsDeploymentTargetMetadata.md)
  - [ModelsEULADetails](docs/ModelsEULADetails.md)
  - [ModelsErrorData](docs/ModelsErrorData.md)
