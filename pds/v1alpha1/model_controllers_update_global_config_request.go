@@ -16,6 +16,8 @@ import (
 
 // ControllersUpdateGlobalConfigRequest struct for ControllersUpdateGlobalConfigRequest
 type ControllersUpdateGlobalConfigRequest struct {
+	// Specify if the TLS Preview feature should be enabled for this account.
+	TlsPreviewEnabled *string `json:"tls_preview_enabled,omitempty"`
 	// Specify what data service versions are available for deployment for this account.
 	VersionAvailability *string `json:"version_availability,omitempty"`
 	// Specify what data service versions are updatable for this account.
@@ -37,6 +39,38 @@ func NewControllersUpdateGlobalConfigRequest() *ControllersUpdateGlobalConfigReq
 func NewControllersUpdateGlobalConfigRequestWithDefaults() *ControllersUpdateGlobalConfigRequest {
 	this := ControllersUpdateGlobalConfigRequest{}
 	return &this
+}
+
+// GetTlsPreviewEnabled returns the TlsPreviewEnabled field value if set, zero value otherwise.
+func (o *ControllersUpdateGlobalConfigRequest) GetTlsPreviewEnabled() string {
+	if o == nil || o.TlsPreviewEnabled == nil {
+		var ret string
+		return ret
+	}
+	return *o.TlsPreviewEnabled
+}
+
+// GetTlsPreviewEnabledOk returns a tuple with the TlsPreviewEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersUpdateGlobalConfigRequest) GetTlsPreviewEnabledOk() (*string, bool) {
+	if o == nil || o.TlsPreviewEnabled == nil {
+		return nil, false
+	}
+	return o.TlsPreviewEnabled, true
+}
+
+// HasTlsPreviewEnabled returns a boolean if a field has been set.
+func (o *ControllersUpdateGlobalConfigRequest) HasTlsPreviewEnabled() bool {
+	if o != nil && o.TlsPreviewEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsPreviewEnabled gets a reference to the given string and assigns it to the TlsPreviewEnabled field.
+func (o *ControllersUpdateGlobalConfigRequest) SetTlsPreviewEnabled(v string) {
+	o.TlsPreviewEnabled = &v
 }
 
 // GetVersionAvailability returns the VersionAvailability field value if set, zero value otherwise.
@@ -105,6 +139,9 @@ func (o *ControllersUpdateGlobalConfigRequest) SetVersionUpdatability(v string) 
 
 func (o ControllersUpdateGlobalConfigRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.TlsPreviewEnabled != nil {
+		toSerialize["tls_preview_enabled"] = o.TlsPreviewEnabled
+	}
 	if o.VersionAvailability != nil {
 		toSerialize["version_availability"] = o.VersionAvailability
 	}

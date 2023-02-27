@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TlsPreviewEnabled** | Pointer to **string** | Specify if the TLS Preview feature should be enabled for this account. | [optional] 
 **VersionAvailability** | Pointer to **string** | Specify what data service versions are available for deployment for this account. | [optional] 
 **VersionUpdatability** | Pointer to **string** | Specify what data service versions are updatable for this account. | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewControllersUpdateGlobalConfigRequestWithDefaults instantiates a new ControllersUpdateGlobalConfigRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTlsPreviewEnabled
+
+`func (o *ControllersUpdateGlobalConfigRequest) GetTlsPreviewEnabled() string`
+
+GetTlsPreviewEnabled returns the TlsPreviewEnabled field if non-nil, zero value otherwise.
+
+### GetTlsPreviewEnabledOk
+
+`func (o *ControllersUpdateGlobalConfigRequest) GetTlsPreviewEnabledOk() (*string, bool)`
+
+GetTlsPreviewEnabledOk returns a tuple with the TlsPreviewEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsPreviewEnabled
+
+`func (o *ControllersUpdateGlobalConfigRequest) SetTlsPreviewEnabled(v string)`
+
+SetTlsPreviewEnabled sets TlsPreviewEnabled field to given value.
+
+### HasTlsPreviewEnabled
+
+`func (o *ControllersUpdateGlobalConfigRequest) HasTlsPreviewEnabled() bool`
+
+HasTlsPreviewEnabled returns a boolean if a field has been set.
 
 ### GetVersionAvailability
 

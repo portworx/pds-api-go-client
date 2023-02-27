@@ -5518,6 +5518,12 @@ components:
       type: object
     controllers.updateGlobalConfigRequest:
       properties:
+        tls_preview_enabled:
+          description: Specify if the TLS Preview feature should be enabled for this
+            account.
+          enum:
+          - all
+          type: string
         version_availability:
           description: Specify what data service versions are available for deployment
             for this account.
@@ -5767,6 +5773,7 @@ components:
         global_config:
           version_updatability: version_updatability
           version_availability: version_availability
+          tls_preview_enabled: tls_preview_enabled
         pxone_features_enabled: true
         updated_at: updated_at
         name: name
@@ -5804,7 +5811,12 @@ components:
       example:
         version_updatability: version_updatability
         version_availability: version_availability
+        tls_preview_enabled: tls_preview_enabled
       properties:
+        tls_preview_enabled:
+          description: Specify if the TLS Preview feature should be enabled for this
+            account.
+          type: string
         version_availability:
           description: Specify what data service versions are available for deployment
             for this account.
@@ -7108,6 +7120,7 @@ components:
         - global_config:
             version_updatability: version_updatability
             version_availability: version_availability
+            tls_preview_enabled: tls_preview_enabled
           pxone_features_enabled: true
           updated_at: updated_at
           name: name
@@ -7121,6 +7134,7 @@ components:
         - global_config:
             version_updatability: version_updatability
             version_availability: version_availability
+            tls_preview_enabled: tls_preview_enabled
           pxone_features_enabled: true
           updated_at: updated_at
           name: name
