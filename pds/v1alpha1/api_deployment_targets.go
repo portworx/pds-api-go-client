@@ -1702,11 +1702,11 @@ type ApiApiTenantsIdDeploymentTargetsPostRequest struct {
 	ctx context.Context
 	ApiService *DeploymentTargetsApiService
 	id string
-	body *ControllersCreateTenantDeploymentTarget
+	body *RequestsCreateDeploymentTargetRequest
 }
 
 // Request body containing the deployment target config
-func (r ApiApiTenantsIdDeploymentTargetsPostRequest) Body(body ControllersCreateTenantDeploymentTarget) ApiApiTenantsIdDeploymentTargetsPostRequest {
+func (r ApiApiTenantsIdDeploymentTargetsPostRequest) Body(body RequestsCreateDeploymentTargetRequest) ApiApiTenantsIdDeploymentTargetsPostRequest {
 	r.body = &body
 	return r
 }

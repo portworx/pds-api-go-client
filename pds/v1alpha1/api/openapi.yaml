@@ -3516,7 +3516,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.createTenantDeploymentTarget'
+              $ref: '#/components/schemas/requests.CreateDeploymentTargetRequest'
         description: Request body containing the deployment target config
         required: true
       responses:
@@ -5494,13 +5494,6 @@ components:
           type: integer
         secure:
           type: boolean
-      type: object
-    controllers.createTenantDeploymentTarget:
-      properties:
-        cluster_id:
-          type: string
-        name:
-          type: string
       type: object
     controllers.updateBackupCredentialsRequest:
       properties:
@@ -8573,6 +8566,17 @@ components:
           items:
             type: string
           type: array
+      type: object
+    requests.CreateDeploymentTargetRequest:
+      properties:
+        cluster_id:
+          type: string
+        name:
+          type: string
+        tls_issuer:
+          type: string
+        tls_required:
+          type: boolean
       type: object
     requests.CreateRestoreRequest:
       properties:

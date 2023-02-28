@@ -981,7 +981,7 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    body := *openapiclient.NewControllersCreateTenantDeploymentTarget() // ControllersCreateTenantDeploymentTarget | Request body containing the deployment target config
+    body := *openapiclient.NewRequestsCreateDeploymentTargetRequest() // RequestsCreateDeploymentTargetRequest | Request body containing the deployment target config
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1011,7 +1011,7 @@ Other parameters are passed through a pointer to a apiApiTenantsIdDeploymentTarg
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersCreateTenantDeploymentTarget**](ControllersCreateTenantDeploymentTarget.md) | Request body containing the deployment target config | 
+ **body** | [**RequestsCreateDeploymentTargetRequest**](RequestsCreateDeploymentTargetRequest.md) | Request body containing the deployment target config | 
 
 ### Return type
 
