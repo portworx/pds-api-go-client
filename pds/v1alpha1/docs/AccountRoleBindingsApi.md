@@ -34,7 +34,7 @@ import (
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    body := *openapiclient.NewRequestsInvitationAccountRequest() // RequestsInvitationAccountRequest | Request body containing the invitation details.
+    body := *openapiclient.NewRequestsInvitationAccountRequest("Email_example", "RoleName_example") // RequestsInvitationAccountRequest | Request body containing the invitation details.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

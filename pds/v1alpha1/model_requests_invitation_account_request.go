@@ -16,16 +16,18 @@ import (
 
 // RequestsInvitationAccountRequest struct for RequestsInvitationAccountRequest
 type RequestsInvitationAccountRequest struct {
-	Email *string `json:"email,omitempty"`
-	RoleName *string `json:"role_name,omitempty"`
+	Email string `json:"email"`
+	RoleName string `json:"role_name"`
 }
 
 // NewRequestsInvitationAccountRequest instantiates a new RequestsInvitationAccountRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsInvitationAccountRequest() *RequestsInvitationAccountRequest {
+func NewRequestsInvitationAccountRequest(email string, roleName string) *RequestsInvitationAccountRequest {
 	this := RequestsInvitationAccountRequest{}
+	this.Email = email
+	this.RoleName = roleName
 	return &this
 }
 
@@ -37,76 +39,60 @@ func NewRequestsInvitationAccountRequestWithDefaults() *RequestsInvitationAccoun
 	return &this
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value
 func (o *RequestsInvitationAccountRequest) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email
+
+	return o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *RequestsInvitationAccountRequest) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Email, true
+	return &o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *RequestsInvitationAccountRequest) HasEmail() bool {
-	if o != nil && o.Email != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail sets field value
 func (o *RequestsInvitationAccountRequest) SetEmail(v string) {
-	o.Email = &v
+	o.Email = v
 }
 
-// GetRoleName returns the RoleName field value if set, zero value otherwise.
+// GetRoleName returns the RoleName field value
 func (o *RequestsInvitationAccountRequest) GetRoleName() string {
-	if o == nil || o.RoleName == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.RoleName
+
+	return o.RoleName
 }
 
-// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// GetRoleNameOk returns a tuple with the RoleName field value
 // and a boolean to check if the value has been set.
 func (o *RequestsInvitationAccountRequest) GetRoleNameOk() (*string, bool) {
-	if o == nil || o.RoleName == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.RoleName, true
+	return &o.RoleName, true
 }
 
-// HasRoleName returns a boolean if a field has been set.
-func (o *RequestsInvitationAccountRequest) HasRoleName() bool {
-	if o != nil && o.RoleName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
+// SetRoleName sets field value
 func (o *RequestsInvitationAccountRequest) SetRoleName(v string) {
-	o.RoleName = &v
+	o.RoleName = v
 }
 
 func (o RequestsInvitationAccountRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Email != nil {
+	if true {
 		toSerialize["email"] = o.Email
 	}
-	if o.RoleName != nil {
+	if true {
 		toSerialize["role_name"] = o.RoleName
 	}
 	return json.Marshal(toSerialize)

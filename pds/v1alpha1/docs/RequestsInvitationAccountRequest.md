@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | Pointer to **string** |  | [optional] 
-**RoleName** | Pointer to **string** |  | [optional] 
+**Email** | **string** |  | 
+**RoleName** | **string** |  | 
 
 ## Methods
 
 ### NewRequestsInvitationAccountRequest
 
-`func NewRequestsInvitationAccountRequest() *RequestsInvitationAccountRequest`
+`func NewRequestsInvitationAccountRequest(email string, roleName string, ) *RequestsInvitationAccountRequest`
 
 NewRequestsInvitationAccountRequest instantiates a new RequestsInvitationAccountRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-### HasEmail
-
-`func (o *RequestsInvitationAccountRequest) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 ### GetRoleName
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetRoleName sets RoleName field to given value.
 
-### HasRoleName
-
-`func (o *RequestsInvitationAccountRequest) HasRoleName() bool`
-
-HasRoleName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

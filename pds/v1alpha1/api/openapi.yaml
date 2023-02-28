@@ -8607,6 +8607,9 @@ components:
           type: string
         role_name:
           type: string
+      required:
+      - email
+      - role_name
       type: object
     requests.PatchAccountRoleInvitationRequest:
       properties:
