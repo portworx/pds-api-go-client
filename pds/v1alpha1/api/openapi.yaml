@@ -1917,6 +1917,12 @@ paths:
         required: true
         schema:
           type: string
+      - description: 'Expand the result with related entities (allowed values: deployment_target,
+          namespace)'
+        in: query
+        name: expand
+        schema:
+          type: string
       responses:
         "200":
           content:

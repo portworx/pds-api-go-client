@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdGet
 
-> ModelsDeployment ApiDeploymentsIdGet(ctx, id).Execute()
+> ModelsDeployment ApiDeploymentsIdGet(ctx, id).Expand(expand).Execute()
 
 Get Deployment
 
@@ -318,10 +318,11 @@ import (
 
 func main() {
     id := "id_example" // string | Deployment ID (either id or deployment_id field)
+    expand := "expand_example" // string | Expand the result with related entities (allowed values: deployment_target, namespace) (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsIdGet(context.Background(), id).Expand(expand).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -347,6 +348,7 @@ Other parameters are passed through a pointer to a apiApiDeploymentsIdGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **expand** | **string** | Expand the result with related entities (allowed values: deployment_target, namespace) | 
 
 ### Return type
 

@@ -501,8 +501,14 @@ type ApiApiDeploymentsIdGetRequest struct {
 	ctx context.Context
 	ApiService *DeploymentsApiService
 	id string
+	expand *string
 }
 
+// Expand the result with related entities (allowed values: deployment_target, namespace)
+func (r ApiApiDeploymentsIdGetRequest) Expand(expand string) ApiApiDeploymentsIdGetRequest {
+	r.expand = &expand
+	return r
+}
 
 func (r ApiApiDeploymentsIdGetRequest) Execute() (*ModelsDeployment, *http.Response, error) {
 	return r.ApiService.ApiDeploymentsIdGetExecute(r)
@@ -547,6 +553,9 @@ func (a *DeploymentsApiService) ApiDeploymentsIdGetExecute(r ApiApiDeploymentsId
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.expand != nil {
+		localVarQueryParams.Add("expand", parameterToString(*r.expand, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
