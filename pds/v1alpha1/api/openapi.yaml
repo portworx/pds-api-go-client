@@ -4717,6 +4717,8 @@ components:
           type: string
         storage_options_template_id:
           type: string
+        tls_enabled:
+          type: boolean
       type: object
     controllers.CreateTenantBackupTarget:
       properties:

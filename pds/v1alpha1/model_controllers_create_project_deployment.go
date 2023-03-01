@@ -30,6 +30,7 @@ type ControllersCreateProjectDeployment struct {
 	ScheduledBackup *ControllersCreateDeploymentScheduledBackup `json:"scheduled_backup,omitempty"`
 	ServiceType *string `json:"service_type,omitempty"`
 	StorageOptionsTemplateId *string `json:"storage_options_template_id,omitempty"`
+	TlsEnabled *bool `json:"tls_enabled,omitempty"`
 }
 
 // NewControllersCreateProjectDeployment instantiates a new ControllersCreateProjectDeployment object
@@ -465,6 +466,38 @@ func (o *ControllersCreateProjectDeployment) SetStorageOptionsTemplateId(v strin
 	o.StorageOptionsTemplateId = &v
 }
 
+// GetTlsEnabled returns the TlsEnabled field value if set, zero value otherwise.
+func (o *ControllersCreateProjectDeployment) GetTlsEnabled() bool {
+	if o == nil || o.TlsEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.TlsEnabled
+}
+
+// GetTlsEnabledOk returns a tuple with the TlsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControllersCreateProjectDeployment) GetTlsEnabledOk() (*bool, bool) {
+	if o == nil || o.TlsEnabled == nil {
+		return nil, false
+	}
+	return o.TlsEnabled, true
+}
+
+// HasTlsEnabled returns a boolean if a field has been set.
+func (o *ControllersCreateProjectDeployment) HasTlsEnabled() bool {
+	if o != nil && o.TlsEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsEnabled gets a reference to the given bool and assigns it to the TlsEnabled field.
+func (o *ControllersCreateProjectDeployment) SetTlsEnabled(v bool) {
+	o.TlsEnabled = &v
+}
+
 func (o ControllersCreateProjectDeployment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApplicationConfigurationOverrides != nil {
@@ -505,6 +538,9 @@ func (o ControllersCreateProjectDeployment) MarshalJSON() ([]byte, error) {
 	}
 	if o.StorageOptionsTemplateId != nil {
 		toSerialize["storage_options_template_id"] = o.StorageOptionsTemplateId
+	}
+	if o.TlsEnabled != nil {
+		toSerialize["tls_enabled"] = o.TlsEnabled
 	}
 	return json.Marshal(toSerialize)
 }

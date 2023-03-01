@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **ScheduledBackup** | Pointer to [**ControllersCreateDeploymentScheduledBackup**](ControllersCreateDeploymentScheduledBackup.md) |  | [optional] 
 **ServiceType** | Pointer to **string** |  | [optional] 
 **StorageOptionsTemplateId** | Pointer to **string** |  | [optional] 
+**TlsEnabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -361,6 +362,31 @@ SetStorageOptionsTemplateId sets StorageOptionsTemplateId field to given value.
 `func (o *ControllersCreateProjectDeployment) HasStorageOptionsTemplateId() bool`
 
 HasStorageOptionsTemplateId returns a boolean if a field has been set.
+
+### GetTlsEnabled
+
+`func (o *ControllersCreateProjectDeployment) GetTlsEnabled() bool`
+
+GetTlsEnabled returns the TlsEnabled field if non-nil, zero value otherwise.
+
+### GetTlsEnabledOk
+
+`func (o *ControllersCreateProjectDeployment) GetTlsEnabledOk() (*bool, bool)`
+
+GetTlsEnabledOk returns a tuple with the TlsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsEnabled
+
+`func (o *ControllersCreateProjectDeployment) SetTlsEnabled(v bool)`
+
+SetTlsEnabled sets TlsEnabled field to given value.
+
+### HasTlsEnabled
+
+`func (o *ControllersCreateProjectDeployment) HasTlsEnabled() bool`
+
+HasTlsEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
