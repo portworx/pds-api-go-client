@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdMetadataPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidmetadatapost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdOperatorHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidoperatorheartbeatpost) | **Post** /api/deployment-targets/{id}/operator-heartbeat | Make DeploymentTarget operator heart beat request
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdOperatorMetadataPatch**](docs/DeploymentTargetsApi.md#apideploymenttargetsidoperatormetadatapatch) | **Patch** /api/deployment-targets/{id}/operator-metadata | Update target operator metadata
+*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdPatch**](docs/DeploymentTargetsApi.md#apideploymenttargetsidpatch) | **Patch** /api/deployment-targets/{id} | Patch DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdPut**](docs/DeploymentTargetsApi.md#apideploymenttargetsidput) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdUpdateCapabilitiesPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidupdatecapabilitiespost) | **Post** /api/deployment-targets/{id}/update-capabilities | Update target capabilities
 *DeploymentTargetsApi* | [**ApiProjectsIdDeploymentTargetsGet**](docs/DeploymentTargetsApi.md#apiprojectsiddeploymenttargetsget) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
@@ -379,6 +380,7 @@ Class | Method | HTTP request | Description
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
  - [RequestsInvitationAccountRequest](docs/RequestsInvitationAccountRequest.md)
  - [RequestsPatchAccountRoleInvitationRequest](docs/RequestsPatchAccountRoleInvitationRequest.md)
+ - [RequestsPatchDeploymentTargetRequest](docs/RequestsPatchDeploymentTargetRequest.md)
  - [RequestsPatchDeploymentTargetsAgentMetadataRequest](docs/RequestsPatchDeploymentTargetsAgentMetadataRequest.md)
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsPutBackupJobRequest](docs/RequestsPutBackupJobRequest.md)

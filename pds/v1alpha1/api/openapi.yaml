@@ -1547,8 +1547,38 @@ paths:
       summary: Get DeploymentTarget
       tags:
       - DeploymentTargets
+    patch:
+      description: Patches existing DeploymentTarget
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.PatchDeploymentTargetRequest'
+        description: Object with partial update fields (name, tlsRequired, tlsIssuer)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTarget'
+          description: The patched DeploymentTarget will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Patch DeploymentTarget
+      tags:
+      - DeploymentTargets
+      x-codegen-request-body-name: body
     put:
-      description: Updates existing DeploymentTarget
+      deprecated: true
+      description: Deprecated, use PATCH /api/deployment-targets/{id} instead
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
         in: path
@@ -8625,6 +8655,15 @@ components:
       properties:
         role_name:
           type: string
+      type: object
+    requests.PatchDeploymentTargetRequest:
+      properties:
+        name:
+          type: string
+        tls_issuer:
+          type: string
+        tls_required:
+          type: boolean
       type: object
     requests.PatchDeploymentTargetsAgentMetadataRequest:
       properties:

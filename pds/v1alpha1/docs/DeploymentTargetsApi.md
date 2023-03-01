@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**ApiDeploymentTargetsIdMetadataPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdMetadataPost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
 [**ApiDeploymentTargetsIdOperatorHeartbeatPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdOperatorHeartbeatPost) | **Post** /api/deployment-targets/{id}/operator-heartbeat | Make DeploymentTarget operator heart beat request
 [**ApiDeploymentTargetsIdOperatorMetadataPatch**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdOperatorMetadataPatch) | **Patch** /api/deployment-targets/{id}/operator-metadata | Update target operator metadata
+[**ApiDeploymentTargetsIdPatch**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdPatch) | **Patch** /api/deployment-targets/{id} | Patch DeploymentTarget
 [**ApiDeploymentTargetsIdPut**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdPut) | **Put** /api/deployment-targets/{id} | Update DeploymentTarget
 [**ApiDeploymentTargetsIdUpdateCapabilitiesPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdUpdateCapabilitiesPost) | **Post** /api/deployment-targets/{id}/update-capabilities | Update target capabilities
 [**ApiProjectsIdDeploymentTargetsGet**](DeploymentTargetsApi.md#ApiProjectsIdDeploymentTargetsGet) | **Get** /api/projects/{id}/deployment-targets | List Project&#39;s DeploymentTargets
@@ -647,6 +648,78 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiDeploymentTargetsIdPatch
+
+> ModelsDeploymentTarget ApiDeploymentTargetsIdPatch(ctx, id).Body(body).Execute()
+
+Patch DeploymentTarget
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
+    body := *openapiclient.NewRequestsPatchDeploymentTargetRequest() // RequestsPatchDeploymentTargetRequest | Object with partial update fields (name, tlsRequired, tlsIssuer)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdPatch(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiDeploymentTargetsIdPatch`: ModelsDeploymentTarget
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentTargetsApi.ApiDeploymentTargetsIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | DeploymentTarget ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentTargetsIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsPatchDeploymentTargetRequest**](RequestsPatchDeploymentTargetRequest.md) | Object with partial update fields (name, tlsRequired, tlsIssuer) | 
+
+### Return type
+
+[**ModelsDeploymentTarget**](ModelsDeploymentTarget.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
