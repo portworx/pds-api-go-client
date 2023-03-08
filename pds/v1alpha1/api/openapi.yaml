@@ -2712,7 +2712,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.CreateProjectDeployment'
+              $ref: '#/components/schemas/requests.CreateProjectDeploymentRequest'
         description: Request body containing the deployment config
         required: true
       responses:
@@ -4673,52 +4673,6 @@ components:
         schedule:
           example: in CRON format, required for scheduled backups
           type: string
-      type: object
-    controllers.CreateDeploymentScheduledBackup:
-      properties:
-        backup_policy_id:
-          type: string
-        backup_target_id:
-          description: BackupTargetID and BackupPolicyID must be both specified.
-          type: string
-      type: object
-    controllers.CreateProjectDeployment:
-      properties:
-        application_configuration_overrides:
-          additionalProperties:
-            type: string
-          type: object
-        application_configuration_template_id:
-          type: string
-        deployment_target_id:
-          type: string
-        dns_zone:
-          type: string
-        image_id:
-          type: string
-        load_balancer_source_ranges:
-          items:
-            type: string
-          type: array
-        name:
-          example: my-service
-          type: string
-        namespace_id:
-          type: string
-        node_count:
-          description: See models.Deployment for more information.
-          example: 3
-          type: integer
-        resource_settings_template_id:
-          type: string
-        scheduled_backup:
-          $ref: '#/components/schemas/controllers.CreateDeploymentScheduledBackup'
-        service_type:
-          type: string
-        storage_options_template_id:
-          type: string
-        tls_enabled:
-          type: boolean
       type: object
     controllers.CreateTenantBackupTarget:
       properties:
@@ -8616,6 +8570,43 @@ components:
         tls_required:
           type: boolean
       type: object
+    requests.CreateProjectDeploymentRequest:
+      properties:
+        application_configuration_overrides:
+          additionalProperties:
+            type: string
+          type: object
+        application_configuration_template_id:
+          type: string
+        deployment_target_id:
+          type: string
+        dns_zone:
+          type: string
+        image_id:
+          type: string
+        load_balancer_source_ranges:
+          items:
+            type: string
+          type: array
+        name:
+          example: my-service
+          type: string
+        namespace_id:
+          type: string
+        node_count:
+          example: 3
+          type: integer
+        resource_settings_template_id:
+          type: string
+        scheduled_backup:
+          $ref: '#/components/schemas/requests.DeploymentScheduledBackup'
+        service_type:
+          type: string
+        storage_options_template_id:
+          type: string
+        tls_enabled:
+          type: boolean
+      type: object
     requests.CreateRestoreRequest:
       properties:
         deployment_target_id:
@@ -8641,6 +8632,14 @@ components:
         actor_id:
           type: string
         actor_type:
+          type: string
+      type: object
+    requests.DeploymentScheduledBackup:
+      properties:
+        backup_policy_id:
+          type: string
+        backup_target_id:
+          description: BackupTargetID and BackupPolicyID must be both specified.
           type: string
       type: object
     requests.InvitationAccountRequest:

@@ -14,32 +14,32 @@ import (
 	"encoding/json"
 )
 
-// ControllersCreateDeploymentScheduledBackup struct for ControllersCreateDeploymentScheduledBackup
-type ControllersCreateDeploymentScheduledBackup struct {
+// RequestsDeploymentScheduledBackup struct for RequestsDeploymentScheduledBackup
+type RequestsDeploymentScheduledBackup struct {
 	BackupPolicyId *string `json:"backup_policy_id,omitempty"`
 	// BackupTargetID and BackupPolicyID must be both specified.
 	BackupTargetId *string `json:"backup_target_id,omitempty"`
 }
 
-// NewControllersCreateDeploymentScheduledBackup instantiates a new ControllersCreateDeploymentScheduledBackup object
+// NewRequestsDeploymentScheduledBackup instantiates a new RequestsDeploymentScheduledBackup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersCreateDeploymentScheduledBackup() *ControllersCreateDeploymentScheduledBackup {
-	this := ControllersCreateDeploymentScheduledBackup{}
+func NewRequestsDeploymentScheduledBackup() *RequestsDeploymentScheduledBackup {
+	this := RequestsDeploymentScheduledBackup{}
 	return &this
 }
 
-// NewControllersCreateDeploymentScheduledBackupWithDefaults instantiates a new ControllersCreateDeploymentScheduledBackup object
+// NewRequestsDeploymentScheduledBackupWithDefaults instantiates a new RequestsDeploymentScheduledBackup object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersCreateDeploymentScheduledBackupWithDefaults() *ControllersCreateDeploymentScheduledBackup {
-	this := ControllersCreateDeploymentScheduledBackup{}
+func NewRequestsDeploymentScheduledBackupWithDefaults() *RequestsDeploymentScheduledBackup {
+	this := RequestsDeploymentScheduledBackup{}
 	return &this
 }
 
 // GetBackupPolicyId returns the BackupPolicyId field value if set, zero value otherwise.
-func (o *ControllersCreateDeploymentScheduledBackup) GetBackupPolicyId() string {
+func (o *RequestsDeploymentScheduledBackup) GetBackupPolicyId() string {
 	if o == nil || o.BackupPolicyId == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *ControllersCreateDeploymentScheduledBackup) GetBackupPolicyId() string 
 
 // GetBackupPolicyIdOk returns a tuple with the BackupPolicyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateDeploymentScheduledBackup) GetBackupPolicyIdOk() (*string, bool) {
+func (o *RequestsDeploymentScheduledBackup) GetBackupPolicyIdOk() (*string, bool) {
 	if o == nil || o.BackupPolicyId == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *ControllersCreateDeploymentScheduledBackup) GetBackupPolicyIdOk() (*str
 }
 
 // HasBackupPolicyId returns a boolean if a field has been set.
-func (o *ControllersCreateDeploymentScheduledBackup) HasBackupPolicyId() bool {
+func (o *RequestsDeploymentScheduledBackup) HasBackupPolicyId() bool {
 	if o != nil && o.BackupPolicyId != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *ControllersCreateDeploymentScheduledBackup) HasBackupPolicyId() bool {
 }
 
 // SetBackupPolicyId gets a reference to the given string and assigns it to the BackupPolicyId field.
-func (o *ControllersCreateDeploymentScheduledBackup) SetBackupPolicyId(v string) {
+func (o *RequestsDeploymentScheduledBackup) SetBackupPolicyId(v string) {
 	o.BackupPolicyId = &v
 }
 
 // GetBackupTargetId returns the BackupTargetId field value if set, zero value otherwise.
-func (o *ControllersCreateDeploymentScheduledBackup) GetBackupTargetId() string {
+func (o *RequestsDeploymentScheduledBackup) GetBackupTargetId() string {
 	if o == nil || o.BackupTargetId == nil {
 		var ret string
 		return ret
@@ -81,7 +81,7 @@ func (o *ControllersCreateDeploymentScheduledBackup) GetBackupTargetId() string 
 
 // GetBackupTargetIdOk returns a tuple with the BackupTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersCreateDeploymentScheduledBackup) GetBackupTargetIdOk() (*string, bool) {
+func (o *RequestsDeploymentScheduledBackup) GetBackupTargetIdOk() (*string, bool) {
 	if o == nil || o.BackupTargetId == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *ControllersCreateDeploymentScheduledBackup) GetBackupTargetIdOk() (*str
 }
 
 // HasBackupTargetId returns a boolean if a field has been set.
-func (o *ControllersCreateDeploymentScheduledBackup) HasBackupTargetId() bool {
+func (o *RequestsDeploymentScheduledBackup) HasBackupTargetId() bool {
 	if o != nil && o.BackupTargetId != nil {
 		return true
 	}
@@ -98,11 +98,11 @@ func (o *ControllersCreateDeploymentScheduledBackup) HasBackupTargetId() bool {
 }
 
 // SetBackupTargetId gets a reference to the given string and assigns it to the BackupTargetId field.
-func (o *ControllersCreateDeploymentScheduledBackup) SetBackupTargetId(v string) {
+func (o *RequestsDeploymentScheduledBackup) SetBackupTargetId(v string) {
 	o.BackupTargetId = &v
 }
 
-func (o ControllersCreateDeploymentScheduledBackup) MarshalJSON() ([]byte, error) {
+func (o RequestsDeploymentScheduledBackup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BackupPolicyId != nil {
 		toSerialize["backup_policy_id"] = o.BackupPolicyId
@@ -113,38 +113,38 @@ func (o ControllersCreateDeploymentScheduledBackup) MarshalJSON() ([]byte, error
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersCreateDeploymentScheduledBackup struct {
-	value *ControllersCreateDeploymentScheduledBackup
+type NullableRequestsDeploymentScheduledBackup struct {
+	value *RequestsDeploymentScheduledBackup
 	isSet bool
 }
 
-func (v NullableControllersCreateDeploymentScheduledBackup) Get() *ControllersCreateDeploymentScheduledBackup {
+func (v NullableRequestsDeploymentScheduledBackup) Get() *RequestsDeploymentScheduledBackup {
 	return v.value
 }
 
-func (v *NullableControllersCreateDeploymentScheduledBackup) Set(val *ControllersCreateDeploymentScheduledBackup) {
+func (v *NullableRequestsDeploymentScheduledBackup) Set(val *RequestsDeploymentScheduledBackup) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersCreateDeploymentScheduledBackup) IsSet() bool {
+func (v NullableRequestsDeploymentScheduledBackup) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersCreateDeploymentScheduledBackup) Unset() {
+func (v *NullableRequestsDeploymentScheduledBackup) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersCreateDeploymentScheduledBackup(val *ControllersCreateDeploymentScheduledBackup) *NullableControllersCreateDeploymentScheduledBackup {
-	return &NullableControllersCreateDeploymentScheduledBackup{value: val, isSet: true}
+func NewNullableRequestsDeploymentScheduledBackup(val *RequestsDeploymentScheduledBackup) *NullableRequestsDeploymentScheduledBackup {
+	return &NullableRequestsDeploymentScheduledBackup{value: val, isSet: true}
 }
 
-func (v NullableControllersCreateDeploymentScheduledBackup) MarshalJSON() ([]byte, error) {
+func (v NullableRequestsDeploymentScheduledBackup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersCreateDeploymentScheduledBackup) UnmarshalJSON(src []byte) error {
+func (v *NullableRequestsDeploymentScheduledBackup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

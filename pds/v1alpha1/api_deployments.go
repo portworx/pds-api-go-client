@@ -1110,12 +1110,12 @@ type ApiApiProjectsIdDeploymentsPostRequest struct {
 	ctx context.Context
 	ApiService *DeploymentsApiService
 	id string
-	body *ControllersCreateProjectDeployment
+	body *RequestsCreateProjectDeploymentRequest
 	localOnly *bool
 }
 
 // Request body containing the deployment config
-func (r ApiApiProjectsIdDeploymentsPostRequest) Body(body ControllersCreateProjectDeployment) ApiApiProjectsIdDeploymentsPostRequest {
+func (r ApiApiProjectsIdDeploymentsPostRequest) Body(body RequestsCreateProjectDeploymentRequest) ApiApiProjectsIdDeploymentsPostRequest {
 	r.body = &body
 	return r
 }

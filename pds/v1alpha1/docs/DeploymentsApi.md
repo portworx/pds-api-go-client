@@ -628,7 +628,7 @@ import (
 
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
-    body := *openapiclient.NewControllersCreateProjectDeployment() // ControllersCreateProjectDeployment | Request body containing the deployment config
+    body := *openapiclient.NewRequestsCreateProjectDeploymentRequest() // RequestsCreateProjectDeploymentRequest | Request body containing the deployment config
     localOnly := true // bool | Set to true to only create the Deployment object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -659,7 +659,7 @@ Other parameters are passed through a pointer to a apiApiProjectsIdDeploymentsPo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersCreateProjectDeployment**](ControllersCreateProjectDeployment.md) | Request body containing the deployment config | 
+ **body** | [**RequestsCreateProjectDeploymentRequest**](RequestsCreateProjectDeploymentRequest.md) | Request body containing the deployment config | 
  **localOnly** | **bool** | Set to true to only create the Deployment object in the database (does not create any actual resources) | 
 
 ### Return type
