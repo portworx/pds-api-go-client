@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Postgresql** | Pointer to **string** |  | [optional] 
 **Rabbitmq** | Pointer to **string** |  | [optional] 
 **Redis** | Pointer to **string** |  | [optional] 
+**Sqlserver** | Pointer to **string** |  | [optional] 
 **Zookeeper** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -388,6 +389,31 @@ SetRedis sets Redis field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasRedis() bool`
 
 HasRedis returns a boolean if a field has been set.
+
+### GetSqlserver
+
+`func (o *ModelsDeploymentTargetCapabilities) GetSqlserver() string`
+
+GetSqlserver returns the Sqlserver field if non-nil, zero value otherwise.
+
+### GetSqlserverOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetSqlserverOk() (*string, bool)`
+
+GetSqlserverOk returns a tuple with the Sqlserver field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSqlserver
+
+`func (o *ModelsDeploymentTargetCapabilities) SetSqlserver(v string)`
+
+SetSqlserver sets Sqlserver field to given value.
+
+### HasSqlserver
+
+`func (o *ModelsDeploymentTargetCapabilities) HasSqlserver() bool`
+
+HasSqlserver returns a boolean if a field has been set.
 
 ### GetZookeeper
 

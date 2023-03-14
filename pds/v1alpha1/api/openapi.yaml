@@ -6204,6 +6204,7 @@ components:
               database: database
               elasticsearch: elasticsearch
               postgresql: postgresql
+              sqlserver: sqlserver
               cassandra: cassandra
               couchbase: couchbase
               consul: consul
@@ -6627,6 +6628,7 @@ components:
             database: database
             elasticsearch: elasticsearch
             postgresql: postgresql
+            sqlserver: sqlserver
             cassandra: cassandra
             couchbase: couchbase
             consul: consul
@@ -6812,6 +6814,7 @@ components:
           database: database
           elasticsearch: elasticsearch
           postgresql: postgresql
+          sqlserver: sqlserver
           cassandra: cassandra
           couchbase: couchbase
           consul: consul
@@ -6876,6 +6879,7 @@ components:
         database: database
         elasticsearch: elasticsearch
         postgresql: postgresql
+        sqlserver: sqlserver
         cassandra: cassandra
         couchbase: couchbase
         consul: consul
@@ -6911,6 +6915,8 @@ components:
         rabbitmq:
           type: string
         redis:
+          type: string
+        sqlserver:
           type: string
         zookeeper:
           type: string
@@ -7485,6 +7491,7 @@ components:
               database: database
               elasticsearch: elasticsearch
               postgresql: postgresql
+              sqlserver: sqlserver
               cassandra: cassandra
               couchbase: couchbase
               consul: consul
@@ -7575,6 +7582,7 @@ components:
               database: database
               elasticsearch: elasticsearch
               postgresql: postgresql
+              sqlserver: sqlserver
               cassandra: cassandra
               couchbase: couchbase
               consul: consul
@@ -7627,6 +7635,7 @@ components:
             database: database
             elasticsearch: elasticsearch
             postgresql: postgresql
+            sqlserver: sqlserver
             cassandra: cassandra
             couchbase: couchbase
             consul: consul
@@ -7666,6 +7675,7 @@ components:
             database: database
             elasticsearch: elasticsearch
             postgresql: postgresql
+            sqlserver: sqlserver
             cassandra: cassandra
             couchbase: couchbase
             consul: consul

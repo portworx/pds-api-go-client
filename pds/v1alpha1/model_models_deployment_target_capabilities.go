@@ -30,6 +30,7 @@ type ModelsDeploymentTargetCapabilities struct {
 	Postgresql *string `json:"postgresql,omitempty"`
 	Rabbitmq *string `json:"rabbitmq,omitempty"`
 	Redis *string `json:"redis,omitempty"`
+	Sqlserver *string `json:"sqlserver,omitempty"`
 	Zookeeper *string `json:"zookeeper,omitempty"`
 }
 
@@ -498,6 +499,38 @@ func (o *ModelsDeploymentTargetCapabilities) SetRedis(v string) {
 	o.Redis = &v
 }
 
+// GetSqlserver returns the Sqlserver field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetCapabilities) GetSqlserver() string {
+	if o == nil || o.Sqlserver == nil {
+		var ret string
+		return ret
+	}
+	return *o.Sqlserver
+}
+
+// GetSqlserverOk returns a tuple with the Sqlserver field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetCapabilities) GetSqlserverOk() (*string, bool) {
+	if o == nil || o.Sqlserver == nil {
+		return nil, false
+	}
+	return o.Sqlserver, true
+}
+
+// HasSqlserver returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetCapabilities) HasSqlserver() bool {
+	if o != nil && o.Sqlserver != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSqlserver gets a reference to the given string and assigns it to the Sqlserver field.
+func (o *ModelsDeploymentTargetCapabilities) SetSqlserver(v string) {
+	o.Sqlserver = &v
+}
+
 // GetZookeeper returns the Zookeeper field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetZookeeper() string {
 	if o == nil || o.Zookeeper == nil {
@@ -573,6 +606,9 @@ func (o ModelsDeploymentTargetCapabilities) MarshalJSON() ([]byte, error) {
 	}
 	if o.Redis != nil {
 		toSerialize["redis"] = o.Redis
+	}
+	if o.Sqlserver != nil {
+		toSerialize["sqlserver"] = o.Sqlserver
 	}
 	if o.Zookeeper != nil {
 		toSerialize["zookeeper"] = o.Zookeeper
