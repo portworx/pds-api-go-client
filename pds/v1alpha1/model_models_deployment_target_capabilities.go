@@ -21,6 +21,7 @@ type ModelsDeploymentTargetCapabilities struct {
 	Cassandra *string `json:"cassandra,omitempty"`
 	Consul *string `json:"consul,omitempty"`
 	Couchbase *string `json:"couchbase,omitempty"`
+	CrdReporting *string `json:"crd_reporting,omitempty"`
 	DataServiceTls *string `json:"data_service_tls,omitempty"`
 	Database *string `json:"database,omitempty"`
 	Elasticsearch *string `json:"elasticsearch,omitempty"`
@@ -209,6 +210,38 @@ func (o *ModelsDeploymentTargetCapabilities) HasCouchbase() bool {
 // SetCouchbase gets a reference to the given string and assigns it to the Couchbase field.
 func (o *ModelsDeploymentTargetCapabilities) SetCouchbase(v string) {
 	o.Couchbase = &v
+}
+
+// GetCrdReporting returns the CrdReporting field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetCapabilities) GetCrdReporting() string {
+	if o == nil || o.CrdReporting == nil {
+		var ret string
+		return ret
+	}
+	return *o.CrdReporting
+}
+
+// GetCrdReportingOk returns a tuple with the CrdReporting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetCapabilities) GetCrdReportingOk() (*string, bool) {
+	if o == nil || o.CrdReporting == nil {
+		return nil, false
+	}
+	return o.CrdReporting, true
+}
+
+// HasCrdReporting returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetCapabilities) HasCrdReporting() bool {
+	if o != nil && o.CrdReporting != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCrdReporting gets a reference to the given string and assigns it to the CrdReporting field.
+func (o *ModelsDeploymentTargetCapabilities) SetCrdReporting(v string) {
+	o.CrdReporting = &v
 }
 
 // GetDataServiceTls returns the DataServiceTls field value if set, zero value otherwise.
@@ -579,6 +612,9 @@ func (o ModelsDeploymentTargetCapabilities) MarshalJSON() ([]byte, error) {
 	}
 	if o.Couchbase != nil {
 		toSerialize["couchbase"] = o.Couchbase
+	}
+	if o.CrdReporting != nil {
+		toSerialize["crd_reporting"] = o.CrdReporting
 	}
 	if o.DataServiceTls != nil {
 		toSerialize["data_service_tls"] = o.DataServiceTls

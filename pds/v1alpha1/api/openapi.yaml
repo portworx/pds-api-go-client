@@ -6199,6 +6199,7 @@ components:
               backup: backup
               capabilities: capabilities
               zookeeper: zookeeper
+              crd_reporting: crd_reporting
               rabbitmq: rabbitmq
               redis: redis
               database: database
@@ -6623,6 +6624,7 @@ components:
             backup: backup
             capabilities: capabilities
             zookeeper: zookeeper
+            crd_reporting: crd_reporting
             rabbitmq: rabbitmq
             redis: redis
             database: database
@@ -6809,6 +6811,7 @@ components:
           backup: backup
           capabilities: capabilities
           zookeeper: zookeeper
+          crd_reporting: crd_reporting
           rabbitmq: rabbitmq
           redis: redis
           database: database
@@ -6874,6 +6877,7 @@ components:
         backup: backup
         capabilities: capabilities
         zookeeper: zookeeper
+        crd_reporting: crd_reporting
         rabbitmq: rabbitmq
         redis: redis
         database: database
@@ -6897,6 +6901,8 @@ components:
         consul:
           type: string
         couchbase:
+          type: string
+        crd_reporting:
           type: string
         data_service_tls:
           type: string
@@ -7486,6 +7492,7 @@ components:
               backup: backup
               capabilities: capabilities
               zookeeper: zookeeper
+              crd_reporting: crd_reporting
               rabbitmq: rabbitmq
               redis: redis
               database: database
@@ -7577,6 +7584,7 @@ components:
               backup: backup
               capabilities: capabilities
               zookeeper: zookeeper
+              crd_reporting: crd_reporting
               rabbitmq: rabbitmq
               redis: redis
               database: database
@@ -7630,6 +7638,7 @@ components:
             backup: backup
             capabilities: capabilities
             zookeeper: zookeeper
+            crd_reporting: crd_reporting
             rabbitmq: rabbitmq
             redis: redis
             database: database
@@ -7670,6 +7679,7 @@ components:
             backup: backup
             capabilities: capabilities
             zookeeper: zookeeper
+            crd_reporting: crd_reporting
             rabbitmq: rabbitmq
             redis: redis
             database: database

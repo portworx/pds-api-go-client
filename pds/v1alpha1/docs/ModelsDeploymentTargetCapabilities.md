@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Cassandra** | Pointer to **string** |  | [optional] 
 **Consul** | Pointer to **string** |  | [optional] 
 **Couchbase** | Pointer to **string** |  | [optional] 
+**CrdReporting** | Pointer to **string** |  | [optional] 
 **DataServiceTls** | Pointer to **string** |  | [optional] 
 **Database** | Pointer to **string** |  | [optional] 
 **Elasticsearch** | Pointer to **string** |  | [optional] 
@@ -164,6 +165,31 @@ SetCouchbase sets Couchbase field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasCouchbase() bool`
 
 HasCouchbase returns a boolean if a field has been set.
+
+### GetCrdReporting
+
+`func (o *ModelsDeploymentTargetCapabilities) GetCrdReporting() string`
+
+GetCrdReporting returns the CrdReporting field if non-nil, zero value otherwise.
+
+### GetCrdReportingOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetCrdReportingOk() (*string, bool)`
+
+GetCrdReportingOk returns a tuple with the CrdReporting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCrdReporting
+
+`func (o *ModelsDeploymentTargetCapabilities) SetCrdReporting(v string)`
+
+SetCrdReporting sets CrdReporting field to given value.
+
+### HasCrdReporting
+
+`func (o *ModelsDeploymentTargetCapabilities) HasCrdReporting() bool`
+
+HasCrdReporting returns a boolean if a field has been set.
 
 ### GetDataServiceTls
 
