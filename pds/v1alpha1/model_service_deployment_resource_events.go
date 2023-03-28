@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// ControllersEventsResponse struct for ControllersEventsResponse
-type ControllersEventsResponse struct {
+// ServiceDeploymentResourceEvents struct for ServiceDeploymentResourceEvents
+type ServiceDeploymentResourceEvents struct {
 	ResourceEvents []DeploymentsResourceEvents `json:"resourceEvents,omitempty"`
 }
 
-// NewControllersEventsResponse instantiates a new ControllersEventsResponse object
+// NewServiceDeploymentResourceEvents instantiates a new ServiceDeploymentResourceEvents object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersEventsResponse() *ControllersEventsResponse {
-	this := ControllersEventsResponse{}
+func NewServiceDeploymentResourceEvents() *ServiceDeploymentResourceEvents {
+	this := ServiceDeploymentResourceEvents{}
 	return &this
 }
 
-// NewControllersEventsResponseWithDefaults instantiates a new ControllersEventsResponse object
+// NewServiceDeploymentResourceEventsWithDefaults instantiates a new ServiceDeploymentResourceEvents object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersEventsResponseWithDefaults() *ControllersEventsResponse {
-	this := ControllersEventsResponse{}
+func NewServiceDeploymentResourceEventsWithDefaults() *ServiceDeploymentResourceEvents {
+	this := ServiceDeploymentResourceEvents{}
 	return &this
 }
 
 // GetResourceEvents returns the ResourceEvents field value if set, zero value otherwise.
-func (o *ControllersEventsResponse) GetResourceEvents() []DeploymentsResourceEvents {
+func (o *ServiceDeploymentResourceEvents) GetResourceEvents() []DeploymentsResourceEvents {
 	if o == nil || o.ResourceEvents == nil {
 		var ret []DeploymentsResourceEvents
 		return ret
@@ -47,7 +47,7 @@ func (o *ControllersEventsResponse) GetResourceEvents() []DeploymentsResourceEve
 
 // GetResourceEventsOk returns a tuple with the ResourceEvents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersEventsResponse) GetResourceEventsOk() ([]DeploymentsResourceEvents, bool) {
+func (o *ServiceDeploymentResourceEvents) GetResourceEventsOk() ([]DeploymentsResourceEvents, bool) {
 	if o == nil || o.ResourceEvents == nil {
 		return nil, false
 	}
@@ -55,7 +55,7 @@ func (o *ControllersEventsResponse) GetResourceEventsOk() ([]DeploymentsResource
 }
 
 // HasResourceEvents returns a boolean if a field has been set.
-func (o *ControllersEventsResponse) HasResourceEvents() bool {
+func (o *ServiceDeploymentResourceEvents) HasResourceEvents() bool {
 	if o != nil && o.ResourceEvents != nil {
 		return true
 	}
@@ -64,11 +64,11 @@ func (o *ControllersEventsResponse) HasResourceEvents() bool {
 }
 
 // SetResourceEvents gets a reference to the given []DeploymentsResourceEvents and assigns it to the ResourceEvents field.
-func (o *ControllersEventsResponse) SetResourceEvents(v []DeploymentsResourceEvents) {
+func (o *ServiceDeploymentResourceEvents) SetResourceEvents(v []DeploymentsResourceEvents) {
 	o.ResourceEvents = v
 }
 
-func (o ControllersEventsResponse) MarshalJSON() ([]byte, error) {
+func (o ServiceDeploymentResourceEvents) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ResourceEvents != nil {
 		toSerialize["resourceEvents"] = o.ResourceEvents
@@ -76,38 +76,38 @@ func (o ControllersEventsResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersEventsResponse struct {
-	value *ControllersEventsResponse
+type NullableServiceDeploymentResourceEvents struct {
+	value *ServiceDeploymentResourceEvents
 	isSet bool
 }
 
-func (v NullableControllersEventsResponse) Get() *ControllersEventsResponse {
+func (v NullableServiceDeploymentResourceEvents) Get() *ServiceDeploymentResourceEvents {
 	return v.value
 }
 
-func (v *NullableControllersEventsResponse) Set(val *ControllersEventsResponse) {
+func (v *NullableServiceDeploymentResourceEvents) Set(val *ServiceDeploymentResourceEvents) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersEventsResponse) IsSet() bool {
+func (v NullableServiceDeploymentResourceEvents) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersEventsResponse) Unset() {
+func (v *NullableServiceDeploymentResourceEvents) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersEventsResponse(val *ControllersEventsResponse) *NullableControllersEventsResponse {
-	return &NullableControllersEventsResponse{value: val, isSet: true}
+func NewNullableServiceDeploymentResourceEvents(val *ServiceDeploymentResourceEvents) *NullableServiceDeploymentResourceEvents {
+	return &NullableServiceDeploymentResourceEvents{value: val, isSet: true}
 }
 
-func (v NullableControllersEventsResponse) MarshalJSON() ([]byte, error) {
+func (v NullableServiceDeploymentResourceEvents) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersEventsResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableServiceDeploymentResourceEvents) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

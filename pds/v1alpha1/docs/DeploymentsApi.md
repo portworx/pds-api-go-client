@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdEventsGet
 
-> ControllersEventsResponse ApiDeploymentsIdEventsGet(ctx, id).Execute()
+> ServiceDeploymentResourceEvents ApiDeploymentsIdEventsGet(ctx, id).Execute()
 
 Get Deployment Events
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdEventsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdEventsGet`: ControllersEventsResponse
+    // response from `ApiDeploymentsIdEventsGet`: ServiceDeploymentResourceEvents
     fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdEventsGet`: %v\n", resp)
 }
 ```
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersEventsResponse**](ControllersEventsResponse.md)
+[**ServiceDeploymentResourceEvents**](ServiceDeploymentResourceEvents.md)
 
 ### Authorization
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdStatusGet
 
-> ControllersStatusResponse ApiDeploymentsIdStatusGet(ctx, id).Execute()
+> ServiceDeploymentStatus ApiDeploymentsIdStatusGet(ctx, id).Execute()
 
 Get Deployment Status
 
@@ -472,7 +472,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdStatusGet`: ControllersStatusResponse
+    // response from `ApiDeploymentsIdStatusGet`: ServiceDeploymentStatus
     fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdStatusGet`: %v\n", resp)
 }
 ```
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersStatusResponse**](ControllersStatusResponse.md)
+[**ServiceDeploymentStatus**](ServiceDeploymentStatus.md)
 
 ### Authorization
 

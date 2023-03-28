@@ -252,7 +252,6 @@ Class | Method | HTTP request | Description
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
  - [ControllersDeploymentTargetMetadataRequest](docs/ControllersDeploymentTargetMetadataRequest.md)
- - [ControllersEventsResponse](docs/ControllersEventsResponse.md)
  - [ControllersOIDCInfoResponse](docs/ControllersOIDCInfoResponse.md)
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)
  - [ControllersPaginatedAccountRoleBindings](docs/ControllersPaginatedAccountRoleBindings.md)
@@ -270,7 +269,6 @@ Class | Method | HTTP request | Description
  - [ControllersResourceSettingsSamples](docs/ControllersResourceSettingsSamples.md)
  - [ControllersServiceAccountResponse](docs/ControllersServiceAccountResponse.md)
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
- - [ControllersStatusResponse](docs/ControllersStatusResponse.md)
  - [ControllersStorageOptionsSamples](docs/ControllersStorageOptionsSamples.md)
  - [ControllersTargetClusterConfigResponse](docs/ControllersTargetClusterConfigResponse.md)
  - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
@@ -388,6 +386,8 @@ Class | Method | HTTP request | Description
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
  - [RequestsUpdateRestoreStatusRequest](docs/RequestsUpdateRestoreStatusRequest.md)
  - [RequestsUpsertDeploymentManifestRequest](docs/RequestsUpsertDeploymentManifestRequest.md)
+ - [ServiceDeploymentResourceEvents](docs/ServiceDeploymentResourceEvents.md)
+ - [ServiceDeploymentStatus](docs/ServiceDeploymentStatus.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
 

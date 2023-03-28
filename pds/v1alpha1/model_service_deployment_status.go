@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// ControllersStatusResponse struct for ControllersStatusResponse
-type ControllersStatusResponse struct {
+// ServiceDeploymentStatus struct for ServiceDeploymentStatus
+type ServiceDeploymentStatus struct {
 	Health *string `json:"health,omitempty"`
 	Initialized *string `json:"initialized,omitempty"`
 	ReadyReplicas *int32 `json:"readyReplicas,omitempty"`
@@ -24,25 +24,25 @@ type ControllersStatusResponse struct {
 	Status *string `json:"status,omitempty"`
 }
 
-// NewControllersStatusResponse instantiates a new ControllersStatusResponse object
+// NewServiceDeploymentStatus instantiates a new ServiceDeploymentStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewControllersStatusResponse() *ControllersStatusResponse {
-	this := ControllersStatusResponse{}
+func NewServiceDeploymentStatus() *ServiceDeploymentStatus {
+	this := ServiceDeploymentStatus{}
 	return &this
 }
 
-// NewControllersStatusResponseWithDefaults instantiates a new ControllersStatusResponse object
+// NewServiceDeploymentStatusWithDefaults instantiates a new ServiceDeploymentStatus object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewControllersStatusResponseWithDefaults() *ControllersStatusResponse {
-	this := ControllersStatusResponse{}
+func NewServiceDeploymentStatusWithDefaults() *ServiceDeploymentStatus {
+	this := ServiceDeploymentStatus{}
 	return &this
 }
 
 // GetHealth returns the Health field value if set, zero value otherwise.
-func (o *ControllersStatusResponse) GetHealth() string {
+func (o *ServiceDeploymentStatus) GetHealth() string {
 	if o == nil || o.Health == nil {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *ControllersStatusResponse) GetHealth() string {
 
 // GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersStatusResponse) GetHealthOk() (*string, bool) {
+func (o *ServiceDeploymentStatus) GetHealthOk() (*string, bool) {
 	if o == nil || o.Health == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *ControllersStatusResponse) GetHealthOk() (*string, bool) {
 }
 
 // HasHealth returns a boolean if a field has been set.
-func (o *ControllersStatusResponse) HasHealth() bool {
+func (o *ServiceDeploymentStatus) HasHealth() bool {
 	if o != nil && o.Health != nil {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *ControllersStatusResponse) HasHealth() bool {
 }
 
 // SetHealth gets a reference to the given string and assigns it to the Health field.
-func (o *ControllersStatusResponse) SetHealth(v string) {
+func (o *ServiceDeploymentStatus) SetHealth(v string) {
 	o.Health = &v
 }
 
 // GetInitialized returns the Initialized field value if set, zero value otherwise.
-func (o *ControllersStatusResponse) GetInitialized() string {
+func (o *ServiceDeploymentStatus) GetInitialized() string {
 	if o == nil || o.Initialized == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *ControllersStatusResponse) GetInitialized() string {
 
 // GetInitializedOk returns a tuple with the Initialized field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersStatusResponse) GetInitializedOk() (*string, bool) {
+func (o *ServiceDeploymentStatus) GetInitializedOk() (*string, bool) {
 	if o == nil || o.Initialized == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *ControllersStatusResponse) GetInitializedOk() (*string, bool) {
 }
 
 // HasInitialized returns a boolean if a field has been set.
-func (o *ControllersStatusResponse) HasInitialized() bool {
+func (o *ServiceDeploymentStatus) HasInitialized() bool {
 	if o != nil && o.Initialized != nil {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *ControllersStatusResponse) HasInitialized() bool {
 }
 
 // SetInitialized gets a reference to the given string and assigns it to the Initialized field.
-func (o *ControllersStatusResponse) SetInitialized(v string) {
+func (o *ServiceDeploymentStatus) SetInitialized(v string) {
 	o.Initialized = &v
 }
 
 // GetReadyReplicas returns the ReadyReplicas field value if set, zero value otherwise.
-func (o *ControllersStatusResponse) GetReadyReplicas() int32 {
+func (o *ServiceDeploymentStatus) GetReadyReplicas() int32 {
 	if o == nil || o.ReadyReplicas == nil {
 		var ret int32
 		return ret
@@ -116,7 +116,7 @@ func (o *ControllersStatusResponse) GetReadyReplicas() int32 {
 
 // GetReadyReplicasOk returns a tuple with the ReadyReplicas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersStatusResponse) GetReadyReplicasOk() (*int32, bool) {
+func (o *ServiceDeploymentStatus) GetReadyReplicasOk() (*int32, bool) {
 	if o == nil || o.ReadyReplicas == nil {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *ControllersStatusResponse) GetReadyReplicasOk() (*int32, bool) {
 }
 
 // HasReadyReplicas returns a boolean if a field has been set.
-func (o *ControllersStatusResponse) HasReadyReplicas() bool {
+func (o *ServiceDeploymentStatus) HasReadyReplicas() bool {
 	if o != nil && o.ReadyReplicas != nil {
 		return true
 	}
@@ -133,12 +133,12 @@ func (o *ControllersStatusResponse) HasReadyReplicas() bool {
 }
 
 // SetReadyReplicas gets a reference to the given int32 and assigns it to the ReadyReplicas field.
-func (o *ControllersStatusResponse) SetReadyReplicas(v int32) {
+func (o *ServiceDeploymentStatus) SetReadyReplicas(v int32) {
 	o.ReadyReplicas = &v
 }
 
 // GetReplicas returns the Replicas field value if set, zero value otherwise.
-func (o *ControllersStatusResponse) GetReplicas() int32 {
+func (o *ServiceDeploymentStatus) GetReplicas() int32 {
 	if o == nil || o.Replicas == nil {
 		var ret int32
 		return ret
@@ -148,7 +148,7 @@ func (o *ControllersStatusResponse) GetReplicas() int32 {
 
 // GetReplicasOk returns a tuple with the Replicas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersStatusResponse) GetReplicasOk() (*int32, bool) {
+func (o *ServiceDeploymentStatus) GetReplicasOk() (*int32, bool) {
 	if o == nil || o.Replicas == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *ControllersStatusResponse) GetReplicasOk() (*int32, bool) {
 }
 
 // HasReplicas returns a boolean if a field has been set.
-func (o *ControllersStatusResponse) HasReplicas() bool {
+func (o *ServiceDeploymentStatus) HasReplicas() bool {
 	if o != nil && o.Replicas != nil {
 		return true
 	}
@@ -165,12 +165,12 @@ func (o *ControllersStatusResponse) HasReplicas() bool {
 }
 
 // SetReplicas gets a reference to the given int32 and assigns it to the Replicas field.
-func (o *ControllersStatusResponse) SetReplicas(v int32) {
+func (o *ServiceDeploymentStatus) SetReplicas(v int32) {
 	o.Replicas = &v
 }
 
 // GetResources returns the Resources field value if set, zero value otherwise.
-func (o *ControllersStatusResponse) GetResources() []DeploymentsResourceConditions {
+func (o *ServiceDeploymentStatus) GetResources() []DeploymentsResourceConditions {
 	if o == nil || o.Resources == nil {
 		var ret []DeploymentsResourceConditions
 		return ret
@@ -180,7 +180,7 @@ func (o *ControllersStatusResponse) GetResources() []DeploymentsResourceConditio
 
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersStatusResponse) GetResourcesOk() ([]DeploymentsResourceConditions, bool) {
+func (o *ServiceDeploymentStatus) GetResourcesOk() ([]DeploymentsResourceConditions, bool) {
 	if o == nil || o.Resources == nil {
 		return nil, false
 	}
@@ -188,7 +188,7 @@ func (o *ControllersStatusResponse) GetResourcesOk() ([]DeploymentsResourceCondi
 }
 
 // HasResources returns a boolean if a field has been set.
-func (o *ControllersStatusResponse) HasResources() bool {
+func (o *ServiceDeploymentStatus) HasResources() bool {
 	if o != nil && o.Resources != nil {
 		return true
 	}
@@ -197,12 +197,12 @@ func (o *ControllersStatusResponse) HasResources() bool {
 }
 
 // SetResources gets a reference to the given []DeploymentsResourceConditions and assigns it to the Resources field.
-func (o *ControllersStatusResponse) SetResources(v []DeploymentsResourceConditions) {
+func (o *ServiceDeploymentStatus) SetResources(v []DeploymentsResourceConditions) {
 	o.Resources = v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ControllersStatusResponse) GetStatus() string {
+func (o *ServiceDeploymentStatus) GetStatus() string {
 	if o == nil || o.Status == nil {
 		var ret string
 		return ret
@@ -212,7 +212,7 @@ func (o *ControllersStatusResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersStatusResponse) GetStatusOk() (*string, bool) {
+func (o *ServiceDeploymentStatus) GetStatusOk() (*string, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -220,7 +220,7 @@ func (o *ControllersStatusResponse) GetStatusOk() (*string, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ControllersStatusResponse) HasStatus() bool {
+func (o *ServiceDeploymentStatus) HasStatus() bool {
 	if o != nil && o.Status != nil {
 		return true
 	}
@@ -229,11 +229,11 @@ func (o *ControllersStatusResponse) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ControllersStatusResponse) SetStatus(v string) {
+func (o *ServiceDeploymentStatus) SetStatus(v string) {
 	o.Status = &v
 }
 
-func (o ControllersStatusResponse) MarshalJSON() ([]byte, error) {
+func (o ServiceDeploymentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Health != nil {
 		toSerialize["health"] = o.Health
@@ -256,38 +256,38 @@ func (o ControllersStatusResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableControllersStatusResponse struct {
-	value *ControllersStatusResponse
+type NullableServiceDeploymentStatus struct {
+	value *ServiceDeploymentStatus
 	isSet bool
 }
 
-func (v NullableControllersStatusResponse) Get() *ControllersStatusResponse {
+func (v NullableServiceDeploymentStatus) Get() *ServiceDeploymentStatus {
 	return v.value
 }
 
-func (v *NullableControllersStatusResponse) Set(val *ControllersStatusResponse) {
+func (v *NullableServiceDeploymentStatus) Set(val *ServiceDeploymentStatus) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableControllersStatusResponse) IsSet() bool {
+func (v NullableServiceDeploymentStatus) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableControllersStatusResponse) Unset() {
+func (v *NullableServiceDeploymentStatus) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableControllersStatusResponse(val *ControllersStatusResponse) *NullableControllersStatusResponse {
-	return &NullableControllersStatusResponse{value: val, isSet: true}
+func NewNullableServiceDeploymentStatus(val *ServiceDeploymentStatus) *NullableServiceDeploymentStatus {
+	return &NullableServiceDeploymentStatus{value: val, isSet: true}
 }
 
-func (v NullableControllersStatusResponse) MarshalJSON() ([]byte, error) {
+func (v NullableServiceDeploymentStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableControllersStatusResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableServiceDeploymentStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

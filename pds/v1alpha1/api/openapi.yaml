@@ -2163,7 +2163,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/controllers.EventsResponse'
+                $ref: '#/components/schemas/service.DeploymentResourceEvents'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -2185,7 +2185,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/controllers.StatusResponse'
+                $ref: '#/components/schemas/service.DeploymentStatus'
           description: OK
       security:
       - ApiKeyAuth: []
@@ -4758,49 +4758,6 @@ components:
         px_version:
           type: string
       type: object
-    controllers.EventsResponse:
-      example:
-        resourceEvents:
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          events:
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          events:
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-      properties:
-        resourceEvents:
-          items:
-            $ref: '#/components/schemas/deployments.ResourceEvents'
-          type: array
-      type: object
     controllers.OIDCInfoResponse:
       example:
         authUrl: https://release-staging.portworx.dev/landing/login
@@ -5089,72 +5046,6 @@ components:
         token: token
       properties:
         token:
-          type: string
-      type: object
-    controllers.StatusResponse:
-      example:
-        replicas: 6
-        health: Healthy
-        initialized: "Yes"
-        readyReplicas: 0
-        resources:
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
-        status: Available
-      properties:
-        health:
-          enum:
-          - Healthy
-          - Down
-          - Degraded
-          type: string
-        initialized:
-          enum:
-          - "Yes"
-          - "No"
-          - Unknown
-          - Pending
-          - Manual
-          type: string
-        readyReplicas:
-          type: integer
-        replicas:
-          type: integer
-        resources:
-          items:
-            $ref: '#/components/schemas/deployments.ResourceConditions'
-          type: array
-        status:
-          enum:
-          - Available
-          - Partially Available
-          - Unavailable
-          - Deploying
-          - Unknown
           type: string
       type: object
     controllers.StorageOptionsSamples:
@@ -8886,6 +8777,115 @@ components:
           properties: {}
           type: object
         timestamp:
+          type: string
+      type: object
+    service.DeploymentResourceEvents:
+      example:
+        resourceEvents:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          events:
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          events:
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+          - reason: FailedScheduling
+            name: cas-events-0h35cp-0.16f4c1e217362a3e
+            action: Scheduling
+            message: 0/3 nodes are available
+            type: Normal
+            timestamp: timestamp
+      properties:
+        resourceEvents:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceEvents'
+          type: array
+      type: object
+    service.DeploymentStatus:
+      example:
+        replicas: 6
+        health: Healthy
+        initialized: "Yes"
+        readyReplicas: 0
+        resources:
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+        - resource:
+            apiGroup: apiGroup
+            kind: kind
+            name: name
+          conditions:
+          - reason: reason
+            message: message
+            type: type
+            status: status
+          - reason: reason
+            message: message
+            type: type
+            status: status
+        status: Available
+      properties:
+        health:
+          enum:
+          - Healthy
+          - Down
+          - Degraded
+          type: string
+        initialized:
+          enum:
+          - "Yes"
+          - "No"
+          - Unknown
+          - Pending
+          - Manual
+          type: string
+        readyReplicas:
+          type: integer
+        replicas:
+          type: integer
+        resources:
+          items:
+            $ref: '#/components/schemas/deployments.ResourceConditions'
+          type: array
+        status:
+          enum:
+          - Available
+          - Partially Available
+          - Unavailable
+          - Deploying
+          - Unknown
           type: string
       type: object
     v1.TypedLocalObjectReference:
