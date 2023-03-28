@@ -28,6 +28,7 @@ type ModelsDeployment struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	// DataServiceID type of data service (models.DataService).
 	DataServiceId *string `json:"data_service_id,omitempty"`
+	DeploymentManifest *ModelsDeploymentManifest `json:"deployment_manifest,omitempty"`
 	DeploymentTarget *ModelsDeploymentTarget `json:"deployment_target,omitempty"`
 	// DeploymentTargetID on which target the data service is deployed (models.DeploymentTarget).
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
@@ -276,6 +277,38 @@ func (o *ModelsDeployment) HasDataServiceId() bool {
 // SetDataServiceId gets a reference to the given string and assigns it to the DataServiceId field.
 func (o *ModelsDeployment) SetDataServiceId(v string) {
 	o.DataServiceId = &v
+}
+
+// GetDeploymentManifest returns the DeploymentManifest field value if set, zero value otherwise.
+func (o *ModelsDeployment) GetDeploymentManifest() ModelsDeploymentManifest {
+	if o == nil || o.DeploymentManifest == nil {
+		var ret ModelsDeploymentManifest
+		return ret
+	}
+	return *o.DeploymentManifest
+}
+
+// GetDeploymentManifestOk returns a tuple with the DeploymentManifest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeployment) GetDeploymentManifestOk() (*ModelsDeploymentManifest, bool) {
+	if o == nil || o.DeploymentManifest == nil {
+		return nil, false
+	}
+	return o.DeploymentManifest, true
+}
+
+// HasDeploymentManifest returns a boolean if a field has been set.
+func (o *ModelsDeployment) HasDeploymentManifest() bool {
+	if o != nil && o.DeploymentManifest != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentManifest gets a reference to the given ModelsDeploymentManifest and assigns it to the DeploymentManifest field.
+func (o *ModelsDeployment) SetDeploymentManifest(v ModelsDeploymentManifest) {
+	o.DeploymentManifest = &v
 }
 
 // GetDeploymentTarget returns the DeploymentTarget field value if set, zero value otherwise.
@@ -1001,6 +1034,9 @@ func (o ModelsDeployment) MarshalJSON() ([]byte, error) {
 	}
 	if o.DataServiceId != nil {
 		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if o.DeploymentManifest != nil {
+		toSerialize["deployment_manifest"] = o.DeploymentManifest
 	}
 	if o.DeploymentTarget != nil {
 		toSerialize["deployment_target"] = o.DeploymentTarget

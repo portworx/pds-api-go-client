@@ -321,6 +321,7 @@ Class | Method | HTTP request | Description
  - [ModelsDNSDetails](docs/ModelsDNSDetails.md)
  - [ModelsDataService](docs/ModelsDataService.md)
  - [ModelsDeployment](docs/ModelsDeployment.md)
+ - [ModelsDeploymentManifest](docs/ModelsDeploymentManifest.md)
  - [ModelsDeploymentResources](docs/ModelsDeploymentResources.md)
  - [ModelsDeploymentStorageOptions](docs/ModelsDeploymentStorageOptions.md)
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
