@@ -434,7 +434,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.upsertAccountRoleBindingRequest'
+              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
         description: Request body containing the account role binding
         required: true
       responses:
@@ -442,7 +442,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.AccountRoleBinding'
+                $ref: '#/components/schemas/models.LegacyAccountBinding'
           description: The created AccountRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -2283,7 +2283,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/models.GlobalRoleBinding'
+              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
         description: Request body containing the global role binding
         required: true
       responses:
@@ -2291,7 +2291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.GlobalRoleBinding'
+                $ref: '#/components/schemas/models.LegacyGlobalBinding'
           description: The created GlobalRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -2810,7 +2810,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.upsertProjectRoleBindingRequest'
+              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
         description: Request body containing the project role binding
         required: true
       responses:
@@ -2818,7 +2818,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.ProjectRoleBinding'
+                $ref: '#/components/schemas/models.LegacyProjectBinding'
           description: The created ProjectRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -3804,7 +3804,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.upsertTenantRoleBindingRequest'
+              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
         description: Request body containing the tenant role binding
         required: true
       responses:
@@ -3812,7 +3812,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.TenantRoleBinding'
+                $ref: '#/components/schemas/models.LegacyTenantBinding'
           description: The created TenantRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -4818,7 +4818,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.AccountRoleBinding'
+            $ref: '#/components/schemas/models.LegacyAccountBinding'
           type: array
       type: object
     controllers.PaginatedBackupTargetStates:
@@ -4858,7 +4858,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.GlobalRoleBinding'
+            $ref: '#/components/schemas/models.LegacyGlobalBinding'
           type: array
       type: object
     controllers.PaginatedProjectRoleBindings:
@@ -4875,7 +4875,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.ProjectRoleBinding'
+            $ref: '#/components/schemas/models.LegacyProjectBinding'
           type: array
       type: object
     controllers.PaginatedRoles:
@@ -4917,7 +4917,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.TenantRoleBinding'
+            $ref: '#/components/schemas/models.LegacyTenantBinding'
           type: array
       type: object
     controllers.PartialAzureCredentials:
@@ -5412,42 +5412,6 @@ components:
           - all
           type: string
       type: object
-    controllers.upsertAccountRoleBindingRequest:
-      properties:
-        actor_id:
-          example: ID of the role subject
-          type: string
-        actor_type:
-          example: Type of the role subject
-          type: string
-        role_name:
-          example: Name of the assigned account role
-          type: string
-      type: object
-    controllers.upsertProjectRoleBindingRequest:
-      properties:
-        actor_id:
-          example: ID of the role subject
-          type: string
-        actor_type:
-          example: Type of the role subject
-          type: string
-        role_name:
-          example: Name of the assigned account role
-          type: string
-      type: object
-    controllers.upsertTenantRoleBindingRequest:
-      properties:
-        actor_id:
-          example: ID of the role subject
-          type: string
-        actor_type:
-          example: Type of the role subject
-          type: string
-        role_name:
-          example: Name of the assigned account role
-          type: string
-      type: object
     deployments.Condition:
       example:
         reason: reason
@@ -5699,22 +5663,6 @@ components:
           type: string
         version_updatability:
           description: Specify what data service versions are updatable for this account.
-          type: string
-      type: object
-    models.AccountRoleBinding:
-      example:
-        role_name: role_name
-        account_id: account_id
-        actor_type: actor_type
-        actor_id: actor_id
-      properties:
-        account_id:
-          type: string
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        role_name:
           type: string
       type: object
     models.AccountRoleInvitation:
@@ -6940,19 +6888,6 @@ components:
           description: High level human-readable error message determined by the ErrorCode.
           type: string
       type: object
-    models.GlobalRoleBinding:
-      example:
-        role_name: role_name
-        actor_type: actor_type
-        actor_id: actor_id
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        role_name:
-          type: string
-      type: object
     models.GoogleCredentials:
       properties:
         json_key:
@@ -7004,6 +6939,67 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
         version_id:
+          type: string
+      type: object
+    models.LegacyAccountBinding:
+      example:
+        role_name: role_name
+        account_id: account_id
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        account_id:
+          type: string
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+      type: object
+    models.LegacyGlobalBinding:
+      example:
+        role_name: role_name
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+      type: object
+    models.LegacyProjectBinding:
+      example:
+        role_name: role_name
+        actor_type: actor_type
+        project_id: project_id
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        project_id:
+          type: string
+        role_name:
+          type: string
+      type: object
+    models.LegacyTenantBinding:
+      example:
+        role_name: role_name
+        tenant_id: tenant_id
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+        tenant_id:
           type: string
       type: object
     models.MAASDetails:
@@ -8008,22 +8004,6 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
       type: object
-    models.ProjectRoleBinding:
-      example:
-        role_name: role_name
-        actor_type: actor_type
-        project_id: project_id
-        actor_id: actor_id
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        project_id:
-          type: string
-        role_name:
-          type: string
-      type: object
     models.ResourceSettingsSample:
       example:
         data_service_id: data_service_id
@@ -8433,22 +8413,6 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
       type: object
-    models.TenantRoleBinding:
-      example:
-        role_name: role_name
-        tenant_id: tenant_id
-        actor_type: actor_type
-        actor_id: actor_id
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        role_name:
-          type: string
-        tenant_id:
-          type: string
-      type: object
     models.User:
       example:
         updated_at: updated_at
@@ -8750,6 +8714,18 @@ components:
           type: string
       required:
       - project_id
+      type: object
+    requests.PutLegacyBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned role
+          type: string
       type: object
     requests.UpdateOperatorMetadataRequest:
       properties:

@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdRoleBindingsPut
 
-> ModelsProjectRoleBinding ApiProjectsIdRoleBindingsPut(ctx, id).Body(body).Execute()
+> ModelsLegacyProjectBinding ApiProjectsIdRoleBindingsPut(ctx, id).Body(body).Execute()
 
 Create ProjectRoleBinding
 
@@ -180,7 +180,7 @@ import (
 
 func main() {
     id := "id_example" // string | Project ID (must be valid UUID)
-    body := *openapiclient.NewControllersUpsertProjectRoleBindingRequest() // ControllersUpsertProjectRoleBindingRequest | Request body containing the project role binding
+    body := *openapiclient.NewRequestsPutLegacyBindingRequest() // RequestsPutLegacyBindingRequest | Request body containing the project role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -189,7 +189,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdRoleBindingsPut`: ModelsProjectRoleBinding
+    // response from `ApiProjectsIdRoleBindingsPut`: ModelsLegacyProjectBinding
     fmt.Fprintf(os.Stdout, "Response from `ProjectRoleBindingsApi.ApiProjectsIdRoleBindingsPut`: %v\n", resp)
 }
 ```
@@ -210,11 +210,11 @@ Other parameters are passed through a pointer to a apiApiProjectsIdRoleBindingsP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersUpsertProjectRoleBindingRequest**](ControllersUpsertProjectRoleBindingRequest.md) | Request body containing the project role binding | 
+ **body** | [**RequestsPutLegacyBindingRequest**](RequestsPutLegacyBindingRequest.md) | Request body containing the project role binding | 
 
 ### Return type
 
-[**ModelsProjectRoleBinding**](ModelsProjectRoleBinding.md)
+[**ModelsLegacyProjectBinding**](ModelsLegacyProjectBinding.md)
 
 ### Authorization
 

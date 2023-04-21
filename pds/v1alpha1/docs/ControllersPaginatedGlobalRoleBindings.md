@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsGlobalRoleBinding**](ModelsGlobalRoleBinding.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsLegacyGlobalBinding**](ModelsLegacyGlobalBinding.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedGlobalRoleBindings) GetData() []ModelsGlobalRoleBinding`
+`func (o *ControllersPaginatedGlobalRoleBindings) GetData() []ModelsLegacyGlobalBinding`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedGlobalRoleBindings) GetDataOk() (*[]ModelsGlobalRoleBinding, bool)`
+`func (o *ControllersPaginatedGlobalRoleBindings) GetDataOk() (*[]ModelsLegacyGlobalBinding, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedGlobalRoleBindings) SetData(v []ModelsGlobalRoleBinding)`
+`func (o *ControllersPaginatedGlobalRoleBindings) SetData(v []ModelsLegacyGlobalBinding)`
 
 SetData sets Data field to given value.
 

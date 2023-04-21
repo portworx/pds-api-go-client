@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]ModelsTenantRoleBinding**](ModelsTenantRoleBinding.md) |  | [optional] 
+**Data** | Pointer to [**[]ModelsLegacyTenantBinding**](ModelsLegacyTenantBinding.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ControllersPaginatedTenantRoleBindings) GetData() []ModelsTenantRoleBinding`
+`func (o *ControllersPaginatedTenantRoleBindings) GetData() []ModelsLegacyTenantBinding`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ControllersPaginatedTenantRoleBindings) GetDataOk() (*[]ModelsTenantRoleBinding, bool)`
+`func (o *ControllersPaginatedTenantRoleBindings) GetDataOk() (*[]ModelsLegacyTenantBinding, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ControllersPaginatedTenantRoleBindings) SetData(v []ModelsTenantRoleBinding)`
+`func (o *ControllersPaginatedTenantRoleBindings) SetData(v []ModelsLegacyTenantBinding)`
 
 SetData sets Data field to given value.
 

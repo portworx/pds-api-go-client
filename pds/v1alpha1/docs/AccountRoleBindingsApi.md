@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## ApiAccountsIdRoleBindingsPut
 
-> ModelsAccountRoleBinding ApiAccountsIdRoleBindingsPut(ctx, id).Body(body).Execute()
+> ModelsLegacyAccountBinding ApiAccountsIdRoleBindingsPut(ctx, id).Body(body).Execute()
 
 Create/Update AccountRoleBinding
 
@@ -252,7 +252,7 @@ import (
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    body := *openapiclient.NewControllersUpsertAccountRoleBindingRequest() // ControllersUpsertAccountRoleBindingRequest | Request body containing the account role binding
+    body := *openapiclient.NewRequestsPutLegacyBindingRequest() // RequestsPutLegacyBindingRequest | Request body containing the account role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -261,7 +261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiAccountsIdRoleBindingsPut`: ModelsAccountRoleBinding
+    // response from `ApiAccountsIdRoleBindingsPut`: ModelsLegacyAccountBinding
     fmt.Fprintf(os.Stdout, "Response from `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut`: %v\n", resp)
 }
 ```
@@ -282,11 +282,11 @@ Other parameters are passed through a pointer to a apiApiAccountsIdRoleBindingsP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersUpsertAccountRoleBindingRequest**](ControllersUpsertAccountRoleBindingRequest.md) | Request body containing the account role binding | 
+ **body** | [**RequestsPutLegacyBindingRequest**](RequestsPutLegacyBindingRequest.md) | Request body containing the account role binding | 
 
 ### Return type
 
-[**ModelsAccountRoleBinding**](ModelsAccountRoleBinding.md)
+[**ModelsLegacyAccountBinding**](ModelsLegacyAccountBinding.md)
 
 ### Authorization
 

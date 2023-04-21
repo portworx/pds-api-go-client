@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdRoleBindingsPut
 
-> ModelsTenantRoleBinding ApiTenantsIdRoleBindingsPut(ctx, id).Body(body).Execute()
+> ModelsLegacyTenantBinding ApiTenantsIdRoleBindingsPut(ctx, id).Body(body).Execute()
 
 Create TenantRoleBinding
 
@@ -180,7 +180,7 @@ import (
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    body := *openapiclient.NewControllersUpsertTenantRoleBindingRequest() // ControllersUpsertTenantRoleBindingRequest | Request body containing the tenant role binding
+    body := *openapiclient.NewRequestsPutLegacyBindingRequest() // RequestsPutLegacyBindingRequest | Request body containing the tenant role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -189,7 +189,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdRoleBindingsPut`: ModelsTenantRoleBinding
+    // response from `ApiTenantsIdRoleBindingsPut`: ModelsLegacyTenantBinding
     fmt.Fprintf(os.Stdout, "Response from `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut`: %v\n", resp)
 }
 ```
@@ -210,11 +210,11 @@ Other parameters are passed through a pointer to a apiApiTenantsIdRoleBindingsPu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersUpsertTenantRoleBindingRequest**](ControllersUpsertTenantRoleBindingRequest.md) | Request body containing the tenant role binding | 
+ **body** | [**RequestsPutLegacyBindingRequest**](RequestsPutLegacyBindingRequest.md) | Request body containing the tenant role binding | 
 
 ### Return type
 
-[**ModelsTenantRoleBinding**](ModelsTenantRoleBinding.md)
+[**ModelsLegacyTenantBinding**](ModelsLegacyTenantBinding.md)
 
 ### Authorization
 
