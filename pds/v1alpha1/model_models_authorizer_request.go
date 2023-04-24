@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAuthorizerRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAuthorizerRequest{}
+
 // ModelsAuthorizerRequest struct for ModelsAuthorizerRequest
 type ModelsAuthorizerRequest struct {
 	EntityId *string `json:"entity_id,omitempty"`
@@ -40,7 +43,7 @@ func NewModelsAuthorizerRequestWithDefaults() *ModelsAuthorizerRequest {
 
 // GetEntityId returns the EntityId field value if set, zero value otherwise.
 func (o *ModelsAuthorizerRequest) GetEntityId() string {
-	if o == nil || o.EntityId == nil {
+	if o == nil || IsNil(o.EntityId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ModelsAuthorizerRequest) GetEntityId() string {
 // GetEntityIdOk returns a tuple with the EntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAuthorizerRequest) GetEntityIdOk() (*string, bool) {
-	if o == nil || o.EntityId == nil {
+	if o == nil || IsNil(o.EntityId) {
 		return nil, false
 	}
 	return o.EntityId, true
@@ -58,7 +61,7 @@ func (o *ModelsAuthorizerRequest) GetEntityIdOk() (*string, bool) {
 
 // HasEntityId returns a boolean if a field has been set.
 func (o *ModelsAuthorizerRequest) HasEntityId() bool {
-	if o != nil && o.EntityId != nil {
+	if o != nil && !IsNil(o.EntityId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ModelsAuthorizerRequest) SetEntityId(v string) {
 
 // GetEntityType returns the EntityType field value if set, zero value otherwise.
 func (o *ModelsAuthorizerRequest) GetEntityType() string {
-	if o == nil || o.EntityType == nil {
+	if o == nil || IsNil(o.EntityType) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ModelsAuthorizerRequest) GetEntityType() string {
 // GetEntityTypeOk returns a tuple with the EntityType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAuthorizerRequest) GetEntityTypeOk() (*string, bool) {
-	if o == nil || o.EntityType == nil {
+	if o == nil || IsNil(o.EntityType) {
 		return nil, false
 	}
 	return o.EntityType, true
@@ -90,7 +93,7 @@ func (o *ModelsAuthorizerRequest) GetEntityTypeOk() (*string, bool) {
 
 // HasEntityType returns a boolean if a field has been set.
 func (o *ModelsAuthorizerRequest) HasEntityType() bool {
-	if o != nil && o.EntityType != nil {
+	if o != nil && !IsNil(o.EntityType) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ModelsAuthorizerRequest) SetEntityType(v string) {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *ModelsAuthorizerRequest) GetOperation() string {
-	if o == nil || o.Operation == nil {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ModelsAuthorizerRequest) GetOperation() string {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAuthorizerRequest) GetOperationOk() (*string, bool) {
-	if o == nil || o.Operation == nil {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -122,7 +125,7 @@ func (o *ModelsAuthorizerRequest) GetOperationOk() (*string, bool) {
 
 // HasOperation returns a boolean if a field has been set.
 func (o *ModelsAuthorizerRequest) HasOperation() bool {
-	if o != nil && o.Operation != nil {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ModelsAuthorizerRequest) SetOperation(v string) {
 }
 
 func (o ModelsAuthorizerRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.EntityId != nil {
-		toSerialize["entity_id"] = o.EntityId
-	}
-	if o.EntityType != nil {
-		toSerialize["entity_type"] = o.EntityType
-	}
-	if o.Operation != nil {
-		toSerialize["operation"] = o.Operation
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAuthorizerRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EntityId) {
+		toSerialize["entity_id"] = o.EntityId
+	}
+	if !IsNil(o.EntityType) {
+		toSerialize["entity_type"] = o.EntityType
+	}
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAuthorizerRequest struct {

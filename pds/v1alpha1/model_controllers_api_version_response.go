@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersAPIVersionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersAPIVersionResponse{}
+
 // ControllersAPIVersionResponse struct for ControllersAPIVersionResponse
 type ControllersAPIVersionResponse struct {
 	ApiVersion *string `json:"api_version,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersAPIVersionResponseWithDefaults() *ControllersAPIVersionRespon
 
 // GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
 func (o *ControllersAPIVersionResponse) GetApiVersion() string {
-	if o == nil || o.ApiVersion == nil {
+	if o == nil || IsNil(o.ApiVersion) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersAPIVersionResponse) GetApiVersion() string {
 // GetApiVersionOk returns a tuple with the ApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersAPIVersionResponse) GetApiVersionOk() (*string, bool) {
-	if o == nil || o.ApiVersion == nil {
+	if o == nil || IsNil(o.ApiVersion) {
 		return nil, false
 	}
 	return o.ApiVersion, true
@@ -59,7 +62,7 @@ func (o *ControllersAPIVersionResponse) GetApiVersionOk() (*string, bool) {
 
 // HasApiVersion returns a boolean if a field has been set.
 func (o *ControllersAPIVersionResponse) HasApiVersion() bool {
-	if o != nil && o.ApiVersion != nil {
+	if o != nil && !IsNil(o.ApiVersion) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersAPIVersionResponse) SetApiVersion(v string) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *ControllersAPIVersionResponse) GetFeatures() map[string]string {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		var ret map[string]string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersAPIVersionResponse) GetFeatures() map[string]string {
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersAPIVersionResponse) GetFeaturesOk() (*map[string]string, bool) {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
 	return o.Features, true
@@ -91,7 +94,7 @@ func (o *ControllersAPIVersionResponse) GetFeaturesOk() (*map[string]string, boo
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *ControllersAPIVersionResponse) HasFeatures() bool {
-	if o != nil && o.Features != nil {
+	if o != nil && !IsNil(o.Features) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersAPIVersionResponse) SetFeatures(v map[string]string) {
 
 // GetHelmChartVersion returns the HelmChartVersion field value if set, zero value otherwise.
 func (o *ControllersAPIVersionResponse) GetHelmChartVersion() string {
-	if o == nil || o.HelmChartVersion == nil {
+	if o == nil || IsNil(o.HelmChartVersion) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersAPIVersionResponse) GetHelmChartVersion() string {
 // GetHelmChartVersionOk returns a tuple with the HelmChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersAPIVersionResponse) GetHelmChartVersionOk() (*string, bool) {
-	if o == nil || o.HelmChartVersion == nil {
+	if o == nil || IsNil(o.HelmChartVersion) {
 		return nil, false
 	}
 	return o.HelmChartVersion, true
@@ -123,7 +126,7 @@ func (o *ControllersAPIVersionResponse) GetHelmChartVersionOk() (*string, bool) 
 
 // HasHelmChartVersion returns a boolean if a field has been set.
 func (o *ControllersAPIVersionResponse) HasHelmChartVersion() bool {
-	if o != nil && o.HelmChartVersion != nil {
+	if o != nil && !IsNil(o.HelmChartVersion) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ControllersAPIVersionResponse) SetHelmChartVersion(v string) {
 
 // GetPdsBuildNumber returns the PdsBuildNumber field value if set, zero value otherwise.
 func (o *ControllersAPIVersionResponse) GetPdsBuildNumber() int32 {
-	if o == nil || o.PdsBuildNumber == nil {
+	if o == nil || IsNil(o.PdsBuildNumber) {
 		var ret int32
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ControllersAPIVersionResponse) GetPdsBuildNumber() int32 {
 // GetPdsBuildNumberOk returns a tuple with the PdsBuildNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersAPIVersionResponse) GetPdsBuildNumberOk() (*int32, bool) {
-	if o == nil || o.PdsBuildNumber == nil {
+	if o == nil || IsNil(o.PdsBuildNumber) {
 		return nil, false
 	}
 	return o.PdsBuildNumber, true
@@ -155,7 +158,7 @@ func (o *ControllersAPIVersionResponse) GetPdsBuildNumberOk() (*int32, bool) {
 
 // HasPdsBuildNumber returns a boolean if a field has been set.
 func (o *ControllersAPIVersionResponse) HasPdsBuildNumber() bool {
-	if o != nil && o.PdsBuildNumber != nil {
+	if o != nil && !IsNil(o.PdsBuildNumber) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ControllersAPIVersionResponse) SetPdsBuildNumber(v int32) {
 }
 
 func (o ControllersAPIVersionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApiVersion != nil {
-		toSerialize["api_version"] = o.ApiVersion
-	}
-	if o.Features != nil {
-		toSerialize["features"] = o.Features
-	}
-	if o.HelmChartVersion != nil {
-		toSerialize["helm_chart_version"] = o.HelmChartVersion
-	}
-	if o.PdsBuildNumber != nil {
-		toSerialize["pds_build_number"] = o.PdsBuildNumber
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersAPIVersionResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApiVersion) {
+		toSerialize["api_version"] = o.ApiVersion
+	}
+	if !IsNil(o.Features) {
+		toSerialize["features"] = o.Features
+	}
+	if !IsNil(o.HelmChartVersion) {
+		toSerialize["helm_chart_version"] = o.HelmChartVersion
+	}
+	if !IsNil(o.PdsBuildNumber) {
+		toSerialize["pds_build_number"] = o.PdsBuildNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersAPIVersionResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDeploymentTargetCapabilities type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDeploymentTargetCapabilities{}
+
 // ModelsDeploymentTargetCapabilities struct for ModelsDeploymentTargetCapabilities
 type ModelsDeploymentTargetCapabilities struct {
 	Backup *string `json:"backup,omitempty"`
@@ -54,7 +57,7 @@ func NewModelsDeploymentTargetCapabilitiesWithDefaults() *ModelsDeploymentTarget
 
 // GetBackup returns the Backup field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetBackup() string {
-	if o == nil || o.Backup == nil {
+	if o == nil || IsNil(o.Backup) {
 		var ret string
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetBackup() string {
 // GetBackupOk returns a tuple with the Backup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetBackupOk() (*string, bool) {
-	if o == nil || o.Backup == nil {
+	if o == nil || IsNil(o.Backup) {
 		return nil, false
 	}
 	return o.Backup, true
@@ -72,7 +75,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetBackupOk() (*string, bool) {
 
 // HasBackup returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasBackup() bool {
-	if o != nil && o.Backup != nil {
+	if o != nil && !IsNil(o.Backup) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetBackup(v string) {
 
 // GetCapabilities returns the Capabilities field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetCapabilities() string {
-	if o == nil || o.Capabilities == nil {
+	if o == nil || IsNil(o.Capabilities) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCapabilities() string {
 // GetCapabilitiesOk returns a tuple with the Capabilities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetCapabilitiesOk() (*string, bool) {
-	if o == nil || o.Capabilities == nil {
+	if o == nil || IsNil(o.Capabilities) {
 		return nil, false
 	}
 	return o.Capabilities, true
@@ -104,7 +107,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCapabilitiesOk() (*string, bool)
 
 // HasCapabilities returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasCapabilities() bool {
-	if o != nil && o.Capabilities != nil {
+	if o != nil && !IsNil(o.Capabilities) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetCapabilities(v string) {
 
 // GetCassandra returns the Cassandra field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetCassandra() string {
-	if o == nil || o.Cassandra == nil {
+	if o == nil || IsNil(o.Cassandra) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCassandra() string {
 // GetCassandraOk returns a tuple with the Cassandra field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetCassandraOk() (*string, bool) {
-	if o == nil || o.Cassandra == nil {
+	if o == nil || IsNil(o.Cassandra) {
 		return nil, false
 	}
 	return o.Cassandra, true
@@ -136,7 +139,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCassandraOk() (*string, bool) {
 
 // HasCassandra returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasCassandra() bool {
-	if o != nil && o.Cassandra != nil {
+	if o != nil && !IsNil(o.Cassandra) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetCassandra(v string) {
 
 // GetConsul returns the Consul field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetConsul() string {
-	if o == nil || o.Consul == nil {
+	if o == nil || IsNil(o.Consul) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetConsul() string {
 // GetConsulOk returns a tuple with the Consul field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetConsulOk() (*string, bool) {
-	if o == nil || o.Consul == nil {
+	if o == nil || IsNil(o.Consul) {
 		return nil, false
 	}
 	return o.Consul, true
@@ -168,7 +171,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetConsulOk() (*string, bool) {
 
 // HasConsul returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasConsul() bool {
-	if o != nil && o.Consul != nil {
+	if o != nil && !IsNil(o.Consul) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetConsul(v string) {
 
 // GetCouchbase returns the Couchbase field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetCouchbase() string {
-	if o == nil || o.Couchbase == nil {
+	if o == nil || IsNil(o.Couchbase) {
 		var ret string
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCouchbase() string {
 // GetCouchbaseOk returns a tuple with the Couchbase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetCouchbaseOk() (*string, bool) {
-	if o == nil || o.Couchbase == nil {
+	if o == nil || IsNil(o.Couchbase) {
 		return nil, false
 	}
 	return o.Couchbase, true
@@ -200,7 +203,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCouchbaseOk() (*string, bool) {
 
 // HasCouchbase returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasCouchbase() bool {
-	if o != nil && o.Couchbase != nil {
+	if o != nil && !IsNil(o.Couchbase) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetCouchbase(v string) {
 
 // GetCrdReporting returns the CrdReporting field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetCrdReporting() string {
-	if o == nil || o.CrdReporting == nil {
+	if o == nil || IsNil(o.CrdReporting) {
 		var ret string
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCrdReporting() string {
 // GetCrdReportingOk returns a tuple with the CrdReporting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetCrdReportingOk() (*string, bool) {
-	if o == nil || o.CrdReporting == nil {
+	if o == nil || IsNil(o.CrdReporting) {
 		return nil, false
 	}
 	return o.CrdReporting, true
@@ -232,7 +235,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetCrdReportingOk() (*string, bool)
 
 // HasCrdReporting returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasCrdReporting() bool {
-	if o != nil && o.CrdReporting != nil {
+	if o != nil && !IsNil(o.CrdReporting) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetCrdReporting(v string) {
 
 // GetDataServiceTls returns the DataServiceTls field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetDataServiceTls() string {
-	if o == nil || o.DataServiceTls == nil {
+	if o == nil || IsNil(o.DataServiceTls) {
 		var ret string
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetDataServiceTls() string {
 // GetDataServiceTlsOk returns a tuple with the DataServiceTls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetDataServiceTlsOk() (*string, bool) {
-	if o == nil || o.DataServiceTls == nil {
+	if o == nil || IsNil(o.DataServiceTls) {
 		return nil, false
 	}
 	return o.DataServiceTls, true
@@ -264,7 +267,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetDataServiceTlsOk() (*string, boo
 
 // HasDataServiceTls returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasDataServiceTls() bool {
-	if o != nil && o.DataServiceTls != nil {
+	if o != nil && !IsNil(o.DataServiceTls) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetDataServiceTls(v string) {
 
 // GetDatabase returns the Database field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetDatabase() string {
-	if o == nil || o.Database == nil {
+	if o == nil || IsNil(o.Database) {
 		var ret string
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetDatabase() string {
 // GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetDatabaseOk() (*string, bool) {
-	if o == nil || o.Database == nil {
+	if o == nil || IsNil(o.Database) {
 		return nil, false
 	}
 	return o.Database, true
@@ -296,7 +299,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetDatabaseOk() (*string, bool) {
 
 // HasDatabase returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasDatabase() bool {
-	if o != nil && o.Database != nil {
+	if o != nil && !IsNil(o.Database) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetDatabase(v string) {
 
 // GetElasticsearch returns the Elasticsearch field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetElasticsearch() string {
-	if o == nil || o.Elasticsearch == nil {
+	if o == nil || IsNil(o.Elasticsearch) {
 		var ret string
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetElasticsearch() string {
 // GetElasticsearchOk returns a tuple with the Elasticsearch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetElasticsearchOk() (*string, bool) {
-	if o == nil || o.Elasticsearch == nil {
+	if o == nil || IsNil(o.Elasticsearch) {
 		return nil, false
 	}
 	return o.Elasticsearch, true
@@ -328,7 +331,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetElasticsearchOk() (*string, bool
 
 // HasElasticsearch returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasElasticsearch() bool {
-	if o != nil && o.Elasticsearch != nil {
+	if o != nil && !IsNil(o.Elasticsearch) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetElasticsearch(v string) {
 
 // GetKafka returns the Kafka field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetKafka() string {
-	if o == nil || o.Kafka == nil {
+	if o == nil || IsNil(o.Kafka) {
 		var ret string
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetKafka() string {
 // GetKafkaOk returns a tuple with the Kafka field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetKafkaOk() (*string, bool) {
-	if o == nil || o.Kafka == nil {
+	if o == nil || IsNil(o.Kafka) {
 		return nil, false
 	}
 	return o.Kafka, true
@@ -360,7 +363,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetKafkaOk() (*string, bool) {
 
 // HasKafka returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasKafka() bool {
-	if o != nil && o.Kafka != nil {
+	if o != nil && !IsNil(o.Kafka) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetKafka(v string) {
 
 // GetMongodb returns the Mongodb field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetMongodb() string {
-	if o == nil || o.Mongodb == nil {
+	if o == nil || IsNil(o.Mongodb) {
 		var ret string
 		return ret
 	}
@@ -384,7 +387,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetMongodb() string {
 // GetMongodbOk returns a tuple with the Mongodb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetMongodbOk() (*string, bool) {
-	if o == nil || o.Mongodb == nil {
+	if o == nil || IsNil(o.Mongodb) {
 		return nil, false
 	}
 	return o.Mongodb, true
@@ -392,7 +395,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetMongodbOk() (*string, bool) {
 
 // HasMongodb returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasMongodb() bool {
-	if o != nil && o.Mongodb != nil {
+	if o != nil && !IsNil(o.Mongodb) {
 		return true
 	}
 
@@ -406,7 +409,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetMongodb(v string) {
 
 // GetMysql returns the Mysql field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetMysql() string {
-	if o == nil || o.Mysql == nil {
+	if o == nil || IsNil(o.Mysql) {
 		var ret string
 		return ret
 	}
@@ -416,7 +419,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetMysql() string {
 // GetMysqlOk returns a tuple with the Mysql field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetMysqlOk() (*string, bool) {
-	if o == nil || o.Mysql == nil {
+	if o == nil || IsNil(o.Mysql) {
 		return nil, false
 	}
 	return o.Mysql, true
@@ -424,7 +427,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetMysqlOk() (*string, bool) {
 
 // HasMysql returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasMysql() bool {
-	if o != nil && o.Mysql != nil {
+	if o != nil && !IsNil(o.Mysql) {
 		return true
 	}
 
@@ -438,7 +441,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetMysql(v string) {
 
 // GetPostgresql returns the Postgresql field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetPostgresql() string {
-	if o == nil || o.Postgresql == nil {
+	if o == nil || IsNil(o.Postgresql) {
 		var ret string
 		return ret
 	}
@@ -448,7 +451,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetPostgresql() string {
 // GetPostgresqlOk returns a tuple with the Postgresql field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetPostgresqlOk() (*string, bool) {
-	if o == nil || o.Postgresql == nil {
+	if o == nil || IsNil(o.Postgresql) {
 		return nil, false
 	}
 	return o.Postgresql, true
@@ -456,7 +459,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetPostgresqlOk() (*string, bool) {
 
 // HasPostgresql returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasPostgresql() bool {
-	if o != nil && o.Postgresql != nil {
+	if o != nil && !IsNil(o.Postgresql) {
 		return true
 	}
 
@@ -470,7 +473,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetPostgresql(v string) {
 
 // GetRabbitmq returns the Rabbitmq field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetRabbitmq() string {
-	if o == nil || o.Rabbitmq == nil {
+	if o == nil || IsNil(o.Rabbitmq) {
 		var ret string
 		return ret
 	}
@@ -480,7 +483,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetRabbitmq() string {
 // GetRabbitmqOk returns a tuple with the Rabbitmq field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetRabbitmqOk() (*string, bool) {
-	if o == nil || o.Rabbitmq == nil {
+	if o == nil || IsNil(o.Rabbitmq) {
 		return nil, false
 	}
 	return o.Rabbitmq, true
@@ -488,7 +491,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetRabbitmqOk() (*string, bool) {
 
 // HasRabbitmq returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasRabbitmq() bool {
-	if o != nil && o.Rabbitmq != nil {
+	if o != nil && !IsNil(o.Rabbitmq) {
 		return true
 	}
 
@@ -502,7 +505,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetRabbitmq(v string) {
 
 // GetRedis returns the Redis field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetRedis() string {
-	if o == nil || o.Redis == nil {
+	if o == nil || IsNil(o.Redis) {
 		var ret string
 		return ret
 	}
@@ -512,7 +515,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetRedis() string {
 // GetRedisOk returns a tuple with the Redis field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetRedisOk() (*string, bool) {
-	if o == nil || o.Redis == nil {
+	if o == nil || IsNil(o.Redis) {
 		return nil, false
 	}
 	return o.Redis, true
@@ -520,7 +523,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetRedisOk() (*string, bool) {
 
 // HasRedis returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasRedis() bool {
-	if o != nil && o.Redis != nil {
+	if o != nil && !IsNil(o.Redis) {
 		return true
 	}
 
@@ -534,7 +537,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetRedis(v string) {
 
 // GetSqlserver returns the Sqlserver field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetSqlserver() string {
-	if o == nil || o.Sqlserver == nil {
+	if o == nil || IsNil(o.Sqlserver) {
 		var ret string
 		return ret
 	}
@@ -544,7 +547,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetSqlserver() string {
 // GetSqlserverOk returns a tuple with the Sqlserver field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetSqlserverOk() (*string, bool) {
-	if o == nil || o.Sqlserver == nil {
+	if o == nil || IsNil(o.Sqlserver) {
 		return nil, false
 	}
 	return o.Sqlserver, true
@@ -552,7 +555,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetSqlserverOk() (*string, bool) {
 
 // HasSqlserver returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasSqlserver() bool {
-	if o != nil && o.Sqlserver != nil {
+	if o != nil && !IsNil(o.Sqlserver) {
 		return true
 	}
 
@@ -566,7 +569,7 @@ func (o *ModelsDeploymentTargetCapabilities) SetSqlserver(v string) {
 
 // GetZookeeper returns the Zookeeper field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetZookeeper() string {
-	if o == nil || o.Zookeeper == nil {
+	if o == nil || IsNil(o.Zookeeper) {
 		var ret string
 		return ret
 	}
@@ -576,7 +579,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetZookeeper() string {
 // GetZookeeperOk returns a tuple with the Zookeeper field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetCapabilities) GetZookeeperOk() (*string, bool) {
-	if o == nil || o.Zookeeper == nil {
+	if o == nil || IsNil(o.Zookeeper) {
 		return nil, false
 	}
 	return o.Zookeeper, true
@@ -584,7 +587,7 @@ func (o *ModelsDeploymentTargetCapabilities) GetZookeeperOk() (*string, bool) {
 
 // HasZookeeper returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetCapabilities) HasZookeeper() bool {
-	if o != nil && o.Zookeeper != nil {
+	if o != nil && !IsNil(o.Zookeeper) {
 		return true
 	}
 
@@ -597,59 +600,67 @@ func (o *ModelsDeploymentTargetCapabilities) SetZookeeper(v string) {
 }
 
 func (o ModelsDeploymentTargetCapabilities) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Backup != nil {
-		toSerialize["backup"] = o.Backup
-	}
-	if o.Capabilities != nil {
-		toSerialize["capabilities"] = o.Capabilities
-	}
-	if o.Cassandra != nil {
-		toSerialize["cassandra"] = o.Cassandra
-	}
-	if o.Consul != nil {
-		toSerialize["consul"] = o.Consul
-	}
-	if o.Couchbase != nil {
-		toSerialize["couchbase"] = o.Couchbase
-	}
-	if o.CrdReporting != nil {
-		toSerialize["crd_reporting"] = o.CrdReporting
-	}
-	if o.DataServiceTls != nil {
-		toSerialize["data_service_tls"] = o.DataServiceTls
-	}
-	if o.Database != nil {
-		toSerialize["database"] = o.Database
-	}
-	if o.Elasticsearch != nil {
-		toSerialize["elasticsearch"] = o.Elasticsearch
-	}
-	if o.Kafka != nil {
-		toSerialize["kafka"] = o.Kafka
-	}
-	if o.Mongodb != nil {
-		toSerialize["mongodb"] = o.Mongodb
-	}
-	if o.Mysql != nil {
-		toSerialize["mysql"] = o.Mysql
-	}
-	if o.Postgresql != nil {
-		toSerialize["postgresql"] = o.Postgresql
-	}
-	if o.Rabbitmq != nil {
-		toSerialize["rabbitmq"] = o.Rabbitmq
-	}
-	if o.Redis != nil {
-		toSerialize["redis"] = o.Redis
-	}
-	if o.Sqlserver != nil {
-		toSerialize["sqlserver"] = o.Sqlserver
-	}
-	if o.Zookeeper != nil {
-		toSerialize["zookeeper"] = o.Zookeeper
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDeploymentTargetCapabilities) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Backup) {
+		toSerialize["backup"] = o.Backup
+	}
+	if !IsNil(o.Capabilities) {
+		toSerialize["capabilities"] = o.Capabilities
+	}
+	if !IsNil(o.Cassandra) {
+		toSerialize["cassandra"] = o.Cassandra
+	}
+	if !IsNil(o.Consul) {
+		toSerialize["consul"] = o.Consul
+	}
+	if !IsNil(o.Couchbase) {
+		toSerialize["couchbase"] = o.Couchbase
+	}
+	if !IsNil(o.CrdReporting) {
+		toSerialize["crd_reporting"] = o.CrdReporting
+	}
+	if !IsNil(o.DataServiceTls) {
+		toSerialize["data_service_tls"] = o.DataServiceTls
+	}
+	if !IsNil(o.Database) {
+		toSerialize["database"] = o.Database
+	}
+	if !IsNil(o.Elasticsearch) {
+		toSerialize["elasticsearch"] = o.Elasticsearch
+	}
+	if !IsNil(o.Kafka) {
+		toSerialize["kafka"] = o.Kafka
+	}
+	if !IsNil(o.Mongodb) {
+		toSerialize["mongodb"] = o.Mongodb
+	}
+	if !IsNil(o.Mysql) {
+		toSerialize["mysql"] = o.Mysql
+	}
+	if !IsNil(o.Postgresql) {
+		toSerialize["postgresql"] = o.Postgresql
+	}
+	if !IsNil(o.Rabbitmq) {
+		toSerialize["rabbitmq"] = o.Rabbitmq
+	}
+	if !IsNil(o.Redis) {
+		toSerialize["redis"] = o.Redis
+	}
+	if !IsNil(o.Sqlserver) {
+		toSerialize["sqlserver"] = o.Sqlserver
+	}
+	if !IsNil(o.Zookeeper) {
+		toSerialize["zookeeper"] = o.Zookeeper
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDeploymentTargetCapabilities struct {

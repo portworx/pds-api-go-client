@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDeploymentStorageOptions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDeploymentStorageOptions{}
+
 // ModelsDeploymentStorageOptions struct for ModelsDeploymentStorageOptions
 type ModelsDeploymentStorageOptions struct {
 	Fg *bool `json:"fg,omitempty"`
@@ -42,7 +45,7 @@ func NewModelsDeploymentStorageOptionsWithDefaults() *ModelsDeploymentStorageOpt
 
 // GetFg returns the Fg field value if set, zero value otherwise.
 func (o *ModelsDeploymentStorageOptions) GetFg() bool {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		var ret bool
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ModelsDeploymentStorageOptions) GetFg() bool {
 // GetFgOk returns a tuple with the Fg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentStorageOptions) GetFgOk() (*bool, bool) {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		return nil, false
 	}
 	return o.Fg, true
@@ -60,7 +63,7 @@ func (o *ModelsDeploymentStorageOptions) GetFgOk() (*bool, bool) {
 
 // HasFg returns a boolean if a field has been set.
 func (o *ModelsDeploymentStorageOptions) HasFg() bool {
-	if o != nil && o.Fg != nil {
+	if o != nil && !IsNil(o.Fg) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ModelsDeploymentStorageOptions) SetFg(v bool) {
 
 // GetFs returns the Fs field value if set, zero value otherwise.
 func (o *ModelsDeploymentStorageOptions) GetFs() string {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ModelsDeploymentStorageOptions) GetFs() string {
 // GetFsOk returns a tuple with the Fs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentStorageOptions) GetFsOk() (*string, bool) {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		return nil, false
 	}
 	return o.Fs, true
@@ -92,7 +95,7 @@ func (o *ModelsDeploymentStorageOptions) GetFsOk() (*string, bool) {
 
 // HasFs returns a boolean if a field has been set.
 func (o *ModelsDeploymentStorageOptions) HasFs() bool {
-	if o != nil && o.Fs != nil {
+	if o != nil && !IsNil(o.Fs) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ModelsDeploymentStorageOptions) SetFs(v string) {
 
 // GetProvisioner returns the Provisioner field value if set, zero value otherwise.
 func (o *ModelsDeploymentStorageOptions) GetProvisioner() string {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ModelsDeploymentStorageOptions) GetProvisioner() string {
 // GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentStorageOptions) GetProvisionerOk() (*string, bool) {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		return nil, false
 	}
 	return o.Provisioner, true
@@ -124,7 +127,7 @@ func (o *ModelsDeploymentStorageOptions) GetProvisionerOk() (*string, bool) {
 
 // HasProvisioner returns a boolean if a field has been set.
 func (o *ModelsDeploymentStorageOptions) HasProvisioner() bool {
-	if o != nil && o.Provisioner != nil {
+	if o != nil && !IsNil(o.Provisioner) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ModelsDeploymentStorageOptions) SetProvisioner(v string) {
 
 // GetRepl returns the Repl field value if set, zero value otherwise.
 func (o *ModelsDeploymentStorageOptions) GetRepl() int32 {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		var ret int32
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ModelsDeploymentStorageOptions) GetRepl() int32 {
 // GetReplOk returns a tuple with the Repl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentStorageOptions) GetReplOk() (*int32, bool) {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		return nil, false
 	}
 	return o.Repl, true
@@ -156,7 +159,7 @@ func (o *ModelsDeploymentStorageOptions) GetReplOk() (*int32, bool) {
 
 // HasRepl returns a boolean if a field has been set.
 func (o *ModelsDeploymentStorageOptions) HasRepl() bool {
-	if o != nil && o.Repl != nil {
+	if o != nil && !IsNil(o.Repl) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *ModelsDeploymentStorageOptions) SetRepl(v int32) {
 
 // GetSecure returns the Secure field value if set, zero value otherwise.
 func (o *ModelsDeploymentStorageOptions) GetSecure() bool {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		var ret bool
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ModelsDeploymentStorageOptions) GetSecure() bool {
 // GetSecureOk returns a tuple with the Secure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentStorageOptions) GetSecureOk() (*bool, bool) {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		return nil, false
 	}
 	return o.Secure, true
@@ -188,7 +191,7 @@ func (o *ModelsDeploymentStorageOptions) GetSecureOk() (*bool, bool) {
 
 // HasSecure returns a boolean if a field has been set.
 func (o *ModelsDeploymentStorageOptions) HasSecure() bool {
-	if o != nil && o.Secure != nil {
+	if o != nil && !IsNil(o.Secure) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *ModelsDeploymentStorageOptions) SetSecure(v bool) {
 }
 
 func (o ModelsDeploymentStorageOptions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Fg != nil {
-		toSerialize["fg"] = o.Fg
-	}
-	if o.Fs != nil {
-		toSerialize["fs"] = o.Fs
-	}
-	if o.Provisioner != nil {
-		toSerialize["provisioner"] = o.Provisioner
-	}
-	if o.Repl != nil {
-		toSerialize["repl"] = o.Repl
-	}
-	if o.Secure != nil {
-		toSerialize["secure"] = o.Secure
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDeploymentStorageOptions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Fg) {
+		toSerialize["fg"] = o.Fg
+	}
+	if !IsNil(o.Fs) {
+		toSerialize["fs"] = o.Fs
+	}
+	if !IsNil(o.Provisioner) {
+		toSerialize["provisioner"] = o.Provisioner
+	}
+	if !IsNil(o.Repl) {
+		toSerialize["repl"] = o.Repl
+	}
+	if !IsNil(o.Secure) {
+		toSerialize["secure"] = o.Secure
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDeploymentStorageOptions struct {

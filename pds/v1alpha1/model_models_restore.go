@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsRestore type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsRestore{}
+
 // ModelsRestore struct for ModelsRestore
 type ModelsRestore struct {
 	// Status of sending Restore CR to the Target Cluster
@@ -63,7 +66,7 @@ func NewModelsRestoreWithDefaults() *ModelsRestore {
 
 // GetApplyStatus returns the ApplyStatus field value if set, zero value otherwise.
 func (o *ModelsRestore) GetApplyStatus() string {
-	if o == nil || o.ApplyStatus == nil {
+	if o == nil || IsNil(o.ApplyStatus) {
 		var ret string
 		return ret
 	}
@@ -73,7 +76,7 @@ func (o *ModelsRestore) GetApplyStatus() string {
 // GetApplyStatusOk returns a tuple with the ApplyStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetApplyStatusOk() (*string, bool) {
-	if o == nil || o.ApplyStatus == nil {
+	if o == nil || IsNil(o.ApplyStatus) {
 		return nil, false
 	}
 	return o.ApplyStatus, true
@@ -81,7 +84,7 @@ func (o *ModelsRestore) GetApplyStatusOk() (*string, bool) {
 
 // HasApplyStatus returns a boolean if a field has been set.
 func (o *ModelsRestore) HasApplyStatus() bool {
-	if o != nil && o.ApplyStatus != nil {
+	if o != nil && !IsNil(o.ApplyStatus) {
 		return true
 	}
 
@@ -95,7 +98,7 @@ func (o *ModelsRestore) SetApplyStatus(v string) {
 
 // GetBackupJobId returns the BackupJobId field value if set, zero value otherwise.
 func (o *ModelsRestore) GetBackupJobId() string {
-	if o == nil || o.BackupJobId == nil {
+	if o == nil || IsNil(o.BackupJobId) {
 		var ret string
 		return ret
 	}
@@ -105,7 +108,7 @@ func (o *ModelsRestore) GetBackupJobId() string {
 // GetBackupJobIdOk returns a tuple with the BackupJobId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetBackupJobIdOk() (*string, bool) {
-	if o == nil || o.BackupJobId == nil {
+	if o == nil || IsNil(o.BackupJobId) {
 		return nil, false
 	}
 	return o.BackupJobId, true
@@ -113,7 +116,7 @@ func (o *ModelsRestore) GetBackupJobIdOk() (*string, bool) {
 
 // HasBackupJobId returns a boolean if a field has been set.
 func (o *ModelsRestore) HasBackupJobId() bool {
-	if o != nil && o.BackupJobId != nil {
+	if o != nil && !IsNil(o.BackupJobId) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *ModelsRestore) SetBackupJobId(v string) {
 
 // GetCloudCredentialName returns the CloudCredentialName field value if set, zero value otherwise.
 func (o *ModelsRestore) GetCloudCredentialName() string {
-	if o == nil || o.CloudCredentialName == nil {
+	if o == nil || IsNil(o.CloudCredentialName) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *ModelsRestore) GetCloudCredentialName() string {
 // GetCloudCredentialNameOk returns a tuple with the CloudCredentialName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetCloudCredentialNameOk() (*string, bool) {
-	if o == nil || o.CloudCredentialName == nil {
+	if o == nil || IsNil(o.CloudCredentialName) {
 		return nil, false
 	}
 	return o.CloudCredentialName, true
@@ -145,7 +148,7 @@ func (o *ModelsRestore) GetCloudCredentialNameOk() (*string, bool) {
 
 // HasCloudCredentialName returns a boolean if a field has been set.
 func (o *ModelsRestore) HasCloudCredentialName() bool {
-	if o != nil && o.CloudCredentialName != nil {
+	if o != nil && !IsNil(o.CloudCredentialName) {
 		return true
 	}
 
@@ -159,7 +162,7 @@ func (o *ModelsRestore) SetCloudCredentialName(v string) {
 
 // GetCloudSnapId returns the CloudSnapId field value if set, zero value otherwise.
 func (o *ModelsRestore) GetCloudSnapId() string {
-	if o == nil || o.CloudSnapId == nil {
+	if o == nil || IsNil(o.CloudSnapId) {
 		var ret string
 		return ret
 	}
@@ -169,7 +172,7 @@ func (o *ModelsRestore) GetCloudSnapId() string {
 // GetCloudSnapIdOk returns a tuple with the CloudSnapId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetCloudSnapIdOk() (*string, bool) {
-	if o == nil || o.CloudSnapId == nil {
+	if o == nil || IsNil(o.CloudSnapId) {
 		return nil, false
 	}
 	return o.CloudSnapId, true
@@ -177,7 +180,7 @@ func (o *ModelsRestore) GetCloudSnapIdOk() (*string, bool) {
 
 // HasCloudSnapId returns a boolean if a field has been set.
 func (o *ModelsRestore) HasCloudSnapId() bool {
-	if o != nil && o.CloudSnapId != nil {
+	if o != nil && !IsNil(o.CloudSnapId) {
 		return true
 	}
 
@@ -191,7 +194,7 @@ func (o *ModelsRestore) SetCloudSnapId(v string) {
 
 // GetCompletionTime returns the CompletionTime field value if set, zero value otherwise.
 func (o *ModelsRestore) GetCompletionTime() string {
-	if o == nil || o.CompletionTime == nil {
+	if o == nil || IsNil(o.CompletionTime) {
 		var ret string
 		return ret
 	}
@@ -201,7 +204,7 @@ func (o *ModelsRestore) GetCompletionTime() string {
 // GetCompletionTimeOk returns a tuple with the CompletionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetCompletionTimeOk() (*string, bool) {
-	if o == nil || o.CompletionTime == nil {
+	if o == nil || IsNil(o.CompletionTime) {
 		return nil, false
 	}
 	return o.CompletionTime, true
@@ -209,7 +212,7 @@ func (o *ModelsRestore) GetCompletionTimeOk() (*string, bool) {
 
 // HasCompletionTime returns a boolean if a field has been set.
 func (o *ModelsRestore) HasCompletionTime() bool {
-	if o != nil && o.CompletionTime != nil {
+	if o != nil && !IsNil(o.CompletionTime) {
 		return true
 	}
 
@@ -223,7 +226,7 @@ func (o *ModelsRestore) SetCompletionTime(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsRestore) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -233,7 +236,7 @@ func (o *ModelsRestore) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -241,7 +244,7 @@ func (o *ModelsRestore) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsRestore) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -255,7 +258,7 @@ func (o *ModelsRestore) SetCreatedAt(v string) {
 
 // GetDeploymentId returns the DeploymentId field value if set, zero value otherwise.
 func (o *ModelsRestore) GetDeploymentId() string {
-	if o == nil || o.DeploymentId == nil {
+	if o == nil || IsNil(o.DeploymentId) {
 		var ret string
 		return ret
 	}
@@ -265,7 +268,7 @@ func (o *ModelsRestore) GetDeploymentId() string {
 // GetDeploymentIdOk returns a tuple with the DeploymentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetDeploymentIdOk() (*string, bool) {
-	if o == nil || o.DeploymentId == nil {
+	if o == nil || IsNil(o.DeploymentId) {
 		return nil, false
 	}
 	return o.DeploymentId, true
@@ -273,7 +276,7 @@ func (o *ModelsRestore) GetDeploymentIdOk() (*string, bool) {
 
 // HasDeploymentId returns a boolean if a field has been set.
 func (o *ModelsRestore) HasDeploymentId() bool {
-	if o != nil && o.DeploymentId != nil {
+	if o != nil && !IsNil(o.DeploymentId) {
 		return true
 	}
 
@@ -287,7 +290,7 @@ func (o *ModelsRestore) SetDeploymentId(v string) {
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
 func (o *ModelsRestore) GetErrorCode() string {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode) {
 		var ret string
 		return ret
 	}
@@ -297,7 +300,7 @@ func (o *ModelsRestore) GetErrorCode() string {
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetErrorCodeOk() (*string, bool) {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode) {
 		return nil, false
 	}
 	return o.ErrorCode, true
@@ -305,7 +308,7 @@ func (o *ModelsRestore) GetErrorCodeOk() (*string, bool) {
 
 // HasErrorCode returns a boolean if a field has been set.
 func (o *ModelsRestore) HasErrorCode() bool {
-	if o != nil && o.ErrorCode != nil {
+	if o != nil && !IsNil(o.ErrorCode) {
 		return true
 	}
 
@@ -319,7 +322,7 @@ func (o *ModelsRestore) SetErrorCode(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsRestore) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -329,7 +332,7 @@ func (o *ModelsRestore) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -337,7 +340,7 @@ func (o *ModelsRestore) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsRestore) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -351,7 +354,7 @@ func (o *ModelsRestore) SetId(v string) {
 
 // GetOriginalDeploymentId returns the OriginalDeploymentId field value if set, zero value otherwise.
 func (o *ModelsRestore) GetOriginalDeploymentId() string {
-	if o == nil || o.OriginalDeploymentId == nil {
+	if o == nil || IsNil(o.OriginalDeploymentId) {
 		var ret string
 		return ret
 	}
@@ -361,7 +364,7 @@ func (o *ModelsRestore) GetOriginalDeploymentId() string {
 // GetOriginalDeploymentIdOk returns a tuple with the OriginalDeploymentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetOriginalDeploymentIdOk() (*string, bool) {
-	if o == nil || o.OriginalDeploymentId == nil {
+	if o == nil || IsNil(o.OriginalDeploymentId) {
 		return nil, false
 	}
 	return o.OriginalDeploymentId, true
@@ -369,7 +372,7 @@ func (o *ModelsRestore) GetOriginalDeploymentIdOk() (*string, bool) {
 
 // HasOriginalDeploymentId returns a boolean if a field has been set.
 func (o *ModelsRestore) HasOriginalDeploymentId() bool {
-	if o != nil && o.OriginalDeploymentId != nil {
+	if o != nil && !IsNil(o.OriginalDeploymentId) {
 		return true
 	}
 
@@ -383,7 +386,7 @@ func (o *ModelsRestore) SetOriginalDeploymentId(v string) {
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
 func (o *ModelsRestore) GetStartTime() string {
-	if o == nil || o.StartTime == nil {
+	if o == nil || IsNil(o.StartTime) {
 		var ret string
 		return ret
 	}
@@ -393,7 +396,7 @@ func (o *ModelsRestore) GetStartTime() string {
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetStartTimeOk() (*string, bool) {
-	if o == nil || o.StartTime == nil {
+	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
 	return o.StartTime, true
@@ -401,7 +404,7 @@ func (o *ModelsRestore) GetStartTimeOk() (*string, bool) {
 
 // HasStartTime returns a boolean if a field has been set.
 func (o *ModelsRestore) HasStartTime() bool {
-	if o != nil && o.StartTime != nil {
+	if o != nil && !IsNil(o.StartTime) {
 		return true
 	}
 
@@ -415,7 +418,7 @@ func (o *ModelsRestore) SetStartTime(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ModelsRestore) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -425,7 +428,7 @@ func (o *ModelsRestore) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -433,7 +436,7 @@ func (o *ModelsRestore) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ModelsRestore) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -447,7 +450,7 @@ func (o *ModelsRestore) SetStatus(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsRestore) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -457,7 +460,7 @@ func (o *ModelsRestore) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsRestore) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -465,7 +468,7 @@ func (o *ModelsRestore) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsRestore) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -478,47 +481,55 @@ func (o *ModelsRestore) SetUpdatedAt(v string) {
 }
 
 func (o ModelsRestore) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApplyStatus != nil {
-		toSerialize["apply_status"] = o.ApplyStatus
-	}
-	if o.BackupJobId != nil {
-		toSerialize["backup_job_id"] = o.BackupJobId
-	}
-	if o.CloudCredentialName != nil {
-		toSerialize["cloud_credential_name"] = o.CloudCredentialName
-	}
-	if o.CloudSnapId != nil {
-		toSerialize["cloud_snap_id"] = o.CloudSnapId
-	}
-	if o.CompletionTime != nil {
-		toSerialize["completion_time"] = o.CompletionTime
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.DeploymentId != nil {
-		toSerialize["deployment_id"] = o.DeploymentId
-	}
-	if o.ErrorCode != nil {
-		toSerialize["error_code"] = o.ErrorCode
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.OriginalDeploymentId != nil {
-		toSerialize["original_deployment_id"] = o.OriginalDeploymentId
-	}
-	if o.StartTime != nil {
-		toSerialize["start_time"] = o.StartTime
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsRestore) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApplyStatus) {
+		toSerialize["apply_status"] = o.ApplyStatus
+	}
+	if !IsNil(o.BackupJobId) {
+		toSerialize["backup_job_id"] = o.BackupJobId
+	}
+	if !IsNil(o.CloudCredentialName) {
+		toSerialize["cloud_credential_name"] = o.CloudCredentialName
+	}
+	if !IsNil(o.CloudSnapId) {
+		toSerialize["cloud_snap_id"] = o.CloudSnapId
+	}
+	if !IsNil(o.CompletionTime) {
+		toSerialize["completion_time"] = o.CompletionTime
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.DeploymentId) {
+		toSerialize["deployment_id"] = o.DeploymentId
+	}
+	if !IsNil(o.ErrorCode) {
+		toSerialize["error_code"] = o.ErrorCode
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.OriginalDeploymentId) {
+		toSerialize["original_deployment_id"] = o.OriginalDeploymentId
+	}
+	if !IsNil(o.StartTime) {
+		toSerialize["start_time"] = o.StartTime
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsRestore struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsPodInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsPodInfo{}
+
 // DeploymentsPodInfo struct for DeploymentsPodInfo
 type DeploymentsPodInfo struct {
 	// The IP of this pod.
@@ -43,7 +46,7 @@ func NewDeploymentsPodInfoWithDefaults() *DeploymentsPodInfo {
 
 // GetIp returns the Ip field value if set, zero value otherwise.
 func (o *DeploymentsPodInfo) GetIp() string {
-	if o == nil || o.Ip == nil {
+	if o == nil || IsNil(o.Ip) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *DeploymentsPodInfo) GetIp() string {
 // GetIpOk returns a tuple with the Ip field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsPodInfo) GetIpOk() (*string, bool) {
-	if o == nil || o.Ip == nil {
+	if o == nil || IsNil(o.Ip) {
 		return nil, false
 	}
 	return o.Ip, true
@@ -61,7 +64,7 @@ func (o *DeploymentsPodInfo) GetIpOk() (*string, bool) {
 
 // HasIp returns a boolean if a field has been set.
 func (o *DeploymentsPodInfo) HasIp() bool {
-	if o != nil && o.Ip != nil {
+	if o != nil && !IsNil(o.Ip) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *DeploymentsPodInfo) SetIp(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentsPodInfo) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *DeploymentsPodInfo) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsPodInfo) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -93,7 +96,7 @@ func (o *DeploymentsPodInfo) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentsPodInfo) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *DeploymentsPodInfo) SetName(v string) {
 
 // GetWorkerNode returns the WorkerNode field value if set, zero value otherwise.
 func (o *DeploymentsPodInfo) GetWorkerNode() string {
-	if o == nil || o.WorkerNode == nil {
+	if o == nil || IsNil(o.WorkerNode) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *DeploymentsPodInfo) GetWorkerNode() string {
 // GetWorkerNodeOk returns a tuple with the WorkerNode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsPodInfo) GetWorkerNodeOk() (*string, bool) {
-	if o == nil || o.WorkerNode == nil {
+	if o == nil || IsNil(o.WorkerNode) {
 		return nil, false
 	}
 	return o.WorkerNode, true
@@ -125,7 +128,7 @@ func (o *DeploymentsPodInfo) GetWorkerNodeOk() (*string, bool) {
 
 // HasWorkerNode returns a boolean if a field has been set.
 func (o *DeploymentsPodInfo) HasWorkerNode() bool {
-	if o != nil && o.WorkerNode != nil {
+	if o != nil && !IsNil(o.WorkerNode) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *DeploymentsPodInfo) SetWorkerNode(v string) {
 }
 
 func (o DeploymentsPodInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Ip != nil {
-		toSerialize["ip"] = o.Ip
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.WorkerNode != nil {
-		toSerialize["workerNode"] = o.WorkerNode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsPodInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ip) {
+		toSerialize["ip"] = o.Ip
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.WorkerNode) {
+		toSerialize["workerNode"] = o.WorkerNode
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsPodInfo struct {

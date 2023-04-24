@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // AccountsRoleInvitationsApiService AccountsRoleInvitationsApi service
 type AccountsRoleInvitationsApiService service
@@ -32,7 +28,6 @@ type ApiApiAccountRoleInvitationsIdDeleteRequest struct {
 	ApiService *AccountsRoleInvitationsApiService
 	id string
 }
-
 
 func (r ApiApiAccountRoleInvitationsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiAccountRoleInvitationsIdDeleteExecute(r)
@@ -69,7 +64,7 @@ func (a *AccountsRoleInvitationsApiService) ApiAccountRoleInvitationsIdDeleteExe
 	}
 
 	localVarPath := localBasePath + "/api/account-role-invitations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -116,9 +111,9 @@ func (a *AccountsRoleInvitationsApiService) ApiAccountRoleInvitationsIdDeleteExe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -182,7 +177,7 @@ func (a *AccountsRoleInvitationsApiService) ApiAccountRoleInvitationsIdPatchExec
 	}
 
 	localVarPath := localBasePath + "/api/account-role-invitations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -234,9 +229,9 @@ func (a *AccountsRoleInvitationsApiService) ApiAccountRoleInvitationsIdPatchExec
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

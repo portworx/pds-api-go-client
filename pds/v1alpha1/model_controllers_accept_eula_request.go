@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersAcceptEULARequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersAcceptEULARequest{}
+
 // ControllersAcceptEULARequest struct for ControllersAcceptEULARequest
 type ControllersAcceptEULARequest struct {
 	// Version of the EULA.
@@ -39,7 +42,7 @@ func NewControllersAcceptEULARequestWithDefaults() *ControllersAcceptEULARequest
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ControllersAcceptEULARequest) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ControllersAcceptEULARequest) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersAcceptEULARequest) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -57,7 +60,7 @@ func (o *ControllersAcceptEULARequest) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ControllersAcceptEULARequest) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ControllersAcceptEULARequest) SetVersion(v string) {
 }
 
 func (o ControllersAcceptEULARequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersAcceptEULARequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersAcceptEULARequest struct {

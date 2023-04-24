@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPartialAzureCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPartialAzureCredentials{}
+
 // ControllersPartialAzureCredentials struct for ControllersPartialAzureCredentials
 type ControllersPartialAzureCredentials struct {
 	// Name of the Azure Storage account.
@@ -39,7 +42,7 @@ func NewControllersPartialAzureCredentialsWithDefaults() *ControllersPartialAzur
 
 // GetAccountName returns the AccountName field value if set, zero value otherwise.
 func (o *ControllersPartialAzureCredentials) GetAccountName() string {
-	if o == nil || o.AccountName == nil {
+	if o == nil || IsNil(o.AccountName) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ControllersPartialAzureCredentials) GetAccountName() string {
 // GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialAzureCredentials) GetAccountNameOk() (*string, bool) {
-	if o == nil || o.AccountName == nil {
+	if o == nil || IsNil(o.AccountName) {
 		return nil, false
 	}
 	return o.AccountName, true
@@ -57,7 +60,7 @@ func (o *ControllersPartialAzureCredentials) GetAccountNameOk() (*string, bool) 
 
 // HasAccountName returns a boolean if a field has been set.
 func (o *ControllersPartialAzureCredentials) HasAccountName() bool {
-	if o != nil && o.AccountName != nil {
+	if o != nil && !IsNil(o.AccountName) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ControllersPartialAzureCredentials) SetAccountName(v string) {
 }
 
 func (o ControllersPartialAzureCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountName != nil {
-		toSerialize["account_name"] = o.AccountName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPartialAzureCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountName) {
+		toSerialize["account_name"] = o.AccountName
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPartialAzureCredentials struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDeployment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDeployment{}
+
 // ModelsDeployment struct for ModelsDeployment
 type ModelsDeployment struct {
 	// AccountID which account the deployment belongs to (models.Account).
@@ -89,7 +92,7 @@ func NewModelsDeploymentWithDefaults() *ModelsDeployment {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -99,7 +102,7 @@ func (o *ModelsDeployment) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -107,7 +110,7 @@ func (o *ModelsDeployment) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *ModelsDeployment) SetAccountId(v string) {
 
 // GetClusterResourceName returns the ClusterResourceName field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetClusterResourceName() string {
-	if o == nil || o.ClusterResourceName == nil {
+	if o == nil || IsNil(o.ClusterResourceName) {
 		var ret string
 		return ret
 	}
@@ -131,7 +134,7 @@ func (o *ModelsDeployment) GetClusterResourceName() string {
 // GetClusterResourceNameOk returns a tuple with the ClusterResourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetClusterResourceNameOk() (*string, bool) {
-	if o == nil || o.ClusterResourceName == nil {
+	if o == nil || IsNil(o.ClusterResourceName) {
 		return nil, false
 	}
 	return o.ClusterResourceName, true
@@ -139,7 +142,7 @@ func (o *ModelsDeployment) GetClusterResourceNameOk() (*string, bool) {
 
 // HasClusterResourceName returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasClusterResourceName() bool {
-	if o != nil && o.ClusterResourceName != nil {
+	if o != nil && !IsNil(o.ClusterResourceName) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *ModelsDeployment) SetClusterResourceName(v string) {
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetConfiguration() map[string]interface{} {
-	if o == nil || o.Configuration == nil {
+	if o == nil || IsNil(o.Configuration) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *ModelsDeployment) GetConfiguration() map[string]interface{} {
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetConfigurationOk() (map[string]interface{}, bool) {
-	if o == nil || o.Configuration == nil {
-		return nil, false
+	if o == nil || IsNil(o.Configuration) {
+		return map[string]interface{}{}, false
 	}
 	return o.Configuration, true
 }
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasConfiguration() bool {
-	if o != nil && o.Configuration != nil {
+	if o != nil && !IsNil(o.Configuration) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *ModelsDeployment) SetConfiguration(v map[string]interface{}) {
 
 // GetConnectionDetails returns the ConnectionDetails field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetConnectionDetails() map[string]interface{} {
-	if o == nil || o.ConnectionDetails == nil {
+	if o == nil || IsNil(o.ConnectionDetails) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -195,15 +198,15 @@ func (o *ModelsDeployment) GetConnectionDetails() map[string]interface{} {
 // GetConnectionDetailsOk returns a tuple with the ConnectionDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetConnectionDetailsOk() (map[string]interface{}, bool) {
-	if o == nil || o.ConnectionDetails == nil {
-		return nil, false
+	if o == nil || IsNil(o.ConnectionDetails) {
+		return map[string]interface{}{}, false
 	}
 	return o.ConnectionDetails, true
 }
 
 // HasConnectionDetails returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasConnectionDetails() bool {
-	if o != nil && o.ConnectionDetails != nil {
+	if o != nil && !IsNil(o.ConnectionDetails) {
 		return true
 	}
 
@@ -217,7 +220,7 @@ func (o *ModelsDeployment) SetConnectionDetails(v map[string]interface{}) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -227,7 +230,7 @@ func (o *ModelsDeployment) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -235,7 +238,7 @@ func (o *ModelsDeployment) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *ModelsDeployment) SetCreatedAt(v string) {
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -259,7 +262,7 @@ func (o *ModelsDeployment) GetDataServiceId() string {
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -267,7 +270,7 @@ func (o *ModelsDeployment) GetDataServiceIdOk() (*string, bool) {
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -281,7 +284,7 @@ func (o *ModelsDeployment) SetDataServiceId(v string) {
 
 // GetDeploymentManifest returns the DeploymentManifest field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetDeploymentManifest() ModelsDeploymentManifest {
-	if o == nil || o.DeploymentManifest == nil {
+	if o == nil || IsNil(o.DeploymentManifest) {
 		var ret ModelsDeploymentManifest
 		return ret
 	}
@@ -291,7 +294,7 @@ func (o *ModelsDeployment) GetDeploymentManifest() ModelsDeploymentManifest {
 // GetDeploymentManifestOk returns a tuple with the DeploymentManifest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetDeploymentManifestOk() (*ModelsDeploymentManifest, bool) {
-	if o == nil || o.DeploymentManifest == nil {
+	if o == nil || IsNil(o.DeploymentManifest) {
 		return nil, false
 	}
 	return o.DeploymentManifest, true
@@ -299,7 +302,7 @@ func (o *ModelsDeployment) GetDeploymentManifestOk() (*ModelsDeploymentManifest,
 
 // HasDeploymentManifest returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasDeploymentManifest() bool {
-	if o != nil && o.DeploymentManifest != nil {
+	if o != nil && !IsNil(o.DeploymentManifest) {
 		return true
 	}
 
@@ -313,7 +316,7 @@ func (o *ModelsDeployment) SetDeploymentManifest(v ModelsDeploymentManifest) {
 
 // GetDeploymentTarget returns the DeploymentTarget field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetDeploymentTarget() ModelsDeploymentTarget {
-	if o == nil || o.DeploymentTarget == nil {
+	if o == nil || IsNil(o.DeploymentTarget) {
 		var ret ModelsDeploymentTarget
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *ModelsDeployment) GetDeploymentTarget() ModelsDeploymentTarget {
 // GetDeploymentTargetOk returns a tuple with the DeploymentTarget field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetDeploymentTargetOk() (*ModelsDeploymentTarget, bool) {
-	if o == nil || o.DeploymentTarget == nil {
+	if o == nil || IsNil(o.DeploymentTarget) {
 		return nil, false
 	}
 	return o.DeploymentTarget, true
@@ -331,7 +334,7 @@ func (o *ModelsDeployment) GetDeploymentTargetOk() (*ModelsDeploymentTarget, boo
 
 // HasDeploymentTarget returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasDeploymentTarget() bool {
-	if o != nil && o.DeploymentTarget != nil {
+	if o != nil && !IsNil(o.DeploymentTarget) {
 		return true
 	}
 
@@ -345,7 +348,7 @@ func (o *ModelsDeployment) SetDeploymentTarget(v ModelsDeploymentTarget) {
 
 // GetDeploymentTargetId returns the DeploymentTargetId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetDeploymentTargetId() string {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		var ret string
 		return ret
 	}
@@ -355,7 +358,7 @@ func (o *ModelsDeployment) GetDeploymentTargetId() string {
 // GetDeploymentTargetIdOk returns a tuple with the DeploymentTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetDeploymentTargetIdOk() (*string, bool) {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		return nil, false
 	}
 	return o.DeploymentTargetId, true
@@ -363,7 +366,7 @@ func (o *ModelsDeployment) GetDeploymentTargetIdOk() (*string, bool) {
 
 // HasDeploymentTargetId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasDeploymentTargetId() bool {
-	if o != nil && o.DeploymentTargetId != nil {
+	if o != nil && !IsNil(o.DeploymentTargetId) {
 		return true
 	}
 
@@ -377,7 +380,7 @@ func (o *ModelsDeployment) SetDeploymentTargetId(v string) {
 
 // GetDnsZone returns the DnsZone field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetDnsZone() string {
-	if o == nil || o.DnsZone == nil {
+	if o == nil || IsNil(o.DnsZone) {
 		var ret string
 		return ret
 	}
@@ -387,7 +390,7 @@ func (o *ModelsDeployment) GetDnsZone() string {
 // GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetDnsZoneOk() (*string, bool) {
-	if o == nil || o.DnsZone == nil {
+	if o == nil || IsNil(o.DnsZone) {
 		return nil, false
 	}
 	return o.DnsZone, true
@@ -395,7 +398,7 @@ func (o *ModelsDeployment) GetDnsZoneOk() (*string, bool) {
 
 // HasDnsZone returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasDnsZone() bool {
-	if o != nil && o.DnsZone != nil {
+	if o != nil && !IsNil(o.DnsZone) {
 		return true
 	}
 
@@ -409,7 +412,7 @@ func (o *ModelsDeployment) SetDnsZone(v string) {
 
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetError() ModelsErrorData {
-	if o == nil || o.Error == nil {
+	if o == nil || IsNil(o.Error) {
 		var ret ModelsErrorData
 		return ret
 	}
@@ -419,7 +422,7 @@ func (o *ModelsDeployment) GetError() ModelsErrorData {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetErrorOk() (*ModelsErrorData, bool) {
-	if o == nil || o.Error == nil {
+	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
 	return o.Error, true
@@ -427,7 +430,7 @@ func (o *ModelsDeployment) GetErrorOk() (*ModelsErrorData, bool) {
 
 // HasError returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasError() bool {
-	if o != nil && o.Error != nil {
+	if o != nil && !IsNil(o.Error) {
 		return true
 	}
 
@@ -441,7 +444,7 @@ func (o *ModelsDeployment) SetError(v ModelsErrorData) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -451,7 +454,7 @@ func (o *ModelsDeployment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -459,7 +462,7 @@ func (o *ModelsDeployment) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -473,7 +476,7 @@ func (o *ModelsDeployment) SetId(v string) {
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetImageId() string {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		var ret string
 		return ret
 	}
@@ -483,7 +486,7 @@ func (o *ModelsDeployment) GetImageId() string {
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetImageIdOk() (*string, bool) {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
 	return o.ImageId, true
@@ -491,7 +494,7 @@ func (o *ModelsDeployment) GetImageIdOk() (*string, bool) {
 
 // HasImageId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasImageId() bool {
-	if o != nil && o.ImageId != nil {
+	if o != nil && !IsNil(o.ImageId) {
 		return true
 	}
 
@@ -505,7 +508,7 @@ func (o *ModelsDeployment) SetImageId(v string) {
 
 // GetInitialize returns the Initialize field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetInitialize() string {
-	if o == nil || o.Initialize == nil {
+	if o == nil || IsNil(o.Initialize) {
 		var ret string
 		return ret
 	}
@@ -515,7 +518,7 @@ func (o *ModelsDeployment) GetInitialize() string {
 // GetInitializeOk returns a tuple with the Initialize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetInitializeOk() (*string, bool) {
-	if o == nil || o.Initialize == nil {
+	if o == nil || IsNil(o.Initialize) {
 		return nil, false
 	}
 	return o.Initialize, true
@@ -523,7 +526,7 @@ func (o *ModelsDeployment) GetInitializeOk() (*string, bool) {
 
 // HasInitialize returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasInitialize() bool {
-	if o != nil && o.Initialize != nil {
+	if o != nil && !IsNil(o.Initialize) {
 		return true
 	}
 
@@ -537,7 +540,7 @@ func (o *ModelsDeployment) SetInitialize(v string) {
 
 // GetLoadBalancerSourceRanges returns the LoadBalancerSourceRanges field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetLoadBalancerSourceRanges() []string {
-	if o == nil || o.LoadBalancerSourceRanges == nil {
+	if o == nil || IsNil(o.LoadBalancerSourceRanges) {
 		var ret []string
 		return ret
 	}
@@ -547,7 +550,7 @@ func (o *ModelsDeployment) GetLoadBalancerSourceRanges() []string {
 // GetLoadBalancerSourceRangesOk returns a tuple with the LoadBalancerSourceRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetLoadBalancerSourceRangesOk() ([]string, bool) {
-	if o == nil || o.LoadBalancerSourceRanges == nil {
+	if o == nil || IsNil(o.LoadBalancerSourceRanges) {
 		return nil, false
 	}
 	return o.LoadBalancerSourceRanges, true
@@ -555,7 +558,7 @@ func (o *ModelsDeployment) GetLoadBalancerSourceRangesOk() ([]string, bool) {
 
 // HasLoadBalancerSourceRanges returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasLoadBalancerSourceRanges() bool {
-	if o != nil && o.LoadBalancerSourceRanges != nil {
+	if o != nil && !IsNil(o.LoadBalancerSourceRanges) {
 		return true
 	}
 
@@ -569,7 +572,7 @@ func (o *ModelsDeployment) SetLoadBalancerSourceRanges(v []string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -579,7 +582,7 @@ func (o *ModelsDeployment) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -587,7 +590,7 @@ func (o *ModelsDeployment) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -601,7 +604,7 @@ func (o *ModelsDeployment) SetName(v string) {
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetNamespace() ModelsNamespace {
-	if o == nil || o.Namespace == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret ModelsNamespace
 		return ret
 	}
@@ -611,7 +614,7 @@ func (o *ModelsDeployment) GetNamespace() ModelsNamespace {
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetNamespaceOk() (*ModelsNamespace, bool) {
-	if o == nil || o.Namespace == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
 	return o.Namespace, true
@@ -619,7 +622,7 @@ func (o *ModelsDeployment) GetNamespaceOk() (*ModelsNamespace, bool) {
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasNamespace() bool {
-	if o != nil && o.Namespace != nil {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
@@ -633,7 +636,7 @@ func (o *ModelsDeployment) SetNamespace(v ModelsNamespace) {
 
 // GetNamespaceId returns the NamespaceId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetNamespaceId() string {
-	if o == nil || o.NamespaceId == nil {
+	if o == nil || IsNil(o.NamespaceId) {
 		var ret string
 		return ret
 	}
@@ -643,7 +646,7 @@ func (o *ModelsDeployment) GetNamespaceId() string {
 // GetNamespaceIdOk returns a tuple with the NamespaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetNamespaceIdOk() (*string, bool) {
-	if o == nil || o.NamespaceId == nil {
+	if o == nil || IsNil(o.NamespaceId) {
 		return nil, false
 	}
 	return o.NamespaceId, true
@@ -651,7 +654,7 @@ func (o *ModelsDeployment) GetNamespaceIdOk() (*string, bool) {
 
 // HasNamespaceId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasNamespaceId() bool {
-	if o != nil && o.NamespaceId != nil {
+	if o != nil && !IsNil(o.NamespaceId) {
 		return true
 	}
 
@@ -665,7 +668,7 @@ func (o *ModelsDeployment) SetNamespaceId(v string) {
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetNodeCount() int32 {
-	if o == nil || o.NodeCount == nil {
+	if o == nil || IsNil(o.NodeCount) {
 		var ret int32
 		return ret
 	}
@@ -675,7 +678,7 @@ func (o *ModelsDeployment) GetNodeCount() int32 {
 // GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetNodeCountOk() (*int32, bool) {
-	if o == nil || o.NodeCount == nil {
+	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
 	return o.NodeCount, true
@@ -683,7 +686,7 @@ func (o *ModelsDeployment) GetNodeCountOk() (*int32, bool) {
 
 // HasNodeCount returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasNodeCount() bool {
-	if o != nil && o.NodeCount != nil {
+	if o != nil && !IsNil(o.NodeCount) {
 		return true
 	}
 
@@ -697,7 +700,7 @@ func (o *ModelsDeployment) SetNodeCount(v int32) {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
@@ -707,7 +710,7 @@ func (o *ModelsDeployment) GetProjectId() string {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
 	return o.ProjectId, true
@@ -715,7 +718,7 @@ func (o *ModelsDeployment) GetProjectIdOk() (*string, bool) {
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -729,7 +732,7 @@ func (o *ModelsDeployment) SetProjectId(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetResources() ModelsDeploymentResources {
-	if o == nil || o.Resources == nil {
+	if o == nil || IsNil(o.Resources) {
 		var ret ModelsDeploymentResources
 		return ret
 	}
@@ -739,7 +742,7 @@ func (o *ModelsDeployment) GetResources() ModelsDeploymentResources {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetResourcesOk() (*ModelsDeploymentResources, bool) {
-	if o == nil || o.Resources == nil {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -747,7 +750,7 @@ func (o *ModelsDeployment) GetResourcesOk() (*ModelsDeploymentResources, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasResources() bool {
-	if o != nil && o.Resources != nil {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -761,7 +764,7 @@ func (o *ModelsDeployment) SetResources(v ModelsDeploymentResources) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetServiceType() string {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		var ret string
 		return ret
 	}
@@ -771,7 +774,7 @@ func (o *ModelsDeployment) GetServiceType() string {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetServiceTypeOk() (*string, bool) {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
 	return o.ServiceType, true
@@ -779,7 +782,7 @@ func (o *ModelsDeployment) GetServiceTypeOk() (*string, bool) {
 
 // HasServiceType returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasServiceType() bool {
-	if o != nil && o.ServiceType != nil {
+	if o != nil && !IsNil(o.ServiceType) {
 		return true
 	}
 
@@ -793,7 +796,7 @@ func (o *ModelsDeployment) SetServiceType(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetState() string {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -803,7 +806,7 @@ func (o *ModelsDeployment) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -811,7 +814,7 @@ func (o *ModelsDeployment) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -825,7 +828,7 @@ func (o *ModelsDeployment) SetState(v string) {
 
 // GetStorageOptions returns the StorageOptions field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetStorageOptions() ModelsDeploymentStorageOptions {
-	if o == nil || o.StorageOptions == nil {
+	if o == nil || IsNil(o.StorageOptions) {
 		var ret ModelsDeploymentStorageOptions
 		return ret
 	}
@@ -835,7 +838,7 @@ func (o *ModelsDeployment) GetStorageOptions() ModelsDeploymentStorageOptions {
 // GetStorageOptionsOk returns a tuple with the StorageOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetStorageOptionsOk() (*ModelsDeploymentStorageOptions, bool) {
-	if o == nil || o.StorageOptions == nil {
+	if o == nil || IsNil(o.StorageOptions) {
 		return nil, false
 	}
 	return o.StorageOptions, true
@@ -843,7 +846,7 @@ func (o *ModelsDeployment) GetStorageOptionsOk() (*ModelsDeploymentStorageOption
 
 // HasStorageOptions returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasStorageOptions() bool {
-	if o != nil && o.StorageOptions != nil {
+	if o != nil && !IsNil(o.StorageOptions) {
 		return true
 	}
 
@@ -857,7 +860,7 @@ func (o *ModelsDeployment) SetStorageOptions(v ModelsDeploymentStorageOptions) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetTenantId() string {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -867,7 +870,7 @@ func (o *ModelsDeployment) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetTenantIdOk() (*string, bool) {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
 	return o.TenantId, true
@@ -875,7 +878,7 @@ func (o *ModelsDeployment) GetTenantIdOk() (*string, bool) {
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasTenantId() bool {
-	if o != nil && o.TenantId != nil {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -889,7 +892,7 @@ func (o *ModelsDeployment) SetTenantId(v string) {
 
 // GetTlsEnabled returns the TlsEnabled field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetTlsEnabled() bool {
-	if o == nil || o.TlsEnabled == nil {
+	if o == nil || IsNil(o.TlsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -899,7 +902,7 @@ func (o *ModelsDeployment) GetTlsEnabled() bool {
 // GetTlsEnabledOk returns a tuple with the TlsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetTlsEnabledOk() (*bool, bool) {
-	if o == nil || o.TlsEnabled == nil {
+	if o == nil || IsNil(o.TlsEnabled) {
 		return nil, false
 	}
 	return o.TlsEnabled, true
@@ -907,7 +910,7 @@ func (o *ModelsDeployment) GetTlsEnabledOk() (*bool, bool) {
 
 // HasTlsEnabled returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasTlsEnabled() bool {
-	if o != nil && o.TlsEnabled != nil {
+	if o != nil && !IsNil(o.TlsEnabled) {
 		return true
 	}
 
@@ -921,7 +924,7 @@ func (o *ModelsDeployment) SetTlsEnabled(v bool) {
 
 // GetTlsIssuer returns the TlsIssuer field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetTlsIssuer() string {
-	if o == nil || o.TlsIssuer == nil {
+	if o == nil || IsNil(o.TlsIssuer) {
 		var ret string
 		return ret
 	}
@@ -931,7 +934,7 @@ func (o *ModelsDeployment) GetTlsIssuer() string {
 // GetTlsIssuerOk returns a tuple with the TlsIssuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetTlsIssuerOk() (*string, bool) {
-	if o == nil || o.TlsIssuer == nil {
+	if o == nil || IsNil(o.TlsIssuer) {
 		return nil, false
 	}
 	return o.TlsIssuer, true
@@ -939,7 +942,7 @@ func (o *ModelsDeployment) GetTlsIssuerOk() (*string, bool) {
 
 // HasTlsIssuer returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasTlsIssuer() bool {
-	if o != nil && o.TlsIssuer != nil {
+	if o != nil && !IsNil(o.TlsIssuer) {
 		return true
 	}
 
@@ -953,7 +956,7 @@ func (o *ModelsDeployment) SetTlsIssuer(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -963,7 +966,7 @@ func (o *ModelsDeployment) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -971,7 +974,7 @@ func (o *ModelsDeployment) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -985,7 +988,7 @@ func (o *ModelsDeployment) SetUpdatedAt(v string) {
 
 // GetVersionId returns the VersionId field value if set, zero value otherwise.
 func (o *ModelsDeployment) GetVersionId() string {
-	if o == nil || o.VersionId == nil {
+	if o == nil || IsNil(o.VersionId) {
 		var ret string
 		return ret
 	}
@@ -995,7 +998,7 @@ func (o *ModelsDeployment) GetVersionId() string {
 // GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeployment) GetVersionIdOk() (*string, bool) {
-	if o == nil || o.VersionId == nil {
+	if o == nil || IsNil(o.VersionId) {
 		return nil, false
 	}
 	return o.VersionId, true
@@ -1003,7 +1006,7 @@ func (o *ModelsDeployment) GetVersionIdOk() (*string, bool) {
 
 // HasVersionId returns a boolean if a field has been set.
 func (o *ModelsDeployment) HasVersionId() bool {
-	if o != nil && o.VersionId != nil {
+	if o != nil && !IsNil(o.VersionId) {
 		return true
 	}
 
@@ -1016,95 +1019,103 @@ func (o *ModelsDeployment) SetVersionId(v string) {
 }
 
 func (o ModelsDeployment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.ClusterResourceName != nil {
-		toSerialize["cluster_resource_name"] = o.ClusterResourceName
-	}
-	if o.Configuration != nil {
-		toSerialize["configuration"] = o.Configuration
-	}
-	if o.ConnectionDetails != nil {
-		toSerialize["connection_details"] = o.ConnectionDetails
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.DeploymentManifest != nil {
-		toSerialize["deployment_manifest"] = o.DeploymentManifest
-	}
-	if o.DeploymentTarget != nil {
-		toSerialize["deployment_target"] = o.DeploymentTarget
-	}
-	if o.DeploymentTargetId != nil {
-		toSerialize["deployment_target_id"] = o.DeploymentTargetId
-	}
-	if o.DnsZone != nil {
-		toSerialize["dns_zone"] = o.DnsZone
-	}
-	if o.Error != nil {
-		toSerialize["error"] = o.Error
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ImageId != nil {
-		toSerialize["image_id"] = o.ImageId
-	}
-	if o.Initialize != nil {
-		toSerialize["initialize"] = o.Initialize
-	}
-	if o.LoadBalancerSourceRanges != nil {
-		toSerialize["load_balancer_source_ranges"] = o.LoadBalancerSourceRanges
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Namespace != nil {
-		toSerialize["namespace"] = o.Namespace
-	}
-	if o.NamespaceId != nil {
-		toSerialize["namespace_id"] = o.NamespaceId
-	}
-	if o.NodeCount != nil {
-		toSerialize["node_count"] = o.NodeCount
-	}
-	if o.ProjectId != nil {
-		toSerialize["project_id"] = o.ProjectId
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
-	}
-	if o.ServiceType != nil {
-		toSerialize["service_type"] = o.ServiceType
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
-	}
-	if o.StorageOptions != nil {
-		toSerialize["storage_options"] = o.StorageOptions
-	}
-	if o.TenantId != nil {
-		toSerialize["tenant_id"] = o.TenantId
-	}
-	if o.TlsEnabled != nil {
-		toSerialize["tls_enabled"] = o.TlsEnabled
-	}
-	if o.TlsIssuer != nil {
-		toSerialize["tls_issuer"] = o.TlsIssuer
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.VersionId != nil {
-		toSerialize["version_id"] = o.VersionId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDeployment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if !IsNil(o.ClusterResourceName) {
+		toSerialize["cluster_resource_name"] = o.ClusterResourceName
+	}
+	if !IsNil(o.Configuration) {
+		toSerialize["configuration"] = o.Configuration
+	}
+	if !IsNil(o.ConnectionDetails) {
+		toSerialize["connection_details"] = o.ConnectionDetails
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.DeploymentManifest) {
+		toSerialize["deployment_manifest"] = o.DeploymentManifest
+	}
+	if !IsNil(o.DeploymentTarget) {
+		toSerialize["deployment_target"] = o.DeploymentTarget
+	}
+	if !IsNil(o.DeploymentTargetId) {
+		toSerialize["deployment_target_id"] = o.DeploymentTargetId
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns_zone"] = o.DnsZone
+	}
+	if !IsNil(o.Error) {
+		toSerialize["error"] = o.Error
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ImageId) {
+		toSerialize["image_id"] = o.ImageId
+	}
+	if !IsNil(o.Initialize) {
+		toSerialize["initialize"] = o.Initialize
+	}
+	if !IsNil(o.LoadBalancerSourceRanges) {
+		toSerialize["load_balancer_source_ranges"] = o.LoadBalancerSourceRanges
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.NamespaceId) {
+		toSerialize["namespace_id"] = o.NamespaceId
+	}
+	if !IsNil(o.NodeCount) {
+		toSerialize["node_count"] = o.NodeCount
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !IsNil(o.ServiceType) {
+		toSerialize["service_type"] = o.ServiceType
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.StorageOptions) {
+		toSerialize["storage_options"] = o.StorageOptions
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenant_id"] = o.TenantId
+	}
+	if !IsNil(o.TlsEnabled) {
+		toSerialize["tls_enabled"] = o.TlsEnabled
+	}
+	if !IsNil(o.TlsIssuer) {
+		toSerialize["tls_issuer"] = o.TlsIssuer
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.VersionId) {
+		toSerialize["version_id"] = o.VersionId
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDeployment struct {

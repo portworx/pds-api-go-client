@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -36,7 +36,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
+    r, err := apiClient.TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -97,7 +97,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## ApiTenantsIdRoleBindingsPut
 
-> ModelsLegacyTenantBinding ApiTenantsIdRoleBindingsPut(ctx, id).Body(body).Execute()
+> ModelsTenantRoleBinding ApiTenantsIdRoleBindingsPut(ctx, id).Body(body).Execute()
 
 Create TenantRoleBinding
 
@@ -175,12 +175,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
     id := "id_example" // string | Tenant ID (must be valid UUID)
-    body := *openapiclient.NewRequestsPutLegacyBindingRequest() // RequestsPutLegacyBindingRequest | Request body containing the tenant role binding
+    body := *openapiclient.NewControllersUpsertTenantRoleBindingRequest() // ControllersUpsertTenantRoleBindingRequest | Request body containing the tenant role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -189,7 +189,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTenantsIdRoleBindingsPut`: ModelsLegacyTenantBinding
+    // response from `ApiTenantsIdRoleBindingsPut`: ModelsTenantRoleBinding
     fmt.Fprintf(os.Stdout, "Response from `TenantRoleBindingsApi.ApiTenantsIdRoleBindingsPut`: %v\n", resp)
 }
 ```
@@ -210,11 +210,11 @@ Other parameters are passed through a pointer to a apiApiTenantsIdRoleBindingsPu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**RequestsPutLegacyBindingRequest**](RequestsPutLegacyBindingRequest.md) | Request body containing the tenant role binding | 
+ **body** | [**ControllersUpsertTenantRoleBindingRequest**](ControllersUpsertTenantRoleBindingRequest.md) | Request body containing the tenant role binding | 
 
 ### Return type
 
-[**ModelsLegacyTenantBinding**](ModelsLegacyTenantBinding.md)
+[**ModelsTenantRoleBinding**](ModelsTenantRoleBinding.md)
 
 ### Authorization
 

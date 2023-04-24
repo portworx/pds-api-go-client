@@ -13,15 +13,11 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // RolesApiService RolesApi service
 type RolesApiService service
@@ -30,7 +26,6 @@ type ApiApiRolesGetRequest struct {
 	ctx context.Context
 	ApiService *RolesApiService
 }
-
 
 func (r ApiApiRolesGetRequest) Execute() (*ControllersPaginatedRoles, *http.Response, error) {
 	return r.ApiService.ApiRolesGetExecute(r)
@@ -113,9 +108,9 @@ func (a *RolesApiService) ApiRolesGetExecute(r ApiApiRolesGetRequest) (*Controll
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

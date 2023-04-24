@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAzureCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAzureCredentials{}
+
 // ModelsAzureCredentials struct for ModelsAzureCredentials
 type ModelsAzureCredentials struct {
 	// Access key for the Azure Storage account.
@@ -41,7 +44,7 @@ func NewModelsAzureCredentialsWithDefaults() *ModelsAzureCredentials {
 
 // GetAccountKey returns the AccountKey field value if set, zero value otherwise.
 func (o *ModelsAzureCredentials) GetAccountKey() string {
-	if o == nil || o.AccountKey == nil {
+	if o == nil || IsNil(o.AccountKey) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ModelsAzureCredentials) GetAccountKey() string {
 // GetAccountKeyOk returns a tuple with the AccountKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAzureCredentials) GetAccountKeyOk() (*string, bool) {
-	if o == nil || o.AccountKey == nil {
+	if o == nil || IsNil(o.AccountKey) {
 		return nil, false
 	}
 	return o.AccountKey, true
@@ -59,7 +62,7 @@ func (o *ModelsAzureCredentials) GetAccountKeyOk() (*string, bool) {
 
 // HasAccountKey returns a boolean if a field has been set.
 func (o *ModelsAzureCredentials) HasAccountKey() bool {
-	if o != nil && o.AccountKey != nil {
+	if o != nil && !IsNil(o.AccountKey) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ModelsAzureCredentials) SetAccountKey(v string) {
 
 // GetAccountName returns the AccountName field value if set, zero value otherwise.
 func (o *ModelsAzureCredentials) GetAccountName() string {
-	if o == nil || o.AccountName == nil {
+	if o == nil || IsNil(o.AccountName) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ModelsAzureCredentials) GetAccountName() string {
 // GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAzureCredentials) GetAccountNameOk() (*string, bool) {
-	if o == nil || o.AccountName == nil {
+	if o == nil || IsNil(o.AccountName) {
 		return nil, false
 	}
 	return o.AccountName, true
@@ -91,7 +94,7 @@ func (o *ModelsAzureCredentials) GetAccountNameOk() (*string, bool) {
 
 // HasAccountName returns a boolean if a field has been set.
 func (o *ModelsAzureCredentials) HasAccountName() bool {
-	if o != nil && o.AccountName != nil {
+	if o != nil && !IsNil(o.AccountName) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *ModelsAzureCredentials) SetAccountName(v string) {
 }
 
 func (o ModelsAzureCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountKey != nil {
-		toSerialize["account_key"] = o.AccountKey
-	}
-	if o.AccountName != nil {
-		toSerialize["account_name"] = o.AccountName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAzureCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountKey) {
+		toSerialize["account_key"] = o.AccountKey
+	}
+	if !IsNil(o.AccountName) {
+		toSerialize["account_name"] = o.AccountName
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAzureCredentials struct {

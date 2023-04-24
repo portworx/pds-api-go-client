@@ -13,15 +13,11 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // SampleTemplatesApiService SampleTemplatesApi service
 type SampleTemplatesApiService service
@@ -79,7 +75,7 @@ func (a *SampleTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationG
 	localVarFormParams := url.Values{}
 
 	if r.dataServiceId != nil {
-		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "data_service_id", r.dataServiceId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -122,9 +118,9 @@ func (a *SampleTemplatesApiService) ApiDefaultTemplatesApplicationConfigurationG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -153,7 +149,6 @@ type ApiApiDefaultTemplatesBackupPoliciesGetRequest struct {
 	ctx context.Context
 	ApiService *SampleTemplatesApiService
 }
-
 
 func (r ApiApiDefaultTemplatesBackupPoliciesGetRequest) Execute() (*ControllersBackupPolicySamples, *http.Response, error) {
 	return r.ApiService.ApiDefaultTemplatesBackupPoliciesGetExecute(r)
@@ -236,9 +231,9 @@ func (a *SampleTemplatesApiService) ApiDefaultTemplatesBackupPoliciesGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -316,7 +311,7 @@ func (a *SampleTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecut
 	localVarFormParams := url.Values{}
 
 	if r.dataServiceId != nil {
-		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "data_service_id", r.dataServiceId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -359,9 +354,9 @@ func (a *SampleTemplatesApiService) ApiDefaultTemplatesResourceSettingsGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -390,7 +385,6 @@ type ApiApiDefaultTemplatesStorageOptionsGetRequest struct {
 	ctx context.Context
 	ApiService *SampleTemplatesApiService
 }
-
 
 func (r ApiApiDefaultTemplatesStorageOptionsGetRequest) Execute() (*ControllersStorageOptionsSamples, *http.Response, error) {
 	return r.ApiService.ApiDefaultTemplatesStorageOptionsGetExecute(r)
@@ -473,9 +467,9 @@ func (a *SampleTemplatesApiService) ApiDefaultTemplatesStorageOptionsGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

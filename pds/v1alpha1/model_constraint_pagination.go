@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConstraintPagination type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConstraintPagination{}
+
 // ConstraintPagination struct for ConstraintPagination
 type ConstraintPagination struct {
 	Continuation *string `json:"continuation,omitempty"`
@@ -38,7 +41,7 @@ func NewConstraintPaginationWithDefaults() *ConstraintPagination {
 
 // GetContinuation returns the Continuation field value if set, zero value otherwise.
 func (o *ConstraintPagination) GetContinuation() string {
-	if o == nil || o.Continuation == nil {
+	if o == nil || IsNil(o.Continuation) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ConstraintPagination) GetContinuation() string {
 // GetContinuationOk returns a tuple with the Continuation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConstraintPagination) GetContinuationOk() (*string, bool) {
-	if o == nil || o.Continuation == nil {
+	if o == nil || IsNil(o.Continuation) {
 		return nil, false
 	}
 	return o.Continuation, true
@@ -56,7 +59,7 @@ func (o *ConstraintPagination) GetContinuationOk() (*string, bool) {
 
 // HasContinuation returns a boolean if a field has been set.
 func (o *ConstraintPagination) HasContinuation() bool {
-	if o != nil && o.Continuation != nil {
+	if o != nil && !IsNil(o.Continuation) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ConstraintPagination) SetContinuation(v string) {
 }
 
 func (o ConstraintPagination) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Continuation != nil {
-		toSerialize["continuation"] = o.Continuation
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConstraintPagination) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Continuation) {
+		toSerialize["continuation"] = o.Continuation
+	}
+	return toSerialize, nil
 }
 
 type NullableConstraintPagination struct {

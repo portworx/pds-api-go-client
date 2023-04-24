@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAccountRoleInvitation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAccountRoleInvitation{}
+
 // ModelsAccountRoleInvitation struct for ModelsAccountRoleInvitation
 type ModelsAccountRoleInvitation struct {
 	AccountId *string `json:"account_id,omitempty"`
@@ -47,7 +50,7 @@ func NewModelsAccountRoleInvitationWithDefaults() *ModelsAccountRoleInvitation {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *ModelsAccountRoleInvitation) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -65,7 +68,7 @@ func (o *ModelsAccountRoleInvitation) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *ModelsAccountRoleInvitation) SetAccountId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *ModelsAccountRoleInvitation) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -97,7 +100,7 @@ func (o *ModelsAccountRoleInvitation) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *ModelsAccountRoleInvitation) SetCreatedAt(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *ModelsAccountRoleInvitation) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -129,7 +132,7 @@ func (o *ModelsAccountRoleInvitation) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *ModelsAccountRoleInvitation) SetEmail(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *ModelsAccountRoleInvitation) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -161,7 +164,7 @@ func (o *ModelsAccountRoleInvitation) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *ModelsAccountRoleInvitation) SetId(v string) {
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetIssuer() string {
-	if o == nil || o.Issuer == nil {
+	if o == nil || IsNil(o.Issuer) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *ModelsAccountRoleInvitation) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetIssuerOk() (*string, bool) {
-	if o == nil || o.Issuer == nil {
+	if o == nil || IsNil(o.Issuer) {
 		return nil, false
 	}
 	return o.Issuer, true
@@ -193,7 +196,7 @@ func (o *ModelsAccountRoleInvitation) GetIssuerOk() (*string, bool) {
 
 // HasIssuer returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasIssuer() bool {
-	if o != nil && o.Issuer != nil {
+	if o != nil && !IsNil(o.Issuer) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *ModelsAccountRoleInvitation) SetIssuer(v string) {
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetRoleName() string {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *ModelsAccountRoleInvitation) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetRoleNameOk() (*string, bool) {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
 	return o.RoleName, true
@@ -225,7 +228,7 @@ func (o *ModelsAccountRoleInvitation) GetRoleNameOk() (*string, bool) {
 
 // HasRoleName returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasRoleName() bool {
-	if o != nil && o.RoleName != nil {
+	if o != nil && !IsNil(o.RoleName) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *ModelsAccountRoleInvitation) SetRoleName(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsAccountRoleInvitation) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -249,7 +252,7 @@ func (o *ModelsAccountRoleInvitation) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountRoleInvitation) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -257,7 +260,7 @@ func (o *ModelsAccountRoleInvitation) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsAccountRoleInvitation) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -270,29 +273,37 @@ func (o *ModelsAccountRoleInvitation) SetUpdatedAt(v string) {
 }
 
 func (o ModelsAccountRoleInvitation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Issuer != nil {
-		toSerialize["issuer"] = o.Issuer
-	}
-	if o.RoleName != nil {
-		toSerialize["role_name"] = o.RoleName
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAccountRoleInvitation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Issuer) {
+		toSerialize["issuer"] = o.Issuer
+	}
+	if !IsNil(o.RoleName) {
+		toSerialize["role_name"] = o.RoleName
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAccountRoleInvitation struct {

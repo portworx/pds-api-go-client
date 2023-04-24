@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDeploymentResources type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDeploymentResources{}
+
 // ModelsDeploymentResources struct for ModelsDeploymentResources
 type ModelsDeploymentResources struct {
 	CpuLimit *string `json:"cpu_limit,omitempty"`
@@ -42,7 +45,7 @@ func NewModelsDeploymentResourcesWithDefaults() *ModelsDeploymentResources {
 
 // GetCpuLimit returns the CpuLimit field value if set, zero value otherwise.
 func (o *ModelsDeploymentResources) GetCpuLimit() string {
-	if o == nil || o.CpuLimit == nil {
+	if o == nil || IsNil(o.CpuLimit) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ModelsDeploymentResources) GetCpuLimit() string {
 // GetCpuLimitOk returns a tuple with the CpuLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentResources) GetCpuLimitOk() (*string, bool) {
-	if o == nil || o.CpuLimit == nil {
+	if o == nil || IsNil(o.CpuLimit) {
 		return nil, false
 	}
 	return o.CpuLimit, true
@@ -60,7 +63,7 @@ func (o *ModelsDeploymentResources) GetCpuLimitOk() (*string, bool) {
 
 // HasCpuLimit returns a boolean if a field has been set.
 func (o *ModelsDeploymentResources) HasCpuLimit() bool {
-	if o != nil && o.CpuLimit != nil {
+	if o != nil && !IsNil(o.CpuLimit) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ModelsDeploymentResources) SetCpuLimit(v string) {
 
 // GetCpuRequest returns the CpuRequest field value if set, zero value otherwise.
 func (o *ModelsDeploymentResources) GetCpuRequest() string {
-	if o == nil || o.CpuRequest == nil {
+	if o == nil || IsNil(o.CpuRequest) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ModelsDeploymentResources) GetCpuRequest() string {
 // GetCpuRequestOk returns a tuple with the CpuRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentResources) GetCpuRequestOk() (*string, bool) {
-	if o == nil || o.CpuRequest == nil {
+	if o == nil || IsNil(o.CpuRequest) {
 		return nil, false
 	}
 	return o.CpuRequest, true
@@ -92,7 +95,7 @@ func (o *ModelsDeploymentResources) GetCpuRequestOk() (*string, bool) {
 
 // HasCpuRequest returns a boolean if a field has been set.
 func (o *ModelsDeploymentResources) HasCpuRequest() bool {
-	if o != nil && o.CpuRequest != nil {
+	if o != nil && !IsNil(o.CpuRequest) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ModelsDeploymentResources) SetCpuRequest(v string) {
 
 // GetMemoryLimit returns the MemoryLimit field value if set, zero value otherwise.
 func (o *ModelsDeploymentResources) GetMemoryLimit() string {
-	if o == nil || o.MemoryLimit == nil {
+	if o == nil || IsNil(o.MemoryLimit) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ModelsDeploymentResources) GetMemoryLimit() string {
 // GetMemoryLimitOk returns a tuple with the MemoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentResources) GetMemoryLimitOk() (*string, bool) {
-	if o == nil || o.MemoryLimit == nil {
+	if o == nil || IsNil(o.MemoryLimit) {
 		return nil, false
 	}
 	return o.MemoryLimit, true
@@ -124,7 +127,7 @@ func (o *ModelsDeploymentResources) GetMemoryLimitOk() (*string, bool) {
 
 // HasMemoryLimit returns a boolean if a field has been set.
 func (o *ModelsDeploymentResources) HasMemoryLimit() bool {
-	if o != nil && o.MemoryLimit != nil {
+	if o != nil && !IsNil(o.MemoryLimit) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ModelsDeploymentResources) SetMemoryLimit(v string) {
 
 // GetMemoryRequest returns the MemoryRequest field value if set, zero value otherwise.
 func (o *ModelsDeploymentResources) GetMemoryRequest() string {
-	if o == nil || o.MemoryRequest == nil {
+	if o == nil || IsNil(o.MemoryRequest) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ModelsDeploymentResources) GetMemoryRequest() string {
 // GetMemoryRequestOk returns a tuple with the MemoryRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentResources) GetMemoryRequestOk() (*string, bool) {
-	if o == nil || o.MemoryRequest == nil {
+	if o == nil || IsNil(o.MemoryRequest) {
 		return nil, false
 	}
 	return o.MemoryRequest, true
@@ -156,7 +159,7 @@ func (o *ModelsDeploymentResources) GetMemoryRequestOk() (*string, bool) {
 
 // HasMemoryRequest returns a boolean if a field has been set.
 func (o *ModelsDeploymentResources) HasMemoryRequest() bool {
-	if o != nil && o.MemoryRequest != nil {
+	if o != nil && !IsNil(o.MemoryRequest) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *ModelsDeploymentResources) SetMemoryRequest(v string) {
 
 // GetStorageRequest returns the StorageRequest field value if set, zero value otherwise.
 func (o *ModelsDeploymentResources) GetStorageRequest() string {
-	if o == nil || o.StorageRequest == nil {
+	if o == nil || IsNil(o.StorageRequest) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ModelsDeploymentResources) GetStorageRequest() string {
 // GetStorageRequestOk returns a tuple with the StorageRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentResources) GetStorageRequestOk() (*string, bool) {
-	if o == nil || o.StorageRequest == nil {
+	if o == nil || IsNil(o.StorageRequest) {
 		return nil, false
 	}
 	return o.StorageRequest, true
@@ -188,7 +191,7 @@ func (o *ModelsDeploymentResources) GetStorageRequestOk() (*string, bool) {
 
 // HasStorageRequest returns a boolean if a field has been set.
 func (o *ModelsDeploymentResources) HasStorageRequest() bool {
-	if o != nil && o.StorageRequest != nil {
+	if o != nil && !IsNil(o.StorageRequest) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *ModelsDeploymentResources) SetStorageRequest(v string) {
 }
 
 func (o ModelsDeploymentResources) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CpuLimit != nil {
-		toSerialize["cpu_limit"] = o.CpuLimit
-	}
-	if o.CpuRequest != nil {
-		toSerialize["cpu_request"] = o.CpuRequest
-	}
-	if o.MemoryLimit != nil {
-		toSerialize["memory_limit"] = o.MemoryLimit
-	}
-	if o.MemoryRequest != nil {
-		toSerialize["memory_request"] = o.MemoryRequest
-	}
-	if o.StorageRequest != nil {
-		toSerialize["storage_request"] = o.StorageRequest
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDeploymentResources) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CpuLimit) {
+		toSerialize["cpu_limit"] = o.CpuLimit
+	}
+	if !IsNil(o.CpuRequest) {
+		toSerialize["cpu_request"] = o.CpuRequest
+	}
+	if !IsNil(o.MemoryLimit) {
+		toSerialize["memory_limit"] = o.MemoryLimit
+	}
+	if !IsNil(o.MemoryRequest) {
+		toSerialize["memory_request"] = o.MemoryRequest
+	}
+	if !IsNil(o.StorageRequest) {
+		toSerialize["storage_request"] = o.StorageRequest
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDeploymentResources struct {

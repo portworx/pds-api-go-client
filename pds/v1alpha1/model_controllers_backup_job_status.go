@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersBackupJobStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersBackupJobStatus{}
+
 // ControllersBackupJobStatus struct for ControllersBackupJobStatus
 type ControllersBackupJobStatus struct {
 	CompletionTime *string `json:"completion_time,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersBackupJobStatusWithDefaults() *ControllersBackupJobStatus {
 
 // GetCompletionTime returns the CompletionTime field value if set, zero value otherwise.
 func (o *ControllersBackupJobStatus) GetCompletionTime() string {
-	if o == nil || o.CompletionTime == nil {
+	if o == nil || IsNil(o.CompletionTime) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersBackupJobStatus) GetCompletionTime() string {
 // GetCompletionTimeOk returns a tuple with the CompletionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersBackupJobStatus) GetCompletionTimeOk() (*string, bool) {
-	if o == nil || o.CompletionTime == nil {
+	if o == nil || IsNil(o.CompletionTime) {
 		return nil, false
 	}
 	return o.CompletionTime, true
@@ -59,7 +62,7 @@ func (o *ControllersBackupJobStatus) GetCompletionTimeOk() (*string, bool) {
 
 // HasCompletionTime returns a boolean if a field has been set.
 func (o *ControllersBackupJobStatus) HasCompletionTime() bool {
-	if o != nil && o.CompletionTime != nil {
+	if o != nil && !IsNil(o.CompletionTime) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersBackupJobStatus) SetCompletionTime(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersBackupJobStatus) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersBackupJobStatus) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersBackupJobStatus) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *ControllersBackupJobStatus) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersBackupJobStatus) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersBackupJobStatus) SetName(v string) {
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
 func (o *ControllersBackupJobStatus) GetStartTime() string {
-	if o == nil || o.StartTime == nil {
+	if o == nil || IsNil(o.StartTime) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersBackupJobStatus) GetStartTime() string {
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersBackupJobStatus) GetStartTimeOk() (*string, bool) {
-	if o == nil || o.StartTime == nil {
+	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
 	return o.StartTime, true
@@ -123,7 +126,7 @@ func (o *ControllersBackupJobStatus) GetStartTimeOk() (*string, bool) {
 
 // HasStartTime returns a boolean if a field has been set.
 func (o *ControllersBackupJobStatus) HasStartTime() bool {
-	if o != nil && o.StartTime != nil {
+	if o != nil && !IsNil(o.StartTime) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ControllersBackupJobStatus) SetStartTime(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ControllersBackupJobStatus) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ControllersBackupJobStatus) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersBackupJobStatus) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -155,7 +158,7 @@ func (o *ControllersBackupJobStatus) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ControllersBackupJobStatus) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ControllersBackupJobStatus) SetStatus(v string) {
 }
 
 func (o ControllersBackupJobStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CompletionTime != nil {
-		toSerialize["completion_time"] = o.CompletionTime
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.StartTime != nil {
-		toSerialize["start_time"] = o.StartTime
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersBackupJobStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CompletionTime) {
+		toSerialize["completion_time"] = o.CompletionTime
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.StartTime) {
+		toSerialize["start_time"] = o.StartTime
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersBackupJobStatus struct {

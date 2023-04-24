@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateDeploymentRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateDeploymentRequest{}
+
 // ControllersUpdateDeploymentRequest struct for ControllersUpdateDeploymentRequest
 type ControllersUpdateDeploymentRequest struct {
 	ApplicationConfigurationOverrides *map[string]string `json:"application_configuration_overrides,omitempty"`
@@ -44,7 +47,7 @@ func NewControllersUpdateDeploymentRequestWithDefaults() *ControllersUpdateDeplo
 
 // GetApplicationConfigurationOverrides returns the ApplicationConfigurationOverrides field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverrides() map[string]string {
-	if o == nil || o.ApplicationConfigurationOverrides == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationOverrides) {
 		var ret map[string]string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverride
 // GetApplicationConfigurationOverridesOk returns a tuple with the ApplicationConfigurationOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverridesOk() (*map[string]string, bool) {
-	if o == nil || o.ApplicationConfigurationOverrides == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationOverrides) {
 		return nil, false
 	}
 	return o.ApplicationConfigurationOverrides, true
@@ -62,7 +65,7 @@ func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationOverride
 
 // HasApplicationConfigurationOverrides returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentRequest) HasApplicationConfigurationOverrides() bool {
-	if o != nil && o.ApplicationConfigurationOverrides != nil {
+	if o != nil && !IsNil(o.ApplicationConfigurationOverrides) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ControllersUpdateDeploymentRequest) SetApplicationConfigurationOverride
 
 // GetApplicationConfigurationTemplateId returns the ApplicationConfigurationTemplateId field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplateId() string {
-	if o == nil || o.ApplicationConfigurationTemplateId == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationTemplateId) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplate
 // GetApplicationConfigurationTemplateIdOk returns a tuple with the ApplicationConfigurationTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplateIdOk() (*string, bool) {
-	if o == nil || o.ApplicationConfigurationTemplateId == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationTemplateId) {
 		return nil, false
 	}
 	return o.ApplicationConfigurationTemplateId, true
@@ -94,7 +97,7 @@ func (o *ControllersUpdateDeploymentRequest) GetApplicationConfigurationTemplate
 
 // HasApplicationConfigurationTemplateId returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentRequest) HasApplicationConfigurationTemplateId() bool {
-	if o != nil && o.ApplicationConfigurationTemplateId != nil {
+	if o != nil && !IsNil(o.ApplicationConfigurationTemplateId) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ControllersUpdateDeploymentRequest) SetApplicationConfigurationTemplate
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentRequest) GetImageId() string {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ControllersUpdateDeploymentRequest) GetImageId() string {
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentRequest) GetImageIdOk() (*string, bool) {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
 	return o.ImageId, true
@@ -126,7 +129,7 @@ func (o *ControllersUpdateDeploymentRequest) GetImageIdOk() (*string, bool) {
 
 // HasImageId returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentRequest) HasImageId() bool {
-	if o != nil && o.ImageId != nil {
+	if o != nil && !IsNil(o.ImageId) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ControllersUpdateDeploymentRequest) SetImageId(v string) {
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentRequest) GetNodeCount() int32 {
-	if o == nil || o.NodeCount == nil {
+	if o == nil || IsNil(o.NodeCount) {
 		var ret int32
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ControllersUpdateDeploymentRequest) GetNodeCount() int32 {
 // GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentRequest) GetNodeCountOk() (*int32, bool) {
-	if o == nil || o.NodeCount == nil {
+	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
 	return o.NodeCount, true
@@ -158,7 +161,7 @@ func (o *ControllersUpdateDeploymentRequest) GetNodeCountOk() (*int32, bool) {
 
 // HasNodeCount returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentRequest) HasNodeCount() bool {
-	if o != nil && o.NodeCount != nil {
+	if o != nil && !IsNil(o.NodeCount) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ControllersUpdateDeploymentRequest) SetNodeCount(v int32) {
 
 // GetResourceSettingsTemplateId returns the ResourceSettingsTemplateId field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateId() string {
-	if o == nil || o.ResourceSettingsTemplateId == nil {
+	if o == nil || IsNil(o.ResourceSettingsTemplateId) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateId() str
 // GetResourceSettingsTemplateIdOk returns a tuple with the ResourceSettingsTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateIdOk() (*string, bool) {
-	if o == nil || o.ResourceSettingsTemplateId == nil {
+	if o == nil || IsNil(o.ResourceSettingsTemplateId) {
 		return nil, false
 	}
 	return o.ResourceSettingsTemplateId, true
@@ -190,7 +193,7 @@ func (o *ControllersUpdateDeploymentRequest) GetResourceSettingsTemplateIdOk() (
 
 // HasResourceSettingsTemplateId returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentRequest) HasResourceSettingsTemplateId() bool {
-	if o != nil && o.ResourceSettingsTemplateId != nil {
+	if o != nil && !IsNil(o.ResourceSettingsTemplateId) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ControllersUpdateDeploymentRequest) SetResourceSettingsTemplateId(v str
 
 // GetScheduledBackup returns the ScheduledBackup field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentRequest) GetScheduledBackup() ControllersUpdateDeploymentScheduledBackup {
-	if o == nil || o.ScheduledBackup == nil {
+	if o == nil || IsNil(o.ScheduledBackup) {
 		var ret ControllersUpdateDeploymentScheduledBackup
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ControllersUpdateDeploymentRequest) GetScheduledBackup() ControllersUpd
 // GetScheduledBackupOk returns a tuple with the ScheduledBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentRequest) GetScheduledBackupOk() (*ControllersUpdateDeploymentScheduledBackup, bool) {
-	if o == nil || o.ScheduledBackup == nil {
+	if o == nil || IsNil(o.ScheduledBackup) {
 		return nil, false
 	}
 	return o.ScheduledBackup, true
@@ -222,7 +225,7 @@ func (o *ControllersUpdateDeploymentRequest) GetScheduledBackupOk() (*Controller
 
 // HasScheduledBackup returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentRequest) HasScheduledBackup() bool {
-	if o != nil && o.ScheduledBackup != nil {
+	if o != nil && !IsNil(o.ScheduledBackup) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *ControllersUpdateDeploymentRequest) SetScheduledBackup(v ControllersUpd
 }
 
 func (o ControllersUpdateDeploymentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApplicationConfigurationOverrides != nil {
-		toSerialize["application_configuration_overrides"] = o.ApplicationConfigurationOverrides
-	}
-	if o.ApplicationConfigurationTemplateId != nil {
-		toSerialize["application_configuration_template_id"] = o.ApplicationConfigurationTemplateId
-	}
-	if o.ImageId != nil {
-		toSerialize["image_id"] = o.ImageId
-	}
-	if o.NodeCount != nil {
-		toSerialize["node_count"] = o.NodeCount
-	}
-	if o.ResourceSettingsTemplateId != nil {
-		toSerialize["resource_settings_template_id"] = o.ResourceSettingsTemplateId
-	}
-	if o.ScheduledBackup != nil {
-		toSerialize["scheduled_backup"] = o.ScheduledBackup
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateDeploymentRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApplicationConfigurationOverrides) {
+		toSerialize["application_configuration_overrides"] = o.ApplicationConfigurationOverrides
+	}
+	if !IsNil(o.ApplicationConfigurationTemplateId) {
+		toSerialize["application_configuration_template_id"] = o.ApplicationConfigurationTemplateId
+	}
+	if !IsNil(o.ImageId) {
+		toSerialize["image_id"] = o.ImageId
+	}
+	if !IsNil(o.NodeCount) {
+		toSerialize["node_count"] = o.NodeCount
+	}
+	if !IsNil(o.ResourceSettingsTemplateId) {
+		toSerialize["resource_settings_template_id"] = o.ResourceSettingsTemplateId
+	}
+	if !IsNil(o.ScheduledBackup) {
+		toSerialize["scheduled_backup"] = o.ScheduledBackup
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateDeploymentRequest struct {

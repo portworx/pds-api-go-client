@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsPaginatedResultModelsAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsPaginatedResultModelsAccount{}
+
 // ModelsPaginatedResultModelsAccount struct for ModelsPaginatedResultModelsAccount
 type ModelsPaginatedResultModelsAccount struct {
 	Data []ModelsAccount `json:"data,omitempty"`
@@ -39,7 +42,7 @@ func NewModelsPaginatedResultModelsAccountWithDefaults() *ModelsPaginatedResultM
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *ModelsPaginatedResultModelsAccount) GetData() []ModelsAccount {
-	if o == nil || o.Data == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []ModelsAccount
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ModelsPaginatedResultModelsAccount) GetData() []ModelsAccount {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsPaginatedResultModelsAccount) GetDataOk() ([]ModelsAccount, bool) {
-	if o == nil || o.Data == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -57,7 +60,7 @@ func (o *ModelsPaginatedResultModelsAccount) GetDataOk() ([]ModelsAccount, bool)
 
 // HasData returns a boolean if a field has been set.
 func (o *ModelsPaginatedResultModelsAccount) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ModelsPaginatedResultModelsAccount) SetData(v []ModelsAccount) {
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *ModelsPaginatedResultModelsAccount) GetPagination() ConstraintPagination {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		var ret ConstraintPagination
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ModelsPaginatedResultModelsAccount) GetPagination() ConstraintPaginatio
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsPaginatedResultModelsAccount) GetPaginationOk() (*ConstraintPagination, bool) {
-	if o == nil || o.Pagination == nil {
+	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
 	return o.Pagination, true
@@ -89,7 +92,7 @@ func (o *ModelsPaginatedResultModelsAccount) GetPaginationOk() (*ConstraintPagin
 
 // HasPagination returns a boolean if a field has been set.
 func (o *ModelsPaginatedResultModelsAccount) HasPagination() bool {
-	if o != nil && o.Pagination != nil {
+	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ModelsPaginatedResultModelsAccount) SetPagination(v ConstraintPaginatio
 }
 
 func (o ModelsPaginatedResultModelsAccount) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
-	}
-	if o.Pagination != nil {
-		toSerialize["pagination"] = o.Pagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsPaginatedResultModelsAccount) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	if !IsNil(o.Pagination) {
+		toSerialize["pagination"] = o.Pagination
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsPaginatedResultModelsAccount struct {

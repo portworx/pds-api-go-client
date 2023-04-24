@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAccountGlobalConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAccountGlobalConfig{}
+
 // ModelsAccountGlobalConfig struct for ModelsAccountGlobalConfig
 type ModelsAccountGlobalConfig struct {
 	// Specify if the TLS Preview feature should be enabled for this account.
@@ -43,7 +46,7 @@ func NewModelsAccountGlobalConfigWithDefaults() *ModelsAccountGlobalConfig {
 
 // GetTlsPreviewEnabled returns the TlsPreviewEnabled field value if set, zero value otherwise.
 func (o *ModelsAccountGlobalConfig) GetTlsPreviewEnabled() string {
-	if o == nil || o.TlsPreviewEnabled == nil {
+	if o == nil || IsNil(o.TlsPreviewEnabled) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ModelsAccountGlobalConfig) GetTlsPreviewEnabled() string {
 // GetTlsPreviewEnabledOk returns a tuple with the TlsPreviewEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountGlobalConfig) GetTlsPreviewEnabledOk() (*string, bool) {
-	if o == nil || o.TlsPreviewEnabled == nil {
+	if o == nil || IsNil(o.TlsPreviewEnabled) {
 		return nil, false
 	}
 	return o.TlsPreviewEnabled, true
@@ -61,7 +64,7 @@ func (o *ModelsAccountGlobalConfig) GetTlsPreviewEnabledOk() (*string, bool) {
 
 // HasTlsPreviewEnabled returns a boolean if a field has been set.
 func (o *ModelsAccountGlobalConfig) HasTlsPreviewEnabled() bool {
-	if o != nil && o.TlsPreviewEnabled != nil {
+	if o != nil && !IsNil(o.TlsPreviewEnabled) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ModelsAccountGlobalConfig) SetTlsPreviewEnabled(v string) {
 
 // GetVersionAvailability returns the VersionAvailability field value if set, zero value otherwise.
 func (o *ModelsAccountGlobalConfig) GetVersionAvailability() string {
-	if o == nil || o.VersionAvailability == nil {
+	if o == nil || IsNil(o.VersionAvailability) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ModelsAccountGlobalConfig) GetVersionAvailability() string {
 // GetVersionAvailabilityOk returns a tuple with the VersionAvailability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountGlobalConfig) GetVersionAvailabilityOk() (*string, bool) {
-	if o == nil || o.VersionAvailability == nil {
+	if o == nil || IsNil(o.VersionAvailability) {
 		return nil, false
 	}
 	return o.VersionAvailability, true
@@ -93,7 +96,7 @@ func (o *ModelsAccountGlobalConfig) GetVersionAvailabilityOk() (*string, bool) {
 
 // HasVersionAvailability returns a boolean if a field has been set.
 func (o *ModelsAccountGlobalConfig) HasVersionAvailability() bool {
-	if o != nil && o.VersionAvailability != nil {
+	if o != nil && !IsNil(o.VersionAvailability) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ModelsAccountGlobalConfig) SetVersionAvailability(v string) {
 
 // GetVersionUpdatability returns the VersionUpdatability field value if set, zero value otherwise.
 func (o *ModelsAccountGlobalConfig) GetVersionUpdatability() string {
-	if o == nil || o.VersionUpdatability == nil {
+	if o == nil || IsNil(o.VersionUpdatability) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ModelsAccountGlobalConfig) GetVersionUpdatability() string {
 // GetVersionUpdatabilityOk returns a tuple with the VersionUpdatability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccountGlobalConfig) GetVersionUpdatabilityOk() (*string, bool) {
-	if o == nil || o.VersionUpdatability == nil {
+	if o == nil || IsNil(o.VersionUpdatability) {
 		return nil, false
 	}
 	return o.VersionUpdatability, true
@@ -125,7 +128,7 @@ func (o *ModelsAccountGlobalConfig) GetVersionUpdatabilityOk() (*string, bool) {
 
 // HasVersionUpdatability returns a boolean if a field has been set.
 func (o *ModelsAccountGlobalConfig) HasVersionUpdatability() bool {
-	if o != nil && o.VersionUpdatability != nil {
+	if o != nil && !IsNil(o.VersionUpdatability) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *ModelsAccountGlobalConfig) SetVersionUpdatability(v string) {
 }
 
 func (o ModelsAccountGlobalConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TlsPreviewEnabled != nil {
-		toSerialize["tls_preview_enabled"] = o.TlsPreviewEnabled
-	}
-	if o.VersionAvailability != nil {
-		toSerialize["version_availability"] = o.VersionAvailability
-	}
-	if o.VersionUpdatability != nil {
-		toSerialize["version_updatability"] = o.VersionUpdatability
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAccountGlobalConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TlsPreviewEnabled) {
+		toSerialize["tls_preview_enabled"] = o.TlsPreviewEnabled
+	}
+	if !IsNil(o.VersionAvailability) {
+		toSerialize["version_availability"] = o.VersionAvailability
+	}
+	if !IsNil(o.VersionUpdatability) {
+		toSerialize["version_updatability"] = o.VersionUpdatability
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAccountGlobalConfig struct {

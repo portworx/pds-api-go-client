@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDeploymentTargetMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDeploymentTargetMetadata{}
+
 // ModelsDeploymentTargetMetadata struct for ModelsDeploymentTargetMetadata
 type ModelsDeploymentTargetMetadata struct {
 	KubeApiVersion *string `json:"kube_api_version,omitempty"`
@@ -46,7 +49,7 @@ func NewModelsDeploymentTargetMetadataWithDefaults() *ModelsDeploymentTargetMeta
 
 // GetKubeApiVersion returns the KubeApiVersion field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersion() string {
-	if o == nil || o.KubeApiVersion == nil {
+	if o == nil || IsNil(o.KubeApiVersion) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersion() string {
 // GetKubeApiVersionOk returns a tuple with the KubeApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersionOk() (*string, bool) {
-	if o == nil || o.KubeApiVersion == nil {
+	if o == nil || IsNil(o.KubeApiVersion) {
 		return nil, false
 	}
 	return o.KubeApiVersion, true
@@ -64,7 +67,7 @@ func (o *ModelsDeploymentTargetMetadata) GetKubeApiVersionOk() (*string, bool) {
 
 // HasKubeApiVersion returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasKubeApiVersion() bool {
-	if o != nil && o.KubeApiVersion != nil {
+	if o != nil && !IsNil(o.KubeApiVersion) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *ModelsDeploymentTargetMetadata) SetKubeApiVersion(v string) {
 
 // GetKubePlatform returns the KubePlatform field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetKubePlatform() string {
-	if o == nil || o.KubePlatform == nil {
+	if o == nil || IsNil(o.KubePlatform) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *ModelsDeploymentTargetMetadata) GetKubePlatform() string {
 // GetKubePlatformOk returns a tuple with the KubePlatform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetKubePlatformOk() (*string, bool) {
-	if o == nil || o.KubePlatform == nil {
+	if o == nil || IsNil(o.KubePlatform) {
 		return nil, false
 	}
 	return o.KubePlatform, true
@@ -96,7 +99,7 @@ func (o *ModelsDeploymentTargetMetadata) GetKubePlatformOk() (*string, bool) {
 
 // HasKubePlatform returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasKubePlatform() bool {
-	if o != nil && o.KubePlatform != nil {
+	if o != nil && !IsNil(o.KubePlatform) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *ModelsDeploymentTargetMetadata) SetKubePlatform(v string) {
 
 // GetPdsChartVersion returns the PdsChartVersion field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPdsChartVersion() string {
-	if o == nil || o.PdsChartVersion == nil {
+	if o == nil || IsNil(o.PdsChartVersion) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPdsChartVersion() string {
 // GetPdsChartVersionOk returns a tuple with the PdsChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPdsChartVersionOk() (*string, bool) {
-	if o == nil || o.PdsChartVersion == nil {
+	if o == nil || IsNil(o.PdsChartVersion) {
 		return nil, false
 	}
 	return o.PdsChartVersion, true
@@ -128,7 +131,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPdsChartVersionOk() (*string, bool) 
 
 // HasPdsChartVersion returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPdsChartVersion() bool {
-	if o != nil && o.PdsChartVersion != nil {
+	if o != nil && !IsNil(o.PdsChartVersion) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *ModelsDeploymentTargetMetadata) SetPdsChartVersion(v string) {
 
 // GetPdsFeatures returns the PdsFeatures field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPdsFeatures() string {
-	if o == nil || o.PdsFeatures == nil {
+	if o == nil || IsNil(o.PdsFeatures) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPdsFeatures() string {
 // GetPdsFeaturesOk returns a tuple with the PdsFeatures field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPdsFeaturesOk() (*string, bool) {
-	if o == nil || o.PdsFeatures == nil {
+	if o == nil || IsNil(o.PdsFeatures) {
 		return nil, false
 	}
 	return o.PdsFeatures, true
@@ -160,7 +163,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPdsFeaturesOk() (*string, bool) {
 
 // HasPdsFeatures returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPdsFeatures() bool {
-	if o != nil && o.PdsFeatures != nil {
+	if o != nil && !IsNil(o.PdsFeatures) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *ModelsDeploymentTargetMetadata) SetPdsFeatures(v string) {
 
 // GetPdsOperatorVersion returns the PdsOperatorVersion field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPdsOperatorVersion() string {
-	if o == nil || o.PdsOperatorVersion == nil {
+	if o == nil || IsNil(o.PdsOperatorVersion) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPdsOperatorVersion() string {
 // GetPdsOperatorVersionOk returns a tuple with the PdsOperatorVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPdsOperatorVersionOk() (*string, bool) {
-	if o == nil || o.PdsOperatorVersion == nil {
+	if o == nil || IsNil(o.PdsOperatorVersion) {
 		return nil, false
 	}
 	return o.PdsOperatorVersion, true
@@ -192,7 +195,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPdsOperatorVersionOk() (*string, boo
 
 // HasPdsOperatorVersion returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPdsOperatorVersion() bool {
-	if o != nil && o.PdsOperatorVersion != nil {
+	if o != nil && !IsNil(o.PdsOperatorVersion) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *ModelsDeploymentTargetMetadata) SetPdsOperatorVersion(v string) {
 
 // GetPxCsiEnabled returns the PxCsiEnabled field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPxCsiEnabled() string {
-	if o == nil || o.PxCsiEnabled == nil {
+	if o == nil || IsNil(o.PxCsiEnabled) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxCsiEnabled() string {
 // GetPxCsiEnabledOk returns a tuple with the PxCsiEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPxCsiEnabledOk() (*string, bool) {
-	if o == nil || o.PxCsiEnabled == nil {
+	if o == nil || IsNil(o.PxCsiEnabled) {
 		return nil, false
 	}
 	return o.PxCsiEnabled, true
@@ -224,7 +227,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxCsiEnabledOk() (*string, bool) {
 
 // HasPxCsiEnabled returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPxCsiEnabled() bool {
-	if o != nil && o.PxCsiEnabled != nil {
+	if o != nil && !IsNil(o.PxCsiEnabled) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *ModelsDeploymentTargetMetadata) SetPxCsiEnabled(v string) {
 
 // GetPxServiceNamespace returns the PxServiceNamespace field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPxServiceNamespace() string {
-	if o == nil || o.PxServiceNamespace == nil {
+	if o == nil || IsNil(o.PxServiceNamespace) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxServiceNamespace() string {
 // GetPxServiceNamespaceOk returns a tuple with the PxServiceNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPxServiceNamespaceOk() (*string, bool) {
-	if o == nil || o.PxServiceNamespace == nil {
+	if o == nil || IsNil(o.PxServiceNamespace) {
 		return nil, false
 	}
 	return o.PxServiceNamespace, true
@@ -256,7 +259,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxServiceNamespaceOk() (*string, boo
 
 // HasPxServiceNamespace returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPxServiceNamespace() bool {
-	if o != nil && o.PxServiceNamespace != nil {
+	if o != nil && !IsNil(o.PxServiceNamespace) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *ModelsDeploymentTargetMetadata) SetPxServiceNamespace(v string) {
 
 // GetPxStatus returns the PxStatus field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPxStatus() string {
-	if o == nil || o.PxStatus == nil {
+	if o == nil || IsNil(o.PxStatus) {
 		var ret string
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxStatus() string {
 // GetPxStatusOk returns a tuple with the PxStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPxStatusOk() (*string, bool) {
-	if o == nil || o.PxStatus == nil {
+	if o == nil || IsNil(o.PxStatus) {
 		return nil, false
 	}
 	return o.PxStatus, true
@@ -288,7 +291,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxStatusOk() (*string, bool) {
 
 // HasPxStatus returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPxStatus() bool {
-	if o != nil && o.PxStatus != nil {
+	if o != nil && !IsNil(o.PxStatus) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *ModelsDeploymentTargetMetadata) SetPxStatus(v string) {
 
 // GetPxVersion returns the PxVersion field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetMetadata) GetPxVersion() string {
-	if o == nil || o.PxVersion == nil {
+	if o == nil || IsNil(o.PxVersion) {
 		var ret string
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxVersion() string {
 // GetPxVersionOk returns a tuple with the PxVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDeploymentTargetMetadata) GetPxVersionOk() (*string, bool) {
-	if o == nil || o.PxVersion == nil {
+	if o == nil || IsNil(o.PxVersion) {
 		return nil, false
 	}
 	return o.PxVersion, true
@@ -320,7 +323,7 @@ func (o *ModelsDeploymentTargetMetadata) GetPxVersionOk() (*string, bool) {
 
 // HasPxVersion returns a boolean if a field has been set.
 func (o *ModelsDeploymentTargetMetadata) HasPxVersion() bool {
-	if o != nil && o.PxVersion != nil {
+	if o != nil && !IsNil(o.PxVersion) {
 		return true
 	}
 
@@ -333,35 +336,43 @@ func (o *ModelsDeploymentTargetMetadata) SetPxVersion(v string) {
 }
 
 func (o ModelsDeploymentTargetMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.KubeApiVersion != nil {
-		toSerialize["kube_api_version"] = o.KubeApiVersion
-	}
-	if o.KubePlatform != nil {
-		toSerialize["kube_platform"] = o.KubePlatform
-	}
-	if o.PdsChartVersion != nil {
-		toSerialize["pds_chart_version"] = o.PdsChartVersion
-	}
-	if o.PdsFeatures != nil {
-		toSerialize["pds_features"] = o.PdsFeatures
-	}
-	if o.PdsOperatorVersion != nil {
-		toSerialize["pds_operator_version"] = o.PdsOperatorVersion
-	}
-	if o.PxCsiEnabled != nil {
-		toSerialize["px_csi_enabled"] = o.PxCsiEnabled
-	}
-	if o.PxServiceNamespace != nil {
-		toSerialize["px_service_namespace"] = o.PxServiceNamespace
-	}
-	if o.PxStatus != nil {
-		toSerialize["px_status"] = o.PxStatus
-	}
-	if o.PxVersion != nil {
-		toSerialize["px_version"] = o.PxVersion
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDeploymentTargetMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.KubeApiVersion) {
+		toSerialize["kube_api_version"] = o.KubeApiVersion
+	}
+	if !IsNil(o.KubePlatform) {
+		toSerialize["kube_platform"] = o.KubePlatform
+	}
+	if !IsNil(o.PdsChartVersion) {
+		toSerialize["pds_chart_version"] = o.PdsChartVersion
+	}
+	if !IsNil(o.PdsFeatures) {
+		toSerialize["pds_features"] = o.PdsFeatures
+	}
+	if !IsNil(o.PdsOperatorVersion) {
+		toSerialize["pds_operator_version"] = o.PdsOperatorVersion
+	}
+	if !IsNil(o.PxCsiEnabled) {
+		toSerialize["px_csi_enabled"] = o.PxCsiEnabled
+	}
+	if !IsNil(o.PxServiceNamespace) {
+		toSerialize["px_service_namespace"] = o.PxServiceNamespace
+	}
+	if !IsNil(o.PxStatus) {
+		toSerialize["px_status"] = o.PxStatus
+	}
+	if !IsNil(o.PxVersion) {
+		toSerialize["px_version"] = o.PxVersion
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDeploymentTargetMetadata struct {

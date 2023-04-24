@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPaginatedProjectRoleBindings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPaginatedProjectRoleBindings{}
+
 // ControllersPaginatedProjectRoleBindings struct for ControllersPaginatedProjectRoleBindings
 type ControllersPaginatedProjectRoleBindings struct {
-	Data []ModelsLegacyProjectBinding `json:"data,omitempty"`
+	Data []ModelsProjectRoleBinding `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedProjectRoleBindings instantiates a new ControllersPaginatedProjectRoleBindings object
@@ -37,9 +40,9 @@ func NewControllersPaginatedProjectRoleBindingsWithDefaults() *ControllersPagina
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedProjectRoleBindings) GetData() []ModelsLegacyProjectBinding {
-	if o == nil || o.Data == nil {
-		var ret []ModelsLegacyProjectBinding
+func (o *ControllersPaginatedProjectRoleBindings) GetData() []ModelsProjectRoleBinding {
+	if o == nil || IsNil(o.Data) {
+		var ret []ModelsProjectRoleBinding
 		return ret
 	}
 	return o.Data
@@ -47,8 +50,8 @@ func (o *ControllersPaginatedProjectRoleBindings) GetData() []ModelsLegacyProjec
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedProjectRoleBindings) GetDataOk() ([]ModelsLegacyProjectBinding, bool) {
-	if o == nil || o.Data == nil {
+func (o *ControllersPaginatedProjectRoleBindings) GetDataOk() ([]ModelsProjectRoleBinding, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -56,24 +59,32 @@ func (o *ControllersPaginatedProjectRoleBindings) GetDataOk() ([]ModelsLegacyPro
 
 // HasData returns a boolean if a field has been set.
 func (o *ControllersPaginatedProjectRoleBindings) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
 	return false
 }
 
-// SetData gets a reference to the given []ModelsLegacyProjectBinding and assigns it to the Data field.
-func (o *ControllersPaginatedProjectRoleBindings) SetData(v []ModelsLegacyProjectBinding) {
+// SetData gets a reference to the given []ModelsProjectRoleBinding and assigns it to the Data field.
+func (o *ControllersPaginatedProjectRoleBindings) SetData(v []ModelsProjectRoleBinding) {
 	o.Data = v
 }
 
 func (o ControllersPaginatedProjectRoleBindings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPaginatedProjectRoleBindings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPaginatedProjectRoleBindings struct {

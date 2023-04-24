@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // DataServicesApiService DataServicesApi service
 type DataServicesApiService service
@@ -46,41 +42,49 @@ func (r ApiApiDataServicesGetRequest) SortBy(sortBy string) ApiApiDataServicesGe
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiDataServicesGetRequest) Limit(limit string) ApiApiDataServicesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiDataServicesGetRequest) Continuation(continuation string) ApiApiDataServicesGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Data Service ID
 func (r ApiApiDataServicesGetRequest) Id(id string) ApiApiDataServicesGetRequest {
 	r.id = &id
 	return r
 }
+
 // Filter results by Data Service name
 func (r ApiApiDataServicesGetRequest) Name(name string) ApiApiDataServicesGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by Data Service short name
 func (r ApiApiDataServicesGetRequest) ShortName(shortName string) ApiApiDataServicesGetRequest {
 	r.shortName = &shortName
 	return r
 }
+
 // Filter results based on incremental backup eligibility
 func (r ApiApiDataServicesGetRequest) HasIncrementalBackup(hasIncrementalBackup bool) ApiApiDataServicesGetRequest {
 	r.hasIncrementalBackup = &hasIncrementalBackup
 	return r
 }
+
 // Filter results based on vault full backup eligibility
 func (r ApiApiDataServicesGetRequest) HasFullBackup(hasFullBackup bool) ApiApiDataServicesGetRequest {
 	r.hasFullBackup = &hasFullBackup
 	return r
 }
+
 // Filter results based on &#39;Coming soon&#39; flag
 func (r ApiApiDataServicesGetRequest) ComingSoon(comingSoon bool) ApiApiDataServicesGetRequest {
 	r.comingSoon = &comingSoon
@@ -128,31 +132,31 @@ func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesG
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.shortName != nil {
-		localVarQueryParams.Add("short_name", parameterToString(*r.shortName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "short_name", r.shortName, "")
 	}
 	if r.hasIncrementalBackup != nil {
-		localVarQueryParams.Add("has_incremental_backup", parameterToString(*r.hasIncrementalBackup, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "has_incremental_backup", r.hasIncrementalBackup, "")
 	}
 	if r.hasFullBackup != nil {
-		localVarQueryParams.Add("has_full_backup", parameterToString(*r.hasFullBackup, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "has_full_backup", r.hasFullBackup, "")
 	}
 	if r.comingSoon != nil {
-		localVarQueryParams.Add("coming_soon", parameterToString(*r.comingSoon, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "coming_soon", r.comingSoon, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -195,9 +199,9 @@ func (a *DataServicesApiService) ApiDataServicesGetExecute(r ApiApiDataServicesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -227,7 +231,6 @@ type ApiApiDataServicesIdGetRequest struct {
 	ApiService *DataServicesApiService
 	id string
 }
-
 
 func (r ApiApiDataServicesIdGetRequest) Execute() (*ModelsDataService, *http.Response, error) {
 	return r.ApiService.ApiDataServicesIdGetExecute(r)
@@ -266,7 +269,7 @@ func (a *DataServicesApiService) ApiDataServicesIdGetExecute(r ApiApiDataService
 	}
 
 	localVarPath := localBasePath + "/api/data-services/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -313,9 +316,9 @@ func (a *DataServicesApiService) ApiDataServicesIdGetExecute(r ApiApiDataService
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

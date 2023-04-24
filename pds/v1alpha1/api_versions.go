@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // VersionsApiService VersionsApi service
 type VersionsApiService service
@@ -39,6 +35,7 @@ func (r ApiApiCompatibleVersionsGetRequest) DataServiceId(dataServiceId string) 
 	r.dataServiceId = &dataServiceId
 	return r
 }
+
 // Filter results by version_id
 func (r ApiApiCompatibleVersionsGetRequest) VersionId(versionId string) ApiApiCompatibleVersionsGetRequest {
 	r.versionId = &versionId
@@ -86,10 +83,10 @@ func (a *VersionsApiService) ApiCompatibleVersionsGetExecute(r ApiApiCompatibleV
 	localVarFormParams := url.Values{}
 
 	if r.dataServiceId != nil {
-		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "data_service_id", r.dataServiceId, "")
 	}
 	if r.versionId != nil {
-		localVarQueryParams.Add("version_id", parameterToString(*r.versionId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "version_id", r.versionId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -132,9 +129,9 @@ func (a *VersionsApiService) ApiCompatibleVersionsGetExecute(r ApiApiCompatibleV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -176,26 +173,31 @@ func (r ApiApiDataServicesIdVersionsGetRequest) SortBy(sortBy string) ApiApiData
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiDataServicesIdVersionsGetRequest) Limit(limit string) ApiApiDataServicesIdVersionsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiDataServicesIdVersionsGetRequest) Continuation(continuation string) ApiApiDataServicesIdVersionsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Version id
 func (r ApiApiDataServicesIdVersionsGetRequest) Id2(id2 string) ApiApiDataServicesIdVersionsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Version&#39;s name
 func (r ApiApiDataServicesIdVersionsGetRequest) Name(name string) ApiApiDataServicesIdVersionsGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by Version&#39;s enabled parameter
 func (r ApiApiDataServicesIdVersionsGetRequest) Enabled(enabled bool) ApiApiDataServicesIdVersionsGetRequest {
 	r.enabled = &enabled
@@ -239,29 +241,29 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataSer
 	}
 
 	localVarPath := localBasePath + "/api/data-services/{id}/versions"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -304,9 +306,9 @@ func (a *VersionsApiService) ApiDataServicesIdVersionsGetExecute(r ApiApiDataSer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -336,7 +338,6 @@ type ApiApiVersionsIdGetRequest struct {
 	ApiService *VersionsApiService
 	id string
 }
-
 
 func (r ApiApiVersionsIdGetRequest) Execute() (*ModelsVersion, *http.Response, error) {
 	return r.ApiService.ApiVersionsIdGetExecute(r)
@@ -375,7 +376,7 @@ func (a *VersionsApiService) ApiVersionsIdGetExecute(r ApiApiVersionsIdGetReques
 	}
 
 	localVarPath := localBasePath + "/api/versions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -422,9 +423,9 @@ func (a *VersionsApiService) ApiVersionsIdGetExecute(r ApiApiVersionsIdGetReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

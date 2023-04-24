@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersDeploymentTargetHeartbeatRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersDeploymentTargetHeartbeatRequest{}
+
 // ControllersDeploymentTargetHeartbeatRequest struct for ControllersDeploymentTargetHeartbeatRequest
 type ControllersDeploymentTargetHeartbeatRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty"`
@@ -38,7 +41,7 @@ func NewControllersDeploymentTargetHeartbeatRequestWithDefaults() *ControllersDe
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetHeartbeatRequest) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ControllersDeploymentTargetHeartbeatRequest) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetHeartbeatRequest) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -56,7 +59,7 @@ func (o *ControllersDeploymentTargetHeartbeatRequest) GetClusterIdOk() (*string,
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetHeartbeatRequest) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ControllersDeploymentTargetHeartbeatRequest) SetClusterId(v string) {
 }
 
 func (o ControllersDeploymentTargetHeartbeatRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersDeploymentTargetHeartbeatRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersDeploymentTargetHeartbeatRequest struct {

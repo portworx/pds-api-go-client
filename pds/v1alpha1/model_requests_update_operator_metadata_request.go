@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsUpdateOperatorMetadataRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsUpdateOperatorMetadataRequest{}
+
 // RequestsUpdateOperatorMetadataRequest struct for RequestsUpdateOperatorMetadataRequest
 type RequestsUpdateOperatorMetadataRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty"`
@@ -41,7 +44,7 @@ func NewRequestsUpdateOperatorMetadataRequestWithDefaults() *RequestsUpdateOpera
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *RequestsUpdateOperatorMetadataRequest) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -59,7 +62,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetClusterIdOk() (*string, bool)
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) SetClusterId(v string) {
 
 // GetPdsFeatures returns the PdsFeatures field value if set, zero value otherwise.
 func (o *RequestsUpdateOperatorMetadataRequest) GetPdsFeatures() string {
-	if o == nil || o.PdsFeatures == nil {
+	if o == nil || IsNil(o.PdsFeatures) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetPdsFeatures() string {
 // GetPdsFeaturesOk returns a tuple with the PdsFeatures field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) GetPdsFeaturesOk() (*string, bool) {
-	if o == nil || o.PdsFeatures == nil {
+	if o == nil || IsNil(o.PdsFeatures) {
 		return nil, false
 	}
 	return o.PdsFeatures, true
@@ -91,7 +94,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetPdsFeaturesOk() (*string, boo
 
 // HasPdsFeatures returns a boolean if a field has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) HasPdsFeatures() bool {
-	if o != nil && o.PdsFeatures != nil {
+	if o != nil && !IsNil(o.PdsFeatures) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) SetPdsFeatures(v string) {
 
 // GetPdsOperatorVersion returns the PdsOperatorVersion field value if set, zero value otherwise.
 func (o *RequestsUpdateOperatorMetadataRequest) GetPdsOperatorVersion() string {
-	if o == nil || o.PdsOperatorVersion == nil {
+	if o == nil || IsNil(o.PdsOperatorVersion) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetPdsOperatorVersion() string {
 // GetPdsOperatorVersionOk returns a tuple with the PdsOperatorVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) GetPdsOperatorVersionOk() (*string, bool) {
-	if o == nil || o.PdsOperatorVersion == nil {
+	if o == nil || IsNil(o.PdsOperatorVersion) {
 		return nil, false
 	}
 	return o.PdsOperatorVersion, true
@@ -123,7 +126,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetPdsOperatorVersionOk() (*stri
 
 // HasPdsOperatorVersion returns a boolean if a field has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) HasPdsOperatorVersion() bool {
-	if o != nil && o.PdsOperatorVersion != nil {
+	if o != nil && !IsNil(o.PdsOperatorVersion) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) SetPdsOperatorVersion(v string) 
 
 // GetPxStatus returns the PxStatus field value if set, zero value otherwise.
 func (o *RequestsUpdateOperatorMetadataRequest) GetPxStatus() string {
-	if o == nil || o.PxStatus == nil {
+	if o == nil || IsNil(o.PxStatus) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetPxStatus() string {
 // GetPxStatusOk returns a tuple with the PxStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) GetPxStatusOk() (*string, bool) {
-	if o == nil || o.PxStatus == nil {
+	if o == nil || IsNil(o.PxStatus) {
 		return nil, false
 	}
 	return o.PxStatus, true
@@ -155,7 +158,7 @@ func (o *RequestsUpdateOperatorMetadataRequest) GetPxStatusOk() (*string, bool) 
 
 // HasPxStatus returns a boolean if a field has been set.
 func (o *RequestsUpdateOperatorMetadataRequest) HasPxStatus() bool {
-	if o != nil && o.PxStatus != nil {
+	if o != nil && !IsNil(o.PxStatus) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *RequestsUpdateOperatorMetadataRequest) SetPxStatus(v string) {
 }
 
 func (o RequestsUpdateOperatorMetadataRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.PdsFeatures != nil {
-		toSerialize["pds_features"] = o.PdsFeatures
-	}
-	if o.PdsOperatorVersion != nil {
-		toSerialize["pds_operator_version"] = o.PdsOperatorVersion
-	}
-	if o.PxStatus != nil {
-		toSerialize["px_status"] = o.PxStatus
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsUpdateOperatorMetadataRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.PdsFeatures) {
+		toSerialize["pds_features"] = o.PdsFeatures
+	}
+	if !IsNil(o.PdsOperatorVersion) {
+		toSerialize["pds_operator_version"] = o.PdsOperatorVersion
+	}
+	if !IsNil(o.PxStatus) {
+		toSerialize["px_status"] = o.PxStatus
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsUpdateOperatorMetadataRequest struct {

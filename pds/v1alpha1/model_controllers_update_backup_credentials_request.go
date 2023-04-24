@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateBackupCredentialsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateBackupCredentialsRequest{}
+
 // ControllersUpdateBackupCredentialsRequest struct for ControllersUpdateBackupCredentialsRequest
 type ControllersUpdateBackupCredentialsRequest struct {
 	Credentials *ControllersCredentials `json:"credentials,omitempty"`
@@ -40,7 +43,7 @@ func NewControllersUpdateBackupCredentialsRequestWithDefaults() *ControllersUpda
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *ControllersUpdateBackupCredentialsRequest) GetCredentials() ControllersCredentials {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		var ret ControllersCredentials
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ControllersUpdateBackupCredentialsRequest) GetCredentials() Controllers
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateBackupCredentialsRequest) GetCredentialsOk() (*ControllersCredentials, bool) {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		return nil, false
 	}
 	return o.Credentials, true
@@ -58,7 +61,7 @@ func (o *ControllersUpdateBackupCredentialsRequest) GetCredentialsOk() (*Control
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *ControllersUpdateBackupCredentialsRequest) HasCredentials() bool {
-	if o != nil && o.Credentials != nil {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ControllersUpdateBackupCredentialsRequest) SetCredentials(v Controllers
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersUpdateBackupCredentialsRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ControllersUpdateBackupCredentialsRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateBackupCredentialsRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +93,7 @@ func (o *ControllersUpdateBackupCredentialsRequest) GetNameOk() (*string, bool) 
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersUpdateBackupCredentialsRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ControllersUpdateBackupCredentialsRequest) SetName(v string) {
 }
 
 func (o ControllersUpdateBackupCredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Credentials != nil {
-		toSerialize["credentials"] = o.Credentials
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateBackupCredentialsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Credentials) {
+		toSerialize["credentials"] = o.Credentials
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateBackupCredentialsRequest struct {

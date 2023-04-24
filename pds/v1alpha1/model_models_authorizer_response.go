@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAuthorizerResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAuthorizerResponse{}
+
 // ModelsAuthorizerResponse struct for ModelsAuthorizerResponse
 type ModelsAuthorizerResponse struct {
 	Allow *bool `json:"allow,omitempty"`
@@ -38,7 +41,7 @@ func NewModelsAuthorizerResponseWithDefaults() *ModelsAuthorizerResponse {
 
 // GetAllow returns the Allow field value if set, zero value otherwise.
 func (o *ModelsAuthorizerResponse) GetAllow() bool {
-	if o == nil || o.Allow == nil {
+	if o == nil || IsNil(o.Allow) {
 		var ret bool
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ModelsAuthorizerResponse) GetAllow() bool {
 // GetAllowOk returns a tuple with the Allow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAuthorizerResponse) GetAllowOk() (*bool, bool) {
-	if o == nil || o.Allow == nil {
+	if o == nil || IsNil(o.Allow) {
 		return nil, false
 	}
 	return o.Allow, true
@@ -56,7 +59,7 @@ func (o *ModelsAuthorizerResponse) GetAllowOk() (*bool, bool) {
 
 // HasAllow returns a boolean if a field has been set.
 func (o *ModelsAuthorizerResponse) HasAllow() bool {
-	if o != nil && o.Allow != nil {
+	if o != nil && !IsNil(o.Allow) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ModelsAuthorizerResponse) SetAllow(v bool) {
 }
 
 func (o ModelsAuthorizerResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Allow != nil {
-		toSerialize["allow"] = o.Allow
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAuthorizerResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Allow) {
+		toSerialize["allow"] = o.Allow
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAuthorizerResponse struct {

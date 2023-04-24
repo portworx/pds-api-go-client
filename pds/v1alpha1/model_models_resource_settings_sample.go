@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsResourceSettingsSample type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsResourceSettingsSample{}
+
 // ModelsResourceSettingsSample struct for ModelsResourceSettingsSample
 type ModelsResourceSettingsSample struct {
 	// Maximal amount of CPU cores the deployment will have access to inside k8s.
@@ -53,7 +56,7 @@ func NewModelsResourceSettingsSampleWithDefaults() *ModelsResourceSettingsSample
 
 // GetCpuLimit returns the CpuLimit field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetCpuLimit() string {
-	if o == nil || o.CpuLimit == nil {
+	if o == nil || IsNil(o.CpuLimit) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *ModelsResourceSettingsSample) GetCpuLimit() string {
 // GetCpuLimitOk returns a tuple with the CpuLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetCpuLimitOk() (*string, bool) {
-	if o == nil || o.CpuLimit == nil {
+	if o == nil || IsNil(o.CpuLimit) {
 		return nil, false
 	}
 	return o.CpuLimit, true
@@ -71,7 +74,7 @@ func (o *ModelsResourceSettingsSample) GetCpuLimitOk() (*string, bool) {
 
 // HasCpuLimit returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasCpuLimit() bool {
-	if o != nil && o.CpuLimit != nil {
+	if o != nil && !IsNil(o.CpuLimit) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *ModelsResourceSettingsSample) SetCpuLimit(v string) {
 
 // GetCpuRequest returns the CpuRequest field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetCpuRequest() string {
-	if o == nil || o.CpuRequest == nil {
+	if o == nil || IsNil(o.CpuRequest) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *ModelsResourceSettingsSample) GetCpuRequest() string {
 // GetCpuRequestOk returns a tuple with the CpuRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetCpuRequestOk() (*string, bool) {
-	if o == nil || o.CpuRequest == nil {
+	if o == nil || IsNil(o.CpuRequest) {
 		return nil, false
 	}
 	return o.CpuRequest, true
@@ -103,7 +106,7 @@ func (o *ModelsResourceSettingsSample) GetCpuRequestOk() (*string, bool) {
 
 // HasCpuRequest returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasCpuRequest() bool {
-	if o != nil && o.CpuRequest != nil {
+	if o != nil && !IsNil(o.CpuRequest) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *ModelsResourceSettingsSample) SetCpuRequest(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *ModelsResourceSettingsSample) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -135,7 +138,7 @@ func (o *ModelsResourceSettingsSample) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -149,7 +152,7 @@ func (o *ModelsResourceSettingsSample) SetCreated(v string) {
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -159,7 +162,7 @@ func (o *ModelsResourceSettingsSample) GetDataServiceId() string {
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -167,7 +170,7 @@ func (o *ModelsResourceSettingsSample) GetDataServiceIdOk() (*string, bool) {
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -181,7 +184,7 @@ func (o *ModelsResourceSettingsSample) SetDataServiceId(v string) {
 
 // GetMemoryLimit returns the MemoryLimit field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetMemoryLimit() string {
-	if o == nil || o.MemoryLimit == nil {
+	if o == nil || IsNil(o.MemoryLimit) {
 		var ret string
 		return ret
 	}
@@ -191,7 +194,7 @@ func (o *ModelsResourceSettingsSample) GetMemoryLimit() string {
 // GetMemoryLimitOk returns a tuple with the MemoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetMemoryLimitOk() (*string, bool) {
-	if o == nil || o.MemoryLimit == nil {
+	if o == nil || IsNil(o.MemoryLimit) {
 		return nil, false
 	}
 	return o.MemoryLimit, true
@@ -199,7 +202,7 @@ func (o *ModelsResourceSettingsSample) GetMemoryLimitOk() (*string, bool) {
 
 // HasMemoryLimit returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasMemoryLimit() bool {
-	if o != nil && o.MemoryLimit != nil {
+	if o != nil && !IsNil(o.MemoryLimit) {
 		return true
 	}
 
@@ -213,7 +216,7 @@ func (o *ModelsResourceSettingsSample) SetMemoryLimit(v string) {
 
 // GetMemoryRequest returns the MemoryRequest field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetMemoryRequest() string {
-	if o == nil || o.MemoryRequest == nil {
+	if o == nil || IsNil(o.MemoryRequest) {
 		var ret string
 		return ret
 	}
@@ -223,7 +226,7 @@ func (o *ModelsResourceSettingsSample) GetMemoryRequest() string {
 // GetMemoryRequestOk returns a tuple with the MemoryRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetMemoryRequestOk() (*string, bool) {
-	if o == nil || o.MemoryRequest == nil {
+	if o == nil || IsNil(o.MemoryRequest) {
 		return nil, false
 	}
 	return o.MemoryRequest, true
@@ -231,7 +234,7 @@ func (o *ModelsResourceSettingsSample) GetMemoryRequestOk() (*string, bool) {
 
 // HasMemoryRequest returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasMemoryRequest() bool {
-	if o != nil && o.MemoryRequest != nil {
+	if o != nil && !IsNil(o.MemoryRequest) {
 		return true
 	}
 
@@ -245,7 +248,7 @@ func (o *ModelsResourceSettingsSample) SetMemoryRequest(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -255,7 +258,7 @@ func (o *ModelsResourceSettingsSample) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -263,7 +266,7 @@ func (o *ModelsResourceSettingsSample) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -277,7 +280,7 @@ func (o *ModelsResourceSettingsSample) SetName(v string) {
 
 // GetStorageRequest returns the StorageRequest field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetStorageRequest() string {
-	if o == nil || o.StorageRequest == nil {
+	if o == nil || IsNil(o.StorageRequest) {
 		var ret string
 		return ret
 	}
@@ -287,7 +290,7 @@ func (o *ModelsResourceSettingsSample) GetStorageRequest() string {
 // GetStorageRequestOk returns a tuple with the StorageRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetStorageRequestOk() (*string, bool) {
-	if o == nil || o.StorageRequest == nil {
+	if o == nil || IsNil(o.StorageRequest) {
 		return nil, false
 	}
 	return o.StorageRequest, true
@@ -295,7 +298,7 @@ func (o *ModelsResourceSettingsSample) GetStorageRequestOk() (*string, bool) {
 
 // HasStorageRequest returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasStorageRequest() bool {
-	if o != nil && o.StorageRequest != nil {
+	if o != nil && !IsNil(o.StorageRequest) {
 		return true
 	}
 
@@ -309,7 +312,7 @@ func (o *ModelsResourceSettingsSample) SetStorageRequest(v string) {
 
 // GetUpdated returns the Updated field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetUpdated() string {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		var ret string
 		return ret
 	}
@@ -319,7 +322,7 @@ func (o *ModelsResourceSettingsSample) GetUpdated() string {
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetUpdatedOk() (*string, bool) {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
 	return o.Updated, true
@@ -327,7 +330,7 @@ func (o *ModelsResourceSettingsSample) GetUpdatedOk() (*string, bool) {
 
 // HasUpdated returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasUpdated() bool {
-	if o != nil && o.Updated != nil {
+	if o != nil && !IsNil(o.Updated) {
 		return true
 	}
 
@@ -341,7 +344,7 @@ func (o *ModelsResourceSettingsSample) SetUpdated(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ModelsResourceSettingsSample) GetVersion() int32 {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -351,7 +354,7 @@ func (o *ModelsResourceSettingsSample) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsResourceSettingsSample) GetVersionOk() (*int32, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -359,7 +362,7 @@ func (o *ModelsResourceSettingsSample) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ModelsResourceSettingsSample) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -372,38 +375,46 @@ func (o *ModelsResourceSettingsSample) SetVersion(v int32) {
 }
 
 func (o ModelsResourceSettingsSample) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CpuLimit != nil {
-		toSerialize["cpu_limit"] = o.CpuLimit
-	}
-	if o.CpuRequest != nil {
-		toSerialize["cpu_request"] = o.CpuRequest
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.MemoryLimit != nil {
-		toSerialize["memory_limit"] = o.MemoryLimit
-	}
-	if o.MemoryRequest != nil {
-		toSerialize["memory_request"] = o.MemoryRequest
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.StorageRequest != nil {
-		toSerialize["storage_request"] = o.StorageRequest
-	}
-	if o.Updated != nil {
-		toSerialize["updated"] = o.Updated
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsResourceSettingsSample) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CpuLimit) {
+		toSerialize["cpu_limit"] = o.CpuLimit
+	}
+	if !IsNil(o.CpuRequest) {
+		toSerialize["cpu_request"] = o.CpuRequest
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.MemoryLimit) {
+		toSerialize["memory_limit"] = o.MemoryLimit
+	}
+	if !IsNil(o.MemoryRequest) {
+		toSerialize["memory_request"] = o.MemoryRequest
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.StorageRequest) {
+		toSerialize["storage_request"] = o.StorageRequest
+	}
+	if !IsNil(o.Updated) {
+		toSerialize["updated"] = o.Updated
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsResourceSettingsSample struct {

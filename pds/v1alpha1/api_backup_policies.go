@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // BackupPoliciesApiService BackupPoliciesApi service
 type BackupPoliciesApiService service
@@ -32,7 +28,6 @@ type ApiApiBackupPoliciesIdDeleteRequest struct {
 	ApiService *BackupPoliciesApiService
 	id string
 }
-
 
 func (r ApiApiBackupPoliciesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupPoliciesIdDeleteExecute(r)
@@ -69,7 +64,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDeleteExecute(r ApiApiBack
 	}
 
 	localVarPath := localBasePath + "/api/backup-policies/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -116,9 +111,9 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdDeleteExecute(r ApiApiBack
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -139,7 +134,6 @@ type ApiApiBackupPoliciesIdGetRequest struct {
 	ApiService *BackupPoliciesApiService
 	id string
 }
-
 
 func (r ApiApiBackupPoliciesIdGetRequest) Execute() (*ModelsBackupPolicy, *http.Response, error) {
 	return r.ApiService.ApiBackupPoliciesIdGetExecute(r)
@@ -178,7 +172,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupP
 	}
 
 	localVarPath := localBasePath + "/api/backup-policies/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -225,9 +219,9 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdGetExecute(r ApiApiBackupP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -302,7 +296,7 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupP
 	}
 
 	localVarPath := localBasePath + "/api/backup-policies/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,9 +348,9 @@ func (a *BackupPoliciesApiService) ApiBackupPoliciesIdPutExecute(r ApiApiBackupP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -397,21 +391,25 @@ func (r ApiApiTenantsIdBackupPoliciesGetRequest) SortBy(sortBy string) ApiApiTen
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiTenantsIdBackupPoliciesGetRequest) Limit(limit string) ApiApiTenantsIdBackupPoliciesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiTenantsIdBackupPoliciesGetRequest) Continuation(continuation string) ApiApiTenantsIdBackupPoliciesGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by BackupPolicy id
 func (r ApiApiTenantsIdBackupPoliciesGetRequest) Id2(id2 string) ApiApiTenantsIdBackupPoliciesGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by BackupPolicy name
 func (r ApiApiTenantsIdBackupPoliciesGetRequest) Name(name string) ApiApiTenantsIdBackupPoliciesGetRequest {
 	r.name = &name
@@ -455,26 +453,26 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApi
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -517,9 +515,9 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesGetExecute(r ApiApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -594,7 +592,7 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPostExecute(r ApiAp
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-policies"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -646,9 +644,9 @@ func (a *BackupPoliciesApiService) ApiTenantsIdBackupPoliciesPostExecute(r ApiAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

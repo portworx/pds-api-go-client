@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsS3CompatibleCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsS3CompatibleCredentials{}
+
 // ModelsS3CompatibleCredentials struct for ModelsS3CompatibleCredentials
 type ModelsS3CompatibleCredentials struct {
 	// Access key for S3-compatible user.
@@ -43,7 +46,7 @@ func NewModelsS3CompatibleCredentialsWithDefaults() *ModelsS3CompatibleCredentia
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *ModelsS3CompatibleCredentials) GetAccessKey() string {
-	if o == nil || o.AccessKey == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ModelsS3CompatibleCredentials) GetAccessKey() string {
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsS3CompatibleCredentials) GetAccessKeyOk() (*string, bool) {
-	if o == nil || o.AccessKey == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
 	return o.AccessKey, true
@@ -61,7 +64,7 @@ func (o *ModelsS3CompatibleCredentials) GetAccessKeyOk() (*string, bool) {
 
 // HasAccessKey returns a boolean if a field has been set.
 func (o *ModelsS3CompatibleCredentials) HasAccessKey() bool {
-	if o != nil && o.AccessKey != nil {
+	if o != nil && !IsNil(o.AccessKey) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ModelsS3CompatibleCredentials) SetAccessKey(v string) {
 
 // GetEndpoint returns the Endpoint field value if set, zero value otherwise.
 func (o *ModelsS3CompatibleCredentials) GetEndpoint() string {
-	if o == nil || o.Endpoint == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ModelsS3CompatibleCredentials) GetEndpoint() string {
 // GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsS3CompatibleCredentials) GetEndpointOk() (*string, bool) {
-	if o == nil || o.Endpoint == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		return nil, false
 	}
 	return o.Endpoint, true
@@ -93,7 +96,7 @@ func (o *ModelsS3CompatibleCredentials) GetEndpointOk() (*string, bool) {
 
 // HasEndpoint returns a boolean if a field has been set.
 func (o *ModelsS3CompatibleCredentials) HasEndpoint() bool {
-	if o != nil && o.Endpoint != nil {
+	if o != nil && !IsNil(o.Endpoint) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ModelsS3CompatibleCredentials) SetEndpoint(v string) {
 
 // GetSecretKey returns the SecretKey field value if set, zero value otherwise.
 func (o *ModelsS3CompatibleCredentials) GetSecretKey() string {
-	if o == nil || o.SecretKey == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ModelsS3CompatibleCredentials) GetSecretKey() string {
 // GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsS3CompatibleCredentials) GetSecretKeyOk() (*string, bool) {
-	if o == nil || o.SecretKey == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		return nil, false
 	}
 	return o.SecretKey, true
@@ -125,7 +128,7 @@ func (o *ModelsS3CompatibleCredentials) GetSecretKeyOk() (*string, bool) {
 
 // HasSecretKey returns a boolean if a field has been set.
 func (o *ModelsS3CompatibleCredentials) HasSecretKey() bool {
-	if o != nil && o.SecretKey != nil {
+	if o != nil && !IsNil(o.SecretKey) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *ModelsS3CompatibleCredentials) SetSecretKey(v string) {
 }
 
 func (o ModelsS3CompatibleCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccessKey != nil {
-		toSerialize["access_key"] = o.AccessKey
-	}
-	if o.Endpoint != nil {
-		toSerialize["endpoint"] = o.Endpoint
-	}
-	if o.SecretKey != nil {
-		toSerialize["secret_key"] = o.SecretKey
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsS3CompatibleCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessKey) {
+		toSerialize["access_key"] = o.AccessKey
+	}
+	if !IsNil(o.Endpoint) {
+		toSerialize["endpoint"] = o.Endpoint
+	}
+	if !IsNil(o.SecretKey) {
+		toSerialize["secret_key"] = o.SecretKey
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsS3CompatibleCredentials struct {

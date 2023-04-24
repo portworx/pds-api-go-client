@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateStorageOptionsTemplateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateStorageOptionsTemplateRequest{}
+
 // ControllersUpdateStorageOptionsTemplateRequest struct for ControllersUpdateStorageOptionsTemplateRequest
 type ControllersUpdateStorageOptionsTemplateRequest struct {
 	Fg *bool `json:"fg,omitempty"`
@@ -47,7 +50,7 @@ func NewControllersUpdateStorageOptionsTemplateRequestWithDefaults() *Controller
 
 // GetFg returns the Fg field value if set, zero value otherwise.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFg() bool {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		var ret bool
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFg() bool {
 // GetFgOk returns a tuple with the Fg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFgOk() (*bool, bool) {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		return nil, false
 	}
 	return o.Fg, true
@@ -65,7 +68,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFgOk() (*bool, bool)
 
 // HasFg returns a boolean if a field has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) HasFg() bool {
-	if o != nil && o.Fg != nil {
+	if o != nil && !IsNil(o.Fg) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) SetFg(v bool) {
 
 // GetFs returns the Fs field value if set, zero value otherwise.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFs() string {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFs() string {
 // GetFsOk returns a tuple with the Fs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFsOk() (*string, bool) {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		return nil, false
 	}
 	return o.Fs, true
@@ -97,7 +100,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetFsOk() (*string, boo
 
 // HasFs returns a boolean if a field has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) HasFs() bool {
-	if o != nil && o.Fs != nil {
+	if o != nil && !IsNil(o.Fs) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) SetFs(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -129,7 +132,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetNameOk() (*string, b
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) SetName(v string) {
 
 // GetProvisioner returns the Provisioner field value if set, zero value otherwise.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetProvisioner() string {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetProvisioner() string
 // GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetProvisionerOk() (*string, bool) {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		return nil, false
 	}
 	return o.Provisioner, true
@@ -161,7 +164,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetProvisionerOk() (*st
 
 // HasProvisioner returns a boolean if a field has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) HasProvisioner() bool {
-	if o != nil && o.Provisioner != nil {
+	if o != nil && !IsNil(o.Provisioner) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) SetProvisioner(v string
 
 // GetRepl returns the Repl field value if set, zero value otherwise.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetRepl() int32 {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		var ret int32
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetRepl() int32 {
 // GetReplOk returns a tuple with the Repl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetReplOk() (*int32, bool) {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		return nil, false
 	}
 	return o.Repl, true
@@ -193,7 +196,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetReplOk() (*int32, bo
 
 // HasRepl returns a boolean if a field has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) HasRepl() bool {
-	if o != nil && o.Repl != nil {
+	if o != nil && !IsNil(o.Repl) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) SetRepl(v int32) {
 
 // GetSecure returns the Secure field value if set, zero value otherwise.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetSecure() bool {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		var ret bool
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetSecure() bool {
 // GetSecureOk returns a tuple with the Secure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) GetSecureOk() (*bool, bool) {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		return nil, false
 	}
 	return o.Secure, true
@@ -225,7 +228,7 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) GetSecureOk() (*bool, b
 
 // HasSecure returns a boolean if a field has been set.
 func (o *ControllersUpdateStorageOptionsTemplateRequest) HasSecure() bool {
-	if o != nil && o.Secure != nil {
+	if o != nil && !IsNil(o.Secure) {
 		return true
 	}
 
@@ -238,26 +241,34 @@ func (o *ControllersUpdateStorageOptionsTemplateRequest) SetSecure(v bool) {
 }
 
 func (o ControllersUpdateStorageOptionsTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Fg != nil {
-		toSerialize["fg"] = o.Fg
-	}
-	if o.Fs != nil {
-		toSerialize["fs"] = o.Fs
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Provisioner != nil {
-		toSerialize["provisioner"] = o.Provisioner
-	}
-	if o.Repl != nil {
-		toSerialize["repl"] = o.Repl
-	}
-	if o.Secure != nil {
-		toSerialize["secure"] = o.Secure
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateStorageOptionsTemplateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Fg) {
+		toSerialize["fg"] = o.Fg
+	}
+	if !IsNil(o.Fs) {
+		toSerialize["fs"] = o.Fs
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Provisioner) {
+		toSerialize["provisioner"] = o.Provisioner
+	}
+	if !IsNil(o.Repl) {
+		toSerialize["repl"] = o.Repl
+	}
+	if !IsNil(o.Secure) {
+		toSerialize["secure"] = o.Secure
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateStorageOptionsTemplateRequest struct {

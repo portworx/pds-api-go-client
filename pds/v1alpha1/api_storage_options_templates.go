@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // StorageOptionsTemplatesApiService StorageOptionsTemplatesApi service
 type StorageOptionsTemplatesApiService service
@@ -32,7 +28,6 @@ type ApiApiStorageOptionsTemplatesIdDeleteRequest struct {
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 }
-
 
 func (r ApiApiStorageOptionsTemplatesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiStorageOptionsTemplatesIdDeleteExecute(r)
@@ -69,7 +64,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDeleteEx
 	}
 
 	localVarPath := localBasePath + "/api/storage-options-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -116,9 +111,9 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdDeleteEx
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -139,7 +134,6 @@ type ApiApiStorageOptionsTemplatesIdGetRequest struct {
 	ApiService *StorageOptionsTemplatesApiService
 	id string
 }
-
 
 func (r ApiApiStorageOptionsTemplatesIdGetRequest) Execute() (*ModelsStorageOptionsTemplate, *http.Response, error) {
 	return r.ApiService.ApiStorageOptionsTemplatesIdGetExecute(r)
@@ -178,7 +172,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecu
 	}
 
 	localVarPath := localBasePath + "/api/storage-options-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -225,9 +219,9 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -302,7 +296,7 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecu
 	}
 
 	localVarPath := localBasePath + "/api/storage-options-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,9 +348,9 @@ func (a *StorageOptionsTemplatesApiService) ApiStorageOptionsTemplatesIdPutExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -398,26 +392,31 @@ func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) SortBy(sortBy string) 
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Limit(limit string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Continuation(continuation string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by StorageOptionsTemplates id
 func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Id2(id2 string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by StorageOptionsTemplates name
 func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Name(name string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by StorageOptionsTemplates provisioner
 func (r ApiApiTenantsIdStorageOptionsTemplatesGetRequest) Provisioner(provisioner []string) ApiApiTenantsIdStorageOptionsTemplatesGetRequest {
 	r.provisioner = &provisioner
@@ -461,29 +460,29 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/storage-options-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.provisioner != nil {
-		localVarQueryParams.Add("provisioner", parameterToString(*r.provisioner, "csv"))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provisioner", r.provisioner, "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -526,9 +525,9 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -603,7 +602,7 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesP
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/storage-options-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -655,9 +654,9 @@ func (a *StorageOptionsTemplatesApiService) ApiTenantsIdStorageOptionsTemplatesP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeploymentResourceEvents type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeploymentResourceEvents{}
+
 // ServiceDeploymentResourceEvents struct for ServiceDeploymentResourceEvents
 type ServiceDeploymentResourceEvents struct {
 	ResourceEvents []DeploymentsResourceEvents `json:"resourceEvents,omitempty"`
@@ -38,7 +41,7 @@ func NewServiceDeploymentResourceEventsWithDefaults() *ServiceDeploymentResource
 
 // GetResourceEvents returns the ResourceEvents field value if set, zero value otherwise.
 func (o *ServiceDeploymentResourceEvents) GetResourceEvents() []DeploymentsResourceEvents {
-	if o == nil || o.ResourceEvents == nil {
+	if o == nil || IsNil(o.ResourceEvents) {
 		var ret []DeploymentsResourceEvents
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ServiceDeploymentResourceEvents) GetResourceEvents() []DeploymentsResou
 // GetResourceEventsOk returns a tuple with the ResourceEvents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentResourceEvents) GetResourceEventsOk() ([]DeploymentsResourceEvents, bool) {
-	if o == nil || o.ResourceEvents == nil {
+	if o == nil || IsNil(o.ResourceEvents) {
 		return nil, false
 	}
 	return o.ResourceEvents, true
@@ -56,7 +59,7 @@ func (o *ServiceDeploymentResourceEvents) GetResourceEventsOk() ([]DeploymentsRe
 
 // HasResourceEvents returns a boolean if a field has been set.
 func (o *ServiceDeploymentResourceEvents) HasResourceEvents() bool {
-	if o != nil && o.ResourceEvents != nil {
+	if o != nil && !IsNil(o.ResourceEvents) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ServiceDeploymentResourceEvents) SetResourceEvents(v []DeploymentsResou
 }
 
 func (o ServiceDeploymentResourceEvents) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResourceEvents != nil {
-		toSerialize["resourceEvents"] = o.ResourceEvents
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeploymentResourceEvents) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ResourceEvents) {
+		toSerialize["resourceEvents"] = o.ResourceEvents
+	}
+	return toSerialize, nil
 }
 
 type NullableServiceDeploymentResourceEvents struct {

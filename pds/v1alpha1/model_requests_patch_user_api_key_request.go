@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsPatchUserAPIKeyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsPatchUserAPIKeyRequest{}
+
 // RequestsPatchUserAPIKeyRequest struct for RequestsPatchUserAPIKeyRequest
 type RequestsPatchUserAPIKeyRequest struct {
 	// Whether the UserAPIKey is enabled or disabled.
@@ -41,7 +44,7 @@ func NewRequestsPatchUserAPIKeyRequestWithDefaults() *RequestsPatchUserAPIKeyReq
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *RequestsPatchUserAPIKeyRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RequestsPatchUserAPIKeyRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsPatchUserAPIKeyRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -59,7 +62,7 @@ func (o *RequestsPatchUserAPIKeyRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *RequestsPatchUserAPIKeyRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RequestsPatchUserAPIKeyRequest) SetEnabled(v bool) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestsPatchUserAPIKeyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RequestsPatchUserAPIKeyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsPatchUserAPIKeyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *RequestsPatchUserAPIKeyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestsPatchUserAPIKeyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *RequestsPatchUserAPIKeyRequest) SetName(v string) {
 }
 
 func (o RequestsPatchUserAPIKeyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsPatchUserAPIKeyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsPatchUserAPIKeyRequest struct {

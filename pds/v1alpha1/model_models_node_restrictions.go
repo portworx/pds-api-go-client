@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsNodeRestrictions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsNodeRestrictions{}
+
 // ModelsNodeRestrictions struct for ModelsNodeRestrictions
 type ModelsNodeRestrictions struct {
 	// Whether downsizing the cluster is enabled during editing.
@@ -43,7 +46,7 @@ func NewModelsNodeRestrictionsWithDefaults() *ModelsNodeRestrictions {
 
 // GetDownsizeEnabled returns the DownsizeEnabled field value if set, zero value otherwise.
 func (o *ModelsNodeRestrictions) GetDownsizeEnabled() bool {
-	if o == nil || o.DownsizeEnabled == nil {
+	if o == nil || IsNil(o.DownsizeEnabled) {
 		var ret bool
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ModelsNodeRestrictions) GetDownsizeEnabled() bool {
 // GetDownsizeEnabledOk returns a tuple with the DownsizeEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsNodeRestrictions) GetDownsizeEnabledOk() (*bool, bool) {
-	if o == nil || o.DownsizeEnabled == nil {
+	if o == nil || IsNil(o.DownsizeEnabled) {
 		return nil, false
 	}
 	return o.DownsizeEnabled, true
@@ -61,7 +64,7 @@ func (o *ModelsNodeRestrictions) GetDownsizeEnabledOk() (*bool, bool) {
 
 // HasDownsizeEnabled returns a boolean if a field has been set.
 func (o *ModelsNodeRestrictions) HasDownsizeEnabled() bool {
-	if o != nil && o.DownsizeEnabled != nil {
+	if o != nil && !IsNil(o.DownsizeEnabled) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ModelsNodeRestrictions) SetDownsizeEnabled(v bool) {
 
 // GetResizeDisabled returns the ResizeDisabled field value if set, zero value otherwise.
 func (o *ModelsNodeRestrictions) GetResizeDisabled() []int32 {
-	if o == nil || o.ResizeDisabled == nil {
+	if o == nil || IsNil(o.ResizeDisabled) {
 		var ret []int32
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ModelsNodeRestrictions) GetResizeDisabled() []int32 {
 // GetResizeDisabledOk returns a tuple with the ResizeDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsNodeRestrictions) GetResizeDisabledOk() ([]int32, bool) {
-	if o == nil || o.ResizeDisabled == nil {
+	if o == nil || IsNil(o.ResizeDisabled) {
 		return nil, false
 	}
 	return o.ResizeDisabled, true
@@ -93,7 +96,7 @@ func (o *ModelsNodeRestrictions) GetResizeDisabledOk() ([]int32, bool) {
 
 // HasResizeDisabled returns a boolean if a field has been set.
 func (o *ModelsNodeRestrictions) HasResizeDisabled() bool {
-	if o != nil && o.ResizeDisabled != nil {
+	if o != nil && !IsNil(o.ResizeDisabled) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ModelsNodeRestrictions) SetResizeDisabled(v []int32) {
 
 // GetSimpleConfig returns the SimpleConfig field value if set, zero value otherwise.
 func (o *ModelsNodeRestrictions) GetSimpleConfig() []int32 {
-	if o == nil || o.SimpleConfig == nil {
+	if o == nil || IsNil(o.SimpleConfig) {
 		var ret []int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ModelsNodeRestrictions) GetSimpleConfig() []int32 {
 // GetSimpleConfigOk returns a tuple with the SimpleConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsNodeRestrictions) GetSimpleConfigOk() ([]int32, bool) {
-	if o == nil || o.SimpleConfig == nil {
+	if o == nil || IsNil(o.SimpleConfig) {
 		return nil, false
 	}
 	return o.SimpleConfig, true
@@ -125,7 +128,7 @@ func (o *ModelsNodeRestrictions) GetSimpleConfigOk() ([]int32, bool) {
 
 // HasSimpleConfig returns a boolean if a field has been set.
 func (o *ModelsNodeRestrictions) HasSimpleConfig() bool {
-	if o != nil && o.SimpleConfig != nil {
+	if o != nil && !IsNil(o.SimpleConfig) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *ModelsNodeRestrictions) SetSimpleConfig(v []int32) {
 }
 
 func (o ModelsNodeRestrictions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DownsizeEnabled != nil {
-		toSerialize["downsize_enabled"] = o.DownsizeEnabled
-	}
-	if o.ResizeDisabled != nil {
-		toSerialize["resize_disabled"] = o.ResizeDisabled
-	}
-	if o.SimpleConfig != nil {
-		toSerialize["simple_config"] = o.SimpleConfig
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsNodeRestrictions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DownsizeEnabled) {
+		toSerialize["downsize_enabled"] = o.DownsizeEnabled
+	}
+	if !IsNil(o.ResizeDisabled) {
+		toSerialize["resize_disabled"] = o.ResizeDisabled
+	}
+	if !IsNil(o.SimpleConfig) {
+		toSerialize["simple_config"] = o.SimpleConfig
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsNodeRestrictions struct {

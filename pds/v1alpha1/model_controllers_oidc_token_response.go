@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersOIDCTokenResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersOIDCTokenResponse{}
+
 // ControllersOIDCTokenResponse struct for ControllersOIDCTokenResponse
 type ControllersOIDCTokenResponse struct {
 	Claims *AuthClaims `json:"claims,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersOIDCTokenResponseWithDefaults() *ControllersOIDCTokenResponse
 
 // GetClaims returns the Claims field value if set, zero value otherwise.
 func (o *ControllersOIDCTokenResponse) GetClaims() AuthClaims {
-	if o == nil || o.Claims == nil {
+	if o == nil || IsNil(o.Claims) {
 		var ret AuthClaims
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersOIDCTokenResponse) GetClaims() AuthClaims {
 // GetClaimsOk returns a tuple with the Claims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCTokenResponse) GetClaimsOk() (*AuthClaims, bool) {
-	if o == nil || o.Claims == nil {
+	if o == nil || IsNil(o.Claims) {
 		return nil, false
 	}
 	return o.Claims, true
@@ -59,7 +62,7 @@ func (o *ControllersOIDCTokenResponse) GetClaimsOk() (*AuthClaims, bool) {
 
 // HasClaims returns a boolean if a field has been set.
 func (o *ControllersOIDCTokenResponse) HasClaims() bool {
-	if o != nil && o.Claims != nil {
+	if o != nil && !IsNil(o.Claims) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersOIDCTokenResponse) SetClaims(v AuthClaims) {
 
 // GetExpiresIn returns the ExpiresIn field value if set, zero value otherwise.
 func (o *ControllersOIDCTokenResponse) GetExpiresIn() string {
-	if o == nil || o.ExpiresIn == nil {
+	if o == nil || IsNil(o.ExpiresIn) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersOIDCTokenResponse) GetExpiresIn() string {
 // GetExpiresInOk returns a tuple with the ExpiresIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCTokenResponse) GetExpiresInOk() (*string, bool) {
-	if o == nil || o.ExpiresIn == nil {
+	if o == nil || IsNil(o.ExpiresIn) {
 		return nil, false
 	}
 	return o.ExpiresIn, true
@@ -91,7 +94,7 @@ func (o *ControllersOIDCTokenResponse) GetExpiresInOk() (*string, bool) {
 
 // HasExpiresIn returns a boolean if a field has been set.
 func (o *ControllersOIDCTokenResponse) HasExpiresIn() bool {
-	if o != nil && o.ExpiresIn != nil {
+	if o != nil && !IsNil(o.ExpiresIn) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersOIDCTokenResponse) SetExpiresIn(v string) {
 
 // GetIdToken returns the IdToken field value if set, zero value otherwise.
 func (o *ControllersOIDCTokenResponse) GetIdToken() string {
-	if o == nil || o.IdToken == nil {
+	if o == nil || IsNil(o.IdToken) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersOIDCTokenResponse) GetIdToken() string {
 // GetIdTokenOk returns a tuple with the IdToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCTokenResponse) GetIdTokenOk() (*string, bool) {
-	if o == nil || o.IdToken == nil {
+	if o == nil || IsNil(o.IdToken) {
 		return nil, false
 	}
 	return o.IdToken, true
@@ -123,7 +126,7 @@ func (o *ControllersOIDCTokenResponse) GetIdTokenOk() (*string, bool) {
 
 // HasIdToken returns a boolean if a field has been set.
 func (o *ControllersOIDCTokenResponse) HasIdToken() bool {
-	if o != nil && o.IdToken != nil {
+	if o != nil && !IsNil(o.IdToken) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ControllersOIDCTokenResponse) SetIdToken(v string) {
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *ControllersOIDCTokenResponse) GetRefreshToken() string {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ControllersOIDCTokenResponse) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCTokenResponse) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		return nil, false
 	}
 	return o.RefreshToken, true
@@ -155,7 +158,7 @@ func (o *ControllersOIDCTokenResponse) GetRefreshTokenOk() (*string, bool) {
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *ControllersOIDCTokenResponse) HasRefreshToken() bool {
-	if o != nil && o.RefreshToken != nil {
+	if o != nil && !IsNil(o.RefreshToken) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ControllersOIDCTokenResponse) SetRefreshToken(v string) {
 }
 
 func (o ControllersOIDCTokenResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Claims != nil {
-		toSerialize["claims"] = o.Claims
-	}
-	if o.ExpiresIn != nil {
-		toSerialize["expiresIn"] = o.ExpiresIn
-	}
-	if o.IdToken != nil {
-		toSerialize["idToken"] = o.IdToken
-	}
-	if o.RefreshToken != nil {
-		toSerialize["refreshToken"] = o.RefreshToken
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersOIDCTokenResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Claims) {
+		toSerialize["claims"] = o.Claims
+	}
+	if !IsNil(o.ExpiresIn) {
+		toSerialize["expiresIn"] = o.ExpiresIn
+	}
+	if !IsNil(o.IdToken) {
+		toSerialize["idToken"] = o.IdToken
+	}
+	if !IsNil(o.RefreshToken) {
+		toSerialize["refreshToken"] = o.RefreshToken
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersOIDCTokenResponse struct {

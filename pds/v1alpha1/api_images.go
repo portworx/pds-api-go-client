@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // ImagesApiService ImagesApi service
 type ImagesApiService service
@@ -43,26 +39,31 @@ func (r ApiApiImagesGetRequest) DataServiceId(dataServiceId string) ApiApiImages
 	r.dataServiceId = &dataServiceId
 	return r
 }
+
 // Filter results by version_id
 func (r ApiApiImagesGetRequest) VersionId(versionId string) ApiApiImagesGetRequest {
 	r.versionId = &versionId
 	return r
 }
+
 // Only include the latest image for each version_id.
 func (r ApiApiImagesGetRequest) Latest(latest bool) ApiApiImagesGetRequest {
 	r.latest = &latest
 	return r
 }
+
 // A given Image attribute to sort results by (one of: id, name, created_at). Ignored when latest&#x3D;true.
 func (r ApiApiImagesGetRequest) SortBy(sortBy string) ApiApiImagesGetRequest {
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less). Ignored when latest&#x3D;true.
 func (r ApiApiImagesGetRequest) Limit(limit string) ApiApiImagesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows. Ignored when latest&#x3D;true.
 func (r ApiApiImagesGetRequest) Continuation(continuation string) ApiApiImagesGetRequest {
 	r.continuation = &continuation
@@ -110,22 +111,22 @@ func (a *ImagesApiService) ApiImagesGetExecute(r ApiApiImagesGetRequest) (*Model
 	localVarFormParams := url.Values{}
 
 	if r.dataServiceId != nil {
-		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "data_service_id", r.dataServiceId, "")
 	}
 	if r.versionId != nil {
-		localVarQueryParams.Add("version_id", parameterToString(*r.versionId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "version_id", r.versionId, "")
 	}
 	if r.latest != nil {
-		localVarQueryParams.Add("latest", parameterToString(*r.latest, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "latest", r.latest, "")
 	}
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -168,9 +169,9 @@ func (a *ImagesApiService) ApiImagesGetExecute(r ApiApiImagesGetRequest) (*Model
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -200,7 +201,6 @@ type ApiApiImagesIdGetRequest struct {
 	ApiService *ImagesApiService
 	id string
 }
-
 
 func (r ApiApiImagesIdGetRequest) Execute() (*ModelsImage, *http.Response, error) {
 	return r.ApiService.ApiImagesIdGetExecute(r)
@@ -239,7 +239,7 @@ func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (*M
 	}
 
 	localVarPath := localBasePath + "/api/images/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -286,9 +286,9 @@ func (a *ImagesApiService) ApiImagesIdGetExecute(r ApiApiImagesIdGetRequest) (*M
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -329,21 +329,25 @@ func (r ApiApiVersionsIdImagesGetRequest) SortBy(sortBy string) ApiApiVersionsId
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiVersionsIdImagesGetRequest) Limit(limit string) ApiApiVersionsIdImagesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiVersionsIdImagesGetRequest) Continuation(continuation string) ApiApiVersionsIdImagesGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Image id
 func (r ApiApiVersionsIdImagesGetRequest) Id2(id2 string) ApiApiVersionsIdImagesGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Image&#39;s name
 func (r ApiApiVersionsIdImagesGetRequest) Name(name string) ApiApiVersionsIdImagesGetRequest {
 	r.name = &name
@@ -387,26 +391,26 @@ func (a *ImagesApiService) ApiVersionsIdImagesGetExecute(r ApiApiVersionsIdImage
 	}
 
 	localVarPath := localBasePath + "/api/versions/{id}/images"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -449,9 +453,9 @@ func (a *ImagesApiService) ApiVersionsIdImagesGetExecute(r ApiApiVersionsIdImage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

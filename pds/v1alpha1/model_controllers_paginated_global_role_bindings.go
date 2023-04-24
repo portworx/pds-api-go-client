@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPaginatedGlobalRoleBindings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPaginatedGlobalRoleBindings{}
+
 // ControllersPaginatedGlobalRoleBindings struct for ControllersPaginatedGlobalRoleBindings
 type ControllersPaginatedGlobalRoleBindings struct {
-	Data []ModelsLegacyGlobalBinding `json:"data,omitempty"`
+	Data []ModelsGlobalRoleBinding `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedGlobalRoleBindings instantiates a new ControllersPaginatedGlobalRoleBindings object
@@ -37,9 +40,9 @@ func NewControllersPaginatedGlobalRoleBindingsWithDefaults() *ControllersPaginat
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedGlobalRoleBindings) GetData() []ModelsLegacyGlobalBinding {
-	if o == nil || o.Data == nil {
-		var ret []ModelsLegacyGlobalBinding
+func (o *ControllersPaginatedGlobalRoleBindings) GetData() []ModelsGlobalRoleBinding {
+	if o == nil || IsNil(o.Data) {
+		var ret []ModelsGlobalRoleBinding
 		return ret
 	}
 	return o.Data
@@ -47,8 +50,8 @@ func (o *ControllersPaginatedGlobalRoleBindings) GetData() []ModelsLegacyGlobalB
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedGlobalRoleBindings) GetDataOk() ([]ModelsLegacyGlobalBinding, bool) {
-	if o == nil || o.Data == nil {
+func (o *ControllersPaginatedGlobalRoleBindings) GetDataOk() ([]ModelsGlobalRoleBinding, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -56,24 +59,32 @@ func (o *ControllersPaginatedGlobalRoleBindings) GetDataOk() ([]ModelsLegacyGlob
 
 // HasData returns a boolean if a field has been set.
 func (o *ControllersPaginatedGlobalRoleBindings) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
 	return false
 }
 
-// SetData gets a reference to the given []ModelsLegacyGlobalBinding and assigns it to the Data field.
-func (o *ControllersPaginatedGlobalRoleBindings) SetData(v []ModelsLegacyGlobalBinding) {
+// SetData gets a reference to the given []ModelsGlobalRoleBinding and assigns it to the Data field.
+func (o *ControllersPaginatedGlobalRoleBindings) SetData(v []ModelsGlobalRoleBinding) {
 	o.Data = v
 }
 
 func (o ControllersPaginatedGlobalRoleBindings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPaginatedGlobalRoleBindings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPaginatedGlobalRoleBindings struct {

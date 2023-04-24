@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // DeploymentTargetsApiService DeploymentTargetsApi service
 type DeploymentTargetsApiService service
@@ -75,7 +71,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdAgentMetadataPatchEx
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/agent-metadata"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -127,9 +123,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdAgentMetadataPatchEx
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -150,7 +146,6 @@ type ApiApiDeploymentTargetsIdConfigGetRequest struct {
 	ApiService *DeploymentTargetsApiService
 	id string
 }
-
 
 func (r ApiApiDeploymentTargetsIdConfigGetRequest) Execute() (*ControllersTargetClusterConfigResponse, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdConfigGetExecute(r)
@@ -189,7 +184,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdConfigGetExecute(r A
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -236,9 +231,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdConfigGetExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -268,7 +263,6 @@ type ApiApiDeploymentTargetsIdCredentialsGetRequest struct {
 	ApiService *DeploymentTargetsApiService
 	id string
 }
-
 
 func (r ApiApiDeploymentTargetsIdCredentialsGetRequest) Execute() (*ControllersDeploymentTargetCredentialsResponse, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdCredentialsGetExecute(r)
@@ -310,7 +304,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecut
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -357,9 +351,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdCredentialsGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -389,7 +383,6 @@ type ApiApiDeploymentTargetsIdDeleteRequest struct {
 	ApiService *DeploymentTargetsApiService
 	id string
 }
-
 
 func (r ApiApiDeploymentTargetsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdDeleteExecute(r)
@@ -426,7 +419,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDeleteExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -473,9 +466,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdDeleteExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -496,7 +489,6 @@ type ApiApiDeploymentTargetsIdGetRequest struct {
 	ApiService *DeploymentTargetsApiService
 	id string
 }
-
 
 func (r ApiApiDeploymentTargetsIdGetRequest) Execute() (*ModelsDeploymentTarget, *http.Response, error) {
 	return r.ApiService.ApiDeploymentTargetsIdGetExecute(r)
@@ -535,7 +527,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiD
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -582,9 +574,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdGetExecute(r ApiApiD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -659,7 +651,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/heartbeat"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -711,9 +703,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdHeartbeatPostExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -790,7 +782,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdMetadataPostExecute(
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/metadata"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -842,9 +834,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdMetadataPostExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -910,7 +902,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdOperatorHeartbeatPos
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/operator-heartbeat"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -962,9 +954,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdOperatorHeartbeatPos
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1037,7 +1029,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdOperatorMetadataPatc
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/operator-metadata"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1089,9 +1081,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdOperatorMetadataPatc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1157,7 +1149,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPatchExecute(r ApiAp
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1209,9 +1201,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPatchExecute(r ApiAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1289,7 +1281,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiD
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1341,9 +1333,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdPutExecute(r ApiApiD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1416,7 +1408,7 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdUpdateCapabilitiesPo
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/update-capabilities"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1468,9 +1460,9 @@ func (a *DeploymentTargetsApiService) ApiDeploymentTargetsIdUpdateCapabilitiesPo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1503,26 +1495,31 @@ func (r ApiApiProjectsIdDeploymentTargetsGetRequest) SortBy(sortBy string) ApiAp
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Limit(limit string) ApiApiProjectsIdDeploymentTargetsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Continuation(continuation string) ApiApiProjectsIdDeploymentTargetsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by DeploymentTarget ID
 func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Id2(id2 string) ApiApiProjectsIdDeploymentTargetsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Cluster ID
 func (r ApiApiProjectsIdDeploymentTargetsGetRequest) ClusterId(clusterId string) ApiApiProjectsIdDeploymentTargetsGetRequest {
 	r.clusterId = &clusterId
 	return r
 }
+
 // Filter results by DeploymentTarget name
 func (r ApiApiProjectsIdDeploymentTargetsGetRequest) Name(name string) ApiApiProjectsIdDeploymentTargetsGetRequest {
 	r.name = &name
@@ -1566,29 +1563,29 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}/deployment-targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.clusterId != nil {
-		localVarQueryParams.Add("cluster_id", parameterToString(*r.clusterId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cluster_id", r.clusterId, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1631,9 +1628,9 @@ func (a *DeploymentTargetsApiService) ApiProjectsIdDeploymentTargetsGetExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1675,26 +1672,31 @@ func (r ApiApiTenantsIdDeploymentTargetsGetRequest) SortBy(sortBy string) ApiApi
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Limit(limit string) ApiApiTenantsIdDeploymentTargetsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Continuation(continuation string) ApiApiTenantsIdDeploymentTargetsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by DeploymentTarget ID
 func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Id2(id2 string) ApiApiTenantsIdDeploymentTargetsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Cluster ID
 func (r ApiApiTenantsIdDeploymentTargetsGetRequest) ClusterId(clusterId string) ApiApiTenantsIdDeploymentTargetsGetRequest {
 	r.clusterId = &clusterId
 	return r
 }
+
 // Filter results by DeploymentTarget name
 func (r ApiApiTenantsIdDeploymentTargetsGetRequest) Name(name string) ApiApiTenantsIdDeploymentTargetsGetRequest {
 	r.name = &name
@@ -1738,29 +1740,29 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/deployment-targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.clusterId != nil {
-		localVarQueryParams.Add("cluster_id", parameterToString(*r.clusterId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cluster_id", r.clusterId, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1803,9 +1805,9 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1880,7 +1882,7 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPostExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/deployment-targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1932,9 +1934,9 @@ func (a *DeploymentTargetsApiService) ApiTenantsIdDeploymentTargetsPostExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

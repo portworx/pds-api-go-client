@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PolicyRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyRole{}
+
 // PolicyRole struct for PolicyRole
 type PolicyRole struct {
 	Extends []string `json:"extends,omitempty"`
@@ -41,7 +44,7 @@ func NewPolicyRoleWithDefaults() *PolicyRole {
 
 // GetExtends returns the Extends field value if set, zero value otherwise.
 func (o *PolicyRole) GetExtends() []string {
-	if o == nil || o.Extends == nil {
+	if o == nil || IsNil(o.Extends) {
 		var ret []string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PolicyRole) GetExtends() []string {
 // GetExtendsOk returns a tuple with the Extends field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyRole) GetExtendsOk() ([]string, bool) {
-	if o == nil || o.Extends == nil {
+	if o == nil || IsNil(o.Extends) {
 		return nil, false
 	}
 	return o.Extends, true
@@ -59,7 +62,7 @@ func (o *PolicyRole) GetExtendsOk() ([]string, bool) {
 
 // HasExtends returns a boolean if a field has been set.
 func (o *PolicyRole) HasExtends() bool {
-	if o != nil && o.Extends != nil {
+	if o != nil && !IsNil(o.Extends) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PolicyRole) SetExtends(v []string) {
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *PolicyRole) GetLevel() string {
-	if o == nil || o.Level == nil {
+	if o == nil || IsNil(o.Level) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PolicyRole) GetLevel() string {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyRole) GetLevelOk() (*string, bool) {
-	if o == nil || o.Level == nil {
+	if o == nil || IsNil(o.Level) {
 		return nil, false
 	}
 	return o.Level, true
@@ -91,7 +94,7 @@ func (o *PolicyRole) GetLevelOk() (*string, bool) {
 
 // HasLevel returns a boolean if a field has been set.
 func (o *PolicyRole) HasLevel() bool {
-	if o != nil && o.Level != nil {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PolicyRole) SetLevel(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PolicyRole) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PolicyRole) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyRole) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -123,7 +126,7 @@ func (o *PolicyRole) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PolicyRole) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *PolicyRole) SetName(v string) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *PolicyRole) GetPermissions() []string {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *PolicyRole) GetPermissions() []string {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyRole) GetPermissionsOk() ([]string, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -155,7 +158,7 @@ func (o *PolicyRole) GetPermissionsOk() ([]string, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *PolicyRole) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *PolicyRole) SetPermissions(v []string) {
 }
 
 func (o PolicyRole) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Extends != nil {
-		toSerialize["extends"] = o.Extends
-	}
-	if o.Level != nil {
-		toSerialize["level"] = o.Level
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PolicyRole) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Extends) {
+		toSerialize["extends"] = o.Extends
+	}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	return toSerialize, nil
 }
 
 type NullablePolicyRole struct {

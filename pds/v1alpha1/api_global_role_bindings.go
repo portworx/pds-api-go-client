@@ -13,15 +13,11 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // GlobalRoleBindingsApiService GlobalRoleBindingsApi service
 type GlobalRoleBindingsApiService service
@@ -122,9 +118,9 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsDeleteExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -154,16 +150,19 @@ func (r ApiApiGlobalRoleBindingsGetRequest) SortBy(sortBy string) ApiApiGlobalRo
 	r.sortBy = &sortBy
 	return r
 }
+
 // Filter results by GlobalRoleBinding assigned role name
 func (r ApiApiGlobalRoleBindingsGetRequest) RoleName(roleName string) ApiApiGlobalRoleBindingsGetRequest {
 	r.roleName = &roleName
 	return r
 }
+
 // Filter results by GlobalRoleBinding actor id
 func (r ApiApiGlobalRoleBindingsGetRequest) ActorId(actorId string) ApiApiGlobalRoleBindingsGetRequest {
 	r.actorId = &actorId
 	return r
 }
+
 // Filter results by GlobalRoleBinding actor type
 func (r ApiApiGlobalRoleBindingsGetRequest) ActorType(actorType string) ApiApiGlobalRoleBindingsGetRequest {
 	r.actorType = &actorType
@@ -211,16 +210,16 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiG
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.roleName != nil {
-		localVarQueryParams.Add("role_name", parameterToString(*r.roleName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "role_name", r.roleName, "")
 	}
 	if r.actorId != nil {
-		localVarQueryParams.Add("actor_id", parameterToString(*r.actorId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "actor_id", r.actorId, "")
 	}
 	if r.actorType != nil {
-		localVarQueryParams.Add("actor_type", parameterToString(*r.actorType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "actor_type", r.actorType, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -263,9 +262,9 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -293,16 +292,16 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsGetExecute(r ApiApiG
 type ApiApiGlobalRoleBindingsPutRequest struct {
 	ctx context.Context
 	ApiService *GlobalRoleBindingsApiService
-	body *RequestsPutLegacyBindingRequest
+	body *ModelsGlobalRoleBinding
 }
 
 // Request body containing the global role binding
-func (r ApiApiGlobalRoleBindingsPutRequest) Body(body RequestsPutLegacyBindingRequest) ApiApiGlobalRoleBindingsPutRequest {
+func (r ApiApiGlobalRoleBindingsPutRequest) Body(body ModelsGlobalRoleBinding) ApiApiGlobalRoleBindingsPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiApiGlobalRoleBindingsPutRequest) Execute() (*ModelsLegacyGlobalBinding, *http.Response, error) {
+func (r ApiApiGlobalRoleBindingsPutRequest) Execute() (*ModelsGlobalRoleBinding, *http.Response, error) {
 	return r.ApiService.ApiGlobalRoleBindingsPutExecute(r)
 }
 
@@ -322,13 +321,13 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPut(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ModelsLegacyGlobalBinding
-func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiGlobalRoleBindingsPutRequest) (*ModelsLegacyGlobalBinding, *http.Response, error) {
+//  @return ModelsGlobalRoleBinding
+func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiGlobalRoleBindingsPutRequest) (*ModelsGlobalRoleBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsLegacyGlobalBinding
+		localVarReturnValue  *ModelsGlobalRoleBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalRoleBindingsApiService.ApiGlobalRoleBindingsPut")
@@ -388,9 +387,9 @@ func (a *GlobalRoleBindingsApiService) ApiGlobalRoleBindingsPutExecute(r ApiApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

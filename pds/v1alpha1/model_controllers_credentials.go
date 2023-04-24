@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersCredentials{}
+
 // ControllersCredentials struct for ControllersCredentials
 type ControllersCredentials struct {
 	Azure *ModelsAzureCredentials `json:"azure,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersCredentialsWithDefaults() *ControllersCredentials {
 
 // GetAzure returns the Azure field value if set, zero value otherwise.
 func (o *ControllersCredentials) GetAzure() ModelsAzureCredentials {
-	if o == nil || o.Azure == nil {
+	if o == nil || IsNil(o.Azure) {
 		var ret ModelsAzureCredentials
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersCredentials) GetAzure() ModelsAzureCredentials {
 // GetAzureOk returns a tuple with the Azure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCredentials) GetAzureOk() (*ModelsAzureCredentials, bool) {
-	if o == nil || o.Azure == nil {
+	if o == nil || IsNil(o.Azure) {
 		return nil, false
 	}
 	return o.Azure, true
@@ -59,7 +62,7 @@ func (o *ControllersCredentials) GetAzureOk() (*ModelsAzureCredentials, bool) {
 
 // HasAzure returns a boolean if a field has been set.
 func (o *ControllersCredentials) HasAzure() bool {
-	if o != nil && o.Azure != nil {
+	if o != nil && !IsNil(o.Azure) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersCredentials) SetAzure(v ModelsAzureCredentials) {
 
 // GetGoogle returns the Google field value if set, zero value otherwise.
 func (o *ControllersCredentials) GetGoogle() ModelsGoogleCredentials {
-	if o == nil || o.Google == nil {
+	if o == nil || IsNil(o.Google) {
 		var ret ModelsGoogleCredentials
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersCredentials) GetGoogle() ModelsGoogleCredentials {
 // GetGoogleOk returns a tuple with the Google field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCredentials) GetGoogleOk() (*ModelsGoogleCredentials, bool) {
-	if o == nil || o.Google == nil {
+	if o == nil || IsNil(o.Google) {
 		return nil, false
 	}
 	return o.Google, true
@@ -91,7 +94,7 @@ func (o *ControllersCredentials) GetGoogleOk() (*ModelsGoogleCredentials, bool) 
 
 // HasGoogle returns a boolean if a field has been set.
 func (o *ControllersCredentials) HasGoogle() bool {
-	if o != nil && o.Google != nil {
+	if o != nil && !IsNil(o.Google) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersCredentials) SetGoogle(v ModelsGoogleCredentials) {
 
 // GetS3 returns the S3 field value if set, zero value otherwise.
 func (o *ControllersCredentials) GetS3() ModelsS3Credentials {
-	if o == nil || o.S3 == nil {
+	if o == nil || IsNil(o.S3) {
 		var ret ModelsS3Credentials
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersCredentials) GetS3() ModelsS3Credentials {
 // GetS3Ok returns a tuple with the S3 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCredentials) GetS3Ok() (*ModelsS3Credentials, bool) {
-	if o == nil || o.S3 == nil {
+	if o == nil || IsNil(o.S3) {
 		return nil, false
 	}
 	return o.S3, true
@@ -123,7 +126,7 @@ func (o *ControllersCredentials) GetS3Ok() (*ModelsS3Credentials, bool) {
 
 // HasS3 returns a boolean if a field has been set.
 func (o *ControllersCredentials) HasS3() bool {
-	if o != nil && o.S3 != nil {
+	if o != nil && !IsNil(o.S3) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ControllersCredentials) SetS3(v ModelsS3Credentials) {
 
 // GetS3Compatible returns the S3Compatible field value if set, zero value otherwise.
 func (o *ControllersCredentials) GetS3Compatible() ModelsS3CompatibleCredentials {
-	if o == nil || o.S3Compatible == nil {
+	if o == nil || IsNil(o.S3Compatible) {
 		var ret ModelsS3CompatibleCredentials
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ControllersCredentials) GetS3Compatible() ModelsS3CompatibleCredentials
 // GetS3CompatibleOk returns a tuple with the S3Compatible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCredentials) GetS3CompatibleOk() (*ModelsS3CompatibleCredentials, bool) {
-	if o == nil || o.S3Compatible == nil {
+	if o == nil || IsNil(o.S3Compatible) {
 		return nil, false
 	}
 	return o.S3Compatible, true
@@ -155,7 +158,7 @@ func (o *ControllersCredentials) GetS3CompatibleOk() (*ModelsS3CompatibleCredent
 
 // HasS3Compatible returns a boolean if a field has been set.
 func (o *ControllersCredentials) HasS3Compatible() bool {
-	if o != nil && o.S3Compatible != nil {
+	if o != nil && !IsNil(o.S3Compatible) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ControllersCredentials) SetS3Compatible(v ModelsS3CompatibleCredentials
 }
 
 func (o ControllersCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Azure != nil {
-		toSerialize["azure"] = o.Azure
-	}
-	if o.Google != nil {
-		toSerialize["google"] = o.Google
-	}
-	if o.S3 != nil {
-		toSerialize["s3"] = o.S3
-	}
-	if o.S3Compatible != nil {
-		toSerialize["s3_compatible"] = o.S3Compatible
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Azure) {
+		toSerialize["azure"] = o.Azure
+	}
+	if !IsNil(o.Google) {
+		toSerialize["google"] = o.Google
+	}
+	if !IsNil(o.S3) {
+		toSerialize["s3"] = o.S3
+	}
+	if !IsNil(o.S3Compatible) {
+		toSerialize["s3_compatible"] = o.S3Compatible
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersCredentials struct {

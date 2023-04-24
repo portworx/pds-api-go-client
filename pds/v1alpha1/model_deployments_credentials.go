@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsCredentials{}
+
 // DeploymentsCredentials struct for DeploymentsCredentials
 type DeploymentsCredentials struct {
 	Password *string `json:"password,omitempty"`
@@ -38,7 +41,7 @@ func NewDeploymentsCredentialsWithDefaults() *DeploymentsCredentials {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *DeploymentsCredentials) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *DeploymentsCredentials) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsCredentials) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -56,7 +59,7 @@ func (o *DeploymentsCredentials) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *DeploymentsCredentials) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *DeploymentsCredentials) SetPassword(v string) {
 }
 
 func (o DeploymentsCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsCredentials struct {

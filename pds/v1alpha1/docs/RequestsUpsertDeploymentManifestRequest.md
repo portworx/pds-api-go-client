@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Deleted** | Pointer to **bool** |  | [optional] 
 **Manifest** | Pointer to **map[string]interface{}** |  | [optional] 
 **Timestamp** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewRequestsUpsertDeploymentManifestRequestWithDefaults instantiates a new RequestsUpsertDeploymentManifestRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleted
+
+`func (o *RequestsUpsertDeploymentManifestRequest) GetDeleted() bool`
+
+GetDeleted returns the Deleted field if non-nil, zero value otherwise.
+
+### GetDeletedOk
+
+`func (o *RequestsUpsertDeploymentManifestRequest) GetDeletedOk() (*bool, bool)`
+
+GetDeletedOk returns a tuple with the Deleted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleted
+
+`func (o *RequestsUpsertDeploymentManifestRequest) SetDeleted(v bool)`
+
+SetDeleted sets Deleted field to given value.
+
+### HasDeleted
+
+`func (o *RequestsUpsertDeploymentManifestRequest) HasDeleted() bool`
+
+HasDeleted returns a boolean if a field has been set.
 
 ### GetManifest
 

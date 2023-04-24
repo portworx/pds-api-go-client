@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsResourceEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsResourceEvent{}
+
 // DeploymentsResourceEvent struct for DeploymentsResourceEvent
 type DeploymentsResourceEvent struct {
 	// Action that was taken/failed regarding to the given object.
@@ -49,7 +52,7 @@ func NewDeploymentsResourceEventWithDefaults() *DeploymentsResourceEvent {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvent) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *DeploymentsResourceEvent) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvent) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -67,7 +70,7 @@ func (o *DeploymentsResourceEvent) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvent) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *DeploymentsResourceEvent) SetAction(v string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvent) GetMessage() string {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *DeploymentsResourceEvent) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvent) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -99,7 +102,7 @@ func (o *DeploymentsResourceEvent) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvent) HasMessage() bool {
-	if o != nil && o.Message != nil {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *DeploymentsResourceEvent) SetMessage(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvent) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *DeploymentsResourceEvent) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvent) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -131,7 +134,7 @@ func (o *DeploymentsResourceEvent) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvent) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *DeploymentsResourceEvent) SetName(v string) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvent) GetReason() string {
-	if o == nil || o.Reason == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *DeploymentsResourceEvent) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvent) GetReasonOk() (*string, bool) {
-	if o == nil || o.Reason == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
 	return o.Reason, true
@@ -163,7 +166,7 @@ func (o *DeploymentsResourceEvent) GetReasonOk() (*string, bool) {
 
 // HasReason returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvent) HasReason() bool {
-	if o != nil && o.Reason != nil {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *DeploymentsResourceEvent) SetReason(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvent) GetTimestamp() string {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret string
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *DeploymentsResourceEvent) GetTimestamp() string {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvent) GetTimestampOk() (*string, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -195,7 +198,7 @@ func (o *DeploymentsResourceEvent) GetTimestampOk() (*string, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvent) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *DeploymentsResourceEvent) SetTimestamp(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvent) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *DeploymentsResourceEvent) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvent) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -227,7 +230,7 @@ func (o *DeploymentsResourceEvent) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvent) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -240,26 +243,34 @@ func (o *DeploymentsResourceEvent) SetType(v string) {
 }
 
 func (o DeploymentsResourceEvent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.Message != nil {
-		toSerialize["message"] = o.Message
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Reason != nil {
-		toSerialize["reason"] = o.Reason
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsResourceEvent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
+	if !IsNil(o.Timestamp) {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsResourceEvent struct {

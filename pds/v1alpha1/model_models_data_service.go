@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDataService type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDataService{}
+
 // ModelsDataService struct for ModelsDataService
 type ModelsDataService struct {
 	ComingSoon *bool `json:"coming_soon,omitempty"`
@@ -51,7 +54,7 @@ func NewModelsDataServiceWithDefaults() *ModelsDataService {
 
 // GetComingSoon returns the ComingSoon field value if set, zero value otherwise.
 func (o *ModelsDataService) GetComingSoon() bool {
-	if o == nil || o.ComingSoon == nil {
+	if o == nil || IsNil(o.ComingSoon) {
 		var ret bool
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *ModelsDataService) GetComingSoon() bool {
 // GetComingSoonOk returns a tuple with the ComingSoon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetComingSoonOk() (*bool, bool) {
-	if o == nil || o.ComingSoon == nil {
+	if o == nil || IsNil(o.ComingSoon) {
 		return nil, false
 	}
 	return o.ComingSoon, true
@@ -69,7 +72,7 @@ func (o *ModelsDataService) GetComingSoonOk() (*bool, bool) {
 
 // HasComingSoon returns a boolean if a field has been set.
 func (o *ModelsDataService) HasComingSoon() bool {
-	if o != nil && o.ComingSoon != nil {
+	if o != nil && !IsNil(o.ComingSoon) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *ModelsDataService) SetComingSoon(v bool) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsDataService) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *ModelsDataService) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -101,7 +104,7 @@ func (o *ModelsDataService) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsDataService) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *ModelsDataService) SetCreatedAt(v string) {
 
 // GetHasFullBackup returns the HasFullBackup field value if set, zero value otherwise.
 func (o *ModelsDataService) GetHasFullBackup() bool {
-	if o == nil || o.HasFullBackup == nil {
+	if o == nil || IsNil(o.HasFullBackup) {
 		var ret bool
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *ModelsDataService) GetHasFullBackup() bool {
 // GetHasFullBackupOk returns a tuple with the HasFullBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetHasFullBackupOk() (*bool, bool) {
-	if o == nil || o.HasFullBackup == nil {
+	if o == nil || IsNil(o.HasFullBackup) {
 		return nil, false
 	}
 	return o.HasFullBackup, true
@@ -133,7 +136,7 @@ func (o *ModelsDataService) GetHasFullBackupOk() (*bool, bool) {
 
 // HasHasFullBackup returns a boolean if a field has been set.
 func (o *ModelsDataService) HasHasFullBackup() bool {
-	if o != nil && o.HasFullBackup != nil {
+	if o != nil && !IsNil(o.HasFullBackup) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *ModelsDataService) SetHasFullBackup(v bool) {
 
 // GetHasIncrementalBackup returns the HasIncrementalBackup field value if set, zero value otherwise.
 func (o *ModelsDataService) GetHasIncrementalBackup() bool {
-	if o == nil || o.HasIncrementalBackup == nil {
+	if o == nil || IsNil(o.HasIncrementalBackup) {
 		var ret bool
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *ModelsDataService) GetHasIncrementalBackup() bool {
 // GetHasIncrementalBackupOk returns a tuple with the HasIncrementalBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetHasIncrementalBackupOk() (*bool, bool) {
-	if o == nil || o.HasIncrementalBackup == nil {
+	if o == nil || IsNil(o.HasIncrementalBackup) {
 		return nil, false
 	}
 	return o.HasIncrementalBackup, true
@@ -165,7 +168,7 @@ func (o *ModelsDataService) GetHasIncrementalBackupOk() (*bool, bool) {
 
 // HasHasIncrementalBackup returns a boolean if a field has been set.
 func (o *ModelsDataService) HasHasIncrementalBackup() bool {
-	if o != nil && o.HasIncrementalBackup != nil {
+	if o != nil && !IsNil(o.HasIncrementalBackup) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *ModelsDataService) SetHasIncrementalBackup(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsDataService) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *ModelsDataService) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -197,7 +200,7 @@ func (o *ModelsDataService) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsDataService) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *ModelsDataService) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsDataService) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *ModelsDataService) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -229,7 +232,7 @@ func (o *ModelsDataService) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsDataService) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *ModelsDataService) SetName(v string) {
 
 // GetNodeRestrictions returns the NodeRestrictions field value if set, zero value otherwise.
 func (o *ModelsDataService) GetNodeRestrictions() ModelsNodeRestrictions {
-	if o == nil || o.NodeRestrictions == nil {
+	if o == nil || IsNil(o.NodeRestrictions) {
 		var ret ModelsNodeRestrictions
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *ModelsDataService) GetNodeRestrictions() ModelsNodeRestrictions {
 // GetNodeRestrictionsOk returns a tuple with the NodeRestrictions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetNodeRestrictionsOk() (*ModelsNodeRestrictions, bool) {
-	if o == nil || o.NodeRestrictions == nil {
+	if o == nil || IsNil(o.NodeRestrictions) {
 		return nil, false
 	}
 	return o.NodeRestrictions, true
@@ -261,7 +264,7 @@ func (o *ModelsDataService) GetNodeRestrictionsOk() (*ModelsNodeRestrictions, bo
 
 // HasNodeRestrictions returns a boolean if a field has been set.
 func (o *ModelsDataService) HasNodeRestrictions() bool {
-	if o != nil && o.NodeRestrictions != nil {
+	if o != nil && !IsNil(o.NodeRestrictions) {
 		return true
 	}
 
@@ -275,7 +278,7 @@ func (o *ModelsDataService) SetNodeRestrictions(v ModelsNodeRestrictions) {
 
 // GetNodesLimitations returns the NodesLimitations field value if set, zero value otherwise.
 func (o *ModelsDataService) GetNodesLimitations() string {
-	if o == nil || o.NodesLimitations == nil {
+	if o == nil || IsNil(o.NodesLimitations) {
 		var ret string
 		return ret
 	}
@@ -285,7 +288,7 @@ func (o *ModelsDataService) GetNodesLimitations() string {
 // GetNodesLimitationsOk returns a tuple with the NodesLimitations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetNodesLimitationsOk() (*string, bool) {
-	if o == nil || o.NodesLimitations == nil {
+	if o == nil || IsNil(o.NodesLimitations) {
 		return nil, false
 	}
 	return o.NodesLimitations, true
@@ -293,7 +296,7 @@ func (o *ModelsDataService) GetNodesLimitationsOk() (*string, bool) {
 
 // HasNodesLimitations returns a boolean if a field has been set.
 func (o *ModelsDataService) HasNodesLimitations() bool {
-	if o != nil && o.NodesLimitations != nil {
+	if o != nil && !IsNil(o.NodesLimitations) {
 		return true
 	}
 
@@ -307,7 +310,7 @@ func (o *ModelsDataService) SetNodesLimitations(v string) {
 
 // GetShortName returns the ShortName field value if set, zero value otherwise.
 func (o *ModelsDataService) GetShortName() string {
-	if o == nil || o.ShortName == nil {
+	if o == nil || IsNil(o.ShortName) {
 		var ret string
 		return ret
 	}
@@ -317,7 +320,7 @@ func (o *ModelsDataService) GetShortName() string {
 // GetShortNameOk returns a tuple with the ShortName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetShortNameOk() (*string, bool) {
-	if o == nil || o.ShortName == nil {
+	if o == nil || IsNil(o.ShortName) {
 		return nil, false
 	}
 	return o.ShortName, true
@@ -325,7 +328,7 @@ func (o *ModelsDataService) GetShortNameOk() (*string, bool) {
 
 // HasShortName returns a boolean if a field has been set.
 func (o *ModelsDataService) HasShortName() bool {
-	if o != nil && o.ShortName != nil {
+	if o != nil && !IsNil(o.ShortName) {
 		return true
 	}
 
@@ -339,7 +342,7 @@ func (o *ModelsDataService) SetShortName(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsDataService) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -349,7 +352,7 @@ func (o *ModelsDataService) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDataService) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -357,7 +360,7 @@ func (o *ModelsDataService) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsDataService) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -370,38 +373,46 @@ func (o *ModelsDataService) SetUpdatedAt(v string) {
 }
 
 func (o ModelsDataService) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ComingSoon != nil {
-		toSerialize["coming_soon"] = o.ComingSoon
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.HasFullBackup != nil {
-		toSerialize["has_full_backup"] = o.HasFullBackup
-	}
-	if o.HasIncrementalBackup != nil {
-		toSerialize["has_incremental_backup"] = o.HasIncrementalBackup
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.NodeRestrictions != nil {
-		toSerialize["node_restrictions"] = o.NodeRestrictions
-	}
-	if o.NodesLimitations != nil {
-		toSerialize["nodes_limitations"] = o.NodesLimitations
-	}
-	if o.ShortName != nil {
-		toSerialize["short_name"] = o.ShortName
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDataService) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ComingSoon) {
+		toSerialize["coming_soon"] = o.ComingSoon
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.HasFullBackup) {
+		toSerialize["has_full_backup"] = o.HasFullBackup
+	}
+	if !IsNil(o.HasIncrementalBackup) {
+		toSerialize["has_incremental_backup"] = o.HasIncrementalBackup
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.NodeRestrictions) {
+		toSerialize["node_restrictions"] = o.NodeRestrictions
+	}
+	if !IsNil(o.NodesLimitations) {
+		toSerialize["nodes_limitations"] = o.NodesLimitations
+	}
+	if !IsNil(o.ShortName) {
+		toSerialize["short_name"] = o.ShortName
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDataService struct {

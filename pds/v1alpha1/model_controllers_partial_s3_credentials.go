@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPartialS3Credentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPartialS3Credentials{}
+
 // ControllersPartialS3Credentials struct for ControllersPartialS3Credentials
 type ControllersPartialS3Credentials struct {
 	// Access key for the AWS IAM user.
@@ -41,7 +44,7 @@ func NewControllersPartialS3CredentialsWithDefaults() *ControllersPartialS3Crede
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *ControllersPartialS3Credentials) GetAccessKey() string {
-	if o == nil || o.AccessKey == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersPartialS3Credentials) GetAccessKey() string {
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialS3Credentials) GetAccessKeyOk() (*string, bool) {
-	if o == nil || o.AccessKey == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
 	return o.AccessKey, true
@@ -59,7 +62,7 @@ func (o *ControllersPartialS3Credentials) GetAccessKeyOk() (*string, bool) {
 
 // HasAccessKey returns a boolean if a field has been set.
 func (o *ControllersPartialS3Credentials) HasAccessKey() bool {
-	if o != nil && o.AccessKey != nil {
+	if o != nil && !IsNil(o.AccessKey) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersPartialS3Credentials) SetAccessKey(v string) {
 
 // GetEndpoint returns the Endpoint field value if set, zero value otherwise.
 func (o *ControllersPartialS3Credentials) GetEndpoint() string {
-	if o == nil || o.Endpoint == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersPartialS3Credentials) GetEndpoint() string {
 // GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialS3Credentials) GetEndpointOk() (*string, bool) {
-	if o == nil || o.Endpoint == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		return nil, false
 	}
 	return o.Endpoint, true
@@ -91,7 +94,7 @@ func (o *ControllersPartialS3Credentials) GetEndpointOk() (*string, bool) {
 
 // HasEndpoint returns a boolean if a field has been set.
 func (o *ControllersPartialS3Credentials) HasEndpoint() bool {
-	if o != nil && o.Endpoint != nil {
+	if o != nil && !IsNil(o.Endpoint) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *ControllersPartialS3Credentials) SetEndpoint(v string) {
 }
 
 func (o ControllersPartialS3Credentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccessKey != nil {
-		toSerialize["access_key"] = o.AccessKey
-	}
-	if o.Endpoint != nil {
-		toSerialize["endpoint"] = o.Endpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPartialS3Credentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessKey) {
+		toSerialize["access_key"] = o.AccessKey
+	}
+	if !IsNil(o.Endpoint) {
+		toSerialize["endpoint"] = o.Endpoint
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPartialS3Credentials struct {

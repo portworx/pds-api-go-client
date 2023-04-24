@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersCreateAccountRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersCreateAccountRequest{}
+
 // ControllersCreateAccountRequest struct for ControllersCreateAccountRequest
 type ControllersCreateAccountRequest struct {
 	// Whether BAAS should be enabled for this account.
@@ -49,7 +52,7 @@ func NewControllersCreateAccountRequestWithDefaults() *ControllersCreateAccountR
 
 // GetBaasFeaturesEnabled returns the BaasFeaturesEnabled field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetBaasFeaturesEnabled() bool {
-	if o == nil || o.BaasFeaturesEnabled == nil {
+	if o == nil || IsNil(o.BaasFeaturesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ControllersCreateAccountRequest) GetBaasFeaturesEnabled() bool {
 // GetBaasFeaturesEnabledOk returns a tuple with the BaasFeaturesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetBaasFeaturesEnabledOk() (*bool, bool) {
-	if o == nil || o.BaasFeaturesEnabled == nil {
+	if o == nil || IsNil(o.BaasFeaturesEnabled) {
 		return nil, false
 	}
 	return o.BaasFeaturesEnabled, true
@@ -67,7 +70,7 @@ func (o *ControllersCreateAccountRequest) GetBaasFeaturesEnabledOk() (*bool, boo
 
 // HasBaasFeaturesEnabled returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasBaasFeaturesEnabled() bool {
-	if o != nil && o.BaasFeaturesEnabled != nil {
+	if o != nil && !IsNil(o.BaasFeaturesEnabled) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ControllersCreateAccountRequest) SetBaasFeaturesEnabled(v bool) {
 
 // GetDnsDetails returns the DnsDetails field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetDnsDetails() ModelsDNSDetails {
-	if o == nil || o.DnsDetails == nil {
+	if o == nil || IsNil(o.DnsDetails) {
 		var ret ModelsDNSDetails
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ControllersCreateAccountRequest) GetDnsDetails() ModelsDNSDetails {
 // GetDnsDetailsOk returns a tuple with the DnsDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetDnsDetailsOk() (*ModelsDNSDetails, bool) {
-	if o == nil || o.DnsDetails == nil {
+	if o == nil || IsNil(o.DnsDetails) {
 		return nil, false
 	}
 	return o.DnsDetails, true
@@ -99,7 +102,7 @@ func (o *ControllersCreateAccountRequest) GetDnsDetailsOk() (*ModelsDNSDetails, 
 
 // HasDnsDetails returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasDnsDetails() bool {
-	if o != nil && o.DnsDetails != nil {
+	if o != nil && !IsNil(o.DnsDetails) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ControllersCreateAccountRequest) SetDnsDetails(v ModelsDNSDetails) {
 
 // GetMaasDetails returns the MaasDetails field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetMaasDetails() ModelsMAASDetails {
-	if o == nil || o.MaasDetails == nil {
+	if o == nil || IsNil(o.MaasDetails) {
 		var ret ModelsMAASDetails
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ControllersCreateAccountRequest) GetMaasDetails() ModelsMAASDetails {
 // GetMaasDetailsOk returns a tuple with the MaasDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetMaasDetailsOk() (*ModelsMAASDetails, bool) {
-	if o == nil || o.MaasDetails == nil {
+	if o == nil || IsNil(o.MaasDetails) {
 		return nil, false
 	}
 	return o.MaasDetails, true
@@ -131,7 +134,7 @@ func (o *ControllersCreateAccountRequest) GetMaasDetailsOk() (*ModelsMAASDetails
 
 // HasMaasDetails returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasMaasDetails() bool {
-	if o != nil && o.MaasDetails != nil {
+	if o != nil && !IsNil(o.MaasDetails) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ControllersCreateAccountRequest) SetMaasDetails(v ModelsMAASDetails) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ControllersCreateAccountRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -163,7 +166,7 @@ func (o *ControllersCreateAccountRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ControllersCreateAccountRequest) SetName(v string) {
 
 // GetPdsFeaturesEnabled returns the PdsFeaturesEnabled field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetPdsFeaturesEnabled() bool {
-	if o == nil || o.PdsFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PdsFeaturesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ControllersCreateAccountRequest) GetPdsFeaturesEnabled() bool {
 // GetPdsFeaturesEnabledOk returns a tuple with the PdsFeaturesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetPdsFeaturesEnabledOk() (*bool, bool) {
-	if o == nil || o.PdsFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PdsFeaturesEnabled) {
 		return nil, false
 	}
 	return o.PdsFeaturesEnabled, true
@@ -195,7 +198,7 @@ func (o *ControllersCreateAccountRequest) GetPdsFeaturesEnabledOk() (*bool, bool
 
 // HasPdsFeaturesEnabled returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasPdsFeaturesEnabled() bool {
-	if o != nil && o.PdsFeaturesEnabled != nil {
+	if o != nil && !IsNil(o.PdsFeaturesEnabled) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ControllersCreateAccountRequest) SetPdsFeaturesEnabled(v bool) {
 
 // GetPxoneFeaturesEnabled returns the PxoneFeaturesEnabled field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetPxoneFeaturesEnabled() bool {
-	if o == nil || o.PxoneFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PxoneFeaturesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ControllersCreateAccountRequest) GetPxoneFeaturesEnabled() bool {
 // GetPxoneFeaturesEnabledOk returns a tuple with the PxoneFeaturesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetPxoneFeaturesEnabledOk() (*bool, bool) {
-	if o == nil || o.PxoneFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PxoneFeaturesEnabled) {
 		return nil, false
 	}
 	return o.PxoneFeaturesEnabled, true
@@ -227,7 +230,7 @@ func (o *ControllersCreateAccountRequest) GetPxoneFeaturesEnabledOk() (*bool, bo
 
 // HasPxoneFeaturesEnabled returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasPxoneFeaturesEnabled() bool {
-	if o != nil && o.PxoneFeaturesEnabled != nil {
+	if o != nil && !IsNil(o.PxoneFeaturesEnabled) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ControllersCreateAccountRequest) SetPxoneFeaturesEnabled(v bool) {
 
 // GetSubdomain returns the Subdomain field value if set, zero value otherwise.
 func (o *ControllersCreateAccountRequest) GetSubdomain() string {
-	if o == nil || o.Subdomain == nil {
+	if o == nil || IsNil(o.Subdomain) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *ControllersCreateAccountRequest) GetSubdomain() string {
 // GetSubdomainOk returns a tuple with the Subdomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateAccountRequest) GetSubdomainOk() (*string, bool) {
-	if o == nil || o.Subdomain == nil {
+	if o == nil || IsNil(o.Subdomain) {
 		return nil, false
 	}
 	return o.Subdomain, true
@@ -259,7 +262,7 @@ func (o *ControllersCreateAccountRequest) GetSubdomainOk() (*string, bool) {
 
 // HasSubdomain returns a boolean if a field has been set.
 func (o *ControllersCreateAccountRequest) HasSubdomain() bool {
-	if o != nil && o.Subdomain != nil {
+	if o != nil && !IsNil(o.Subdomain) {
 		return true
 	}
 
@@ -272,29 +275,37 @@ func (o *ControllersCreateAccountRequest) SetSubdomain(v string) {
 }
 
 func (o ControllersCreateAccountRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BaasFeaturesEnabled != nil {
-		toSerialize["baas_features_enabled"] = o.BaasFeaturesEnabled
-	}
-	if o.DnsDetails != nil {
-		toSerialize["dns_details"] = o.DnsDetails
-	}
-	if o.MaasDetails != nil {
-		toSerialize["maas_details"] = o.MaasDetails
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.PdsFeaturesEnabled != nil {
-		toSerialize["pds_features_enabled"] = o.PdsFeaturesEnabled
-	}
-	if o.PxoneFeaturesEnabled != nil {
-		toSerialize["pxone_features_enabled"] = o.PxoneFeaturesEnabled
-	}
-	if o.Subdomain != nil {
-		toSerialize["subdomain"] = o.Subdomain
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersCreateAccountRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BaasFeaturesEnabled) {
+		toSerialize["baas_features_enabled"] = o.BaasFeaturesEnabled
+	}
+	if !IsNil(o.DnsDetails) {
+		toSerialize["dns_details"] = o.DnsDetails
+	}
+	if !IsNil(o.MaasDetails) {
+		toSerialize["maas_details"] = o.MaasDetails
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PdsFeaturesEnabled) {
+		toSerialize["pds_features_enabled"] = o.PdsFeaturesEnabled
+	}
+	if !IsNil(o.PxoneFeaturesEnabled) {
+		toSerialize["pxone_features_enabled"] = o.PxoneFeaturesEnabled
+	}
+	if !IsNil(o.Subdomain) {
+		toSerialize["subdomain"] = o.Subdomain
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersCreateAccountRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateApplicationConfigurationTemplateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateApplicationConfigurationTemplateRequest{}
+
 // ControllersUpdateApplicationConfigurationTemplateRequest struct for ControllersUpdateApplicationConfigurationTemplateRequest
 type ControllersUpdateApplicationConfigurationTemplateRequest struct {
 	ConfigItems []ModelsConfigItem `json:"config_items,omitempty"`
@@ -40,7 +43,7 @@ func NewControllersUpdateApplicationConfigurationTemplateRequestWithDefaults() *
 
 // GetConfigItems returns the ConfigItems field value if set, zero value otherwise.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItems() []ModelsConfigItem {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		var ret []ModelsConfigItem
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItem
 // GetConfigItemsOk returns a tuple with the ConfigItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		return nil, false
 	}
 	return o.ConfigItems, true
@@ -58,7 +61,7 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetConfigItem
 
 // HasConfigItems returns a boolean if a field has been set.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) HasConfigItems() bool {
-	if o != nil && o.ConfigItems != nil {
+	if o != nil && !IsNil(o.ConfigItems) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) SetConfigItem
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetName() str
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +93,7 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) GetNameOk() (
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersUpdateApplicationConfigurationTemplateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ControllersUpdateApplicationConfigurationTemplateRequest) SetName(v str
 }
 
 func (o ControllersUpdateApplicationConfigurationTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ConfigItems != nil {
-		toSerialize["config_items"] = o.ConfigItems
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateApplicationConfigurationTemplateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ConfigItems) {
+		toSerialize["config_items"] = o.ConfigItems
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateApplicationConfigurationTemplateRequest struct {

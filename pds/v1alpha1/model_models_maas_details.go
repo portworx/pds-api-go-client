@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsMAASDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsMAASDetails{}
+
 // ModelsMAASDetails struct for ModelsMAASDetails
 type ModelsMAASDetails struct {
 	MaasId *string `json:"maas_id,omitempty"`
@@ -38,7 +41,7 @@ func NewModelsMAASDetailsWithDefaults() *ModelsMAASDetails {
 
 // GetMaasId returns the MaasId field value if set, zero value otherwise.
 func (o *ModelsMAASDetails) GetMaasId() string {
-	if o == nil || o.MaasId == nil {
+	if o == nil || IsNil(o.MaasId) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ModelsMAASDetails) GetMaasId() string {
 // GetMaasIdOk returns a tuple with the MaasId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsMAASDetails) GetMaasIdOk() (*string, bool) {
-	if o == nil || o.MaasId == nil {
+	if o == nil || IsNil(o.MaasId) {
 		return nil, false
 	}
 	return o.MaasId, true
@@ -56,7 +59,7 @@ func (o *ModelsMAASDetails) GetMaasIdOk() (*string, bool) {
 
 // HasMaasId returns a boolean if a field has been set.
 func (o *ModelsMAASDetails) HasMaasId() bool {
-	if o != nil && o.MaasId != nil {
+	if o != nil && !IsNil(o.MaasId) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ModelsMAASDetails) SetMaasId(v string) {
 }
 
 func (o ModelsMAASDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.MaasId != nil {
-		toSerialize["maas_id"] = o.MaasId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsMAASDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MaasId) {
+		toSerialize["maas_id"] = o.MaasId
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsMAASDetails struct {

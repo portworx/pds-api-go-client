@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete(context.Background()).Body(body).Execute()
+    r, err := apiClient.GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalRoleBindingsApi.ApiGlobalRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -91,7 +91,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## ApiGlobalRoleBindingsPut
 
-> ModelsLegacyGlobalBinding ApiGlobalRoleBindingsPut(ctx).Body(body).Execute()
+> ModelsGlobalRoleBinding ApiGlobalRoleBindingsPut(ctx).Body(body).Execute()
 
 Set GlobalRoleBinding
 
@@ -163,11 +163,11 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    body := *openapiclient.NewRequestsPutLegacyBindingRequest() // RequestsPutLegacyBindingRequest | Request body containing the global role binding
+    body := *openapiclient.NewModelsGlobalRoleBinding() // ModelsGlobalRoleBinding | Request body containing the global role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -176,7 +176,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalRoleBindingsApi.ApiGlobalRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGlobalRoleBindingsPut`: ModelsLegacyGlobalBinding
+    // response from `ApiGlobalRoleBindingsPut`: ModelsGlobalRoleBinding
     fmt.Fprintf(os.Stdout, "Response from `GlobalRoleBindingsApi.ApiGlobalRoleBindingsPut`: %v\n", resp)
 }
 ```
@@ -192,11 +192,11 @@ Other parameters are passed through a pointer to a apiApiGlobalRoleBindingsPutRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**RequestsPutLegacyBindingRequest**](RequestsPutLegacyBindingRequest.md) | Request body containing the global role binding | 
+ **body** | [**ModelsGlobalRoleBinding**](ModelsGlobalRoleBinding.md) | Request body containing the global role binding | 
 
 ### Return type
 
-[**ModelsLegacyGlobalBinding**](ModelsLegacyGlobalBinding.md)
+[**ModelsGlobalRoleBinding**](ModelsGlobalRoleBinding.md)
 
 ### Authorization
 

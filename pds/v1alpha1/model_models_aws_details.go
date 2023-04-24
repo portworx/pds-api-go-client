@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAWSDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAWSDetails{}
+
 // ModelsAWSDetails struct for ModelsAWSDetails
 type ModelsAWSDetails struct {
 	AccessKey *string `json:"access_key,omitempty"`
@@ -40,7 +43,7 @@ func NewModelsAWSDetailsWithDefaults() *ModelsAWSDetails {
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *ModelsAWSDetails) GetAccessKey() string {
-	if o == nil || o.AccessKey == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ModelsAWSDetails) GetAccessKey() string {
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAWSDetails) GetAccessKeyOk() (*string, bool) {
-	if o == nil || o.AccessKey == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
 	return o.AccessKey, true
@@ -58,7 +61,7 @@ func (o *ModelsAWSDetails) GetAccessKeyOk() (*string, bool) {
 
 // HasAccessKey returns a boolean if a field has been set.
 func (o *ModelsAWSDetails) HasAccessKey() bool {
-	if o != nil && o.AccessKey != nil {
+	if o != nil && !IsNil(o.AccessKey) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ModelsAWSDetails) SetAccessKey(v string) {
 
 // GetHostedZoneId returns the HostedZoneId field value if set, zero value otherwise.
 func (o *ModelsAWSDetails) GetHostedZoneId() string {
-	if o == nil || o.HostedZoneId == nil {
+	if o == nil || IsNil(o.HostedZoneId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ModelsAWSDetails) GetHostedZoneId() string {
 // GetHostedZoneIdOk returns a tuple with the HostedZoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAWSDetails) GetHostedZoneIdOk() (*string, bool) {
-	if o == nil || o.HostedZoneId == nil {
+	if o == nil || IsNil(o.HostedZoneId) {
 		return nil, false
 	}
 	return o.HostedZoneId, true
@@ -90,7 +93,7 @@ func (o *ModelsAWSDetails) GetHostedZoneIdOk() (*string, bool) {
 
 // HasHostedZoneId returns a boolean if a field has been set.
 func (o *ModelsAWSDetails) HasHostedZoneId() bool {
-	if o != nil && o.HostedZoneId != nil {
+	if o != nil && !IsNil(o.HostedZoneId) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ModelsAWSDetails) SetHostedZoneId(v string) {
 
 // GetSecretKey returns the SecretKey field value if set, zero value otherwise.
 func (o *ModelsAWSDetails) GetSecretKey() string {
-	if o == nil || o.SecretKey == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ModelsAWSDetails) GetSecretKey() string {
 // GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAWSDetails) GetSecretKeyOk() (*string, bool) {
-	if o == nil || o.SecretKey == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		return nil, false
 	}
 	return o.SecretKey, true
@@ -122,7 +125,7 @@ func (o *ModelsAWSDetails) GetSecretKeyOk() (*string, bool) {
 
 // HasSecretKey returns a boolean if a field has been set.
 func (o *ModelsAWSDetails) HasSecretKey() bool {
-	if o != nil && o.SecretKey != nil {
+	if o != nil && !IsNil(o.SecretKey) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ModelsAWSDetails) SetSecretKey(v string) {
 }
 
 func (o ModelsAWSDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccessKey != nil {
-		toSerialize["access_key"] = o.AccessKey
-	}
-	if o.HostedZoneId != nil {
-		toSerialize["hosted_zone_id"] = o.HostedZoneId
-	}
-	if o.SecretKey != nil {
-		toSerialize["secret_key"] = o.SecretKey
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAWSDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessKey) {
+		toSerialize["access_key"] = o.AccessKey
+	}
+	if !IsNil(o.HostedZoneId) {
+		toSerialize["hosted_zone_id"] = o.HostedZoneId
+	}
+	if !IsNil(o.SecretKey) {
+		toSerialize["secret_key"] = o.SecretKey
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAWSDetails struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersWhoAmIResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersWhoAmIResponse{}
+
 // ControllersWhoAmIResponse struct for ControllersWhoAmIResponse
 type ControllersWhoAmIResponse struct {
 	ServiceAccount *ControllersWhoAmIServiceAccount `json:"service_account,omitempty"`
@@ -39,7 +42,7 @@ func NewControllersWhoAmIResponseWithDefaults() *ControllersWhoAmIResponse {
 
 // GetServiceAccount returns the ServiceAccount field value if set, zero value otherwise.
 func (o *ControllersWhoAmIResponse) GetServiceAccount() ControllersWhoAmIServiceAccount {
-	if o == nil || o.ServiceAccount == nil {
+	if o == nil || IsNil(o.ServiceAccount) {
 		var ret ControllersWhoAmIServiceAccount
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ControllersWhoAmIResponse) GetServiceAccount() ControllersWhoAmIService
 // GetServiceAccountOk returns a tuple with the ServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersWhoAmIResponse) GetServiceAccountOk() (*ControllersWhoAmIServiceAccount, bool) {
-	if o == nil || o.ServiceAccount == nil {
+	if o == nil || IsNil(o.ServiceAccount) {
 		return nil, false
 	}
 	return o.ServiceAccount, true
@@ -57,7 +60,7 @@ func (o *ControllersWhoAmIResponse) GetServiceAccountOk() (*ControllersWhoAmISer
 
 // HasServiceAccount returns a boolean if a field has been set.
 func (o *ControllersWhoAmIResponse) HasServiceAccount() bool {
-	if o != nil && o.ServiceAccount != nil {
+	if o != nil && !IsNil(o.ServiceAccount) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ControllersWhoAmIResponse) SetServiceAccount(v ControllersWhoAmIService
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *ControllersWhoAmIResponse) GetUser() ControllersWhoAmIUser {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret ControllersWhoAmIUser
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ControllersWhoAmIResponse) GetUser() ControllersWhoAmIUser {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersWhoAmIResponse) GetUserOk() (*ControllersWhoAmIUser, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -89,7 +92,7 @@ func (o *ControllersWhoAmIResponse) GetUserOk() (*ControllersWhoAmIUser, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *ControllersWhoAmIResponse) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ControllersWhoAmIResponse) SetUser(v ControllersWhoAmIUser) {
 }
 
 func (o ControllersWhoAmIResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ServiceAccount != nil {
-		toSerialize["service_account"] = o.ServiceAccount
-	}
-	if o.User != nil {
-		toSerialize["user"] = o.User
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersWhoAmIResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ServiceAccount) {
+		toSerialize["service_account"] = o.ServiceAccount
+	}
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersWhoAmIResponse struct {

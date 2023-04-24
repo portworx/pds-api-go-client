@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // AccountsApiService AccountsApi service
 type AccountsApiService service
@@ -42,21 +38,25 @@ func (r ApiApiAccountsGetRequest) SortBy(sortBy string) ApiApiAccountsGetRequest
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiAccountsGetRequest) Limit(limit string) ApiApiAccountsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiAccountsGetRequest) Continuation(continuation string) ApiApiAccountsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Accounts id
 func (r ApiApiAccountsGetRequest) Id(id string) ApiApiAccountsGetRequest {
 	r.id = &id
 	return r
 }
+
 // Filter results by Accounts name
 func (r ApiApiAccountsGetRequest) Name(name string) ApiApiAccountsGetRequest {
 	r.name = &name
@@ -104,19 +104,19 @@ func (a *AccountsApiService) ApiAccountsGetExecute(r ApiApiAccountsGetRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -159,9 +159,9 @@ func (a *AccountsApiService) ApiAccountsGetExecute(r ApiApiAccountsGetRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -203,26 +203,31 @@ func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) SortBy(sortBy string) 
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Limit(limit string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Continuation(continuation string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by invitation id
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Id2(id2 string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by User email
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) Email(email string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.email = &email
 	return r
 }
+
 // Filter results by assigned role name
 func (r ApiApiAccountsIdAccountRoleInvitationsGetRequest) RoleName(roleName string) ApiApiAccountsIdAccountRoleInvitationsGetRequest {
 	r.roleName = &roleName
@@ -266,29 +271,29 @@ func (a *AccountsApiService) ApiAccountsIdAccountRoleInvitationsGetExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/account-role-invitations"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.email != nil {
-		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "")
 	}
 	if r.roleName != nil {
-		localVarQueryParams.Add("role_name", parameterToString(*r.roleName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "role_name", r.roleName, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -331,9 +336,9 @@ func (a *AccountsApiService) ApiAccountsIdAccountRoleInvitationsGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -406,7 +411,7 @@ func (a *AccountsApiService) ApiAccountsIdEulaPutExecute(r ApiApiAccountsIdEulaP
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/eula"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -458,9 +463,9 @@ func (a *AccountsApiService) ApiAccountsIdEulaPutExecute(r ApiApiAccountsIdEulaP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -481,7 +486,6 @@ type ApiApiAccountsIdGetRequest struct {
 	ApiService *AccountsApiService
 	id string
 }
-
 
 func (r ApiApiAccountsIdGetRequest) Execute() (*ModelsAccount, *http.Response, error) {
 	return r.ApiService.ApiAccountsIdGetExecute(r)
@@ -520,7 +524,7 @@ func (a *AccountsApiService) ApiAccountsIdGetExecute(r ApiApiAccountsIdGetReques
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -567,9 +571,9 @@ func (a *AccountsApiService) ApiAccountsIdGetExecute(r ApiApiAccountsIdGetReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -642,7 +646,7 @@ func (a *AccountsApiService) ApiAccountsIdGlobalConfigPutExecute(r ApiApiAccount
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/global-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -694,9 +698,9 @@ func (a *AccountsApiService) ApiAccountsIdGlobalConfigPutExecute(r ApiApiAccount
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -728,21 +732,25 @@ func (r ApiApiAccountsIdUsersGetRequest) SortBy(sortBy string) ApiApiAccountsIdU
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiAccountsIdUsersGetRequest) Limit(limit string) ApiApiAccountsIdUsersGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiAccountsIdUsersGetRequest) Continuation(continuation string) ApiApiAccountsIdUsersGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by User id
 func (r ApiApiAccountsIdUsersGetRequest) Id2(id2 string) ApiApiAccountsIdUsersGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by User email
 func (r ApiApiAccountsIdUsersGetRequest) Email(email string) ApiApiAccountsIdUsersGetRequest {
 	r.email = &email
@@ -786,26 +794,26 @@ func (a *AccountsApiService) ApiAccountsIdUsersGetExecute(r ApiApiAccountsIdUser
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.email != nil {
-		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -848,9 +856,9 @@ func (a *AccountsApiService) ApiAccountsIdUsersGetExecute(r ApiApiAccountsIdUser
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -973,9 +981,9 @@ func (a *AccountsApiService) ApiAccountsPostExecute(r ApiApiAccountsPostRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

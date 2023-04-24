@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsResourceConditions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsResourceConditions{}
+
 // DeploymentsResourceConditions struct for DeploymentsResourceConditions
 type DeploymentsResourceConditions struct {
 	Conditions []DeploymentsCondition `json:"conditions,omitempty"`
@@ -39,7 +42,7 @@ func NewDeploymentsResourceConditionsWithDefaults() *DeploymentsResourceConditio
 
 // GetConditions returns the Conditions field value if set, zero value otherwise.
 func (o *DeploymentsResourceConditions) GetConditions() []DeploymentsCondition {
-	if o == nil || o.Conditions == nil {
+	if o == nil || IsNil(o.Conditions) {
 		var ret []DeploymentsCondition
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DeploymentsResourceConditions) GetConditions() []DeploymentsCondition {
 // GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceConditions) GetConditionsOk() ([]DeploymentsCondition, bool) {
-	if o == nil || o.Conditions == nil {
+	if o == nil || IsNil(o.Conditions) {
 		return nil, false
 	}
 	return o.Conditions, true
@@ -57,7 +60,7 @@ func (o *DeploymentsResourceConditions) GetConditionsOk() ([]DeploymentsConditio
 
 // HasConditions returns a boolean if a field has been set.
 func (o *DeploymentsResourceConditions) HasConditions() bool {
-	if o != nil && o.Conditions != nil {
+	if o != nil && !IsNil(o.Conditions) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *DeploymentsResourceConditions) SetConditions(v []DeploymentsCondition) 
 
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *DeploymentsResourceConditions) GetResource() V1TypedLocalObjectReference {
-	if o == nil || o.Resource == nil {
+	if o == nil || IsNil(o.Resource) {
 		var ret V1TypedLocalObjectReference
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *DeploymentsResourceConditions) GetResource() V1TypedLocalObjectReferenc
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceConditions) GetResourceOk() (*V1TypedLocalObjectReference, bool) {
-	if o == nil || o.Resource == nil {
+	if o == nil || IsNil(o.Resource) {
 		return nil, false
 	}
 	return o.Resource, true
@@ -89,7 +92,7 @@ func (o *DeploymentsResourceConditions) GetResourceOk() (*V1TypedLocalObjectRefe
 
 // HasResource returns a boolean if a field has been set.
 func (o *DeploymentsResourceConditions) HasResource() bool {
-	if o != nil && o.Resource != nil {
+	if o != nil && !IsNil(o.Resource) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *DeploymentsResourceConditions) SetResource(v V1TypedLocalObjectReferenc
 }
 
 func (o DeploymentsResourceConditions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Conditions != nil {
-		toSerialize["conditions"] = o.Conditions
-	}
-	if o.Resource != nil {
-		toSerialize["resource"] = o.Resource
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsResourceConditions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Conditions) {
+		toSerialize["conditions"] = o.Conditions
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsResourceConditions struct {

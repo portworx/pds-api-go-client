@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersDeploymentTargetCredentialsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersDeploymentTargetCredentialsResponse{}
+
 // ControllersDeploymentTargetCredentialsResponse struct for ControllersDeploymentTargetCredentialsResponse
 type ControllersDeploymentTargetCredentialsResponse struct {
 	TeleportCaPin *string `json:"teleport_ca_pin,omitempty"`
@@ -40,7 +43,7 @@ func NewControllersDeploymentTargetCredentialsResponseWithDefaults() *Controller
 
 // GetTeleportCaPin returns the TeleportCaPin field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportCaPin() string {
-	if o == nil || o.TeleportCaPin == nil {
+	if o == nil || IsNil(o.TeleportCaPin) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportCaPin() stri
 // GetTeleportCaPinOk returns a tuple with the TeleportCaPin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportCaPinOk() (*string, bool) {
-	if o == nil || o.TeleportCaPin == nil {
+	if o == nil || IsNil(o.TeleportCaPin) {
 		return nil, false
 	}
 	return o.TeleportCaPin, true
@@ -58,7 +61,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportCaPinOk() (*
 
 // HasTeleportCaPin returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetCredentialsResponse) HasTeleportCaPin() bool {
-	if o != nil && o.TeleportCaPin != nil {
+	if o != nil && !IsNil(o.TeleportCaPin) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) SetTeleportCaPin(v stri
 
 // GetTeleportJoinToken returns the TeleportJoinToken field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportJoinToken() string {
-	if o == nil || o.TeleportJoinToken == nil {
+	if o == nil || IsNil(o.TeleportJoinToken) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportJoinToken() 
 // GetTeleportJoinTokenOk returns a tuple with the TeleportJoinToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportJoinTokenOk() (*string, bool) {
-	if o == nil || o.TeleportJoinToken == nil {
+	if o == nil || IsNil(o.TeleportJoinToken) {
 		return nil, false
 	}
 	return o.TeleportJoinToken, true
@@ -90,7 +93,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportJoinTokenOk(
 
 // HasTeleportJoinToken returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetCredentialsResponse) HasTeleportJoinToken() bool {
-	if o != nil && o.TeleportJoinToken != nil {
+	if o != nil && !IsNil(o.TeleportJoinToken) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) SetTeleportJoinToken(v 
 
 // GetTeleportProxyAddr returns the TeleportProxyAddr field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportProxyAddr() string {
-	if o == nil || o.TeleportProxyAddr == nil {
+	if o == nil || IsNil(o.TeleportProxyAddr) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportProxyAddr() 
 // GetTeleportProxyAddrOk returns a tuple with the TeleportProxyAddr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportProxyAddrOk() (*string, bool) {
-	if o == nil || o.TeleportProxyAddr == nil {
+	if o == nil || IsNil(o.TeleportProxyAddr) {
 		return nil, false
 	}
 	return o.TeleportProxyAddr, true
@@ -122,7 +125,7 @@ func (o *ControllersDeploymentTargetCredentialsResponse) GetTeleportProxyAddrOk(
 
 // HasTeleportProxyAddr returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetCredentialsResponse) HasTeleportProxyAddr() bool {
-	if o != nil && o.TeleportProxyAddr != nil {
+	if o != nil && !IsNil(o.TeleportProxyAddr) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ControllersDeploymentTargetCredentialsResponse) SetTeleportProxyAddr(v 
 }
 
 func (o ControllersDeploymentTargetCredentialsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TeleportCaPin != nil {
-		toSerialize["teleport_ca_pin"] = o.TeleportCaPin
-	}
-	if o.TeleportJoinToken != nil {
-		toSerialize["teleport_join_token"] = o.TeleportJoinToken
-	}
-	if o.TeleportProxyAddr != nil {
-		toSerialize["teleport_proxy_addr"] = o.TeleportProxyAddr
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersDeploymentTargetCredentialsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TeleportCaPin) {
+		toSerialize["teleport_ca_pin"] = o.TeleportCaPin
+	}
+	if !IsNil(o.TeleportJoinToken) {
+		toSerialize["teleport_join_token"] = o.TeleportJoinToken
+	}
+	if !IsNil(o.TeleportProxyAddr) {
+		toSerialize["teleport_proxy_addr"] = o.TeleportProxyAddr
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersDeploymentTargetCredentialsResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersCreateApplicationConfigurationTemplateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersCreateApplicationConfigurationTemplateRequest{}
+
 // ControllersCreateApplicationConfigurationTemplateRequest struct for ControllersCreateApplicationConfigurationTemplateRequest
 type ControllersCreateApplicationConfigurationTemplateRequest struct {
 	ConfigItems []ModelsConfigItem `json:"config_items,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersCreateApplicationConfigurationTemplateRequestWithDefaults() *
 
 // GetConfigItems returns the ConfigItems field value if set, zero value otherwise.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetConfigItems() []ModelsConfigItem {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		var ret []ModelsConfigItem
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetConfigItem
 // GetConfigItemsOk returns a tuple with the ConfigItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		return nil, false
 	}
 	return o.ConfigItems, true
@@ -59,7 +62,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetConfigItem
 
 // HasConfigItems returns a boolean if a field has been set.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) HasConfigItems() bool {
-	if o != nil && o.ConfigItems != nil {
+	if o != nil && !IsNil(o.ConfigItems) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) SetConfigItem
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetDataServic
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -91,7 +94,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetDataServic
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) SetDataServic
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetName() str
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -123,7 +126,7 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) GetNameOk() (
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersCreateApplicationConfigurationTemplateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *ControllersCreateApplicationConfigurationTemplateRequest) SetName(v str
 }
 
 func (o ControllersCreateApplicationConfigurationTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ConfigItems != nil {
-		toSerialize["config_items"] = o.ConfigItems
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersCreateApplicationConfigurationTemplateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ConfigItems) {
+		toSerialize["config_items"] = o.ConfigItems
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersCreateApplicationConfigurationTemplateRequest struct {

@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPaginatedTenantRoleBindings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPaginatedTenantRoleBindings{}
+
 // ControllersPaginatedTenantRoleBindings struct for ControllersPaginatedTenantRoleBindings
 type ControllersPaginatedTenantRoleBindings struct {
-	Data []ModelsLegacyTenantBinding `json:"data,omitempty"`
+	Data []ModelsTenantRoleBinding `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedTenantRoleBindings instantiates a new ControllersPaginatedTenantRoleBindings object
@@ -37,9 +40,9 @@ func NewControllersPaginatedTenantRoleBindingsWithDefaults() *ControllersPaginat
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedTenantRoleBindings) GetData() []ModelsLegacyTenantBinding {
-	if o == nil || o.Data == nil {
-		var ret []ModelsLegacyTenantBinding
+func (o *ControllersPaginatedTenantRoleBindings) GetData() []ModelsTenantRoleBinding {
+	if o == nil || IsNil(o.Data) {
+		var ret []ModelsTenantRoleBinding
 		return ret
 	}
 	return o.Data
@@ -47,8 +50,8 @@ func (o *ControllersPaginatedTenantRoleBindings) GetData() []ModelsLegacyTenantB
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedTenantRoleBindings) GetDataOk() ([]ModelsLegacyTenantBinding, bool) {
-	if o == nil || o.Data == nil {
+func (o *ControllersPaginatedTenantRoleBindings) GetDataOk() ([]ModelsTenantRoleBinding, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -56,24 +59,32 @@ func (o *ControllersPaginatedTenantRoleBindings) GetDataOk() ([]ModelsLegacyTena
 
 // HasData returns a boolean if a field has been set.
 func (o *ControllersPaginatedTenantRoleBindings) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
 	return false
 }
 
-// SetData gets a reference to the given []ModelsLegacyTenantBinding and assigns it to the Data field.
-func (o *ControllersPaginatedTenantRoleBindings) SetData(v []ModelsLegacyTenantBinding) {
+// SetData gets a reference to the given []ModelsTenantRoleBinding and assigns it to the Data field.
+func (o *ControllersPaginatedTenantRoleBindings) SetData(v []ModelsTenantRoleBinding) {
 	o.Data = v
 }
 
 func (o ControllersPaginatedTenantRoleBindings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPaginatedTenantRoleBindings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPaginatedTenantRoleBindings struct {

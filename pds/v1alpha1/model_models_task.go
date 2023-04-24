@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsTask type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsTask{}
+
 // ModelsTask struct for ModelsTask
 type ModelsTask struct {
 	AccountId *string `json:"account_id,omitempty"`
@@ -52,7 +55,7 @@ func NewModelsTaskWithDefaults() *ModelsTask {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ModelsTask) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *ModelsTask) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -70,7 +73,7 @@ func (o *ModelsTask) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ModelsTask) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *ModelsTask) SetAccountId(v string) {
 
 // GetAssociatedResource returns the AssociatedResource field value if set, zero value otherwise.
 func (o *ModelsTask) GetAssociatedResource() string {
-	if o == nil || o.AssociatedResource == nil {
+	if o == nil || IsNil(o.AssociatedResource) {
 		var ret string
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *ModelsTask) GetAssociatedResource() string {
 // GetAssociatedResourceOk returns a tuple with the AssociatedResource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetAssociatedResourceOk() (*string, bool) {
-	if o == nil || o.AssociatedResource == nil {
+	if o == nil || IsNil(o.AssociatedResource) {
 		return nil, false
 	}
 	return o.AssociatedResource, true
@@ -102,7 +105,7 @@ func (o *ModelsTask) GetAssociatedResourceOk() (*string, bool) {
 
 // HasAssociatedResource returns a boolean if a field has been set.
 func (o *ModelsTask) HasAssociatedResource() bool {
-	if o != nil && o.AssociatedResource != nil {
+	if o != nil && !IsNil(o.AssociatedResource) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *ModelsTask) SetAssociatedResource(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsTask) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *ModelsTask) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -134,7 +137,7 @@ func (o *ModelsTask) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsTask) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *ModelsTask) SetCreatedAt(v string) {
 
 // GetCurrentStep returns the CurrentStep field value if set, zero value otherwise.
 func (o *ModelsTask) GetCurrentStep() int32 {
-	if o == nil || o.CurrentStep == nil {
+	if o == nil || IsNil(o.CurrentStep) {
 		var ret int32
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *ModelsTask) GetCurrentStep() int32 {
 // GetCurrentStepOk returns a tuple with the CurrentStep field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetCurrentStepOk() (*int32, bool) {
-	if o == nil || o.CurrentStep == nil {
+	if o == nil || IsNil(o.CurrentStep) {
 		return nil, false
 	}
 	return o.CurrentStep, true
@@ -166,7 +169,7 @@ func (o *ModelsTask) GetCurrentStepOk() (*int32, bool) {
 
 // HasCurrentStep returns a boolean if a field has been set.
 func (o *ModelsTask) HasCurrentStep() bool {
-	if o != nil && o.CurrentStep != nil {
+	if o != nil && !IsNil(o.CurrentStep) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *ModelsTask) SetCurrentStep(v int32) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ModelsTask) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *ModelsTask) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -198,7 +201,7 @@ func (o *ModelsTask) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ModelsTask) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *ModelsTask) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsTask) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *ModelsTask) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -230,7 +233,7 @@ func (o *ModelsTask) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsTask) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *ModelsTask) SetId(v int32) {
 
 // GetLog returns the Log field value if set, zero value otherwise.
 func (o *ModelsTask) GetLog() []string {
-	if o == nil || o.Log == nil {
+	if o == nil || IsNil(o.Log) {
 		var ret []string
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ModelsTask) GetLog() []string {
 // GetLogOk returns a tuple with the Log field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetLogOk() ([]string, bool) {
-	if o == nil || o.Log == nil {
+	if o == nil || IsNil(o.Log) {
 		return nil, false
 	}
 	return o.Log, true
@@ -262,7 +265,7 @@ func (o *ModelsTask) GetLogOk() ([]string, bool) {
 
 // HasLog returns a boolean if a field has been set.
 func (o *ModelsTask) HasLog() bool {
-	if o != nil && o.Log != nil {
+	if o != nil && !IsNil(o.Log) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *ModelsTask) SetLog(v []string) {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *ModelsTask) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *ModelsTask) GetProjectId() string {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
 	return o.ProjectId, true
@@ -294,7 +297,7 @@ func (o *ModelsTask) GetProjectIdOk() (*string, bool) {
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *ModelsTask) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *ModelsTask) SetProjectId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ModelsTask) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *ModelsTask) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -326,7 +329,7 @@ func (o *ModelsTask) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ModelsTask) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *ModelsTask) SetStatus(v string) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *ModelsTask) GetTenantId() string {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *ModelsTask) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetTenantIdOk() (*string, bool) {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
 	return o.TenantId, true
@@ -358,7 +361,7 @@ func (o *ModelsTask) GetTenantIdOk() (*string, bool) {
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *ModelsTask) HasTenantId() bool {
-	if o != nil && o.TenantId != nil {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *ModelsTask) SetTenantId(v string) {
 
 // GetTotalSteps returns the TotalSteps field value if set, zero value otherwise.
 func (o *ModelsTask) GetTotalSteps() int32 {
-	if o == nil || o.TotalSteps == nil {
+	if o == nil || IsNil(o.TotalSteps) {
 		var ret int32
 		return ret
 	}
@@ -382,7 +385,7 @@ func (o *ModelsTask) GetTotalSteps() int32 {
 // GetTotalStepsOk returns a tuple with the TotalSteps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetTotalStepsOk() (*int32, bool) {
-	if o == nil || o.TotalSteps == nil {
+	if o == nil || IsNil(o.TotalSteps) {
 		return nil, false
 	}
 	return o.TotalSteps, true
@@ -390,7 +393,7 @@ func (o *ModelsTask) GetTotalStepsOk() (*int32, bool) {
 
 // HasTotalSteps returns a boolean if a field has been set.
 func (o *ModelsTask) HasTotalSteps() bool {
-	if o != nil && o.TotalSteps != nil {
+	if o != nil && !IsNil(o.TotalSteps) {
 		return true
 	}
 
@@ -404,7 +407,7 @@ func (o *ModelsTask) SetTotalSteps(v int32) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsTask) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -414,7 +417,7 @@ func (o *ModelsTask) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsTask) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -422,7 +425,7 @@ func (o *ModelsTask) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsTask) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -435,44 +438,52 @@ func (o *ModelsTask) SetUpdatedAt(v string) {
 }
 
 func (o ModelsTask) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.AssociatedResource != nil {
-		toSerialize["associated_resource"] = o.AssociatedResource
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.CurrentStep != nil {
-		toSerialize["current_step"] = o.CurrentStep
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Log != nil {
-		toSerialize["log"] = o.Log
-	}
-	if o.ProjectId != nil {
-		toSerialize["project_id"] = o.ProjectId
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.TenantId != nil {
-		toSerialize["tenant_id"] = o.TenantId
-	}
-	if o.TotalSteps != nil {
-		toSerialize["total_steps"] = o.TotalSteps
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsTask) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if !IsNil(o.AssociatedResource) {
+		toSerialize["associated_resource"] = o.AssociatedResource
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.CurrentStep) {
+		toSerialize["current_step"] = o.CurrentStep
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Log) {
+		toSerialize["log"] = o.Log
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenant_id"] = o.TenantId
+	}
+	if !IsNil(o.TotalSteps) {
+		toSerialize["total_steps"] = o.TotalSteps
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsTask struct {

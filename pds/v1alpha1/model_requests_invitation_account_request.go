@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsInvitationAccountRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsInvitationAccountRequest{}
+
 // RequestsInvitationAccountRequest struct for RequestsInvitationAccountRequest
 type RequestsInvitationAccountRequest struct {
 	Email string `json:"email"`
@@ -52,7 +55,7 @@ func (o *RequestsInvitationAccountRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *RequestsInvitationAccountRequest) GetEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Email, true
@@ -76,7 +79,7 @@ func (o *RequestsInvitationAccountRequest) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value
 // and a boolean to check if the value has been set.
 func (o *RequestsInvitationAccountRequest) GetRoleNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.RoleName, true
@@ -88,14 +91,18 @@ func (o *RequestsInvitationAccountRequest) SetRoleName(v string) {
 }
 
 func (o RequestsInvitationAccountRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["role_name"] = o.RoleName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsInvitationAccountRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["email"] = o.Email
+	toSerialize["role_name"] = o.RoleName
+	return toSerialize, nil
 }
 
 type NullableRequestsInvitationAccountRequest struct {

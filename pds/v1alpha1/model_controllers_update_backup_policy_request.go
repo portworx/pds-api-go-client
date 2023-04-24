@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateBackupPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateBackupPolicyRequest{}
+
 // ControllersUpdateBackupPolicyRequest struct for ControllersUpdateBackupPolicyRequest
 type ControllersUpdateBackupPolicyRequest struct {
 	// Name of the backup policy. Must be unique for the given tenant.
@@ -41,7 +44,7 @@ func NewControllersUpdateBackupPolicyRequestWithDefaults() *ControllersUpdateBac
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersUpdateBackupPolicyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersUpdateBackupPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateBackupPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *ControllersUpdateBackupPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersUpdateBackupPolicyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersUpdateBackupPolicyRequest) SetName(v string) {
 
 // GetSchedules returns the Schedules field value if set, zero value otherwise.
 func (o *ControllersUpdateBackupPolicyRequest) GetSchedules() []ModelsBackupSchedule {
-	if o == nil || o.Schedules == nil {
+	if o == nil || IsNil(o.Schedules) {
 		var ret []ModelsBackupSchedule
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersUpdateBackupPolicyRequest) GetSchedules() []ModelsBackupSche
 // GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateBackupPolicyRequest) GetSchedulesOk() ([]ModelsBackupSchedule, bool) {
-	if o == nil || o.Schedules == nil {
+	if o == nil || IsNil(o.Schedules) {
 		return nil, false
 	}
 	return o.Schedules, true
@@ -91,7 +94,7 @@ func (o *ControllersUpdateBackupPolicyRequest) GetSchedulesOk() ([]ModelsBackupS
 
 // HasSchedules returns a boolean if a field has been set.
 func (o *ControllersUpdateBackupPolicyRequest) HasSchedules() bool {
-	if o != nil && o.Schedules != nil {
+	if o != nil && !IsNil(o.Schedules) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *ControllersUpdateBackupPolicyRequest) SetSchedules(v []ModelsBackupSche
 }
 
 func (o ControllersUpdateBackupPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Schedules != nil {
-		toSerialize["schedules"] = o.Schedules
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateBackupPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Schedules) {
+		toSerialize["schedules"] = o.Schedules
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateBackupPolicyRequest struct {

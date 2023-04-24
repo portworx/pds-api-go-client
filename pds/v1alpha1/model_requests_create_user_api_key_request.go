@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsCreateUserAPIKeyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsCreateUserAPIKeyRequest{}
+
 // RequestsCreateUserAPIKeyRequest struct for RequestsCreateUserAPIKeyRequest
 type RequestsCreateUserAPIKeyRequest struct {
 	// Time when the key expires.
@@ -41,7 +44,7 @@ func NewRequestsCreateUserAPIKeyRequestWithDefaults() *RequestsCreateUserAPIKeyR
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *RequestsCreateUserAPIKeyRequest) GetExpiresAt() string {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RequestsCreateUserAPIKeyRequest) GetExpiresAt() string {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateUserAPIKeyRequest) GetExpiresAtOk() (*string, bool) {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
 	return o.ExpiresAt, true
@@ -59,7 +62,7 @@ func (o *RequestsCreateUserAPIKeyRequest) GetExpiresAtOk() (*string, bool) {
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *RequestsCreateUserAPIKeyRequest) HasExpiresAt() bool {
-	if o != nil && o.ExpiresAt != nil {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RequestsCreateUserAPIKeyRequest) SetExpiresAt(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestsCreateUserAPIKeyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RequestsCreateUserAPIKeyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateUserAPIKeyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *RequestsCreateUserAPIKeyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestsCreateUserAPIKeyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *RequestsCreateUserAPIKeyRequest) SetName(v string) {
 }
 
 func (o RequestsCreateUserAPIKeyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ExpiresAt != nil {
-		toSerialize["expires_at"] = o.ExpiresAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsCreateUserAPIKeyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expires_at"] = o.ExpiresAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsCreateUserAPIKeyRequest struct {

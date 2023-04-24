@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsStorageOptionsTemplate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsStorageOptionsTemplate{}
+
 // ModelsStorageOptionsTemplate struct for ModelsStorageOptionsTemplate
 type ModelsStorageOptionsTemplate struct {
 	AccountId *string `json:"account_id,omitempty"`
@@ -57,7 +60,7 @@ func NewModelsStorageOptionsTemplateWithDefaults() *ModelsStorageOptionsTemplate
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -67,7 +70,7 @@ func (o *ModelsStorageOptionsTemplate) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -75,7 +78,7 @@ func (o *ModelsStorageOptionsTemplate) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *ModelsStorageOptionsTemplate) SetAccountId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -99,7 +102,7 @@ func (o *ModelsStorageOptionsTemplate) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -107,7 +110,7 @@ func (o *ModelsStorageOptionsTemplate) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *ModelsStorageOptionsTemplate) SetCreatedAt(v string) {
 
 // GetFg returns the Fg field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetFg() bool {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		var ret bool
 		return ret
 	}
@@ -131,7 +134,7 @@ func (o *ModelsStorageOptionsTemplate) GetFg() bool {
 // GetFgOk returns a tuple with the Fg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetFgOk() (*bool, bool) {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		return nil, false
 	}
 	return o.Fg, true
@@ -139,7 +142,7 @@ func (o *ModelsStorageOptionsTemplate) GetFgOk() (*bool, bool) {
 
 // HasFg returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasFg() bool {
-	if o != nil && o.Fg != nil {
+	if o != nil && !IsNil(o.Fg) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *ModelsStorageOptionsTemplate) SetFg(v bool) {
 
 // GetFs returns the Fs field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetFs() string {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		var ret string
 		return ret
 	}
@@ -163,7 +166,7 @@ func (o *ModelsStorageOptionsTemplate) GetFs() string {
 // GetFsOk returns a tuple with the Fs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetFsOk() (*string, bool) {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		return nil, false
 	}
 	return o.Fs, true
@@ -171,7 +174,7 @@ func (o *ModelsStorageOptionsTemplate) GetFsOk() (*string, bool) {
 
 // HasFs returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasFs() bool {
-	if o != nil && o.Fs != nil {
+	if o != nil && !IsNil(o.Fs) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *ModelsStorageOptionsTemplate) SetFs(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -195,7 +198,7 @@ func (o *ModelsStorageOptionsTemplate) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -203,7 +206,7 @@ func (o *ModelsStorageOptionsTemplate) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -217,7 +220,7 @@ func (o *ModelsStorageOptionsTemplate) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -227,7 +230,7 @@ func (o *ModelsStorageOptionsTemplate) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -235,7 +238,7 @@ func (o *ModelsStorageOptionsTemplate) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *ModelsStorageOptionsTemplate) SetName(v string) {
 
 // GetProvisioner returns the Provisioner field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetProvisioner() string {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		var ret string
 		return ret
 	}
@@ -259,7 +262,7 @@ func (o *ModelsStorageOptionsTemplate) GetProvisioner() string {
 // GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetProvisionerOk() (*string, bool) {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		return nil, false
 	}
 	return o.Provisioner, true
@@ -267,7 +270,7 @@ func (o *ModelsStorageOptionsTemplate) GetProvisionerOk() (*string, bool) {
 
 // HasProvisioner returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasProvisioner() bool {
-	if o != nil && o.Provisioner != nil {
+	if o != nil && !IsNil(o.Provisioner) {
 		return true
 	}
 
@@ -281,7 +284,7 @@ func (o *ModelsStorageOptionsTemplate) SetProvisioner(v string) {
 
 // GetRepl returns the Repl field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetRepl() int32 {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		var ret int32
 		return ret
 	}
@@ -291,7 +294,7 @@ func (o *ModelsStorageOptionsTemplate) GetRepl() int32 {
 // GetReplOk returns a tuple with the Repl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetReplOk() (*int32, bool) {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		return nil, false
 	}
 	return o.Repl, true
@@ -299,7 +302,7 @@ func (o *ModelsStorageOptionsTemplate) GetReplOk() (*int32, bool) {
 
 // HasRepl returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasRepl() bool {
-	if o != nil && o.Repl != nil {
+	if o != nil && !IsNil(o.Repl) {
 		return true
 	}
 
@@ -313,7 +316,7 @@ func (o *ModelsStorageOptionsTemplate) SetRepl(v int32) {
 
 // GetSecure returns the Secure field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetSecure() bool {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		var ret bool
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *ModelsStorageOptionsTemplate) GetSecure() bool {
 // GetSecureOk returns a tuple with the Secure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetSecureOk() (*bool, bool) {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		return nil, false
 	}
 	return o.Secure, true
@@ -331,7 +334,7 @@ func (o *ModelsStorageOptionsTemplate) GetSecureOk() (*bool, bool) {
 
 // HasSecure returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasSecure() bool {
-	if o != nil && o.Secure != nil {
+	if o != nil && !IsNil(o.Secure) {
 		return true
 	}
 
@@ -345,7 +348,7 @@ func (o *ModelsStorageOptionsTemplate) SetSecure(v bool) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetTenantId() string {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -355,7 +358,7 @@ func (o *ModelsStorageOptionsTemplate) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetTenantIdOk() (*string, bool) {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
 	return o.TenantId, true
@@ -363,7 +366,7 @@ func (o *ModelsStorageOptionsTemplate) GetTenantIdOk() (*string, bool) {
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasTenantId() bool {
-	if o != nil && o.TenantId != nil {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -377,7 +380,7 @@ func (o *ModelsStorageOptionsTemplate) SetTenantId(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsTemplate) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -387,7 +390,7 @@ func (o *ModelsStorageOptionsTemplate) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsTemplate) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -395,7 +398,7 @@ func (o *ModelsStorageOptionsTemplate) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsTemplate) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -408,41 +411,49 @@ func (o *ModelsStorageOptionsTemplate) SetUpdatedAt(v string) {
 }
 
 func (o ModelsStorageOptionsTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Fg != nil {
-		toSerialize["fg"] = o.Fg
-	}
-	if o.Fs != nil {
-		toSerialize["fs"] = o.Fs
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Provisioner != nil {
-		toSerialize["provisioner"] = o.Provisioner
-	}
-	if o.Repl != nil {
-		toSerialize["repl"] = o.Repl
-	}
-	if o.Secure != nil {
-		toSerialize["secure"] = o.Secure
-	}
-	if o.TenantId != nil {
-		toSerialize["tenant_id"] = o.TenantId
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsStorageOptionsTemplate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Fg) {
+		toSerialize["fg"] = o.Fg
+	}
+	if !IsNil(o.Fs) {
+		toSerialize["fs"] = o.Fs
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Provisioner) {
+		toSerialize["provisioner"] = o.Provisioner
+	}
+	if !IsNil(o.Repl) {
+		toSerialize["repl"] = o.Repl
+	}
+	if !IsNil(o.Secure) {
+		toSerialize["secure"] = o.Secure
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenant_id"] = o.TenantId
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsStorageOptionsTemplate struct {

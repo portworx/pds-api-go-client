@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsDNSDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsDNSDetails{}
+
 // ModelsDNSDetails struct for ModelsDNSDetails
 type ModelsDNSDetails struct {
 	AwsDetails *ModelsAWSDetails `json:"aws_details,omitempty"`
@@ -39,7 +42,7 @@ func NewModelsDNSDetailsWithDefaults() *ModelsDNSDetails {
 
 // GetAwsDetails returns the AwsDetails field value if set, zero value otherwise.
 func (o *ModelsDNSDetails) GetAwsDetails() ModelsAWSDetails {
-	if o == nil || o.AwsDetails == nil {
+	if o == nil || IsNil(o.AwsDetails) {
 		var ret ModelsAWSDetails
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ModelsDNSDetails) GetAwsDetails() ModelsAWSDetails {
 // GetAwsDetailsOk returns a tuple with the AwsDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDNSDetails) GetAwsDetailsOk() (*ModelsAWSDetails, bool) {
-	if o == nil || o.AwsDetails == nil {
+	if o == nil || IsNil(o.AwsDetails) {
 		return nil, false
 	}
 	return o.AwsDetails, true
@@ -57,7 +60,7 @@ func (o *ModelsDNSDetails) GetAwsDetailsOk() (*ModelsAWSDetails, bool) {
 
 // HasAwsDetails returns a boolean if a field has been set.
 func (o *ModelsDNSDetails) HasAwsDetails() bool {
-	if o != nil && o.AwsDetails != nil {
+	if o != nil && !IsNil(o.AwsDetails) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ModelsDNSDetails) SetAwsDetails(v ModelsAWSDetails) {
 
 // GetDnsZone returns the DnsZone field value if set, zero value otherwise.
 func (o *ModelsDNSDetails) GetDnsZone() string {
-	if o == nil || o.DnsZone == nil {
+	if o == nil || IsNil(o.DnsZone) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ModelsDNSDetails) GetDnsZone() string {
 // GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsDNSDetails) GetDnsZoneOk() (*string, bool) {
-	if o == nil || o.DnsZone == nil {
+	if o == nil || IsNil(o.DnsZone) {
 		return nil, false
 	}
 	return o.DnsZone, true
@@ -89,7 +92,7 @@ func (o *ModelsDNSDetails) GetDnsZoneOk() (*string, bool) {
 
 // HasDnsZone returns a boolean if a field has been set.
 func (o *ModelsDNSDetails) HasDnsZone() bool {
-	if o != nil && o.DnsZone != nil {
+	if o != nil && !IsNil(o.DnsZone) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ModelsDNSDetails) SetDnsZone(v string) {
 }
 
 func (o ModelsDNSDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AwsDetails != nil {
-		toSerialize["aws_details"] = o.AwsDetails
-	}
-	if o.DnsZone != nil {
-		toSerialize["dns_zone"] = o.DnsZone
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsDNSDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsDetails) {
+		toSerialize["aws_details"] = o.AwsDetails
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns_zone"] = o.DnsZone
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsDNSDetails struct {

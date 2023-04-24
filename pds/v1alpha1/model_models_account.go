@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsAccount{}
+
 // ModelsAccount struct for ModelsAccount
 type ModelsAccount struct {
 	BaasFeaturesEnabled *bool `json:"baas_features_enabled,omitempty"`
@@ -49,7 +52,7 @@ func NewModelsAccountWithDefaults() *ModelsAccount {
 
 // GetBaasFeaturesEnabled returns the BaasFeaturesEnabled field value if set, zero value otherwise.
 func (o *ModelsAccount) GetBaasFeaturesEnabled() bool {
-	if o == nil || o.BaasFeaturesEnabled == nil {
+	if o == nil || IsNil(o.BaasFeaturesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ModelsAccount) GetBaasFeaturesEnabled() bool {
 // GetBaasFeaturesEnabledOk returns a tuple with the BaasFeaturesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetBaasFeaturesEnabledOk() (*bool, bool) {
-	if o == nil || o.BaasFeaturesEnabled == nil {
+	if o == nil || IsNil(o.BaasFeaturesEnabled) {
 		return nil, false
 	}
 	return o.BaasFeaturesEnabled, true
@@ -67,7 +70,7 @@ func (o *ModelsAccount) GetBaasFeaturesEnabledOk() (*bool, bool) {
 
 // HasBaasFeaturesEnabled returns a boolean if a field has been set.
 func (o *ModelsAccount) HasBaasFeaturesEnabled() bool {
-	if o != nil && o.BaasFeaturesEnabled != nil {
+	if o != nil && !IsNil(o.BaasFeaturesEnabled) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ModelsAccount) SetBaasFeaturesEnabled(v bool) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsAccount) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ModelsAccount) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -99,7 +102,7 @@ func (o *ModelsAccount) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsAccount) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ModelsAccount) SetCreatedAt(v string) {
 
 // GetEula returns the Eula field value if set, zero value otherwise.
 func (o *ModelsAccount) GetEula() ModelsEULADetails {
-	if o == nil || o.Eula == nil {
+	if o == nil || IsNil(o.Eula) {
 		var ret ModelsEULADetails
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ModelsAccount) GetEula() ModelsEULADetails {
 // GetEulaOk returns a tuple with the Eula field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetEulaOk() (*ModelsEULADetails, bool) {
-	if o == nil || o.Eula == nil {
+	if o == nil || IsNil(o.Eula) {
 		return nil, false
 	}
 	return o.Eula, true
@@ -131,7 +134,7 @@ func (o *ModelsAccount) GetEulaOk() (*ModelsEULADetails, bool) {
 
 // HasEula returns a boolean if a field has been set.
 func (o *ModelsAccount) HasEula() bool {
-	if o != nil && o.Eula != nil {
+	if o != nil && !IsNil(o.Eula) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ModelsAccount) SetEula(v ModelsEULADetails) {
 
 // GetGlobalConfig returns the GlobalConfig field value if set, zero value otherwise.
 func (o *ModelsAccount) GetGlobalConfig() ModelsAccountGlobalConfig {
-	if o == nil || o.GlobalConfig == nil {
+	if o == nil || IsNil(o.GlobalConfig) {
 		var ret ModelsAccountGlobalConfig
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ModelsAccount) GetGlobalConfig() ModelsAccountGlobalConfig {
 // GetGlobalConfigOk returns a tuple with the GlobalConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetGlobalConfigOk() (*ModelsAccountGlobalConfig, bool) {
-	if o == nil || o.GlobalConfig == nil {
+	if o == nil || IsNil(o.GlobalConfig) {
 		return nil, false
 	}
 	return o.GlobalConfig, true
@@ -163,7 +166,7 @@ func (o *ModelsAccount) GetGlobalConfigOk() (*ModelsAccountGlobalConfig, bool) {
 
 // HasGlobalConfig returns a boolean if a field has been set.
 func (o *ModelsAccount) HasGlobalConfig() bool {
-	if o != nil && o.GlobalConfig != nil {
+	if o != nil && !IsNil(o.GlobalConfig) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ModelsAccount) SetGlobalConfig(v ModelsAccountGlobalConfig) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsAccount) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ModelsAccount) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -195,7 +198,7 @@ func (o *ModelsAccount) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsAccount) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ModelsAccount) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsAccount) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ModelsAccount) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -227,7 +230,7 @@ func (o *ModelsAccount) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsAccount) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ModelsAccount) SetName(v string) {
 
 // GetPdsFeaturesEnabled returns the PdsFeaturesEnabled field value if set, zero value otherwise.
 func (o *ModelsAccount) GetPdsFeaturesEnabled() bool {
-	if o == nil || o.PdsFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PdsFeaturesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *ModelsAccount) GetPdsFeaturesEnabled() bool {
 // GetPdsFeaturesEnabledOk returns a tuple with the PdsFeaturesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetPdsFeaturesEnabledOk() (*bool, bool) {
-	if o == nil || o.PdsFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PdsFeaturesEnabled) {
 		return nil, false
 	}
 	return o.PdsFeaturesEnabled, true
@@ -259,7 +262,7 @@ func (o *ModelsAccount) GetPdsFeaturesEnabledOk() (*bool, bool) {
 
 // HasPdsFeaturesEnabled returns a boolean if a field has been set.
 func (o *ModelsAccount) HasPdsFeaturesEnabled() bool {
-	if o != nil && o.PdsFeaturesEnabled != nil {
+	if o != nil && !IsNil(o.PdsFeaturesEnabled) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *ModelsAccount) SetPdsFeaturesEnabled(v bool) {
 
 // GetPxoneFeaturesEnabled returns the PxoneFeaturesEnabled field value if set, zero value otherwise.
 func (o *ModelsAccount) GetPxoneFeaturesEnabled() bool {
-	if o == nil || o.PxoneFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PxoneFeaturesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *ModelsAccount) GetPxoneFeaturesEnabled() bool {
 // GetPxoneFeaturesEnabledOk returns a tuple with the PxoneFeaturesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetPxoneFeaturesEnabledOk() (*bool, bool) {
-	if o == nil || o.PxoneFeaturesEnabled == nil {
+	if o == nil || IsNil(o.PxoneFeaturesEnabled) {
 		return nil, false
 	}
 	return o.PxoneFeaturesEnabled, true
@@ -291,7 +294,7 @@ func (o *ModelsAccount) GetPxoneFeaturesEnabledOk() (*bool, bool) {
 
 // HasPxoneFeaturesEnabled returns a boolean if a field has been set.
 func (o *ModelsAccount) HasPxoneFeaturesEnabled() bool {
-	if o != nil && o.PxoneFeaturesEnabled != nil {
+	if o != nil && !IsNil(o.PxoneFeaturesEnabled) {
 		return true
 	}
 
@@ -305,7 +308,7 @@ func (o *ModelsAccount) SetPxoneFeaturesEnabled(v bool) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsAccount) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -315,7 +318,7 @@ func (o *ModelsAccount) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsAccount) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -323,7 +326,7 @@ func (o *ModelsAccount) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsAccount) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -336,35 +339,43 @@ func (o *ModelsAccount) SetUpdatedAt(v string) {
 }
 
 func (o ModelsAccount) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BaasFeaturesEnabled != nil {
-		toSerialize["baas_features_enabled"] = o.BaasFeaturesEnabled
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Eula != nil {
-		toSerialize["eula"] = o.Eula
-	}
-	if o.GlobalConfig != nil {
-		toSerialize["global_config"] = o.GlobalConfig
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.PdsFeaturesEnabled != nil {
-		toSerialize["pds_features_enabled"] = o.PdsFeaturesEnabled
-	}
-	if o.PxoneFeaturesEnabled != nil {
-		toSerialize["pxone_features_enabled"] = o.PxoneFeaturesEnabled
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsAccount) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BaasFeaturesEnabled) {
+		toSerialize["baas_features_enabled"] = o.BaasFeaturesEnabled
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Eula) {
+		toSerialize["eula"] = o.Eula
+	}
+	if !IsNil(o.GlobalConfig) {
+		toSerialize["global_config"] = o.GlobalConfig
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PdsFeaturesEnabled) {
+		toSerialize["pds_features_enabled"] = o.PdsFeaturesEnabled
+	}
+	if !IsNil(o.PxoneFeaturesEnabled) {
+		toSerialize["pxone_features_enabled"] = o.PxoneFeaturesEnabled
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsAccount struct {

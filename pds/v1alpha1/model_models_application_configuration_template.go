@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsApplicationConfigurationTemplate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsApplicationConfigurationTemplate{}
+
 // ModelsApplicationConfigurationTemplate struct for ModelsApplicationConfigurationTemplate
 type ModelsApplicationConfigurationTemplate struct {
 	AccountId *string `json:"account_id,omitempty"`
@@ -49,7 +52,7 @@ func NewModelsApplicationConfigurationTemplateWithDefaults() *ModelsApplicationC
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -67,7 +70,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetAccountIdOk() (*string, bool
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetAccountId(v string) {
 
 // GetConfigItems returns the ConfigItems field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetConfigItems() []ModelsConfigItem {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		var ret []ModelsConfigItem
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetConfigItems() []ModelsConfig
 // GetConfigItemsOk returns a tuple with the ConfigItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		return nil, false
 	}
 	return o.ConfigItems, true
@@ -99,7 +102,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetConfigItemsOk() ([]ModelsCon
 
 // HasConfigItems returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasConfigItems() bool {
-	if o != nil && o.ConfigItems != nil {
+	if o != nil && !IsNil(o.ConfigItems) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetConfigItems(v []ModelsConfig
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -131,7 +134,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetCreatedAtOk() (*string, bool
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetCreatedAt(v string) {
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetDataServiceId() string {
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -163,7 +166,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetDataServiceIdOk() (*string, 
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetDataServiceId(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -195,7 +198,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -227,7 +230,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetName(v string) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetTenantId() string {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetTenantIdOk() (*string, bool) {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
 	return o.TenantId, true
@@ -259,7 +262,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetTenantIdOk() (*string, bool)
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasTenantId() bool {
-	if o != nil && o.TenantId != nil {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *ModelsApplicationConfigurationTemplate) SetTenantId(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationTemplate) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationTemplate) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -291,7 +294,7 @@ func (o *ModelsApplicationConfigurationTemplate) GetUpdatedAtOk() (*string, bool
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationTemplate) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -304,32 +307,40 @@ func (o *ModelsApplicationConfigurationTemplate) SetUpdatedAt(v string) {
 }
 
 func (o ModelsApplicationConfigurationTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.ConfigItems != nil {
-		toSerialize["config_items"] = o.ConfigItems
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.TenantId != nil {
-		toSerialize["tenant_id"] = o.TenantId
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsApplicationConfigurationTemplate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if !IsNil(o.ConfigItems) {
+		toSerialize["config_items"] = o.ConfigItems
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenant_id"] = o.TenantId
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsApplicationConfigurationTemplate struct {

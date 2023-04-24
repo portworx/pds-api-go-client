@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsUpdateRestoreStatusRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsUpdateRestoreStatusRequest{}
+
 // RequestsUpdateRestoreStatusRequest struct for RequestsUpdateRestoreStatusRequest
 type RequestsUpdateRestoreStatusRequest struct {
 	// Status of the restore process on the Target Cluster
@@ -45,7 +48,7 @@ func NewRequestsUpdateRestoreStatusRequestWithDefaults() *RequestsUpdateRestoreS
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise.
 func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatus() string {
-	if o == nil || o.CompletionStatus == nil {
+	if o == nil || IsNil(o.CompletionStatus) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatus() string {
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatusOk() (*string, bool) {
-	if o == nil || o.CompletionStatus == nil {
+	if o == nil || IsNil(o.CompletionStatus) {
 		return nil, false
 	}
 	return o.CompletionStatus, true
@@ -63,7 +66,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatusOk() (*string, b
 
 // HasCompletionStatus returns a boolean if a field has been set.
 func (o *RequestsUpdateRestoreStatusRequest) HasCompletionStatus() bool {
-	if o != nil && o.CompletionStatus != nil {
+	if o != nil && !IsNil(o.CompletionStatus) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *RequestsUpdateRestoreStatusRequest) SetCompletionStatus(v string) {
 
 // GetCompletionTime returns the CompletionTime field value if set, zero value otherwise.
 func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTime() string {
-	if o == nil || o.CompletionTime == nil {
+	if o == nil || IsNil(o.CompletionTime) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTime() string {
 // GetCompletionTimeOk returns a tuple with the CompletionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTimeOk() (*string, bool) {
-	if o == nil || o.CompletionTime == nil {
+	if o == nil || IsNil(o.CompletionTime) {
 		return nil, false
 	}
 	return o.CompletionTime, true
@@ -95,7 +98,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTimeOk() (*string, boo
 
 // HasCompletionTime returns a boolean if a field has been set.
 func (o *RequestsUpdateRestoreStatusRequest) HasCompletionTime() bool {
-	if o != nil && o.CompletionTime != nil {
+	if o != nil && !IsNil(o.CompletionTime) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *RequestsUpdateRestoreStatusRequest) SetCompletionTime(v string) {
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
 func (o *RequestsUpdateRestoreStatusRequest) GetErrorCode() string {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetErrorCode() string {
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateRestoreStatusRequest) GetErrorCodeOk() (*string, bool) {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode) {
 		return nil, false
 	}
 	return o.ErrorCode, true
@@ -127,7 +130,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetErrorCodeOk() (*string, bool) {
 
 // HasErrorCode returns a boolean if a field has been set.
 func (o *RequestsUpdateRestoreStatusRequest) HasErrorCode() bool {
-	if o != nil && o.ErrorCode != nil {
+	if o != nil && !IsNil(o.ErrorCode) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *RequestsUpdateRestoreStatusRequest) SetErrorCode(v string) {
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
 func (o *RequestsUpdateRestoreStatusRequest) GetStartTime() string {
-	if o == nil || o.StartTime == nil {
+	if o == nil || IsNil(o.StartTime) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetStartTime() string {
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpdateRestoreStatusRequest) GetStartTimeOk() (*string, bool) {
-	if o == nil || o.StartTime == nil {
+	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
 	return o.StartTime, true
@@ -159,7 +162,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetStartTimeOk() (*string, bool) {
 
 // HasStartTime returns a boolean if a field has been set.
 func (o *RequestsUpdateRestoreStatusRequest) HasStartTime() bool {
-	if o != nil && o.StartTime != nil {
+	if o != nil && !IsNil(o.StartTime) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *RequestsUpdateRestoreStatusRequest) SetStartTime(v string) {
 }
 
 func (o RequestsUpdateRestoreStatusRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CompletionStatus != nil {
-		toSerialize["completion_status"] = o.CompletionStatus
-	}
-	if o.CompletionTime != nil {
-		toSerialize["completion_time"] = o.CompletionTime
-	}
-	if o.ErrorCode != nil {
-		toSerialize["error_code"] = o.ErrorCode
-	}
-	if o.StartTime != nil {
-		toSerialize["start_time"] = o.StartTime
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsUpdateRestoreStatusRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CompletionStatus) {
+		toSerialize["completion_status"] = o.CompletionStatus
+	}
+	if !IsNil(o.CompletionTime) {
+		toSerialize["completion_time"] = o.CompletionTime
+	}
+	if !IsNil(o.ErrorCode) {
+		toSerialize["error_code"] = o.ErrorCode
+	}
+	if !IsNil(o.StartTime) {
+		toSerialize["start_time"] = o.StartTime
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsUpdateRestoreStatusRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CompatibilityCompatibleVersions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompatibilityCompatibleVersions{}
+
 // CompatibilityCompatibleVersions struct for CompatibilityCompatibleVersions
 type CompatibilityCompatibleVersions struct {
 	// Compatible contains all compatible versions.
@@ -46,7 +49,7 @@ func NewCompatibilityCompatibleVersionsWithDefaults() *CompatibilityCompatibleVe
 
 // GetCompatible returns the Compatible field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetCompatible() []CompatibilityCompatibleVersion {
-	if o == nil || o.Compatible == nil {
+	if o == nil || IsNil(o.Compatible) {
 		var ret []CompatibilityCompatibleVersion
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *CompatibilityCompatibleVersions) GetCompatible() []CompatibilityCompati
 // GetCompatibleOk returns a tuple with the Compatible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetCompatibleOk() ([]CompatibilityCompatibleVersion, bool) {
-	if o == nil || o.Compatible == nil {
+	if o == nil || IsNil(o.Compatible) {
 		return nil, false
 	}
 	return o.Compatible, true
@@ -64,7 +67,7 @@ func (o *CompatibilityCompatibleVersions) GetCompatibleOk() ([]CompatibilityComp
 
 // HasCompatible returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasCompatible() bool {
-	if o != nil && o.Compatible != nil {
+	if o != nil && !IsNil(o.Compatible) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *CompatibilityCompatibleVersions) SetCompatible(v []CompatibilityCompati
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *CompatibilityCompatibleVersions) GetDataServiceId() string {
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -96,7 +99,7 @@ func (o *CompatibilityCompatibleVersions) GetDataServiceIdOk() (*string, bool) {
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *CompatibilityCompatibleVersions) SetDataServiceId(v string) {
 
 // GetDataServiceName returns the DataServiceName field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetDataServiceName() string {
-	if o == nil || o.DataServiceName == nil {
+	if o == nil || IsNil(o.DataServiceName) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *CompatibilityCompatibleVersions) GetDataServiceName() string {
 // GetDataServiceNameOk returns a tuple with the DataServiceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetDataServiceNameOk() (*string, bool) {
-	if o == nil || o.DataServiceName == nil {
+	if o == nil || IsNil(o.DataServiceName) {
 		return nil, false
 	}
 	return o.DataServiceName, true
@@ -128,7 +131,7 @@ func (o *CompatibilityCompatibleVersions) GetDataServiceNameOk() (*string, bool)
 
 // HasDataServiceName returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasDataServiceName() bool {
-	if o != nil && o.DataServiceName != nil {
+	if o != nil && !IsNil(o.DataServiceName) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *CompatibilityCompatibleVersions) SetDataServiceName(v string) {
 
 // GetLatestCompatible returns the LatestCompatible field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetLatestCompatible() []CompatibilityCompatibleVersion {
-	if o == nil || o.LatestCompatible == nil {
+	if o == nil || IsNil(o.LatestCompatible) {
 		var ret []CompatibilityCompatibleVersion
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *CompatibilityCompatibleVersions) GetLatestCompatible() []CompatibilityC
 // GetLatestCompatibleOk returns a tuple with the LatestCompatible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetLatestCompatibleOk() ([]CompatibilityCompatibleVersion, bool) {
-	if o == nil || o.LatestCompatible == nil {
+	if o == nil || IsNil(o.LatestCompatible) {
 		return nil, false
 	}
 	return o.LatestCompatible, true
@@ -160,7 +163,7 @@ func (o *CompatibilityCompatibleVersions) GetLatestCompatibleOk() ([]Compatibili
 
 // HasLatestCompatible returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasLatestCompatible() bool {
-	if o != nil && o.LatestCompatible != nil {
+	if o != nil && !IsNil(o.LatestCompatible) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *CompatibilityCompatibleVersions) SetLatestCompatible(v []CompatibilityC
 
 // GetLatestCompatiblePatch returns the LatestCompatiblePatch field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetLatestCompatiblePatch() CompatibilityCompatibleVersion {
-	if o == nil || o.LatestCompatiblePatch == nil {
+	if o == nil || IsNil(o.LatestCompatiblePatch) {
 		var ret CompatibilityCompatibleVersion
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *CompatibilityCompatibleVersions) GetLatestCompatiblePatch() Compatibili
 // GetLatestCompatiblePatchOk returns a tuple with the LatestCompatiblePatch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetLatestCompatiblePatchOk() (*CompatibilityCompatibleVersion, bool) {
-	if o == nil || o.LatestCompatiblePatch == nil {
+	if o == nil || IsNil(o.LatestCompatiblePatch) {
 		return nil, false
 	}
 	return o.LatestCompatiblePatch, true
@@ -192,7 +195,7 @@ func (o *CompatibilityCompatibleVersions) GetLatestCompatiblePatchOk() (*Compati
 
 // HasLatestCompatiblePatch returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasLatestCompatiblePatch() bool {
-	if o != nil && o.LatestCompatiblePatch != nil {
+	if o != nil && !IsNil(o.LatestCompatiblePatch) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *CompatibilityCompatibleVersions) SetLatestCompatiblePatch(v Compatibili
 
 // GetVersionId returns the VersionId field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetVersionId() string {
-	if o == nil || o.VersionId == nil {
+	if o == nil || IsNil(o.VersionId) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *CompatibilityCompatibleVersions) GetVersionId() string {
 // GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetVersionIdOk() (*string, bool) {
-	if o == nil || o.VersionId == nil {
+	if o == nil || IsNil(o.VersionId) {
 		return nil, false
 	}
 	return o.VersionId, true
@@ -224,7 +227,7 @@ func (o *CompatibilityCompatibleVersions) GetVersionIdOk() (*string, bool) {
 
 // HasVersionId returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasVersionId() bool {
-	if o != nil && o.VersionId != nil {
+	if o != nil && !IsNil(o.VersionId) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *CompatibilityCompatibleVersions) SetVersionId(v string) {
 
 // GetVersionName returns the VersionName field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersions) GetVersionName() string {
-	if o == nil || o.VersionName == nil {
+	if o == nil || IsNil(o.VersionName) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *CompatibilityCompatibleVersions) GetVersionName() string {
 // GetVersionNameOk returns a tuple with the VersionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersions) GetVersionNameOk() (*string, bool) {
-	if o == nil || o.VersionName == nil {
+	if o == nil || IsNil(o.VersionName) {
 		return nil, false
 	}
 	return o.VersionName, true
@@ -256,7 +259,7 @@ func (o *CompatibilityCompatibleVersions) GetVersionNameOk() (*string, bool) {
 
 // HasVersionName returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersions) HasVersionName() bool {
-	if o != nil && o.VersionName != nil {
+	if o != nil && !IsNil(o.VersionName) {
 		return true
 	}
 
@@ -269,29 +272,37 @@ func (o *CompatibilityCompatibleVersions) SetVersionName(v string) {
 }
 
 func (o CompatibilityCompatibleVersions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Compatible != nil {
-		toSerialize["compatible"] = o.Compatible
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.DataServiceName != nil {
-		toSerialize["data_service_name"] = o.DataServiceName
-	}
-	if o.LatestCompatible != nil {
-		toSerialize["latest_compatible"] = o.LatestCompatible
-	}
-	if o.LatestCompatiblePatch != nil {
-		toSerialize["latest_compatible_patch"] = o.LatestCompatiblePatch
-	}
-	if o.VersionId != nil {
-		toSerialize["version_id"] = o.VersionId
-	}
-	if o.VersionName != nil {
-		toSerialize["version_name"] = o.VersionName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CompatibilityCompatibleVersions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Compatible) {
+		toSerialize["compatible"] = o.Compatible
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.DataServiceName) {
+		toSerialize["data_service_name"] = o.DataServiceName
+	}
+	if !IsNil(o.LatestCompatible) {
+		toSerialize["latest_compatible"] = o.LatestCompatible
+	}
+	if !IsNil(o.LatestCompatiblePatch) {
+		toSerialize["latest_compatible_patch"] = o.LatestCompatiblePatch
+	}
+	if !IsNil(o.VersionId) {
+		toSerialize["version_id"] = o.VersionId
+	}
+	if !IsNil(o.VersionName) {
+		toSerialize["version_name"] = o.VersionName
+	}
+	return toSerialize, nil
 }
 
 type NullableCompatibilityCompatibleVersions struct {

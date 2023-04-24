@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeploymentStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeploymentStatus{}
+
 // ServiceDeploymentStatus struct for ServiceDeploymentStatus
 type ServiceDeploymentStatus struct {
 	Health *string `json:"health,omitempty"`
@@ -43,7 +46,7 @@ func NewServiceDeploymentStatusWithDefaults() *ServiceDeploymentStatus {
 
 // GetHealth returns the Health field value if set, zero value otherwise.
 func (o *ServiceDeploymentStatus) GetHealth() string {
-	if o == nil || o.Health == nil {
+	if o == nil || IsNil(o.Health) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ServiceDeploymentStatus) GetHealth() string {
 // GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentStatus) GetHealthOk() (*string, bool) {
-	if o == nil || o.Health == nil {
+	if o == nil || IsNil(o.Health) {
 		return nil, false
 	}
 	return o.Health, true
@@ -61,7 +64,7 @@ func (o *ServiceDeploymentStatus) GetHealthOk() (*string, bool) {
 
 // HasHealth returns a boolean if a field has been set.
 func (o *ServiceDeploymentStatus) HasHealth() bool {
-	if o != nil && o.Health != nil {
+	if o != nil && !IsNil(o.Health) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ServiceDeploymentStatus) SetHealth(v string) {
 
 // GetInitialized returns the Initialized field value if set, zero value otherwise.
 func (o *ServiceDeploymentStatus) GetInitialized() string {
-	if o == nil || o.Initialized == nil {
+	if o == nil || IsNil(o.Initialized) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ServiceDeploymentStatus) GetInitialized() string {
 // GetInitializedOk returns a tuple with the Initialized field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentStatus) GetInitializedOk() (*string, bool) {
-	if o == nil || o.Initialized == nil {
+	if o == nil || IsNil(o.Initialized) {
 		return nil, false
 	}
 	return o.Initialized, true
@@ -93,7 +96,7 @@ func (o *ServiceDeploymentStatus) GetInitializedOk() (*string, bool) {
 
 // HasInitialized returns a boolean if a field has been set.
 func (o *ServiceDeploymentStatus) HasInitialized() bool {
-	if o != nil && o.Initialized != nil {
+	if o != nil && !IsNil(o.Initialized) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ServiceDeploymentStatus) SetInitialized(v string) {
 
 // GetReadyReplicas returns the ReadyReplicas field value if set, zero value otherwise.
 func (o *ServiceDeploymentStatus) GetReadyReplicas() int32 {
-	if o == nil || o.ReadyReplicas == nil {
+	if o == nil || IsNil(o.ReadyReplicas) {
 		var ret int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ServiceDeploymentStatus) GetReadyReplicas() int32 {
 // GetReadyReplicasOk returns a tuple with the ReadyReplicas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentStatus) GetReadyReplicasOk() (*int32, bool) {
-	if o == nil || o.ReadyReplicas == nil {
+	if o == nil || IsNil(o.ReadyReplicas) {
 		return nil, false
 	}
 	return o.ReadyReplicas, true
@@ -125,7 +128,7 @@ func (o *ServiceDeploymentStatus) GetReadyReplicasOk() (*int32, bool) {
 
 // HasReadyReplicas returns a boolean if a field has been set.
 func (o *ServiceDeploymentStatus) HasReadyReplicas() bool {
-	if o != nil && o.ReadyReplicas != nil {
+	if o != nil && !IsNil(o.ReadyReplicas) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *ServiceDeploymentStatus) SetReadyReplicas(v int32) {
 
 // GetReplicas returns the Replicas field value if set, zero value otherwise.
 func (o *ServiceDeploymentStatus) GetReplicas() int32 {
-	if o == nil || o.Replicas == nil {
+	if o == nil || IsNil(o.Replicas) {
 		var ret int32
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *ServiceDeploymentStatus) GetReplicas() int32 {
 // GetReplicasOk returns a tuple with the Replicas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentStatus) GetReplicasOk() (*int32, bool) {
-	if o == nil || o.Replicas == nil {
+	if o == nil || IsNil(o.Replicas) {
 		return nil, false
 	}
 	return o.Replicas, true
@@ -157,7 +160,7 @@ func (o *ServiceDeploymentStatus) GetReplicasOk() (*int32, bool) {
 
 // HasReplicas returns a boolean if a field has been set.
 func (o *ServiceDeploymentStatus) HasReplicas() bool {
-	if o != nil && o.Replicas != nil {
+	if o != nil && !IsNil(o.Replicas) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *ServiceDeploymentStatus) SetReplicas(v int32) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *ServiceDeploymentStatus) GetResources() []DeploymentsResourceConditions {
-	if o == nil || o.Resources == nil {
+	if o == nil || IsNil(o.Resources) {
 		var ret []DeploymentsResourceConditions
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *ServiceDeploymentStatus) GetResources() []DeploymentsResourceConditions
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentStatus) GetResourcesOk() ([]DeploymentsResourceConditions, bool) {
-	if o == nil || o.Resources == nil {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -189,7 +192,7 @@ func (o *ServiceDeploymentStatus) GetResourcesOk() ([]DeploymentsResourceConditi
 
 // HasResources returns a boolean if a field has been set.
 func (o *ServiceDeploymentStatus) HasResources() bool {
-	if o != nil && o.Resources != nil {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *ServiceDeploymentStatus) SetResources(v []DeploymentsResourceConditions
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ServiceDeploymentStatus) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *ServiceDeploymentStatus) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeploymentStatus) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -221,7 +224,7 @@ func (o *ServiceDeploymentStatus) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ServiceDeploymentStatus) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *ServiceDeploymentStatus) SetStatus(v string) {
 }
 
 func (o ServiceDeploymentStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Health != nil {
-		toSerialize["health"] = o.Health
-	}
-	if o.Initialized != nil {
-		toSerialize["initialized"] = o.Initialized
-	}
-	if o.ReadyReplicas != nil {
-		toSerialize["readyReplicas"] = o.ReadyReplicas
-	}
-	if o.Replicas != nil {
-		toSerialize["replicas"] = o.Replicas
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeploymentStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Health) {
+		toSerialize["health"] = o.Health
+	}
+	if !IsNil(o.Initialized) {
+		toSerialize["initialized"] = o.Initialized
+	}
+	if !IsNil(o.ReadyReplicas) {
+		toSerialize["readyReplicas"] = o.ReadyReplicas
+	}
+	if !IsNil(o.Replicas) {
+		toSerialize["replicas"] = o.Replicas
+	}
+	if !IsNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableServiceDeploymentStatus struct {

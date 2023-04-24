@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersCreateTenantBackupTarget type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersCreateTenantBackupTarget{}
+
 // ControllersCreateTenantBackupTarget struct for ControllersCreateTenantBackupTarget
 type ControllersCreateTenantBackupTarget struct {
 	BackupCredentialsId *string `json:"backup_credentials_id,omitempty"`
@@ -46,7 +49,7 @@ func NewControllersCreateTenantBackupTargetWithDefaults() *ControllersCreateTena
 
 // GetBackupCredentialsId returns the BackupCredentialsId field value if set, zero value otherwise.
 func (o *ControllersCreateTenantBackupTarget) GetBackupCredentialsId() string {
-	if o == nil || o.BackupCredentialsId == nil {
+	if o == nil || IsNil(o.BackupCredentialsId) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *ControllersCreateTenantBackupTarget) GetBackupCredentialsId() string {
 // GetBackupCredentialsIdOk returns a tuple with the BackupCredentialsId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateTenantBackupTarget) GetBackupCredentialsIdOk() (*string, bool) {
-	if o == nil || o.BackupCredentialsId == nil {
+	if o == nil || IsNil(o.BackupCredentialsId) {
 		return nil, false
 	}
 	return o.BackupCredentialsId, true
@@ -64,7 +67,7 @@ func (o *ControllersCreateTenantBackupTarget) GetBackupCredentialsIdOk() (*strin
 
 // HasBackupCredentialsId returns a boolean if a field has been set.
 func (o *ControllersCreateTenantBackupTarget) HasBackupCredentialsId() bool {
-	if o != nil && o.BackupCredentialsId != nil {
+	if o != nil && !IsNil(o.BackupCredentialsId) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *ControllersCreateTenantBackupTarget) SetBackupCredentialsId(v string) {
 
 // GetBucket returns the Bucket field value if set, zero value otherwise.
 func (o *ControllersCreateTenantBackupTarget) GetBucket() string {
-	if o == nil || o.Bucket == nil {
+	if o == nil || IsNil(o.Bucket) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *ControllersCreateTenantBackupTarget) GetBucket() string {
 // GetBucketOk returns a tuple with the Bucket field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateTenantBackupTarget) GetBucketOk() (*string, bool) {
-	if o == nil || o.Bucket == nil {
+	if o == nil || IsNil(o.Bucket) {
 		return nil, false
 	}
 	return o.Bucket, true
@@ -96,7 +99,7 @@ func (o *ControllersCreateTenantBackupTarget) GetBucketOk() (*string, bool) {
 
 // HasBucket returns a boolean if a field has been set.
 func (o *ControllersCreateTenantBackupTarget) HasBucket() bool {
-	if o != nil && o.Bucket != nil {
+	if o != nil && !IsNil(o.Bucket) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *ControllersCreateTenantBackupTarget) SetBucket(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersCreateTenantBackupTarget) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *ControllersCreateTenantBackupTarget) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateTenantBackupTarget) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -128,7 +131,7 @@ func (o *ControllersCreateTenantBackupTarget) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersCreateTenantBackupTarget) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *ControllersCreateTenantBackupTarget) SetName(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *ControllersCreateTenantBackupTarget) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *ControllersCreateTenantBackupTarget) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateTenantBackupTarget) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -160,7 +163,7 @@ func (o *ControllersCreateTenantBackupTarget) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *ControllersCreateTenantBackupTarget) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *ControllersCreateTenantBackupTarget) SetRegion(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ControllersCreateTenantBackupTarget) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *ControllersCreateTenantBackupTarget) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateTenantBackupTarget) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -192,7 +195,7 @@ func (o *ControllersCreateTenantBackupTarget) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ControllersCreateTenantBackupTarget) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -205,23 +208,31 @@ func (o *ControllersCreateTenantBackupTarget) SetType(v string) {
 }
 
 func (o ControllersCreateTenantBackupTarget) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BackupCredentialsId != nil {
-		toSerialize["backup_credentials_id"] = o.BackupCredentialsId
-	}
-	if o.Bucket != nil {
-		toSerialize["bucket"] = o.Bucket
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersCreateTenantBackupTarget) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BackupCredentialsId) {
+		toSerialize["backup_credentials_id"] = o.BackupCredentialsId
+	}
+	if !IsNil(o.Bucket) {
+		toSerialize["bucket"] = o.Bucket
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersCreateTenantBackupTarget struct {

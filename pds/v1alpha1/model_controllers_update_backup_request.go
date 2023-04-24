@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateBackupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateBackupRequest{}
+
 // ControllersUpdateBackupRequest struct for ControllersUpdateBackupRequest
 type ControllersUpdateBackupRequest struct {
 	JobHistoryLimit *int32 `json:"job_history_limit,omitempty"`
@@ -38,7 +41,7 @@ func NewControllersUpdateBackupRequestWithDefaults() *ControllersUpdateBackupReq
 
 // GetJobHistoryLimit returns the JobHistoryLimit field value if set, zero value otherwise.
 func (o *ControllersUpdateBackupRequest) GetJobHistoryLimit() int32 {
-	if o == nil || o.JobHistoryLimit == nil {
+	if o == nil || IsNil(o.JobHistoryLimit) {
 		var ret int32
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ControllersUpdateBackupRequest) GetJobHistoryLimit() int32 {
 // GetJobHistoryLimitOk returns a tuple with the JobHistoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateBackupRequest) GetJobHistoryLimitOk() (*int32, bool) {
-	if o == nil || o.JobHistoryLimit == nil {
+	if o == nil || IsNil(o.JobHistoryLimit) {
 		return nil, false
 	}
 	return o.JobHistoryLimit, true
@@ -56,7 +59,7 @@ func (o *ControllersUpdateBackupRequest) GetJobHistoryLimitOk() (*int32, bool) {
 
 // HasJobHistoryLimit returns a boolean if a field has been set.
 func (o *ControllersUpdateBackupRequest) HasJobHistoryLimit() bool {
-	if o != nil && o.JobHistoryLimit != nil {
+	if o != nil && !IsNil(o.JobHistoryLimit) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ControllersUpdateBackupRequest) SetJobHistoryLimit(v int32) {
 }
 
 func (o ControllersUpdateBackupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.JobHistoryLimit != nil {
-		toSerialize["job_history_limit"] = o.JobHistoryLimit
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateBackupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.JobHistoryLimit) {
+		toSerialize["job_history_limit"] = o.JobHistoryLimit
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateBackupRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsDeleteRoleBindingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsDeleteRoleBindingRequest{}
+
 // RequestsDeleteRoleBindingRequest struct for RequestsDeleteRoleBindingRequest
 type RequestsDeleteRoleBindingRequest struct {
 	ActorId *string `json:"actor_id,omitempty"`
@@ -39,7 +42,7 @@ func NewRequestsDeleteRoleBindingRequestWithDefaults() *RequestsDeleteRoleBindin
 
 // GetActorId returns the ActorId field value if set, zero value otherwise.
 func (o *RequestsDeleteRoleBindingRequest) GetActorId() string {
-	if o == nil || o.ActorId == nil {
+	if o == nil || IsNil(o.ActorId) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *RequestsDeleteRoleBindingRequest) GetActorId() string {
 // GetActorIdOk returns a tuple with the ActorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsDeleteRoleBindingRequest) GetActorIdOk() (*string, bool) {
-	if o == nil || o.ActorId == nil {
+	if o == nil || IsNil(o.ActorId) {
 		return nil, false
 	}
 	return o.ActorId, true
@@ -57,7 +60,7 @@ func (o *RequestsDeleteRoleBindingRequest) GetActorIdOk() (*string, bool) {
 
 // HasActorId returns a boolean if a field has been set.
 func (o *RequestsDeleteRoleBindingRequest) HasActorId() bool {
-	if o != nil && o.ActorId != nil {
+	if o != nil && !IsNil(o.ActorId) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *RequestsDeleteRoleBindingRequest) SetActorId(v string) {
 
 // GetActorType returns the ActorType field value if set, zero value otherwise.
 func (o *RequestsDeleteRoleBindingRequest) GetActorType() string {
-	if o == nil || o.ActorType == nil {
+	if o == nil || IsNil(o.ActorType) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *RequestsDeleteRoleBindingRequest) GetActorType() string {
 // GetActorTypeOk returns a tuple with the ActorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsDeleteRoleBindingRequest) GetActorTypeOk() (*string, bool) {
-	if o == nil || o.ActorType == nil {
+	if o == nil || IsNil(o.ActorType) {
 		return nil, false
 	}
 	return o.ActorType, true
@@ -89,7 +92,7 @@ func (o *RequestsDeleteRoleBindingRequest) GetActorTypeOk() (*string, bool) {
 
 // HasActorType returns a boolean if a field has been set.
 func (o *RequestsDeleteRoleBindingRequest) HasActorType() bool {
-	if o != nil && o.ActorType != nil {
+	if o != nil && !IsNil(o.ActorType) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *RequestsDeleteRoleBindingRequest) SetActorType(v string) {
 }
 
 func (o RequestsDeleteRoleBindingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ActorId != nil {
-		toSerialize["actor_id"] = o.ActorId
-	}
-	if o.ActorType != nil {
-		toSerialize["actor_type"] = o.ActorType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsDeleteRoleBindingRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ActorId) {
+		toSerialize["actor_id"] = o.ActorId
+	}
+	if !IsNil(o.ActorType) {
+		toSerialize["actor_type"] = o.ActorType
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsDeleteRoleBindingRequest struct {

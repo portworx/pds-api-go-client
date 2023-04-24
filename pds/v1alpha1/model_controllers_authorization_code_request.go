@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersAuthorizationCodeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersAuthorizationCodeRequest{}
+
 // ControllersAuthorizationCodeRequest struct for ControllersAuthorizationCodeRequest
 type ControllersAuthorizationCodeRequest struct {
 	AuthCode *string `json:"AuthCode,omitempty"`
@@ -38,7 +41,7 @@ func NewControllersAuthorizationCodeRequestWithDefaults() *ControllersAuthorizat
 
 // GetAuthCode returns the AuthCode field value if set, zero value otherwise.
 func (o *ControllersAuthorizationCodeRequest) GetAuthCode() string {
-	if o == nil || o.AuthCode == nil {
+	if o == nil || IsNil(o.AuthCode) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ControllersAuthorizationCodeRequest) GetAuthCode() string {
 // GetAuthCodeOk returns a tuple with the AuthCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersAuthorizationCodeRequest) GetAuthCodeOk() (*string, bool) {
-	if o == nil || o.AuthCode == nil {
+	if o == nil || IsNil(o.AuthCode) {
 		return nil, false
 	}
 	return o.AuthCode, true
@@ -56,7 +59,7 @@ func (o *ControllersAuthorizationCodeRequest) GetAuthCodeOk() (*string, bool) {
 
 // HasAuthCode returns a boolean if a field has been set.
 func (o *ControllersAuthorizationCodeRequest) HasAuthCode() bool {
-	if o != nil && o.AuthCode != nil {
+	if o != nil && !IsNil(o.AuthCode) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ControllersAuthorizationCodeRequest) SetAuthCode(v string) {
 }
 
 func (o ControllersAuthorizationCodeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AuthCode != nil {
-		toSerialize["AuthCode"] = o.AuthCode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersAuthorizationCodeRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AuthCode) {
+		toSerialize["AuthCode"] = o.AuthCode
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersAuthorizationCodeRequest struct {

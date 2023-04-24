@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsGoogleCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsGoogleCredentials{}
+
 // ModelsGoogleCredentials struct for ModelsGoogleCredentials
 type ModelsGoogleCredentials struct {
 	// JSON key for the Google Storage account.
@@ -41,7 +44,7 @@ func NewModelsGoogleCredentialsWithDefaults() *ModelsGoogleCredentials {
 
 // GetJsonKey returns the JsonKey field value if set, zero value otherwise.
 func (o *ModelsGoogleCredentials) GetJsonKey() string {
-	if o == nil || o.JsonKey == nil {
+	if o == nil || IsNil(o.JsonKey) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ModelsGoogleCredentials) GetJsonKey() string {
 // GetJsonKeyOk returns a tuple with the JsonKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsGoogleCredentials) GetJsonKeyOk() (*string, bool) {
-	if o == nil || o.JsonKey == nil {
+	if o == nil || IsNil(o.JsonKey) {
 		return nil, false
 	}
 	return o.JsonKey, true
@@ -59,7 +62,7 @@ func (o *ModelsGoogleCredentials) GetJsonKeyOk() (*string, bool) {
 
 // HasJsonKey returns a boolean if a field has been set.
 func (o *ModelsGoogleCredentials) HasJsonKey() bool {
-	if o != nil && o.JsonKey != nil {
+	if o != nil && !IsNil(o.JsonKey) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ModelsGoogleCredentials) SetJsonKey(v string) {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *ModelsGoogleCredentials) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ModelsGoogleCredentials) GetProjectId() string {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsGoogleCredentials) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
 	return o.ProjectId, true
@@ -91,7 +94,7 @@ func (o *ModelsGoogleCredentials) GetProjectIdOk() (*string, bool) {
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *ModelsGoogleCredentials) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *ModelsGoogleCredentials) SetProjectId(v string) {
 }
 
 func (o ModelsGoogleCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.JsonKey != nil {
-		toSerialize["json_key"] = o.JsonKey
-	}
-	if o.ProjectId != nil {
-		toSerialize["project_id"] = o.ProjectId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsGoogleCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.JsonKey) {
+		toSerialize["json_key"] = o.JsonKey
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsGoogleCredentials struct {

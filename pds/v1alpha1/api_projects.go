@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // ProjectsApiService ProjectsApi service
 type ProjectsApiService service
@@ -32,7 +28,6 @@ type ApiApiProjectsIdGetRequest struct {
 	ApiService *ProjectsApiService
 	id string
 }
-
 
 func (r ApiApiProjectsIdGetRequest) Execute() (*ModelsProject, *http.Response, error) {
 	return r.ApiService.ApiProjectsIdGetExecute(r)
@@ -71,7 +66,7 @@ func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetReques
 	}
 
 	localVarPath := localBasePath + "/api/projects/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -118,9 +113,9 @@ func (a *ProjectsApiService) ApiProjectsIdGetExecute(r ApiApiProjectsIdGetReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -161,21 +156,25 @@ func (r ApiApiTenantsIdProjectsGetRequest) SortBy(sortBy string) ApiApiTenantsId
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiTenantsIdProjectsGetRequest) Limit(limit string) ApiApiTenantsIdProjectsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiTenantsIdProjectsGetRequest) Continuation(continuation string) ApiApiTenantsIdProjectsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Project id
 func (r ApiApiTenantsIdProjectsGetRequest) Id2(id2 string) ApiApiTenantsIdProjectsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Project name
 func (r ApiApiTenantsIdProjectsGetRequest) Name(name string) ApiApiTenantsIdProjectsGetRequest {
 	r.name = &name
@@ -219,26 +218,26 @@ func (a *ProjectsApiService) ApiTenantsIdProjectsGetExecute(r ApiApiTenantsIdPro
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/projects"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -281,9 +280,9 @@ func (a *ProjectsApiService) ApiTenantsIdProjectsGetExecute(r ApiApiTenantsIdPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

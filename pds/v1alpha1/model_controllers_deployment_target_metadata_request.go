@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersDeploymentTargetMetadataRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersDeploymentTargetMetadataRequest{}
+
 // ControllersDeploymentTargetMetadataRequest struct for ControllersDeploymentTargetMetadataRequest
 type ControllersDeploymentTargetMetadataRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty"`
@@ -44,7 +47,7 @@ func NewControllersDeploymentTargetMetadataRequestWithDefaults() *ControllersDep
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -62,7 +65,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetClusterIdOk() (*string, 
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetClusterId(v string) {
 
 // GetKubeApiVersion returns the KubeApiVersion field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetKubeApiVersion() string {
-	if o == nil || o.KubeApiVersion == nil {
+	if o == nil || IsNil(o.KubeApiVersion) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetKubeApiVersion() string 
 // GetKubeApiVersionOk returns a tuple with the KubeApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetKubeApiVersionOk() (*string, bool) {
-	if o == nil || o.KubeApiVersion == nil {
+	if o == nil || IsNil(o.KubeApiVersion) {
 		return nil, false
 	}
 	return o.KubeApiVersion, true
@@ -94,7 +97,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetKubeApiVersionOk() (*str
 
 // HasKubeApiVersion returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasKubeApiVersion() bool {
-	if o != nil && o.KubeApiVersion != nil {
+	if o != nil && !IsNil(o.KubeApiVersion) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetKubeApiVersion(v string)
 
 // GetKubePlatform returns the KubePlatform field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetKubePlatform() string {
-	if o == nil || o.KubePlatform == nil {
+	if o == nil || IsNil(o.KubePlatform) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetKubePlatform() string {
 // GetKubePlatformOk returns a tuple with the KubePlatform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetKubePlatformOk() (*string, bool) {
-	if o == nil || o.KubePlatform == nil {
+	if o == nil || IsNil(o.KubePlatform) {
 		return nil, false
 	}
 	return o.KubePlatform, true
@@ -126,7 +129,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetKubePlatformOk() (*strin
 
 // HasKubePlatform returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasKubePlatform() bool {
-	if o != nil && o.KubePlatform != nil {
+	if o != nil && !IsNil(o.KubePlatform) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetKubePlatform(v string) {
 
 // GetPdsChartVersion returns the PdsChartVersion field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPdsChartVersion() string {
-	if o == nil || o.PdsChartVersion == nil {
+	if o == nil || IsNil(o.PdsChartVersion) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPdsChartVersion() string
 // GetPdsChartVersionOk returns a tuple with the PdsChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPdsChartVersionOk() (*string, bool) {
-	if o == nil || o.PdsChartVersion == nil {
+	if o == nil || IsNil(o.PdsChartVersion) {
 		return nil, false
 	}
 	return o.PdsChartVersion, true
@@ -158,7 +161,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPdsChartVersionOk() (*st
 
 // HasPdsChartVersion returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasPdsChartVersion() bool {
-	if o != nil && o.PdsChartVersion != nil {
+	if o != nil && !IsNil(o.PdsChartVersion) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetPdsChartVersion(v string
 
 // GetPxCsiEnabled returns the PxCsiEnabled field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabled() string {
-	if o == nil || o.PxCsiEnabled == nil {
+	if o == nil || IsNil(o.PxCsiEnabled) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabled() string {
 // GetPxCsiEnabledOk returns a tuple with the PxCsiEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabledOk() (*string, bool) {
-	if o == nil || o.PxCsiEnabled == nil {
+	if o == nil || IsNil(o.PxCsiEnabled) {
 		return nil, false
 	}
 	return o.PxCsiEnabled, true
@@ -190,7 +193,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPxCsiEnabledOk() (*strin
 
 // HasPxCsiEnabled returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasPxCsiEnabled() bool {
-	if o != nil && o.PxCsiEnabled != nil {
+	if o != nil && !IsNil(o.PxCsiEnabled) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetPxCsiEnabled(v string) {
 
 // GetPxServiceNamespace returns the PxServiceNamespace field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespace() string {
-	if o == nil || o.PxServiceNamespace == nil {
+	if o == nil || IsNil(o.PxServiceNamespace) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespace() str
 // GetPxServiceNamespaceOk returns a tuple with the PxServiceNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespaceOk() (*string, bool) {
-	if o == nil || o.PxServiceNamespace == nil {
+	if o == nil || IsNil(o.PxServiceNamespace) {
 		return nil, false
 	}
 	return o.PxServiceNamespace, true
@@ -222,7 +225,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPxServiceNamespaceOk() (
 
 // HasPxServiceNamespace returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasPxServiceNamespace() bool {
-	if o != nil && o.PxServiceNamespace != nil {
+	if o != nil && !IsNil(o.PxServiceNamespace) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetPxServiceNamespace(v str
 
 // GetPxVersion returns the PxVersion field value if set, zero value otherwise.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxVersion() string {
-	if o == nil || o.PxVersion == nil {
+	if o == nil || IsNil(o.PxVersion) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPxVersion() string {
 // GetPxVersionOk returns a tuple with the PxVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) GetPxVersionOk() (*string, bool) {
-	if o == nil || o.PxVersion == nil {
+	if o == nil || IsNil(o.PxVersion) {
 		return nil, false
 	}
 	return o.PxVersion, true
@@ -254,7 +257,7 @@ func (o *ControllersDeploymentTargetMetadataRequest) GetPxVersionOk() (*string, 
 
 // HasPxVersion returns a boolean if a field has been set.
 func (o *ControllersDeploymentTargetMetadataRequest) HasPxVersion() bool {
-	if o != nil && o.PxVersion != nil {
+	if o != nil && !IsNil(o.PxVersion) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *ControllersDeploymentTargetMetadataRequest) SetPxVersion(v string) {
 }
 
 func (o ControllersDeploymentTargetMetadataRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.KubeApiVersion != nil {
-		toSerialize["kube_api_version"] = o.KubeApiVersion
-	}
-	if o.KubePlatform != nil {
-		toSerialize["kube_platform"] = o.KubePlatform
-	}
-	if o.PdsChartVersion != nil {
-		toSerialize["pds_chart_version"] = o.PdsChartVersion
-	}
-	if o.PxCsiEnabled != nil {
-		toSerialize["px_csi_enabled"] = o.PxCsiEnabled
-	}
-	if o.PxServiceNamespace != nil {
-		toSerialize["px_service_namespace"] = o.PxServiceNamespace
-	}
-	if o.PxVersion != nil {
-		toSerialize["px_version"] = o.PxVersion
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersDeploymentTargetMetadataRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.KubeApiVersion) {
+		toSerialize["kube_api_version"] = o.KubeApiVersion
+	}
+	if !IsNil(o.KubePlatform) {
+		toSerialize["kube_platform"] = o.KubePlatform
+	}
+	if !IsNil(o.PdsChartVersion) {
+		toSerialize["pds_chart_version"] = o.PdsChartVersion
+	}
+	if !IsNil(o.PxCsiEnabled) {
+		toSerialize["px_csi_enabled"] = o.PxCsiEnabled
+	}
+	if !IsNil(o.PxServiceNamespace) {
+		toSerialize["px_service_namespace"] = o.PxServiceNamespace
+	}
+	if !IsNil(o.PxVersion) {
+		toSerialize["px_version"] = o.PxVersion
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersDeploymentTargetMetadataRequest struct {

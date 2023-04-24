@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsBackupPolicySample type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsBackupPolicySample{}
+
 // ModelsBackupPolicySample struct for ModelsBackupPolicySample
 type ModelsBackupPolicySample struct {
 	Created *string `json:"created,omitempty"`
@@ -44,7 +47,7 @@ func NewModelsBackupPolicySampleWithDefaults() *ModelsBackupPolicySample {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ModelsBackupPolicySample) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ModelsBackupPolicySample) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicySample) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -62,7 +65,7 @@ func (o *ModelsBackupPolicySample) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ModelsBackupPolicySample) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ModelsBackupPolicySample) SetCreated(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsBackupPolicySample) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ModelsBackupPolicySample) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicySample) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -94,7 +97,7 @@ func (o *ModelsBackupPolicySample) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsBackupPolicySample) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ModelsBackupPolicySample) SetName(v string) {
 
 // GetSchedules returns the Schedules field value if set, zero value otherwise.
 func (o *ModelsBackupPolicySample) GetSchedules() []ModelsBackupSchedule {
-	if o == nil || o.Schedules == nil {
+	if o == nil || IsNil(o.Schedules) {
 		var ret []ModelsBackupSchedule
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ModelsBackupPolicySample) GetSchedules() []ModelsBackupSchedule {
 // GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicySample) GetSchedulesOk() ([]ModelsBackupSchedule, bool) {
-	if o == nil || o.Schedules == nil {
+	if o == nil || IsNil(o.Schedules) {
 		return nil, false
 	}
 	return o.Schedules, true
@@ -126,7 +129,7 @@ func (o *ModelsBackupPolicySample) GetSchedulesOk() ([]ModelsBackupSchedule, boo
 
 // HasSchedules returns a boolean if a field has been set.
 func (o *ModelsBackupPolicySample) HasSchedules() bool {
-	if o != nil && o.Schedules != nil {
+	if o != nil && !IsNil(o.Schedules) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ModelsBackupPolicySample) SetSchedules(v []ModelsBackupSchedule) {
 
 // GetUpdated returns the Updated field value if set, zero value otherwise.
 func (o *ModelsBackupPolicySample) GetUpdated() string {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ModelsBackupPolicySample) GetUpdated() string {
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicySample) GetUpdatedOk() (*string, bool) {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
 	return o.Updated, true
@@ -158,7 +161,7 @@ func (o *ModelsBackupPolicySample) GetUpdatedOk() (*string, bool) {
 
 // HasUpdated returns a boolean if a field has been set.
 func (o *ModelsBackupPolicySample) HasUpdated() bool {
-	if o != nil && o.Updated != nil {
+	if o != nil && !IsNil(o.Updated) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ModelsBackupPolicySample) SetUpdated(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ModelsBackupPolicySample) GetVersion() int32 {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ModelsBackupPolicySample) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicySample) GetVersionOk() (*int32, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -190,7 +193,7 @@ func (o *ModelsBackupPolicySample) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ModelsBackupPolicySample) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -203,23 +206,31 @@ func (o *ModelsBackupPolicySample) SetVersion(v int32) {
 }
 
 func (o ModelsBackupPolicySample) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Schedules != nil {
-		toSerialize["schedules"] = o.Schedules
-	}
-	if o.Updated != nil {
-		toSerialize["updated"] = o.Updated
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsBackupPolicySample) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Schedules) {
+		toSerialize["schedules"] = o.Schedules
+	}
+	if !IsNil(o.Updated) {
+		toSerialize["updated"] = o.Updated
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsBackupPolicySample struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsBackupSchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsBackupSchedule{}
+
 // ModelsBackupSchedule struct for ModelsBackupSchedule
 type ModelsBackupSchedule struct {
 	// An ID of the backup schedule to help the UI identify validation failures. The type is UUID and it is generated on the UI side.
@@ -45,7 +48,7 @@ func NewModelsBackupScheduleWithDefaults() *ModelsBackupSchedule {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsBackupSchedule) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ModelsBackupSchedule) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupSchedule) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -63,7 +66,7 @@ func (o *ModelsBackupSchedule) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsBackupSchedule) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *ModelsBackupSchedule) SetId(v string) {
 
 // GetRetentionCount returns the RetentionCount field value if set, zero value otherwise.
 func (o *ModelsBackupSchedule) GetRetentionCount() int32 {
-	if o == nil || o.RetentionCount == nil {
+	if o == nil || IsNil(o.RetentionCount) {
 		var ret int32
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *ModelsBackupSchedule) GetRetentionCount() int32 {
 // GetRetentionCountOk returns a tuple with the RetentionCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupSchedule) GetRetentionCountOk() (*int32, bool) {
-	if o == nil || o.RetentionCount == nil {
+	if o == nil || IsNil(o.RetentionCount) {
 		return nil, false
 	}
 	return o.RetentionCount, true
@@ -95,7 +98,7 @@ func (o *ModelsBackupSchedule) GetRetentionCountOk() (*int32, bool) {
 
 // HasRetentionCount returns a boolean if a field has been set.
 func (o *ModelsBackupSchedule) HasRetentionCount() bool {
-	if o != nil && o.RetentionCount != nil {
+	if o != nil && !IsNil(o.RetentionCount) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *ModelsBackupSchedule) SetRetentionCount(v int32) {
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
 func (o *ModelsBackupSchedule) GetSchedule() string {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ModelsBackupSchedule) GetSchedule() string {
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupSchedule) GetScheduleOk() (*string, bool) {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
 	return o.Schedule, true
@@ -127,7 +130,7 @@ func (o *ModelsBackupSchedule) GetScheduleOk() (*string, bool) {
 
 // HasSchedule returns a boolean if a field has been set.
 func (o *ModelsBackupSchedule) HasSchedule() bool {
-	if o != nil && o.Schedule != nil {
+	if o != nil && !IsNil(o.Schedule) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *ModelsBackupSchedule) SetSchedule(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ModelsBackupSchedule) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *ModelsBackupSchedule) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupSchedule) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -159,7 +162,7 @@ func (o *ModelsBackupSchedule) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ModelsBackupSchedule) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *ModelsBackupSchedule) SetType(v string) {
 }
 
 func (o ModelsBackupSchedule) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.RetentionCount != nil {
-		toSerialize["retention_count"] = o.RetentionCount
-	}
-	if o.Schedule != nil {
-		toSerialize["schedule"] = o.Schedule
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsBackupSchedule) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.RetentionCount) {
+		toSerialize["retention_count"] = o.RetentionCount
+	}
+	if !IsNil(o.Schedule) {
+		toSerialize["schedule"] = o.Schedule
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsBackupSchedule struct {

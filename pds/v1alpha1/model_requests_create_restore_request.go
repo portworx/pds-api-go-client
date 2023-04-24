@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsCreateRestoreRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsCreateRestoreRequest{}
+
 // RequestsCreateRestoreRequest struct for RequestsCreateRestoreRequest
 type RequestsCreateRestoreRequest struct {
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
@@ -40,7 +43,7 @@ func NewRequestsCreateRestoreRequestWithDefaults() *RequestsCreateRestoreRequest
 
 // GetDeploymentTargetId returns the DeploymentTargetId field value if set, zero value otherwise.
 func (o *RequestsCreateRestoreRequest) GetDeploymentTargetId() string {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *RequestsCreateRestoreRequest) GetDeploymentTargetId() string {
 // GetDeploymentTargetIdOk returns a tuple with the DeploymentTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateRestoreRequest) GetDeploymentTargetIdOk() (*string, bool) {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		return nil, false
 	}
 	return o.DeploymentTargetId, true
@@ -58,7 +61,7 @@ func (o *RequestsCreateRestoreRequest) GetDeploymentTargetIdOk() (*string, bool)
 
 // HasDeploymentTargetId returns a boolean if a field has been set.
 func (o *RequestsCreateRestoreRequest) HasDeploymentTargetId() bool {
-	if o != nil && o.DeploymentTargetId != nil {
+	if o != nil && !IsNil(o.DeploymentTargetId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *RequestsCreateRestoreRequest) SetDeploymentTargetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestsCreateRestoreRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *RequestsCreateRestoreRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateRestoreRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +93,7 @@ func (o *RequestsCreateRestoreRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestsCreateRestoreRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *RequestsCreateRestoreRequest) SetName(v string) {
 
 // GetNamespaceId returns the NamespaceId field value if set, zero value otherwise.
 func (o *RequestsCreateRestoreRequest) GetNamespaceId() string {
-	if o == nil || o.NamespaceId == nil {
+	if o == nil || IsNil(o.NamespaceId) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *RequestsCreateRestoreRequest) GetNamespaceId() string {
 // GetNamespaceIdOk returns a tuple with the NamespaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateRestoreRequest) GetNamespaceIdOk() (*string, bool) {
-	if o == nil || o.NamespaceId == nil {
+	if o == nil || IsNil(o.NamespaceId) {
 		return nil, false
 	}
 	return o.NamespaceId, true
@@ -122,7 +125,7 @@ func (o *RequestsCreateRestoreRequest) GetNamespaceIdOk() (*string, bool) {
 
 // HasNamespaceId returns a boolean if a field has been set.
 func (o *RequestsCreateRestoreRequest) HasNamespaceId() bool {
-	if o != nil && o.NamespaceId != nil {
+	if o != nil && !IsNil(o.NamespaceId) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *RequestsCreateRestoreRequest) SetNamespaceId(v string) {
 }
 
 func (o RequestsCreateRestoreRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DeploymentTargetId != nil {
-		toSerialize["deployment_target_id"] = o.DeploymentTargetId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.NamespaceId != nil {
-		toSerialize["namespace_id"] = o.NamespaceId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsCreateRestoreRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeploymentTargetId) {
+		toSerialize["deployment_target_id"] = o.DeploymentTargetId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.NamespaceId) {
+		toSerialize["namespace_id"] = o.NamespaceId
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsCreateRestoreRequest struct {

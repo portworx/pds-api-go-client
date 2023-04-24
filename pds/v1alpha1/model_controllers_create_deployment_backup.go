@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersCreateDeploymentBackup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersCreateDeploymentBackup{}
+
 // ControllersCreateDeploymentBackup struct for ControllersCreateDeploymentBackup
 type ControllersCreateDeploymentBackup struct {
 	BackupLevel *string `json:"backup_level,omitempty"`
@@ -42,7 +45,7 @@ func NewControllersCreateDeploymentBackupWithDefaults() *ControllersCreateDeploy
 
 // GetBackupLevel returns the BackupLevel field value if set, zero value otherwise.
 func (o *ControllersCreateDeploymentBackup) GetBackupLevel() string {
-	if o == nil || o.BackupLevel == nil {
+	if o == nil || IsNil(o.BackupLevel) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ControllersCreateDeploymentBackup) GetBackupLevel() string {
 // GetBackupLevelOk returns a tuple with the BackupLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateDeploymentBackup) GetBackupLevelOk() (*string, bool) {
-	if o == nil || o.BackupLevel == nil {
+	if o == nil || IsNil(o.BackupLevel) {
 		return nil, false
 	}
 	return o.BackupLevel, true
@@ -60,7 +63,7 @@ func (o *ControllersCreateDeploymentBackup) GetBackupLevelOk() (*string, bool) {
 
 // HasBackupLevel returns a boolean if a field has been set.
 func (o *ControllersCreateDeploymentBackup) HasBackupLevel() bool {
-	if o != nil && o.BackupLevel != nil {
+	if o != nil && !IsNil(o.BackupLevel) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ControllersCreateDeploymentBackup) SetBackupLevel(v string) {
 
 // GetBackupTargetId returns the BackupTargetId field value if set, zero value otherwise.
 func (o *ControllersCreateDeploymentBackup) GetBackupTargetId() string {
-	if o == nil || o.BackupTargetId == nil {
+	if o == nil || IsNil(o.BackupTargetId) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ControllersCreateDeploymentBackup) GetBackupTargetId() string {
 // GetBackupTargetIdOk returns a tuple with the BackupTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateDeploymentBackup) GetBackupTargetIdOk() (*string, bool) {
-	if o == nil || o.BackupTargetId == nil {
+	if o == nil || IsNil(o.BackupTargetId) {
 		return nil, false
 	}
 	return o.BackupTargetId, true
@@ -92,7 +95,7 @@ func (o *ControllersCreateDeploymentBackup) GetBackupTargetIdOk() (*string, bool
 
 // HasBackupTargetId returns a boolean if a field has been set.
 func (o *ControllersCreateDeploymentBackup) HasBackupTargetId() bool {
-	if o != nil && o.BackupTargetId != nil {
+	if o != nil && !IsNil(o.BackupTargetId) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ControllersCreateDeploymentBackup) SetBackupTargetId(v string) {
 
 // GetBackupType returns the BackupType field value if set, zero value otherwise.
 func (o *ControllersCreateDeploymentBackup) GetBackupType() string {
-	if o == nil || o.BackupType == nil {
+	if o == nil || IsNil(o.BackupType) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ControllersCreateDeploymentBackup) GetBackupType() string {
 // GetBackupTypeOk returns a tuple with the BackupType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateDeploymentBackup) GetBackupTypeOk() (*string, bool) {
-	if o == nil || o.BackupType == nil {
+	if o == nil || IsNil(o.BackupType) {
 		return nil, false
 	}
 	return o.BackupType, true
@@ -124,7 +127,7 @@ func (o *ControllersCreateDeploymentBackup) GetBackupTypeOk() (*string, bool) {
 
 // HasBackupType returns a boolean if a field has been set.
 func (o *ControllersCreateDeploymentBackup) HasBackupType() bool {
-	if o != nil && o.BackupType != nil {
+	if o != nil && !IsNil(o.BackupType) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ControllersCreateDeploymentBackup) SetBackupType(v string) {
 
 // GetJobHistoryLimit returns the JobHistoryLimit field value if set, zero value otherwise.
 func (o *ControllersCreateDeploymentBackup) GetJobHistoryLimit() int32 {
-	if o == nil || o.JobHistoryLimit == nil {
+	if o == nil || IsNil(o.JobHistoryLimit) {
 		var ret int32
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ControllersCreateDeploymentBackup) GetJobHistoryLimit() int32 {
 // GetJobHistoryLimitOk returns a tuple with the JobHistoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateDeploymentBackup) GetJobHistoryLimitOk() (*int32, bool) {
-	if o == nil || o.JobHistoryLimit == nil {
+	if o == nil || IsNil(o.JobHistoryLimit) {
 		return nil, false
 	}
 	return o.JobHistoryLimit, true
@@ -156,7 +159,7 @@ func (o *ControllersCreateDeploymentBackup) GetJobHistoryLimitOk() (*int32, bool
 
 // HasJobHistoryLimit returns a boolean if a field has been set.
 func (o *ControllersCreateDeploymentBackup) HasJobHistoryLimit() bool {
-	if o != nil && o.JobHistoryLimit != nil {
+	if o != nil && !IsNil(o.JobHistoryLimit) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *ControllersCreateDeploymentBackup) SetJobHistoryLimit(v int32) {
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
 func (o *ControllersCreateDeploymentBackup) GetSchedule() string {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ControllersCreateDeploymentBackup) GetSchedule() string {
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersCreateDeploymentBackup) GetScheduleOk() (*string, bool) {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
 	return o.Schedule, true
@@ -188,7 +191,7 @@ func (o *ControllersCreateDeploymentBackup) GetScheduleOk() (*string, bool) {
 
 // HasSchedule returns a boolean if a field has been set.
 func (o *ControllersCreateDeploymentBackup) HasSchedule() bool {
-	if o != nil && o.Schedule != nil {
+	if o != nil && !IsNil(o.Schedule) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *ControllersCreateDeploymentBackup) SetSchedule(v string) {
 }
 
 func (o ControllersCreateDeploymentBackup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BackupLevel != nil {
-		toSerialize["backup_level"] = o.BackupLevel
-	}
-	if o.BackupTargetId != nil {
-		toSerialize["backup_target_id"] = o.BackupTargetId
-	}
-	if o.BackupType != nil {
-		toSerialize["backup_type"] = o.BackupType
-	}
-	if o.JobHistoryLimit != nil {
-		toSerialize["job_history_limit"] = o.JobHistoryLimit
-	}
-	if o.Schedule != nil {
-		toSerialize["schedule"] = o.Schedule
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersCreateDeploymentBackup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BackupLevel) {
+		toSerialize["backup_level"] = o.BackupLevel
+	}
+	if !IsNil(o.BackupTargetId) {
+		toSerialize["backup_target_id"] = o.BackupTargetId
+	}
+	if !IsNil(o.BackupType) {
+		toSerialize["backup_type"] = o.BackupType
+	}
+	if !IsNil(o.JobHistoryLimit) {
+		toSerialize["job_history_limit"] = o.JobHistoryLimit
+	}
+	if !IsNil(o.Schedule) {
+		toSerialize["schedule"] = o.Schedule
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersCreateDeploymentBackup struct {

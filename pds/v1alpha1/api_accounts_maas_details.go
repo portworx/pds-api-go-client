@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // AccountsMAASDetailsApiService AccountsMAASDetailsApi service
 type AccountsMAASDetailsApiService service
@@ -32,7 +28,6 @@ type ApiApiAccountsIdMaasDetailsGetRequest struct {
 	ApiService *AccountsMAASDetailsApiService
 	id string
 }
-
 
 func (r ApiApiAccountsIdMaasDetailsGetRequest) Execute() (*ModelsMAASDetails, *http.Response, error) {
 	return r.ApiService.ApiAccountsIdMaasDetailsGetExecute(r)
@@ -71,7 +66,7 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/maas-details"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -118,9 +113,9 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +145,6 @@ type ApiApiAccountsIdMaasDetailsPutRequest struct {
 	ApiService *AccountsMAASDetailsApiService
 	id string
 }
-
 
 func (r ApiApiAccountsIdMaasDetailsPutRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiAccountsIdMaasDetailsPutExecute(r)
@@ -187,7 +181,7 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPutExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/maas-details"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -234,9 +228,9 @@ func (a *AccountsMAASDetailsApiService) ApiAccountsIdMaasDetailsPutExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

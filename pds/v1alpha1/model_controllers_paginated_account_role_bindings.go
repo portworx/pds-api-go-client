@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPaginatedAccountRoleBindings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPaginatedAccountRoleBindings{}
+
 // ControllersPaginatedAccountRoleBindings struct for ControllersPaginatedAccountRoleBindings
 type ControllersPaginatedAccountRoleBindings struct {
-	Data []ModelsLegacyAccountBinding `json:"data,omitempty"`
+	Data []ModelsAccountRoleBinding `json:"data,omitempty"`
 }
 
 // NewControllersPaginatedAccountRoleBindings instantiates a new ControllersPaginatedAccountRoleBindings object
@@ -37,9 +40,9 @@ func NewControllersPaginatedAccountRoleBindingsWithDefaults() *ControllersPagina
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ControllersPaginatedAccountRoleBindings) GetData() []ModelsLegacyAccountBinding {
-	if o == nil || o.Data == nil {
-		var ret []ModelsLegacyAccountBinding
+func (o *ControllersPaginatedAccountRoleBindings) GetData() []ModelsAccountRoleBinding {
+	if o == nil || IsNil(o.Data) {
+		var ret []ModelsAccountRoleBinding
 		return ret
 	}
 	return o.Data
@@ -47,8 +50,8 @@ func (o *ControllersPaginatedAccountRoleBindings) GetData() []ModelsLegacyAccoun
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ControllersPaginatedAccountRoleBindings) GetDataOk() ([]ModelsLegacyAccountBinding, bool) {
-	if o == nil || o.Data == nil {
+func (o *ControllersPaginatedAccountRoleBindings) GetDataOk() ([]ModelsAccountRoleBinding, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -56,24 +59,32 @@ func (o *ControllersPaginatedAccountRoleBindings) GetDataOk() ([]ModelsLegacyAcc
 
 // HasData returns a boolean if a field has been set.
 func (o *ControllersPaginatedAccountRoleBindings) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
 	return false
 }
 
-// SetData gets a reference to the given []ModelsLegacyAccountBinding and assigns it to the Data field.
-func (o *ControllersPaginatedAccountRoleBindings) SetData(v []ModelsLegacyAccountBinding) {
+// SetData gets a reference to the given []ModelsAccountRoleBinding and assigns it to the Data field.
+func (o *ControllersPaginatedAccountRoleBindings) SetData(v []ModelsAccountRoleBinding) {
 	o.Data = v
 }
 
 func (o ControllersPaginatedAccountRoleBindings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPaginatedAccountRoleBindings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPaginatedAccountRoleBindings struct {

@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // TasksApiService TasksApi service
 type TasksApiService service
@@ -32,7 +28,6 @@ type ApiApiDbTasksIdGetRequest struct {
 	ApiService *TasksApiService
 	id string
 }
-
 
 func (r ApiApiDbTasksIdGetRequest) Execute() (*ModelsTask, *http.Response, error) {
 	return r.ApiService.ApiDbTasksIdGetExecute(r)
@@ -71,7 +66,7 @@ func (a *TasksApiService) ApiDbTasksIdGetExecute(r ApiApiDbTasksIdGetRequest) (*
 	}
 
 	localVarPath := localBasePath + "/api/db-tasks/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -118,9 +113,9 @@ func (a *TasksApiService) ApiDbTasksIdGetExecute(r ApiApiDbTasksIdGetRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateResourceSettingsTemplateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateResourceSettingsTemplateRequest{}
+
 // ControllersUpdateResourceSettingsTemplateRequest struct for ControllersUpdateResourceSettingsTemplateRequest
 type ControllersUpdateResourceSettingsTemplateRequest struct {
 	CpuLimit *string `json:"cpu_limit,omitempty"`
@@ -44,7 +47,7 @@ func NewControllersUpdateResourceSettingsTemplateRequestWithDefaults() *Controll
 
 // GetCpuLimit returns the CpuLimit field value if set, zero value otherwise.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuLimit() string {
-	if o == nil || o.CpuLimit == nil {
+	if o == nil || IsNil(o.CpuLimit) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuLimit() string 
 // GetCpuLimitOk returns a tuple with the CpuLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuLimitOk() (*string, bool) {
-	if o == nil || o.CpuLimit == nil {
+	if o == nil || IsNil(o.CpuLimit) {
 		return nil, false
 	}
 	return o.CpuLimit, true
@@ -62,7 +65,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuLimitOk() (*str
 
 // HasCpuLimit returns a boolean if a field has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) HasCpuLimit() bool {
-	if o != nil && o.CpuLimit != nil {
+	if o != nil && !IsNil(o.CpuLimit) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) SetCpuLimit(v string)
 
 // GetCpuRequest returns the CpuRequest field value if set, zero value otherwise.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuRequest() string {
-	if o == nil || o.CpuRequest == nil {
+	if o == nil || IsNil(o.CpuRequest) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuRequest() strin
 // GetCpuRequestOk returns a tuple with the CpuRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuRequestOk() (*string, bool) {
-	if o == nil || o.CpuRequest == nil {
+	if o == nil || IsNil(o.CpuRequest) {
 		return nil, false
 	}
 	return o.CpuRequest, true
@@ -94,7 +97,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetCpuRequestOk() (*s
 
 // HasCpuRequest returns a boolean if a field has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) HasCpuRequest() bool {
-	if o != nil && o.CpuRequest != nil {
+	if o != nil && !IsNil(o.CpuRequest) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) SetCpuRequest(v strin
 
 // GetMemoryLimit returns the MemoryLimit field value if set, zero value otherwise.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryLimit() string {
-	if o == nil || o.MemoryLimit == nil {
+	if o == nil || IsNil(o.MemoryLimit) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryLimit() stri
 // GetMemoryLimitOk returns a tuple with the MemoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryLimitOk() (*string, bool) {
-	if o == nil || o.MemoryLimit == nil {
+	if o == nil || IsNil(o.MemoryLimit) {
 		return nil, false
 	}
 	return o.MemoryLimit, true
@@ -126,7 +129,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryLimitOk() (*
 
 // HasMemoryLimit returns a boolean if a field has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) HasMemoryLimit() bool {
-	if o != nil && o.MemoryLimit != nil {
+	if o != nil && !IsNil(o.MemoryLimit) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) SetMemoryLimit(v stri
 
 // GetMemoryRequest returns the MemoryRequest field value if set, zero value otherwise.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryRequest() string {
-	if o == nil || o.MemoryRequest == nil {
+	if o == nil || IsNil(o.MemoryRequest) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryRequest() st
 // GetMemoryRequestOk returns a tuple with the MemoryRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryRequestOk() (*string, bool) {
-	if o == nil || o.MemoryRequest == nil {
+	if o == nil || IsNil(o.MemoryRequest) {
 		return nil, false
 	}
 	return o.MemoryRequest, true
@@ -158,7 +161,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetMemoryRequestOk() 
 
 // HasMemoryRequest returns a boolean if a field has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) HasMemoryRequest() bool {
-	if o != nil && o.MemoryRequest != nil {
+	if o != nil && !IsNil(o.MemoryRequest) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) SetMemoryRequest(v st
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -190,7 +193,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetNameOk() (*string,
 
 // HasName returns a boolean if a field has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) SetName(v string) {
 
 // GetStorageRequest returns the StorageRequest field value if set, zero value otherwise.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetStorageRequest() string {
-	if o == nil || o.StorageRequest == nil {
+	if o == nil || IsNil(o.StorageRequest) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetStorageRequest() s
 // GetStorageRequestOk returns a tuple with the StorageRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) GetStorageRequestOk() (*string, bool) {
-	if o == nil || o.StorageRequest == nil {
+	if o == nil || IsNil(o.StorageRequest) {
 		return nil, false
 	}
 	return o.StorageRequest, true
@@ -222,7 +225,7 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) GetStorageRequestOk()
 
 // HasStorageRequest returns a boolean if a field has been set.
 func (o *ControllersUpdateResourceSettingsTemplateRequest) HasStorageRequest() bool {
-	if o != nil && o.StorageRequest != nil {
+	if o != nil && !IsNil(o.StorageRequest) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *ControllersUpdateResourceSettingsTemplateRequest) SetStorageRequest(v s
 }
 
 func (o ControllersUpdateResourceSettingsTemplateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CpuLimit != nil {
-		toSerialize["cpu_limit"] = o.CpuLimit
-	}
-	if o.CpuRequest != nil {
-		toSerialize["cpu_request"] = o.CpuRequest
-	}
-	if o.MemoryLimit != nil {
-		toSerialize["memory_limit"] = o.MemoryLimit
-	}
-	if o.MemoryRequest != nil {
-		toSerialize["memory_request"] = o.MemoryRequest
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.StorageRequest != nil {
-		toSerialize["storage_request"] = o.StorageRequest
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateResourceSettingsTemplateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CpuLimit) {
+		toSerialize["cpu_limit"] = o.CpuLimit
+	}
+	if !IsNil(o.CpuRequest) {
+		toSerialize["cpu_request"] = o.CpuRequest
+	}
+	if !IsNil(o.MemoryLimit) {
+		toSerialize["memory_limit"] = o.MemoryLimit
+	}
+	if !IsNil(o.MemoryRequest) {
+		toSerialize["memory_request"] = o.MemoryRequest
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.StorageRequest) {
+		toSerialize["storage_request"] = o.StorageRequest
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateResourceSettingsTemplateRequest struct {

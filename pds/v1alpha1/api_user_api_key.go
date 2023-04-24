@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // UserAPIKeyApiService UserAPIKeyApi service
 type UserAPIKeyApiService service
@@ -43,26 +39,31 @@ func (r ApiApiUserApiKeyGetRequest) Id(id string) ApiApiUserApiKeyGetRequest {
 	r.id = &id
 	return r
 }
+
 // Filter results by name
 func (r ApiApiUserApiKeyGetRequest) Name(name string) ApiApiUserApiKeyGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by enabled
 func (r ApiApiUserApiKeyGetRequest) Enabled(enabled bool) ApiApiUserApiKeyGetRequest {
 	r.enabled = &enabled
 	return r
 }
+
 // A given UserAPIKey attribute to sort results by (one of: id, name, created_at, enabled, expires_at)
 func (r ApiApiUserApiKeyGetRequest) SortBy(sortBy string) ApiApiUserApiKeyGetRequest {
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiUserApiKeyGetRequest) Limit(limit string) ApiApiUserApiKeyGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiUserApiKeyGetRequest) Continuation(continuation string) ApiApiUserApiKeyGetRequest {
 	r.continuation = &continuation
@@ -110,22 +111,22 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyGetExecute(r ApiApiUserApiKeyGetRequ
 	localVarFormParams := url.Values{}
 
 	if r.id != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
 	}
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -168,9 +169,9 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyGetExecute(r ApiApiUserApiKeyGetRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -200,7 +201,6 @@ type ApiApiUserApiKeyIdDeleteRequest struct {
 	ApiService *UserAPIKeyApiService
 	id string
 }
-
 
 func (r ApiApiUserApiKeyIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiUserApiKeyIdDeleteExecute(r)
@@ -237,7 +237,7 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyIdDeleteExecute(r ApiApiUserApiKeyId
 	}
 
 	localVarPath := localBasePath + "/api/user-api-key/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -284,9 +284,9 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyIdDeleteExecute(r ApiApiUserApiKeyId
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -307,7 +307,6 @@ type ApiApiUserApiKeyIdGetRequest struct {
 	ApiService *UserAPIKeyApiService
 	id string
 }
-
 
 func (r ApiApiUserApiKeyIdGetRequest) Execute() (*ModelsUserAPIKey, *http.Response, error) {
 	return r.ApiService.ApiUserApiKeyIdGetExecute(r)
@@ -346,7 +345,7 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyIdGetExecute(r ApiApiUserApiKeyIdGet
 	}
 
 	localVarPath := localBasePath + "/api/user-api-key/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -393,9 +392,9 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyIdGetExecute(r ApiApiUserApiKeyIdGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -468,7 +467,7 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyIdPatchExecute(r ApiApiUserApiKeyIdP
 	}
 
 	localVarPath := localBasePath + "/api/user-api-key/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -520,9 +519,9 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyIdPatchExecute(r ApiApiUserApiKeyIdP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -636,9 +635,9 @@ func (a *UserAPIKeyApiService) ApiUserApiKeyPostExecute(r ApiApiUserApiKeyPostRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

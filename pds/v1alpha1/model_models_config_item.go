@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsConfigItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsConfigItem{}
+
 // ModelsConfigItem struct for ModelsConfigItem
 type ModelsConfigItem struct {
 	// If true, user must fill the value for this configuration parameter when creating a new deployment.
@@ -43,7 +46,7 @@ func NewModelsConfigItemWithDefaults() *ModelsConfigItem {
 
 // GetDeployTime returns the DeployTime field value if set, zero value otherwise.
 func (o *ModelsConfigItem) GetDeployTime() bool {
-	if o == nil || o.DeployTime == nil {
+	if o == nil || IsNil(o.DeployTime) {
 		var ret bool
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ModelsConfigItem) GetDeployTime() bool {
 // GetDeployTimeOk returns a tuple with the DeployTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsConfigItem) GetDeployTimeOk() (*bool, bool) {
-	if o == nil || o.DeployTime == nil {
+	if o == nil || IsNil(o.DeployTime) {
 		return nil, false
 	}
 	return o.DeployTime, true
@@ -61,7 +64,7 @@ func (o *ModelsConfigItem) GetDeployTimeOk() (*bool, bool) {
 
 // HasDeployTime returns a boolean if a field has been set.
 func (o *ModelsConfigItem) HasDeployTime() bool {
-	if o != nil && o.DeployTime != nil {
+	if o != nil && !IsNil(o.DeployTime) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ModelsConfigItem) SetDeployTime(v bool) {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *ModelsConfigItem) GetKey() string {
-	if o == nil || o.Key == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ModelsConfigItem) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsConfigItem) GetKeyOk() (*string, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -93,7 +96,7 @@ func (o *ModelsConfigItem) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *ModelsConfigItem) HasKey() bool {
-	if o != nil && o.Key != nil {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ModelsConfigItem) SetKey(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ModelsConfigItem) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ModelsConfigItem) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsConfigItem) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -125,7 +128,7 @@ func (o *ModelsConfigItem) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ModelsConfigItem) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *ModelsConfigItem) SetValue(v string) {
 }
 
 func (o ModelsConfigItem) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DeployTime != nil {
-		toSerialize["deploy_time"] = o.DeployTime
-	}
-	if o.Key != nil {
-		toSerialize["key"] = o.Key
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsConfigItem) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeployTime) {
+		toSerialize["deploy_time"] = o.DeployTime
+	}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsConfigItem struct {

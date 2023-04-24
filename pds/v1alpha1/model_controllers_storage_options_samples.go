@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersStorageOptionsSamples type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersStorageOptionsSamples{}
+
 // ControllersStorageOptionsSamples struct for ControllersStorageOptionsSamples
 type ControllersStorageOptionsSamples struct {
 	Data []ModelsStorageOptionsSample `json:"data,omitempty"`
@@ -38,7 +41,7 @@ func NewControllersStorageOptionsSamplesWithDefaults() *ControllersStorageOption
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *ControllersStorageOptionsSamples) GetData() []ModelsStorageOptionsSample {
-	if o == nil || o.Data == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []ModelsStorageOptionsSample
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ControllersStorageOptionsSamples) GetData() []ModelsStorageOptionsSampl
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersStorageOptionsSamples) GetDataOk() ([]ModelsStorageOptionsSample, bool) {
-	if o == nil || o.Data == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -56,7 +59,7 @@ func (o *ControllersStorageOptionsSamples) GetDataOk() ([]ModelsStorageOptionsSa
 
 // HasData returns a boolean if a field has been set.
 func (o *ControllersStorageOptionsSamples) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ControllersStorageOptionsSamples) SetData(v []ModelsStorageOptionsSampl
 }
 
 func (o ControllersStorageOptionsSamples) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersStorageOptionsSamples) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersStorageOptionsSamples struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPartialCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPartialCredentials{}
+
 // ControllersPartialCredentials struct for ControllersPartialCredentials
 type ControllersPartialCredentials struct {
 	Azure *ControllersPartialAzureCredentials `json:"azure,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersPartialCredentialsWithDefaults() *ControllersPartialCredentia
 
 // GetAzure returns the Azure field value if set, zero value otherwise.
 func (o *ControllersPartialCredentials) GetAzure() ControllersPartialAzureCredentials {
-	if o == nil || o.Azure == nil {
+	if o == nil || IsNil(o.Azure) {
 		var ret ControllersPartialAzureCredentials
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersPartialCredentials) GetAzure() ControllersPartialAzureCreden
 // GetAzureOk returns a tuple with the Azure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialCredentials) GetAzureOk() (*ControllersPartialAzureCredentials, bool) {
-	if o == nil || o.Azure == nil {
+	if o == nil || IsNil(o.Azure) {
 		return nil, false
 	}
 	return o.Azure, true
@@ -59,7 +62,7 @@ func (o *ControllersPartialCredentials) GetAzureOk() (*ControllersPartialAzureCr
 
 // HasAzure returns a boolean if a field has been set.
 func (o *ControllersPartialCredentials) HasAzure() bool {
-	if o != nil && o.Azure != nil {
+	if o != nil && !IsNil(o.Azure) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersPartialCredentials) SetAzure(v ControllersPartialAzureCreden
 
 // GetGoogle returns the Google field value if set, zero value otherwise.
 func (o *ControllersPartialCredentials) GetGoogle() ControllersPartialGoogleCredentials {
-	if o == nil || o.Google == nil {
+	if o == nil || IsNil(o.Google) {
 		var ret ControllersPartialGoogleCredentials
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersPartialCredentials) GetGoogle() ControllersPartialGoogleCred
 // GetGoogleOk returns a tuple with the Google field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialCredentials) GetGoogleOk() (*ControllersPartialGoogleCredentials, bool) {
-	if o == nil || o.Google == nil {
+	if o == nil || IsNil(o.Google) {
 		return nil, false
 	}
 	return o.Google, true
@@ -91,7 +94,7 @@ func (o *ControllersPartialCredentials) GetGoogleOk() (*ControllersPartialGoogle
 
 // HasGoogle returns a boolean if a field has been set.
 func (o *ControllersPartialCredentials) HasGoogle() bool {
-	if o != nil && o.Google != nil {
+	if o != nil && !IsNil(o.Google) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersPartialCredentials) SetGoogle(v ControllersPartialGoogleCred
 
 // GetS3 returns the S3 field value if set, zero value otherwise.
 func (o *ControllersPartialCredentials) GetS3() ControllersPartialS3Credentials {
-	if o == nil || o.S3 == nil {
+	if o == nil || IsNil(o.S3) {
 		var ret ControllersPartialS3Credentials
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersPartialCredentials) GetS3() ControllersPartialS3Credentials 
 // GetS3Ok returns a tuple with the S3 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialCredentials) GetS3Ok() (*ControllersPartialS3Credentials, bool) {
-	if o == nil || o.S3 == nil {
+	if o == nil || IsNil(o.S3) {
 		return nil, false
 	}
 	return o.S3, true
@@ -123,7 +126,7 @@ func (o *ControllersPartialCredentials) GetS3Ok() (*ControllersPartialS3Credenti
 
 // HasS3 returns a boolean if a field has been set.
 func (o *ControllersPartialCredentials) HasS3() bool {
-	if o != nil && o.S3 != nil {
+	if o != nil && !IsNil(o.S3) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ControllersPartialCredentials) SetS3(v ControllersPartialS3Credentials)
 
 // GetS3Compatible returns the S3Compatible field value if set, zero value otherwise.
 func (o *ControllersPartialCredentials) GetS3Compatible() ControllersPartialS3CompatibleCredentials {
-	if o == nil || o.S3Compatible == nil {
+	if o == nil || IsNil(o.S3Compatible) {
 		var ret ControllersPartialS3CompatibleCredentials
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ControllersPartialCredentials) GetS3Compatible() ControllersPartialS3Co
 // GetS3CompatibleOk returns a tuple with the S3Compatible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialCredentials) GetS3CompatibleOk() (*ControllersPartialS3CompatibleCredentials, bool) {
-	if o == nil || o.S3Compatible == nil {
+	if o == nil || IsNil(o.S3Compatible) {
 		return nil, false
 	}
 	return o.S3Compatible, true
@@ -155,7 +158,7 @@ func (o *ControllersPartialCredentials) GetS3CompatibleOk() (*ControllersPartial
 
 // HasS3Compatible returns a boolean if a field has been set.
 func (o *ControllersPartialCredentials) HasS3Compatible() bool {
-	if o != nil && o.S3Compatible != nil {
+	if o != nil && !IsNil(o.S3Compatible) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ControllersPartialCredentials) SetS3Compatible(v ControllersPartialS3Co
 }
 
 func (o ControllersPartialCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Azure != nil {
-		toSerialize["azure"] = o.Azure
-	}
-	if o.Google != nil {
-		toSerialize["google"] = o.Google
-	}
-	if o.S3 != nil {
-		toSerialize["s3"] = o.S3
-	}
-	if o.S3Compatible != nil {
-		toSerialize["s3_compatible"] = o.S3Compatible
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPartialCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Azure) {
+		toSerialize["azure"] = o.Azure
+	}
+	if !IsNil(o.Google) {
+		toSerialize["google"] = o.Google
+	}
+	if !IsNil(o.S3) {
+		toSerialize["s3"] = o.S3
+	}
+	if !IsNil(o.S3Compatible) {
+		toSerialize["s3_compatible"] = o.S3Compatible
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPartialCredentials struct {

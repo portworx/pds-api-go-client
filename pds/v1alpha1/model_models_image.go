@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsImage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsImage{}
+
 // ModelsImage struct for ModelsImage
 type ModelsImage struct {
 	Build *string `json:"build,omitempty"`
@@ -52,7 +55,7 @@ func NewModelsImageWithDefaults() *ModelsImage {
 
 // GetBuild returns the Build field value if set, zero value otherwise.
 func (o *ModelsImage) GetBuild() string {
-	if o == nil || o.Build == nil {
+	if o == nil || IsNil(o.Build) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *ModelsImage) GetBuild() string {
 // GetBuildOk returns a tuple with the Build field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetBuildOk() (*string, bool) {
-	if o == nil || o.Build == nil {
+	if o == nil || IsNil(o.Build) {
 		return nil, false
 	}
 	return o.Build, true
@@ -70,7 +73,7 @@ func (o *ModelsImage) GetBuildOk() (*string, bool) {
 
 // HasBuild returns a boolean if a field has been set.
 func (o *ModelsImage) HasBuild() bool {
-	if o != nil && o.Build != nil {
+	if o != nil && !IsNil(o.Build) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *ModelsImage) SetBuild(v string) {
 
 // GetCapabilities returns the Capabilities field value if set, zero value otherwise.
 func (o *ModelsImage) GetCapabilities() map[string]interface{} {
-	if o == nil || o.Capabilities == nil {
+	if o == nil || IsNil(o.Capabilities) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -94,15 +97,15 @@ func (o *ModelsImage) GetCapabilities() map[string]interface{} {
 // GetCapabilitiesOk returns a tuple with the Capabilities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetCapabilitiesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Capabilities == nil {
-		return nil, false
+	if o == nil || IsNil(o.Capabilities) {
+		return map[string]interface{}{}, false
 	}
 	return o.Capabilities, true
 }
 
 // HasCapabilities returns a boolean if a field has been set.
 func (o *ModelsImage) HasCapabilities() bool {
-	if o != nil && o.Capabilities != nil {
+	if o != nil && !IsNil(o.Capabilities) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *ModelsImage) SetCapabilities(v map[string]interface{}) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsImage) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *ModelsImage) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -134,7 +137,7 @@ func (o *ModelsImage) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsImage) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *ModelsImage) SetCreatedAt(v string) {
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *ModelsImage) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *ModelsImage) GetDataServiceId() string {
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -166,7 +169,7 @@ func (o *ModelsImage) GetDataServiceIdOk() (*string, bool) {
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *ModelsImage) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *ModelsImage) SetDataServiceId(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsImage) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *ModelsImage) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -198,7 +201,7 @@ func (o *ModelsImage) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsImage) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *ModelsImage) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsImage) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *ModelsImage) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -230,7 +233,7 @@ func (o *ModelsImage) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsImage) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *ModelsImage) SetName(v string) {
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *ModelsImage) GetNamespace() string {
-	if o == nil || o.Namespace == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ModelsImage) GetNamespace() string {
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetNamespaceOk() (*string, bool) {
-	if o == nil || o.Namespace == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
 	return o.Namespace, true
@@ -262,7 +265,7 @@ func (o *ModelsImage) GetNamespaceOk() (*string, bool) {
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *ModelsImage) HasNamespace() bool {
-	if o != nil && o.Namespace != nil {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *ModelsImage) SetNamespace(v string) {
 
 // GetRegistry returns the Registry field value if set, zero value otherwise.
 func (o *ModelsImage) GetRegistry() string {
-	if o == nil || o.Registry == nil {
+	if o == nil || IsNil(o.Registry) {
 		var ret string
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *ModelsImage) GetRegistry() string {
 // GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetRegistryOk() (*string, bool) {
-	if o == nil || o.Registry == nil {
+	if o == nil || IsNil(o.Registry) {
 		return nil, false
 	}
 	return o.Registry, true
@@ -294,7 +297,7 @@ func (o *ModelsImage) GetRegistryOk() (*string, bool) {
 
 // HasRegistry returns a boolean if a field has been set.
 func (o *ModelsImage) HasRegistry() bool {
-	if o != nil && o.Registry != nil {
+	if o != nil && !IsNil(o.Registry) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *ModelsImage) SetRegistry(v string) {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *ModelsImage) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *ModelsImage) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -326,7 +329,7 @@ func (o *ModelsImage) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *ModelsImage) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *ModelsImage) SetTag(v string) {
 
 // GetTlsAvailable returns the TlsAvailable field value if set, zero value otherwise.
 func (o *ModelsImage) GetTlsAvailable() bool {
-	if o == nil || o.TlsAvailable == nil {
+	if o == nil || IsNil(o.TlsAvailable) {
 		var ret bool
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *ModelsImage) GetTlsAvailable() bool {
 // GetTlsAvailableOk returns a tuple with the TlsAvailable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetTlsAvailableOk() (*bool, bool) {
-	if o == nil || o.TlsAvailable == nil {
+	if o == nil || IsNil(o.TlsAvailable) {
 		return nil, false
 	}
 	return o.TlsAvailable, true
@@ -358,7 +361,7 @@ func (o *ModelsImage) GetTlsAvailableOk() (*bool, bool) {
 
 // HasTlsAvailable returns a boolean if a field has been set.
 func (o *ModelsImage) HasTlsAvailable() bool {
-	if o != nil && o.TlsAvailable != nil {
+	if o != nil && !IsNil(o.TlsAvailable) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *ModelsImage) SetTlsAvailable(v bool) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsImage) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -382,7 +385,7 @@ func (o *ModelsImage) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -390,7 +393,7 @@ func (o *ModelsImage) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsImage) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -404,7 +407,7 @@ func (o *ModelsImage) SetUpdatedAt(v string) {
 
 // GetVersionId returns the VersionId field value if set, zero value otherwise.
 func (o *ModelsImage) GetVersionId() string {
-	if o == nil || o.VersionId == nil {
+	if o == nil || IsNil(o.VersionId) {
 		var ret string
 		return ret
 	}
@@ -414,7 +417,7 @@ func (o *ModelsImage) GetVersionId() string {
 // GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsImage) GetVersionIdOk() (*string, bool) {
-	if o == nil || o.VersionId == nil {
+	if o == nil || IsNil(o.VersionId) {
 		return nil, false
 	}
 	return o.VersionId, true
@@ -422,7 +425,7 @@ func (o *ModelsImage) GetVersionIdOk() (*string, bool) {
 
 // HasVersionId returns a boolean if a field has been set.
 func (o *ModelsImage) HasVersionId() bool {
-	if o != nil && o.VersionId != nil {
+	if o != nil && !IsNil(o.VersionId) {
 		return true
 	}
 
@@ -435,44 +438,52 @@ func (o *ModelsImage) SetVersionId(v string) {
 }
 
 func (o ModelsImage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Build != nil {
-		toSerialize["build"] = o.Build
-	}
-	if o.Capabilities != nil {
-		toSerialize["capabilities"] = o.Capabilities
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Namespace != nil {
-		toSerialize["namespace"] = o.Namespace
-	}
-	if o.Registry != nil {
-		toSerialize["registry"] = o.Registry
-	}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.TlsAvailable != nil {
-		toSerialize["tls_available"] = o.TlsAvailable
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.VersionId != nil {
-		toSerialize["version_id"] = o.VersionId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsImage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Build) {
+		toSerialize["build"] = o.Build
+	}
+	if !IsNil(o.Capabilities) {
+		toSerialize["capabilities"] = o.Capabilities
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.Registry) {
+		toSerialize["registry"] = o.Registry
+	}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.TlsAvailable) {
+		toSerialize["tls_available"] = o.TlsAvailable
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.VersionId) {
+		toSerialize["version_id"] = o.VersionId
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsImage struct {

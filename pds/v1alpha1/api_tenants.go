@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // TenantsApiService TenantsApi service
 type TenantsApiService service
@@ -43,21 +39,25 @@ func (r ApiApiAccountsIdTenantsGetRequest) SortBy(sortBy string) ApiApiAccountsI
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiAccountsIdTenantsGetRequest) Limit(limit string) ApiApiAccountsIdTenantsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiAccountsIdTenantsGetRequest) Continuation(continuation string) ApiApiAccountsIdTenantsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Tenant id
 func (r ApiApiAccountsIdTenantsGetRequest) Id2(id2 string) ApiApiAccountsIdTenantsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Tenant name
 func (r ApiApiAccountsIdTenantsGetRequest) Name(name string) ApiApiAccountsIdTenantsGetRequest {
 	r.name = &name
@@ -101,26 +101,26 @@ func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTen
 	}
 
 	localVarPath := localBasePath + "/api/accounts/{id}/tenants"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -163,9 +163,9 @@ func (a *TenantsApiService) ApiAccountsIdTenantsGetExecute(r ApiApiAccountsIdTen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -195,7 +195,6 @@ type ApiApiTenantsIdDnsDetailsGetRequest struct {
 	ApiService *TenantsApiService
 	id string
 }
-
 
 func (r ApiApiTenantsIdDnsDetailsGetRequest) Execute() (*ModelsDNSDetails, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdDnsDetailsGetExecute(r)
@@ -234,7 +233,7 @@ func (a *TenantsApiService) ApiTenantsIdDnsDetailsGetExecute(r ApiApiTenantsIdDn
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/dns-details"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -281,9 +280,9 @@ func (a *TenantsApiService) ApiTenantsIdDnsDetailsGetExecute(r ApiApiTenantsIdDn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -313,7 +312,6 @@ type ApiApiTenantsIdGetRequest struct {
 	ApiService *TenantsApiService
 	id string
 }
-
 
 func (r ApiApiTenantsIdGetRequest) Execute() (*ModelsTenant, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdGetExecute(r)
@@ -352,7 +350,7 @@ func (a *TenantsApiService) ApiTenantsIdGetExecute(r ApiApiTenantsIdGetRequest) 
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -399,9 +397,9 @@ func (a *TenantsApiService) ApiTenantsIdGetExecute(r ApiApiTenantsIdGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

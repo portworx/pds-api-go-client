@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsApplicationConfigurationSample type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsApplicationConfigurationSample{}
+
 // ModelsApplicationConfigurationSample struct for ModelsApplicationConfigurationSample
 type ModelsApplicationConfigurationSample struct {
 	ConfigItems []ModelsConfigItem `json:"config_items,omitempty"`
@@ -44,7 +47,7 @@ func NewModelsApplicationConfigurationSampleWithDefaults() *ModelsApplicationCon
 
 // GetConfigItems returns the ConfigItems field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationSample) GetConfigItems() []ModelsConfigItem {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		var ret []ModelsConfigItem
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ModelsApplicationConfigurationSample) GetConfigItems() []ModelsConfigIt
 // GetConfigItemsOk returns a tuple with the ConfigItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationSample) GetConfigItemsOk() ([]ModelsConfigItem, bool) {
-	if o == nil || o.ConfigItems == nil {
+	if o == nil || IsNil(o.ConfigItems) {
 		return nil, false
 	}
 	return o.ConfigItems, true
@@ -62,7 +65,7 @@ func (o *ModelsApplicationConfigurationSample) GetConfigItemsOk() ([]ModelsConfi
 
 // HasConfigItems returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationSample) HasConfigItems() bool {
-	if o != nil && o.ConfigItems != nil {
+	if o != nil && !IsNil(o.ConfigItems) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ModelsApplicationConfigurationSample) SetConfigItems(v []ModelsConfigIt
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationSample) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ModelsApplicationConfigurationSample) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationSample) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -94,7 +97,7 @@ func (o *ModelsApplicationConfigurationSample) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationSample) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ModelsApplicationConfigurationSample) SetCreated(v string) {
 
 // GetDataServiceId returns the DataServiceId field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationSample) GetDataServiceId() string {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ModelsApplicationConfigurationSample) GetDataServiceId() string {
 // GetDataServiceIdOk returns a tuple with the DataServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationSample) GetDataServiceIdOk() (*string, bool) {
-	if o == nil || o.DataServiceId == nil {
+	if o == nil || IsNil(o.DataServiceId) {
 		return nil, false
 	}
 	return o.DataServiceId, true
@@ -126,7 +129,7 @@ func (o *ModelsApplicationConfigurationSample) GetDataServiceIdOk() (*string, bo
 
 // HasDataServiceId returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationSample) HasDataServiceId() bool {
-	if o != nil && o.DataServiceId != nil {
+	if o != nil && !IsNil(o.DataServiceId) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ModelsApplicationConfigurationSample) SetDataServiceId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationSample) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ModelsApplicationConfigurationSample) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationSample) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -158,7 +161,7 @@ func (o *ModelsApplicationConfigurationSample) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationSample) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ModelsApplicationConfigurationSample) SetName(v string) {
 
 // GetUpdated returns the Updated field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationSample) GetUpdated() string {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ModelsApplicationConfigurationSample) GetUpdated() string {
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationSample) GetUpdatedOk() (*string, bool) {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
 	return o.Updated, true
@@ -190,7 +193,7 @@ func (o *ModelsApplicationConfigurationSample) GetUpdatedOk() (*string, bool) {
 
 // HasUpdated returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationSample) HasUpdated() bool {
-	if o != nil && o.Updated != nil {
+	if o != nil && !IsNil(o.Updated) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ModelsApplicationConfigurationSample) SetUpdated(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ModelsApplicationConfigurationSample) GetVersion() int32 {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ModelsApplicationConfigurationSample) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsApplicationConfigurationSample) GetVersionOk() (*int32, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -222,7 +225,7 @@ func (o *ModelsApplicationConfigurationSample) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ModelsApplicationConfigurationSample) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *ModelsApplicationConfigurationSample) SetVersion(v int32) {
 }
 
 func (o ModelsApplicationConfigurationSample) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ConfigItems != nil {
-		toSerialize["config_items"] = o.ConfigItems
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.DataServiceId != nil {
-		toSerialize["data_service_id"] = o.DataServiceId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Updated != nil {
-		toSerialize["updated"] = o.Updated
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsApplicationConfigurationSample) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ConfigItems) {
+		toSerialize["config_items"] = o.ConfigItems
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.DataServiceId) {
+		toSerialize["data_service_id"] = o.DataServiceId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Updated) {
+		toSerialize["updated"] = o.Updated
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsApplicationConfigurationSample struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsStorageOptionsSample type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsStorageOptionsSample{}
+
 // ModelsStorageOptionsSample struct for ModelsStorageOptionsSample
 type ModelsStorageOptionsSample struct {
 	Created *string `json:"created,omitempty"`
@@ -52,7 +55,7 @@ func NewModelsStorageOptionsSampleWithDefaults() *ModelsStorageOptionsSample {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *ModelsStorageOptionsSample) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -70,7 +73,7 @@ func (o *ModelsStorageOptionsSample) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *ModelsStorageOptionsSample) SetCreated(v string) {
 
 // GetFg returns the Fg field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetFg() bool {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		var ret bool
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *ModelsStorageOptionsSample) GetFg() bool {
 // GetFgOk returns a tuple with the Fg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetFgOk() (*bool, bool) {
-	if o == nil || o.Fg == nil {
+	if o == nil || IsNil(o.Fg) {
 		return nil, false
 	}
 	return o.Fg, true
@@ -102,7 +105,7 @@ func (o *ModelsStorageOptionsSample) GetFgOk() (*bool, bool) {
 
 // HasFg returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasFg() bool {
-	if o != nil && o.Fg != nil {
+	if o != nil && !IsNil(o.Fg) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *ModelsStorageOptionsSample) SetFg(v bool) {
 
 // GetFs returns the Fs field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetFs() string {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *ModelsStorageOptionsSample) GetFs() string {
 // GetFsOk returns a tuple with the Fs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetFsOk() (*string, bool) {
-	if o == nil || o.Fs == nil {
+	if o == nil || IsNil(o.Fs) {
 		return nil, false
 	}
 	return o.Fs, true
@@ -134,7 +137,7 @@ func (o *ModelsStorageOptionsSample) GetFsOk() (*string, bool) {
 
 // HasFs returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasFs() bool {
-	if o != nil && o.Fs != nil {
+	if o != nil && !IsNil(o.Fs) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *ModelsStorageOptionsSample) SetFs(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *ModelsStorageOptionsSample) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -166,7 +169,7 @@ func (o *ModelsStorageOptionsSample) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *ModelsStorageOptionsSample) SetName(v string) {
 
 // GetProvisioner returns the Provisioner field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetProvisioner() string {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		var ret string
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *ModelsStorageOptionsSample) GetProvisioner() string {
 // GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetProvisionerOk() (*string, bool) {
-	if o == nil || o.Provisioner == nil {
+	if o == nil || IsNil(o.Provisioner) {
 		return nil, false
 	}
 	return o.Provisioner, true
@@ -198,7 +201,7 @@ func (o *ModelsStorageOptionsSample) GetProvisionerOk() (*string, bool) {
 
 // HasProvisioner returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasProvisioner() bool {
-	if o != nil && o.Provisioner != nil {
+	if o != nil && !IsNil(o.Provisioner) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *ModelsStorageOptionsSample) SetProvisioner(v string) {
 
 // GetRepl returns the Repl field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetRepl() int32 {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		var ret int32
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *ModelsStorageOptionsSample) GetRepl() int32 {
 // GetReplOk returns a tuple with the Repl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetReplOk() (*int32, bool) {
-	if o == nil || o.Repl == nil {
+	if o == nil || IsNil(o.Repl) {
 		return nil, false
 	}
 	return o.Repl, true
@@ -230,7 +233,7 @@ func (o *ModelsStorageOptionsSample) GetReplOk() (*int32, bool) {
 
 // HasRepl returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasRepl() bool {
-	if o != nil && o.Repl != nil {
+	if o != nil && !IsNil(o.Repl) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *ModelsStorageOptionsSample) SetRepl(v int32) {
 
 // GetSecure returns the Secure field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetSecure() bool {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		var ret bool
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ModelsStorageOptionsSample) GetSecure() bool {
 // GetSecureOk returns a tuple with the Secure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetSecureOk() (*bool, bool) {
-	if o == nil || o.Secure == nil {
+	if o == nil || IsNil(o.Secure) {
 		return nil, false
 	}
 	return o.Secure, true
@@ -262,7 +265,7 @@ func (o *ModelsStorageOptionsSample) GetSecureOk() (*bool, bool) {
 
 // HasSecure returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasSecure() bool {
-	if o != nil && o.Secure != nil {
+	if o != nil && !IsNil(o.Secure) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *ModelsStorageOptionsSample) SetSecure(v bool) {
 
 // GetUpdated returns the Updated field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetUpdated() string {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		var ret string
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *ModelsStorageOptionsSample) GetUpdated() string {
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetUpdatedOk() (*string, bool) {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
 	return o.Updated, true
@@ -294,7 +297,7 @@ func (o *ModelsStorageOptionsSample) GetUpdatedOk() (*string, bool) {
 
 // HasUpdated returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasUpdated() bool {
-	if o != nil && o.Updated != nil {
+	if o != nil && !IsNil(o.Updated) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *ModelsStorageOptionsSample) SetUpdated(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ModelsStorageOptionsSample) GetVersion() int32 {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *ModelsStorageOptionsSample) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsStorageOptionsSample) GetVersionOk() (*int32, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -326,7 +329,7 @@ func (o *ModelsStorageOptionsSample) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ModelsStorageOptionsSample) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -339,35 +342,43 @@ func (o *ModelsStorageOptionsSample) SetVersion(v int32) {
 }
 
 func (o ModelsStorageOptionsSample) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.Fg != nil {
-		toSerialize["fg"] = o.Fg
-	}
-	if o.Fs != nil {
-		toSerialize["fs"] = o.Fs
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Provisioner != nil {
-		toSerialize["provisioner"] = o.Provisioner
-	}
-	if o.Repl != nil {
-		toSerialize["repl"] = o.Repl
-	}
-	if o.Secure != nil {
-		toSerialize["secure"] = o.Secure
-	}
-	if o.Updated != nil {
-		toSerialize["updated"] = o.Updated
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsStorageOptionsSample) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Fg) {
+		toSerialize["fg"] = o.Fg
+	}
+	if !IsNil(o.Fs) {
+		toSerialize["fs"] = o.Fs
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Provisioner) {
+		toSerialize["provisioner"] = o.Provisioner
+	}
+	if !IsNil(o.Repl) {
+		toSerialize["repl"] = o.Repl
+	}
+	if !IsNil(o.Secure) {
+		toSerialize["secure"] = o.Secure
+	}
+	if !IsNil(o.Updated) {
+		toSerialize["updated"] = o.Updated
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsStorageOptionsSample struct {

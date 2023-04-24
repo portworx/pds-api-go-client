@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersPartialGoogleCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersPartialGoogleCredentials{}
+
 // ControllersPartialGoogleCredentials struct for ControllersPartialGoogleCredentials
 type ControllersPartialGoogleCredentials struct {
 	// Project ID of the Google Cloud project.
@@ -39,7 +42,7 @@ func NewControllersPartialGoogleCredentialsWithDefaults() *ControllersPartialGoo
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *ControllersPartialGoogleCredentials) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ControllersPartialGoogleCredentials) GetProjectId() string {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersPartialGoogleCredentials) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
 	return o.ProjectId, true
@@ -57,7 +60,7 @@ func (o *ControllersPartialGoogleCredentials) GetProjectIdOk() (*string, bool) {
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *ControllersPartialGoogleCredentials) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ControllersPartialGoogleCredentials) SetProjectId(v string) {
 }
 
 func (o ControllersPartialGoogleCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ProjectId != nil {
-		toSerialize["project_id"] = o.ProjectId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersPartialGoogleCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersPartialGoogleCredentials struct {

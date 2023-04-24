@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // BackupCredentialsApiService BackupCredentialsApi service
 type BackupCredentialsApiService service
@@ -32,7 +28,6 @@ type ApiApiBackupCredentialsIdCredentialsGetRequest struct {
 	ApiService *BackupCredentialsApiService
 	id string
 }
-
 
 func (r ApiApiBackupCredentialsIdCredentialsGetRequest) Execute() (*ControllersPartialCredentials, *http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdCredentialsGetExecute(r)
@@ -71,7 +66,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecut
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -118,9 +113,9 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdCredentialsGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +145,6 @@ type ApiApiBackupCredentialsIdDeleteRequest struct {
 	ApiService *BackupCredentialsApiService
 	id string
 }
-
 
 func (r ApiApiBackupCredentialsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdDeleteExecute(r)
@@ -187,7 +181,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDeleteExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -234,9 +228,9 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdDeleteExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -257,7 +251,6 @@ type ApiApiBackupCredentialsIdGetRequest struct {
 	ApiService *BackupCredentialsApiService
 	id string
 }
-
 
 func (r ApiApiBackupCredentialsIdGetRequest) Execute() (*ModelsBackupCredentials, *http.Response, error) {
 	return r.ApiService.ApiBackupCredentialsIdGetExecute(r)
@@ -296,7 +289,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiB
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -343,9 +336,9 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdGetExecute(r ApiApiB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -420,7 +413,7 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiB
 	}
 
 	localVarPath := localBasePath + "/api/backup-credentials/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -472,9 +465,9 @@ func (a *BackupCredentialsApiService) ApiBackupCredentialsIdPutExecute(r ApiApiB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -516,26 +509,31 @@ func (r ApiApiTenantsIdBackupCredentialsGetRequest) SortBy(sortBy string) ApiApi
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiTenantsIdBackupCredentialsGetRequest) Limit(limit string) ApiApiTenantsIdBackupCredentialsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiTenantsIdBackupCredentialsGetRequest) Continuation(continuation string) ApiApiTenantsIdBackupCredentialsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by BackupCredentials id
 func (r ApiApiTenantsIdBackupCredentialsGetRequest) Id2(id2 string) ApiApiTenantsIdBackupCredentialsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by BackupCredentials name
 func (r ApiApiTenantsIdBackupCredentialsGetRequest) Name(name string) ApiApiTenantsIdBackupCredentialsGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by BackupCredentials type
 func (r ApiApiTenantsIdBackupCredentialsGetRequest) Type_(type_ string) ApiApiTenantsIdBackupCredentialsGetRequest {
 	r.type_ = &type_
@@ -579,29 +577,29 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.type_ != nil {
-		localVarQueryParams.Add("type", parameterToString(*r.type_, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -644,9 +642,9 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -721,7 +719,7 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPostExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/backup-credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -773,9 +771,9 @@ func (a *BackupCredentialsApiService) ApiTenantsIdBackupCredentialsPostExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

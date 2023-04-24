@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // ResourceSettingsTemplatesApiService ResourceSettingsTemplatesApi service
 type ResourceSettingsTemplatesApiService service
@@ -32,7 +28,6 @@ type ApiApiResourceSettingsTemplatesIdDeleteRequest struct {
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 }
-
 
 func (r ApiApiResourceSettingsTemplatesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiResourceSettingsTemplatesIdDeleteExecute(r)
@@ -69,7 +64,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDele
 	}
 
 	localVarPath := localBasePath + "/api/resource-settings-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -116,9 +111,9 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdDele
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -139,7 +134,6 @@ type ApiApiResourceSettingsTemplatesIdGetRequest struct {
 	ApiService *ResourceSettingsTemplatesApiService
 	id string
 }
-
 
 func (r ApiApiResourceSettingsTemplatesIdGetRequest) Execute() (*ModelsResourceSettingsTemplate, *http.Response, error) {
 	return r.ApiService.ApiResourceSettingsTemplatesIdGetExecute(r)
@@ -178,7 +172,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetE
 	}
 
 	localVarPath := localBasePath + "/api/resource-settings-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -225,9 +219,9 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdGetE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -302,7 +296,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutE
 	}
 
 	localVarPath := localBasePath + "/api/resource-settings-templates/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,9 +348,9 @@ func (a *ResourceSettingsTemplatesApiService) ApiResourceSettingsTemplatesIdPutE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -398,26 +392,31 @@ func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) SortBy(sortBy string
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) Limit(limit string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) Continuation(continuation string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by ResourceSettingsTemplates id
 func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) Id2(id2 string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by ResourceSettingsTemplates name
 func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) Name(name string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by DataService ID
 func (r ApiApiTenantsIdResourceSettingsTemplatesGetRequest) DataServiceId(dataServiceId string) ApiApiTenantsIdResourceSettingsTemplatesGetRequest {
 	r.dataServiceId = &dataServiceId
@@ -461,29 +460,29 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/resource-settings-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.dataServiceId != nil {
-		localVarQueryParams.Add("data_service_id", parameterToString(*r.dataServiceId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "data_service_id", r.dataServiceId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -526,9 +525,9 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -603,7 +602,7 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/resource-settings-templates"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -655,9 +654,9 @@ func (a *ResourceSettingsTemplatesApiService) ApiTenantsIdResourceSettingsTempla
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

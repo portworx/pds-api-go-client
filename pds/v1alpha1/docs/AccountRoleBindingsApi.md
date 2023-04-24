@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -38,7 +38,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdInvitationsPost(context.Background(), id).Body(body).Execute()
+    r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdInvitationsPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdInvitationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -99,7 +99,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -108,7 +108,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
+    r, err := apiClient.AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -169,7 +169,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## ApiAccountsIdRoleBindingsPut
 
-> ModelsLegacyAccountBinding ApiAccountsIdRoleBindingsPut(ctx, id).Body(body).Execute()
+> ModelsAccountRoleBinding ApiAccountsIdRoleBindingsPut(ctx, id).Body(body).Execute()
 
 Create/Update AccountRoleBinding
 
@@ -247,12 +247,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
     id := "id_example" // string | Account ID (must be valid UUID)
-    body := *openapiclient.NewRequestsPutLegacyBindingRequest() // RequestsPutLegacyBindingRequest | Request body containing the account role binding
+    body := *openapiclient.NewControllersUpsertAccountRoleBindingRequest() // ControllersUpsertAccountRoleBindingRequest | Request body containing the account role binding
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -261,7 +261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiAccountsIdRoleBindingsPut`: ModelsLegacyAccountBinding
+    // response from `ApiAccountsIdRoleBindingsPut`: ModelsAccountRoleBinding
     fmt.Fprintf(os.Stdout, "Response from `AccountRoleBindingsApi.ApiAccountsIdRoleBindingsPut`: %v\n", resp)
 }
 ```
@@ -282,11 +282,11 @@ Other parameters are passed through a pointer to a apiApiAccountsIdRoleBindingsP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**RequestsPutLegacyBindingRequest**](RequestsPutLegacyBindingRequest.md) | Request body containing the account role binding | 
+ **body** | [**ControllersUpsertAccountRoleBindingRequest**](ControllersUpsertAccountRoleBindingRequest.md) | Request body containing the account role binding | 
 
 ### Return type
 
-[**ModelsLegacyAccountBinding**](ModelsLegacyAccountBinding.md)
+[**ModelsAccountRoleBinding**](ModelsAccountRoleBinding.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {

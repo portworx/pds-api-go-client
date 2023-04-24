@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // TenantRoleBindingsApiService TenantRoleBindingsApi service
 type TenantRoleBindingsApiService service
@@ -75,7 +71,7 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDeleteExecute(r A
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -127,9 +123,9 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsDeleteExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -160,16 +156,19 @@ func (r ApiApiTenantsIdRoleBindingsGetRequest) SortBy(sortBy string) ApiApiTenan
 	r.sortBy = &sortBy
 	return r
 }
+
 // Filter results by TenantRoleBinding assigned role name
 func (r ApiApiTenantsIdRoleBindingsGetRequest) RoleName(roleName string) ApiApiTenantsIdRoleBindingsGetRequest {
 	r.roleName = &roleName
 	return r
 }
+
 // Filter results by TenantRoleBinding actor id
 func (r ApiApiTenantsIdRoleBindingsGetRequest) ActorId(actorId string) ApiApiTenantsIdRoleBindingsGetRequest {
 	r.actorId = &actorId
 	return r
 }
+
 // Filter results by TenantRoleBinding actor type
 func (r ApiApiTenantsIdRoleBindingsGetRequest) ActorType(actorType string) ApiApiTenantsIdRoleBindingsGetRequest {
 	r.actorType = &actorType
@@ -213,23 +212,23 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.roleName != nil {
-		localVarQueryParams.Add("role_name", parameterToString(*r.roleName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "role_name", r.roleName, "")
 	}
 	if r.actorId != nil {
-		localVarQueryParams.Add("actor_id", parameterToString(*r.actorId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "actor_id", r.actorId, "")
 	}
 	if r.actorType != nil {
-		localVarQueryParams.Add("actor_type", parameterToString(*r.actorType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "actor_type", r.actorType, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -272,9 +271,9 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsGetExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -303,16 +302,16 @@ type ApiApiTenantsIdRoleBindingsPutRequest struct {
 	ctx context.Context
 	ApiService *TenantRoleBindingsApiService
 	id string
-	body *RequestsPutLegacyBindingRequest
+	body *ControllersUpsertTenantRoleBindingRequest
 }
 
 // Request body containing the tenant role binding
-func (r ApiApiTenantsIdRoleBindingsPutRequest) Body(body RequestsPutLegacyBindingRequest) ApiApiTenantsIdRoleBindingsPutRequest {
+func (r ApiApiTenantsIdRoleBindingsPutRequest) Body(body ControllersUpsertTenantRoleBindingRequest) ApiApiTenantsIdRoleBindingsPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiApiTenantsIdRoleBindingsPutRequest) Execute() (*ModelsLegacyTenantBinding, *http.Response, error) {
+func (r ApiApiTenantsIdRoleBindingsPutRequest) Execute() (*ModelsTenantRoleBinding, *http.Response, error) {
 	return r.ApiService.ApiTenantsIdRoleBindingsPutExecute(r)
 }
 
@@ -334,13 +333,13 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPut(ctx context.C
 }
 
 // Execute executes the request
-//  @return ModelsLegacyTenantBinding
-func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiApiTenantsIdRoleBindingsPutRequest) (*ModelsLegacyTenantBinding, *http.Response, error) {
+//  @return ModelsTenantRoleBinding
+func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiApiTenantsIdRoleBindingsPutRequest) (*ModelsTenantRoleBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ModelsLegacyTenantBinding
+		localVarReturnValue  *ModelsTenantRoleBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantRoleBindingsApiService.ApiTenantsIdRoleBindingsPut")
@@ -349,7 +348,7 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/tenants/{id}/role-bindings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -401,9 +400,9 @@ func (a *TenantRoleBindingsApiService) ApiTenantsIdRoleBindingsPutExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

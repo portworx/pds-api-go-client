@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersUpdateDeploymentScheduledBackup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersUpdateDeploymentScheduledBackup{}
+
 // ControllersUpdateDeploymentScheduledBackup struct for ControllersUpdateDeploymentScheduledBackup
 type ControllersUpdateDeploymentScheduledBackup struct {
 	BackupPolicyId *string `json:"backup_policy_id,omitempty"`
@@ -40,7 +43,7 @@ func NewControllersUpdateDeploymentScheduledBackupWithDefaults() *ControllersUpd
 
 // GetBackupPolicyId returns the BackupPolicyId field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupPolicyId() string {
-	if o == nil || o.BackupPolicyId == nil {
+	if o == nil || IsNil(o.BackupPolicyId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupPolicyId() string 
 // GetBackupPolicyIdOk returns a tuple with the BackupPolicyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupPolicyIdOk() (*string, bool) {
-	if o == nil || o.BackupPolicyId == nil {
+	if o == nil || IsNil(o.BackupPolicyId) {
 		return nil, false
 	}
 	return o.BackupPolicyId, true
@@ -58,7 +61,7 @@ func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupPolicyIdOk() (*str
 
 // HasBackupPolicyId returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentScheduledBackup) HasBackupPolicyId() bool {
-	if o != nil && o.BackupPolicyId != nil {
+	if o != nil && !IsNil(o.BackupPolicyId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ControllersUpdateDeploymentScheduledBackup) SetBackupPolicyId(v string)
 
 // GetBackupTargetId returns the BackupTargetId field value if set, zero value otherwise.
 func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupTargetId() string {
-	if o == nil || o.BackupTargetId == nil {
+	if o == nil || IsNil(o.BackupTargetId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupTargetId() string 
 // GetBackupTargetIdOk returns a tuple with the BackupTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupTargetIdOk() (*string, bool) {
-	if o == nil || o.BackupTargetId == nil {
+	if o == nil || IsNil(o.BackupTargetId) {
 		return nil, false
 	}
 	return o.BackupTargetId, true
@@ -90,7 +93,7 @@ func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupTargetIdOk() (*str
 
 // HasBackupTargetId returns a boolean if a field has been set.
 func (o *ControllersUpdateDeploymentScheduledBackup) HasBackupTargetId() bool {
-	if o != nil && o.BackupTargetId != nil {
+	if o != nil && !IsNil(o.BackupTargetId) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ControllersUpdateDeploymentScheduledBackup) SetBackupTargetId(v string)
 }
 
 func (o ControllersUpdateDeploymentScheduledBackup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BackupPolicyId != nil {
-		toSerialize["backup_policy_id"] = o.BackupPolicyId
-	}
-	if o.BackupTargetId != nil {
-		toSerialize["backup_target_id"] = o.BackupTargetId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersUpdateDeploymentScheduledBackup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BackupPolicyId) {
+		toSerialize["backup_policy_id"] = o.BackupPolicyId
+	}
+	if !IsNil(o.BackupTargetId) {
+		toSerialize["backup_target_id"] = o.BackupTargetId
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersUpdateDeploymentScheduledBackup struct {

@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // BackupsApiService BackupsApi service
 type BackupsApiService service
@@ -47,41 +43,49 @@ func (r ApiApiBackupTargetsIdBackupsGetRequest) SortBy(sortBy string) ApiApiBack
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiBackupTargetsIdBackupsGetRequest) Limit(limit string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiBackupTargetsIdBackupsGetRequest) Continuation(continuation string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Backup id
 func (r ApiApiBackupTargetsIdBackupsGetRequest) Id2(id2 string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Backup cluster_resource_name
 func (r ApiApiBackupTargetsIdBackupsGetRequest) ClusterResourceName(clusterResourceName string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.clusterResourceName = &clusterResourceName
 	return r
 }
+
 // Filter results by Backup state
 func (r ApiApiBackupTargetsIdBackupsGetRequest) State(state string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.state = &state
 	return r
 }
+
 // Filter results by Backup suspend flag
 func (r ApiApiBackupTargetsIdBackupsGetRequest) Suspend(suspend string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.suspend = &suspend
 	return r
 }
+
 // Filter results by Backup type (one of: adhoc,scheduled)
 func (r ApiApiBackupTargetsIdBackupsGetRequest) BackupType(backupType string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.backupType = &backupType
 	return r
 }
+
 // Filter results by Backup type (one of: snapshot,incremental)
 func (r ApiApiBackupTargetsIdBackupsGetRequest) BackupLevel(backupLevel string) ApiApiBackupTargetsIdBackupsGetRequest {
 	r.backupLevel = &backupLevel
@@ -125,38 +129,38 @@ func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTa
 	}
 
 	localVarPath := localBasePath + "/api/backup-targets/{id}/backups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.clusterResourceName != nil {
-		localVarQueryParams.Add("cluster_resource_name", parameterToString(*r.clusterResourceName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cluster_resource_name", r.clusterResourceName, "")
 	}
 	if r.state != nil {
-		localVarQueryParams.Add("state", parameterToString(*r.state, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "")
 	}
 	if r.suspend != nil {
-		localVarQueryParams.Add("suspend", parameterToString(*r.suspend, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "suspend", r.suspend, "")
 	}
 	if r.backupType != nil {
-		localVarQueryParams.Add("backup_type", parameterToString(*r.backupType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "backup_type", r.backupType, "")
 	}
 	if r.backupLevel != nil {
-		localVarQueryParams.Add("backup_level", parameterToString(*r.backupLevel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "backup_level", r.backupLevel, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -199,9 +203,9 @@ func (a *BackupsApiService) ApiBackupTargetsIdBackupsGetExecute(r ApiApiBackupTa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -274,7 +278,7 @@ func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteReq
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -298,7 +302,7 @@ func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.localOnly != nil {
-		localVarHeaderParams["Local-Only"] = parameterToString(*r.localOnly, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Local-Only", r.localOnly, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -324,9 +328,9 @@ func (a *BackupsApiService) ApiBackupsIdDeleteExecute(r ApiApiBackupsIdDeleteReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -347,7 +351,6 @@ type ApiApiBackupsIdGetRequest struct {
 	ApiService *BackupsApiService
 	id string
 }
-
 
 func (r ApiApiBackupsIdGetRequest) Execute() (*ModelsBackup, *http.Response, error) {
 	return r.ApiService.ApiBackupsIdGetExecute(r)
@@ -386,7 +389,7 @@ func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) 
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -433,9 +436,9 @@ func (a *BackupsApiService) ApiBackupsIdGetExecute(r ApiApiBackupsIdGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -466,7 +469,6 @@ type ApiApiBackupsIdJobsNameDeleteRequest struct {
 	id string
 	name string
 }
-
 
 func (r ApiApiBackupsIdJobsNameDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupsIdJobsNameDeleteExecute(r)
@@ -505,8 +507,8 @@ func (a *BackupsApiService) ApiBackupsIdJobsNameDeleteExecute(r ApiApiBackupsIdJ
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}/jobs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterToString(r.name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterValueToString(r.name, "name")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -553,9 +555,9 @@ func (a *BackupsApiService) ApiBackupsIdJobsNameDeleteExecute(r ApiApiBackupsIdJ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -584,6 +586,7 @@ func (r ApiApiBackupsIdPutRequest) Body(body ControllersUpdateBackupRequest) Api
 	r.body = &body
 	return r
 }
+
 // Set to true to only update the Backup object in the database (does not create any actual resources)
 func (r ApiApiBackupsIdPutRequest) LocalOnly(localOnly bool) ApiApiBackupsIdPutRequest {
 	r.localOnly = &localOnly
@@ -627,7 +630,7 @@ func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) 
 	}
 
 	localVarPath := localBasePath + "/api/backups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -654,7 +657,7 @@ func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.localOnly != nil {
-		localVarHeaderParams["Local-Only"] = parameterToString(*r.localOnly, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Local-Only", r.localOnly, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -682,9 +685,9 @@ func (a *BackupsApiService) ApiBackupsIdPutExecute(r ApiApiBackupsIdPutRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -729,41 +732,49 @@ func (r ApiApiDeploymentsIdBackupsGetRequest) SortBy(sortBy string) ApiApiDeploy
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiDeploymentsIdBackupsGetRequest) Limit(limit string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiDeploymentsIdBackupsGetRequest) Continuation(continuation string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Backup id
 func (r ApiApiDeploymentsIdBackupsGetRequest) Id2(id2 string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Backup cluster_resource_name
 func (r ApiApiDeploymentsIdBackupsGetRequest) ClusterResourceName(clusterResourceName string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.clusterResourceName = &clusterResourceName
 	return r
 }
+
 // Filter results by Backup state
 func (r ApiApiDeploymentsIdBackupsGetRequest) State(state string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.state = &state
 	return r
 }
+
 // Filter results by Backup suspend flag
 func (r ApiApiDeploymentsIdBackupsGetRequest) Suspend(suspend string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.suspend = &suspend
 	return r
 }
+
 // Filter results by Backup type (one of: adhoc,scheduled)
 func (r ApiApiDeploymentsIdBackupsGetRequest) BackupType(backupType string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.backupType = &backupType
 	return r
 }
+
 // Filter results by Backup type (one of: snapshot,incremental)
 func (r ApiApiDeploymentsIdBackupsGetRequest) BackupLevel(backupLevel string) ApiApiDeploymentsIdBackupsGetRequest {
 	r.backupLevel = &backupLevel
@@ -807,38 +818,38 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeployment
 	}
 
 	localVarPath := localBasePath + "/api/deployments/{id}/backups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.clusterResourceName != nil {
-		localVarQueryParams.Add("cluster_resource_name", parameterToString(*r.clusterResourceName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cluster_resource_name", r.clusterResourceName, "")
 	}
 	if r.state != nil {
-		localVarQueryParams.Add("state", parameterToString(*r.state, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "")
 	}
 	if r.suspend != nil {
-		localVarQueryParams.Add("suspend", parameterToString(*r.suspend, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "suspend", r.suspend, "")
 	}
 	if r.backupType != nil {
-		localVarQueryParams.Add("backup_type", parameterToString(*r.backupType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "backup_type", r.backupType, "")
 	}
 	if r.backupLevel != nil {
-		localVarQueryParams.Add("backup_level", parameterToString(*r.backupLevel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "backup_level", r.backupLevel, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -881,9 +892,9 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsGetExecute(r ApiApiDeployment
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -921,6 +932,7 @@ func (r ApiApiDeploymentsIdBackupsPostRequest) Body(body ControllersCreateDeploy
 	r.body = &body
 	return r
 }
+
 // Set to true to only create the Backup object in the database (does not create any actual resources)
 func (r ApiApiDeploymentsIdBackupsPostRequest) LocalOnly(localOnly bool) ApiApiDeploymentsIdBackupsPostRequest {
 	r.localOnly = &localOnly
@@ -964,7 +976,7 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymen
 	}
 
 	localVarPath := localBasePath + "/api/deployments/{id}/backups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -991,7 +1003,7 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymen
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.localOnly != nil {
-		localVarHeaderParams["Local-Only"] = parameterToString(*r.localOnly, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Local-Only", r.localOnly, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1019,9 +1031,9 @@ func (a *BackupsApiService) ApiDeploymentsIdBackupsPostExecute(r ApiApiDeploymen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

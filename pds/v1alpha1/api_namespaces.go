@@ -13,16 +13,12 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // NamespacesApiService NamespacesApi service
 type NamespacesApiService service
@@ -44,26 +40,31 @@ func (r ApiApiDeploymentTargetsIdNamespacesGetRequest) SortBy(sortBy string) Api
 	r.sortBy = &sortBy
 	return r
 }
+
 // Maximum number of rows to return (could be less)
 func (r ApiApiDeploymentTargetsIdNamespacesGetRequest) Limit(limit string) ApiApiDeploymentTargetsIdNamespacesGetRequest {
 	r.limit = &limit
 	return r
 }
+
 // Use a token returned by a previous query to continue listing with the next batch of rows
 func (r ApiApiDeploymentTargetsIdNamespacesGetRequest) Continuation(continuation string) ApiApiDeploymentTargetsIdNamespacesGetRequest {
 	r.continuation = &continuation
 	return r
 }
+
 // Filter results by Namespace ID
 func (r ApiApiDeploymentTargetsIdNamespacesGetRequest) Id2(id2 string) ApiApiDeploymentTargetsIdNamespacesGetRequest {
 	r.id2 = &id2
 	return r
 }
+
 // Filter results by Namespace name
 func (r ApiApiDeploymentTargetsIdNamespacesGetRequest) Name(name string) ApiApiDeploymentTargetsIdNamespacesGetRequest {
 	r.name = &name
 	return r
 }
+
 // Filter results by Namespace status
 func (r ApiApiDeploymentTargetsIdNamespacesGetRequest) Status(status string) ApiApiDeploymentTargetsIdNamespacesGetRequest {
 	r.status = &status
@@ -107,29 +108,29 @@ func (a *NamespacesApiService) ApiDeploymentTargetsIdNamespacesGetExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/namespaces"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.continuation != nil {
-		localVarQueryParams.Add("continuation", parameterToString(*r.continuation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation", r.continuation, "")
 	}
 	if r.id2 != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id2, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id2, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.status != nil {
-		localVarQueryParams.Add("status", parameterToString(*r.status, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -172,9 +173,9 @@ func (a *NamespacesApiService) ApiDeploymentTargetsIdNamespacesGetExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -249,7 +250,7 @@ func (a *NamespacesApiService) ApiDeploymentTargetsIdNamespacesPostExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/api/deployment-targets/{id}/namespaces"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -301,9 +302,9 @@ func (a *NamespacesApiService) ApiDeploymentTargetsIdNamespacesPostExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -333,7 +334,6 @@ type ApiApiNamespacesIdDeleteRequest struct {
 	ApiService *NamespacesApiService
 	id string
 }
-
 
 func (r ApiApiNamespacesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiNamespacesIdDeleteExecute(r)
@@ -370,7 +370,7 @@ func (a *NamespacesApiService) ApiNamespacesIdDeleteExecute(r ApiApiNamespacesId
 	}
 
 	localVarPath := localBasePath + "/api/namespaces/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -417,9 +417,9 @@ func (a *NamespacesApiService) ApiNamespacesIdDeleteExecute(r ApiApiNamespacesId
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -440,7 +440,6 @@ type ApiApiNamespacesIdGetRequest struct {
 	ApiService *NamespacesApiService
 	id string
 }
-
 
 func (r ApiApiNamespacesIdGetRequest) Execute() (*ModelsNamespace, *http.Response, error) {
 	return r.ApiService.ApiNamespacesIdGetExecute(r)
@@ -479,7 +478,7 @@ func (a *NamespacesApiService) ApiNamespacesIdGetExecute(r ApiApiNamespacesIdGet
 	}
 
 	localVarPath := localBasePath + "/api/namespaces/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -526,9 +525,9 @@ func (a *NamespacesApiService) ApiNamespacesIdGetExecute(r ApiApiNamespacesIdGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -603,7 +602,7 @@ func (a *NamespacesApiService) ApiNamespacesIdPutExecute(r ApiApiNamespacesIdPut
 	}
 
 	localVarPath := localBasePath + "/api/namespaces/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -655,9 +654,9 @@ func (a *NamespacesApiService) ApiNamespacesIdPutExecute(r ApiApiNamespacesIdPut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

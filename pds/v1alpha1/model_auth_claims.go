@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthClaims type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthClaims{}
+
 // AuthClaims struct for AuthClaims
 type AuthClaims struct {
 	// Audience is the intended recipient of the token.
@@ -51,7 +54,7 @@ func NewAuthClaimsWithDefaults() *AuthClaims {
 
 // GetAud returns the Aud field value if set, zero value otherwise.
 func (o *AuthClaims) GetAud() string {
-	if o == nil || o.Aud == nil {
+	if o == nil || IsNil(o.Aud) {
 		var ret string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *AuthClaims) GetAud() string {
 // GetAudOk returns a tuple with the Aud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetAudOk() (*string, bool) {
-	if o == nil || o.Aud == nil {
+	if o == nil || IsNil(o.Aud) {
 		return nil, false
 	}
 	return o.Aud, true
@@ -69,7 +72,7 @@ func (o *AuthClaims) GetAudOk() (*string, bool) {
 
 // HasAud returns a boolean if a field has been set.
 func (o *AuthClaims) HasAud() bool {
-	if o != nil && o.Aud != nil {
+	if o != nil && !IsNil(o.Aud) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *AuthClaims) SetAud(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AuthClaims) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *AuthClaims) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -101,7 +104,7 @@ func (o *AuthClaims) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AuthClaims) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *AuthClaims) SetEmail(v string) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *AuthClaims) GetGroups() []string {
-	if o == nil || o.Groups == nil {
+	if o == nil || IsNil(o.Groups) {
 		var ret []string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *AuthClaims) GetGroups() []string {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetGroupsOk() ([]string, bool) {
-	if o == nil || o.Groups == nil {
+	if o == nil || IsNil(o.Groups) {
 		return nil, false
 	}
 	return o.Groups, true
@@ -133,7 +136,7 @@ func (o *AuthClaims) GetGroupsOk() ([]string, bool) {
 
 // HasGroups returns a boolean if a field has been set.
 func (o *AuthClaims) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *AuthClaims) SetGroups(v []string) {
 
 // GetIss returns the Iss field value if set, zero value otherwise.
 func (o *AuthClaims) GetIss() string {
-	if o == nil || o.Iss == nil {
+	if o == nil || IsNil(o.Iss) {
 		var ret string
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *AuthClaims) GetIss() string {
 // GetIssOk returns a tuple with the Iss field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetIssOk() (*string, bool) {
-	if o == nil || o.Iss == nil {
+	if o == nil || IsNil(o.Iss) {
 		return nil, false
 	}
 	return o.Iss, true
@@ -165,7 +168,7 @@ func (o *AuthClaims) GetIssOk() (*string, bool) {
 
 // HasIss returns a boolean if a field has been set.
 func (o *AuthClaims) HasIss() bool {
-	if o != nil && o.Iss != nil {
+	if o != nil && !IsNil(o.Iss) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *AuthClaims) SetIss(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AuthClaims) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *AuthClaims) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -197,7 +200,7 @@ func (o *AuthClaims) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AuthClaims) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *AuthClaims) SetName(v string) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *AuthClaims) GetRoles() []string {
-	if o == nil || o.Roles == nil {
+	if o == nil || IsNil(o.Roles) {
 		var ret []string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *AuthClaims) GetRoles() []string {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetRolesOk() ([]string, bool) {
-	if o == nil || o.Roles == nil {
+	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
 	return o.Roles, true
@@ -229,7 +232,7 @@ func (o *AuthClaims) GetRolesOk() ([]string, bool) {
 
 // HasRoles returns a boolean if a field has been set.
 func (o *AuthClaims) HasRoles() bool {
-	if o != nil && o.Roles != nil {
+	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *AuthClaims) SetRoles(v []string) {
 
 // GetSub returns the Sub field value if set, zero value otherwise.
 func (o *AuthClaims) GetSub() string {
-	if o == nil || o.Sub == nil {
+	if o == nil || IsNil(o.Sub) {
 		var ret string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *AuthClaims) GetSub() string {
 // GetSubOk returns a tuple with the Sub field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthClaims) GetSubOk() (*string, bool) {
-	if o == nil || o.Sub == nil {
+	if o == nil || IsNil(o.Sub) {
 		return nil, false
 	}
 	return o.Sub, true
@@ -261,7 +264,7 @@ func (o *AuthClaims) GetSubOk() (*string, bool) {
 
 // HasSub returns a boolean if a field has been set.
 func (o *AuthClaims) HasSub() bool {
-	if o != nil && o.Sub != nil {
+	if o != nil && !IsNil(o.Sub) {
 		return true
 	}
 
@@ -274,29 +277,37 @@ func (o *AuthClaims) SetSub(v string) {
 }
 
 func (o AuthClaims) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Aud != nil {
-		toSerialize["aud"] = o.Aud
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if o.Groups != nil {
-		toSerialize["groups"] = o.Groups
-	}
-	if o.Iss != nil {
-		toSerialize["iss"] = o.Iss
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Roles != nil {
-		toSerialize["roles"] = o.Roles
-	}
-	if o.Sub != nil {
-		toSerialize["sub"] = o.Sub
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthClaims) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Aud) {
+		toSerialize["aud"] = o.Aud
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
+	if !IsNil(o.Iss) {
+		toSerialize["iss"] = o.Iss
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Roles) {
+		toSerialize["roles"] = o.Roles
+	}
+	if !IsNil(o.Sub) {
+		toSerialize["sub"] = o.Sub
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthClaims struct {

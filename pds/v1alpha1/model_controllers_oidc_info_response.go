@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ControllersOIDCInfoResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ControllersOIDCInfoResponse{}
+
 // ControllersOIDCInfoResponse struct for ControllersOIDCInfoResponse
 type ControllersOIDCInfoResponse struct {
 	AuthUrl *string `json:"authUrl,omitempty"`
@@ -41,7 +44,7 @@ func NewControllersOIDCInfoResponseWithDefaults() *ControllersOIDCInfoResponse {
 
 // GetAuthUrl returns the AuthUrl field value if set, zero value otherwise.
 func (o *ControllersOIDCInfoResponse) GetAuthUrl() string {
-	if o == nil || o.AuthUrl == nil {
+	if o == nil || IsNil(o.AuthUrl) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ControllersOIDCInfoResponse) GetAuthUrl() string {
 // GetAuthUrlOk returns a tuple with the AuthUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCInfoResponse) GetAuthUrlOk() (*string, bool) {
-	if o == nil || o.AuthUrl == nil {
+	if o == nil || IsNil(o.AuthUrl) {
 		return nil, false
 	}
 	return o.AuthUrl, true
@@ -59,7 +62,7 @@ func (o *ControllersOIDCInfoResponse) GetAuthUrlOk() (*string, bool) {
 
 // HasAuthUrl returns a boolean if a field has been set.
 func (o *ControllersOIDCInfoResponse) HasAuthUrl() bool {
-	if o != nil && o.AuthUrl != nil {
+	if o != nil && !IsNil(o.AuthUrl) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ControllersOIDCInfoResponse) SetAuthUrl(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *ControllersOIDCInfoResponse) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ControllersOIDCInfoResponse) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCInfoResponse) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -91,7 +94,7 @@ func (o *ControllersOIDCInfoResponse) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *ControllersOIDCInfoResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ControllersOIDCInfoResponse) SetClientId(v string) {
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *ControllersOIDCInfoResponse) GetIssuer() string {
-	if o == nil || o.Issuer == nil {
+	if o == nil || IsNil(o.Issuer) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ControllersOIDCInfoResponse) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCInfoResponse) GetIssuerOk() (*string, bool) {
-	if o == nil || o.Issuer == nil {
+	if o == nil || IsNil(o.Issuer) {
 		return nil, false
 	}
 	return o.Issuer, true
@@ -123,7 +126,7 @@ func (o *ControllersOIDCInfoResponse) GetIssuerOk() (*string, bool) {
 
 // HasIssuer returns a boolean if a field has been set.
 func (o *ControllersOIDCInfoResponse) HasIssuer() bool {
-	if o != nil && o.Issuer != nil {
+	if o != nil && !IsNil(o.Issuer) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ControllersOIDCInfoResponse) SetIssuer(v string) {
 
 // GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise.
 func (o *ControllersOIDCInfoResponse) GetRedirectUrl() string {
-	if o == nil || o.RedirectUrl == nil {
+	if o == nil || IsNil(o.RedirectUrl) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ControllersOIDCInfoResponse) GetRedirectUrl() string {
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ControllersOIDCInfoResponse) GetRedirectUrlOk() (*string, bool) {
-	if o == nil || o.RedirectUrl == nil {
+	if o == nil || IsNil(o.RedirectUrl) {
 		return nil, false
 	}
 	return o.RedirectUrl, true
@@ -155,7 +158,7 @@ func (o *ControllersOIDCInfoResponse) GetRedirectUrlOk() (*string, bool) {
 
 // HasRedirectUrl returns a boolean if a field has been set.
 func (o *ControllersOIDCInfoResponse) HasRedirectUrl() bool {
-	if o != nil && o.RedirectUrl != nil {
+	if o != nil && !IsNil(o.RedirectUrl) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ControllersOIDCInfoResponse) SetRedirectUrl(v string) {
 }
 
 func (o ControllersOIDCInfoResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AuthUrl != nil {
-		toSerialize["authUrl"] = o.AuthUrl
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.Issuer != nil {
-		toSerialize["issuer"] = o.Issuer
-	}
-	if o.RedirectUrl != nil {
-		toSerialize["redirectUrl"] = o.RedirectUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ControllersOIDCInfoResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AuthUrl) {
+		toSerialize["authUrl"] = o.AuthUrl
+	}
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.Issuer) {
+		toSerialize["issuer"] = o.Issuer
+	}
+	if !IsNil(o.RedirectUrl) {
+		toSerialize["redirectUrl"] = o.RedirectUrl
+	}
+	return toSerialize, nil
 }
 
 type NullableControllersOIDCInfoResponse struct {

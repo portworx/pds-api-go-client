@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsEULADetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsEULADetails{}
+
 // ModelsEULADetails struct for ModelsEULADetails
 type ModelsEULADetails struct {
 	Accepted *bool `json:"accepted,omitempty"`
@@ -39,7 +42,7 @@ func NewModelsEULADetailsWithDefaults() *ModelsEULADetails {
 
 // GetAccepted returns the Accepted field value if set, zero value otherwise.
 func (o *ModelsEULADetails) GetAccepted() bool {
-	if o == nil || o.Accepted == nil {
+	if o == nil || IsNil(o.Accepted) {
 		var ret bool
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ModelsEULADetails) GetAccepted() bool {
 // GetAcceptedOk returns a tuple with the Accepted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsEULADetails) GetAcceptedOk() (*bool, bool) {
-	if o == nil || o.Accepted == nil {
+	if o == nil || IsNil(o.Accepted) {
 		return nil, false
 	}
 	return o.Accepted, true
@@ -57,7 +60,7 @@ func (o *ModelsEULADetails) GetAcceptedOk() (*bool, bool) {
 
 // HasAccepted returns a boolean if a field has been set.
 func (o *ModelsEULADetails) HasAccepted() bool {
-	if o != nil && o.Accepted != nil {
+	if o != nil && !IsNil(o.Accepted) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ModelsEULADetails) SetAccepted(v bool) {
 
 // GetAcceptedVersion returns the AcceptedVersion field value if set, zero value otherwise.
 func (o *ModelsEULADetails) GetAcceptedVersion() string {
-	if o == nil || o.AcceptedVersion == nil {
+	if o == nil || IsNil(o.AcceptedVersion) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ModelsEULADetails) GetAcceptedVersion() string {
 // GetAcceptedVersionOk returns a tuple with the AcceptedVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsEULADetails) GetAcceptedVersionOk() (*string, bool) {
-	if o == nil || o.AcceptedVersion == nil {
+	if o == nil || IsNil(o.AcceptedVersion) {
 		return nil, false
 	}
 	return o.AcceptedVersion, true
@@ -89,7 +92,7 @@ func (o *ModelsEULADetails) GetAcceptedVersionOk() (*string, bool) {
 
 // HasAcceptedVersion returns a boolean if a field has been set.
 func (o *ModelsEULADetails) HasAcceptedVersion() bool {
-	if o != nil && o.AcceptedVersion != nil {
+	if o != nil && !IsNil(o.AcceptedVersion) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ModelsEULADetails) SetAcceptedVersion(v string) {
 }
 
 func (o ModelsEULADetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Accepted != nil {
-		toSerialize["accepted"] = o.Accepted
-	}
-	if o.AcceptedVersion != nil {
-		toSerialize["accepted_version"] = o.AcceptedVersion
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsEULADetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Accepted) {
+		toSerialize["accepted"] = o.Accepted
+	}
+	if !IsNil(o.AcceptedVersion) {
+		toSerialize["accepted_version"] = o.AcceptedVersion
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsEULADetails struct {

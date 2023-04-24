@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsBackupPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsBackupPolicy{}
+
 // ModelsBackupPolicy struct for ModelsBackupPolicy
 type ModelsBackupPolicy struct {
 	AccountId *string `json:"account_id,omitempty"`
@@ -49,7 +52,7 @@ func NewModelsBackupPolicyWithDefaults() *ModelsBackupPolicy {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ModelsBackupPolicy) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -67,7 +70,7 @@ func (o *ModelsBackupPolicy) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ModelsBackupPolicy) SetAccountId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ModelsBackupPolicy) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -99,7 +102,7 @@ func (o *ModelsBackupPolicy) GetCreatedAtOk() (*string, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ModelsBackupPolicy) SetCreatedAt(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ModelsBackupPolicy) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -131,7 +134,7 @@ func (o *ModelsBackupPolicy) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ModelsBackupPolicy) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ModelsBackupPolicy) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -163,7 +166,7 @@ func (o *ModelsBackupPolicy) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ModelsBackupPolicy) SetName(v string) {
 
 // GetSchedules returns the Schedules field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetSchedules() []ModelsBackupSchedule {
-	if o == nil || o.Schedules == nil {
+	if o == nil || IsNil(o.Schedules) {
 		var ret []ModelsBackupSchedule
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ModelsBackupPolicy) GetSchedules() []ModelsBackupSchedule {
 // GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetSchedulesOk() ([]ModelsBackupSchedule, bool) {
-	if o == nil || o.Schedules == nil {
+	if o == nil || IsNil(o.Schedules) {
 		return nil, false
 	}
 	return o.Schedules, true
@@ -195,7 +198,7 @@ func (o *ModelsBackupPolicy) GetSchedulesOk() ([]ModelsBackupSchedule, bool) {
 
 // HasSchedules returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasSchedules() bool {
-	if o != nil && o.Schedules != nil {
+	if o != nil && !IsNil(o.Schedules) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ModelsBackupPolicy) SetSchedules(v []ModelsBackupSchedule) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetTenantId() string {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ModelsBackupPolicy) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetTenantIdOk() (*string, bool) {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
 	return o.TenantId, true
@@ -227,7 +230,7 @@ func (o *ModelsBackupPolicy) GetTenantIdOk() (*string, bool) {
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasTenantId() bool {
-	if o != nil && o.TenantId != nil {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ModelsBackupPolicy) SetTenantId(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ModelsBackupPolicy) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *ModelsBackupPolicy) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupPolicy) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -259,7 +262,7 @@ func (o *ModelsBackupPolicy) GetUpdatedAtOk() (*string, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ModelsBackupPolicy) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -272,29 +275,37 @@ func (o *ModelsBackupPolicy) SetUpdatedAt(v string) {
 }
 
 func (o ModelsBackupPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Schedules != nil {
-		toSerialize["schedules"] = o.Schedules
-	}
-	if o.TenantId != nil {
-		toSerialize["tenant_id"] = o.TenantId
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsBackupPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Schedules) {
+		toSerialize["schedules"] = o.Schedules
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenant_id"] = o.TenantId
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsBackupPolicy struct {

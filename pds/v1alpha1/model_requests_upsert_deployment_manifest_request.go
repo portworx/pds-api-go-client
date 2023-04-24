@@ -14,8 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsUpsertDeploymentManifestRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsUpsertDeploymentManifestRequest{}
+
 // RequestsUpsertDeploymentManifestRequest struct for RequestsUpsertDeploymentManifestRequest
 type RequestsUpsertDeploymentManifestRequest struct {
+	Deleted *bool `json:"deleted,omitempty"`
 	Manifest map[string]interface{} `json:"manifest,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 }
@@ -37,9 +41,41 @@ func NewRequestsUpsertDeploymentManifestRequestWithDefaults() *RequestsUpsertDep
 	return &this
 }
 
+// GetDeleted returns the Deleted field value if set, zero value otherwise.
+func (o *RequestsUpsertDeploymentManifestRequest) GetDeleted() bool {
+	if o == nil || IsNil(o.Deleted) {
+		var ret bool
+		return ret
+	}
+	return *o.Deleted
+}
+
+// GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestsUpsertDeploymentManifestRequest) GetDeletedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Deleted) {
+		return nil, false
+	}
+	return o.Deleted, true
+}
+
+// HasDeleted returns a boolean if a field has been set.
+func (o *RequestsUpsertDeploymentManifestRequest) HasDeleted() bool {
+	if o != nil && !IsNil(o.Deleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleted gets a reference to the given bool and assigns it to the Deleted field.
+func (o *RequestsUpsertDeploymentManifestRequest) SetDeleted(v bool) {
+	o.Deleted = &v
+}
+
 // GetManifest returns the Manifest field value if set, zero value otherwise.
 func (o *RequestsUpsertDeploymentManifestRequest) GetManifest() map[string]interface{} {
-	if o == nil || o.Manifest == nil {
+	if o == nil || IsNil(o.Manifest) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -49,15 +85,15 @@ func (o *RequestsUpsertDeploymentManifestRequest) GetManifest() map[string]inter
 // GetManifestOk returns a tuple with the Manifest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpsertDeploymentManifestRequest) GetManifestOk() (map[string]interface{}, bool) {
-	if o == nil || o.Manifest == nil {
-		return nil, false
+	if o == nil || IsNil(o.Manifest) {
+		return map[string]interface{}{}, false
 	}
 	return o.Manifest, true
 }
 
 // HasManifest returns a boolean if a field has been set.
 func (o *RequestsUpsertDeploymentManifestRequest) HasManifest() bool {
-	if o != nil && o.Manifest != nil {
+	if o != nil && !IsNil(o.Manifest) {
 		return true
 	}
 
@@ -71,7 +107,7 @@ func (o *RequestsUpsertDeploymentManifestRequest) SetManifest(v map[string]inter
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *RequestsUpsertDeploymentManifestRequest) GetTimestamp() string {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret string
 		return ret
 	}
@@ -81,7 +117,7 @@ func (o *RequestsUpsertDeploymentManifestRequest) GetTimestamp() string {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsUpsertDeploymentManifestRequest) GetTimestampOk() (*string, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -89,7 +125,7 @@ func (o *RequestsUpsertDeploymentManifestRequest) GetTimestampOk() (*string, boo
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *RequestsUpsertDeploymentManifestRequest) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -102,14 +138,25 @@ func (o *RequestsUpsertDeploymentManifestRequest) SetTimestamp(v string) {
 }
 
 func (o RequestsUpsertDeploymentManifestRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Manifest != nil {
-		toSerialize["manifest"] = o.Manifest
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsUpsertDeploymentManifestRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Deleted) {
+		toSerialize["deleted"] = o.Deleted
+	}
+	if !IsNil(o.Manifest) {
+		toSerialize["manifest"] = o.Manifest
+	}
+	if !IsNil(o.Timestamp) {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsUpsertDeploymentManifestRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsResourceEvents type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsResourceEvents{}
+
 // DeploymentsResourceEvents struct for DeploymentsResourceEvents
 type DeploymentsResourceEvents struct {
 	Events []DeploymentsResourceEvent `json:"events,omitempty"`
@@ -39,7 +42,7 @@ func NewDeploymentsResourceEventsWithDefaults() *DeploymentsResourceEvents {
 
 // GetEvents returns the Events field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvents) GetEvents() []DeploymentsResourceEvent {
-	if o == nil || o.Events == nil {
+	if o == nil || IsNil(o.Events) {
 		var ret []DeploymentsResourceEvent
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DeploymentsResourceEvents) GetEvents() []DeploymentsResourceEvent {
 // GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvents) GetEventsOk() ([]DeploymentsResourceEvent, bool) {
-	if o == nil || o.Events == nil {
+	if o == nil || IsNil(o.Events) {
 		return nil, false
 	}
 	return o.Events, true
@@ -57,7 +60,7 @@ func (o *DeploymentsResourceEvents) GetEventsOk() ([]DeploymentsResourceEvent, b
 
 // HasEvents returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvents) HasEvents() bool {
-	if o != nil && o.Events != nil {
+	if o != nil && !IsNil(o.Events) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *DeploymentsResourceEvents) SetEvents(v []DeploymentsResourceEvent) {
 
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *DeploymentsResourceEvents) GetResource() V1TypedLocalObjectReference {
-	if o == nil || o.Resource == nil {
+	if o == nil || IsNil(o.Resource) {
 		var ret V1TypedLocalObjectReference
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *DeploymentsResourceEvents) GetResource() V1TypedLocalObjectReference {
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsResourceEvents) GetResourceOk() (*V1TypedLocalObjectReference, bool) {
-	if o == nil || o.Resource == nil {
+	if o == nil || IsNil(o.Resource) {
 		return nil, false
 	}
 	return o.Resource, true
@@ -89,7 +92,7 @@ func (o *DeploymentsResourceEvents) GetResourceOk() (*V1TypedLocalObjectReferenc
 
 // HasResource returns a boolean if a field has been set.
 func (o *DeploymentsResourceEvents) HasResource() bool {
-	if o != nil && o.Resource != nil {
+	if o != nil && !IsNil(o.Resource) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *DeploymentsResourceEvents) SetResource(v V1TypedLocalObjectReference) {
 }
 
 func (o DeploymentsResourceEvents) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Events != nil {
-		toSerialize["events"] = o.Events
-	}
-	if o.Resource != nil {
-		toSerialize["resource"] = o.Resource
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsResourceEvents) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Events) {
+		toSerialize["events"] = o.Events
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsResourceEvents struct {

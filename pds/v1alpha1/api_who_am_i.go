@@ -13,15 +13,11 @@ package pds
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // WhoAmIApiService WhoAmIApi service
 type WhoAmIApiService service
@@ -30,7 +26,6 @@ type ApiApiWhoamiGetRequest struct {
 	ctx context.Context
 	ApiService *WhoAmIApiService
 }
-
 
 func (r ApiApiWhoamiGetRequest) Execute() (*ControllersWhoAmIResponse, *http.Response, error) {
 	return r.ApiService.ApiWhoamiGetExecute(r)
@@ -113,9 +108,9 @@ func (a *WhoAmIApiService) ApiWhoamiGetExecute(r ApiApiWhoamiGetRequest) (*Contr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

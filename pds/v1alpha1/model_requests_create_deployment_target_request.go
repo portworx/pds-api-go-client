@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsCreateDeploymentTargetRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsCreateDeploymentTargetRequest{}
+
 // RequestsCreateDeploymentTargetRequest struct for RequestsCreateDeploymentTargetRequest
 type RequestsCreateDeploymentTargetRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty"`
@@ -41,7 +44,7 @@ func NewRequestsCreateDeploymentTargetRequestWithDefaults() *RequestsCreateDeplo
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *RequestsCreateDeploymentTargetRequest) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateDeploymentTargetRequest) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -59,7 +62,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetClusterIdOk() (*string, bool)
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *RequestsCreateDeploymentTargetRequest) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RequestsCreateDeploymentTargetRequest) SetClusterId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestsCreateDeploymentTargetRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateDeploymentTargetRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestsCreateDeploymentTargetRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RequestsCreateDeploymentTargetRequest) SetName(v string) {
 
 // GetTlsIssuer returns the TlsIssuer field value if set, zero value otherwise.
 func (o *RequestsCreateDeploymentTargetRequest) GetTlsIssuer() string {
-	if o == nil || o.TlsIssuer == nil {
+	if o == nil || IsNil(o.TlsIssuer) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetTlsIssuer() string {
 // GetTlsIssuerOk returns a tuple with the TlsIssuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateDeploymentTargetRequest) GetTlsIssuerOk() (*string, bool) {
-	if o == nil || o.TlsIssuer == nil {
+	if o == nil || IsNil(o.TlsIssuer) {
 		return nil, false
 	}
 	return o.TlsIssuer, true
@@ -123,7 +126,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetTlsIssuerOk() (*string, bool)
 
 // HasTlsIssuer returns a boolean if a field has been set.
 func (o *RequestsCreateDeploymentTargetRequest) HasTlsIssuer() bool {
-	if o != nil && o.TlsIssuer != nil {
+	if o != nil && !IsNil(o.TlsIssuer) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *RequestsCreateDeploymentTargetRequest) SetTlsIssuer(v string) {
 
 // GetTlsRequired returns the TlsRequired field value if set, zero value otherwise.
 func (o *RequestsCreateDeploymentTargetRequest) GetTlsRequired() bool {
-	if o == nil || o.TlsRequired == nil {
+	if o == nil || IsNil(o.TlsRequired) {
 		var ret bool
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetTlsRequired() bool {
 // GetTlsRequiredOk returns a tuple with the TlsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateDeploymentTargetRequest) GetTlsRequiredOk() (*bool, bool) {
-	if o == nil || o.TlsRequired == nil {
+	if o == nil || IsNil(o.TlsRequired) {
 		return nil, false
 	}
 	return o.TlsRequired, true
@@ -155,7 +158,7 @@ func (o *RequestsCreateDeploymentTargetRequest) GetTlsRequiredOk() (*bool, bool)
 
 // HasTlsRequired returns a boolean if a field has been set.
 func (o *RequestsCreateDeploymentTargetRequest) HasTlsRequired() bool {
-	if o != nil && o.TlsRequired != nil {
+	if o != nil && !IsNil(o.TlsRequired) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *RequestsCreateDeploymentTargetRequest) SetTlsRequired(v bool) {
 }
 
 func (o RequestsCreateDeploymentTargetRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.TlsIssuer != nil {
-		toSerialize["tls_issuer"] = o.TlsIssuer
-	}
-	if o.TlsRequired != nil {
-		toSerialize["tls_required"] = o.TlsRequired
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsCreateDeploymentTargetRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TlsIssuer) {
+		toSerialize["tls_issuer"] = o.TlsIssuer
+	}
+	if !IsNil(o.TlsRequired) {
+		toSerialize["tls_required"] = o.TlsRequired
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsCreateDeploymentTargetRequest struct {

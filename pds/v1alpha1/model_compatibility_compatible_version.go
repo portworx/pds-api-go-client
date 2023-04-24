@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CompatibilityCompatibleVersion type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompatibilityCompatibleVersion{}
+
 // CompatibilityCompatibleVersion struct for CompatibilityCompatibleVersion
 type CompatibilityCompatibleVersion struct {
 	// ID of a Version entity.
@@ -41,7 +44,7 @@ func NewCompatibilityCompatibleVersionWithDefaults() *CompatibilityCompatibleVer
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersion) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CompatibilityCompatibleVersion) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersion) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -59,7 +62,7 @@ func (o *CompatibilityCompatibleVersion) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersion) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CompatibilityCompatibleVersion) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CompatibilityCompatibleVersion) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *CompatibilityCompatibleVersion) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompatibilityCompatibleVersion) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *CompatibilityCompatibleVersion) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CompatibilityCompatibleVersion) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *CompatibilityCompatibleVersion) SetName(v string) {
 }
 
 func (o CompatibilityCompatibleVersion) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CompatibilityCompatibleVersion) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableCompatibilityCompatibleVersion struct {

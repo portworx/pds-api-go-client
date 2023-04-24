@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the V1TypedLocalObjectReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &V1TypedLocalObjectReference{}
+
 // V1TypedLocalObjectReference struct for V1TypedLocalObjectReference
 type V1TypedLocalObjectReference struct {
 	// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. +optional
@@ -43,7 +46,7 @@ func NewV1TypedLocalObjectReferenceWithDefaults() *V1TypedLocalObjectReference {
 
 // GetApiGroup returns the ApiGroup field value if set, zero value otherwise.
 func (o *V1TypedLocalObjectReference) GetApiGroup() string {
-	if o == nil || o.ApiGroup == nil {
+	if o == nil || IsNil(o.ApiGroup) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *V1TypedLocalObjectReference) GetApiGroup() string {
 // GetApiGroupOk returns a tuple with the ApiGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V1TypedLocalObjectReference) GetApiGroupOk() (*string, bool) {
-	if o == nil || o.ApiGroup == nil {
+	if o == nil || IsNil(o.ApiGroup) {
 		return nil, false
 	}
 	return o.ApiGroup, true
@@ -61,7 +64,7 @@ func (o *V1TypedLocalObjectReference) GetApiGroupOk() (*string, bool) {
 
 // HasApiGroup returns a boolean if a field has been set.
 func (o *V1TypedLocalObjectReference) HasApiGroup() bool {
-	if o != nil && o.ApiGroup != nil {
+	if o != nil && !IsNil(o.ApiGroup) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *V1TypedLocalObjectReference) SetApiGroup(v string) {
 
 // GetKind returns the Kind field value if set, zero value otherwise.
 func (o *V1TypedLocalObjectReference) GetKind() string {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *V1TypedLocalObjectReference) GetKind() string {
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V1TypedLocalObjectReference) GetKindOk() (*string, bool) {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		return nil, false
 	}
 	return o.Kind, true
@@ -93,7 +96,7 @@ func (o *V1TypedLocalObjectReference) GetKindOk() (*string, bool) {
 
 // HasKind returns a boolean if a field has been set.
 func (o *V1TypedLocalObjectReference) HasKind() bool {
-	if o != nil && o.Kind != nil {
+	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *V1TypedLocalObjectReference) SetKind(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *V1TypedLocalObjectReference) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *V1TypedLocalObjectReference) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V1TypedLocalObjectReference) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -125,7 +128,7 @@ func (o *V1TypedLocalObjectReference) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *V1TypedLocalObjectReference) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *V1TypedLocalObjectReference) SetName(v string) {
 }
 
 func (o V1TypedLocalObjectReference) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApiGroup != nil {
-		toSerialize["apiGroup"] = o.ApiGroup
-	}
-	if o.Kind != nil {
-		toSerialize["kind"] = o.Kind
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o V1TypedLocalObjectReference) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApiGroup) {
+		toSerialize["apiGroup"] = o.ApiGroup
+	}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableV1TypedLocalObjectReference struct {

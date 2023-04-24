@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestsCreateProjectDeploymentRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestsCreateProjectDeploymentRequest{}
+
 // RequestsCreateProjectDeploymentRequest struct for RequestsCreateProjectDeploymentRequest
 type RequestsCreateProjectDeploymentRequest struct {
 	ApplicationConfigurationOverrides *map[string]string `json:"application_configuration_overrides,omitempty"`
@@ -51,7 +54,7 @@ func NewRequestsCreateProjectDeploymentRequestWithDefaults() *RequestsCreateProj
 
 // GetApplicationConfigurationOverrides returns the ApplicationConfigurationOverrides field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationOverrides() map[string]string {
-	if o == nil || o.ApplicationConfigurationOverrides == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationOverrides) {
 		var ret map[string]string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationOver
 // GetApplicationConfigurationOverridesOk returns a tuple with the ApplicationConfigurationOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationOverridesOk() (*map[string]string, bool) {
-	if o == nil || o.ApplicationConfigurationOverrides == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationOverrides) {
 		return nil, false
 	}
 	return o.ApplicationConfigurationOverrides, true
@@ -69,7 +72,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationOver
 
 // HasApplicationConfigurationOverrides returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasApplicationConfigurationOverrides() bool {
-	if o != nil && o.ApplicationConfigurationOverrides != nil {
+	if o != nil && !IsNil(o.ApplicationConfigurationOverrides) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetApplicationConfigurationOver
 
 // GetApplicationConfigurationTemplateId returns the ApplicationConfigurationTemplateId field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationTemplateId() string {
-	if o == nil || o.ApplicationConfigurationTemplateId == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationTemplateId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationTemp
 // GetApplicationConfigurationTemplateIdOk returns a tuple with the ApplicationConfigurationTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationTemplateIdOk() (*string, bool) {
-	if o == nil || o.ApplicationConfigurationTemplateId == nil {
+	if o == nil || IsNil(o.ApplicationConfigurationTemplateId) {
 		return nil, false
 	}
 	return o.ApplicationConfigurationTemplateId, true
@@ -101,7 +104,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetApplicationConfigurationTemp
 
 // HasApplicationConfigurationTemplateId returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasApplicationConfigurationTemplateId() bool {
-	if o != nil && o.ApplicationConfigurationTemplateId != nil {
+	if o != nil && !IsNil(o.ApplicationConfigurationTemplateId) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetApplicationConfigurationTemp
 
 // GetDeploymentTargetId returns the DeploymentTargetId field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetDeploymentTargetId() string {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetDeploymentTargetId() string 
 // GetDeploymentTargetIdOk returns a tuple with the DeploymentTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetDeploymentTargetIdOk() (*string, bool) {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		return nil, false
 	}
 	return o.DeploymentTargetId, true
@@ -133,7 +136,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetDeploymentTargetIdOk() (*str
 
 // HasDeploymentTargetId returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasDeploymentTargetId() bool {
-	if o != nil && o.DeploymentTargetId != nil {
+	if o != nil && !IsNil(o.DeploymentTargetId) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetDeploymentTargetId(v string)
 
 // GetDnsZone returns the DnsZone field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetDnsZone() string {
-	if o == nil || o.DnsZone == nil {
+	if o == nil || IsNil(o.DnsZone) {
 		var ret string
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetDnsZone() string {
 // GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetDnsZoneOk() (*string, bool) {
-	if o == nil || o.DnsZone == nil {
+	if o == nil || IsNil(o.DnsZone) {
 		return nil, false
 	}
 	return o.DnsZone, true
@@ -165,7 +168,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetDnsZoneOk() (*string, bool) 
 
 // HasDnsZone returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasDnsZone() bool {
-	if o != nil && o.DnsZone != nil {
+	if o != nil && !IsNil(o.DnsZone) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetDnsZone(v string) {
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetImageId() string {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		var ret string
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetImageId() string {
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetImageIdOk() (*string, bool) {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
 	return o.ImageId, true
@@ -197,7 +200,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetImageIdOk() (*string, bool) 
 
 // HasImageId returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasImageId() bool {
-	if o != nil && o.ImageId != nil {
+	if o != nil && !IsNil(o.ImageId) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetImageId(v string) {
 
 // GetLoadBalancerSourceRanges returns the LoadBalancerSourceRanges field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetLoadBalancerSourceRanges() []string {
-	if o == nil || o.LoadBalancerSourceRanges == nil {
+	if o == nil || IsNil(o.LoadBalancerSourceRanges) {
 		var ret []string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetLoadBalancerSourceRanges() [
 // GetLoadBalancerSourceRangesOk returns a tuple with the LoadBalancerSourceRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetLoadBalancerSourceRangesOk() ([]string, bool) {
-	if o == nil || o.LoadBalancerSourceRanges == nil {
+	if o == nil || IsNil(o.LoadBalancerSourceRanges) {
 		return nil, false
 	}
 	return o.LoadBalancerSourceRanges, true
@@ -229,7 +232,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetLoadBalancerSourceRangesOk()
 
 // HasLoadBalancerSourceRanges returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasLoadBalancerSourceRanges() bool {
-	if o != nil && o.LoadBalancerSourceRanges != nil {
+	if o != nil && !IsNil(o.LoadBalancerSourceRanges) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetLoadBalancerSourceRanges(v [
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -261,7 +264,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -275,7 +278,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetName(v string) {
 
 // GetNamespaceId returns the NamespaceId field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetNamespaceId() string {
-	if o == nil || o.NamespaceId == nil {
+	if o == nil || IsNil(o.NamespaceId) {
 		var ret string
 		return ret
 	}
@@ -285,7 +288,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetNamespaceId() string {
 // GetNamespaceIdOk returns a tuple with the NamespaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetNamespaceIdOk() (*string, bool) {
-	if o == nil || o.NamespaceId == nil {
+	if o == nil || IsNil(o.NamespaceId) {
 		return nil, false
 	}
 	return o.NamespaceId, true
@@ -293,7 +296,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetNamespaceIdOk() (*string, bo
 
 // HasNamespaceId returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasNamespaceId() bool {
-	if o != nil && o.NamespaceId != nil {
+	if o != nil && !IsNil(o.NamespaceId) {
 		return true
 	}
 
@@ -307,7 +310,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetNamespaceId(v string) {
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetNodeCount() int32 {
-	if o == nil || o.NodeCount == nil {
+	if o == nil || IsNil(o.NodeCount) {
 		var ret int32
 		return ret
 	}
@@ -317,7 +320,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetNodeCount() int32 {
 // GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetNodeCountOk() (*int32, bool) {
-	if o == nil || o.NodeCount == nil {
+	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
 	return o.NodeCount, true
@@ -325,7 +328,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetNodeCountOk() (*int32, bool)
 
 // HasNodeCount returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasNodeCount() bool {
-	if o != nil && o.NodeCount != nil {
+	if o != nil && !IsNil(o.NodeCount) {
 		return true
 	}
 
@@ -339,7 +342,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetNodeCount(v int32) {
 
 // GetResourceSettingsTemplateId returns the ResourceSettingsTemplateId field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetResourceSettingsTemplateId() string {
-	if o == nil || o.ResourceSettingsTemplateId == nil {
+	if o == nil || IsNil(o.ResourceSettingsTemplateId) {
 		var ret string
 		return ret
 	}
@@ -349,7 +352,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetResourceSettingsTemplateId()
 // GetResourceSettingsTemplateIdOk returns a tuple with the ResourceSettingsTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetResourceSettingsTemplateIdOk() (*string, bool) {
-	if o == nil || o.ResourceSettingsTemplateId == nil {
+	if o == nil || IsNil(o.ResourceSettingsTemplateId) {
 		return nil, false
 	}
 	return o.ResourceSettingsTemplateId, true
@@ -357,7 +360,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetResourceSettingsTemplateIdOk
 
 // HasResourceSettingsTemplateId returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasResourceSettingsTemplateId() bool {
-	if o != nil && o.ResourceSettingsTemplateId != nil {
+	if o != nil && !IsNil(o.ResourceSettingsTemplateId) {
 		return true
 	}
 
@@ -371,7 +374,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetResourceSettingsTemplateId(v
 
 // GetScheduledBackup returns the ScheduledBackup field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetScheduledBackup() RequestsDeploymentScheduledBackup {
-	if o == nil || o.ScheduledBackup == nil {
+	if o == nil || IsNil(o.ScheduledBackup) {
 		var ret RequestsDeploymentScheduledBackup
 		return ret
 	}
@@ -381,7 +384,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetScheduledBackup() RequestsDe
 // GetScheduledBackupOk returns a tuple with the ScheduledBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetScheduledBackupOk() (*RequestsDeploymentScheduledBackup, bool) {
-	if o == nil || o.ScheduledBackup == nil {
+	if o == nil || IsNil(o.ScheduledBackup) {
 		return nil, false
 	}
 	return o.ScheduledBackup, true
@@ -389,7 +392,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetScheduledBackupOk() (*Reques
 
 // HasScheduledBackup returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasScheduledBackup() bool {
-	if o != nil && o.ScheduledBackup != nil {
+	if o != nil && !IsNil(o.ScheduledBackup) {
 		return true
 	}
 
@@ -403,7 +406,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetScheduledBackup(v RequestsDe
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetServiceType() string {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		var ret string
 		return ret
 	}
@@ -413,7 +416,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetServiceType() string {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetServiceTypeOk() (*string, bool) {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
 	return o.ServiceType, true
@@ -421,7 +424,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetServiceTypeOk() (*string, bo
 
 // HasServiceType returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasServiceType() bool {
-	if o != nil && o.ServiceType != nil {
+	if o != nil && !IsNil(o.ServiceType) {
 		return true
 	}
 
@@ -435,7 +438,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetServiceType(v string) {
 
 // GetStorageOptionsTemplateId returns the StorageOptionsTemplateId field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetStorageOptionsTemplateId() string {
-	if o == nil || o.StorageOptionsTemplateId == nil {
+	if o == nil || IsNil(o.StorageOptionsTemplateId) {
 		var ret string
 		return ret
 	}
@@ -445,7 +448,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetStorageOptionsTemplateId() s
 // GetStorageOptionsTemplateIdOk returns a tuple with the StorageOptionsTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetStorageOptionsTemplateIdOk() (*string, bool) {
-	if o == nil || o.StorageOptionsTemplateId == nil {
+	if o == nil || IsNil(o.StorageOptionsTemplateId) {
 		return nil, false
 	}
 	return o.StorageOptionsTemplateId, true
@@ -453,7 +456,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetStorageOptionsTemplateIdOk()
 
 // HasStorageOptionsTemplateId returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasStorageOptionsTemplateId() bool {
-	if o != nil && o.StorageOptionsTemplateId != nil {
+	if o != nil && !IsNil(o.StorageOptionsTemplateId) {
 		return true
 	}
 
@@ -467,7 +470,7 @@ func (o *RequestsCreateProjectDeploymentRequest) SetStorageOptionsTemplateId(v s
 
 // GetTlsEnabled returns the TlsEnabled field value if set, zero value otherwise.
 func (o *RequestsCreateProjectDeploymentRequest) GetTlsEnabled() bool {
-	if o == nil || o.TlsEnabled == nil {
+	if o == nil || IsNil(o.TlsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -477,7 +480,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetTlsEnabled() bool {
 // GetTlsEnabledOk returns a tuple with the TlsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateProjectDeploymentRequest) GetTlsEnabledOk() (*bool, bool) {
-	if o == nil || o.TlsEnabled == nil {
+	if o == nil || IsNil(o.TlsEnabled) {
 		return nil, false
 	}
 	return o.TlsEnabled, true
@@ -485,7 +488,7 @@ func (o *RequestsCreateProjectDeploymentRequest) GetTlsEnabledOk() (*bool, bool)
 
 // HasTlsEnabled returns a boolean if a field has been set.
 func (o *RequestsCreateProjectDeploymentRequest) HasTlsEnabled() bool {
-	if o != nil && o.TlsEnabled != nil {
+	if o != nil && !IsNil(o.TlsEnabled) {
 		return true
 	}
 
@@ -498,50 +501,58 @@ func (o *RequestsCreateProjectDeploymentRequest) SetTlsEnabled(v bool) {
 }
 
 func (o RequestsCreateProjectDeploymentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApplicationConfigurationOverrides != nil {
-		toSerialize["application_configuration_overrides"] = o.ApplicationConfigurationOverrides
-	}
-	if o.ApplicationConfigurationTemplateId != nil {
-		toSerialize["application_configuration_template_id"] = o.ApplicationConfigurationTemplateId
-	}
-	if o.DeploymentTargetId != nil {
-		toSerialize["deployment_target_id"] = o.DeploymentTargetId
-	}
-	if o.DnsZone != nil {
-		toSerialize["dns_zone"] = o.DnsZone
-	}
-	if o.ImageId != nil {
-		toSerialize["image_id"] = o.ImageId
-	}
-	if o.LoadBalancerSourceRanges != nil {
-		toSerialize["load_balancer_source_ranges"] = o.LoadBalancerSourceRanges
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.NamespaceId != nil {
-		toSerialize["namespace_id"] = o.NamespaceId
-	}
-	if o.NodeCount != nil {
-		toSerialize["node_count"] = o.NodeCount
-	}
-	if o.ResourceSettingsTemplateId != nil {
-		toSerialize["resource_settings_template_id"] = o.ResourceSettingsTemplateId
-	}
-	if o.ScheduledBackup != nil {
-		toSerialize["scheduled_backup"] = o.ScheduledBackup
-	}
-	if o.ServiceType != nil {
-		toSerialize["service_type"] = o.ServiceType
-	}
-	if o.StorageOptionsTemplateId != nil {
-		toSerialize["storage_options_template_id"] = o.StorageOptionsTemplateId
-	}
-	if o.TlsEnabled != nil {
-		toSerialize["tls_enabled"] = o.TlsEnabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RequestsCreateProjectDeploymentRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApplicationConfigurationOverrides) {
+		toSerialize["application_configuration_overrides"] = o.ApplicationConfigurationOverrides
+	}
+	if !IsNil(o.ApplicationConfigurationTemplateId) {
+		toSerialize["application_configuration_template_id"] = o.ApplicationConfigurationTemplateId
+	}
+	if !IsNil(o.DeploymentTargetId) {
+		toSerialize["deployment_target_id"] = o.DeploymentTargetId
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns_zone"] = o.DnsZone
+	}
+	if !IsNil(o.ImageId) {
+		toSerialize["image_id"] = o.ImageId
+	}
+	if !IsNil(o.LoadBalancerSourceRanges) {
+		toSerialize["load_balancer_source_ranges"] = o.LoadBalancerSourceRanges
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.NamespaceId) {
+		toSerialize["namespace_id"] = o.NamespaceId
+	}
+	if !IsNil(o.NodeCount) {
+		toSerialize["node_count"] = o.NodeCount
+	}
+	if !IsNil(o.ResourceSettingsTemplateId) {
+		toSerialize["resource_settings_template_id"] = o.ResourceSettingsTemplateId
+	}
+	if !IsNil(o.ScheduledBackup) {
+		toSerialize["scheduled_backup"] = o.ScheduledBackup
+	}
+	if !IsNil(o.ServiceType) {
+		toSerialize["service_type"] = o.ServiceType
+	}
+	if !IsNil(o.StorageOptionsTemplateId) {
+		toSerialize["storage_options_template_id"] = o.StorageOptionsTemplateId
+	}
+	if !IsNil(o.TlsEnabled) {
+		toSerialize["tls_enabled"] = o.TlsEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableRequestsCreateProjectDeploymentRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsConnectionInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsConnectionInfo{}
+
 // DeploymentsConnectionInfo struct for DeploymentsConnectionInfo
 type DeploymentsConnectionInfo struct {
 	ClusterDetails map[string]interface{} `json:"clusterDetails,omitempty"`
@@ -41,7 +44,7 @@ func NewDeploymentsConnectionInfoWithDefaults() *DeploymentsConnectionInfo {
 
 // GetClusterDetails returns the ClusterDetails field value if set, zero value otherwise.
 func (o *DeploymentsConnectionInfo) GetClusterDetails() map[string]interface{} {
-	if o == nil || o.ClusterDetails == nil {
+	if o == nil || IsNil(o.ClusterDetails) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *DeploymentsConnectionInfo) GetClusterDetails() map[string]interface{} {
 // GetClusterDetailsOk returns a tuple with the ClusterDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsConnectionInfo) GetClusterDetailsOk() (map[string]interface{}, bool) {
-	if o == nil || o.ClusterDetails == nil {
-		return nil, false
+	if o == nil || IsNil(o.ClusterDetails) {
+		return map[string]interface{}{}, false
 	}
 	return o.ClusterDetails, true
 }
 
 // HasClusterDetails returns a boolean if a field has been set.
 func (o *DeploymentsConnectionInfo) HasClusterDetails() bool {
-	if o != nil && o.ClusterDetails != nil {
+	if o != nil && !IsNil(o.ClusterDetails) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DeploymentsConnectionInfo) SetClusterDetails(v map[string]interface{}) 
 
 // GetConnectionDetails returns the ConnectionDetails field value if set, zero value otherwise.
 func (o *DeploymentsConnectionInfo) GetConnectionDetails() DeploymentsConnectionDetails {
-	if o == nil || o.ConnectionDetails == nil {
+	if o == nil || IsNil(o.ConnectionDetails) {
 		var ret DeploymentsConnectionDetails
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *DeploymentsConnectionInfo) GetConnectionDetails() DeploymentsConnection
 // GetConnectionDetailsOk returns a tuple with the ConnectionDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsConnectionInfo) GetConnectionDetailsOk() (*DeploymentsConnectionDetails, bool) {
-	if o == nil || o.ConnectionDetails == nil {
+	if o == nil || IsNil(o.ConnectionDetails) {
 		return nil, false
 	}
 	return o.ConnectionDetails, true
@@ -91,7 +94,7 @@ func (o *DeploymentsConnectionInfo) GetConnectionDetailsOk() (*DeploymentsConnec
 
 // HasConnectionDetails returns a boolean if a field has been set.
 func (o *DeploymentsConnectionInfo) HasConnectionDetails() bool {
-	if o != nil && o.ConnectionDetails != nil {
+	if o != nil && !IsNil(o.ConnectionDetails) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *DeploymentsConnectionInfo) SetConnectionDetails(v DeploymentsConnection
 
 // GetNotReadyPods returns the NotReadyPods field value if set, zero value otherwise.
 func (o *DeploymentsConnectionInfo) GetNotReadyPods() []DeploymentsPodInfo {
-	if o == nil || o.NotReadyPods == nil {
+	if o == nil || IsNil(o.NotReadyPods) {
 		var ret []DeploymentsPodInfo
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *DeploymentsConnectionInfo) GetNotReadyPods() []DeploymentsPodInfo {
 // GetNotReadyPodsOk returns a tuple with the NotReadyPods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsConnectionInfo) GetNotReadyPodsOk() ([]DeploymentsPodInfo, bool) {
-	if o == nil || o.NotReadyPods == nil {
+	if o == nil || IsNil(o.NotReadyPods) {
 		return nil, false
 	}
 	return o.NotReadyPods, true
@@ -123,7 +126,7 @@ func (o *DeploymentsConnectionInfo) GetNotReadyPodsOk() ([]DeploymentsPodInfo, b
 
 // HasNotReadyPods returns a boolean if a field has been set.
 func (o *DeploymentsConnectionInfo) HasNotReadyPods() bool {
-	if o != nil && o.NotReadyPods != nil {
+	if o != nil && !IsNil(o.NotReadyPods) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *DeploymentsConnectionInfo) SetNotReadyPods(v []DeploymentsPodInfo) {
 
 // GetPods returns the Pods field value if set, zero value otherwise.
 func (o *DeploymentsConnectionInfo) GetPods() []DeploymentsPodInfo {
-	if o == nil || o.Pods == nil {
+	if o == nil || IsNil(o.Pods) {
 		var ret []DeploymentsPodInfo
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *DeploymentsConnectionInfo) GetPods() []DeploymentsPodInfo {
 // GetPodsOk returns a tuple with the Pods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsConnectionInfo) GetPodsOk() ([]DeploymentsPodInfo, bool) {
-	if o == nil || o.Pods == nil {
+	if o == nil || IsNil(o.Pods) {
 		return nil, false
 	}
 	return o.Pods, true
@@ -155,7 +158,7 @@ func (o *DeploymentsConnectionInfo) GetPodsOk() ([]DeploymentsPodInfo, bool) {
 
 // HasPods returns a boolean if a field has been set.
 func (o *DeploymentsConnectionInfo) HasPods() bool {
-	if o != nil && o.Pods != nil {
+	if o != nil && !IsNil(o.Pods) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *DeploymentsConnectionInfo) SetPods(v []DeploymentsPodInfo) {
 }
 
 func (o DeploymentsConnectionInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterDetails != nil {
-		toSerialize["clusterDetails"] = o.ClusterDetails
-	}
-	if o.ConnectionDetails != nil {
-		toSerialize["connectionDetails"] = o.ConnectionDetails
-	}
-	if o.NotReadyPods != nil {
-		toSerialize["notReadyPods"] = o.NotReadyPods
-	}
-	if o.Pods != nil {
-		toSerialize["pods"] = o.Pods
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsConnectionInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterDetails) {
+		toSerialize["clusterDetails"] = o.ClusterDetails
+	}
+	if !IsNil(o.ConnectionDetails) {
+		toSerialize["connectionDetails"] = o.ConnectionDetails
+	}
+	if !IsNil(o.NotReadyPods) {
+		toSerialize["notReadyPods"] = o.NotReadyPods
+	}
+	if !IsNil(o.Pods) {
+		toSerialize["pods"] = o.Pods
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsConnectionInfo struct {

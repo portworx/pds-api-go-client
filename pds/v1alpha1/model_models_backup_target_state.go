@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ModelsBackupTargetState type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ModelsBackupTargetState{}
+
 // ModelsBackupTargetState struct for ModelsBackupTargetState
 type ModelsBackupTargetState struct {
 	BackupTargetId *string `json:"backup_target_id,omitempty"`
@@ -51,7 +54,7 @@ func NewModelsBackupTargetStateWithDefaults() *ModelsBackupTargetState {
 
 // GetBackupTargetId returns the BackupTargetId field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetBackupTargetId() string {
-	if o == nil || o.BackupTargetId == nil {
+	if o == nil || IsNil(o.BackupTargetId) {
 		var ret string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *ModelsBackupTargetState) GetBackupTargetId() string {
 // GetBackupTargetIdOk returns a tuple with the BackupTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetBackupTargetIdOk() (*string, bool) {
-	if o == nil || o.BackupTargetId == nil {
+	if o == nil || IsNil(o.BackupTargetId) {
 		return nil, false
 	}
 	return o.BackupTargetId, true
@@ -69,7 +72,7 @@ func (o *ModelsBackupTargetState) GetBackupTargetIdOk() (*string, bool) {
 
 // HasBackupTargetId returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasBackupTargetId() bool {
-	if o != nil && o.BackupTargetId != nil {
+	if o != nil && !IsNil(o.BackupTargetId) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *ModelsBackupTargetState) SetBackupTargetId(v string) {
 
 // GetDeploymentTargetId returns the DeploymentTargetId field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetDeploymentTargetId() string {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *ModelsBackupTargetState) GetDeploymentTargetId() string {
 // GetDeploymentTargetIdOk returns a tuple with the DeploymentTargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetDeploymentTargetIdOk() (*string, bool) {
-	if o == nil || o.DeploymentTargetId == nil {
+	if o == nil || IsNil(o.DeploymentTargetId) {
 		return nil, false
 	}
 	return o.DeploymentTargetId, true
@@ -101,7 +104,7 @@ func (o *ModelsBackupTargetState) GetDeploymentTargetIdOk() (*string, bool) {
 
 // HasDeploymentTargetId returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasDeploymentTargetId() bool {
-	if o != nil && o.DeploymentTargetId != nil {
+	if o != nil && !IsNil(o.DeploymentTargetId) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *ModelsBackupTargetState) SetDeploymentTargetId(v string) {
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetErrorCode() string {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *ModelsBackupTargetState) GetErrorCode() string {
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetErrorCodeOk() (*string, bool) {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode) {
 		return nil, false
 	}
 	return o.ErrorCode, true
@@ -133,7 +136,7 @@ func (o *ModelsBackupTargetState) GetErrorCodeOk() (*string, bool) {
 
 // HasErrorCode returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasErrorCode() bool {
-	if o != nil && o.ErrorCode != nil {
+	if o != nil && !IsNil(o.ErrorCode) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *ModelsBackupTargetState) SetErrorCode(v string) {
 
 // GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetErrorDetails() string {
-	if o == nil || o.ErrorDetails == nil {
+	if o == nil || IsNil(o.ErrorDetails) {
 		var ret string
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *ModelsBackupTargetState) GetErrorDetails() string {
 // GetErrorDetailsOk returns a tuple with the ErrorDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetErrorDetailsOk() (*string, bool) {
-	if o == nil || o.ErrorDetails == nil {
+	if o == nil || IsNil(o.ErrorDetails) {
 		return nil, false
 	}
 	return o.ErrorDetails, true
@@ -165,7 +168,7 @@ func (o *ModelsBackupTargetState) GetErrorDetailsOk() (*string, bool) {
 
 // HasErrorDetails returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasErrorDetails() bool {
-	if o != nil && o.ErrorDetails != nil {
+	if o != nil && !IsNil(o.ErrorDetails) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *ModelsBackupTargetState) SetErrorDetails(v string) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetErrorMessage() string {
-	if o == nil || o.ErrorMessage == nil {
+	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *ModelsBackupTargetState) GetErrorMessage() string {
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetErrorMessageOk() (*string, bool) {
-	if o == nil || o.ErrorMessage == nil {
+	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
 	return o.ErrorMessage, true
@@ -197,7 +200,7 @@ func (o *ModelsBackupTargetState) GetErrorMessageOk() (*string, bool) {
 
 // HasErrorMessage returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasErrorMessage() bool {
-	if o != nil && o.ErrorMessage != nil {
+	if o != nil && !IsNil(o.ErrorMessage) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *ModelsBackupTargetState) SetErrorMessage(v string) {
 
 // GetPxCredentialsId returns the PxCredentialsId field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetPxCredentialsId() string {
-	if o == nil || o.PxCredentialsId == nil {
+	if o == nil || IsNil(o.PxCredentialsId) {
 		var ret string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *ModelsBackupTargetState) GetPxCredentialsId() string {
 // GetPxCredentialsIdOk returns a tuple with the PxCredentialsId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetPxCredentialsIdOk() (*string, bool) {
-	if o == nil || o.PxCredentialsId == nil {
+	if o == nil || IsNil(o.PxCredentialsId) {
 		return nil, false
 	}
 	return o.PxCredentialsId, true
@@ -229,7 +232,7 @@ func (o *ModelsBackupTargetState) GetPxCredentialsIdOk() (*string, bool) {
 
 // HasPxCredentialsId returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasPxCredentialsId() bool {
-	if o != nil && o.PxCredentialsId != nil {
+	if o != nil && !IsNil(o.PxCredentialsId) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *ModelsBackupTargetState) SetPxCredentialsId(v string) {
 
 // GetPxCredentialsName returns the PxCredentialsName field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetPxCredentialsName() string {
-	if o == nil || o.PxCredentialsName == nil {
+	if o == nil || IsNil(o.PxCredentialsName) {
 		var ret string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *ModelsBackupTargetState) GetPxCredentialsName() string {
 // GetPxCredentialsNameOk returns a tuple with the PxCredentialsName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetPxCredentialsNameOk() (*string, bool) {
-	if o == nil || o.PxCredentialsName == nil {
+	if o == nil || IsNil(o.PxCredentialsName) {
 		return nil, false
 	}
 	return o.PxCredentialsName, true
@@ -261,7 +264,7 @@ func (o *ModelsBackupTargetState) GetPxCredentialsNameOk() (*string, bool) {
 
 // HasPxCredentialsName returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasPxCredentialsName() bool {
-	if o != nil && o.PxCredentialsName != nil {
+	if o != nil && !IsNil(o.PxCredentialsName) {
 		return true
 	}
 
@@ -275,7 +278,7 @@ func (o *ModelsBackupTargetState) SetPxCredentialsName(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *ModelsBackupTargetState) GetState() string {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -285,7 +288,7 @@ func (o *ModelsBackupTargetState) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ModelsBackupTargetState) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -293,7 +296,7 @@ func (o *ModelsBackupTargetState) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *ModelsBackupTargetState) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -306,32 +309,40 @@ func (o *ModelsBackupTargetState) SetState(v string) {
 }
 
 func (o ModelsBackupTargetState) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BackupTargetId != nil {
-		toSerialize["backup_target_id"] = o.BackupTargetId
-	}
-	if o.DeploymentTargetId != nil {
-		toSerialize["deployment_target_id"] = o.DeploymentTargetId
-	}
-	if o.ErrorCode != nil {
-		toSerialize["error_code"] = o.ErrorCode
-	}
-	if o.ErrorDetails != nil {
-		toSerialize["error_details"] = o.ErrorDetails
-	}
-	if o.ErrorMessage != nil {
-		toSerialize["error_message"] = o.ErrorMessage
-	}
-	if o.PxCredentialsId != nil {
-		toSerialize["px_credentials_id"] = o.PxCredentialsId
-	}
-	if o.PxCredentialsName != nil {
-		toSerialize["px_credentials_name"] = o.PxCredentialsName
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ModelsBackupTargetState) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BackupTargetId) {
+		toSerialize["backup_target_id"] = o.BackupTargetId
+	}
+	if !IsNil(o.DeploymentTargetId) {
+		toSerialize["deployment_target_id"] = o.DeploymentTargetId
+	}
+	if !IsNil(o.ErrorCode) {
+		toSerialize["error_code"] = o.ErrorCode
+	}
+	if !IsNil(o.ErrorDetails) {
+		toSerialize["error_details"] = o.ErrorDetails
+	}
+	if !IsNil(o.ErrorMessage) {
+		toSerialize["error_message"] = o.ErrorMessage
+	}
+	if !IsNil(o.PxCredentialsId) {
+		toSerialize["px_credentials_id"] = o.PxCredentialsId
+	}
+	if !IsNil(o.PxCredentialsName) {
+		toSerialize["px_credentials_name"] = o.PxCredentialsName
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	return toSerialize, nil
 }
 
 type NullableModelsBackupTargetState struct {

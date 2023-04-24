@@ -55,8 +55,8 @@ paths:
     get:
       description: Lists Accounts.
       parameters:
-      - description: 'A given Accounts attribute to sort results by (one of: id, name,
-          created_at)'
+      - description: "A given Accounts attribute to sort results by (one of: id, name,\
+          \ created_at)"
         in: query
         name: sort_by
         schema:
@@ -148,8 +148,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given User attribute to sort results by (one of: id, email,
-          role_name, created_at)'
+      - description: "A given User attribute to sort results by (one of: id, email,\
+          \ role_name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -387,8 +387,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given AccountRoleBinding attribute to sort results by (one
-          of: role_name, actor_id)'
+      - description: "A given AccountRoleBinding attribute to sort results by (one\
+          \ of: role_name, actor_id)"
         in: query
         name: sort_by
         schema:
@@ -421,8 +421,8 @@ paths:
       tags:
       - AccountRoleBindings
     put:
-      description: Creates a new AccountRoleBinding, or updates role_name if binding
-        for (actor_id, actor_type) already exists.
+      description: "Creates a new AccountRoleBinding, or updates role_name if binding\
+        \ for (actor_id, actor_type) already exists."
       parameters:
       - description: Account ID (must be valid UUID)
         in: path
@@ -434,7 +434,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
+              $ref: '#/components/schemas/controllers.upsertAccountRoleBindingRequest'
         description: Request body containing the account role binding
         required: true
       responses:
@@ -442,7 +442,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.LegacyAccountBinding'
+                $ref: '#/components/schemas/models.AccountRoleBinding'
           description: The created AccountRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -460,8 +460,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Tenant attribute to sort results by (one of: id, name,
-          created_at)'
+      - description: "A given Tenant attribute to sort results by (one of: id, name,\
+          \ created_at)"
         in: query
         name: sort_by
         schema:
@@ -509,8 +509,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given User attribute to sort results by (one of: id, email,
-          created_at)'
+      - description: "A given User attribute to sort results by (one of: id, email,\
+          \ created_at)"
         in: query
         name: sort_by
         schema:
@@ -772,7 +772,7 @@ paths:
       tags:
       - BackupJobs
     put:
-      description: Updates a BackupJob if ID exists, Creates new BackupJob if not
+      description: "Updates a BackupJob if ID exists, Creates new BackupJob if not"
       parameters:
       - description: BackupJob ID (must be UUID)
         in: path
@@ -984,8 +984,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Backup attribute to sort results by (one of: id, cluster_resource_name,
-          created_at, backup_type, backup_level)'
+      - description: "A given Backup attribute to sort results by (one of: id, cluster_resource_name,\
+          \ created_at, backup_type, backup_level)"
         in: query
         name: sort_by
         schema:
@@ -1021,12 +1021,12 @@ paths:
         name: suspend
         schema:
           type: string
-      - description: 'Filter results by Backup type (one of: adhoc,scheduled)'
+      - description: "Filter results by Backup type (one of: adhoc,scheduled)"
         in: query
         name: backup_type
         schema:
           type: string
-      - description: 'Filter results by Backup type (one of: snapshot,incremental)'
+      - description: "Filter results by Backup type (one of: snapshot,incremental)"
         in: query
         name: backup_level
         schema:
@@ -1083,8 +1083,8 @@ paths:
         name: continuation
         schema:
           type: string
-      - description: 'A given BackupTargetState attribute to sort results by (one
-          of: state, deployment_target_id, backup_target_id)'
+      - description: "A given BackupTargetState attribute to sort results by (one\
+          \ of: state, deployment_target_id, backup_target_id)"
         in: query
         name: sort_by
         schema:
@@ -1274,8 +1274,8 @@ paths:
     get:
       description: Lists Data Services
       parameters:
-      - description: 'A given Data Service attribute to sort results by (one of: id,
-          name, short_name, created_at)'
+      - description: "A given Data Service attribute to sort results by (one of: id,\
+          \ name, short_name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -1365,8 +1365,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Version attribute to sort results by (one of: id, name,
-          created_at)'
+      - description: "A given Version attribute to sort results by (one of: id, name,\
+          \ created_at)"
         in: query
         name: sort_by
         schema:
@@ -1561,7 +1561,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/requests.PatchDeploymentTargetRequest'
-        description: Object with partial update fields (name, tlsRequired, tlsIssuer)
+        description: "Object with partial update fields (name, tlsRequired, tlsIssuer)"
         required: true
       responses:
         "200":
@@ -1578,7 +1578,7 @@ paths:
       x-codegen-request-body-name: body
     put:
       deprecated: true
-      description: Deprecated, use PATCH /api/deployment-targets/{id} instead
+      description: "Deprecated, use PATCH /api/deployment-targets/{id} instead"
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
         in: path
@@ -1658,7 +1658,7 @@ paths:
   /api/deployment-targets/{id}/credentials:
     get:
       deprecated: true
-      description: Deprecated, use GET /api/deployment-targets/{id}/config instead
+      description: "Deprecated, use GET /api/deployment-targets/{id}/config instead"
       parameters:
       - description: DeploymentTarget ID (must be valid UUID)
         in: path
@@ -1748,8 +1748,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Namespace attribute to sort results by (one of: id,
-          name, created_at)'
+      - description: "A given Namespace attribute to sort results by (one of: id,\
+          \ name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -1817,7 +1817,7 @@ paths:
           description: The created Namespace will be returned
         "400":
           content: {}
-          description: Bad request, see response for more details
+          description: "Bad request, see response for more details"
         "409":
           content: {}
           description: Namespace with the given name already exists
@@ -1947,8 +1947,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'Expand the result with related entities (allowed values: deployment_target,
-          namespace)'
+      - description: "Expand the result with related entities (allowed values: deployment_target,\
+          \ namespace)"
         in: query
         name: expand
         schema:
@@ -2010,8 +2010,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Backup attribute to sort results by (one of: id, cluster_resource_name,
-          created_at, backup_type, backup_level)'
+      - description: "A given Backup attribute to sort results by (one of: id, cluster_resource_name,\
+          \ created_at, backup_type, backup_level)"
         in: query
         name: sort_by
         schema:
@@ -2047,12 +2047,12 @@ paths:
         name: suspend
         schema:
           type: string
-      - description: 'Filter results by Backup type (one of: adhoc,scheduled)'
+      - description: "Filter results by Backup type (one of: adhoc,scheduled)"
         in: query
         name: backup_type
         schema:
           type: string
-      - description: 'Filter results by Backup type (one of: snapshot,incremental)'
+      - description: "Filter results by Backup type (one of: snapshot,incremental)"
         in: query
         name: backup_level
         schema:
@@ -2244,8 +2244,8 @@ paths:
     get:
       description: Lists GlobalRoleBindings
       parameters:
-      - description: 'A given GlobalRoleBinding attribute to sort results by (one
-          of: role_name, actor_id)'
+      - description: "A given GlobalRoleBinding attribute to sort results by (one\
+          \ of: role_name, actor_id)"
         in: query
         name: sort_by
         schema:
@@ -2283,7 +2283,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
+              $ref: '#/components/schemas/models.GlobalRoleBinding'
         description: Request body containing the global role binding
         required: true
       responses:
@@ -2291,7 +2291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.LegacyGlobalBinding'
+                $ref: '#/components/schemas/models.GlobalRoleBinding'
           description: The created GlobalRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -2318,8 +2318,8 @@ paths:
         name: latest
         schema:
           type: boolean
-      - description: 'A given Image attribute to sort results by (one of: id, name,
-          created_at). Ignored when latest=true.'
+      - description: "A given Image attribute to sort results by (one of: id, name,\
+          \ created_at). Ignored when latest=true."
         in: query
         name: sort_by
         schema:
@@ -2490,8 +2490,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given BackupTarget attribute to sort results by (one of: id,
-          name, type, created_at)'
+      - description: "A given BackupTarget attribute to sort results by (one of: id,\
+          \ name, type, created_at)"
         in: query
         name: sort_by
         schema:
@@ -2564,8 +2564,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given DeploymentTarget attribute to sort results by (one of:
-          id, name)'
+      - description: "A given DeploymentTarget attribute to sort results by (one of:\
+          \ id, name)"
         in: query
         name: sort_by
         schema:
@@ -2618,14 +2618,14 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'Expand the result with related entities (allowed values: deployment_target,
-          namespace)'
+      - description: "Expand the result with related entities (allowed values: deployment_target,\
+          \ namespace)"
         in: query
         name: expand
         schema:
           type: string
-      - description: 'A given Deployment attribute to sort results by (one of: id,
-          name, cluster_resource_name, created_at)'
+      - description: "A given Deployment attribute to sort results by (one of: id,\
+          \ name, cluster_resource_name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -2764,8 +2764,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given ProjectRoleBinding attribute to sort results by (one
-          of: role_name, actor_id)'
+      - description: "A given ProjectRoleBinding attribute to sort results by (one\
+          \ of: role_name, actor_id)"
         in: query
         name: sort_by
         schema:
@@ -2810,7 +2810,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
+              $ref: '#/components/schemas/controllers.upsertProjectRoleBindingRequest'
         description: Request body containing the project role binding
         required: true
       responses:
@@ -2818,7 +2818,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.LegacyProjectBinding'
+                $ref: '#/components/schemas/models.ProjectRoleBinding'
           description: The created ProjectRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -3153,8 +3153,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given ApplicationConfigurationTemplates attribute to sort
-          results by (one of: id, name, created_at)'
+      - description: "A given ApplicationConfigurationTemplates attribute to sort\
+          \ results by (one of: id, name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3236,8 +3236,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given BackupCredentials attribute to sort results by (one
-          of: id, name, created_at)'
+      - description: "A given BackupCredentials attribute to sort results by (one\
+          \ of: id, name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3319,8 +3319,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given BackupPolicy attribute to sort results by (one of: id,
-          name, created_at)'
+      - description: "A given BackupPolicy attribute to sort results by (one of: id,\
+          \ name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3408,8 +3408,8 @@ paths:
         name: continuation
         schema:
           type: string
-      - description: 'A given BackupTarget attribute to sort results by (one of: id,
-          name, type, created_at)'
+      - description: "A given BackupTarget attribute to sort results by (one of: id,\
+          \ name, type, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3495,8 +3495,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given DeploymentTarget attribute to sort results by (one of:
-          id, name, created_at)'
+      - description: "A given DeploymentTarget attribute to sort results by (one of:\
+          \ id, name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3600,8 +3600,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Project attribute to sort results by (one of: id, name,
-          created_at)'
+      - description: "A given Project attribute to sort results by (one of: id, name,\
+          \ created_at)"
         in: query
         name: sort_by
         schema:
@@ -3649,8 +3649,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given ResourceSettingsTemplates attribute to sort results
-          by (one of: id, name, created_at)'
+      - description: "A given ResourceSettingsTemplates attribute to sort results\
+          \ by (one of: id, name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3758,8 +3758,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given TenantRoleBinding attribute to sort results by (one
-          of: role_name, actor_id)'
+      - description: "A given TenantRoleBinding attribute to sort results by (one\
+          \ of: role_name, actor_id)"
         in: query
         name: sort_by
         schema:
@@ -3804,7 +3804,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/requests.PutLegacyBindingRequest'
+              $ref: '#/components/schemas/controllers.upsertTenantRoleBindingRequest'
         description: Request body containing the tenant role binding
         required: true
       responses:
@@ -3812,7 +3812,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/models.LegacyTenantBinding'
+                $ref: '#/components/schemas/models.TenantRoleBinding'
           description: The created TenantRoleBinding will be returned
       security:
       - ApiKeyAuth: []
@@ -3832,8 +3832,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given ServiceAccount attribute to sort results by (one of:
-          name, id, created_at)'
+      - description: "A given ServiceAccount attribute to sort results by (one of:\
+          \ name, id, created_at)"
         in: query
         name: sort_by
         schema:
@@ -3917,8 +3917,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given StorageOptionsTemplates attribute to sort results by
-          (one of: id, name, created_at)'
+      - description: "A given StorageOptionsTemplates attribute to sort results by\
+          \ (one of: id, name, created_at)"
         in: query
         name: sort_by
         schema:
@@ -4017,8 +4017,8 @@ paths:
         name: enabled
         schema:
           type: boolean
-      - description: 'A given UserAPIKey attribute to sort results by (one of: id,
-          name, created_at, enabled, expires_at)'
+      - description: "A given UserAPIKey attribute to sort results by (one of: id,\
+          \ name, created_at, enabled, expires_at)"
         in: query
         name: sort_by
         schema:
@@ -4168,8 +4168,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given AccountRoleBinding attribute to sort results by (allowed:
-          role_name)'
+      - description: "A given AccountRoleBinding attribute to sort results by (allowed:\
+          \ role_name)"
         in: query
         name: sort_by
         schema:
@@ -4239,8 +4239,8 @@ paths:
         required: true
         schema:
           type: string
-      - description: 'A given Image attribute to sort results by (one of: id, name,
-          created_at)'
+      - description: "A given Image attribute to sort results by (one of: id, name,\
+          \ created_at)"
         in: query
         name: sort_by
         schema:
@@ -4671,7 +4671,7 @@ components:
         job_history_limit:
           type: integer
         schedule:
-          example: in CRON format, required for scheduled backups
+          example: "in CRON format, required for scheduled backups"
           type: string
       type: object
     controllers.CreateTenantBackupTarget:
@@ -4818,7 +4818,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.LegacyAccountBinding'
+            $ref: '#/components/schemas/models.AccountRoleBinding'
           type: array
       type: object
     controllers.PaginatedBackupTargetStates:
@@ -4858,7 +4858,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.LegacyGlobalBinding'
+            $ref: '#/components/schemas/models.GlobalRoleBinding'
           type: array
       type: object
     controllers.PaginatedProjectRoleBindings:
@@ -4875,7 +4875,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.LegacyProjectBinding'
+            $ref: '#/components/schemas/models.ProjectRoleBinding'
           type: array
       type: object
     controllers.PaginatedRoles:
@@ -4917,7 +4917,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/models.LegacyTenantBinding'
+            $ref: '#/components/schemas/models.TenantRoleBinding'
           type: array
       type: object
     controllers.PartialAzureCredentials:
@@ -5186,9 +5186,9 @@ components:
           description: See models.StorageOptionsTemplate for more information.
           type: string
         provisioner:
-          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
-            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
-            auto-detect'
+          description: "Portworx volume provisioner. Valid values are: \"pxd.portworx.com\"\
+            \ for PX CSI, \"kubernetes.io/portworx-volume\" for PX in-tree or \"auto\"\
+            \ for auto-detect"
           enum:
           - pxd.portworx.com
           - kubernetes.io/portworx-volume
@@ -5364,9 +5364,9 @@ components:
           description: See models.StorageOptionsTemplate for more information.
           type: string
         provisioner:
-          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
-            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
-            auto-detect'
+          description: "Portworx volume provisioner. Valid values are: \"pxd.portworx.com\"\
+            \ for PX CSI, \"kubernetes.io/portworx-volume\" for PX in-tree or \"auto\"\
+            \ for auto-detect"
           enum:
           - pxd.portworx.com
           - kubernetes.io/portworx-volume
@@ -5410,6 +5410,42 @@ components:
           description: Specify what data service versions are updatable for this account.
           enum:
           - all
+          type: string
+      type: object
+    controllers.upsertAccountRoleBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned account role
+          type: string
+      type: object
+    controllers.upsertProjectRoleBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned account role
+          type: string
+      type: object
+    controllers.upsertTenantRoleBindingRequest:
+      properties:
+        actor_id:
+          example: ID of the role subject
+          type: string
+        actor_type:
+          example: Type of the role subject
+          type: string
+        role_name:
+          example: Name of the assigned account role
           type: string
       type: object
     deployments.Condition:
@@ -5469,7 +5505,7 @@ components:
           - nodes
           ports:
             key: 0
-        clusterDetails: '{}'
+        clusterDetails: "{}"
       properties:
         clusterDetails:
           properties: {}
@@ -5554,15 +5590,15 @@ components:
           example: cas-events-0h35cp-0.16f4c1e217362a3e
           type: string
         reason:
-          description: Reason is a short, machine understandable string that gives
-            the reason for the transition into the object's current status.
+          description: "Reason is a short, machine understandable string that gives\
+            \ the reason for the transition into the object's current status."
           example: FailedScheduling
           type: string
         timestamp:
           description: Timestamp informs about when did the event occur most recently.
           type: string
         type:
-          description: Type of this event , new types could be added in the future.
+          description: "Type of this event , new types could be added in the future."
           enum:
           - Normal
           - Warning
@@ -5663,6 +5699,22 @@ components:
           type: string
         version_updatability:
           description: Specify what data service versions are updatable for this account.
+          type: string
+      type: object
+    models.AccountRoleBinding:
+      example:
+        role_name: role_name
+        account_id: account_id
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        account_id:
+          type: string
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
           type: string
       type: object
     models.AccountRoleInvitation:
@@ -5829,8 +5881,8 @@ components:
           - scheduled
           type: string
         cluster_resource_name:
-          description: ClusterResourceName k8s resource name for backup, built from
-            ID.
+          description: "ClusterResourceName k8s resource name for backup, built from\
+            \ ID."
           type: string
         created_at:
           description: CreatedAt is autogenerated on creation
@@ -5974,8 +6026,8 @@ components:
         deployment:
           tenant_id: tenant_id
           tls_enabled: true
-          configuration: '{}'
-          connection_details: '{}'
+          configuration: "{}"
+          connection_details: "{}"
           created_at: created_at
           tls_issuer: tls_issuer
           error:
@@ -6000,12 +6052,13 @@ components:
             fs: fs
           deployment_manifest:
             updated_at: updated_at
-            manifest: '{}'
+            manifest: "{}"
             replicas: 5
             created_at: created_at
             readyReplicas: 5
             deployment_id: deployment_id
             id: id
+            deployment: null
             status: Deploying
             timestamp: timestamp
           data_service_id: data_service_id
@@ -6306,8 +6359,8 @@ components:
           - failed_to_delete_px_credentials
           type: string
         error_details:
-          description: More detailed error message possibly containing the root cause
-            of the error, not suitable to show in the UI.
+          description: "More detailed error message possibly containing the root cause\
+            \ of the error, not suitable to show in the UI."
           type: string
         error_message:
           description: High level human-readable error message determined by the ErrorCode.
@@ -6336,11 +6389,11 @@ components:
         key: key
       properties:
         deploy_time:
-          description: If true, user must fill the value for this configuration parameter
-            when creating a new deployment.
+          description: "If true, user must fill the value for this configuration parameter\
+            \ when creating a new deployment."
           type: boolean
         key:
-          description: Configuration key, transfers to the image's environment variable.
+          description: "Configuration key, transfers to the image's environment variable."
           type: string
         value:
           description: Configuration value.
@@ -6409,8 +6462,8 @@ components:
       example:
         tenant_id: tenant_id
         tls_enabled: true
-        configuration: '{}'
-        connection_details: '{}'
+        configuration: "{}"
+        connection_details: "{}"
         created_at: created_at
         tls_issuer: tls_issuer
         error:
@@ -6435,12 +6488,13 @@ components:
           fs: fs
         deployment_manifest:
           updated_at: updated_at
-          manifest: '{}'
+          manifest: "{}"
           replicas: 5
           created_at: created_at
           readyReplicas: 5
           deployment_id: deployment_id
           id: id
+          deployment: null
           status: Deploying
           timestamp: timestamp
         data_service_id: data_service_id
@@ -6514,8 +6568,8 @@ components:
           description: AccountID which account the deployment belongs to (models.Account).
           type: string
         cluster_resource_name:
-          description: ClusterResourceName k8s resource name for deployment, built
-            from [data service short name + name + id].
+          description: "ClusterResourceName k8s resource name for deployment, built\
+            \ from [data service short name + name + id]."
           type: string
         configuration:
           description: Configuration data service specific configuration for the deployment
@@ -6523,8 +6577,8 @@ components:
           properties: {}
           type: object
         connection_details:
-          description: ConnectionDetails urls, ports, credentials, etc for connecting
-            to the data service.
+          description: "ConnectionDetails urls, ports, credentials, etc for connecting\
+            \ to the data service."
           properties: {}
           type: object
         created_at:
@@ -6620,12 +6674,13 @@ components:
     models.DeploymentManifest:
       example:
         updated_at: updated_at
-        manifest: '{}'
+        manifest: "{}"
         replicas: 5
         created_at: created_at
         readyReplicas: 5
         deployment_id: deployment_id
         id: id
+        deployment: null
         status: Deploying
         timestamp: timestamp
       properties:
@@ -6888,6 +6943,19 @@ components:
           description: High level human-readable error message determined by the ErrorCode.
           type: string
       type: object
+    models.GlobalRoleBinding:
+      example:
+        role_name: role_name
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+      type: object
     models.GoogleCredentials:
       properties:
         json_key:
@@ -6900,7 +6968,7 @@ components:
     models.Image:
       example:
         registry: registry
-        capabilities: '{}'
+        capabilities: "{}"
         data_service_id: data_service_id
         updated_at: updated_at
         build: build
@@ -6939,67 +7007,6 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
         version_id:
-          type: string
-      type: object
-    models.LegacyAccountBinding:
-      example:
-        role_name: role_name
-        account_id: account_id
-        actor_type: actor_type
-        actor_id: actor_id
-      properties:
-        account_id:
-          type: string
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        role_name:
-          type: string
-      type: object
-    models.LegacyGlobalBinding:
-      example:
-        role_name: role_name
-        actor_type: actor_type
-        actor_id: actor_id
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        role_name:
-          type: string
-      type: object
-    models.LegacyProjectBinding:
-      example:
-        role_name: role_name
-        actor_type: actor_type
-        project_id: project_id
-        actor_id: actor_id
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        project_id:
-          type: string
-        role_name:
-          type: string
-      type: object
-    models.LegacyTenantBinding:
-      example:
-        role_name: role_name
-        tenant_id: tenant_id
-        actor_type: actor_type
-        actor_id: actor_id
-      properties:
-        actor_id:
-          type: string
-        actor_type:
-          type: string
-        role_name:
-          type: string
-        tenant_id:
           type: string
       type: object
     models.MAASDetails:
@@ -7384,8 +7391,8 @@ components:
         data:
         - tenant_id: tenant_id
           tls_enabled: true
-          configuration: '{}'
-          connection_details: '{}'
+          configuration: "{}"
+          connection_details: "{}"
           created_at: created_at
           tls_issuer: tls_issuer
           error:
@@ -7410,12 +7417,13 @@ components:
             fs: fs
           deployment_manifest:
             updated_at: updated_at
-            manifest: '{}'
+            manifest: "{}"
             replicas: 5
             created_at: created_at
             readyReplicas: 5
             deployment_id: deployment_id
             id: id
+            deployment: null
             status: Deploying
             timestamp: timestamp
           data_service_id: data_service_id
@@ -7486,8 +7494,8 @@ components:
             status: status
         - tenant_id: tenant_id
           tls_enabled: true
-          configuration: '{}'
-          connection_details: '{}'
+          configuration: "{}"
+          connection_details: "{}"
           created_at: created_at
           tls_issuer: tls_issuer
           error:
@@ -7512,12 +7520,13 @@ components:
             fs: fs
           deployment_manifest:
             updated_at: updated_at
-            manifest: '{}'
+            manifest: "{}"
             replicas: 5
             created_at: created_at
             readyReplicas: 5
             deployment_id: deployment_id
             id: id
+            deployment: null
             status: Deploying
             timestamp: timestamp
           data_service_id: data_service_id
@@ -7695,7 +7704,7 @@ components:
           continuation: continuation
         data:
         - registry: registry
-          capabilities: '{}'
+          capabilities: "{}"
           data_service_id: data_service_id
           updated_at: updated_at
           build: build
@@ -7707,7 +7716,7 @@ components:
           tag: tag
           version_id: version_id
         - registry: registry
-          capabilities: '{}'
+          capabilities: "{}"
           data_service_id: data_service_id
           updated_at: updated_at
           build: build
@@ -8004,6 +8013,22 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
       type: object
+    models.ProjectRoleBinding:
+      example:
+        role_name: role_name
+        actor_type: actor_type
+        project_id: project_id
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        project_id:
+          type: string
+        role_name:
+          type: string
+      type: object
     models.ResourceSettingsSample:
       example:
         data_service_id: data_service_id
@@ -8125,7 +8150,8 @@ components:
           description: Status of sending Restore CR to the Target Cluster
           type: string
         backup_job_id:
-          description: ID of the backup to be restored, the job might be already deleted
+          description: "ID of the backup to be restored, the job might be already\
+            \ deleted"
           type: string
         cloud_credential_name:
           description: Identifier of the PX cloud credentials of the storage with
@@ -8150,8 +8176,8 @@ components:
           description: ID is auto generated on creation
           type: string
         original_deployment_id:
-          description: ID of the old deployment where the backup comes from, might
-            be already deleted
+          description: "ID of the old deployment where the backup comes from, might\
+            \ be already deleted"
           type: string
         start_time:
           description: Starting time of the restore process
@@ -8227,9 +8253,9 @@ components:
         created:
           type: string
         fg:
-          description: This option enforces volume group policy. If a volume belonging
-            to a group cannot find nodes for its replication sets which don’t have
-            other volumes of same group, the volume creation will fail.
+          description: "This option enforces volume group policy. If a volume belonging\
+            \ to a group cannot find nodes for its replication sets which don’t have\
+            \ other volumes of same group, the volume creation will fail."
           type: boolean
         fs:
           description: Filesystem to be laid out.
@@ -8241,9 +8267,9 @@ components:
           description: Name of the template. Must be unique within the tenant scope.
           type: string
         provisioner:
-          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
-            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
-            auto-detect'
+          description: "Portworx volume provisioner. Valid values are: \"pxd.portworx.com\"\
+            \ for PX CSI, \"kubernetes.io/portworx-volume\" for PX in-tree or \"auto\"\
+            \ for auto-detect"
           enum:
           - pxd.portworx.com
           - kubernetes.io/portworx-volume
@@ -8253,8 +8279,8 @@ components:
           description: Replication factor for the volume.
           type: integer
         secure:
-          description: Flag to create an encrypted volume. Currently, not supported
-            (should be set to `false`).
+          description: "Flag to create an encrypted volume. Currently, not supported\
+            \ (should be set to `false`)."
           type: boolean
         updated:
           type: string
@@ -8281,9 +8307,9 @@ components:
           description: CreatedAt is autogenerated on creation
           type: string
         fg:
-          description: This option enforces volume group policy. If a volume belonging
-            to a group cannot find nodes for its replication sets which don’t have
-            other volumes of same group, the volume creation will fail.
+          description: "This option enforces volume group policy. If a volume belonging\
+            \ to a group cannot find nodes for its replication sets which don’t have\
+            \ other volumes of same group, the volume creation will fail."
           type: boolean
         fs:
           description: Filesystem to be laid out.
@@ -8298,9 +8324,9 @@ components:
           description: Name of the template. Must be unique within the tenant scope.
           type: string
         provisioner:
-          description: 'Portworx volume provisioner. Valid values are: "pxd.portworx.com"
-            for PX CSI, "kubernetes.io/portworx-volume" for PX in-tree or "auto" for
-            auto-detect'
+          description: "Portworx volume provisioner. Valid values are: \"pxd.portworx.com\"\
+            \ for PX CSI, \"kubernetes.io/portworx-volume\" for PX in-tree or \"auto\"\
+            \ for auto-detect"
           enum:
           - pxd.portworx.com
           - kubernetes.io/portworx-volume
@@ -8310,8 +8336,8 @@ components:
           description: Replication factor for the volume.
           type: integer
         secure:
-          description: Flag to create an encrypted volume. Currently, not supported
-            (should be set to `false`).
+          description: "Flag to create an encrypted volume. Currently, not supported\
+            \ (should be set to `false`)."
           type: boolean
         tenant_id:
           type: string
@@ -8411,6 +8437,22 @@ components:
           type: string
         updated_at:
           description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.TenantRoleBinding:
+      example:
+        role_name: role_name
+        tenant_id: tenant_id
+        actor_type: actor_type
+        actor_id: actor_id
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        role_name:
+          type: string
+        tenant_id:
           type: string
       type: object
     models.User:
@@ -8715,18 +8757,6 @@ components:
       required:
       - project_id
       type: object
-    requests.PutLegacyBindingRequest:
-      properties:
-        actor_id:
-          example: ID of the role subject
-          type: string
-        actor_type:
-          example: Type of the role subject
-          type: string
-        role_name:
-          example: Name of the assigned role
-          type: string
-      type: object
     requests.UpdateOperatorMetadataRequest:
       properties:
         cluster_id:
@@ -8755,6 +8785,8 @@ components:
       type: object
     requests.UpsertDeploymentManifestRequest:
       properties:
+        deleted:
+          type: boolean
         manifest:
           properties: {}
           type: object

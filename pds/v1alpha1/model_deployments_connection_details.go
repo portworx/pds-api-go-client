@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentsConnectionDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentsConnectionDetails{}
+
 // DeploymentsConnectionDetails struct for DeploymentsConnectionDetails
 type DeploymentsConnectionDetails struct {
 	// Nodes of the data service.
@@ -41,7 +44,7 @@ func NewDeploymentsConnectionDetailsWithDefaults() *DeploymentsConnectionDetails
 
 // GetNodes returns the Nodes field value if set, zero value otherwise.
 func (o *DeploymentsConnectionDetails) GetNodes() []string {
-	if o == nil || o.Nodes == nil {
+	if o == nil || IsNil(o.Nodes) {
 		var ret []string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *DeploymentsConnectionDetails) GetNodes() []string {
 // GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsConnectionDetails) GetNodesOk() ([]string, bool) {
-	if o == nil || o.Nodes == nil {
+	if o == nil || IsNil(o.Nodes) {
 		return nil, false
 	}
 	return o.Nodes, true
@@ -59,7 +62,7 @@ func (o *DeploymentsConnectionDetails) GetNodesOk() ([]string, bool) {
 
 // HasNodes returns a boolean if a field has been set.
 func (o *DeploymentsConnectionDetails) HasNodes() bool {
-	if o != nil && o.Nodes != nil {
+	if o != nil && !IsNil(o.Nodes) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DeploymentsConnectionDetails) SetNodes(v []string) {
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *DeploymentsConnectionDetails) GetPorts() map[string]int32 {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		var ret map[string]int32
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *DeploymentsConnectionDetails) GetPorts() map[string]int32 {
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentsConnectionDetails) GetPortsOk() (*map[string]int32, bool) {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		return nil, false
 	}
 	return o.Ports, true
@@ -91,7 +94,7 @@ func (o *DeploymentsConnectionDetails) GetPortsOk() (*map[string]int32, bool) {
 
 // HasPorts returns a boolean if a field has been set.
 func (o *DeploymentsConnectionDetails) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *DeploymentsConnectionDetails) SetPorts(v map[string]int32) {
 }
 
 func (o DeploymentsConnectionDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Nodes != nil {
-		toSerialize["nodes"] = o.Nodes
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentsConnectionDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Nodes) {
+		toSerialize["nodes"] = o.Nodes
+	}
+	if !IsNil(o.Ports) {
+		toSerialize["ports"] = o.Ports
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentsConnectionDetails struct {
