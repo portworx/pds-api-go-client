@@ -8755,6 +8755,8 @@ components:
       type: object
     requests.UpsertDeploymentManifestRequest:
       properties:
+        deleted:
+          type: boolean
         manifest:
           properties: {}
           type: object
