@@ -6652,6 +6652,7 @@ components:
           - Partially Available
           - Available
           - Unavailable
+          - Failed
           - Unknown
           type: string
         timestamp:
