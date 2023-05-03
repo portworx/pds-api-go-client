@@ -31,6 +31,7 @@ type ModelsDeploymentTargetCapabilities struct {
 	Postgresql *string `json:"postgresql,omitempty"`
 	Rabbitmq *string `json:"rabbitmq,omitempty"`
 	Redis *string `json:"redis,omitempty"`
+	Restore *string `json:"restore,omitempty"`
 	Sqlserver *string `json:"sqlserver,omitempty"`
 	Zookeeper *string `json:"zookeeper,omitempty"`
 }
@@ -532,6 +533,38 @@ func (o *ModelsDeploymentTargetCapabilities) SetRedis(v string) {
 	o.Redis = &v
 }
 
+// GetRestore returns the Restore field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetCapabilities) GetRestore() string {
+	if o == nil || o.Restore == nil {
+		var ret string
+		return ret
+	}
+	return *o.Restore
+}
+
+// GetRestoreOk returns a tuple with the Restore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetCapabilities) GetRestoreOk() (*string, bool) {
+	if o == nil || o.Restore == nil {
+		return nil, false
+	}
+	return o.Restore, true
+}
+
+// HasRestore returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetCapabilities) HasRestore() bool {
+	if o != nil && o.Restore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRestore gets a reference to the given string and assigns it to the Restore field.
+func (o *ModelsDeploymentTargetCapabilities) SetRestore(v string) {
+	o.Restore = &v
+}
+
 // GetSqlserver returns the Sqlserver field value if set, zero value otherwise.
 func (o *ModelsDeploymentTargetCapabilities) GetSqlserver() string {
 	if o == nil || o.Sqlserver == nil {
@@ -642,6 +675,9 @@ func (o ModelsDeploymentTargetCapabilities) MarshalJSON() ([]byte, error) {
 	}
 	if o.Redis != nil {
 		toSerialize["redis"] = o.Redis
+	}
+	if o.Restore != nil {
+		toSerialize["restore"] = o.Restore
 	}
 	if o.Sqlserver != nil {
 		toSerialize["sqlserver"] = o.Sqlserver

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Postgresql** | Pointer to **string** |  | [optional] 
 **Rabbitmq** | Pointer to **string** |  | [optional] 
 **Redis** | Pointer to **string** |  | [optional] 
+**Restore** | Pointer to **string** |  | [optional] 
 **Sqlserver** | Pointer to **string** |  | [optional] 
 **Zookeeper** | Pointer to **string** |  | [optional] 
 
@@ -415,6 +416,31 @@ SetRedis sets Redis field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasRedis() bool`
 
 HasRedis returns a boolean if a field has been set.
+
+### GetRestore
+
+`func (o *ModelsDeploymentTargetCapabilities) GetRestore() string`
+
+GetRestore returns the Restore field if non-nil, zero value otherwise.
+
+### GetRestoreOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetRestoreOk() (*string, bool)`
+
+GetRestoreOk returns a tuple with the Restore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestore
+
+`func (o *ModelsDeploymentTargetCapabilities) SetRestore(v string)`
+
+SetRestore sets Restore field to given value.
+
+### HasRestore
+
+`func (o *ModelsDeploymentTargetCapabilities) HasRestore() bool`
+
+HasRestore returns a boolean if a field has been set.
 
 ### GetSqlserver
 

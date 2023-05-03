@@ -6047,6 +6047,7 @@ components:
             capabilities:
               backup: backup
               capabilities: capabilities
+              restore: restore
               zookeeper: zookeeper
               crd_reporting: crd_reporting
               rabbitmq: rabbitmq
@@ -6482,6 +6483,7 @@ components:
           capabilities:
             backup: backup
             capabilities: capabilities
+            restore: restore
             zookeeper: zookeeper
             crd_reporting: crd_reporting
             rabbitmq: rabbitmq
@@ -6715,6 +6717,7 @@ components:
         capabilities:
           backup: backup
           capabilities: capabilities
+          restore: restore
           zookeeper: zookeeper
           crd_reporting: crd_reporting
           rabbitmq: rabbitmq
@@ -6781,6 +6784,7 @@ components:
       example:
         backup: backup
         capabilities: capabilities
+        restore: restore
         zookeeper: zookeeper
         crd_reporting: crd_reporting
         rabbitmq: rabbitmq
@@ -6826,6 +6830,8 @@ components:
         rabbitmq:
           type: string
         redis:
+          type: string
+        restore:
           type: string
         sqlserver:
           type: string
@@ -7458,6 +7464,7 @@ components:
             capabilities:
               backup: backup
               capabilities: capabilities
+              restore: restore
               zookeeper: zookeeper
               crd_reporting: crd_reporting
               rabbitmq: rabbitmq
@@ -7560,6 +7567,7 @@ components:
             capabilities:
               backup: backup
               capabilities: capabilities
+              restore: restore
               zookeeper: zookeeper
               crd_reporting: crd_reporting
               rabbitmq: rabbitmq
@@ -7614,6 +7622,7 @@ components:
           capabilities:
             backup: backup
             capabilities: capabilities
+            restore: restore
             zookeeper: zookeeper
             crd_reporting: crd_reporting
             rabbitmq: rabbitmq
@@ -7655,6 +7664,7 @@ components:
           capabilities:
             backup: backup
             capabilities: capabilities
+            restore: restore
             zookeeper: zookeeper
             crd_reporting: crd_reporting
             rabbitmq: rabbitmq
