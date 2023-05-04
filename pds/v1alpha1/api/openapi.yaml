@@ -6003,6 +6003,7 @@ components:
             manifest: '{}'
             replicas: 5
             created_at: created_at
+            health: Partially Available
             readyReplicas: 5
             deployment_id: deployment_id
             id: id
@@ -6439,6 +6440,7 @@ components:
           manifest: '{}'
           replicas: 5
           created_at: created_at
+          health: Partially Available
           readyReplicas: 5
           deployment_id: deployment_id
           id: id
@@ -6625,6 +6627,7 @@ components:
         manifest: '{}'
         replicas: 5
         created_at: created_at
+        health: Partially Available
         readyReplicas: 5
         deployment_id: deployment_id
         id: id
@@ -6638,6 +6641,14 @@ components:
           $ref: '#/components/schemas/models.Deployment'
         deployment_id:
           type: string
+        health:
+          description: Health represents the real state on the target cluster.
+          enum:
+          - Partially Available
+          - Available
+          - Unavailable
+          - Unknown
+          type: string
         id:
           description: ID is auto generated on creation
           type: string
@@ -6649,6 +6660,9 @@ components:
         replicas:
           type: integer
         status:
+          description: |-
+            Status represents a granular state of the deployment. This includes transitional states like 'Deploying',
+            which can only be inferred by the PDS control plane.
           enum:
           - Deploying
           - Partially Available
@@ -7420,6 +7434,7 @@ components:
             manifest: '{}'
             replicas: 5
             created_at: created_at
+            health: Partially Available
             readyReplicas: 5
             deployment_id: deployment_id
             id: id
@@ -7523,6 +7538,7 @@ components:
             manifest: '{}'
             replicas: 5
             created_at: created_at
+            health: Partially Available
             readyReplicas: 5
             deployment_id: deployment_id
             id: id
