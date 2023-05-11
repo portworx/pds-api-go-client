@@ -504,7 +504,7 @@ type ApiApiDeploymentsIdGetRequest struct {
 	expand *string
 }
 
-// Expand the result with related entities (allowed values: deployment_target, namespace)
+// Expand the result with related entities (allowed values: deployment_target, namespace, deployment_manifest)
 func (r ApiApiDeploymentsIdGetRequest) Expand(expand string) ApiApiDeploymentsIdGetRequest {
 	r.expand = &expand
 	return r

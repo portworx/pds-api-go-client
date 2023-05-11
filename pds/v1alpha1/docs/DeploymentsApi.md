@@ -318,7 +318,7 @@ import (
 
 func main() {
     id := "id_example" // string | Deployment ID (either id or deployment_id field)
-    expand := "expand_example" // string | Expand the result with related entities (allowed values: deployment_target, namespace) (optional)
+    expand := "expand_example" // string | Expand the result with related entities (allowed values: deployment_target, namespace, deployment_manifest) (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -348,7 +348,7 @@ Other parameters are passed through a pointer to a apiApiDeploymentsIdGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **expand** | **string** | Expand the result with related entities (allowed values: deployment_target, namespace) | 
+ **expand** | **string** | Expand the result with related entities (allowed values: deployment_target, namespace, deployment_manifest) | 
 
 ### Return type
 

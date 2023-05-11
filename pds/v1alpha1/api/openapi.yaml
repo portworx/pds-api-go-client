@@ -1948,7 +1948,7 @@ paths:
         schema:
           type: string
       - description: 'Expand the result with related entities (allowed values: deployment_target,
-          namespace)'
+          namespace, deployment_manifest)'
         in: query
         name: expand
         schema:
