@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## ApiBackupsIdJobsGet
 
-> ControllersBackupJobsResponse ApiBackupsIdJobsGet(ctx, id).Execute()
+> ControllersListBackupJobsStatusResponse ApiBackupsIdJobsGet(ctx, id).Execute()
 
 List Backup's Jobs
 
@@ -251,7 +251,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupJobsApi.ApiBackupsIdJobsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiBackupsIdJobsGet`: ControllersBackupJobsResponse
+    // response from `ApiBackupsIdJobsGet`: ControllersListBackupJobsStatusResponse
     fmt.Fprintf(os.Stdout, "Response from `BackupJobsApi.ApiBackupsIdJobsGet`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ControllersBackupJobsResponse**](ControllersBackupJobsResponse.md)
+[**ControllersListBackupJobsStatusResponse**](ControllersListBackupJobsStatusResponse.md)
 
 ### Authorization
 

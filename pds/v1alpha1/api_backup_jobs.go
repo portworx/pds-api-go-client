@@ -388,7 +388,7 @@ type ApiApiBackupsIdJobsGetRequest struct {
 }
 
 
-func (r ApiApiBackupsIdJobsGetRequest) Execute() (*ControllersBackupJobsResponse, *http.Response, error) {
+func (r ApiApiBackupsIdJobsGetRequest) Execute() (*ControllersListBackupJobsStatusResponse, *http.Response, error) {
 	return r.ApiService.ApiBackupsIdJobsGetExecute(r)
 }
 
@@ -410,13 +410,13 @@ func (a *BackupJobsApiService) ApiBackupsIdJobsGet(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return ControllersBackupJobsResponse
-func (a *BackupJobsApiService) ApiBackupsIdJobsGetExecute(r ApiApiBackupsIdJobsGetRequest) (*ControllersBackupJobsResponse, *http.Response, error) {
+//  @return ControllersListBackupJobsStatusResponse
+func (a *BackupJobsApiService) ApiBackupsIdJobsGetExecute(r ApiApiBackupsIdJobsGetRequest) (*ControllersListBackupJobsStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ControllersBackupJobsResponse
+		localVarReturnValue  *ControllersListBackupJobsStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupJobsApiService.ApiBackupsIdJobsGet")
