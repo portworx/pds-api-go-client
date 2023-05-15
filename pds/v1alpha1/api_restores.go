@@ -274,34 +274,34 @@ func (a *RestoresApiService) ApiRestoresIdGetExecute(r ApiApiRestoresIdGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRestoresIdUpdateStatusPostRequest struct {
+type ApiApiRestoresIdUpdateManifestPostRequest struct {
 	ctx context.Context
 	ApiService *RestoresApiService
 	id string
-	body *RequestsUpdateRestoreStatusRequest
+	body *RequestsUpdateRestoreManifestRequest
 }
 
-// Request body containing the status update
-func (r ApiApiRestoresIdUpdateStatusPostRequest) Body(body RequestsUpdateRestoreStatusRequest) ApiApiRestoresIdUpdateStatusPostRequest {
+// Request body containing the manifest update
+func (r ApiApiRestoresIdUpdateManifestPostRequest) Body(body RequestsUpdateRestoreManifestRequest) ApiApiRestoresIdUpdateManifestPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiApiRestoresIdUpdateStatusPostRequest) Execute() (*ModelsRestore, *http.Response, error) {
-	return r.ApiService.ApiRestoresIdUpdateStatusPostExecute(r)
+func (r ApiApiRestoresIdUpdateManifestPostRequest) Execute() (*ModelsRestore, *http.Response, error) {
+	return r.ApiService.ApiRestoresIdUpdateManifestPostExecute(r)
 }
 
 /*
-ApiRestoresIdUpdateStatusPost Update Restore Status
+ApiRestoresIdUpdateManifestPost Update Restore Manifest
 
-Updates a Restore Status
+Updates a Restore Manifest
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Restore ID (must be valid UUID)
- @return ApiApiRestoresIdUpdateStatusPostRequest
+ @return ApiApiRestoresIdUpdateManifestPostRequest
 */
-func (a *RestoresApiService) ApiRestoresIdUpdateStatusPost(ctx context.Context, id string) ApiApiRestoresIdUpdateStatusPostRequest {
-	return ApiApiRestoresIdUpdateStatusPostRequest{
+func (a *RestoresApiService) ApiRestoresIdUpdateManifestPost(ctx context.Context, id string) ApiApiRestoresIdUpdateManifestPostRequest {
+	return ApiApiRestoresIdUpdateManifestPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -310,7 +310,7 @@ func (a *RestoresApiService) ApiRestoresIdUpdateStatusPost(ctx context.Context, 
 
 // Execute executes the request
 //  @return ModelsRestore
-func (a *RestoresApiService) ApiRestoresIdUpdateStatusPostExecute(r ApiApiRestoresIdUpdateStatusPostRequest) (*ModelsRestore, *http.Response, error) {
+func (a *RestoresApiService) ApiRestoresIdUpdateManifestPostExecute(r ApiApiRestoresIdUpdateManifestPostRequest) (*ModelsRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -318,12 +318,12 @@ func (a *RestoresApiService) ApiRestoresIdUpdateStatusPostExecute(r ApiApiRestor
 		localVarReturnValue  *ModelsRestore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RestoresApiService.ApiRestoresIdUpdateStatusPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RestoresApiService.ApiRestoresIdUpdateManifestPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/restores/{id}/update-status"
+	localVarPath := localBasePath + "/api/restores/{id}/update-manifest"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

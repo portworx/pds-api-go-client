@@ -2917,9 +2917,9 @@ paths:
       summary: Get Restore
       tags:
       - Restores
-  /api/restores/{id}/update-status:
+  /api/restores/{id}/update-manifest:
     post:
-      description: Updates a Restore Status
+      description: Updates a Restore Manifest
       parameters:
       - description: Restore ID (must be valid UUID)
         in: path
@@ -2931,8 +2931,8 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/requests.UpdateRestoreStatusRequest'
-        description: Request body containing the status update
+              $ref: '#/components/schemas/requests.UpdateRestoreManifestRequest'
+        description: Request body containing the manifest update
         required: true
       responses:
         "200":
@@ -2943,7 +2943,7 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      summary: Update Restore Status
+      summary: Update Restore Manifest
       tags:
       - Restores
       x-codegen-request-body-name: body
@@ -8765,7 +8765,7 @@ components:
         px_status:
           type: string
       type: object
-    requests.UpdateRestoreStatusRequest:
+    requests.UpdateRestoreManifestRequest:
       properties:
         completion_status:
           description: Status of the restore process on the Target Cluster

@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiBackupJobsIdRestorePost**](RestoresApi.md#ApiBackupJobsIdRestorePost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 [**ApiRestoresIdGet**](RestoresApi.md#ApiRestoresIdGet) | **Get** /api/restores/{id} | Get Restore
-[**ApiRestoresIdUpdateStatusPost**](RestoresApi.md#ApiRestoresIdUpdateStatusPost) | **Post** /api/restores/{id}/update-status | Update Restore Status
+[**ApiRestoresIdUpdateManifestPost**](RestoresApi.md#ApiRestoresIdUpdateManifestPost) | **Post** /api/restores/{id}/update-manifest | Update Restore Manifest
 
 
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiRestoresIdUpdateStatusPost
+## ApiRestoresIdUpdateManifestPost
 
-> ModelsRestore ApiRestoresIdUpdateStatusPost(ctx, id).Body(body).Execute()
+> ModelsRestore ApiRestoresIdUpdateManifestPost(ctx, id).Body(body).Execute()
 
-Update Restore Status
+Update Restore Manifest
 
 
 
@@ -174,17 +174,17 @@ import (
 
 func main() {
     id := "id_example" // string | Restore ID (must be valid UUID)
-    body := *openapiclient.NewRequestsUpdateRestoreStatusRequest() // RequestsUpdateRestoreStatusRequest | Request body containing the status update
+    body := *openapiclient.NewRequestsUpdateRestoreManifestRequest() // RequestsUpdateRestoreManifestRequest | Request body containing the manifest update
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RestoresApi.ApiRestoresIdUpdateStatusPost(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.RestoresApi.ApiRestoresIdUpdateManifestPost(context.Background(), id).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RestoresApi.ApiRestoresIdUpdateStatusPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RestoresApi.ApiRestoresIdUpdateManifestPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRestoresIdUpdateStatusPost`: ModelsRestore
-    fmt.Fprintf(os.Stdout, "Response from `RestoresApi.ApiRestoresIdUpdateStatusPost`: %v\n", resp)
+    // response from `ApiRestoresIdUpdateManifestPost`: ModelsRestore
+    fmt.Fprintf(os.Stdout, "Response from `RestoresApi.ApiRestoresIdUpdateManifestPost`: %v\n", resp)
 }
 ```
 
@@ -198,13 +198,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiRestoresIdUpdateStatusPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiRestoresIdUpdateManifestPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**RequestsUpdateRestoreStatusRequest**](RequestsUpdateRestoreStatusRequest.md) | Request body containing the status update | 
+ **body** | [**RequestsUpdateRestoreManifestRequest**](RequestsUpdateRestoreManifestRequest.md) | Request body containing the manifest update | 
 
 ### Return type
 

@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// RequestsUpdateRestoreStatusRequest struct for RequestsUpdateRestoreStatusRequest
-type RequestsUpdateRestoreStatusRequest struct {
+// RequestsUpdateRestoreManifestRequest struct for RequestsUpdateRestoreManifestRequest
+type RequestsUpdateRestoreManifestRequest struct {
 	// Status of the restore process on the Target Cluster
 	CompletionStatus *string `json:"completion_status,omitempty"`
 	// CompletionTime of the restore process.
@@ -26,25 +26,25 @@ type RequestsUpdateRestoreStatusRequest struct {
 	StartTime *string `json:"start_time,omitempty"`
 }
 
-// NewRequestsUpdateRestoreStatusRequest instantiates a new RequestsUpdateRestoreStatusRequest object
+// NewRequestsUpdateRestoreManifestRequest instantiates a new RequestsUpdateRestoreManifestRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsUpdateRestoreStatusRequest() *RequestsUpdateRestoreStatusRequest {
-	this := RequestsUpdateRestoreStatusRequest{}
+func NewRequestsUpdateRestoreManifestRequest() *RequestsUpdateRestoreManifestRequest {
+	this := RequestsUpdateRestoreManifestRequest{}
 	return &this
 }
 
-// NewRequestsUpdateRestoreStatusRequestWithDefaults instantiates a new RequestsUpdateRestoreStatusRequest object
+// NewRequestsUpdateRestoreManifestRequestWithDefaults instantiates a new RequestsUpdateRestoreManifestRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRequestsUpdateRestoreStatusRequestWithDefaults() *RequestsUpdateRestoreStatusRequest {
-	this := RequestsUpdateRestoreStatusRequest{}
+func NewRequestsUpdateRestoreManifestRequestWithDefaults() *RequestsUpdateRestoreManifestRequest {
+	this := RequestsUpdateRestoreManifestRequest{}
 	return &this
 }
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise.
-func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatus() string {
+func (o *RequestsUpdateRestoreManifestRequest) GetCompletionStatus() string {
 	if o == nil || o.CompletionStatus == nil {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatus() string {
 
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatusOk() (*string, bool) {
+func (o *RequestsUpdateRestoreManifestRequest) GetCompletionStatusOk() (*string, bool) {
 	if o == nil || o.CompletionStatus == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionStatusOk() (*string, b
 }
 
 // HasCompletionStatus returns a boolean if a field has been set.
-func (o *RequestsUpdateRestoreStatusRequest) HasCompletionStatus() bool {
+func (o *RequestsUpdateRestoreManifestRequest) HasCompletionStatus() bool {
 	if o != nil && o.CompletionStatus != nil {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *RequestsUpdateRestoreStatusRequest) HasCompletionStatus() bool {
 }
 
 // SetCompletionStatus gets a reference to the given string and assigns it to the CompletionStatus field.
-func (o *RequestsUpdateRestoreStatusRequest) SetCompletionStatus(v string) {
+func (o *RequestsUpdateRestoreManifestRequest) SetCompletionStatus(v string) {
 	o.CompletionStatus = &v
 }
 
 // GetCompletionTime returns the CompletionTime field value if set, zero value otherwise.
-func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTime() string {
+func (o *RequestsUpdateRestoreManifestRequest) GetCompletionTime() string {
 	if o == nil || o.CompletionTime == nil {
 		var ret string
 		return ret
@@ -86,7 +86,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTime() string {
 
 // GetCompletionTimeOk returns a tuple with the CompletionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTimeOk() (*string, bool) {
+func (o *RequestsUpdateRestoreManifestRequest) GetCompletionTimeOk() (*string, bool) {
 	if o == nil || o.CompletionTime == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetCompletionTimeOk() (*string, boo
 }
 
 // HasCompletionTime returns a boolean if a field has been set.
-func (o *RequestsUpdateRestoreStatusRequest) HasCompletionTime() bool {
+func (o *RequestsUpdateRestoreManifestRequest) HasCompletionTime() bool {
 	if o != nil && o.CompletionTime != nil {
 		return true
 	}
@@ -103,12 +103,12 @@ func (o *RequestsUpdateRestoreStatusRequest) HasCompletionTime() bool {
 }
 
 // SetCompletionTime gets a reference to the given string and assigns it to the CompletionTime field.
-func (o *RequestsUpdateRestoreStatusRequest) SetCompletionTime(v string) {
+func (o *RequestsUpdateRestoreManifestRequest) SetCompletionTime(v string) {
 	o.CompletionTime = &v
 }
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
-func (o *RequestsUpdateRestoreStatusRequest) GetErrorCode() string {
+func (o *RequestsUpdateRestoreManifestRequest) GetErrorCode() string {
 	if o == nil || o.ErrorCode == nil {
 		var ret string
 		return ret
@@ -118,7 +118,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetErrorCode() string {
 
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsUpdateRestoreStatusRequest) GetErrorCodeOk() (*string, bool) {
+func (o *RequestsUpdateRestoreManifestRequest) GetErrorCodeOk() (*string, bool) {
 	if o == nil || o.ErrorCode == nil {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetErrorCodeOk() (*string, bool) {
 }
 
 // HasErrorCode returns a boolean if a field has been set.
-func (o *RequestsUpdateRestoreStatusRequest) HasErrorCode() bool {
+func (o *RequestsUpdateRestoreManifestRequest) HasErrorCode() bool {
 	if o != nil && o.ErrorCode != nil {
 		return true
 	}
@@ -135,12 +135,12 @@ func (o *RequestsUpdateRestoreStatusRequest) HasErrorCode() bool {
 }
 
 // SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
-func (o *RequestsUpdateRestoreStatusRequest) SetErrorCode(v string) {
+func (o *RequestsUpdateRestoreManifestRequest) SetErrorCode(v string) {
 	o.ErrorCode = &v
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
-func (o *RequestsUpdateRestoreStatusRequest) GetStartTime() string {
+func (o *RequestsUpdateRestoreManifestRequest) GetStartTime() string {
 	if o == nil || o.StartTime == nil {
 		var ret string
 		return ret
@@ -150,7 +150,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetStartTime() string {
 
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsUpdateRestoreStatusRequest) GetStartTimeOk() (*string, bool) {
+func (o *RequestsUpdateRestoreManifestRequest) GetStartTimeOk() (*string, bool) {
 	if o == nil || o.StartTime == nil {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *RequestsUpdateRestoreStatusRequest) GetStartTimeOk() (*string, bool) {
 }
 
 // HasStartTime returns a boolean if a field has been set.
-func (o *RequestsUpdateRestoreStatusRequest) HasStartTime() bool {
+func (o *RequestsUpdateRestoreManifestRequest) HasStartTime() bool {
 	if o != nil && o.StartTime != nil {
 		return true
 	}
@@ -167,11 +167,11 @@ func (o *RequestsUpdateRestoreStatusRequest) HasStartTime() bool {
 }
 
 // SetStartTime gets a reference to the given string and assigns it to the StartTime field.
-func (o *RequestsUpdateRestoreStatusRequest) SetStartTime(v string) {
+func (o *RequestsUpdateRestoreManifestRequest) SetStartTime(v string) {
 	o.StartTime = &v
 }
 
-func (o RequestsUpdateRestoreStatusRequest) MarshalJSON() ([]byte, error) {
+func (o RequestsUpdateRestoreManifestRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CompletionStatus != nil {
 		toSerialize["completion_status"] = o.CompletionStatus
@@ -188,38 +188,38 @@ func (o RequestsUpdateRestoreStatusRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableRequestsUpdateRestoreStatusRequest struct {
-	value *RequestsUpdateRestoreStatusRequest
+type NullableRequestsUpdateRestoreManifestRequest struct {
+	value *RequestsUpdateRestoreManifestRequest
 	isSet bool
 }
 
-func (v NullableRequestsUpdateRestoreStatusRequest) Get() *RequestsUpdateRestoreStatusRequest {
+func (v NullableRequestsUpdateRestoreManifestRequest) Get() *RequestsUpdateRestoreManifestRequest {
 	return v.value
 }
 
-func (v *NullableRequestsUpdateRestoreStatusRequest) Set(val *RequestsUpdateRestoreStatusRequest) {
+func (v *NullableRequestsUpdateRestoreManifestRequest) Set(val *RequestsUpdateRestoreManifestRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRequestsUpdateRestoreStatusRequest) IsSet() bool {
+func (v NullableRequestsUpdateRestoreManifestRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRequestsUpdateRestoreStatusRequest) Unset() {
+func (v *NullableRequestsUpdateRestoreManifestRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRequestsUpdateRestoreStatusRequest(val *RequestsUpdateRestoreStatusRequest) *NullableRequestsUpdateRestoreStatusRequest {
-	return &NullableRequestsUpdateRestoreStatusRequest{value: val, isSet: true}
+func NewNullableRequestsUpdateRestoreManifestRequest(val *RequestsUpdateRestoreManifestRequest) *NullableRequestsUpdateRestoreManifestRequest {
+	return &NullableRequestsUpdateRestoreManifestRequest{value: val, isSet: true}
 }
 
-func (v NullableRequestsUpdateRestoreStatusRequest) MarshalJSON() ([]byte, error) {
+func (v NullableRequestsUpdateRestoreManifestRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRequestsUpdateRestoreStatusRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableRequestsUpdateRestoreManifestRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
