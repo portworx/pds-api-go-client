@@ -4,19 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BackupId** | Pointer to **string** | BackupID which backup created the snapshot (nullable). | [optional] 
-**BackupSpec** | Pointer to **[]int32** | BackupSpecJSON is the specification of the Backup in JSON format at the time the snapshot was taken. | [optional] 
-**CloudCredentialName** | Pointer to **string** | CloudCredentialName credentials to access snapshot. | [optional] 
-**CloudSnapId** | Pointer to **string** | CloudSnapID snapshot of the backup volume. | [optional] 
-**CompletionStatus** | Pointer to **string** | CompletionStatus of the backup job. | [optional] 
+**BackupCapability** | Pointer to **string** |  | [optional] 
+**BackupId** | Pointer to **string** |  | [optional] 
+**BackupSpec** | Pointer to **map[string]interface{}** |  | [optional] 
+**CloudCredentialName** | Pointer to **string** |  | [optional] 
+**CloudSnapId** | Pointer to **string** |  | [optional] 
+**CompletionStatus** | Pointer to **string** | CompletionStatus of the snapshot. | [optional] 
 **CompletionTime** | Pointer to **string** |  | [optional] 
-**DataServiceSpec** | Pointer to **[]int32** | BackupSpecJSON is the specification of the Backup in JSON format at the time the snapshot was taken. | [optional] 
-**DeploymentId** | Pointer to **string** | DeploymentID which deployment was backed up (nullable). | [optional] 
-**ErrorCode** | Pointer to **string** |  | [optional] 
+**DataServiceSpec** | Pointer to **map[string]interface{}** |  | [optional] 
+**DeploymentId** | Pointer to **string** |  | [optional] 
+**DeploymentTargetId** | Pointer to **string** |  | [optional] 
+**ErrorCode** | Pointer to **string** | ErrorCode if CompletionStatus is \&quot;Failed\&quot; | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
-**FileSize** | Pointer to **int32** | FileSize of the CloudSnap image. | [optional] 
-**Name** | Pointer to **string** | Name of the BackupJob. | [optional] 
-**ProjectId** | **string** | ProjectID which created the snapshot (required). | 
+**FileSize** | Pointer to **int32** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**Namespace** | Pointer to **string** |  | [optional] 
+**ProjectId** | **string** |  | 
 **StartTime** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -37,6 +40,31 @@ will change when the set of required properties is changed
 NewRequestsPutBackupJobRequestWithDefaults instantiates a new RequestsPutBackupJobRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBackupCapability
+
+`func (o *RequestsPutBackupJobRequest) GetBackupCapability() string`
+
+GetBackupCapability returns the BackupCapability field if non-nil, zero value otherwise.
+
+### GetBackupCapabilityOk
+
+`func (o *RequestsPutBackupJobRequest) GetBackupCapabilityOk() (*string, bool)`
+
+GetBackupCapabilityOk returns a tuple with the BackupCapability field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackupCapability
+
+`func (o *RequestsPutBackupJobRequest) SetBackupCapability(v string)`
+
+SetBackupCapability sets BackupCapability field to given value.
+
+### HasBackupCapability
+
+`func (o *RequestsPutBackupJobRequest) HasBackupCapability() bool`
+
+HasBackupCapability returns a boolean if a field has been set.
 
 ### GetBackupId
 
@@ -65,20 +93,20 @@ HasBackupId returns a boolean if a field has been set.
 
 ### GetBackupSpec
 
-`func (o *RequestsPutBackupJobRequest) GetBackupSpec() []int32`
+`func (o *RequestsPutBackupJobRequest) GetBackupSpec() map[string]interface{}`
 
 GetBackupSpec returns the BackupSpec field if non-nil, zero value otherwise.
 
 ### GetBackupSpecOk
 
-`func (o *RequestsPutBackupJobRequest) GetBackupSpecOk() (*[]int32, bool)`
+`func (o *RequestsPutBackupJobRequest) GetBackupSpecOk() (*map[string]interface{}, bool)`
 
 GetBackupSpecOk returns a tuple with the BackupSpec field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBackupSpec
 
-`func (o *RequestsPutBackupJobRequest) SetBackupSpec(v []int32)`
+`func (o *RequestsPutBackupJobRequest) SetBackupSpec(v map[string]interface{})`
 
 SetBackupSpec sets BackupSpec field to given value.
 
@@ -190,20 +218,20 @@ HasCompletionTime returns a boolean if a field has been set.
 
 ### GetDataServiceSpec
 
-`func (o *RequestsPutBackupJobRequest) GetDataServiceSpec() []int32`
+`func (o *RequestsPutBackupJobRequest) GetDataServiceSpec() map[string]interface{}`
 
 GetDataServiceSpec returns the DataServiceSpec field if non-nil, zero value otherwise.
 
 ### GetDataServiceSpecOk
 
-`func (o *RequestsPutBackupJobRequest) GetDataServiceSpecOk() (*[]int32, bool)`
+`func (o *RequestsPutBackupJobRequest) GetDataServiceSpecOk() (*map[string]interface{}, bool)`
 
 GetDataServiceSpecOk returns a tuple with the DataServiceSpec field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataServiceSpec
 
-`func (o *RequestsPutBackupJobRequest) SetDataServiceSpec(v []int32)`
+`func (o *RequestsPutBackupJobRequest) SetDataServiceSpec(v map[string]interface{})`
 
 SetDataServiceSpec sets DataServiceSpec field to given value.
 
@@ -237,6 +265,31 @@ SetDeploymentId sets DeploymentId field to given value.
 `func (o *RequestsPutBackupJobRequest) HasDeploymentId() bool`
 
 HasDeploymentId returns a boolean if a field has been set.
+
+### GetDeploymentTargetId
+
+`func (o *RequestsPutBackupJobRequest) GetDeploymentTargetId() string`
+
+GetDeploymentTargetId returns the DeploymentTargetId field if non-nil, zero value otherwise.
+
+### GetDeploymentTargetIdOk
+
+`func (o *RequestsPutBackupJobRequest) GetDeploymentTargetIdOk() (*string, bool)`
+
+GetDeploymentTargetIdOk returns a tuple with the DeploymentTargetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentTargetId
+
+`func (o *RequestsPutBackupJobRequest) SetDeploymentTargetId(v string)`
+
+SetDeploymentTargetId sets DeploymentTargetId field to given value.
+
+### HasDeploymentTargetId
+
+`func (o *RequestsPutBackupJobRequest) HasDeploymentTargetId() bool`
+
+HasDeploymentTargetId returns a boolean if a field has been set.
 
 ### GetErrorCode
 
@@ -337,6 +390,31 @@ SetName sets Name field to given value.
 `func (o *RequestsPutBackupJobRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetNamespace
+
+`func (o *RequestsPutBackupJobRequest) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *RequestsPutBackupJobRequest) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *RequestsPutBackupJobRequest) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *RequestsPutBackupJobRequest) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetProjectId
 
