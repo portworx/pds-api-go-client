@@ -6793,17 +6793,19 @@ components:
     models.Image:
       example:
         registry: registry
+        images:
+          key: images
         capabilities: '{}'
         data_service_id: data_service_id
+        created_at: created_at
+        tls_available: true
+        version_id: version_id
         updated_at: updated_at
         build: build
         name: name
         namespace: namespace
-        created_at: created_at
-        tls_available: true
         id: id
         tag: tag
-        version_id: version_id
       properties:
         build:
           type: string
@@ -6818,6 +6820,10 @@ components:
         id:
           description: ID is auto generated on creation
           type: string
+        images:
+          additionalProperties:
+            type: string
+          type: object
         name:
           type: string
         namespace:
@@ -7594,29 +7600,33 @@ components:
           continuation: continuation
         data:
         - registry: registry
+          images:
+            key: images
           capabilities: '{}'
           data_service_id: data_service_id
+          created_at: created_at
+          tls_available: true
+          version_id: version_id
           updated_at: updated_at
           build: build
           name: name
           namespace: namespace
-          created_at: created_at
-          tls_available: true
           id: id
           tag: tag
-          version_id: version_id
         - registry: registry
+          images:
+            key: images
           capabilities: '{}'
           data_service_id: data_service_id
+          created_at: created_at
+          tls_available: true
+          version_id: version_id
           updated_at: updated_at
           build: build
           name: name
           namespace: namespace
-          created_at: created_at
-          tls_available: true
           id: id
           tag: tag
-          version_id: version_id
       properties:
         data:
           items:

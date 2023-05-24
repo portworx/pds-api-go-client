@@ -23,6 +23,7 @@ type ModelsImage struct {
 	DataServiceId *string `json:"data_service_id,omitempty"`
 	// ID is auto generated on creation
 	Id *string `json:"id,omitempty"`
+	Images *map[string]string `json:"images,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
 	Registry *string `json:"registry,omitempty"`
@@ -208,6 +209,38 @@ func (o *ModelsImage) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ModelsImage) SetId(v string) {
 	o.Id = &v
+}
+
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *ModelsImage) GetImages() map[string]string {
+	if o == nil || o.Images == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsImage) GetImagesOk() (*map[string]string, bool) {
+	if o == nil || o.Images == nil {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *ModelsImage) HasImages() bool {
+	if o != nil && o.Images != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given map[string]string and assigns it to the Images field.
+func (o *ModelsImage) SetImages(v map[string]string) {
+	o.Images = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -450,6 +483,9 @@ func (o ModelsImage) MarshalJSON() ([]byte, error) {
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Images != nil {
+		toSerialize["images"] = o.Images
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
