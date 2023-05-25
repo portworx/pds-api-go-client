@@ -186,7 +186,7 @@ Class | Method | HTTP request | Description
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplate
 *RestoresApi* | [**ApiBackupJobsIdRestorePost**](docs/RestoresApi.md#apibackupjobsidrestorepost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 *RestoresApi* | [**ApiRestoresIdGet**](docs/RestoresApi.md#apirestoresidget) | **Get** /api/restores/{id} | Get Restore
-*RestoresApi* | [**ApiRestoresIdUpdateManifestPost**](docs/RestoresApi.md#apirestoresidupdatemanifestpost) | **Post** /api/restores/{id}/update-manifest | Update Restore Manifest
+*RestoresApi* | [**ApiRestoresIdUpdatePost**](docs/RestoresApi.md#apirestoresidupdatepost) | **Post** /api/restores/{id}/update | Update Restore
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
 *SampleTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List ApplicationConfigurationSamples
 *SampleTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List BackupPolicySamples
@@ -382,7 +382,7 @@ Class | Method | HTTP request | Description
  - [RequestsPutBackupJobRequest](docs/RequestsPutBackupJobRequest.md)
  - [RequestsPutLegacyBindingRequest](docs/RequestsPutLegacyBindingRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
- - [RequestsUpdateRestoreManifestRequest](docs/RequestsUpdateRestoreManifestRequest.md)
+ - [RequestsUpdateRestoreRequest](docs/RequestsUpdateRestoreRequest.md)
  - [RequestsUpsertDeploymentManifestRequest](docs/RequestsUpsertDeploymentManifestRequest.md)
  - [ServiceDeploymentResourceEvents](docs/ServiceDeploymentResourceEvents.md)
  - [ServiceDeploymentStatus](docs/ServiceDeploymentStatus.md)

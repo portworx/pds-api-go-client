@@ -274,34 +274,34 @@ func (a *RestoresApiService) ApiRestoresIdGetExecute(r ApiApiRestoresIdGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRestoresIdUpdateManifestPostRequest struct {
+type ApiApiRestoresIdUpdatePostRequest struct {
 	ctx context.Context
 	ApiService *RestoresApiService
 	id string
-	body *RequestsUpdateRestoreManifestRequest
+	body *RequestsUpdateRestoreRequest
 }
 
-// Request body containing the manifest update
-func (r ApiApiRestoresIdUpdateManifestPostRequest) Body(body RequestsUpdateRestoreManifestRequest) ApiApiRestoresIdUpdateManifestPostRequest {
+// Request body containing the update
+func (r ApiApiRestoresIdUpdatePostRequest) Body(body RequestsUpdateRestoreRequest) ApiApiRestoresIdUpdatePostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiApiRestoresIdUpdateManifestPostRequest) Execute() (*ModelsRestore, *http.Response, error) {
-	return r.ApiService.ApiRestoresIdUpdateManifestPostExecute(r)
+func (r ApiApiRestoresIdUpdatePostRequest) Execute() (*ModelsRestore, *http.Response, error) {
+	return r.ApiService.ApiRestoresIdUpdatePostExecute(r)
 }
 
 /*
-ApiRestoresIdUpdateManifestPost Update Restore Manifest
+ApiRestoresIdUpdatePost Update Restore
 
-Updates a Restore Manifest
+Updates a Restore
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Restore ID (must be valid UUID)
- @return ApiApiRestoresIdUpdateManifestPostRequest
+ @return ApiApiRestoresIdUpdatePostRequest
 */
-func (a *RestoresApiService) ApiRestoresIdUpdateManifestPost(ctx context.Context, id string) ApiApiRestoresIdUpdateManifestPostRequest {
-	return ApiApiRestoresIdUpdateManifestPostRequest{
+func (a *RestoresApiService) ApiRestoresIdUpdatePost(ctx context.Context, id string) ApiApiRestoresIdUpdatePostRequest {
+	return ApiApiRestoresIdUpdatePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -310,7 +310,7 @@ func (a *RestoresApiService) ApiRestoresIdUpdateManifestPost(ctx context.Context
 
 // Execute executes the request
 //  @return ModelsRestore
-func (a *RestoresApiService) ApiRestoresIdUpdateManifestPostExecute(r ApiApiRestoresIdUpdateManifestPostRequest) (*ModelsRestore, *http.Response, error) {
+func (a *RestoresApiService) ApiRestoresIdUpdatePostExecute(r ApiApiRestoresIdUpdatePostRequest) (*ModelsRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -318,12 +318,12 @@ func (a *RestoresApiService) ApiRestoresIdUpdateManifestPostExecute(r ApiApiRest
 		localVarReturnValue  *ModelsRestore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RestoresApiService.ApiRestoresIdUpdateManifestPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RestoresApiService.ApiRestoresIdUpdatePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/restores/{id}/update-manifest"
+	localVarPath := localBasePath + "/api/restores/{id}/update"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
