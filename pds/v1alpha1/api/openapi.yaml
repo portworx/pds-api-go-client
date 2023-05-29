@@ -6307,12 +6307,14 @@ components:
           secure: true
           fs: fs
         deployment_manifest:
-          updated_at: updated_at
           manifest: '{}'
           replicas: 6
           created_at: created_at
           health: Partially Available
           readyReplicas: 0
+          restore_status: Pending
+          restoring: true
+          updated_at: updated_at
           deployment_id: deployment_id
           id: id
           status: Deploying
@@ -6494,12 +6496,14 @@ components:
       type: object
     models.DeploymentManifest:
       example:
-        updated_at: updated_at
         manifest: '{}'
         replicas: 6
         created_at: created_at
         health: Partially Available
         readyReplicas: 0
+        restore_status: Pending
+        restoring: true
+        updated_at: updated_at
         deployment_id: deployment_id
         id: id
         status: Deploying
@@ -6530,6 +6534,21 @@ components:
           type: integer
         replicas:
           type: integer
+        restore_status:
+          description: Status of the restore process on the Target Cluster
+          enum:
+          - Pending
+          - RestoringCloudSnap
+          - RestoringDataServiceCR
+          - RestoringDeployment
+          - DeploymentEnteringNormalMode
+          - Successful
+          - Failed
+          - ""
+          type: string
+        restoring:
+          description: Restoring represents whether restore is happening or not.
+          type: boolean
         status:
           description: |-
             Status represents a granular state of the deployment. This includes transitional states like 'Deploying',
@@ -7308,12 +7327,14 @@ components:
             secure: true
             fs: fs
           deployment_manifest:
-            updated_at: updated_at
             manifest: '{}'
             replicas: 6
             created_at: created_at
             health: Partially Available
             readyReplicas: 0
+            restore_status: Pending
+            restoring: true
+            updated_at: updated_at
             deployment_id: deployment_id
             id: id
             status: Deploying
@@ -7412,12 +7433,14 @@ components:
             secure: true
             fs: fs
           deployment_manifest:
-            updated_at: updated_at
             manifest: '{}'
             replicas: 6
             created_at: created_at
             health: Partially Available
             readyReplicas: 0
+            restore_status: Pending
+            restoring: true
+            updated_at: updated_at
             deployment_id: deployment_id
             id: id
             status: Deploying
