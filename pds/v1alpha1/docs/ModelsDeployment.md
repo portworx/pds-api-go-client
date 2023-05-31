@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **NodeCount** | Pointer to **int32** | NodeCount total nodes in the deployment. | [optional] 
 **ProjectId** | Pointer to **string** | ProjectID which project the deployment belongs to (models.Project). | [optional] 
 **Resources** | Pointer to [**ModelsDeploymentResources**](ModelsDeploymentResources.md) |  | [optional] 
+**Restore** | Pointer to [**ModelsRestore**](ModelsRestore.md) |  | [optional] 
+**RestoreId** | Pointer to **string** | ID of the restore to which the deployment belongs to (model.Restore). | [optional] 
 **ServiceType** | Pointer to **string** | ServiceType k8s service type. | [optional] 
 **State** | Pointer to **string** | State of deployment. | [optional] 
 **StorageOptions** | Pointer to [**ModelsDeploymentStorageOptions**](ModelsDeploymentStorageOptions.md) |  | [optional] 
@@ -577,6 +579,56 @@ SetResources sets Resources field to given value.
 `func (o *ModelsDeployment) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetRestore
+
+`func (o *ModelsDeployment) GetRestore() ModelsRestore`
+
+GetRestore returns the Restore field if non-nil, zero value otherwise.
+
+### GetRestoreOk
+
+`func (o *ModelsDeployment) GetRestoreOk() (*ModelsRestore, bool)`
+
+GetRestoreOk returns a tuple with the Restore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestore
+
+`func (o *ModelsDeployment) SetRestore(v ModelsRestore)`
+
+SetRestore sets Restore field to given value.
+
+### HasRestore
+
+`func (o *ModelsDeployment) HasRestore() bool`
+
+HasRestore returns a boolean if a field has been set.
+
+### GetRestoreId
+
+`func (o *ModelsDeployment) GetRestoreId() string`
+
+GetRestoreId returns the RestoreId field if non-nil, zero value otherwise.
+
+### GetRestoreIdOk
+
+`func (o *ModelsDeployment) GetRestoreIdOk() (*string, bool)`
+
+GetRestoreIdOk returns a tuple with the RestoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestoreId
+
+`func (o *ModelsDeployment) SetRestoreId(v string)`
+
+SetRestoreId sets RestoreId field to given value.
+
+### HasRestoreId
+
+`func (o *ModelsDeployment) HasRestoreId() bool`
+
+HasRestoreId returns a boolean if a field has been set.
 
 ### GetServiceType
 

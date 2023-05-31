@@ -6319,7 +6319,25 @@ components:
           id: id
           status: Deploying
           timestamp: timestamp
+        restore_id: restore_id
         data_service_id: data_service_id
+        restore:
+          completion_time: completion_time
+          apply_status: apply_status
+          cloud_snap_id: cloud_snap_id
+          created_at: created_at
+          cloud_credential_name: cloud_credential_name
+          start_time: start_time
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          name: name
+          error_code: error_code
+          backup_job_id: backup_job_id
+          deployment_id: deployment_id
+          id: id
+          status: status
+          timestamp: timestamp
         resources:
           storage_request: storage_request
           cpu_limit: cpu_limit
@@ -6461,6 +6479,11 @@ components:
           type: string
         resources:
           $ref: '#/components/schemas/models.DeploymentResources'
+        restore:
+          $ref: '#/components/schemas/models.Restore'
+        restore_id:
+          description: ID of the restore to which the deployment belongs to (model.Restore).
+          type: string
         service_type:
           description: ServiceType k8s service type.
           enum:
@@ -7339,7 +7362,25 @@ components:
             id: id
             status: Deploying
             timestamp: timestamp
+          restore_id: restore_id
           data_service_id: data_service_id
+          restore:
+            completion_time: completion_time
+            apply_status: apply_status
+            cloud_snap_id: cloud_snap_id
+            created_at: created_at
+            cloud_credential_name: cloud_credential_name
+            start_time: start_time
+            deployment_target_id: deployment_target_id
+            namespace_id: namespace_id
+            updated_at: updated_at
+            name: name
+            error_code: error_code
+            backup_job_id: backup_job_id
+            deployment_id: deployment_id
+            id: id
+            status: status
+            timestamp: timestamp
           resources:
             storage_request: storage_request
             cpu_limit: cpu_limit
@@ -7445,7 +7486,25 @@ components:
             id: id
             status: Deploying
             timestamp: timestamp
+          restore_id: restore_id
           data_service_id: data_service_id
+          restore:
+            completion_time: completion_time
+            apply_status: apply_status
+            cloud_snap_id: cloud_snap_id
+            created_at: created_at
+            cloud_credential_name: cloud_credential_name
+            start_time: start_time
+            deployment_target_id: deployment_target_id
+            namespace_id: namespace_id
+            updated_at: updated_at
+            name: name
+            error_code: error_code
+            backup_job_id: backup_job_id
+            deployment_id: deployment_id
+            id: id
+            status: status
+            timestamp: timestamp
           resources:
             storage_request: storage_request
             cpu_limit: cpu_limit
