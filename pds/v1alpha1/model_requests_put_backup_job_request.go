@@ -31,10 +31,12 @@ type RequestsPutBackupJobRequest struct {
 	ErrorCode *string `json:"error_code,omitempty"`
 	ErrorMessage *string `json:"error_message,omitempty"`
 	FileSize *int32 `json:"file_size,omitempty"`
+	ImageName *string `json:"image_name,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
 	ProjectId string `json:"project_id"`
 	StartTime *string `json:"start_time,omitempty"`
+	Timestamp *string `json:"timestamp,omitempty"`
 }
 
 // NewRequestsPutBackupJobRequest instantiates a new RequestsPutBackupJobRequest object
@@ -471,6 +473,38 @@ func (o *RequestsPutBackupJobRequest) SetFileSize(v int32) {
 	o.FileSize = &v
 }
 
+// GetImageName returns the ImageName field value if set, zero value otherwise.
+func (o *RequestsPutBackupJobRequest) GetImageName() string {
+	if o == nil || o.ImageName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ImageName
+}
+
+// GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestsPutBackupJobRequest) GetImageNameOk() (*string, bool) {
+	if o == nil || o.ImageName == nil {
+		return nil, false
+	}
+	return o.ImageName, true
+}
+
+// HasImageName returns a boolean if a field has been set.
+func (o *RequestsPutBackupJobRequest) HasImageName() bool {
+	if o != nil && o.ImageName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImageName gets a reference to the given string and assigns it to the ImageName field.
+func (o *RequestsPutBackupJobRequest) SetImageName(v string) {
+	o.ImageName = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestsPutBackupJobRequest) GetName() string {
 	if o == nil || o.Name == nil {
@@ -591,6 +625,38 @@ func (o *RequestsPutBackupJobRequest) SetStartTime(v string) {
 	o.StartTime = &v
 }
 
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+func (o *RequestsPutBackupJobRequest) GetTimestamp() string {
+	if o == nil || o.Timestamp == nil {
+		var ret string
+		return ret
+	}
+	return *o.Timestamp
+}
+
+// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestsPutBackupJobRequest) GetTimestampOk() (*string, bool) {
+	if o == nil || o.Timestamp == nil {
+		return nil, false
+	}
+	return o.Timestamp, true
+}
+
+// HasTimestamp returns a boolean if a field has been set.
+func (o *RequestsPutBackupJobRequest) HasTimestamp() bool {
+	if o != nil && o.Timestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimestamp gets a reference to the given string and assigns it to the Timestamp field.
+func (o *RequestsPutBackupJobRequest) SetTimestamp(v string) {
+	o.Timestamp = &v
+}
+
 func (o RequestsPutBackupJobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BackupCapability != nil {
@@ -632,6 +698,9 @@ func (o RequestsPutBackupJobRequest) MarshalJSON() ([]byte, error) {
 	if o.FileSize != nil {
 		toSerialize["file_size"] = o.FileSize
 	}
+	if o.ImageName != nil {
+		toSerialize["image_name"] = o.ImageName
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
@@ -643,6 +712,9 @@ func (o RequestsPutBackupJobRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.StartTime != nil {
 		toSerialize["start_time"] = o.StartTime
+	}
+	if o.Timestamp != nil {
+		toSerialize["timestamp"] = o.Timestamp
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,10 +17,12 @@ Name | Type | Description | Notes
 **ErrorCode** | Pointer to **string** | ErrorCode if CompletionStatus is \&quot;Failed\&quot; | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
 **FileSize** | Pointer to **int32** |  | [optional] 
+**ImageName** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **ProjectId** | **string** |  | 
 **StartTime** | Pointer to **string** |  | [optional] 
+**Timestamp** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -366,6 +368,31 @@ SetFileSize sets FileSize field to given value.
 
 HasFileSize returns a boolean if a field has been set.
 
+### GetImageName
+
+`func (o *RequestsPutBackupJobRequest) GetImageName() string`
+
+GetImageName returns the ImageName field if non-nil, zero value otherwise.
+
+### GetImageNameOk
+
+`func (o *RequestsPutBackupJobRequest) GetImageNameOk() (*string, bool)`
+
+GetImageNameOk returns a tuple with the ImageName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageName
+
+`func (o *RequestsPutBackupJobRequest) SetImageName(v string)`
+
+SetImageName sets ImageName field to given value.
+
+### HasImageName
+
+`func (o *RequestsPutBackupJobRequest) HasImageName() bool`
+
+HasImageName returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *RequestsPutBackupJobRequest) GetName() string`
@@ -460,6 +487,31 @@ SetStartTime sets StartTime field to given value.
 `func (o *RequestsPutBackupJobRequest) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
+
+### GetTimestamp
+
+`func (o *RequestsPutBackupJobRequest) GetTimestamp() string`
+
+GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
+
+### GetTimestampOk
+
+`func (o *RequestsPutBackupJobRequest) GetTimestampOk() (*string, bool)`
+
+GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimestamp
+
+`func (o *RequestsPutBackupJobRequest) SetTimestamp(v string)`
+
+SetTimestamp sets Timestamp field to given value.
+
+### HasTimestamp
+
+`func (o *RequestsPutBackupJobRequest) HasTimestamp() bool`
+
+HasTimestamp returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
