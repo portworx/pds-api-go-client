@@ -8688,6 +8688,8 @@ components:
         data_service_spec:
           properties: {}
           type: object
+        deleted:
+          type: boolean
         deployment_id:
           type: string
         deployment_target_id:

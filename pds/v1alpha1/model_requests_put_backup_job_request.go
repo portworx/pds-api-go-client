@@ -25,6 +25,7 @@ type RequestsPutBackupJobRequest struct {
 	CompletionStatus *string `json:"completion_status,omitempty"`
 	CompletionTime *string `json:"completion_time,omitempty"`
 	DataServiceSpec map[string]interface{} `json:"data_service_spec,omitempty"`
+	Deleted *bool `json:"deleted,omitempty"`
 	DeploymentId *string `json:"deployment_id,omitempty"`
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
 	// ErrorCode if CompletionStatus is \"Failed\"
@@ -311,6 +312,38 @@ func (o *RequestsPutBackupJobRequest) HasDataServiceSpec() bool {
 // SetDataServiceSpec gets a reference to the given map[string]interface{} and assigns it to the DataServiceSpec field.
 func (o *RequestsPutBackupJobRequest) SetDataServiceSpec(v map[string]interface{}) {
 	o.DataServiceSpec = v
+}
+
+// GetDeleted returns the Deleted field value if set, zero value otherwise.
+func (o *RequestsPutBackupJobRequest) GetDeleted() bool {
+	if o == nil || o.Deleted == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Deleted
+}
+
+// GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestsPutBackupJobRequest) GetDeletedOk() (*bool, bool) {
+	if o == nil || o.Deleted == nil {
+		return nil, false
+	}
+	return o.Deleted, true
+}
+
+// HasDeleted returns a boolean if a field has been set.
+func (o *RequestsPutBackupJobRequest) HasDeleted() bool {
+	if o != nil && o.Deleted != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleted gets a reference to the given bool and assigns it to the Deleted field.
+func (o *RequestsPutBackupJobRequest) SetDeleted(v bool) {
+	o.Deleted = &v
 }
 
 // GetDeploymentId returns the DeploymentId field value if set, zero value otherwise.
@@ -682,6 +715,9 @@ func (o RequestsPutBackupJobRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.DataServiceSpec != nil {
 		toSerialize["data_service_spec"] = o.DataServiceSpec
+	}
+	if o.Deleted != nil {
+		toSerialize["deleted"] = o.Deleted
 	}
 	if o.DeploymentId != nil {
 		toSerialize["deployment_id"] = o.DeploymentId

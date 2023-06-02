@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CompletionStatus** | Pointer to **string** | CompletionStatus of the snapshot. | [optional] 
 **CompletionTime** | Pointer to **string** |  | [optional] 
 **DataServiceSpec** | Pointer to **map[string]interface{}** |  | [optional] 
+**Deleted** | Pointer to **bool** |  | [optional] 
 **DeploymentId** | Pointer to **string** |  | [optional] 
 **DeploymentTargetId** | Pointer to **string** |  | [optional] 
 **ErrorCode** | Pointer to **string** | ErrorCode if CompletionStatus is \&quot;Failed\&quot; | [optional] 
@@ -242,6 +243,31 @@ SetDataServiceSpec sets DataServiceSpec field to given value.
 `func (o *RequestsPutBackupJobRequest) HasDataServiceSpec() bool`
 
 HasDataServiceSpec returns a boolean if a field has been set.
+
+### GetDeleted
+
+`func (o *RequestsPutBackupJobRequest) GetDeleted() bool`
+
+GetDeleted returns the Deleted field if non-nil, zero value otherwise.
+
+### GetDeletedOk
+
+`func (o *RequestsPutBackupJobRequest) GetDeletedOk() (*bool, bool)`
+
+GetDeletedOk returns a tuple with the Deleted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleted
+
+`func (o *RequestsPutBackupJobRequest) SetDeleted(v bool)`
+
+SetDeleted sets Deleted field to given value.
+
+### HasDeleted
+
+`func (o *RequestsPutBackupJobRequest) HasDeleted() bool`
+
+HasDeleted returns a boolean if a field has been set.
 
 ### GetDeploymentId
 
