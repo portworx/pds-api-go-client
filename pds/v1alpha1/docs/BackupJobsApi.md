@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiBackupJobsIdGet**](BackupJobsApi.md#ApiBackupJobsIdGet) | **Get** /api/backup-jobs/{id} | Get BackupJob
 [**ApiBackupJobsIdPut**](BackupJobsApi.md#ApiBackupJobsIdPut) | **Put** /api/backup-jobs/{id} | Upsert BackupJob
 [**ApiBackupsIdJobsGet**](BackupJobsApi.md#ApiBackupsIdJobsGet) | **Get** /api/backups/{id}/jobs | List Backup&#39;s Jobs
+[**ApiProjectsIdBackupJobsGet**](BackupJobsApi.md#ApiProjectsIdBackupJobsGet) | **Get** /api/projects/{id}/backup-jobs | List Project&#39;s BackupJobs
 
 
 
@@ -276,6 +277,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ControllersListBackupJobsStatusResponse**](ControllersListBackupJobsStatusResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectsIdBackupJobsGet
+
+> ModelsPaginatedResultModelsBackupJob ApiProjectsIdBackupJobsGet(ctx, id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).DeploymentId(deploymentId).DeploymentTargetId(deploymentTargetId).BackupId(backupId).Name(name).NamespaceId(namespaceId).Execute()
+
+List Project's BackupJobs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Project ID (must be valid UUID)
+    sortBy := "sortBy_example" // string | A given BackupJob attribute to sort results by (one of: id, name, created_at) (optional)
+    limit := "limit_example" // string | Maximum number of rows to return (could be less) (optional)
+    continuation := "continuation_example" // string | Use a token returned by a previous query to continue listing with the next batch of rows (optional)
+    id2 := "id_example" // string | Filter results by BackupJob id (optional)
+    deploymentId := "deploymentId_example" // string | Filter results by BackupJob deployment_id (optional)
+    deploymentTargetId := "deploymentTargetId_example" // string | Filter results by BackupJob deployment_target_id (optional)
+    backupId := "backupId_example" // string | Filter results by BackupJob backup_id (optional)
+    name := "name_example" // string | Filter results by BackupJob name (optional)
+    namespaceId := "namespaceId_example" // string | Filter results by BackupJob namespace_id (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupJobsApi.ApiProjectsIdBackupJobsGet(context.Background(), id).SortBy(sortBy).Limit(limit).Continuation(continuation).Id2(id2).DeploymentId(deploymentId).DeploymentTargetId(deploymentTargetId).BackupId(backupId).Name(name).NamespaceId(namespaceId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupJobsApi.ApiProjectsIdBackupJobsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiProjectsIdBackupJobsGet`: ModelsPaginatedResultModelsBackupJob
+    fmt.Fprintf(os.Stdout, "Response from `BackupJobsApi.ApiProjectsIdBackupJobsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Project ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectsIdBackupJobsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sortBy** | **string** | A given BackupJob attribute to sort results by (one of: id, name, created_at) | 
+ **limit** | **string** | Maximum number of rows to return (could be less) | 
+ **continuation** | **string** | Use a token returned by a previous query to continue listing with the next batch of rows | 
+ **id2** | **string** | Filter results by BackupJob id | 
+ **deploymentId** | **string** | Filter results by BackupJob deployment_id | 
+ **deploymentTargetId** | **string** | Filter results by BackupJob deployment_target_id | 
+ **backupId** | **string** | Filter results by BackupJob backup_id | 
+ **name** | **string** | Filter results by BackupJob name | 
+ **namespaceId** | **string** | Filter results by BackupJob namespace_id | 
+
+### Return type
+
+[**ModelsPaginatedResultModelsBackupJob**](ModelsPaginatedResultModelsBackupJob.md)
 
 ### Authorization
 

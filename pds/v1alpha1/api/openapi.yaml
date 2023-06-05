@@ -2480,6 +2480,75 @@ paths:
       summary: Get Project
       tags:
       - Projects
+  /api/projects/{id}/backup-jobs:
+    get:
+      description: Lists the BackupJobs that belonging to the Project.
+      parameters:
+      - description: Project ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given BackupJob attribute to sort results by (one of: id,
+          name, created_at)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by BackupJob id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by BackupJob deployment_id
+        in: query
+        name: deployment_id
+        schema:
+          type: string
+      - description: Filter results by BackupJob deployment_target_id
+        in: query
+        name: deployment_target_id
+        schema:
+          type: string
+      - description: Filter results by BackupJob backup_id
+        in: query
+        name: backup_id
+        schema:
+          type: string
+      - description: Filter results by BackupJob name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by BackupJob namespace_id
+        in: query
+        name: namespace_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_BackupJob'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Project's BackupJobs
+      tags:
+      - BackupJobs
   /api/projects/{id}/backup-targets:
     get:
       description: Lists BackupTargets belonging to the Project
@@ -7199,6 +7268,63 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.BackupCredentials'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_BackupJob:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - error_message: error_message
+          completion_time: completion_time
+          backup_spec: '{}'
+          backup_capability: backup_capability
+          cloud_snap_id: cloud_snap_id
+          created_at: created_at
+          cloud_credential_name: cloud_credential_name
+          file_size: 0
+          data_service_spec: '{}'
+          backup_id: backup_id
+          start_time: start_time
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          completion_status: Active
+          name: name
+          error_code: JobFailed
+          deployment_id: deployment_id
+          id: id
+          image_id: image_id
+          timestamp: timestamp
+        - error_message: error_message
+          completion_time: completion_time
+          backup_spec: '{}'
+          backup_capability: backup_capability
+          cloud_snap_id: cloud_snap_id
+          created_at: created_at
+          cloud_credential_name: cloud_credential_name
+          file_size: 0
+          data_service_spec: '{}'
+          backup_id: backup_id
+          start_time: start_time
+          deployment_target_id: deployment_target_id
+          namespace_id: namespace_id
+          updated_at: updated_at
+          project_id: project_id
+          completion_status: Active
+          name: name
+          error_code: JobFailed
+          deployment_id: deployment_id
+          id: id
+          image_id: image_id
+          timestamp: timestamp
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.BackupJob'
           type: array
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'

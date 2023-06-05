@@ -115,6 +115,7 @@ Class | Method | HTTP request | Description
 *BackupJobsApi* | [**ApiBackupJobsIdGet**](docs/BackupJobsApi.md#apibackupjobsidget) | **Get** /api/backup-jobs/{id} | Get BackupJob
 *BackupJobsApi* | [**ApiBackupJobsIdPut**](docs/BackupJobsApi.md#apibackupjobsidput) | **Put** /api/backup-jobs/{id} | Upsert BackupJob
 *BackupJobsApi* | [**ApiBackupsIdJobsGet**](docs/BackupJobsApi.md#apibackupsidjobsget) | **Get** /api/backups/{id}/jobs | List Backup&#39;s Jobs
+*BackupJobsApi* | [**ApiProjectsIdBackupJobsGet**](docs/BackupJobsApi.md#apiprojectsidbackupjobsget) | **Get** /api/projects/{id}/backup-jobs | List Project&#39;s BackupJobs
 *BackupPoliciesApi* | [**ApiBackupPoliciesIdDelete**](docs/BackupPoliciesApi.md#apibackuppoliciesiddelete) | **Delete** /api/backup-policies/{id} | Delete BackupPolicies
 *BackupPoliciesApi* | [**ApiBackupPoliciesIdGet**](docs/BackupPoliciesApi.md#apibackuppoliciesidget) | **Get** /api/backup-policies/{id} | Get BackupPolicy
 *BackupPoliciesApi* | [**ApiBackupPoliciesIdPut**](docs/BackupPoliciesApi.md#apibackuppoliciesidput) | **Put** /api/backup-policies/{id} | Update BackupPolicy
@@ -337,6 +338,7 @@ Class | Method | HTTP request | Description
  - [ModelsPaginatedResultModelsApplicationConfigurationTemplate](docs/ModelsPaginatedResultModelsApplicationConfigurationTemplate.md)
  - [ModelsPaginatedResultModelsBackup](docs/ModelsPaginatedResultModelsBackup.md)
  - [ModelsPaginatedResultModelsBackupCredentials](docs/ModelsPaginatedResultModelsBackupCredentials.md)
+ - [ModelsPaginatedResultModelsBackupJob](docs/ModelsPaginatedResultModelsBackupJob.md)
  - [ModelsPaginatedResultModelsBackupPolicy](docs/ModelsPaginatedResultModelsBackupPolicy.md)
  - [ModelsPaginatedResultModelsBackupTarget](docs/ModelsPaginatedResultModelsBackupTarget.md)
  - [ModelsPaginatedResultModelsDataService](docs/ModelsPaginatedResultModelsDataService.md)
