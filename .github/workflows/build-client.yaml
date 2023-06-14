@@ -4,6 +4,14 @@ on:
   repository_dispatch:
     types: [client-update]
 
+  # Allow manual trigger.
+  workflow_dispatch:
+    inputs:
+      sha:
+        type: string
+        description: SHA corresponding to the openapi image to build the client from
+        required: true
+
 jobs:
   client:
     runs-on: ubuntu-latest
@@ -24,10 +32,16 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Determine SHA
+      id: sha
+      run: |
+        sha=${${{ github.event.client_payload.sha }}:-${{ inputs.sha }}}
+        echo "sha=${sha}" >> $GITHUB_OUTPUT
+
     - name: Pull openapi image
       id: image
       run: |
-        IMAGE=portworx/pds-api:openapi-dev-${{ github.event.client_payload.sha }}
+        IMAGE=portworx/pds-api:openapi-dev-${{ steps.sha.outputs.sha }}
         docker pull ${IMAGE}
         echo "::set-output name=name::${IMAGE}"
 
@@ -50,6 +64,6 @@ jobs:
       with:
         add: 'pds/'
         default_author: github_actions
-        message: 'Update client for `${{ github.event.client_payload.sha }}`'
+        message: 'Update client for `${{ steps.sha.outputs.sha }}`'
         commit: --signoff
         push: true
