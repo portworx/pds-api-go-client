@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: [client-update]
 
+  # Allow manual trigger.
+  workflow_dispatch:
+
 jobs:
   client:
     runs-on: ubuntu-latest
