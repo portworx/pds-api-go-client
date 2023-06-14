@@ -3,6 +3,7 @@ on:
   # Trigger by updates from other repos.
   repository_dispatch:
     types: [client-update]
+  pull_request:
 
 jobs:
   client:
