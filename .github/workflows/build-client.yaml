@@ -35,7 +35,10 @@ jobs:
     - name: Determine SHA
       id: sha
       run: |
-        sha=${${{ github.event.client_payload.sha }}:-${{ inputs.sha }}}
+        sha=${{ github.event.client_payload.sha }}
+        if [ -z ${sha} ]; then
+          sha=${{ inputs.sha }}
+        fi
         echo "sha=${sha}" >> $GITHUB_OUTPUT
 
     - name: Pull openapi image
