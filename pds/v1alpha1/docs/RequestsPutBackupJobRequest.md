@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **FileSize** | Pointer to **int32** |  | [optional] 
 **ImageName** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Namespace** | Pointer to **string** |  | [optional] 
+**NamespaceName** | Pointer to **string** |  | [optional] 
 **ProjectId** | **string** |  | 
 **StartTime** | Pointer to **string** |  | [optional] 
 **Timestamp** | Pointer to **string** |  | [optional] 
@@ -444,30 +444,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetNamespace
+### GetNamespaceName
 
-`func (o *RequestsPutBackupJobRequest) GetNamespace() string`
+`func (o *RequestsPutBackupJobRequest) GetNamespaceName() string`
 
-GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+GetNamespaceName returns the NamespaceName field if non-nil, zero value otherwise.
 
-### GetNamespaceOk
+### GetNamespaceNameOk
 
-`func (o *RequestsPutBackupJobRequest) GetNamespaceOk() (*string, bool)`
+`func (o *RequestsPutBackupJobRequest) GetNamespaceNameOk() (*string, bool)`
 
-GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+GetNamespaceNameOk returns a tuple with the NamespaceName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNamespace
+### SetNamespaceName
 
-`func (o *RequestsPutBackupJobRequest) SetNamespace(v string)`
+`func (o *RequestsPutBackupJobRequest) SetNamespaceName(v string)`
 
-SetNamespace sets Namespace field to given value.
+SetNamespaceName sets NamespaceName field to given value.
 
-### HasNamespace
+### HasNamespaceName
 
-`func (o *RequestsPutBackupJobRequest) HasNamespace() bool`
+`func (o *RequestsPutBackupJobRequest) HasNamespaceName() bool`
 
-HasNamespace returns a boolean if a field has been set.
+HasNamespaceName returns a boolean if a field has been set.
 
 ### GetProjectId
 

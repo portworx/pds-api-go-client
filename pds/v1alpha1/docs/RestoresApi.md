@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApiBackupJobsIdRestorePost**](RestoresApi.md#ApiBackupJobsIdRestorePost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 [**ApiRestoresIdGet**](RestoresApi.md#ApiRestoresIdGet) | **Get** /api/restores/{id} | Get Restore
 [**ApiRestoresIdUpdatePost**](RestoresApi.md#ApiRestoresIdUpdatePost) | **Post** /api/restores/{id}/update | Update Restore
+[**ApiRestoresRestorabilityMatrixGet**](RestoresApi.md#ApiRestoresRestorabilityMatrixGet) | **Get** /api/restores/restorability-matrix | Restorability Matrix
 
 
 
@@ -209,6 +210,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelsRestore**](ModelsRestore.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiRestoresRestorabilityMatrixGet
+
+> map[string][]ServiceRestoreCompatibilityCondition ApiRestoresRestorabilityMatrixGet(ctx).Execute()
+
+Restorability Matrix
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RestoresApi.ApiRestoresRestorabilityMatrixGet(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RestoresApi.ApiRestoresRestorabilityMatrixGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiRestoresRestorabilityMatrixGet`: map[string][]ServiceRestoreCompatibilityCondition
+    fmt.Fprintf(os.Stdout, "Response from `RestoresApi.ApiRestoresRestorabilityMatrixGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiRestoresRestorabilityMatrixGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**map[string][]ServiceRestoreCompatibilityCondition**](array.md)
 
 ### Authorization
 

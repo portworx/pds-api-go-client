@@ -745,6 +745,9 @@ paths:
         "204":
           content: {}
           description: No Content
+        "422":
+          content: {}
+          description: Deployment Target not healthy, can not process backup job deletion
       security:
       - ApiKeyAuth: []
       summary: Delete BackupJob
@@ -2964,6 +2967,25 @@ paths:
       tags:
       - ResourceSettingsTemplates
       x-codegen-request-body-name: body
+  /api/restores/restorability-matrix:
+    get:
+      description: Get Restorability Matrix
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/service.RestoreCompatibilityCondition'
+                  type: array
+                type: object
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Restorability Matrix
+      tags:
+      - Restores
   /api/restores/{id}:
     get:
       description: Fetches a Restore
@@ -6660,6 +6682,7 @@ components:
           - Unavailable
           - Failed
           - Unknown
+          - Restoring
           type: string
         timestamp:
           type: string
@@ -8831,7 +8854,7 @@ components:
           type: string
         name:
           type: string
-        namespace:
+        namespace_name:
           type: string
         project_id:
           type: string
@@ -9000,7 +9023,23 @@ components:
           - Unavailable
           - Deploying
           - Unknown
+          - Restoring
           type: string
+      type: object
+    service.RestoreCompatibilityCondition:
+      properties:
+        backup_job:
+          additionalProperties:
+            type: string
+          type: object
+        image:
+          additionalProperties:
+            type: string
+          type: object
+        target_cluster:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     v1.TypedLocalObjectReference:
       example:

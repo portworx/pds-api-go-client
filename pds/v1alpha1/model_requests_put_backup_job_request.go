@@ -34,7 +34,7 @@ type RequestsPutBackupJobRequest struct {
 	FileSize *int32 `json:"file_size,omitempty"`
 	ImageName *string `json:"image_name,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
+	NamespaceName *string `json:"namespace_name,omitempty"`
 	ProjectId string `json:"project_id"`
 	StartTime *string `json:"start_time,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
@@ -570,36 +570,36 @@ func (o *RequestsPutBackupJobRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
-func (o *RequestsPutBackupJobRequest) GetNamespace() string {
-	if o == nil || o.Namespace == nil {
+// GetNamespaceName returns the NamespaceName field value if set, zero value otherwise.
+func (o *RequestsPutBackupJobRequest) GetNamespaceName() string {
+	if o == nil || o.NamespaceName == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.NamespaceName
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceNameOk returns a tuple with the NamespaceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsPutBackupJobRequest) GetNamespaceOk() (*string, bool) {
-	if o == nil || o.Namespace == nil {
+func (o *RequestsPutBackupJobRequest) GetNamespaceNameOk() (*string, bool) {
+	if o == nil || o.NamespaceName == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.NamespaceName, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *RequestsPutBackupJobRequest) HasNamespace() bool {
-	if o != nil && o.Namespace != nil {
+// HasNamespaceName returns a boolean if a field has been set.
+func (o *RequestsPutBackupJobRequest) HasNamespaceName() bool {
+	if o != nil && o.NamespaceName != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
-func (o *RequestsPutBackupJobRequest) SetNamespace(v string) {
-	o.Namespace = &v
+// SetNamespaceName gets a reference to the given string and assigns it to the NamespaceName field.
+func (o *RequestsPutBackupJobRequest) SetNamespaceName(v string) {
+	o.NamespaceName = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -740,8 +740,8 @@ func (o RequestsPutBackupJobRequest) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Namespace != nil {
-		toSerialize["namespace"] = o.Namespace
+	if o.NamespaceName != nil {
+		toSerialize["namespace_name"] = o.NamespaceName
 	}
 	if true {
 		toSerialize["project_id"] = o.ProjectId

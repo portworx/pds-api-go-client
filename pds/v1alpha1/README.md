@@ -188,6 +188,7 @@ Class | Method | HTTP request | Description
 *RestoresApi* | [**ApiBackupJobsIdRestorePost**](docs/RestoresApi.md#apibackupjobsidrestorepost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 *RestoresApi* | [**ApiRestoresIdGet**](docs/RestoresApi.md#apirestoresidget) | **Get** /api/restores/{id} | Get Restore
 *RestoresApi* | [**ApiRestoresIdUpdatePost**](docs/RestoresApi.md#apirestoresidupdatepost) | **Post** /api/restores/{id}/update | Update Restore
+*RestoresApi* | [**ApiRestoresRestorabilityMatrixGet**](docs/RestoresApi.md#apirestoresrestorabilitymatrixget) | **Get** /api/restores/restorability-matrix | Restorability Matrix
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
 *SampleTemplatesApi* | [**ApiDefaultTemplatesApplicationConfigurationGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesapplicationconfigurationget) | **Get** /api/default-templates/application-configuration | List ApplicationConfigurationSamples
 *SampleTemplatesApi* | [**ApiDefaultTemplatesBackupPoliciesGet**](docs/SampleTemplatesApi.md#apidefaulttemplatesbackuppoliciesget) | **Get** /api/default-templates/backup-policies | List BackupPolicySamples
@@ -388,6 +389,7 @@ Class | Method | HTTP request | Description
  - [RequestsUpsertDeploymentManifestRequest](docs/RequestsUpsertDeploymentManifestRequest.md)
  - [ServiceDeploymentResourceEvents](docs/ServiceDeploymentResourceEvents.md)
  - [ServiceDeploymentStatus](docs/ServiceDeploymentStatus.md)
+ - [ServiceRestoreCompatibilityCondition](docs/ServiceRestoreCompatibilityCondition.md)
  - [V1TypedLocalObjectReference](docs/V1TypedLocalObjectReference.md)
 
 
