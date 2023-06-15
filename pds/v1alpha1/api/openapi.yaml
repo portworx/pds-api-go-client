@@ -9076,6 +9076,7 @@ components:
             message: message
             type: type
             status: status
+        restoring: true
         status: Available
       properties:
         health:
@@ -9100,6 +9101,8 @@ components:
           items:
             $ref: '#/components/schemas/deployments.ResourceConditions'
           type: array
+        restoring:
+          type: boolean
         status:
           enum:
           - Available

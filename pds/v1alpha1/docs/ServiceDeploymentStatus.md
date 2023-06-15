@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ReadyReplicas** | Pointer to **int32** |  | [optional] 
 **Replicas** | Pointer to **int32** |  | [optional] 
 **Resources** | Pointer to [**[]DeploymentsResourceConditions**](DeploymentsResourceConditions.md) |  | [optional] 
+**Restoring** | Pointer to **bool** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetResources sets Resources field to given value.
 `func (o *ServiceDeploymentStatus) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetRestoring
+
+`func (o *ServiceDeploymentStatus) GetRestoring() bool`
+
+GetRestoring returns the Restoring field if non-nil, zero value otherwise.
+
+### GetRestoringOk
+
+`func (o *ServiceDeploymentStatus) GetRestoringOk() (*bool, bool)`
+
+GetRestoringOk returns a tuple with the Restoring field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestoring
+
+`func (o *ServiceDeploymentStatus) SetRestoring(v bool)`
+
+SetRestoring sets Restoring field to given value.
+
+### HasRestoring
+
+`func (o *ServiceDeploymentStatus) HasRestoring() bool`
+
+HasRestoring returns a boolean if a field has been set.
 
 ### GetStatus
 
