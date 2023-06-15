@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiDeploymentTargetsIdConfigGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdConfigGet) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 [**ApiDeploymentTargetsIdCredentialsGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdCredentialsGet) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 [**ApiDeploymentTargetsIdDelete**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdDelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
+[**ApiDeploymentTargetsIdDeploymentEventsPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdDeploymentEventsPost) | **Post** /api/deployment-targets/{id}/deployment/events | Adds k8s generated events for a deployment
 [**ApiDeploymentTargetsIdGet**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdGet) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 [**ApiDeploymentTargetsIdHeartbeatPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdHeartbeatPost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 [**ApiDeploymentTargetsIdMetadataPost**](DeploymentTargetsApi.md#ApiDeploymentTargetsIdMetadataPost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
@@ -293,6 +294,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiDeploymentTargetsIdDeploymentEventsPost
+
+> ApiDeploymentTargetsIdDeploymentEventsPost(ctx, id).Body(body).Execute()
+
+Adds k8s generated events for a deployment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
+    body := *openapiclient.NewRequestsCreateDeploymentEventsRequest() // RequestsCreateDeploymentEventsRequest | Request body containing list of events
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentTargetsApi.ApiDeploymentTargetsIdDeploymentEventsPost(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentTargetsApi.ApiDeploymentTargetsIdDeploymentEventsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | DeploymentTarget ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentTargetsIdDeploymentEventsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**RequestsCreateDeploymentEventsRequest**](RequestsCreateDeploymentEventsRequest.md) | Request body containing list of events | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
