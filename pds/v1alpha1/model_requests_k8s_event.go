@@ -29,7 +29,7 @@ type RequestsK8sEvent struct {
 	// ResourceName is the name of resource being referenced
 	ResourceName *string `json:"resource_name,omitempty"`
 	// Timestamp informs about when did the event occur most recently.
-	Timestamp *string `json:"timestamp,omitempty"`
+	Timestamp *int32 `json:"timestamp,omitempty"`
 	// Type of this event , new types could be added in the future.
 	Type *string `json:"type,omitempty"`
 }
@@ -244,9 +244,9 @@ func (o *RequestsK8sEvent) SetResourceName(v string) {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *RequestsK8sEvent) GetTimestamp() string {
+func (o *RequestsK8sEvent) GetTimestamp() int32 {
 	if o == nil || o.Timestamp == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.Timestamp
@@ -254,7 +254,7 @@ func (o *RequestsK8sEvent) GetTimestamp() string {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsK8sEvent) GetTimestampOk() (*string, bool) {
+func (o *RequestsK8sEvent) GetTimestampOk() (*int32, bool) {
 	if o == nil || o.Timestamp == nil {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *RequestsK8sEvent) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given string and assigns it to the Timestamp field.
-func (o *RequestsK8sEvent) SetTimestamp(v string) {
+// SetTimestamp gets a reference to the given int32 and assigns it to the Timestamp field.
+func (o *RequestsK8sEvent) SetTimestamp(v int32) {
 	o.Timestamp = &v
 }
 

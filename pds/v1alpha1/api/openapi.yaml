@@ -8852,7 +8852,7 @@ components:
           type: string
         timestamp:
           description: Timestamp informs about when did the event occur most recently.
-          type: string
+          type: integer
         type:
           description: Type of this event , new types could be added in the future.
           enum:
