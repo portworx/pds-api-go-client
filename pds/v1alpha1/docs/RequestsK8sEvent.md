@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Reason** | Pointer to **string** | Reason is a short, machine understandable string that gives the reason for the transition into the object&#39;s current status. | [optional] 
 **ResourceKind** | Pointer to **string** | ResourceKind is the type of resource being referenced | [optional] 
 **ResourceName** | Pointer to **string** | ResourceName is the name of resource being referenced | [optional] 
-**Timestamp** | Pointer to **int32** | Timestamp informs about when did the event occur most recently. | [optional] 
+**Timestamp** | Pointer to **int64** | Timestamp informs about when did the event occur most recently. | [optional] 
 **Type** | Pointer to **string** | Type of this event , new types could be added in the future. | [optional] 
 
 ## Methods
@@ -184,20 +184,20 @@ HasResourceName returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *RequestsK8sEvent) GetTimestamp() int32`
+`func (o *RequestsK8sEvent) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *RequestsK8sEvent) GetTimestampOk() (*int32, bool)`
+`func (o *RequestsK8sEvent) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *RequestsK8sEvent) SetTimestamp(v int32)`
+`func (o *RequestsK8sEvent) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 
