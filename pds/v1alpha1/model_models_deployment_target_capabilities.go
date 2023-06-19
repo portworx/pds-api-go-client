@@ -25,6 +25,7 @@ type ModelsDeploymentTargetCapabilities struct {
 	DataServiceTls *string `json:"data_service_tls,omitempty"`
 	Database *string `json:"database,omitempty"`
 	Elasticsearch *string `json:"elasticsearch,omitempty"`
+	EventReporting *string `json:"event_reporting,omitempty"`
 	Kafka *string `json:"kafka,omitempty"`
 	Mongodb *string `json:"mongodb,omitempty"`
 	Mysql *string `json:"mysql,omitempty"`
@@ -339,6 +340,38 @@ func (o *ModelsDeploymentTargetCapabilities) HasElasticsearch() bool {
 // SetElasticsearch gets a reference to the given string and assigns it to the Elasticsearch field.
 func (o *ModelsDeploymentTargetCapabilities) SetElasticsearch(v string) {
 	o.Elasticsearch = &v
+}
+
+// GetEventReporting returns the EventReporting field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetCapabilities) GetEventReporting() string {
+	if o == nil || o.EventReporting == nil {
+		var ret string
+		return ret
+	}
+	return *o.EventReporting
+}
+
+// GetEventReportingOk returns a tuple with the EventReporting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetCapabilities) GetEventReportingOk() (*string, bool) {
+	if o == nil || o.EventReporting == nil {
+		return nil, false
+	}
+	return o.EventReporting, true
+}
+
+// HasEventReporting returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetCapabilities) HasEventReporting() bool {
+	if o != nil && o.EventReporting != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEventReporting gets a reference to the given string and assigns it to the EventReporting field.
+func (o *ModelsDeploymentTargetCapabilities) SetEventReporting(v string) {
+	o.EventReporting = &v
 }
 
 // GetKafka returns the Kafka field value if set, zero value otherwise.
@@ -657,6 +690,9 @@ func (o ModelsDeploymentTargetCapabilities) MarshalJSON() ([]byte, error) {
 	}
 	if o.Elasticsearch != nil {
 		toSerialize["elasticsearch"] = o.Elasticsearch
+	}
+	if o.EventReporting != nil {
+		toSerialize["event_reporting"] = o.EventReporting
 	}
 	if o.Kafka != nil {
 		toSerialize["kafka"] = o.Kafka

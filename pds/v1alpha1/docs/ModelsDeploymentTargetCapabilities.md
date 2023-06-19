@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DataServiceTls** | Pointer to **string** |  | [optional] 
 **Database** | Pointer to **string** |  | [optional] 
 **Elasticsearch** | Pointer to **string** |  | [optional] 
+**EventReporting** | Pointer to **string** |  | [optional] 
 **Kafka** | Pointer to **string** |  | [optional] 
 **Mongodb** | Pointer to **string** |  | [optional] 
 **Mysql** | Pointer to **string** |  | [optional] 
@@ -266,6 +267,31 @@ SetElasticsearch sets Elasticsearch field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasElasticsearch() bool`
 
 HasElasticsearch returns a boolean if a field has been set.
+
+### GetEventReporting
+
+`func (o *ModelsDeploymentTargetCapabilities) GetEventReporting() string`
+
+GetEventReporting returns the EventReporting field if non-nil, zero value otherwise.
+
+### GetEventReportingOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetEventReportingOk() (*string, bool)`
+
+GetEventReportingOk returns a tuple with the EventReporting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventReporting
+
+`func (o *ModelsDeploymentTargetCapabilities) SetEventReporting(v string)`
+
+SetEventReporting sets EventReporting field to given value.
+
+### HasEventReporting
+
+`func (o *ModelsDeploymentTargetCapabilities) HasEventReporting() bool`
+
+HasEventReporting returns a boolean if a field has been set.
 
 ### GetKafka
 

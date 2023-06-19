@@ -6443,6 +6443,7 @@ components:
             restore: restore
             zookeeper: zookeeper
             crd_reporting: crd_reporting
+            event_reporting: event_reporting
             rabbitmq: rabbitmq
             redis: redis
             database: database
@@ -6712,6 +6713,7 @@ components:
           restore: restore
           zookeeper: zookeeper
           crd_reporting: crd_reporting
+          event_reporting: event_reporting
           rabbitmq: rabbitmq
           redis: redis
           database: database
@@ -6779,6 +6781,7 @@ components:
         restore: restore
         zookeeper: zookeeper
         crd_reporting: crd_reporting
+        event_reporting: event_reporting
         rabbitmq: rabbitmq
         redis: redis
         database: database
@@ -6810,6 +6813,8 @@ components:
         database:
           type: string
         elasticsearch:
+          type: string
+        event_reporting:
           type: string
         kafka:
           type: string
@@ -7581,6 +7586,7 @@ components:
               restore: restore
               zookeeper: zookeeper
               crd_reporting: crd_reporting
+              event_reporting: event_reporting
               rabbitmq: rabbitmq
               redis: redis
               database: database
@@ -7705,6 +7711,7 @@ components:
               restore: restore
               zookeeper: zookeeper
               crd_reporting: crd_reporting
+              event_reporting: event_reporting
               rabbitmq: rabbitmq
               redis: redis
               database: database
@@ -7760,6 +7767,7 @@ components:
             restore: restore
             zookeeper: zookeeper
             crd_reporting: crd_reporting
+            event_reporting: event_reporting
             rabbitmq: rabbitmq
             redis: redis
             database: database
@@ -7802,6 +7810,7 @@ components:
             restore: restore
             zookeeper: zookeeper
             crd_reporting: crd_reporting
+            event_reporting: event_reporting
             rabbitmq: rabbitmq
             redis: redis
             database: database
