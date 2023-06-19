@@ -386,7 +386,7 @@ type ApiApiDeploymentsIdEventsGetRequest struct {
 }
 
 
-func (r ApiApiDeploymentsIdEventsGetRequest) Execute() (*ServiceDeploymentResourceEvents, *http.Response, error) {
+func (r ApiApiDeploymentsIdEventsGetRequest) Execute() ([]ModelsDeploymentTargetDeploymentEvent, *http.Response, error) {
 	return r.ApiService.ApiDeploymentsIdEventsGetExecute(r)
 }
 
@@ -408,13 +408,13 @@ func (a *DeploymentsApiService) ApiDeploymentsIdEventsGet(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return ServiceDeploymentResourceEvents
-func (a *DeploymentsApiService) ApiDeploymentsIdEventsGetExecute(r ApiApiDeploymentsIdEventsGetRequest) (*ServiceDeploymentResourceEvents, *http.Response, error) {
+//  @return []ModelsDeploymentTargetDeploymentEvent
+func (a *DeploymentsApiService) ApiDeploymentsIdEventsGetExecute(r ApiApiDeploymentsIdEventsGetRequest) ([]ModelsDeploymentTargetDeploymentEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeploymentResourceEvents
+		localVarReturnValue  []ModelsDeploymentTargetDeploymentEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.ApiDeploymentsIdEventsGet")

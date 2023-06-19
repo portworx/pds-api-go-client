@@ -2193,7 +2193,9 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/service.DeploymentResourceEvents'
+                items:
+                  $ref: '#/components/schemas/models.DeploymentTargetDeploymentEvent'
+                type: array
           description: OK
       security:
       - ApiKeyAuth: []
@@ -5633,70 +5635,6 @@ components:
         resource:
           $ref: '#/components/schemas/v1.TypedLocalObjectReference'
       type: object
-    deployments.ResourceEvent:
-      example:
-        reason: FailedScheduling
-        name: cas-events-0h35cp-0.16f4c1e217362a3e
-        action: Scheduling
-        message: 0/3 nodes are available
-        type: Normal
-        timestamp: timestamp
-      properties:
-        action:
-          description: Action that was taken/failed regarding to the given object.
-          example: Scheduling
-          type: string
-        message:
-          description: Message is a human-readable description of the status of this
-            operation.
-          example: 0/3 nodes are available
-          type: string
-        name:
-          description: Name of the Event resource in target cluster.
-          example: cas-events-0h35cp-0.16f4c1e217362a3e
-          type: string
-        reason:
-          description: Reason is a short, machine understandable string that gives
-            the reason for the transition into the object's current status.
-          example: FailedScheduling
-          type: string
-        timestamp:
-          description: Timestamp informs about when did the event occur most recently.
-          type: string
-        type:
-          description: Type of this event , new types could be added in the future.
-          enum:
-          - Normal
-          - Warning
-          type: string
-      type: object
-    deployments.ResourceEvents:
-      example:
-        resource:
-          apiGroup: apiGroup
-          kind: kind
-          name: name
-        events:
-        - reason: FailedScheduling
-          name: cas-events-0h35cp-0.16f4c1e217362a3e
-          action: Scheduling
-          message: 0/3 nodes are available
-          type: Normal
-          timestamp: timestamp
-        - reason: FailedScheduling
-          name: cas-events-0h35cp-0.16f4c1e217362a3e
-          action: Scheduling
-          message: 0/3 nodes are available
-          type: Normal
-          timestamp: timestamp
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/deployments.ResourceEvent'
-          type: array
-        resource:
-          $ref: '#/components/schemas/v1.TypedLocalObjectReference'
-      type: object
     models.AWSDetails:
       example:
         secret_key: secret_key
@@ -6890,6 +6828,43 @@ components:
         sqlserver:
           type: string
         zookeeper:
+          type: string
+      type: object
+    models.DeploymentTargetDeploymentEvent:
+      example:
+        reason: reason
+        deployment_target_id: deployment_target_id
+        name: name
+        namespace: namespace
+        action: action
+        resource_kind: resource_kind
+        deployment_id: deployment_id
+        message: message
+        resource_name: resource_name
+        type: type
+        timestamp: timestamp
+      properties:
+        action:
+          type: string
+        deployment_id:
+          type: string
+        deployment_target_id:
+          type: string
+        message:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        reason:
+          type: string
+        resource_kind:
+          type: string
+        resource_name:
+          type: string
+        timestamp:
+          type: string
+        type:
           type: string
       type: object
     models.DeploymentTargetMetadata:
@@ -9000,49 +8975,6 @@ components:
           type: object
         timestamp:
           type: string
-      type: object
-    service.DeploymentResourceEvents:
-      example:
-        resourceEvents:
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          events:
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-        - resource:
-            apiGroup: apiGroup
-            kind: kind
-            name: name
-          events:
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-          - reason: FailedScheduling
-            name: cas-events-0h35cp-0.16f4c1e217362a3e
-            action: Scheduling
-            message: 0/3 nodes are available
-            type: Normal
-            timestamp: timestamp
-      properties:
-        resourceEvents:
-          items:
-            $ref: '#/components/schemas/deployments.ResourceEvents'
-          type: array
       type: object
     service.DeploymentStatus:
       example:

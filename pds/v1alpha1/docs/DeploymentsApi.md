@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## ApiDeploymentsIdEventsGet
 
-> ServiceDeploymentResourceEvents ApiDeploymentsIdEventsGet(ctx, id).Execute()
+> []ModelsDeploymentTargetDeploymentEvent ApiDeploymentsIdEventsGet(ctx, id).Execute()
 
 Get Deployment Events
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsIdEventsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDeploymentsIdEventsGet`: ServiceDeploymentResourceEvents
+    // response from `ApiDeploymentsIdEventsGet`: []ModelsDeploymentTargetDeploymentEvent
     fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsIdEventsGet`: %v\n", resp)
 }
 ```
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeploymentResourceEvents**](ServiceDeploymentResourceEvents.md)
+[**[]ModelsDeploymentTargetDeploymentEvent**](ModelsDeploymentTargetDeploymentEvent.md)
 
 ### Authorization
 
