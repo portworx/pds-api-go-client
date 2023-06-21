@@ -19,7 +19,7 @@ type RequestsK8sEvent struct {
 	// Action that was taken/failed regarding the given object.
 	Action *string `json:"action,omitempty"`
 	// Count informs about how many times event was generated.
-	Count *int32 `json:"count,omitempty"`
+	Count *int64 `json:"count,omitempty"`
 	// Message is a human-readable description of the status of this operation.
 	Message *string `json:"message,omitempty"`
 	// Name of the Event resource in target cluster.
@@ -86,9 +86,9 @@ func (o *RequestsK8sEvent) SetAction(v string) {
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
-func (o *RequestsK8sEvent) GetCount() int32 {
+func (o *RequestsK8sEvent) GetCount() int64 {
 	if o == nil || o.Count == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Count
@@ -96,7 +96,7 @@ func (o *RequestsK8sEvent) GetCount() int32 {
 
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestsK8sEvent) GetCountOk() (*int32, bool) {
+func (o *RequestsK8sEvent) GetCountOk() (*int64, bool) {
 	if o == nil || o.Count == nil {
 		return nil, false
 	}
@@ -112,8 +112,8 @@ func (o *RequestsK8sEvent) HasCount() bool {
 	return false
 }
 
-// SetCount gets a reference to the given int32 and assigns it to the Count field.
-func (o *RequestsK8sEvent) SetCount(v int32) {
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *RequestsK8sEvent) SetCount(v int64) {
 	o.Count = &v
 }
 

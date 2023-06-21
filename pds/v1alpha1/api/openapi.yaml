@@ -8819,7 +8819,7 @@ components:
           type: string
         count:
           description: Count informs about how many times event was generated.
-          format: uint64
+          format: int64
           type: integer
         message:
           description: Message is a human-readable description of the status of this
