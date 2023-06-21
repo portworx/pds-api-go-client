@@ -17,6 +17,7 @@ import (
 // ModelsDeploymentTargetDeploymentEvent struct for ModelsDeploymentTargetDeploymentEvent
 type ModelsDeploymentTargetDeploymentEvent struct {
 	Action *string `json:"action,omitempty"`
+	Count *int32 `json:"count,omitempty"`
 	DeploymentId *string `json:"deployment_id,omitempty"`
 	DeploymentTargetId *string `json:"deployment_target_id,omitempty"`
 	Message *string `json:"message,omitempty"`
@@ -76,6 +77,38 @@ func (o *ModelsDeploymentTargetDeploymentEvent) HasAction() bool {
 // SetAction gets a reference to the given string and assigns it to the Action field.
 func (o *ModelsDeploymentTargetDeploymentEvent) SetAction(v string) {
 	o.Action = &v
+}
+
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *ModelsDeploymentTargetDeploymentEvent) GetCount() int32 {
+	if o == nil || o.Count == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsDeploymentTargetDeploymentEvent) GetCountOk() (*int32, bool) {
+	if o == nil || o.Count == nil {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *ModelsDeploymentTargetDeploymentEvent) HasCount() bool {
+	if o != nil && o.Count != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given int32 and assigns it to the Count field.
+func (o *ModelsDeploymentTargetDeploymentEvent) SetCount(v int32) {
+	o.Count = &v
 }
 
 // GetDeploymentId returns the DeploymentId field value if set, zero value otherwise.
@@ -402,6 +435,9 @@ func (o ModelsDeploymentTargetDeploymentEvent) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Action != nil {
 		toSerialize["action"] = o.Action
+	}
+	if o.Count != nil {
+		toSerialize["count"] = o.Count
 	}
 	if o.DeploymentId != nil {
 		toSerialize["deployment_id"] = o.DeploymentId

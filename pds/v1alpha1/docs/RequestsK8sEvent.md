@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to **string** | Action that was taken/failed regarding the given object. | [optional] 
-**Count** | Pointer to **int64** | Count informs about how many times event was generated. | [optional] 
+**Count** | Pointer to **int32** | Count informs about how many times event was generated. | [optional] 
 **Message** | Pointer to **string** | Message is a human-readable description of the status of this operation. | [optional] 
 **Name** | Pointer to **string** | Name of the Event resource in target cluster. | [optional] 
 **Reason** | Pointer to **string** | Reason is a short, machine understandable string that gives the reason for the transition into the object&#39;s current status. | [optional] 
@@ -60,20 +60,20 @@ HasAction returns a boolean if a field has been set.
 
 ### GetCount
 
-`func (o *RequestsK8sEvent) GetCount() int64`
+`func (o *RequestsK8sEvent) GetCount() int32`
 
 GetCount returns the Count field if non-nil, zero value otherwise.
 
 ### GetCountOk
 
-`func (o *RequestsK8sEvent) GetCountOk() (*int64, bool)`
+`func (o *RequestsK8sEvent) GetCountOk() (*int32, bool)`
 
 GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCount
 
-`func (o *RequestsK8sEvent) SetCount(v int64)`
+`func (o *RequestsK8sEvent) SetCount(v int32)`
 
 SetCount sets Count field to given value.
 

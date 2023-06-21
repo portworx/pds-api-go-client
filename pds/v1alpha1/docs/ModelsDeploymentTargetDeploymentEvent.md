@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to **string** |  | [optional] 
+**Count** | Pointer to **int32** |  | [optional] 
 **DeploymentId** | Pointer to **string** |  | [optional] 
 **DeploymentTargetId** | Pointer to **string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
@@ -59,6 +60,31 @@ SetAction sets Action field to given value.
 `func (o *ModelsDeploymentTargetDeploymentEvent) HasAction() bool`
 
 HasAction returns a boolean if a field has been set.
+
+### GetCount
+
+`func (o *ModelsDeploymentTargetDeploymentEvent) GetCount() int32`
+
+GetCount returns the Count field if non-nil, zero value otherwise.
+
+### GetCountOk
+
+`func (o *ModelsDeploymentTargetDeploymentEvent) GetCountOk() (*int32, bool)`
+
+GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCount
+
+`func (o *ModelsDeploymentTargetDeploymentEvent) SetCount(v int32)`
+
+SetCount sets Count field to given value.
+
+### HasCount
+
+`func (o *ModelsDeploymentTargetDeploymentEvent) HasCount() bool`
+
+HasCount returns a boolean if a field has been set.
 
 ### GetDeploymentId
 
