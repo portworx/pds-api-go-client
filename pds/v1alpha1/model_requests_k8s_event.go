@@ -18,6 +18,8 @@ import (
 type RequestsK8sEvent struct {
 	// Action that was taken/failed regarding the given object.
 	Action *string `json:"action,omitempty"`
+	// Count informs about how many times event was generated.
+	Count *int64 `json:"count,omitempty"`
 	// Message is a human-readable description of the status of this operation.
 	Message *string `json:"message,omitempty"`
 	// Name of the Event resource in target cluster.
@@ -81,6 +83,38 @@ func (o *RequestsK8sEvent) HasAction() bool {
 // SetAction gets a reference to the given string and assigns it to the Action field.
 func (o *RequestsK8sEvent) SetAction(v string) {
 	o.Action = &v
+}
+
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *RequestsK8sEvent) GetCount() int64 {
+	if o == nil || o.Count == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestsK8sEvent) GetCountOk() (*int64, bool) {
+	if o == nil || o.Count == nil {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *RequestsK8sEvent) HasCount() bool {
+	if o != nil && o.Count != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *RequestsK8sEvent) SetCount(v int64) {
+	o.Count = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
@@ -311,6 +345,9 @@ func (o RequestsK8sEvent) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Action != nil {
 		toSerialize["action"] = o.Action
+	}
+	if o.Count != nil {
+		toSerialize["count"] = o.Count
 	}
 	if o.Message != nil {
 		toSerialize["message"] = o.Message
