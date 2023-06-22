@@ -3037,6 +3037,28 @@ paths:
       summary: Get Restore
       tags:
       - Restores
+  /api/restores/{id}/retry:
+    post:
+      description: Retry a Restore
+      parameters:
+      - description: Restore ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/models.Restore'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Retry Restore
+      tags:
+      - Restores
   /api/restores/{id}/update:
     post:
       description: Updates a Restore

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiBackupJobsIdRestorePost**](RestoresApi.md#ApiBackupJobsIdRestorePost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 [**ApiRestoresIdGet**](RestoresApi.md#ApiRestoresIdGet) | **Get** /api/restores/{id} | Get Restore
+[**ApiRestoresIdRetryPost**](RestoresApi.md#ApiRestoresIdRetryPost) | **Post** /api/restores/{id}/retry | Retry Restore
 [**ApiRestoresIdUpdatePost**](RestoresApi.md#ApiRestoresIdUpdatePost) | **Post** /api/restores/{id}/update | Update Restore
 [**ApiRestoresRestorabilityMatrixGet**](RestoresApi.md#ApiRestoresRestorabilityMatrixGet) | **Get** /api/restores/restorability-matrix | Restorability Matrix
 
@@ -147,6 +148,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiRestoresIdRetryPost
+
+> ModelsRestore ApiRestoresIdRetryPost(ctx, id).Execute()
+
+Retry Restore
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Restore ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RestoresApi.ApiRestoresIdRetryPost(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RestoresApi.ApiRestoresIdRetryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiRestoresIdRetryPost`: ModelsRestore
+    fmt.Fprintf(os.Stdout, "Response from `RestoresApi.ApiRestoresIdRetryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Restore ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiRestoresIdRetryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ModelsRestore**](ModelsRestore.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

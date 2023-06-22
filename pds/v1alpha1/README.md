@@ -188,6 +188,7 @@ Class | Method | HTTP request | Description
 *ResourceSettingsTemplatesApi* | [**ApiTenantsIdResourceSettingsTemplatesPost**](docs/ResourceSettingsTemplatesApi.md#apitenantsidresourcesettingstemplatespost) | **Post** /api/tenants/{id}/resource-settings-templates | Create ResourceSettingsTemplate
 *RestoresApi* | [**ApiBackupJobsIdRestorePost**](docs/RestoresApi.md#apibackupjobsidrestorepost) | **Post** /api/backup-jobs/{id}/restore | Start Restore
 *RestoresApi* | [**ApiRestoresIdGet**](docs/RestoresApi.md#apirestoresidget) | **Get** /api/restores/{id} | Get Restore
+*RestoresApi* | [**ApiRestoresIdRetryPost**](docs/RestoresApi.md#apirestoresidretrypost) | **Post** /api/restores/{id}/retry | Retry Restore
 *RestoresApi* | [**ApiRestoresIdUpdatePost**](docs/RestoresApi.md#apirestoresidupdatepost) | **Post** /api/restores/{id}/update | Update Restore
 *RestoresApi* | [**ApiRestoresRestorabilityMatrixGet**](docs/RestoresApi.md#apirestoresrestorabilitymatrixget) | **Get** /api/restores/restorability-matrix | Restorability Matrix
 *RolesApi* | [**ApiRolesGet**](docs/RolesApi.md#apirolesget) | **Get** /api/roles | List Roles
