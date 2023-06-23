@@ -6412,6 +6412,7 @@ components:
           apply_status: apply_status
           cloud_snap_id: cloud_snap_id
           created_at: created_at
+          cluster_resource_name: cluster_resource_name
           cloud_credential_name: cloud_credential_name
           start_time: start_time
           deployment_target_id: deployment_target_id
@@ -7558,6 +7559,7 @@ components:
             apply_status: apply_status
             cloud_snap_id: cloud_snap_id
             created_at: created_at
+            cluster_resource_name: cluster_resource_name
             cloud_credential_name: cloud_credential_name
             start_time: start_time
             deployment_target_id: deployment_target_id
@@ -7683,6 +7685,7 @@ components:
             apply_status: apply_status
             cloud_snap_id: cloud_snap_id
             created_at: created_at
+            cluster_resource_name: cluster_resource_name
             cloud_credential_name: cloud_credential_name
             start_time: start_time
             deployment_target_id: deployment_target_id
@@ -8295,6 +8298,7 @@ components:
         apply_status: apply_status
         cloud_snap_id: cloud_snap_id
         created_at: created_at
+        cluster_resource_name: cluster_resource_name
         cloud_credential_name: cloud_credential_name
         start_time: start_time
         deployment_target_id: deployment_target_id
@@ -8320,6 +8324,10 @@ components:
           type: string
         cloud_snap_id:
           description: ID of the PX cloud snapshot with the backup
+          type: string
+        cluster_resource_name:
+          description: ClusterResourceName k8s resource name for deployment, built
+            from [restore + name + id].
           type: string
         completion_time:
           description: Completion time of the restore process
