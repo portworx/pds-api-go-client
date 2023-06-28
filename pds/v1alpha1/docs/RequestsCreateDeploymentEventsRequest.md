@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Events** | Pointer to [**[]RequestsDeploymentEvent**](RequestsDeploymentEvent.md) |  | [optional] 
+**Events** | [**[]RequestsDeploymentEvent**](RequestsDeploymentEvent.md) |  | 
 
 ## Methods
 
 ### NewRequestsCreateDeploymentEventsRequest
 
-`func NewRequestsCreateDeploymentEventsRequest() *RequestsCreateDeploymentEventsRequest`
+`func NewRequestsCreateDeploymentEventsRequest(events []RequestsDeploymentEvent, ) *RequestsCreateDeploymentEventsRequest`
 
 NewRequestsCreateDeploymentEventsRequest instantiates a new RequestsCreateDeploymentEventsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetEvents sets Events field to given value.
 
-### HasEvents
-
-`func (o *RequestsCreateDeploymentEventsRequest) HasEvents() bool`
-
-HasEvents returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

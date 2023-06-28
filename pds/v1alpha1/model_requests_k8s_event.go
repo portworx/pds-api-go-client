@@ -19,29 +19,37 @@ type RequestsK8sEvent struct {
 	// Action that was taken/failed regarding the given object.
 	Action *string `json:"action,omitempty"`
 	// Count informs about how many times event was generated.
-	Count *int64 `json:"count,omitempty"`
+	Count int64 `json:"count"`
 	// Message is a human-readable description of the status of this operation.
-	Message *string `json:"message,omitempty"`
+	Message string `json:"message"`
 	// Name of the Event resource in target cluster.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Reason is a short, machine understandable string that gives the reason for the transition into the object's current status.
-	Reason *string `json:"reason,omitempty"`
+	Reason string `json:"reason"`
 	// ResourceKind is the type of resource being referenced
-	ResourceKind *string `json:"resource_kind,omitempty"`
+	ResourceKind string `json:"resource_kind"`
 	// ResourceName is the name of resource being referenced
-	ResourceName *string `json:"resource_name,omitempty"`
+	ResourceName string `json:"resource_name"`
 	// Timestamp informs about when did the event occur most recently.
-	Timestamp *int64 `json:"timestamp,omitempty"`
+	Timestamp int64 `json:"timestamp"`
 	// Type of this event , new types could be added in the future.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 }
 
 // NewRequestsK8sEvent instantiates a new RequestsK8sEvent object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsK8sEvent() *RequestsK8sEvent {
+func NewRequestsK8sEvent(count int64, message string, name string, reason string, resourceKind string, resourceName string, timestamp int64, type_ string) *RequestsK8sEvent {
 	this := RequestsK8sEvent{}
+	this.Count = count
+	this.Message = message
+	this.Name = name
+	this.Reason = reason
+	this.ResourceKind = resourceKind
+	this.ResourceName = resourceName
+	this.Timestamp = timestamp
+	this.Type = type_
 	return &this
 }
 
@@ -85,260 +93,196 @@ func (o *RequestsK8sEvent) SetAction(v string) {
 	o.Action = &v
 }
 
-// GetCount returns the Count field value if set, zero value otherwise.
+// GetCount returns the Count field value
 func (o *RequestsK8sEvent) GetCount() int64 {
-	if o == nil || o.Count == nil {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Count
+
+	return o.Count
 }
 
-// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetCountOk() (*int64, bool) {
-	if o == nil || o.Count == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Count, true
+	return &o.Count, true
 }
 
-// HasCount returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasCount() bool {
-	if o != nil && o.Count != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCount gets a reference to the given int64 and assigns it to the Count field.
+// SetCount sets field value
 func (o *RequestsK8sEvent) SetCount(v int64) {
-	o.Count = &v
+	o.Count = v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
+// GetMessage returns the Message field value
 func (o *RequestsK8sEvent) GetMessage() string {
-	if o == nil || o.Message == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Message
+
+	return o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Message, true
+	return &o.Message, true
 }
 
-// HasMessage returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasMessage() bool {
-	if o != nil && o.Message != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given string and assigns it to the Message field.
+// SetMessage sets field value
 func (o *RequestsK8sEvent) SetMessage(v string) {
-	o.Message = &v
+	o.Message = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *RequestsK8sEvent) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *RequestsK8sEvent) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise.
+// GetReason returns the Reason field value
 func (o *RequestsK8sEvent) GetReason() string {
-	if o == nil || o.Reason == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Reason
+
+	return o.Reason
 }
 
-// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
+// GetReasonOk returns a tuple with the Reason field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetReasonOk() (*string, bool) {
-	if o == nil || o.Reason == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Reason, true
+	return &o.Reason, true
 }
 
-// HasReason returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasReason() bool {
-	if o != nil && o.Reason != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReason gets a reference to the given string and assigns it to the Reason field.
+// SetReason sets field value
 func (o *RequestsK8sEvent) SetReason(v string) {
-	o.Reason = &v
+	o.Reason = v
 }
 
-// GetResourceKind returns the ResourceKind field value if set, zero value otherwise.
+// GetResourceKind returns the ResourceKind field value
 func (o *RequestsK8sEvent) GetResourceKind() string {
-	if o == nil || o.ResourceKind == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceKind
+
+	return o.ResourceKind
 }
 
-// GetResourceKindOk returns a tuple with the ResourceKind field value if set, nil otherwise
+// GetResourceKindOk returns a tuple with the ResourceKind field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetResourceKindOk() (*string, bool) {
-	if o == nil || o.ResourceKind == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.ResourceKind, true
+	return &o.ResourceKind, true
 }
 
-// HasResourceKind returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasResourceKind() bool {
-	if o != nil && o.ResourceKind != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceKind gets a reference to the given string and assigns it to the ResourceKind field.
+// SetResourceKind sets field value
 func (o *RequestsK8sEvent) SetResourceKind(v string) {
-	o.ResourceKind = &v
+	o.ResourceKind = v
 }
 
-// GetResourceName returns the ResourceName field value if set, zero value otherwise.
+// GetResourceName returns the ResourceName field value
 func (o *RequestsK8sEvent) GetResourceName() string {
-	if o == nil || o.ResourceName == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceName
+
+	return o.ResourceName
 }
 
-// GetResourceNameOk returns a tuple with the ResourceName field value if set, nil otherwise
+// GetResourceNameOk returns a tuple with the ResourceName field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetResourceNameOk() (*string, bool) {
-	if o == nil || o.ResourceName == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.ResourceName, true
+	return &o.ResourceName, true
 }
 
-// HasResourceName returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasResourceName() bool {
-	if o != nil && o.ResourceName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceName gets a reference to the given string and assigns it to the ResourceName field.
+// SetResourceName sets field value
 func (o *RequestsK8sEvent) SetResourceName(v string) {
-	o.ResourceName = &v
+	o.ResourceName = v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value
 func (o *RequestsK8sEvent) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Timestamp
+
+	return o.Timestamp
 }
 
-// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
+// GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Timestamp, true
+	return &o.Timestamp, true
 }
 
-// HasTimestamp returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+// SetTimestamp sets field value
 func (o *RequestsK8sEvent) SetTimestamp(v int64) {
-	o.Timestamp = &v
+	o.Timestamp = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *RequestsK8sEvent) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RequestsK8sEvent) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *RequestsK8sEvent) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *RequestsK8sEvent) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o RequestsK8sEvent) MarshalJSON() ([]byte, error) {
@@ -346,28 +290,28 @@ func (o RequestsK8sEvent) MarshalJSON() ([]byte, error) {
 	if o.Action != nil {
 		toSerialize["action"] = o.Action
 	}
-	if o.Count != nil {
+	if true {
 		toSerialize["count"] = o.Count
 	}
-	if o.Message != nil {
+	if true {
 		toSerialize["message"] = o.Message
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Reason != nil {
+	if true {
 		toSerialize["reason"] = o.Reason
 	}
-	if o.ResourceKind != nil {
+	if true {
 		toSerialize["resource_kind"] = o.ResourceKind
 	}
-	if o.ResourceName != nil {
+	if true {
 		toSerialize["resource_name"] = o.ResourceName
 	}
-	if o.Timestamp != nil {
+	if true {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)

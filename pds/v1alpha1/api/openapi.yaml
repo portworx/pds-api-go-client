@@ -8733,6 +8733,8 @@ components:
           items:
             $ref: '#/components/schemas/requests.DeploymentEvent'
           type: array
+      required:
+      - events
       type: object
     requests.CreateDeploymentTargetRequest:
       properties:
@@ -8822,6 +8824,10 @@ components:
         namespace:
           description: Namespace in which the deployment events were generated.
           type: string
+      required:
+      - deployment_id
+      - events
+      - namespace
       type: object
     requests.DeploymentScheduledBackup:
       properties:
@@ -8881,6 +8887,15 @@ components:
           - Normal
           - Warning
           type: string
+      required:
+      - count
+      - message
+      - name
+      - reason
+      - resource_kind
+      - resource_name
+      - timestamp
+      - type
       type: object
     requests.PatchAccountRoleInvitationRequest:
       properties:

@@ -323,7 +323,7 @@ import (
 
 func main() {
     id := "id_example" // string | DeploymentTarget ID (must be valid UUID)
-    body := *openapiclient.NewRequestsCreateDeploymentEventsRequest() // RequestsCreateDeploymentEventsRequest | Request body containing list of events
+    body := *openapiclient.NewRequestsCreateDeploymentEventsRequest([]openapiclient.RequestsDeploymentEvent{*openapiclient.NewRequestsDeploymentEvent("DeploymentId_example", []openapiclient.RequestsK8sEvent{*openapiclient.NewRequestsK8sEvent(int64(123), "0/3 nodes are available", "cas-events-0h35cp-0.16f4c1e217362a3e", "FailedScheduling", "ResourceKind_example", "ResourceName_example", int64(123), "Type_example")}, "Namespace_example")}) // RequestsCreateDeploymentEventsRequest | Request body containing list of events
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

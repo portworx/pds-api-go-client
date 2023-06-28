@@ -16,15 +16,16 @@ import (
 
 // RequestsCreateDeploymentEventsRequest struct for RequestsCreateDeploymentEventsRequest
 type RequestsCreateDeploymentEventsRequest struct {
-	Events []RequestsDeploymentEvent `json:"events,omitempty"`
+	Events []RequestsDeploymentEvent `json:"events"`
 }
 
 // NewRequestsCreateDeploymentEventsRequest instantiates a new RequestsCreateDeploymentEventsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsCreateDeploymentEventsRequest() *RequestsCreateDeploymentEventsRequest {
+func NewRequestsCreateDeploymentEventsRequest(events []RequestsDeploymentEvent) *RequestsCreateDeploymentEventsRequest {
 	this := RequestsCreateDeploymentEventsRequest{}
+	this.Events = events
 	return &this
 }
 
@@ -36,41 +37,33 @@ func NewRequestsCreateDeploymentEventsRequestWithDefaults() *RequestsCreateDeplo
 	return &this
 }
 
-// GetEvents returns the Events field value if set, zero value otherwise.
+// GetEvents returns the Events field value
 func (o *RequestsCreateDeploymentEventsRequest) GetEvents() []RequestsDeploymentEvent {
-	if o == nil || o.Events == nil {
+	if o == nil {
 		var ret []RequestsDeploymentEvent
 		return ret
 	}
+
 	return o.Events
 }
 
-// GetEventsOk returns a tuple with the Events field value if set, nil otherwise
+// GetEventsOk returns a tuple with the Events field value
 // and a boolean to check if the value has been set.
 func (o *RequestsCreateDeploymentEventsRequest) GetEventsOk() ([]RequestsDeploymentEvent, bool) {
-	if o == nil || o.Events == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Events, true
 }
 
-// HasEvents returns a boolean if a field has been set.
-func (o *RequestsCreateDeploymentEventsRequest) HasEvents() bool {
-	if o != nil && o.Events != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEvents gets a reference to the given []RequestsDeploymentEvent and assigns it to the Events field.
+// SetEvents sets field value
 func (o *RequestsCreateDeploymentEventsRequest) SetEvents(v []RequestsDeploymentEvent) {
 	o.Events = v
 }
 
 func (o RequestsCreateDeploymentEventsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Events != nil {
+	if true {
 		toSerialize["events"] = o.Events
 	}
 	return json.Marshal(toSerialize)
