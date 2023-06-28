@@ -17,19 +17,22 @@ import (
 // RequestsDeploymentEvent struct for RequestsDeploymentEvent
 type RequestsDeploymentEvent struct {
 	// DeploymentID of the event.
-	DeploymentId *string `json:"deployment_id,omitempty"`
+	DeploymentId string `json:"deployment_id"`
 	// List of k8s events for the deployment
-	Events []RequestsK8sEvent `json:"events,omitempty"`
+	Events []RequestsK8sEvent `json:"events"`
 	// Namespace in which the deployment events were generated.
-	Namespace *string `json:"namespace,omitempty"`
+	Namespace string `json:"namespace"`
 }
 
 // NewRequestsDeploymentEvent instantiates a new RequestsDeploymentEvent object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsDeploymentEvent() *RequestsDeploymentEvent {
+func NewRequestsDeploymentEvent(deploymentId string, events []RequestsK8sEvent, namespace string) *RequestsDeploymentEvent {
 	this := RequestsDeploymentEvent{}
+	this.DeploymentId = deploymentId
+	this.Events = events
+	this.Namespace = namespace
 	return &this
 }
 
@@ -41,111 +44,87 @@ func NewRequestsDeploymentEventWithDefaults() *RequestsDeploymentEvent {
 	return &this
 }
 
-// GetDeploymentId returns the DeploymentId field value if set, zero value otherwise.
+// GetDeploymentId returns the DeploymentId field value
 func (o *RequestsDeploymentEvent) GetDeploymentId() string {
-	if o == nil || o.DeploymentId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DeploymentId
+
+	return o.DeploymentId
 }
 
-// GetDeploymentIdOk returns a tuple with the DeploymentId field value if set, nil otherwise
+// GetDeploymentIdOk returns a tuple with the DeploymentId field value
 // and a boolean to check if the value has been set.
 func (o *RequestsDeploymentEvent) GetDeploymentIdOk() (*string, bool) {
-	if o == nil || o.DeploymentId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.DeploymentId, true
+	return &o.DeploymentId, true
 }
 
-// HasDeploymentId returns a boolean if a field has been set.
-func (o *RequestsDeploymentEvent) HasDeploymentId() bool {
-	if o != nil && o.DeploymentId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeploymentId gets a reference to the given string and assigns it to the DeploymentId field.
+// SetDeploymentId sets field value
 func (o *RequestsDeploymentEvent) SetDeploymentId(v string) {
-	o.DeploymentId = &v
+	o.DeploymentId = v
 }
 
-// GetEvents returns the Events field value if set, zero value otherwise.
+// GetEvents returns the Events field value
 func (o *RequestsDeploymentEvent) GetEvents() []RequestsK8sEvent {
-	if o == nil || o.Events == nil {
+	if o == nil {
 		var ret []RequestsK8sEvent
 		return ret
 	}
+
 	return o.Events
 }
 
-// GetEventsOk returns a tuple with the Events field value if set, nil otherwise
+// GetEventsOk returns a tuple with the Events field value
 // and a boolean to check if the value has been set.
 func (o *RequestsDeploymentEvent) GetEventsOk() ([]RequestsK8sEvent, bool) {
-	if o == nil || o.Events == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Events, true
 }
 
-// HasEvents returns a boolean if a field has been set.
-func (o *RequestsDeploymentEvent) HasEvents() bool {
-	if o != nil && o.Events != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEvents gets a reference to the given []RequestsK8sEvent and assigns it to the Events field.
+// SetEvents sets field value
 func (o *RequestsDeploymentEvent) SetEvents(v []RequestsK8sEvent) {
 	o.Events = v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// GetNamespace returns the Namespace field value
 func (o *RequestsDeploymentEvent) GetNamespace() string {
-	if o == nil || o.Namespace == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
 func (o *RequestsDeploymentEvent) GetNamespaceOk() (*string, bool) {
-	if o == nil || o.Namespace == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Namespace, true
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *RequestsDeploymentEvent) HasNamespace() bool {
-	if o != nil && o.Namespace != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *RequestsDeploymentEvent) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace = v
 }
 
 func (o RequestsDeploymentEvent) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeploymentId != nil {
+	if true {
 		toSerialize["deployment_id"] = o.DeploymentId
 	}
-	if o.Events != nil {
+	if true {
 		toSerialize["events"] = o.Events
 	}
-	if o.Namespace != nil {
+	if true {
 		toSerialize["namespace"] = o.Namespace
 	}
 	return json.Marshal(toSerialize)

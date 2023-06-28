@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeploymentId** | Pointer to **string** | DeploymentID of the event. | [optional] 
-**Events** | Pointer to [**[]RequestsK8sEvent**](RequestsK8sEvent.md) | List of k8s events for the deployment | [optional] 
-**Namespace** | Pointer to **string** | Namespace in which the deployment events were generated. | [optional] 
+**DeploymentId** | **string** | DeploymentID of the event. | 
+**Events** | [**[]RequestsK8sEvent**](RequestsK8sEvent.md) | List of k8s events for the deployment | 
+**Namespace** | **string** | Namespace in which the deployment events were generated. | 
 
 ## Methods
 
 ### NewRequestsDeploymentEvent
 
-`func NewRequestsDeploymentEvent() *RequestsDeploymentEvent`
+`func NewRequestsDeploymentEvent(deploymentId string, events []RequestsK8sEvent, namespace string, ) *RequestsDeploymentEvent`
 
 NewRequestsDeploymentEvent instantiates a new RequestsDeploymentEvent object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetDeploymentId sets DeploymentId field to given value.
 
-### HasDeploymentId
-
-`func (o *RequestsDeploymentEvent) HasDeploymentId() bool`
-
-HasDeploymentId returns a boolean if a field has been set.
 
 ### GetEvents
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetEvents sets Events field to given value.
 
-### HasEvents
-
-`func (o *RequestsDeploymentEvent) HasEvents() bool`
-
-HasEvents returns a boolean if a field has been set.
 
 ### GetNamespace
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetNamespace sets Namespace field to given value.
 
-### HasNamespace
-
-`func (o *RequestsDeploymentEvent) HasNamespace() bool`
-
-HasNamespace returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

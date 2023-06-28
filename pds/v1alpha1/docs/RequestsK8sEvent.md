@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to **string** | Action that was taken/failed regarding the given object. | [optional] 
-**Count** | Pointer to **int64** | Count informs about how many times event was generated. | [optional] 
-**Message** | Pointer to **string** | Message is a human-readable description of the status of this operation. | [optional] 
-**Name** | Pointer to **string** | Name of the Event resource in target cluster. | [optional] 
-**Reason** | Pointer to **string** | Reason is a short, machine understandable string that gives the reason for the transition into the object&#39;s current status. | [optional] 
-**ResourceKind** | Pointer to **string** | ResourceKind is the type of resource being referenced | [optional] 
-**ResourceName** | Pointer to **string** | ResourceName is the name of resource being referenced | [optional] 
-**Timestamp** | Pointer to **int64** | Timestamp informs about when did the event occur most recently. | [optional] 
-**Type** | Pointer to **string** | Type of this event , new types could be added in the future. | [optional] 
+**Count** | **int64** | Count informs about how many times event was generated. | 
+**Message** | **string** | Message is a human-readable description of the status of this operation. | 
+**Name** | **string** | Name of the Event resource in target cluster. | 
+**Reason** | **string** | Reason is a short, machine understandable string that gives the reason for the transition into the object&#39;s current status. | 
+**ResourceKind** | **string** | ResourceKind is the type of resource being referenced | 
+**ResourceName** | **string** | ResourceName is the name of resource being referenced | 
+**Timestamp** | **int64** | Timestamp informs about when did the event occur most recently. | 
+**Type** | **string** | Type of this event , new types could be added in the future. | 
 
 ## Methods
 
 ### NewRequestsK8sEvent
 
-`func NewRequestsK8sEvent() *RequestsK8sEvent`
+`func NewRequestsK8sEvent(count int64, message string, name string, reason string, resourceKind string, resourceName string, timestamp int64, type_ string, ) *RequestsK8sEvent`
 
 NewRequestsK8sEvent instantiates a new RequestsK8sEvent object
 This constructor will assign default values to properties that have it defined,
@@ -77,11 +77,6 @@ and a boolean to check if the value has been set.
 
 SetCount sets Count field to given value.
 
-### HasCount
-
-`func (o *RequestsK8sEvent) HasCount() bool`
-
-HasCount returns a boolean if a field has been set.
 
 ### GetMessage
 
@@ -102,11 +97,6 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-### HasMessage
-
-`func (o *RequestsK8sEvent) HasMessage() bool`
-
-HasMessage returns a boolean if a field has been set.
 
 ### GetName
 
@@ -127,11 +117,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *RequestsK8sEvent) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetReason
 
@@ -152,11 +137,6 @@ and a boolean to check if the value has been set.
 
 SetReason sets Reason field to given value.
 
-### HasReason
-
-`func (o *RequestsK8sEvent) HasReason() bool`
-
-HasReason returns a boolean if a field has been set.
 
 ### GetResourceKind
 
@@ -177,11 +157,6 @@ and a boolean to check if the value has been set.
 
 SetResourceKind sets ResourceKind field to given value.
 
-### HasResourceKind
-
-`func (o *RequestsK8sEvent) HasResourceKind() bool`
-
-HasResourceKind returns a boolean if a field has been set.
 
 ### GetResourceName
 
@@ -202,11 +177,6 @@ and a boolean to check if the value has been set.
 
 SetResourceName sets ResourceName field to given value.
 
-### HasResourceName
-
-`func (o *RequestsK8sEvent) HasResourceName() bool`
-
-HasResourceName returns a boolean if a field has been set.
 
 ### GetTimestamp
 
@@ -227,11 +197,6 @@ and a boolean to check if the value has been set.
 
 SetTimestamp sets Timestamp field to given value.
 
-### HasTimestamp
-
-`func (o *RequestsK8sEvent) HasTimestamp() bool`
-
-HasTimestamp returns a boolean if a field has been set.
 
 ### GetType
 
@@ -252,11 +217,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *RequestsK8sEvent) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
