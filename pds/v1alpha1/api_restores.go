@@ -278,8 +278,14 @@ type ApiApiRestoresIdRetryPostRequest struct {
 	ctx context.Context
 	ApiService *RestoresApiService
 	id string
+	body *RequestsCreateRestoreRequest
 }
 
+// Request body containing information about required restore
+func (r ApiApiRestoresIdRetryPostRequest) Body(body RequestsCreateRestoreRequest) ApiApiRestoresIdRetryPostRequest {
+	r.body = &body
+	return r
+}
 
 func (r ApiApiRestoresIdRetryPostRequest) Execute() (*ModelsRestore, *http.Response, error) {
 	return r.ApiService.ApiRestoresIdRetryPostExecute(r)
@@ -323,6 +329,9 @@ func (a *RestoresApiService) ApiRestoresIdRetryPostExecute(r ApiApiRestoresIdRet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -341,6 +350,8 @@ func (a *RestoresApiService) ApiRestoresIdRetryPostExecute(r ApiApiRestoresIdRet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

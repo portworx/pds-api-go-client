@@ -3047,6 +3047,13 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.CreateRestoreRequest'
+        description: Request body containing information about required restore
+        required: true
       responses:
         "200":
           content:
@@ -3059,6 +3066,7 @@ paths:
       summary: Retry Restore
       tags:
       - Restores
+      x-codegen-request-body-name: body
   /api/restores/{id}/update:
     post:
       description: Updates a Restore

@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## ApiRestoresIdRetryPost
 
-> ModelsRestore ApiRestoresIdRetryPost(ctx, id).Execute()
+> ModelsRestore ApiRestoresIdRetryPost(ctx, id).Body(body).Execute()
 
 Retry Restore
 
@@ -176,10 +176,11 @@ import (
 
 func main() {
     id := "id_example" // string | Restore ID (must be valid UUID)
+    body := *openapiclient.NewRequestsCreateRestoreRequest() // RequestsCreateRestoreRequest | Request body containing information about required restore
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RestoresApi.ApiRestoresIdRetryPost(context.Background(), id).Execute()
+    resp, r, err := apiClient.RestoresApi.ApiRestoresIdRetryPost(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RestoresApi.ApiRestoresIdRetryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,6 +206,7 @@ Other parameters are passed through a pointer to a apiApiRestoresIdRetryPostRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **body** | [**RequestsCreateRestoreRequest**](RequestsCreateRestoreRequest.md) | Request body containing information about required restore | 
 
 ### Return type
 
