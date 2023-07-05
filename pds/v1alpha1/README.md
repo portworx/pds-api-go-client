@@ -136,6 +136,7 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiBackupsIdPut**](docs/BackupsApi.md#apibackupsidput) | **Put** /api/backups/{id} | Update Backup
 *BackupsApi* | [**ApiDeploymentsIdBackupsGet**](docs/BackupsApi.md#apideploymentsidbackupsget) | **Get** /api/deployments/{id}/backups | List Deployment&#39;s Backups
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
+*CopilotApi* | [**ApiCopilotSearchPost**](docs/CopilotApi.md#apicopilotsearchpost) | **Post** /api/copilot/search | Search Database query
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
 *DeploymentManifestsApi* | [**ApiDeploymentsIdUpdateManifestPost**](docs/DeploymentManifestsApi.md#apideploymentsidupdatemanifestpost) | **Post** /api/deployments/{id}/update-manifest | Post DeploymentManifest
@@ -314,6 +315,7 @@ Class | Method | HTTP request | Description
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
  - [ModelsConfigItem](docs/ModelsConfigItem.md)
+ - [ModelsCopilotSearchResponse](docs/ModelsCopilotSearchResponse.md)
  - [ModelsDNSDetails](docs/ModelsDNSDetails.md)
  - [ModelsDataService](docs/ModelsDataService.md)
  - [ModelsDeployment](docs/ModelsDeployment.md)
@@ -372,6 +374,7 @@ Class | Method | HTTP request | Description
  - [ModelsUserAPIKey](docs/ModelsUserAPIKey.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [RequestsCreateCopilotSearchRequest](docs/RequestsCreateCopilotSearchRequest.md)
  - [RequestsCreateDeploymentEventsRequest](docs/RequestsCreateDeploymentEventsRequest.md)
  - [RequestsCreateDeploymentTargetRequest](docs/RequestsCreateDeploymentTargetRequest.md)
  - [RequestsCreateProjectDeploymentRequest](docs/RequestsCreateProjectDeploymentRequest.md)

@@ -1273,6 +1273,29 @@ paths:
       summary: List compatible versions
       tags:
       - Versions
+  /api/copilot/search:
+    post:
+      description: Generates a response for database query for different databases
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.CreateCopilotSearchRequest'
+        description: Request body containing the search config
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.CopilotSearchResponse'
+          description: The search response will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Search Database query
+      tags:
+      - Copilot
+      x-codegen-request-body-name: body
   /api/data-services:
     get:
       description: Lists Data Services
@@ -6313,6 +6336,25 @@ components:
           description: Configuration value.
           type: string
       type: object
+    models.CopilotSearchResponse:
+      example:
+        data_service_id: data_service_id
+        response: response
+        query: query
+        response_time: response_time
+        id: id
+      properties:
+        data_service_id:
+          type: string
+        id:
+          type: string
+        query:
+          type: string
+        response:
+          type: string
+        response_time:
+          type: string
+      type: object
     models.DNSDetails:
       example:
         aws_details:
@@ -8734,6 +8776,15 @@ components:
           items:
             type: string
           type: array
+      type: object
+    requests.CreateCopilotSearchRequest:
+      properties:
+        data_service_id:
+          type: string
+        query:
+          description: 'TODO: fix example query with best query'
+          example: how to list all records of table employee.
+          type: string
       type: object
     requests.CreateDeploymentEventsRequest:
       properties:

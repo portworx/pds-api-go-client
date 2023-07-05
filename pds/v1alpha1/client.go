@@ -77,6 +77,8 @@ type APIClient struct {
 
 	BackupsApi *BackupsApiService
 
+	CopilotApi *CopilotApiService
+
 	DataServicesApi *DataServicesApiService
 
 	DeploymentManifestsApi *DeploymentManifestsApiService
@@ -156,6 +158,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BackupPoliciesApi = (*BackupPoliciesApiService)(&c.common)
 	c.BackupTargetsApi = (*BackupTargetsApiService)(&c.common)
 	c.BackupsApi = (*BackupsApiService)(&c.common)
+	c.CopilotApi = (*CopilotApiService)(&c.common)
 	c.DataServicesApi = (*DataServicesApiService)(&c.common)
 	c.DeploymentManifestsApi = (*DeploymentManifestsApiService)(&c.common)
 	c.DeploymentTargetsApi = (*DeploymentTargetsApiService)(&c.common)
