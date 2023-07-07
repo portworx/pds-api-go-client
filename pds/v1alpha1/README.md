@@ -165,6 +165,7 @@ Class | Method | HTTP request | Description
 *DeploymentsApi* | [**ApiDeploymentsIdStatusGet**](docs/DeploymentsApi.md#apideploymentsidstatusget) | **Get** /api/deployments/{id}/status | Get Deployment Status
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsGet**](docs/DeploymentsApi.md#apiprojectsiddeploymentsget) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsPost**](docs/DeploymentsApi.md#apiprojectsiddeploymentspost) | **Post** /api/projects/{id}/deployments | Create Deployment
+*EventsApi* | [**ApiDeploymentTargetsIdEventsLastSyncedTimeGet**](docs/EventsApi.md#apideploymenttargetsideventslastsyncedtimeget) | **Get** /api/deployment-targets/{id}/events/last-synced-time | Get the timestamp of the latest event
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsDelete**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsdelete) | **Delete** /api/global-role-bindings | Delete GlobalRoleBinding
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsGet**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsget) | **Get** /api/global-role-bindings | List GlobalRoleBindings
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsPut**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsput) | **Put** /api/global-role-bindings | Set GlobalRoleBinding
@@ -325,6 +326,7 @@ Class | Method | HTTP request | Description
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
  - [ModelsDeploymentTargetCapabilities](docs/ModelsDeploymentTargetCapabilities.md)
  - [ModelsDeploymentTargetDeploymentEvent](docs/ModelsDeploymentTargetDeploymentEvent.md)
+ - [ModelsDeploymentTargetLastSyncedEvent](docs/ModelsDeploymentTargetLastSyncedEvent.md)
  - [ModelsDeploymentTargetMetadata](docs/ModelsDeploymentTargetMetadata.md)
  - [ModelsEULADetails](docs/ModelsEULADetails.md)
  - [ModelsErrorData](docs/ModelsErrorData.md)

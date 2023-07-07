@@ -87,6 +87,8 @@ type APIClient struct {
 
 	DeploymentsApi *DeploymentsApiService
 
+	EventsApi *EventsApiService
+
 	GlobalRoleBindingsApi *GlobalRoleBindingsApiService
 
 	ImagesApi *ImagesApiService
@@ -163,6 +165,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeploymentManifestsApi = (*DeploymentManifestsApiService)(&c.common)
 	c.DeploymentTargetsApi = (*DeploymentTargetsApiService)(&c.common)
 	c.DeploymentsApi = (*DeploymentsApiService)(&c.common)
+	c.EventsApi = (*EventsApiService)(&c.common)
 	c.GlobalRoleBindingsApi = (*GlobalRoleBindingsApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
 	c.MetadataApi = (*MetadataApiService)(&c.common)

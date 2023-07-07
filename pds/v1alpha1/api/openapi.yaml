@@ -1731,6 +1731,28 @@ paths:
       tags:
       - DeploymentTargets
       x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/events/last-synced-time:
+    get:
+      description: Gets the timestamp of the latest event for the deployment target
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTargetLastSyncedEvent'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get the timestamp of the latest event
+      tags:
+      - Events
   /api/deployment-targets/{id}/heartbeat:
     post:
       description: Makes control plane aware that DeploymentTarget is still alive
@@ -6947,6 +6969,17 @@ components:
           type: string
         type:
           type: string
+      type: object
+    models.DeploymentTargetLastSyncedEvent:
+      example:
+        timestamp: 0
+      properties:
+        timestamp:
+          description: Timestamp of the last synced event for the deployment target
+          format: int64
+          type: integer
+      required:
+      - timestamp
       type: object
     models.DeploymentTargetMetadata:
       example:
