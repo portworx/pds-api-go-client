@@ -1729,7 +1729,7 @@ paths:
       - ApiKeyAuth: []
       summary: Adds k8s generated events for a deployment
       tags:
-      - DeploymentTargets
+      - Events
       x-codegen-request-body-name: body
   /api/deployment-targets/{id}/events/last-synced-time:
     get:
@@ -2246,7 +2246,7 @@ paths:
       - ApiKeyAuth: []
       summary: Get Deployment Events
       tags:
-      - Deployments
+      - Events
   /api/deployments/{id}/status:
     get:
       description: Retrieves status information on the given Deployment

@@ -144,7 +144,6 @@ Class | Method | HTTP request | Description
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdConfigGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidconfigget) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
-*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDeploymentEventsPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddeploymenteventspost) | **Post** /api/deployment-targets/{id}/deployment/events | Adds k8s generated events for a deployment
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidget) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidheartbeatpost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdMetadataPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidmetadatapost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
@@ -159,13 +158,14 @@ Class | Method | HTTP request | Description
 *DeploymentsApi* | [**ApiDeploymentsIdConnectionInfoGet**](docs/DeploymentsApi.md#apideploymentsidconnectioninfoget) | **Get** /api/deployments/{id}/connection-info | Deployment Connection Information
 *DeploymentsApi* | [**ApiDeploymentsIdCredentialsGet**](docs/DeploymentsApi.md#apideploymentsidcredentialsget) | **Get** /api/deployments/{id}/credentials | Deployment Credentials
 *DeploymentsApi* | [**ApiDeploymentsIdDelete**](docs/DeploymentsApi.md#apideploymentsiddelete) | **Delete** /api/deployments/{id} | Delete Deployment
-*DeploymentsApi* | [**ApiDeploymentsIdEventsGet**](docs/DeploymentsApi.md#apideploymentsideventsget) | **Get** /api/deployments/{id}/events | Get Deployment Events
 *DeploymentsApi* | [**ApiDeploymentsIdGet**](docs/DeploymentsApi.md#apideploymentsidget) | **Get** /api/deployments/{id} | Get Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdPut**](docs/DeploymentsApi.md#apideploymentsidput) | **Put** /api/deployments/{id} | Update Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdStatusGet**](docs/DeploymentsApi.md#apideploymentsidstatusget) | **Get** /api/deployments/{id}/status | Get Deployment Status
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsGet**](docs/DeploymentsApi.md#apiprojectsiddeploymentsget) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsPost**](docs/DeploymentsApi.md#apiprojectsiddeploymentspost) | **Post** /api/projects/{id}/deployments | Create Deployment
+*EventsApi* | [**ApiDeploymentTargetsIdDeploymentEventsPost**](docs/EventsApi.md#apideploymenttargetsiddeploymenteventspost) | **Post** /api/deployment-targets/{id}/deployment/events | Adds k8s generated events for a deployment
 *EventsApi* | [**ApiDeploymentTargetsIdEventsLastSyncedTimeGet**](docs/EventsApi.md#apideploymenttargetsideventslastsyncedtimeget) | **Get** /api/deployment-targets/{id}/events/last-synced-time | Get the timestamp of the latest event
+*EventsApi* | [**ApiDeploymentsIdEventsGet**](docs/EventsApi.md#apideploymentsideventsget) | **Get** /api/deployments/{id}/events | Get Deployment Events
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsDelete**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsdelete) | **Delete** /api/global-role-bindings | Delete GlobalRoleBinding
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsGet**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsget) | **Get** /api/global-role-bindings | List GlobalRoleBindings
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsPut**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsput) | **Put** /api/global-role-bindings | Set GlobalRoleBinding
