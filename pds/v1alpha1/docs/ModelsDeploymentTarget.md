@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to [**ModelsDeploymentTargetMetadata**](ModelsDeploymentTargetMetadata.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
+**TeleportAgentVersion** | Pointer to **string** |  | [optional] 
 **TenantId** | Pointer to **string** |  | [optional] 
 **TlsIssuer** | Pointer to **string** |  | [optional] 
 **TlsRequired** | Pointer to **bool** |  | [optional] 
@@ -313,6 +314,31 @@ SetStatus sets Status field to given value.
 `func (o *ModelsDeploymentTarget) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetTeleportAgentVersion
+
+`func (o *ModelsDeploymentTarget) GetTeleportAgentVersion() string`
+
+GetTeleportAgentVersion returns the TeleportAgentVersion field if non-nil, zero value otherwise.
+
+### GetTeleportAgentVersionOk
+
+`func (o *ModelsDeploymentTarget) GetTeleportAgentVersionOk() (*string, bool)`
+
+GetTeleportAgentVersionOk returns a tuple with the TeleportAgentVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeleportAgentVersion
+
+`func (o *ModelsDeploymentTarget) SetTeleportAgentVersion(v string)`
+
+SetTeleportAgentVersion sets TeleportAgentVersion field to given value.
+
+### HasTeleportAgentVersion
+
+`func (o *ModelsDeploymentTarget) HasTeleportAgentVersion() bool`
+
+HasTeleportAgentVersion returns a boolean if a field has been set.
 
 ### GetTenantId
 

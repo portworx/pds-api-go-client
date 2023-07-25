@@ -6532,6 +6532,7 @@ components:
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
+          teleport_agent_version: teleport_agent_version
           capabilities:
             backup: backup
             capabilities: capabilities
@@ -6802,6 +6803,7 @@ components:
           kube_platform: kube_platform
           px_csi_enabled: px_csi_enabled
           px_version: px_version
+        teleport_agent_version: teleport_agent_version
         capabilities:
           backup: backup
           capabilities: capabilities
@@ -6858,6 +6860,8 @@ components:
         name:
           type: string
         status:
+          type: string
+        teleport_agent_version:
           type: string
         tenant_id:
           type: string
@@ -7690,6 +7694,7 @@ components:
               kube_platform: kube_platform
               px_csi_enabled: px_csi_enabled
               px_version: px_version
+            teleport_agent_version: teleport_agent_version
             capabilities:
               backup: backup
               capabilities: capabilities
@@ -7816,6 +7821,7 @@ components:
               kube_platform: kube_platform
               px_csi_enabled: px_csi_enabled
               px_version: px_version
+            teleport_agent_version: teleport_agent_version
             capabilities:
               backup: backup
               capabilities: capabilities
@@ -7872,6 +7878,7 @@ components:
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
+          teleport_agent_version: teleport_agent_version
           capabilities:
             backup: backup
             capabilities: capabilities
@@ -7915,6 +7922,7 @@ components:
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
+          teleport_agent_version: teleport_agent_version
           capabilities:
             backup: backup
             capabilities: capabilities
@@ -8834,6 +8842,8 @@ components:
           type: string
         name:
           type: string
+        teleport_agent_version:
+          type: string
         tls_issuer:
           type: string
         tls_required:
@@ -9016,6 +9026,8 @@ components:
         px_service_namespace:
           type: string
         px_version:
+          type: string
+        teleport_agent_version:
           type: string
       type: object
     requests.PatchUserAPIKeyRequest:
