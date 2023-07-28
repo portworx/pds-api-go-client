@@ -111,6 +111,8 @@ type APIClient struct {
 
 	ServiceAccountsApi *ServiceAccountsApiService
 
+	ServiceIdentityApi *ServiceIdentityApiService
+
 	StorageOptionsTemplatesApi *StorageOptionsTemplatesApiService
 
 	TasksApi *TasksApiService
@@ -177,6 +179,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SampleTemplatesApi = (*SampleTemplatesApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
+	c.ServiceIdentityApi = (*ServiceIdentityApiService)(&c.common)
 	c.StorageOptionsTemplatesApi = (*StorageOptionsTemplatesApiService)(&c.common)
 	c.TasksApi = (*TasksApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)

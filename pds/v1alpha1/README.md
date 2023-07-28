@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiServiceAccountsIdTokenGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidtokenget) | **Get** /api/service-accounts/{id}/token | Get token of a ServiceAccount
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsGet**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountsget) | **Get** /api/tenants/{id}/service-accounts | List Tenant&#39;s ServiceAccounts
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
+*ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdDelete**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesiddelete) | **Delete** /api/storage-options-templates/{id} | Delete StorageOptionsTemplates
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdGet**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidget) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdPut**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidput) | **Put** /api/storage-options-templates/{id} | Update StorageOptionsTemplate
@@ -367,6 +368,7 @@ Class | Method | HTTP request | Description
  - [ModelsS3CompatibleCredentials](docs/ModelsS3CompatibleCredentials.md)
  - [ModelsS3Credentials](docs/ModelsS3Credentials.md)
  - [ModelsServiceAccount](docs/ModelsServiceAccount.md)
+ - [ModelsServiceIdentityWithToken](docs/ModelsServiceIdentityWithToken.md)
  - [ModelsStorageOptionsSample](docs/ModelsStorageOptionsSample.md)
  - [ModelsStorageOptionsTemplate](docs/ModelsStorageOptionsTemplate.md)
  - [ModelsTask](docs/ModelsTask.md)
@@ -393,6 +395,7 @@ Class | Method | HTTP request | Description
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsPutBackupJobRequest](docs/RequestsPutBackupJobRequest.md)
  - [RequestsPutLegacyBindingRequest](docs/RequestsPutLegacyBindingRequest.md)
+ - [RequestsServiceIdentityRequest](docs/RequestsServiceIdentityRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
  - [RequestsUpdateRestoreRequest](docs/RequestsUpdateRestoreRequest.md)
  - [RequestsUpsertDeploymentManifestRequest](docs/RequestsUpsertDeploymentManifestRequest.md)
