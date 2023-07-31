@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsGet**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountsget) | **Get** /api/tenants/{id}/service-accounts | List Tenant&#39;s ServiceAccounts
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
 *ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
+*ServiceIdentityApi* | [**ServiceIdentityGenerateTokenPost**](docs/ServiceIdentityApi.md#serviceidentitygeneratetokenpost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdDelete**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesiddelete) | **Delete** /api/storage-options-templates/{id} | Delete StorageOptionsTemplates
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdGet**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidget) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdPut**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidput) | **Put** /api/storage-options-templates/{id} | Update StorageOptionsTemplate
@@ -257,6 +258,8 @@ Class | Method | HTTP request | Description
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
  - [ControllersDeploymentTargetMetadataRequest](docs/ControllersDeploymentTargetMetadataRequest.md)
+ - [ControllersGenerateTokenRequest](docs/ControllersGenerateTokenRequest.md)
+ - [ControllersGenerateTokenResponse](docs/ControllersGenerateTokenResponse.md)
  - [ControllersListBackupJobsStatusResponse](docs/ControllersListBackupJobsStatusResponse.md)
  - [ControllersOIDCInfoResponse](docs/ControllersOIDCInfoResponse.md)
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)
@@ -291,6 +294,7 @@ Class | Method | HTTP request | Description
  - [ControllersUpdateStorageOptionsTemplateRequest](docs/ControllersUpdateStorageOptionsTemplateRequest.md)
  - [ControllersWhoAmIResponse](docs/ControllersWhoAmIResponse.md)
  - [ControllersWhoAmIServiceAccount](docs/ControllersWhoAmIServiceAccount.md)
+ - [ControllersWhoAmIServiceIdentity](docs/ControllersWhoAmIServiceIdentity.md)
  - [ControllersWhoAmIUser](docs/ControllersWhoAmIUser.md)
  - [DeploymentsCondition](docs/DeploymentsCondition.md)
  - [DeploymentsConnectionDetails](docs/DeploymentsConnectionDetails.md)
