@@ -116,6 +116,31 @@ paths:
       tags:
       - Accounts
       x-codegen-request-body-name: body
+  /api/accounts/service-identity:regenerate/{id}:
+    get:
+      description: Revokes existing credentials and regenerate new ClientID and ClientToken
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ServiceIdentityWithToken'
+          description: OK
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+      security:
+      - ApiKeyAuth: []
+      summary: Regenerate service identity credentials
+      tags:
+      - ServiceIdentity
   /api/accounts/{id}:
     get:
       description: Fetches a single Account
