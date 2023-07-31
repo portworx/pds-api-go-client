@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiAccountsIdServiceIdentityPost**](ServiceIdentityApi.md#ApiAccountsIdServiceIdentityPost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
+[**ApiAccountsServiceIdentityIdDelete**](ServiceIdentityApi.md#ApiAccountsServiceIdentityIdDelete) | **Delete** /api/accounts/service-identity/{id} | Delete service identity
 [**ApiAccountsServiceIdentityIdGet**](ServiceIdentityApi.md#ApiAccountsServiceIdentityIdGet) | **Get** /api/accounts/service-identity/{id} | Get service identity by ID
 [**ApiAccountsServiceIdentityregenerateIdGet**](ServiceIdentityApi.md#ApiAccountsServiceIdentityregenerateIdGet) | **Get** /api/accounts/service-identity:regenerate/{id} | Regenerate service identity credentials
 [**ServiceIdentityGenerateTokenPost**](ServiceIdentityApi.md#ServiceIdentityGenerateTokenPost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
@@ -77,6 +78,74 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiAccountsServiceIdentityIdDelete
+
+> ApiAccountsServiceIdentityIdDelete(ctx, id).Execute()
+
+Delete service identity
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Service Identity ID (must be valid UUID)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceIdentityApi.ApiAccountsServiceIdentityIdDelete(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiAccountsServiceIdentityIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Service Identity ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiAccountsServiceIdentityIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

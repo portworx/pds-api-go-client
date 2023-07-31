@@ -117,6 +117,27 @@ paths:
       - Accounts
       x-codegen-request-body-name: body
   /api/accounts/service-identity/{id}:
+    delete:
+      description: Delete service identity by ID
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+      security:
+      - ApiKeyAuth: []
+      summary: Delete service identity
+      tags:
+      - ServiceIdentity
     get:
       description: Get service identity by ID
       parameters:

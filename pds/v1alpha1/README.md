@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsGet**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountsget) | **Get** /api/tenants/{id}/service-accounts | List Tenant&#39;s ServiceAccounts
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
 *ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
+*ServiceIdentityApi* | [**ApiAccountsServiceIdentityIdDelete**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityiddelete) | **Delete** /api/accounts/service-identity/{id} | Delete service identity
 *ServiceIdentityApi* | [**ApiAccountsServiceIdentityIdGet**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityidget) | **Get** /api/accounts/service-identity/{id} | Get service identity by ID
 *ServiceIdentityApi* | [**ApiAccountsServiceIdentityregenerateIdGet**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityregenerateidget) | **Get** /api/accounts/service-identity:regenerate/{id} | Regenerate service identity credentials
 *ServiceIdentityApi* | [**ServiceIdentityGenerateTokenPost**](docs/ServiceIdentityApi.md#serviceidentitygeneratetokenpost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
