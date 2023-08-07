@@ -522,6 +522,69 @@ paths:
       - AccountRoleBindings
       x-codegen-request-body-name: body
   /api/accounts/{id}/service-identity:
+    get:
+      description: Lists all ServiceIdentity for an account
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Service Identity attribute to sort results by (one of:
+          id, name, created_at, created_by)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by service identity id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by created_by
+        in: query
+        name: created_by
+        schema:
+          type: string
+      - description: Filter results by client_id
+        in: query
+        name: client_id
+        schema:
+          type: string
+      - description: Filter results by enabled
+        in: query
+        name: enabled
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_ServiceIdentity'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Service Identity
+      tags:
+      - ServiceIdentity
     post:
       description: Create a Service Identity for programmatic access to pds
       parameters:
@@ -8304,6 +8367,41 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.ServiceAccount'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_ServiceIdentity:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          description: description
+          secret_generation_count: 0
+          id: id
+          created_by: created_by
+          secret_updated_at: secret_updated_at
+          client_id: client_id
+          enabled: true
+        - account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          description: description
+          secret_generation_count: 0
+          id: id
+          created_by: created_by
+          secret_updated_at: secret_updated_at
+          client_id: client_id
+          enabled: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ServiceIdentity'
           type: array
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'

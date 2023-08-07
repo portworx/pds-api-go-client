@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiServiceAccountsIdTokenGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidtokenget) | **Get** /api/service-accounts/{id}/token | Get token of a ServiceAccount
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsGet**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountsget) | **Get** /api/tenants/{id}/service-accounts | List Tenant&#39;s ServiceAccounts
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
+*ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityGet**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentityget) | **Get** /api/accounts/{id}/service-identity | List Service Identity
 *ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
 *ServiceIdentityApi* | [**ApiAccountsServiceIdentityIdDelete**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityiddelete) | **Delete** /api/accounts/service-identity/{id} | Delete service identity
 *ServiceIdentityApi* | [**ApiAccountsServiceIdentityIdGet**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityidget) | **Get** /api/accounts/service-identity/{id} | Get service identity by ID
@@ -363,6 +364,7 @@ Class | Method | HTTP request | Description
  - [ModelsPaginatedResultModelsProject](docs/ModelsPaginatedResultModelsProject.md)
  - [ModelsPaginatedResultModelsResourceSettingsTemplate](docs/ModelsPaginatedResultModelsResourceSettingsTemplate.md)
  - [ModelsPaginatedResultModelsServiceAccount](docs/ModelsPaginatedResultModelsServiceAccount.md)
+ - [ModelsPaginatedResultModelsServiceIdentity](docs/ModelsPaginatedResultModelsServiceIdentity.md)
  - [ModelsPaginatedResultModelsStorageOptionsTemplate](docs/ModelsPaginatedResultModelsStorageOptionsTemplate.md)
  - [ModelsPaginatedResultModelsTenant](docs/ModelsPaginatedResultModelsTenant.md)
  - [ModelsPaginatedResultModelsUser](docs/ModelsPaginatedResultModelsUser.md)
