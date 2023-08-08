@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiAccountsIdServiceIdentityGet**](ServiceIdentityApi.md#ApiAccountsIdServiceIdentityGet) | **Get** /api/accounts/{id}/service-identity | List Service Identity
 [**ApiAccountsIdServiceIdentityPost**](ServiceIdentityApi.md#ApiAccountsIdServiceIdentityPost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
-[**ApiAccountsServiceIdentityIdDelete**](ServiceIdentityApi.md#ApiAccountsServiceIdentityIdDelete) | **Delete** /api/accounts/service-identity/{id} | Delete service identity
-[**ApiAccountsServiceIdentityIdGet**](ServiceIdentityApi.md#ApiAccountsServiceIdentityIdGet) | **Get** /api/accounts/service-identity/{id} | Get service identity by ID
-[**ApiAccountsServiceIdentityregenerateIdGet**](ServiceIdentityApi.md#ApiAccountsServiceIdentityregenerateIdGet) | **Get** /api/accounts/service-identity:regenerate/{id} | Regenerate service identity credentials
+[**ApiServiceIdentityIdDelete**](ServiceIdentityApi.md#ApiServiceIdentityIdDelete) | **Delete** /api/service-identity/{id} | Delete service identity
+[**ApiServiceIdentityIdGet**](ServiceIdentityApi.md#ApiServiceIdentityIdGet) | **Get** /api/service-identity/{id} | Get service identity by ID
+[**ApiServiceIdentityregenerateIdGet**](ServiceIdentityApi.md#ApiServiceIdentityregenerateIdGet) | **Get** /api/service-identity:regenerate/{id} | Regenerate service identity credentials
 [**ServiceIdentityGenerateTokenPost**](ServiceIdentityApi.md#ServiceIdentityGenerateTokenPost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
 
 
@@ -171,9 +171,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiAccountsServiceIdentityIdDelete
+## ApiServiceIdentityIdDelete
 
-> ApiAccountsServiceIdentityIdDelete(ctx, id).Execute()
+> ApiServiceIdentityIdDelete(ctx, id).Execute()
 
 Delete service identity
 
@@ -196,9 +196,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceIdentityApi.ApiAccountsServiceIdentityIdDelete(context.Background(), id).Execute()
+    resp, r, err := apiClient.ServiceIdentityApi.ApiServiceIdentityIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiAccountsServiceIdentityIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiServiceIdentityIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiAccountsServiceIdentityIdDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiServiceIdentityIdDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiAccountsServiceIdentityIdGet
+## ApiServiceIdentityIdGet
 
-> ModelsServiceIdentity ApiAccountsServiceIdentityIdGet(ctx, id).Execute()
+> ModelsServiceIdentity ApiServiceIdentityIdGet(ctx, id).Execute()
 
 Get service identity by ID
 
@@ -264,13 +264,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceIdentityApi.ApiAccountsServiceIdentityIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.ServiceIdentityApi.ApiServiceIdentityIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiAccountsServiceIdentityIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiServiceIdentityIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiAccountsServiceIdentityIdGet`: ModelsServiceIdentity
-    fmt.Fprintf(os.Stdout, "Response from `ServiceIdentityApi.ApiAccountsServiceIdentityIdGet`: %v\n", resp)
+    // response from `ApiServiceIdentityIdGet`: ModelsServiceIdentity
+    fmt.Fprintf(os.Stdout, "Response from `ServiceIdentityApi.ApiServiceIdentityIdGet`: %v\n", resp)
 }
 ```
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiAccountsServiceIdentityIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiServiceIdentityIdGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -309,9 +309,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiAccountsServiceIdentityregenerateIdGet
+## ApiServiceIdentityregenerateIdGet
 
-> ModelsServiceIdentityWithToken ApiAccountsServiceIdentityregenerateIdGet(ctx, id).Execute()
+> ModelsServiceIdentityWithToken ApiServiceIdentityregenerateIdGet(ctx, id).Execute()
 
 Regenerate service identity credentials
 
@@ -334,13 +334,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceIdentityApi.ApiAccountsServiceIdentityregenerateIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.ServiceIdentityApi.ApiServiceIdentityregenerateIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiAccountsServiceIdentityregenerateIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiServiceIdentityregenerateIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiAccountsServiceIdentityregenerateIdGet`: ModelsServiceIdentityWithToken
-    fmt.Fprintf(os.Stdout, "Response from `ServiceIdentityApi.ApiAccountsServiceIdentityregenerateIdGet`: %v\n", resp)
+    // response from `ApiServiceIdentityregenerateIdGet`: ModelsServiceIdentityWithToken
+    fmt.Fprintf(os.Stdout, "Response from `ServiceIdentityApi.ApiServiceIdentityregenerateIdGet`: %v\n", resp)
 }
 ```
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiAccountsServiceIdentityregenerateIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiServiceIdentityregenerateIdGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

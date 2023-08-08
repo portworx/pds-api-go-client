@@ -205,9 +205,9 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
 *ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityGet**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentityget) | **Get** /api/accounts/{id}/service-identity | List Service Identity
 *ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
-*ServiceIdentityApi* | [**ApiAccountsServiceIdentityIdDelete**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityiddelete) | **Delete** /api/accounts/service-identity/{id} | Delete service identity
-*ServiceIdentityApi* | [**ApiAccountsServiceIdentityIdGet**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityidget) | **Get** /api/accounts/service-identity/{id} | Get service identity by ID
-*ServiceIdentityApi* | [**ApiAccountsServiceIdentityregenerateIdGet**](docs/ServiceIdentityApi.md#apiaccountsserviceidentityregenerateidget) | **Get** /api/accounts/service-identity:regenerate/{id} | Regenerate service identity credentials
+*ServiceIdentityApi* | [**ApiServiceIdentityIdDelete**](docs/ServiceIdentityApi.md#apiserviceidentityiddelete) | **Delete** /api/service-identity/{id} | Delete service identity
+*ServiceIdentityApi* | [**ApiServiceIdentityIdGet**](docs/ServiceIdentityApi.md#apiserviceidentityidget) | **Get** /api/service-identity/{id} | Get service identity by ID
+*ServiceIdentityApi* | [**ApiServiceIdentityregenerateIdGet**](docs/ServiceIdentityApi.md#apiserviceidentityregenerateidget) | **Get** /api/service-identity:regenerate/{id} | Regenerate service identity credentials
 *ServiceIdentityApi* | [**ServiceIdentityGenerateTokenPost**](docs/ServiceIdentityApi.md#serviceidentitygeneratetokenpost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdDelete**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesiddelete) | **Delete** /api/storage-options-templates/{id} | Delete StorageOptionsTemplates
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdGet**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidget) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
