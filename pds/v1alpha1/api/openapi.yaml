@@ -274,6 +274,83 @@ paths:
       tags:
       - Accounts
       x-codegen-request-body-name: Body
+  /api/accounts/{id}/iam:
+    get:
+      description: Lists IAM records for an account
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given IAM attribute to sort results by (one of: account_id,
+          actor_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by IAM actor id
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      - description: Filter results by IAM actor type
+        in: query
+        name: actor_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/models.IAM'
+                type: array
+          description: OK
+        "400":
+          content: {}
+          description: The request path param isn't a valid uuid.
+      security:
+      - ApiKeyAuth: []
+      summary: List IAM
+      tags:
+      - IAM
+  /api/accounts/{id}/iam/{actor-id}:
+    get:
+      description: Fetches an IAM record
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Actor ID (must be valid UUID)
+        in: path
+        name: actor-id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.IAM'
+          description: OK
+        "400":
+          content: {}
+          description: The request path params aren't a valid uuid.
+        "404":
+          content: {}
+          description: The requested data is not found.
+      security:
+      - ApiKeyAuth: []
+      summary: Get IAM
+      tags:
+      - IAM
   /api/accounts/{id}/invitations:
     post:
       description: Adds role binding to existing user or creates invitation if user
@@ -5974,6 +6051,66 @@ components:
         secret_key:
           type: string
       type: object
+    models.AccessPolicy:
+      example:
+        acccount_id: acccount_id
+        namespace:
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        project:
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        global:
+        - global
+        - global
+        account:
+        - account
+        - account
+        tenant:
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+      properties:
+        acccount_id:
+          type: string
+        account:
+          items:
+            type: string
+          type: array
+        global:
+          items:
+            type: string
+          type: array
+        namespace:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        project:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        tenant:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+      type: object
     models.Account:
       example:
         global_config:
@@ -6590,6 +6727,20 @@ components:
           - failed_create
           - failed_delete
           - failed_update
+          type: string
+      type: object
+    models.Binding:
+      example:
+        role_name: role_name
+        resource_ids:
+        - resource_ids
+        - resource_ids
+      properties:
+        resource_ids:
+          items:
+            type: string
+          type: array
+        role_name:
           type: string
       type: object
     models.ConfigItem:
@@ -7301,6 +7452,68 @@ components:
           type: string
         project_id:
           description: Project ID of the Google project.
+          type: string
+      type: object
+    models.IAM:
+      example:
+        account_id: account_id
+        actor_type: actor_type
+        updated_at: updated_at
+        access_policy:
+          acccount_id: acccount_id
+          namespace:
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          project:
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          global:
+          - global
+          - global
+          account:
+          - account
+          - account
+          tenant:
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+        created_at: created_at
+        actor_id: actor_id
+        id: id
+      properties:
+        access_policy:
+          $ref: '#/components/schemas/models.AccessPolicy'
+        account_id:
+          type: string
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
           type: string
       type: object
     models.Image:

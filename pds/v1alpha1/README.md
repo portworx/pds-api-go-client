@@ -169,6 +169,8 @@ Class | Method | HTTP request | Description
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsDelete**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsdelete) | **Delete** /api/global-role-bindings | Delete GlobalRoleBinding
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsGet**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsget) | **Get** /api/global-role-bindings | List GlobalRoleBindings
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsPut**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsput) | **Put** /api/global-role-bindings | Set GlobalRoleBinding
+*IAMApi* | [**ApiAccountsIdIamActorIdGet**](docs/IAMApi.md#apiaccountsidiamactoridget) | **Get** /api/accounts/{id}/iam/{actor-id} | Get IAM
+*IAMApi* | [**ApiAccountsIdIamGet**](docs/IAMApi.md#apiaccountsidiamget) | **Get** /api/accounts/{id}/iam | List IAM
 *ImagesApi* | [**ApiImagesGet**](docs/ImagesApi.md#apiimagesget) | **Get** /api/images | List Images
 *ImagesApi* | [**ApiImagesIdGet**](docs/ImagesApi.md#apiimagesidget) | **Get** /api/images/{id} | Get Image
 *ImagesApi* | [**ApiVersionsIdImagesGet**](docs/ImagesApi.md#apiversionsidimagesget) | **Get** /api/versions/{id}/images | List Version&#39;s Images
@@ -307,6 +309,7 @@ Class | Method | HTTP request | Description
  - [DeploymentsPodInfo](docs/DeploymentsPodInfo.md)
  - [DeploymentsResourceConditions](docs/DeploymentsResourceConditions.md)
  - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
+ - [ModelsAccessPolicy](docs/ModelsAccessPolicy.md)
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountGlobalConfig](docs/ModelsAccountGlobalConfig.md)
  - [ModelsAccountRoleInvitation](docs/ModelsAccountRoleInvitation.md)
@@ -324,6 +327,7 @@ Class | Method | HTTP request | Description
  - [ModelsBackupSchedule](docs/ModelsBackupSchedule.md)
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
+ - [ModelsBinding](docs/ModelsBinding.md)
  - [ModelsConfigItem](docs/ModelsConfigItem.md)
  - [ModelsCopilotSearchResponse](docs/ModelsCopilotSearchResponse.md)
  - [ModelsDNSDetails](docs/ModelsDNSDetails.md)
@@ -340,6 +344,7 @@ Class | Method | HTTP request | Description
  - [ModelsEULADetails](docs/ModelsEULADetails.md)
  - [ModelsErrorData](docs/ModelsErrorData.md)
  - [ModelsGoogleCredentials](docs/ModelsGoogleCredentials.md)
+ - [ModelsIAM](docs/ModelsIAM.md)
  - [ModelsImage](docs/ModelsImage.md)
  - [ModelsLegacyAccountBinding](docs/ModelsLegacyAccountBinding.md)
  - [ModelsLegacyGlobalBinding](docs/ModelsLegacyGlobalBinding.md)
