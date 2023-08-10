@@ -3450,6 +3450,41 @@ paths:
       summary: Get service identity by ID
       tags:
       - ServiceIdentity
+    put:
+      description: Update service identity name or description
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.ServiceIdentityRequest'
+        description: Request body containing the service identity details.
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content: {}
+          description: The request is not valid.
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+        "409":
+          content: {}
+          description: The service identity with name is already present.
+      security:
+      - ApiKeyAuth: []
+      summary: Update service identity
+      tags:
+      - ServiceIdentity
+      x-codegen-request-body-name: Body
   /api/service-identity:regenerate/{id}:
     get:
       description: Revokes existing credentials and regenerate new ClientID and ClientToken
@@ -9688,9 +9723,12 @@ components:
       properties:
         description:
           type: string
+        enabled:
+          type: boolean
         name:
           type: string
       required:
+      - enabled
       - name
       type: object
     requests.UpdateOperatorMetadataRequest:

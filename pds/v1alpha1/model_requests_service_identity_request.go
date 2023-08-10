@@ -17,6 +17,7 @@ import (
 // RequestsServiceIdentityRequest struct for RequestsServiceIdentityRequest
 type RequestsServiceIdentityRequest struct {
 	Description *string `json:"description,omitempty"`
+	Enabled bool `json:"enabled"`
 	Name string `json:"name"`
 }
 
@@ -24,8 +25,9 @@ type RequestsServiceIdentityRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsServiceIdentityRequest(name string) *RequestsServiceIdentityRequest {
+func NewRequestsServiceIdentityRequest(enabled bool, name string) *RequestsServiceIdentityRequest {
 	this := RequestsServiceIdentityRequest{}
+	this.Enabled = enabled
 	this.Name = name
 	return &this
 }
@@ -70,6 +72,30 @@ func (o *RequestsServiceIdentityRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEnabled returns the Enabled field value
+func (o *RequestsServiceIdentityRequest) GetEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value
+// and a boolean to check if the value has been set.
+func (o *RequestsServiceIdentityRequest) GetEnabledOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Enabled, true
+}
+
+// SetEnabled sets field value
+func (o *RequestsServiceIdentityRequest) SetEnabled(v bool) {
+	o.Enabled = v
+}
+
 // GetName returns the Name field value
 func (o *RequestsServiceIdentityRequest) GetName() string {
 	if o == nil {
@@ -98,6 +124,9 @@ func (o RequestsServiceIdentityRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if true {
+		toSerialize["enabled"] = o.Enabled
 	}
 	if true {
 		toSerialize["name"] = o.Name

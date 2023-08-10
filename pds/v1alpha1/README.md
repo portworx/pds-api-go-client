@@ -209,6 +209,7 @@ Class | Method | HTTP request | Description
 *ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
 *ServiceIdentityApi* | [**ApiServiceIdentityIdDelete**](docs/ServiceIdentityApi.md#apiserviceidentityiddelete) | **Delete** /api/service-identity/{id} | Delete service identity
 *ServiceIdentityApi* | [**ApiServiceIdentityIdGet**](docs/ServiceIdentityApi.md#apiserviceidentityidget) | **Get** /api/service-identity/{id} | Get service identity by ID
+*ServiceIdentityApi* | [**ApiServiceIdentityIdPut**](docs/ServiceIdentityApi.md#apiserviceidentityidput) | **Put** /api/service-identity/{id} | Update service identity
 *ServiceIdentityApi* | [**ApiServiceIdentityregenerateIdGet**](docs/ServiceIdentityApi.md#apiserviceidentityregenerateidget) | **Get** /api/service-identity:regenerate/{id} | Regenerate service identity credentials
 *ServiceIdentityApi* | [**ServiceIdentityGenerateTokenPost**](docs/ServiceIdentityApi.md#serviceidentitygeneratetokenpost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdDelete**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesiddelete) | **Delete** /api/storage-options-templates/{id} | Delete StorageOptionsTemplates

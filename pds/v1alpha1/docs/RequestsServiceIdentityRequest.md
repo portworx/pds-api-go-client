@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
+**Enabled** | **bool** |  | 
 **Name** | **string** |  | 
 
 ## Methods
 
 ### NewRequestsServiceIdentityRequest
 
-`func NewRequestsServiceIdentityRequest(name string, ) *RequestsServiceIdentityRequest`
+`func NewRequestsServiceIdentityRequest(enabled bool, name string, ) *RequestsServiceIdentityRequest`
 
 NewRequestsServiceIdentityRequest instantiates a new RequestsServiceIdentityRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,6 +51,26 @@ SetDescription sets Description field to given value.
 `func (o *RequestsServiceIdentityRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *RequestsServiceIdentityRequest) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *RequestsServiceIdentityRequest) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *RequestsServiceIdentityRequest) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
 
 ### GetName
 
