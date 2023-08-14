@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AcccountId** | Pointer to **string** |  | [optional] 
 **Account** | Pointer to **[]string** |  | [optional] 
+**AccountId** | Pointer to **string** |  | [optional] 
 **Global** | Pointer to **[]string** |  | [optional] 
 **Namespace** | Pointer to [**[]ModelsBinding**](ModelsBinding.md) |  | [optional] 
 **Project** | Pointer to [**[]ModelsBinding**](ModelsBinding.md) |  | [optional] 
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewModelsAccessPolicyWithDefaults instantiates a new ModelsAccessPolicy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAcccountId
-
-`func (o *ModelsAccessPolicy) GetAcccountId() string`
-
-GetAcccountId returns the AcccountId field if non-nil, zero value otherwise.
-
-### GetAcccountIdOk
-
-`func (o *ModelsAccessPolicy) GetAcccountIdOk() (*string, bool)`
-
-GetAcccountIdOk returns a tuple with the AcccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAcccountId
-
-`func (o *ModelsAccessPolicy) SetAcccountId(v string)`
-
-SetAcccountId sets AcccountId field to given value.
-
-### HasAcccountId
-
-`func (o *ModelsAccessPolicy) HasAcccountId() bool`
-
-HasAcccountId returns a boolean if a field has been set.
 
 ### GetAccount
 
@@ -79,6 +54,31 @@ SetAccount sets Account field to given value.
 `func (o *ModelsAccessPolicy) HasAccount() bool`
 
 HasAccount returns a boolean if a field has been set.
+
+### GetAccountId
+
+`func (o *ModelsAccessPolicy) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *ModelsAccessPolicy) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *ModelsAccessPolicy) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *ModelsAccessPolicy) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
 
 ### GetGlobal
 

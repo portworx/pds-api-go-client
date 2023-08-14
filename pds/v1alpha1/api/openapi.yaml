@@ -6088,7 +6088,7 @@ components:
       type: object
     models.AccessPolicy:
       example:
-        acccount_id: acccount_id
+        account_id: account_id
         namespace:
         - role_name: role_name
           resource_ids:
@@ -6123,12 +6123,12 @@ components:
           - resource_ids
           - resource_ids
       properties:
-        acccount_id:
-          type: string
         account:
           items:
             type: string
           type: array
+        account_id:
+          type: string
         global:
           items:
             type: string
@@ -7495,7 +7495,7 @@ components:
         actor_type: actor_type
         updated_at: updated_at
         access_policy:
-          acccount_id: acccount_id
+          account_id: account_id
           namespace:
           - role_name: role_name
             resource_ids:
