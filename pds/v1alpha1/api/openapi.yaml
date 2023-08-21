@@ -1417,6 +1417,12 @@ paths:
         required: true
         schema:
           type: string
+      - description: Set to true to only delete the Backup object in the database
+          (does not delete any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
       responses:
         "204":
           content: {}
