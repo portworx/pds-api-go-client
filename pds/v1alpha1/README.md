@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ApiAccountsIdEulaPut**](docs/AccountsApi.md#apiaccountsideulaput) | **Put** /api/accounts/{id}/eula | Accept EULA
 *AccountsApi* | [**ApiAccountsIdGet**](docs/AccountsApi.md#apiaccountsidget) | **Get** /api/accounts/{id} | Get Account
 *AccountsApi* | [**ApiAccountsIdGlobalConfigPut**](docs/AccountsApi.md#apiaccountsidglobalconfigput) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
+*AccountsApi* | [**ApiAccountsIdPatch**](docs/AccountsApi.md#apiaccountsidpatch) | **Patch** /api/accounts/{id} | Update Account
 *AccountsApi* | [**ApiAccountsIdUsersGet**](docs/AccountsApi.md#apiaccountsidusersget) | **Get** /api/accounts/{id}/users | List Account Users
 *AccountsApi* | [**ApiAccountsPost**](docs/AccountsApi.md#apiaccountspost) | **Post** /api/accounts | Create Account
 *AccountsDNSApi* | [**ApiAccountsIdDnsDetailsPut**](docs/AccountsDNSApi.md#apiaccountsiddnsdetailsput) | **Put** /api/accounts/{id}/dns-details | Update DNS Details
@@ -287,6 +288,7 @@ Class | Method | HTTP request | Description
  - [ControllersServiceAccountTokenResponse](docs/ControllersServiceAccountTokenResponse.md)
  - [ControllersStorageOptionsSamples](docs/ControllersStorageOptionsSamples.md)
  - [ControllersTargetClusterConfigResponse](docs/ControllersTargetClusterConfigResponse.md)
+ - [ControllersUpdateAccountRequest](docs/ControllersUpdateAccountRequest.md)
  - [ControllersUpdateApplicationConfigurationTemplateRequest](docs/ControllersUpdateApplicationConfigurationTemplateRequest.md)
  - [ControllersUpdateBackupCredentialsRequest](docs/ControllersUpdateBackupCredentialsRequest.md)
  - [ControllersUpdateBackupPolicyRequest](docs/ControllersUpdateBackupPolicyRequest.md)

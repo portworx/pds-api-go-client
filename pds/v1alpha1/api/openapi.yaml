@@ -138,6 +138,35 @@ paths:
       summary: Get Account
       tags:
       - Accounts
+    patch:
+      description: 'Modify Account meta: currently only name update allowed'
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.updateAccountRequest'
+        description: Request body containing the name. .
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/models.Account'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Update Account
+      tags:
+      - Accounts
+      x-codegen-request-body-name: Body
   /api/accounts/{id}/account-role-invitations:
     get:
       description: Lists Account Role Invitations
@@ -5925,6 +5954,11 @@ components:
           type: integer
         secure:
           type: boolean
+      type: object
+    controllers.updateAccountRequest:
+      properties:
+        name:
+          type: string
       type: object
     controllers.updateBackupCredentialsRequest:
       properties:

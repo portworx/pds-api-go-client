@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ApiAccountsIdEulaPut**](AccountsApi.md#ApiAccountsIdEulaPut) | **Put** /api/accounts/{id}/eula | Accept EULA
 [**ApiAccountsIdGet**](AccountsApi.md#ApiAccountsIdGet) | **Get** /api/accounts/{id} | Get Account
 [**ApiAccountsIdGlobalConfigPut**](AccountsApi.md#ApiAccountsIdGlobalConfigPut) | **Put** /api/accounts/{id}/global-config | Update AccountGlobalConfig
+[**ApiAccountsIdPatch**](AccountsApi.md#ApiAccountsIdPatch) | **Patch** /api/accounts/{id} | Update Account
 [**ApiAccountsIdUsersGet**](AccountsApi.md#ApiAccountsIdUsersGet) | **Get** /api/accounts/{id}/users | List Account Users
 [**ApiAccountsPost**](AccountsApi.md#ApiAccountsPost) | **Post** /api/accounts | Create Account
 
@@ -374,6 +375,78 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiAccountsIdPatch
+
+> ModelsAccount ApiAccountsIdPatch(ctx, id).Body(body).Execute()
+
+Update Account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | Account ID (must be valid UUID)
+    body := *openapiclient.NewControllersUpdateAccountRequest() // ControllersUpdateAccountRequest | Request body containing the name. .
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.ApiAccountsIdPatch(context.Background(), id).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ApiAccountsIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiAccountsIdPatch`: ModelsAccount
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ApiAccountsIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Account ID (must be valid UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiAccountsIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | [**ControllersUpdateAccountRequest**](ControllersUpdateAccountRequest.md) | Request body containing the name. . | 
+
+### Return type
+
+[**ModelsAccount**](ModelsAccount.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
