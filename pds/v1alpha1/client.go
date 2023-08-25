@@ -77,6 +77,8 @@ type APIClient struct {
 
 	BackupsApi *BackupsApiService
 
+	CopilotApi *CopilotApiService
+
 	DataServicesApi *DataServicesApiService
 
 	DeploymentManifestsApi *DeploymentManifestsApiService
@@ -85,7 +87,11 @@ type APIClient struct {
 
 	DeploymentsApi *DeploymentsApiService
 
+	EventsApi *EventsApiService
+
 	GlobalRoleBindingsApi *GlobalRoleBindingsApiService
+
+	IAMApi *IAMApiService
 
 	ImagesApi *ImagesApiService
 
@@ -106,6 +112,8 @@ type APIClient struct {
 	SampleTemplatesApi *SampleTemplatesApiService
 
 	ServiceAccountsApi *ServiceAccountsApiService
+
+	ServiceIdentityApi *ServiceIdentityApiService
 
 	StorageOptionsTemplatesApi *StorageOptionsTemplatesApiService
 
@@ -156,11 +164,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BackupPoliciesApi = (*BackupPoliciesApiService)(&c.common)
 	c.BackupTargetsApi = (*BackupTargetsApiService)(&c.common)
 	c.BackupsApi = (*BackupsApiService)(&c.common)
+	c.CopilotApi = (*CopilotApiService)(&c.common)
 	c.DataServicesApi = (*DataServicesApiService)(&c.common)
 	c.DeploymentManifestsApi = (*DeploymentManifestsApiService)(&c.common)
 	c.DeploymentTargetsApi = (*DeploymentTargetsApiService)(&c.common)
 	c.DeploymentsApi = (*DeploymentsApiService)(&c.common)
+	c.EventsApi = (*EventsApiService)(&c.common)
 	c.GlobalRoleBindingsApi = (*GlobalRoleBindingsApiService)(&c.common)
+	c.IAMApi = (*IAMApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
 	c.MetadataApi = (*MetadataApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
@@ -171,6 +182,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SampleTemplatesApi = (*SampleTemplatesApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
+	c.ServiceIdentityApi = (*ServiceIdentityApiService)(&c.common)
 	c.StorageOptionsTemplatesApi = (*StorageOptionsTemplatesApiService)(&c.common)
 	c.TasksApi = (*TasksApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)

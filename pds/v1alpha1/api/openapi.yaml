@@ -274,6 +274,165 @@ paths:
       tags:
       - Accounts
       x-codegen-request-body-name: Body
+  /api/accounts/{id}/iam:
+    get:
+      description: Lists IAM records for an account
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given IAM attribute to sort results by (one of: account_id,
+          actor_id)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Filter results by IAM actor id
+        in: query
+        name: actor_id
+        schema:
+          type: string
+      - description: Filter results by IAM actor type
+        in: query
+        name: actor_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/models.IAM'
+                type: array
+          description: OK
+        "400":
+          content: {}
+          description: The request path param isn't a valid uuid.
+      security:
+      - ApiKeyAuth: []
+      summary: List IAM
+      tags:
+      - IAM
+    post:
+      description: Creates a new IAM rolebinding
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.IAMRequest'
+        description: Request body contains actor ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.IAM'
+          description: The created IAM will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create IAM
+      tags:
+      - IAM
+      x-codegen-request-body-name: body
+    put:
+      description: Updates a IAM rolebinding
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.IAMRequest'
+        description: Request body contains actor ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.IAM'
+          description: The updated IAM will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update IAM
+      tags:
+      - IAM
+      x-codegen-request-body-name: body
+  /api/accounts/{id}/iam/{actor-id}:
+    delete:
+      description: Removes a single AccountIAM
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Actor ID (must be valid UUID)
+        in: path
+        name: actor-id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Delete IAM
+      tags:
+      - IAM
+    get:
+      description: Fetches an IAM record
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Actor ID (must be valid UUID)
+        in: path
+        name: actor-id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.IAM'
+          description: OK
+        "400":
+          content: {}
+          description: The request path params aren't a valid uuid.
+        "404":
+          content: {}
+          description: The requested data is not found.
+      security:
+      - ApiKeyAuth: []
+      summary: Get IAM
+      tags:
+      - IAM
   /api/accounts/{id}/invitations:
     post:
       description: Adds role binding to existing user or creates invitation if user
@@ -450,6 +609,108 @@ paths:
       tags:
       - AccountRoleBindings
       x-codegen-request-body-name: body
+  /api/accounts/{id}/service-identity:
+    get:
+      description: Lists all ServiceIdentity for an account
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'A given Service Identity attribute to sort results by (one of:
+          id, name, created_at, created_by)'
+        in: query
+        name: sort_by
+        schema:
+          type: string
+      - description: Maximum number of rows to return (could be less)
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Use a token returned by a previous query to continue listing
+          with the next batch of rows
+        in: query
+        name: continuation
+        schema:
+          type: string
+      - description: Filter results by service identity id
+        in: query
+        name: id
+        schema:
+          type: string
+      - description: Filter results by name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter results by created_by
+        in: query
+        name: created_by
+        schema:
+          type: string
+      - description: Filter results by client_id
+        in: query
+        name: client_id
+        schema:
+          type: string
+      - description: Filter results by enabled
+        in: query
+        name: enabled
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.PaginatedResult-models_ServiceIdentity'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: List Service Identity
+      tags:
+      - ServiceIdentity
+    post:
+      description: Create a Service Identity for programmatic access to pds
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.ServiceIdentityRequest'
+        description: Request body containing the service identity details.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ServiceIdentityWithToken'
+          description: OK
+        "400":
+          content: {}
+          description: The request is not valid.
+        "404":
+          content: {}
+          description: The account with specified id doesn't exist.
+        "409":
+          content: {}
+          description: The service identity is already created.
+      security:
+      - ApiKeyAuth: []
+      summary: Create a Service Identity
+      tags:
+      - ServiceIdentity
+      x-codegen-request-body-name: Body
   /api/accounts/{id}/tenants:
     get:
       description: Lists Tenants.
@@ -1238,6 +1499,12 @@ paths:
         required: true
         schema:
           type: string
+      - description: Set to true to only delete the Backup object in the database
+          (does not delete any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
       responses:
         "204":
           content: {}
@@ -1273,6 +1540,29 @@ paths:
       summary: List compatible versions
       tags:
       - Versions
+  /api/copilot/search:
+    post:
+      description: Generates a response for database query for different databases
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.CreateCopilotSearchRequest'
+        description: Request body containing the search config
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.CopilotSearchResponse'
+          description: The search response will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Search Database query
+      tags:
+      - Copilot
+      x-codegen-request-body-name: body
   /api/data-services:
     get:
       description: Lists Data Services
@@ -1706,8 +1996,30 @@ paths:
       - ApiKeyAuth: []
       summary: Adds k8s generated events for a deployment
       tags:
-      - DeploymentTargets
+      - Events
       x-codegen-request-body-name: body
+  /api/deployment-targets/{id}/events/last-synced-time:
+    get:
+      description: Gets the timestamp of the latest event for the deployment target
+      parameters:
+      - description: DeploymentTarget ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.DeploymentTargetLastSyncedEvent'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Get the timestamp of the latest event
+      tags:
+      - Events
   /api/deployment-targets/{id}/heartbeat:
     post:
       description: Makes control plane aware that DeploymentTarget is still alive
@@ -1942,6 +2254,36 @@ paths:
       summary: Update target capabilities
       tags:
       - DeploymentTargets
+      x-codegen-request-body-name: body
+  /api/deployments:
+    post:
+      description: Creates a new data service Deployment
+      parameters:
+      - description: Set to true to only create the Deployment object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.CreateProjectDeploymentRequest'
+        description: Request body containing the deployment config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Deployment'
+          description: The created Deployment will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Deployment
+      tags:
+      - Deployments
       x-codegen-request-body-name: body
   /api/deployments/{id}:
     delete:
@@ -2201,7 +2543,7 @@ paths:
       - ApiKeyAuth: []
       summary: Get Deployment Events
       tags:
-      - Deployments
+      - Events
   /api/deployments/{id}/status:
     get:
       description: Retrieves status information on the given Deployment
@@ -3047,6 +3389,13 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/requests.CreateRestoreRequest'
+        description: Request body containing information about required restore
+        required: true
       responses:
         "200":
           content:
@@ -3059,6 +3408,7 @@ paths:
       summary: Retry Restore
       tags:
       - Restores
+      x-codegen-request-body-name: body
   /api/restores/{id}/update:
     post:
       description: Updates a Restore
@@ -3172,6 +3522,112 @@ paths:
       summary: Get token of a ServiceAccount
       tags:
       - ServiceAccounts
+  /api/service-identity/{id}:
+    delete:
+      description: Delete service identity by ID
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+      security:
+      - ApiKeyAuth: []
+      summary: Delete service identity
+      tags:
+      - ServiceIdentity
+    get:
+      description: Get service identity by ID
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ServiceIdentity'
+          description: OK
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+      security:
+      - ApiKeyAuth: []
+      summary: Get service identity by ID
+      tags:
+      - ServiceIdentity
+    put:
+      description: Update service identity name or description
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.ServiceIdentityRequest'
+        description: Request body containing the service identity details.
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content: {}
+          description: The request is not valid.
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+        "409":
+          content: {}
+          description: The service identity with name is already present.
+      security:
+      - ApiKeyAuth: []
+      summary: Update service identity
+      tags:
+      - ServiceIdentity
+      x-codegen-request-body-name: Body
+  /api/service-identity:regenerate/{id}:
+    get:
+      description: Revokes existing credentials and regenerate new ClientID and ClientToken
+      parameters:
+      - description: Service Identity ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ServiceIdentityWithToken'
+          description: OK
+        "404":
+          content: {}
+          description: The service identity with specified id doesn't exist.
+      security:
+      - ApiKeyAuth: []
+      summary: Regenerate service identity credentials
+      tags:
+      - ServiceIdentity
   /api/storage-options-templates/{id}:
     delete:
       description: Removes a single StorageOptionsTemplate
@@ -4509,6 +4965,37 @@ paths:
       tags:
       - Authentication
       x-codegen-request-body-name: Body
+  /service-identity/generate-token:
+    post:
+      description: |-
+        Generates JWT token for a service identity using client id and client token
+
+        **Authenticating for later requests using the ID token:**
+        `Authorization: Bearer {id_token}`
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/controllers.GenerateTokenRequest'
+        description: Request body containing the client id and client token.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/controllers.GenerateTokenResponse'
+          description: OK
+        "400":
+          content: {}
+          description: The submitted request body isn't valid.
+        "422":
+          content: {}
+          description: The provided credentials is invalid.
+      summary: Generate JWT token for service identity
+      tags:
+      - ServiceIdentity
+      x-codegen-request-body-name: Body
 components:
   schemas:
     auth.Claims:
@@ -4865,6 +5352,23 @@ components:
         px_service_namespace:
           type: string
         px_version:
+          type: string
+      type: object
+    controllers.GenerateTokenRequest:
+      properties:
+        client_id:
+          type: string
+        client_token:
+          type: string
+      type: object
+    controllers.GenerateTokenResponse:
+      example:
+        valid_for: valid_for
+        token: token
+      properties:
+        token:
+          type: string
+        valid_for:
           type: string
       type: object
     controllers.ListBackupJobsStatusResponse:
@@ -5334,6 +5838,12 @@ components:
           name: name
           created_at: created_at
           id: id
+        service_identity:
+          account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          id: id
         user:
           updated_at: updated_at
           created_at: created_at
@@ -5342,6 +5852,8 @@ components:
       properties:
         service_account:
           $ref: '#/components/schemas/controllers.WhoAmIServiceAccount'
+        service_identity:
+          $ref: '#/components/schemas/controllers.WhoAmIServiceIdentity'
         user:
           $ref: '#/components/schemas/controllers.WhoAmIUser'
       type: object
@@ -5362,6 +5874,28 @@ components:
         name:
           type: string
         tenant_id:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    controllers.WhoAmIServiceIdentity:
+      example:
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        id: id
+      properties:
+        account_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
           type: string
         updated_at:
           description: UpdatedAt is autogenerated on update
@@ -5669,6 +6203,89 @@ components:
           type: string
         secret_key:
           type: string
+      type: object
+    models.AccessPolicy:
+      properties:
+        account:
+          items:
+            type: string
+          type: array
+        global:
+          items:
+            type: string
+          type: array
+        namespace:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        project:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        tenant:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+      type: object
+    models.AccessPolicyWithAccountID:
+      example:
+        account_id: account_id
+        namespace:
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        project:
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        global:
+        - global
+        - global
+        account:
+        - account
+        - account
+        tenant:
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+        - role_name: role_name
+          resource_ids:
+          - resource_ids
+          - resource_ids
+      properties:
+        account:
+          items:
+            type: string
+          type: array
+        account_id:
+          type: string
+        global:
+          items:
+            type: string
+          type: array
+        namespace:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        project:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        tenant:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
       type: object
     models.Account:
       example:
@@ -6288,6 +6905,20 @@ components:
           - failed_update
           type: string
       type: object
+    models.Binding:
+      example:
+        role_name: role_name
+        resource_ids:
+        - resource_ids
+        - resource_ids
+      properties:
+        resource_ids:
+          items:
+            type: string
+          type: array
+        role_name:
+          type: string
+      type: object
     models.ConfigItem:
       example:
         deploy_time: true
@@ -6303,6 +6934,25 @@ components:
           type: string
         value:
           description: Configuration value.
+          type: string
+      type: object
+    models.CopilotSearchResponse:
+      example:
+        data_service_id: data_service_id
+        response: response
+        query: query
+        response_time: response_time
+        id: id
+      properties:
+        data_service_id:
+          type: string
+        id:
+          type: string
+        query:
+          type: string
+        response:
+          type: string
+        response_time:
           type: string
       type: object
     models.DNSDetails:
@@ -6460,6 +7110,7 @@ components:
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
+          teleport_agent_version: teleport_agent_version
           capabilities:
             backup: backup
             capabilities: capabilities
@@ -6730,6 +7381,7 @@ components:
           kube_platform: kube_platform
           px_csi_enabled: px_csi_enabled
           px_version: px_version
+        teleport_agent_version: teleport_agent_version
         capabilities:
           backup: backup
           capabilities: capabilities
@@ -6786,6 +7438,8 @@ components:
         name:
           type: string
         status:
+          type: string
+        teleport_agent_version:
           type: string
         tenant_id:
           type: string
@@ -6898,6 +7552,17 @@ components:
         type:
           type: string
       type: object
+    models.DeploymentTargetLastSyncedEvent:
+      example:
+        timestamp: 0
+      properties:
+        timestamp:
+          description: Timestamp of the last synced event for the deployment target
+          format: int64
+          type: integer
+      required:
+      - timestamp
+      type: object
     models.DeploymentTargetMetadata:
       example:
         kube_api_version: kube_api_version
@@ -6963,6 +7628,68 @@ components:
           type: string
         project_id:
           description: Project ID of the Google project.
+          type: string
+      type: object
+    models.IAM:
+      example:
+        account_id: account_id
+        actor_type: actor_type
+        updated_at: updated_at
+        access_policy:
+          account_id: account_id
+          namespace:
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          project:
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          global:
+          - global
+          - global
+          account:
+          - account
+          - account
+          tenant:
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+          - role_name: role_name
+            resource_ids:
+            - resource_ids
+            - resource_ids
+        created_at: created_at
+        actor_id: actor_id
+        id: id
+      properties:
+        access_policy:
+          $ref: '#/components/schemas/models.AccessPolicyWithAccountID'
+        account_id:
+          type: string
+        actor_id:
+          type: string
+        actor_type:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        id:
+          description: ID is auto generated on creation
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
           type: string
       type: object
     models.Image:
@@ -7054,6 +7781,8 @@ components:
         actor_id:
           type: string
         actor_type:
+          description: 'TODO: https://portworx.atlassian.net/browse/DS-6197: Fetch
+            ActorType from DB instead of taking in request'
           type: string
         project_id:
           type: string
@@ -7070,6 +7799,8 @@ components:
         actor_id:
           type: string
         actor_type:
+          description: 'TODO: https://portworx.atlassian.net/browse/DS-6197: Fetch
+            ActorType from DB instead of taking in request'
           type: string
         role_name:
           type: string
@@ -7607,6 +8338,7 @@ components:
               kube_platform: kube_platform
               px_csi_enabled: px_csi_enabled
               px_version: px_version
+            teleport_agent_version: teleport_agent_version
             capabilities:
               backup: backup
               capabilities: capabilities
@@ -7733,6 +8465,7 @@ components:
               kube_platform: kube_platform
               px_csi_enabled: px_csi_enabled
               px_version: px_version
+            teleport_agent_version: teleport_agent_version
             capabilities:
               backup: backup
               capabilities: capabilities
@@ -7789,6 +8522,7 @@ components:
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
+          teleport_agent_version: teleport_agent_version
           capabilities:
             backup: backup
             capabilities: capabilities
@@ -7832,6 +8566,7 @@ components:
             kube_platform: kube_platform
             px_csi_enabled: px_csi_enabled
             px_version: px_version
+          teleport_agent_version: teleport_agent_version
           capabilities:
             backup: backup
             capabilities: capabilities
@@ -8025,6 +8760,41 @@ components:
         data:
           items:
             $ref: '#/components/schemas/models.ServiceAccount'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/constraint.Pagination'
+      type: object
+    models.PaginatedResult-models_ServiceIdentity:
+      example:
+        pagination:
+          continuation: continuation
+        data:
+        - account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          description: description
+          secret_generation_count: 0
+          id: id
+          created_by: created_by
+          secret_updated_at: secret_updated_at
+          client_id: client_id
+          enabled: true
+        - account_id: account_id
+          updated_at: updated_at
+          name: name
+          created_at: created_at
+          description: description
+          secret_generation_count: 0
+          id: id
+          created_by: created_by
+          secret_updated_at: secret_updated_at
+          client_id: client_id
+          enabled: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/models.ServiceIdentity'
           type: array
         pagination:
           $ref: '#/components/schemas/constraint.Pagination'
@@ -8414,6 +9184,89 @@ components:
           description: UpdatedAt is autogenerated on update
           type: string
       type: object
+    models.ServiceIdentity:
+      example:
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        description: description
+        secret_generation_count: 0
+        id: id
+        created_by: created_by
+        secret_updated_at: secret_updated_at
+        client_id: client_id
+        enabled: true
+      properties:
+        account_id:
+          type: string
+        client_id:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        created_by:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        secret_generation_count:
+          type: integer
+        secret_updated_at:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
+    models.ServiceIdentityWithToken:
+      example:
+        client_token: client_token
+        account_id: account_id
+        updated_at: updated_at
+        name: name
+        created_at: created_at
+        description: description
+        secret_generation_count: 0
+        id: id
+        created_by: created_by
+        secret_updated_at: secret_updated_at
+        client_id: client_id
+        enabled: true
+      properties:
+        account_id:
+          type: string
+        client_id:
+          type: string
+        client_token:
+          type: string
+        created_at:
+          description: CreatedAt is autogenerated on creation
+          type: string
+        created_by:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        id:
+          description: ID is auto generated on creation
+          type: string
+        name:
+          type: string
+        secret_generation_count:
+          type: integer
+        secret_updated_at:
+          type: string
+        updated_at:
+          description: UpdatedAt is autogenerated on update
+          type: string
+      type: object
     models.StorageOptionsSample:
       example:
         fg: true
@@ -8727,6 +9580,15 @@ components:
             type: string
           type: array
       type: object
+    requests.CreateCopilotSearchRequest:
+      properties:
+        data_service_id:
+          type: string
+        query:
+          description: 'TODO: fix example query with best query'
+          example: how to list all records of table employee.
+          type: string
+      type: object
     requests.CreateDeploymentEventsRequest:
       properties:
         events:
@@ -8741,6 +9603,8 @@ components:
         cluster_id:
           type: string
         name:
+          type: string
+        teleport_agent_version:
           type: string
         tls_issuer:
           type: string
@@ -8837,6 +9701,21 @@ components:
           description: BackupTargetID and BackupPolicyID must be both specified.
           type: string
       type: object
+    requests.IAMRequest:
+      properties:
+        actor_id:
+          type: string
+        actor_type:
+          description: 'TODO: https://portworx.atlassian.net/browse/DS-6197: Fetch
+            ActorType from DB instead of taking in request'
+          type: string
+        data:
+          $ref: '#/components/schemas/models.AccessPolicy'
+      required:
+      - actor_id
+      - actor_type
+      - data
+      type: object
     requests.InvitationAccountRequest:
       properties:
         email:
@@ -8925,6 +9804,8 @@ components:
           type: string
         px_version:
           type: string
+        teleport_agent_version:
+          type: string
       type: object
     requests.PatchUserAPIKeyRequest:
       properties:
@@ -8997,6 +9878,18 @@ components:
         role_name:
           example: Name of the assigned role
           type: string
+      type: object
+    requests.ServiceIdentityRequest:
+      properties:
+        description:
+          type: string
+        enabled:
+          type: boolean
+        name:
+          type: string
+      required:
+      - enabled
+      - name
       type: object
     requests.UpdateOperatorMetadataRequest:
       properties:

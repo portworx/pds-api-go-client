@@ -17,6 +17,7 @@ import (
 // ModelsLegacyProjectBinding struct for ModelsLegacyProjectBinding
 type ModelsLegacyProjectBinding struct {
 	ActorId *string `json:"actor_id,omitempty"`
+	// TODO: https://portworx.atlassian.net/browse/DS-6197: Fetch ActorType from DB instead of taking in request
 	ActorType *string `json:"actor_type,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`

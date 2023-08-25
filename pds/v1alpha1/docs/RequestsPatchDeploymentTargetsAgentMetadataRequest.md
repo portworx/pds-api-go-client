@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PxCsiEnabled** | Pointer to **string** |  | [optional] 
 **PxServiceNamespace** | Pointer to **string** |  | [optional] 
 **PxVersion** | Pointer to **string** |  | [optional] 
+**TeleportAgentVersion** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetPxVersion sets PxVersion field to given value.
 `func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) HasPxVersion() bool`
 
 HasPxVersion returns a boolean if a field has been set.
+
+### GetTeleportAgentVersion
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) GetTeleportAgentVersion() string`
+
+GetTeleportAgentVersion returns the TeleportAgentVersion field if non-nil, zero value otherwise.
+
+### GetTeleportAgentVersionOk
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) GetTeleportAgentVersionOk() (*string, bool)`
+
+GetTeleportAgentVersionOk returns a tuple with the TeleportAgentVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeleportAgentVersion
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) SetTeleportAgentVersion(v string)`
+
+SetTeleportAgentVersion sets TeleportAgentVersion field to given value.
+
+### HasTeleportAgentVersion
+
+`func (o *RequestsPatchDeploymentTargetsAgentMetadataRequest) HasTeleportAgentVersion() bool`
+
+HasTeleportAgentVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActorId** | Pointer to **string** |  | [optional] 
-**ActorType** | Pointer to **string** |  | [optional] 
+**ActorType** | Pointer to **string** | TODO: https://portworx.atlassian.net/browse/DS-6197: Fetch ActorType from DB instead of taking in request | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 

@@ -136,6 +136,7 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**ApiBackupsIdPut**](docs/BackupsApi.md#apibackupsidput) | **Put** /api/backups/{id} | Update Backup
 *BackupsApi* | [**ApiDeploymentsIdBackupsGet**](docs/BackupsApi.md#apideploymentsidbackupsget) | **Get** /api/deployments/{id}/backups | List Deployment&#39;s Backups
 *BackupsApi* | [**ApiDeploymentsIdBackupsPost**](docs/BackupsApi.md#apideploymentsidbackupspost) | **Post** /api/deployments/{id}/backups | Create Backup
+*CopilotApi* | [**ApiCopilotSearchPost**](docs/CopilotApi.md#apicopilotsearchpost) | **Post** /api/copilot/search | Search Database query
 *DataServicesApi* | [**ApiDataServicesGet**](docs/DataServicesApi.md#apidataservicesget) | **Get** /api/data-services | List Data Services
 *DataServicesApi* | [**ApiDataServicesIdGet**](docs/DataServicesApi.md#apidataservicesidget) | **Get** /api/data-services/{id} | Get Data Service
 *DeploymentManifestsApi* | [**ApiDeploymentsIdUpdateManifestPost**](docs/DeploymentManifestsApi.md#apideploymentsidupdatemanifestpost) | **Post** /api/deployments/{id}/update-manifest | Post DeploymentManifest
@@ -143,7 +144,6 @@ Class | Method | HTTP request | Description
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdConfigGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidconfigget) | **Get** /api/deployment-targets/{id}/config | Get configuration values for a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdCredentialsGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidcredentialsget) | **Get** /api/deployment-targets/{id}/credentials | Get join credentials of a DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDelete**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddelete) | **Delete** /api/deployment-targets/{id} | Delete DeploymentTarget
-*DeploymentTargetsApi* | [**ApiDeploymentTargetsIdDeploymentEventsPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsiddeploymenteventspost) | **Post** /api/deployment-targets/{id}/deployment/events | Adds k8s generated events for a deployment
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdGet**](docs/DeploymentTargetsApi.md#apideploymenttargetsidget) | **Get** /api/deployment-targets/{id} | Get DeploymentTarget
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdHeartbeatPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidheartbeatpost) | **Post** /api/deployment-targets/{id}/heartbeat | Make DeploymentTarget heart beat request
 *DeploymentTargetsApi* | [**ApiDeploymentTargetsIdMetadataPost**](docs/DeploymentTargetsApi.md#apideploymenttargetsidmetadatapost) | **Post** /api/deployment-targets/{id}/metadata | Update DeploymentTarget metadata
@@ -158,15 +158,23 @@ Class | Method | HTTP request | Description
 *DeploymentsApi* | [**ApiDeploymentsIdConnectionInfoGet**](docs/DeploymentsApi.md#apideploymentsidconnectioninfoget) | **Get** /api/deployments/{id}/connection-info | Deployment Connection Information
 *DeploymentsApi* | [**ApiDeploymentsIdCredentialsGet**](docs/DeploymentsApi.md#apideploymentsidcredentialsget) | **Get** /api/deployments/{id}/credentials | Deployment Credentials
 *DeploymentsApi* | [**ApiDeploymentsIdDelete**](docs/DeploymentsApi.md#apideploymentsiddelete) | **Delete** /api/deployments/{id} | Delete Deployment
-*DeploymentsApi* | [**ApiDeploymentsIdEventsGet**](docs/DeploymentsApi.md#apideploymentsideventsget) | **Get** /api/deployments/{id}/events | Get Deployment Events
 *DeploymentsApi* | [**ApiDeploymentsIdGet**](docs/DeploymentsApi.md#apideploymentsidget) | **Get** /api/deployments/{id} | Get Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdPut**](docs/DeploymentsApi.md#apideploymentsidput) | **Put** /api/deployments/{id} | Update Deployment
 *DeploymentsApi* | [**ApiDeploymentsIdStatusGet**](docs/DeploymentsApi.md#apideploymentsidstatusget) | **Get** /api/deployments/{id}/status | Get Deployment Status
+*DeploymentsApi* | [**ApiDeploymentsPost**](docs/DeploymentsApi.md#apideploymentspost) | **Post** /api/deployments | Create Deployment
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsGet**](docs/DeploymentsApi.md#apiprojectsiddeploymentsget) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
 *DeploymentsApi* | [**ApiProjectsIdDeploymentsPost**](docs/DeploymentsApi.md#apiprojectsiddeploymentspost) | **Post** /api/projects/{id}/deployments | Create Deployment
+*EventsApi* | [**ApiDeploymentTargetsIdDeploymentEventsPost**](docs/EventsApi.md#apideploymenttargetsiddeploymenteventspost) | **Post** /api/deployment-targets/{id}/deployment/events | Adds k8s generated events for a deployment
+*EventsApi* | [**ApiDeploymentTargetsIdEventsLastSyncedTimeGet**](docs/EventsApi.md#apideploymenttargetsideventslastsyncedtimeget) | **Get** /api/deployment-targets/{id}/events/last-synced-time | Get the timestamp of the latest event
+*EventsApi* | [**ApiDeploymentsIdEventsGet**](docs/EventsApi.md#apideploymentsideventsget) | **Get** /api/deployments/{id}/events | Get Deployment Events
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsDelete**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsdelete) | **Delete** /api/global-role-bindings | Delete GlobalRoleBinding
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsGet**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsget) | **Get** /api/global-role-bindings | List GlobalRoleBindings
 *GlobalRoleBindingsApi* | [**ApiGlobalRoleBindingsPut**](docs/GlobalRoleBindingsApi.md#apiglobalrolebindingsput) | **Put** /api/global-role-bindings | Set GlobalRoleBinding
+*IAMApi* | [**ApiAccountsIdIamActorIdDelete**](docs/IAMApi.md#apiaccountsidiamactoriddelete) | **Delete** /api/accounts/{id}/iam/{actor-id} | Delete IAM
+*IAMApi* | [**ApiAccountsIdIamActorIdGet**](docs/IAMApi.md#apiaccountsidiamactoridget) | **Get** /api/accounts/{id}/iam/{actor-id} | Get IAM
+*IAMApi* | [**ApiAccountsIdIamGet**](docs/IAMApi.md#apiaccountsidiamget) | **Get** /api/accounts/{id}/iam | List IAM
+*IAMApi* | [**ApiAccountsIdIamPost**](docs/IAMApi.md#apiaccountsidiampost) | **Post** /api/accounts/{id}/iam | Create IAM
+*IAMApi* | [**ApiAccountsIdIamPut**](docs/IAMApi.md#apiaccountsidiamput) | **Put** /api/accounts/{id}/iam | Update IAM
 *ImagesApi* | [**ApiImagesGet**](docs/ImagesApi.md#apiimagesget) | **Get** /api/images | List Images
 *ImagesApi* | [**ApiImagesIdGet**](docs/ImagesApi.md#apiimagesidget) | **Get** /api/images/{id} | Get Image
 *ImagesApi* | [**ApiVersionsIdImagesGet**](docs/ImagesApi.md#apiversionsidimagesget) | **Get** /api/versions/{id}/images | List Version&#39;s Images
@@ -201,6 +209,13 @@ Class | Method | HTTP request | Description
 *ServiceAccountsApi* | [**ApiServiceAccountsIdTokenGet**](docs/ServiceAccountsApi.md#apiserviceaccountsidtokenget) | **Get** /api/service-accounts/{id}/token | Get token of a ServiceAccount
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsGet**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountsget) | **Get** /api/tenants/{id}/service-accounts | List Tenant&#39;s ServiceAccounts
 *ServiceAccountsApi* | [**ApiTenantsIdServiceAccountsPost**](docs/ServiceAccountsApi.md#apitenantsidserviceaccountspost) | **Post** /api/tenants/{id}/service-accounts | Create ServiceAccounts
+*ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityGet**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentityget) | **Get** /api/accounts/{id}/service-identity | List Service Identity
+*ServiceIdentityApi* | [**ApiAccountsIdServiceIdentityPost**](docs/ServiceIdentityApi.md#apiaccountsidserviceidentitypost) | **Post** /api/accounts/{id}/service-identity | Create a Service Identity
+*ServiceIdentityApi* | [**ApiServiceIdentityIdDelete**](docs/ServiceIdentityApi.md#apiserviceidentityiddelete) | **Delete** /api/service-identity/{id} | Delete service identity
+*ServiceIdentityApi* | [**ApiServiceIdentityIdGet**](docs/ServiceIdentityApi.md#apiserviceidentityidget) | **Get** /api/service-identity/{id} | Get service identity by ID
+*ServiceIdentityApi* | [**ApiServiceIdentityIdPut**](docs/ServiceIdentityApi.md#apiserviceidentityidput) | **Put** /api/service-identity/{id} | Update service identity
+*ServiceIdentityApi* | [**ApiServiceIdentityregenerateIdGet**](docs/ServiceIdentityApi.md#apiserviceidentityregenerateidget) | **Get** /api/service-identity:regenerate/{id} | Regenerate service identity credentials
+*ServiceIdentityApi* | [**ServiceIdentityGenerateTokenPost**](docs/ServiceIdentityApi.md#serviceidentitygeneratetokenpost) | **Post** /service-identity/generate-token | Generate JWT token for service identity
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdDelete**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesiddelete) | **Delete** /api/storage-options-templates/{id} | Delete StorageOptionsTemplates
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdGet**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidget) | **Get** /api/storage-options-templates/{id} | Get StorageOptionsTemplate
 *StorageOptionsTemplatesApi* | [**ApiStorageOptionsTemplatesIdPut**](docs/StorageOptionsTemplatesApi.md#apistorageoptionstemplatesidput) | **Put** /api/storage-options-templates/{id} | Update StorageOptionsTemplate
@@ -254,6 +269,8 @@ Class | Method | HTTP request | Description
  - [ControllersDeploymentTargetHeartbeatRequest](docs/ControllersDeploymentTargetHeartbeatRequest.md)
  - [ControllersDeploymentTargetHeartbeatResponse](docs/ControllersDeploymentTargetHeartbeatResponse.md)
  - [ControllersDeploymentTargetMetadataRequest](docs/ControllersDeploymentTargetMetadataRequest.md)
+ - [ControllersGenerateTokenRequest](docs/ControllersGenerateTokenRequest.md)
+ - [ControllersGenerateTokenResponse](docs/ControllersGenerateTokenResponse.md)
  - [ControllersListBackupJobsStatusResponse](docs/ControllersListBackupJobsStatusResponse.md)
  - [ControllersOIDCInfoResponse](docs/ControllersOIDCInfoResponse.md)
  - [ControllersOIDCTokenResponse](docs/ControllersOIDCTokenResponse.md)
@@ -288,6 +305,7 @@ Class | Method | HTTP request | Description
  - [ControllersUpdateStorageOptionsTemplateRequest](docs/ControllersUpdateStorageOptionsTemplateRequest.md)
  - [ControllersWhoAmIResponse](docs/ControllersWhoAmIResponse.md)
  - [ControllersWhoAmIServiceAccount](docs/ControllersWhoAmIServiceAccount.md)
+ - [ControllersWhoAmIServiceIdentity](docs/ControllersWhoAmIServiceIdentity.md)
  - [ControllersWhoAmIUser](docs/ControllersWhoAmIUser.md)
  - [DeploymentsCondition](docs/DeploymentsCondition.md)
  - [DeploymentsConnectionDetails](docs/DeploymentsConnectionDetails.md)
@@ -296,6 +314,8 @@ Class | Method | HTTP request | Description
  - [DeploymentsPodInfo](docs/DeploymentsPodInfo.md)
  - [DeploymentsResourceConditions](docs/DeploymentsResourceConditions.md)
  - [ModelsAWSDetails](docs/ModelsAWSDetails.md)
+ - [ModelsAccessPolicy](docs/ModelsAccessPolicy.md)
+ - [ModelsAccessPolicyWithAccountID](docs/ModelsAccessPolicyWithAccountID.md)
  - [ModelsAccount](docs/ModelsAccount.md)
  - [ModelsAccountGlobalConfig](docs/ModelsAccountGlobalConfig.md)
  - [ModelsAccountRoleInvitation](docs/ModelsAccountRoleInvitation.md)
@@ -313,7 +333,9 @@ Class | Method | HTTP request | Description
  - [ModelsBackupSchedule](docs/ModelsBackupSchedule.md)
  - [ModelsBackupTarget](docs/ModelsBackupTarget.md)
  - [ModelsBackupTargetState](docs/ModelsBackupTargetState.md)
+ - [ModelsBinding](docs/ModelsBinding.md)
  - [ModelsConfigItem](docs/ModelsConfigItem.md)
+ - [ModelsCopilotSearchResponse](docs/ModelsCopilotSearchResponse.md)
  - [ModelsDNSDetails](docs/ModelsDNSDetails.md)
  - [ModelsDataService](docs/ModelsDataService.md)
  - [ModelsDeployment](docs/ModelsDeployment.md)
@@ -323,10 +345,12 @@ Class | Method | HTTP request | Description
  - [ModelsDeploymentTarget](docs/ModelsDeploymentTarget.md)
  - [ModelsDeploymentTargetCapabilities](docs/ModelsDeploymentTargetCapabilities.md)
  - [ModelsDeploymentTargetDeploymentEvent](docs/ModelsDeploymentTargetDeploymentEvent.md)
+ - [ModelsDeploymentTargetLastSyncedEvent](docs/ModelsDeploymentTargetLastSyncedEvent.md)
  - [ModelsDeploymentTargetMetadata](docs/ModelsDeploymentTargetMetadata.md)
  - [ModelsEULADetails](docs/ModelsEULADetails.md)
  - [ModelsErrorData](docs/ModelsErrorData.md)
  - [ModelsGoogleCredentials](docs/ModelsGoogleCredentials.md)
+ - [ModelsIAM](docs/ModelsIAM.md)
  - [ModelsImage](docs/ModelsImage.md)
  - [ModelsLegacyAccountBinding](docs/ModelsLegacyAccountBinding.md)
  - [ModelsLegacyGlobalBinding](docs/ModelsLegacyGlobalBinding.md)
@@ -351,6 +375,7 @@ Class | Method | HTTP request | Description
  - [ModelsPaginatedResultModelsProject](docs/ModelsPaginatedResultModelsProject.md)
  - [ModelsPaginatedResultModelsResourceSettingsTemplate](docs/ModelsPaginatedResultModelsResourceSettingsTemplate.md)
  - [ModelsPaginatedResultModelsServiceAccount](docs/ModelsPaginatedResultModelsServiceAccount.md)
+ - [ModelsPaginatedResultModelsServiceIdentity](docs/ModelsPaginatedResultModelsServiceIdentity.md)
  - [ModelsPaginatedResultModelsStorageOptionsTemplate](docs/ModelsPaginatedResultModelsStorageOptionsTemplate.md)
  - [ModelsPaginatedResultModelsTenant](docs/ModelsPaginatedResultModelsTenant.md)
  - [ModelsPaginatedResultModelsUser](docs/ModelsPaginatedResultModelsUser.md)
@@ -363,6 +388,8 @@ Class | Method | HTTP request | Description
  - [ModelsS3CompatibleCredentials](docs/ModelsS3CompatibleCredentials.md)
  - [ModelsS3Credentials](docs/ModelsS3Credentials.md)
  - [ModelsServiceAccount](docs/ModelsServiceAccount.md)
+ - [ModelsServiceIdentity](docs/ModelsServiceIdentity.md)
+ - [ModelsServiceIdentityWithToken](docs/ModelsServiceIdentityWithToken.md)
  - [ModelsStorageOptionsSample](docs/ModelsStorageOptionsSample.md)
  - [ModelsStorageOptionsTemplate](docs/ModelsStorageOptionsTemplate.md)
  - [ModelsTask](docs/ModelsTask.md)
@@ -372,6 +399,7 @@ Class | Method | HTTP request | Description
  - [ModelsUserAPIKey](docs/ModelsUserAPIKey.md)
  - [ModelsVersion](docs/ModelsVersion.md)
  - [PolicyRole](docs/PolicyRole.md)
+ - [RequestsCreateCopilotSearchRequest](docs/RequestsCreateCopilotSearchRequest.md)
  - [RequestsCreateDeploymentEventsRequest](docs/RequestsCreateDeploymentEventsRequest.md)
  - [RequestsCreateDeploymentTargetRequest](docs/RequestsCreateDeploymentTargetRequest.md)
  - [RequestsCreateProjectDeploymentRequest](docs/RequestsCreateProjectDeploymentRequest.md)
@@ -380,6 +408,7 @@ Class | Method | HTTP request | Description
  - [RequestsDeleteRoleBindingRequest](docs/RequestsDeleteRoleBindingRequest.md)
  - [RequestsDeploymentEvent](docs/RequestsDeploymentEvent.md)
  - [RequestsDeploymentScheduledBackup](docs/RequestsDeploymentScheduledBackup.md)
+ - [RequestsIAMRequest](docs/RequestsIAMRequest.md)
  - [RequestsInvitationAccountRequest](docs/RequestsInvitationAccountRequest.md)
  - [RequestsK8sEvent](docs/RequestsK8sEvent.md)
  - [RequestsPatchAccountRoleInvitationRequest](docs/RequestsPatchAccountRoleInvitationRequest.md)
@@ -388,6 +417,7 @@ Class | Method | HTTP request | Description
  - [RequestsPatchUserAPIKeyRequest](docs/RequestsPatchUserAPIKeyRequest.md)
  - [RequestsPutBackupJobRequest](docs/RequestsPutBackupJobRequest.md)
  - [RequestsPutLegacyBindingRequest](docs/RequestsPutLegacyBindingRequest.md)
+ - [RequestsServiceIdentityRequest](docs/RequestsServiceIdentityRequest.md)
  - [RequestsUpdateOperatorMetadataRequest](docs/RequestsUpdateOperatorMetadataRequest.md)
  - [RequestsUpdateRestoreRequest](docs/RequestsUpdateRestoreRequest.md)
  - [RequestsUpsertDeploymentManifestRequest](docs/RequestsUpsertDeploymentManifestRequest.md)

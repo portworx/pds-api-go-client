@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceAccount** | Pointer to [**ControllersWhoAmIServiceAccount**](ControllersWhoAmIServiceAccount.md) |  | [optional] 
+**ServiceIdentity** | Pointer to [**ControllersWhoAmIServiceIdentity**](ControllersWhoAmIServiceIdentity.md) |  | [optional] 
 **User** | Pointer to [**ControllersWhoAmIUser**](ControllersWhoAmIUser.md) |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetServiceAccount sets ServiceAccount field to given value.
 `func (o *ControllersWhoAmIResponse) HasServiceAccount() bool`
 
 HasServiceAccount returns a boolean if a field has been set.
+
+### GetServiceIdentity
+
+`func (o *ControllersWhoAmIResponse) GetServiceIdentity() ControllersWhoAmIServiceIdentity`
+
+GetServiceIdentity returns the ServiceIdentity field if non-nil, zero value otherwise.
+
+### GetServiceIdentityOk
+
+`func (o *ControllersWhoAmIResponse) GetServiceIdentityOk() (*ControllersWhoAmIServiceIdentity, bool)`
+
+GetServiceIdentityOk returns a tuple with the ServiceIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceIdentity
+
+`func (o *ControllersWhoAmIResponse) SetServiceIdentity(v ControllersWhoAmIServiceIdentity)`
+
+SetServiceIdentity sets ServiceIdentity field to given value.
+
+### HasServiceIdentity
+
+`func (o *ControllersWhoAmIResponse) HasServiceIdentity() bool`
+
+HasServiceIdentity returns a boolean if a field has been set.
 
 ### GetUser
 

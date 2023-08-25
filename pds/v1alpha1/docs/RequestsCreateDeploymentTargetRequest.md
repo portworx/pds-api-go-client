@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**TeleportAgentVersion** | Pointer to **string** |  | [optional] 
 **TlsIssuer** | Pointer to **string** |  | [optional] 
 **TlsRequired** | Pointer to **bool** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetName sets Name field to given value.
 `func (o *RequestsCreateDeploymentTargetRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetTeleportAgentVersion
+
+`func (o *RequestsCreateDeploymentTargetRequest) GetTeleportAgentVersion() string`
+
+GetTeleportAgentVersion returns the TeleportAgentVersion field if non-nil, zero value otherwise.
+
+### GetTeleportAgentVersionOk
+
+`func (o *RequestsCreateDeploymentTargetRequest) GetTeleportAgentVersionOk() (*string, bool)`
+
+GetTeleportAgentVersionOk returns a tuple with the TeleportAgentVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeleportAgentVersion
+
+`func (o *RequestsCreateDeploymentTargetRequest) SetTeleportAgentVersion(v string)`
+
+SetTeleportAgentVersion sets TeleportAgentVersion field to given value.
+
+### HasTeleportAgentVersion
+
+`func (o *RequestsCreateDeploymentTargetRequest) HasTeleportAgentVersion() bool`
+
+HasTeleportAgentVersion returns a boolean if a field has been set.
 
 ### GetTlsIssuer
 
