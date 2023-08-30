@@ -689,28 +689,28 @@ func (a *ServiceIdentityApiService) ApiServiceIdentityIdPutExecute(r ApiApiServi
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiServiceIdentityregenerateIdGetRequest struct {
+type ApiApiServiceIdentityIdRegenerateGetRequest struct {
 	ctx context.Context
 	ApiService *ServiceIdentityApiService
 	id string
 }
 
 
-func (r ApiApiServiceIdentityregenerateIdGetRequest) Execute() (*ModelsServiceIdentityWithToken, *http.Response, error) {
-	return r.ApiService.ApiServiceIdentityregenerateIdGetExecute(r)
+func (r ApiApiServiceIdentityIdRegenerateGetRequest) Execute() (*ModelsServiceIdentityWithToken, *http.Response, error) {
+	return r.ApiService.ApiServiceIdentityIdRegenerateGetExecute(r)
 }
 
 /*
-ApiServiceIdentityregenerateIdGet Regenerate service identity credentials
+ApiServiceIdentityIdRegenerateGet Regenerate service identity credentials
 
 Revokes existing credentials and regenerate new ClientID and ClientToken
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Service Identity ID (must be valid UUID)
- @return ApiApiServiceIdentityregenerateIdGetRequest
+ @return ApiApiServiceIdentityIdRegenerateGetRequest
 */
-func (a *ServiceIdentityApiService) ApiServiceIdentityregenerateIdGet(ctx context.Context, id string) ApiApiServiceIdentityregenerateIdGetRequest {
-	return ApiApiServiceIdentityregenerateIdGetRequest{
+func (a *ServiceIdentityApiService) ApiServiceIdentityIdRegenerateGet(ctx context.Context, id string) ApiApiServiceIdentityIdRegenerateGetRequest {
+	return ApiApiServiceIdentityIdRegenerateGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -719,7 +719,7 @@ func (a *ServiceIdentityApiService) ApiServiceIdentityregenerateIdGet(ctx contex
 
 // Execute executes the request
 //  @return ModelsServiceIdentityWithToken
-func (a *ServiceIdentityApiService) ApiServiceIdentityregenerateIdGetExecute(r ApiApiServiceIdentityregenerateIdGetRequest) (*ModelsServiceIdentityWithToken, *http.Response, error) {
+func (a *ServiceIdentityApiService) ApiServiceIdentityIdRegenerateGetExecute(r ApiApiServiceIdentityIdRegenerateGetRequest) (*ModelsServiceIdentityWithToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -727,12 +727,12 @@ func (a *ServiceIdentityApiService) ApiServiceIdentityregenerateIdGetExecute(r A
 		localVarReturnValue  *ModelsServiceIdentityWithToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceIdentityApiService.ApiServiceIdentityregenerateIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceIdentityApiService.ApiServiceIdentityIdRegenerateGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/service-identity:regenerate/{id}"
+	localVarPath := localBasePath + "/api/service-identity/{id}/regenerate"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -16,7 +16,7 @@ import (
 
 // ModelsIAM struct for ModelsIAM
 type ModelsIAM struct {
-	AccessPolicy *ModelsAccessPolicy `json:"access_policy,omitempty"`
+	AccessPolicy *ModelsAccessPolicyWithAccountID `json:"access_policy,omitempty"`
 	AccountId *string `json:"account_id,omitempty"`
 	ActorId *string `json:"actor_id,omitempty"`
 	ActorType *string `json:"actor_type,omitempty"`
@@ -46,9 +46,9 @@ func NewModelsIAMWithDefaults() *ModelsIAM {
 }
 
 // GetAccessPolicy returns the AccessPolicy field value if set, zero value otherwise.
-func (o *ModelsIAM) GetAccessPolicy() ModelsAccessPolicy {
+func (o *ModelsIAM) GetAccessPolicy() ModelsAccessPolicyWithAccountID {
 	if o == nil || o.AccessPolicy == nil {
-		var ret ModelsAccessPolicy
+		var ret ModelsAccessPolicyWithAccountID
 		return ret
 	}
 	return *o.AccessPolicy
@@ -56,7 +56,7 @@ func (o *ModelsIAM) GetAccessPolicy() ModelsAccessPolicy {
 
 // GetAccessPolicyOk returns a tuple with the AccessPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsIAM) GetAccessPolicyOk() (*ModelsAccessPolicy, bool) {
+func (o *ModelsIAM) GetAccessPolicyOk() (*ModelsAccessPolicyWithAccountID, bool) {
 	if o == nil || o.AccessPolicy == nil {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *ModelsIAM) HasAccessPolicy() bool {
 	return false
 }
 
-// SetAccessPolicy gets a reference to the given ModelsAccessPolicy and assigns it to the AccessPolicy field.
-func (o *ModelsIAM) SetAccessPolicy(v ModelsAccessPolicy) {
+// SetAccessPolicy gets a reference to the given ModelsAccessPolicyWithAccountID and assigns it to the AccessPolicy field.
+func (o *ModelsIAM) SetAccessPolicy(v ModelsAccessPolicyWithAccountID) {
 	o.AccessPolicy = &v
 }
 

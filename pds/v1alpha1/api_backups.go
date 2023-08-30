@@ -465,14 +465,8 @@ type ApiApiBackupsIdJobsNameDeleteRequest struct {
 	ApiService *BackupsApiService
 	id string
 	name string
-	localOnly *bool
 }
 
-// Set to true to only delete the Backup object in the database (does not delete any actual resources)
-func (r ApiApiBackupsIdJobsNameDeleteRequest) LocalOnly(localOnly bool) ApiApiBackupsIdJobsNameDeleteRequest {
-	r.localOnly = &localOnly
-	return r
-}
 
 func (r ApiApiBackupsIdJobsNameDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiBackupsIdJobsNameDeleteExecute(r)
@@ -534,9 +528,6 @@ func (a *BackupsApiService) ApiBackupsIdJobsNameDeleteExecute(r ApiApiBackupsIdJ
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.localOnly != nil {
-		localVarHeaderParams["Local-Only"] = parameterToString(*r.localOnly, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication

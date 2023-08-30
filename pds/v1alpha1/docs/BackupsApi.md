@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## ApiBackupsIdJobsNameDelete
 
-> ApiBackupsIdJobsNameDelete(ctx, id, name).LocalOnly(localOnly).Execute()
+> ApiBackupsIdJobsNameDelete(ctx, id, name).Execute()
 
 Delete Backup jobs
 
@@ -265,11 +265,10 @@ import (
 func main() {
     id := "id_example" // string | Backup ID (must be a valid UUID)
     name := "name_example" // string | Backup job name
-    localOnly := true // bool | Set to true to only delete the Backup object in the database (does not delete any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BackupsApi.ApiBackupsIdJobsNameDelete(context.Background(), id, name).LocalOnly(localOnly).Execute()
+    resp, r, err := apiClient.BackupsApi.ApiBackupsIdJobsNameDelete(context.Background(), id, name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.ApiBackupsIdJobsNameDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -295,7 +294,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **localOnly** | **bool** | Set to true to only delete the Backup object in the database (does not delete any actual resources) | 
 
 ### Return type
 
