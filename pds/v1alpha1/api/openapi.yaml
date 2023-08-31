@@ -346,7 +346,89 @@ paths:
       summary: List IAM
       tags:
       - IAM
+    post:
+      description: Creates a new IAM rolebinding
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.IAMRequest'
+        description: Request body contains actor ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.IAM'
+          description: The created IAM will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create IAM
+      tags:
+      - IAM
+      x-codegen-request-body-name: body
+    put:
+      description: Updates a IAM rolebinding
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.IAMRequest'
+        description: Request body contains actor ID
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.IAM'
+          description: The updated IAM will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Update IAM
+      tags:
+      - IAM
+      x-codegen-request-body-name: body
   /api/accounts/{id}/iam/{actor-id}:
+    delete:
+      description: Removes a single AccountIAM
+      parameters:
+      - description: Account ID (must be valid UUID)
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Actor ID (must be valid UUID)
+        in: path
+        name: actor-id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      security:
+      - ApiKeyAuth: []
+      summary: Delete IAM
+      tags:
+      - IAM
     get:
       description: Fetches an IAM record
       parameters:
@@ -2202,6 +2284,36 @@ paths:
       tags:
       - DeploymentTargets
       x-codegen-request-body-name: body
+  /api/deployments:
+    post:
+      description: Creates a new data service Deployment
+      parameters:
+      - description: Set to true to only create the Deployment object in the database
+          (does not create any actual resources)
+        in: header
+        name: Local-Only
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requests.CreateProjectDeploymentRequest'
+        description: Request body containing the deployment config
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.Deployment'
+          description: The created Deployment will be returned
+      security:
+      - ApiKeyAuth: []
+      summary: Create Deployment
+      tags:
+      - Deployments
+      x-codegen-request-body-name: body
   /api/deployments/{id}:
     delete:
       description: Deletes an existing database Deployment
@@ -3520,7 +3632,7 @@ paths:
       tags:
       - ServiceIdentity
       x-codegen-request-body-name: Body
-  /api/service-identity:regenerate/{id}:
+  /api/service-identity/{id}/regenerate:
     get:
       description: Revokes existing credentials and regenerate new ClientID and ClientToken
       parameters:
@@ -6127,6 +6239,29 @@ components:
           type: string
       type: object
     models.AccessPolicy:
+      properties:
+        account:
+          items:
+            type: string
+          type: array
+        global:
+          items:
+            type: string
+          type: array
+        namespace:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        project:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+        tenant:
+          items:
+            $ref: '#/components/schemas/models.Binding'
+          type: array
+      type: object
+    models.AccessPolicyWithAccountID:
       example:
         account_id: account_id
         namespace:
@@ -7574,7 +7709,7 @@ components:
         id: id
       properties:
         access_policy:
-          $ref: '#/components/schemas/models.AccessPolicy'
+          $ref: '#/components/schemas/models.AccessPolicyWithAccountID'
         account_id:
           type: string
         actor_id:
@@ -9595,6 +9730,16 @@ components:
         backup_target_id:
           description: BackupTargetID and BackupPolicyID must be both specified.
           type: string
+      type: object
+    requests.IAMRequest:
+      properties:
+        actor_id:
+          type: string
+        data:
+          $ref: '#/components/schemas/models.AccessPolicy'
+      required:
+      - actor_id
+      - data
       type: object
     requests.InvitationAccountRequest:
       properties:

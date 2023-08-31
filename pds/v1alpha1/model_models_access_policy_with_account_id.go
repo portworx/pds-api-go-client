@@ -14,34 +14,35 @@ import (
 	"encoding/json"
 )
 
-// ModelsAccessPolicy struct for ModelsAccessPolicy
-type ModelsAccessPolicy struct {
+// ModelsAccessPolicyWithAccountID struct for ModelsAccessPolicyWithAccountID
+type ModelsAccessPolicyWithAccountID struct {
 	Account []string `json:"account,omitempty"`
+	AccountId *string `json:"account_id,omitempty"`
 	Global []string `json:"global,omitempty"`
 	Namespace []ModelsBinding `json:"namespace,omitempty"`
 	Project []ModelsBinding `json:"project,omitempty"`
 	Tenant []ModelsBinding `json:"tenant,omitempty"`
 }
 
-// NewModelsAccessPolicy instantiates a new ModelsAccessPolicy object
+// NewModelsAccessPolicyWithAccountID instantiates a new ModelsAccessPolicyWithAccountID object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelsAccessPolicy() *ModelsAccessPolicy {
-	this := ModelsAccessPolicy{}
+func NewModelsAccessPolicyWithAccountID() *ModelsAccessPolicyWithAccountID {
+	this := ModelsAccessPolicyWithAccountID{}
 	return &this
 }
 
-// NewModelsAccessPolicyWithDefaults instantiates a new ModelsAccessPolicy object
+// NewModelsAccessPolicyWithAccountIDWithDefaults instantiates a new ModelsAccessPolicyWithAccountID object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelsAccessPolicyWithDefaults() *ModelsAccessPolicy {
-	this := ModelsAccessPolicy{}
+func NewModelsAccessPolicyWithAccountIDWithDefaults() *ModelsAccessPolicyWithAccountID {
+	this := ModelsAccessPolicyWithAccountID{}
 	return &this
 }
 
 // GetAccount returns the Account field value if set, zero value otherwise.
-func (o *ModelsAccessPolicy) GetAccount() []string {
+func (o *ModelsAccessPolicyWithAccountID) GetAccount() []string {
 	if o == nil || o.Account == nil {
 		var ret []string
 		return ret
@@ -51,7 +52,7 @@ func (o *ModelsAccessPolicy) GetAccount() []string {
 
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsAccessPolicy) GetAccountOk() ([]string, bool) {
+func (o *ModelsAccessPolicyWithAccountID) GetAccountOk() ([]string, bool) {
 	if o == nil || o.Account == nil {
 		return nil, false
 	}
@@ -59,7 +60,7 @@ func (o *ModelsAccessPolicy) GetAccountOk() ([]string, bool) {
 }
 
 // HasAccount returns a boolean if a field has been set.
-func (o *ModelsAccessPolicy) HasAccount() bool {
+func (o *ModelsAccessPolicyWithAccountID) HasAccount() bool {
 	if o != nil && o.Account != nil {
 		return true
 	}
@@ -68,12 +69,44 @@ func (o *ModelsAccessPolicy) HasAccount() bool {
 }
 
 // SetAccount gets a reference to the given []string and assigns it to the Account field.
-func (o *ModelsAccessPolicy) SetAccount(v []string) {
+func (o *ModelsAccessPolicyWithAccountID) SetAccount(v []string) {
 	o.Account = v
 }
 
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *ModelsAccessPolicyWithAccountID) GetAccountId() string {
+	if o == nil || o.AccountId == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelsAccessPolicyWithAccountID) GetAccountIdOk() (*string, bool) {
+	if o == nil || o.AccountId == nil {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *ModelsAccessPolicyWithAccountID) HasAccountId() bool {
+	if o != nil && o.AccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given string and assigns it to the AccountId field.
+func (o *ModelsAccessPolicyWithAccountID) SetAccountId(v string) {
+	o.AccountId = &v
+}
+
 // GetGlobal returns the Global field value if set, zero value otherwise.
-func (o *ModelsAccessPolicy) GetGlobal() []string {
+func (o *ModelsAccessPolicyWithAccountID) GetGlobal() []string {
 	if o == nil || o.Global == nil {
 		var ret []string
 		return ret
@@ -83,7 +116,7 @@ func (o *ModelsAccessPolicy) GetGlobal() []string {
 
 // GetGlobalOk returns a tuple with the Global field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsAccessPolicy) GetGlobalOk() ([]string, bool) {
+func (o *ModelsAccessPolicyWithAccountID) GetGlobalOk() ([]string, bool) {
 	if o == nil || o.Global == nil {
 		return nil, false
 	}
@@ -91,7 +124,7 @@ func (o *ModelsAccessPolicy) GetGlobalOk() ([]string, bool) {
 }
 
 // HasGlobal returns a boolean if a field has been set.
-func (o *ModelsAccessPolicy) HasGlobal() bool {
+func (o *ModelsAccessPolicyWithAccountID) HasGlobal() bool {
 	if o != nil && o.Global != nil {
 		return true
 	}
@@ -100,12 +133,12 @@ func (o *ModelsAccessPolicy) HasGlobal() bool {
 }
 
 // SetGlobal gets a reference to the given []string and assigns it to the Global field.
-func (o *ModelsAccessPolicy) SetGlobal(v []string) {
+func (o *ModelsAccessPolicyWithAccountID) SetGlobal(v []string) {
 	o.Global = v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
-func (o *ModelsAccessPolicy) GetNamespace() []ModelsBinding {
+func (o *ModelsAccessPolicyWithAccountID) GetNamespace() []ModelsBinding {
 	if o == nil || o.Namespace == nil {
 		var ret []ModelsBinding
 		return ret
@@ -115,7 +148,7 @@ func (o *ModelsAccessPolicy) GetNamespace() []ModelsBinding {
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsAccessPolicy) GetNamespaceOk() ([]ModelsBinding, bool) {
+func (o *ModelsAccessPolicyWithAccountID) GetNamespaceOk() ([]ModelsBinding, bool) {
 	if o == nil || o.Namespace == nil {
 		return nil, false
 	}
@@ -123,7 +156,7 @@ func (o *ModelsAccessPolicy) GetNamespaceOk() ([]ModelsBinding, bool) {
 }
 
 // HasNamespace returns a boolean if a field has been set.
-func (o *ModelsAccessPolicy) HasNamespace() bool {
+func (o *ModelsAccessPolicyWithAccountID) HasNamespace() bool {
 	if o != nil && o.Namespace != nil {
 		return true
 	}
@@ -132,12 +165,12 @@ func (o *ModelsAccessPolicy) HasNamespace() bool {
 }
 
 // SetNamespace gets a reference to the given []ModelsBinding and assigns it to the Namespace field.
-func (o *ModelsAccessPolicy) SetNamespace(v []ModelsBinding) {
+func (o *ModelsAccessPolicyWithAccountID) SetNamespace(v []ModelsBinding) {
 	o.Namespace = v
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
-func (o *ModelsAccessPolicy) GetProject() []ModelsBinding {
+func (o *ModelsAccessPolicyWithAccountID) GetProject() []ModelsBinding {
 	if o == nil || o.Project == nil {
 		var ret []ModelsBinding
 		return ret
@@ -147,7 +180,7 @@ func (o *ModelsAccessPolicy) GetProject() []ModelsBinding {
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsAccessPolicy) GetProjectOk() ([]ModelsBinding, bool) {
+func (o *ModelsAccessPolicyWithAccountID) GetProjectOk() ([]ModelsBinding, bool) {
 	if o == nil || o.Project == nil {
 		return nil, false
 	}
@@ -155,7 +188,7 @@ func (o *ModelsAccessPolicy) GetProjectOk() ([]ModelsBinding, bool) {
 }
 
 // HasProject returns a boolean if a field has been set.
-func (o *ModelsAccessPolicy) HasProject() bool {
+func (o *ModelsAccessPolicyWithAccountID) HasProject() bool {
 	if o != nil && o.Project != nil {
 		return true
 	}
@@ -164,12 +197,12 @@ func (o *ModelsAccessPolicy) HasProject() bool {
 }
 
 // SetProject gets a reference to the given []ModelsBinding and assigns it to the Project field.
-func (o *ModelsAccessPolicy) SetProject(v []ModelsBinding) {
+func (o *ModelsAccessPolicyWithAccountID) SetProject(v []ModelsBinding) {
 	o.Project = v
 }
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
-func (o *ModelsAccessPolicy) GetTenant() []ModelsBinding {
+func (o *ModelsAccessPolicyWithAccountID) GetTenant() []ModelsBinding {
 	if o == nil || o.Tenant == nil {
 		var ret []ModelsBinding
 		return ret
@@ -179,7 +212,7 @@ func (o *ModelsAccessPolicy) GetTenant() []ModelsBinding {
 
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelsAccessPolicy) GetTenantOk() ([]ModelsBinding, bool) {
+func (o *ModelsAccessPolicyWithAccountID) GetTenantOk() ([]ModelsBinding, bool) {
 	if o == nil || o.Tenant == nil {
 		return nil, false
 	}
@@ -187,7 +220,7 @@ func (o *ModelsAccessPolicy) GetTenantOk() ([]ModelsBinding, bool) {
 }
 
 // HasTenant returns a boolean if a field has been set.
-func (o *ModelsAccessPolicy) HasTenant() bool {
+func (o *ModelsAccessPolicyWithAccountID) HasTenant() bool {
 	if o != nil && o.Tenant != nil {
 		return true
 	}
@@ -196,14 +229,17 @@ func (o *ModelsAccessPolicy) HasTenant() bool {
 }
 
 // SetTenant gets a reference to the given []ModelsBinding and assigns it to the Tenant field.
-func (o *ModelsAccessPolicy) SetTenant(v []ModelsBinding) {
+func (o *ModelsAccessPolicyWithAccountID) SetTenant(v []ModelsBinding) {
 	o.Tenant = v
 }
 
-func (o ModelsAccessPolicy) MarshalJSON() ([]byte, error) {
+func (o ModelsAccessPolicyWithAccountID) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Account != nil {
 		toSerialize["account"] = o.Account
+	}
+	if o.AccountId != nil {
+		toSerialize["account_id"] = o.AccountId
 	}
 	if o.Global != nil {
 		toSerialize["global"] = o.Global
@@ -220,38 +256,38 @@ func (o ModelsAccessPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableModelsAccessPolicy struct {
-	value *ModelsAccessPolicy
+type NullableModelsAccessPolicyWithAccountID struct {
+	value *ModelsAccessPolicyWithAccountID
 	isSet bool
 }
 
-func (v NullableModelsAccessPolicy) Get() *ModelsAccessPolicy {
+func (v NullableModelsAccessPolicyWithAccountID) Get() *ModelsAccessPolicyWithAccountID {
 	return v.value
 }
 
-func (v *NullableModelsAccessPolicy) Set(val *ModelsAccessPolicy) {
+func (v *NullableModelsAccessPolicyWithAccountID) Set(val *ModelsAccessPolicyWithAccountID) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelsAccessPolicy) IsSet() bool {
+func (v NullableModelsAccessPolicyWithAccountID) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelsAccessPolicy) Unset() {
+func (v *NullableModelsAccessPolicyWithAccountID) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelsAccessPolicy(val *ModelsAccessPolicy) *NullableModelsAccessPolicy {
-	return &NullableModelsAccessPolicy{value: val, isSet: true}
+func NewNullableModelsAccessPolicyWithAccountID(val *ModelsAccessPolicyWithAccountID) *NullableModelsAccessPolicyWithAccountID {
+	return &NullableModelsAccessPolicyWithAccountID{value: val, isSet: true}
 }
 
-func (v NullableModelsAccessPolicy) MarshalJSON() ([]byte, error) {
+func (v NullableModelsAccessPolicyWithAccountID) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelsAccessPolicy) UnmarshalJSON(src []byte) error {
+func (v *NullableModelsAccessPolicyWithAccountID) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

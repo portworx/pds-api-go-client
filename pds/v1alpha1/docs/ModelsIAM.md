@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessPolicy** | Pointer to [**ModelsAccessPolicy**](ModelsAccessPolicy.md) |  | [optional] 
+**AccessPolicy** | Pointer to [**ModelsAccessPolicyWithAccountID**](ModelsAccessPolicyWithAccountID.md) |  | [optional] 
 **AccountId** | Pointer to **string** |  | [optional] 
 **ActorId** | Pointer to **string** |  | [optional] 
 **ActorType** | Pointer to **string** |  | [optional] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccessPolicy
 
-`func (o *ModelsIAM) GetAccessPolicy() ModelsAccessPolicy`
+`func (o *ModelsIAM) GetAccessPolicy() ModelsAccessPolicyWithAccountID`
 
 GetAccessPolicy returns the AccessPolicy field if non-nil, zero value otherwise.
 
 ### GetAccessPolicyOk
 
-`func (o *ModelsIAM) GetAccessPolicyOk() (*ModelsAccessPolicy, bool)`
+`func (o *ModelsIAM) GetAccessPolicyOk() (*ModelsAccessPolicyWithAccountID, bool)`
 
 GetAccessPolicyOk returns a tuple with the AccessPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessPolicy
 
-`func (o *ModelsIAM) SetAccessPolicy(v ModelsAccessPolicy)`
+`func (o *ModelsIAM) SetAccessPolicy(v ModelsAccessPolicyWithAccountID)`
 
 SetAccessPolicy sets AccessPolicy field to given value.
 

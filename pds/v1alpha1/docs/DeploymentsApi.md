@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**ApiDeploymentsIdGet**](DeploymentsApi.md#ApiDeploymentsIdGet) | **Get** /api/deployments/{id} | Get Deployment
 [**ApiDeploymentsIdPut**](DeploymentsApi.md#ApiDeploymentsIdPut) | **Put** /api/deployments/{id} | Update Deployment
 [**ApiDeploymentsIdStatusGet**](DeploymentsApi.md#ApiDeploymentsIdStatusGet) | **Get** /api/deployments/{id}/status | Get Deployment Status
+[**ApiDeploymentsPost**](DeploymentsApi.md#ApiDeploymentsPost) | **Post** /api/deployments | Create Deployment
 [**ApiProjectsIdDeploymentsGet**](DeploymentsApi.md#ApiProjectsIdDeploymentsGet) | **Get** /api/projects/{id}/deployments | List Project&#39;s Deployments
 [**ApiProjectsIdDeploymentsPost**](DeploymentsApi.md#ApiProjectsIdDeploymentsPost) | **Post** /api/projects/{id}/deployments | Create Deployment
 
@@ -435,6 +436,74 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiDeploymentsPost
+
+> ModelsDeployment ApiDeploymentsPost(ctx).Body(body).LocalOnly(localOnly).Execute()
+
+Create Deployment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewRequestsCreateProjectDeploymentRequest() // RequestsCreateProjectDeploymentRequest | Request body containing the deployment config
+    localOnly := true // bool | Set to true to only create the Deployment object in the database (does not create any actual resources) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentsApi.ApiDeploymentsPost(context.Background()).Body(body).LocalOnly(localOnly).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentsApi.ApiDeploymentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiDeploymentsPost`: ModelsDeployment
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentsApi.ApiDeploymentsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiDeploymentsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RequestsCreateProjectDeploymentRequest**](RequestsCreateProjectDeploymentRequest.md) | Request body containing the deployment config | 
+ **localOnly** | **bool** | Set to true to only create the Deployment object in the database (does not create any actual resources) | 
+
+### Return type
+
+[**ModelsDeployment**](ModelsDeployment.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
