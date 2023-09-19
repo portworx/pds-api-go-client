@@ -3,6 +3,7 @@ info:
   contact: {}
   description: Portworx Data Services API Server
   title: PDS API
+  version: "121"
 servers:
 - url: /
 paths:
@@ -3615,7 +3616,10 @@ paths:
         required: true
       responses:
         "200":
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.ServiceIdentity'
           description: OK
         "400":
           content: {}

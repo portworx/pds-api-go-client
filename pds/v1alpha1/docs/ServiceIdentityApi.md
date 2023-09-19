@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceIdentityIdPut
 
-> ApiServiceIdentityIdPut(ctx, id).Body(body).Execute()
+> ModelsServiceIdentity ApiServiceIdentityIdPut(ctx, id).Body(body).Execute()
 
 Update service identity
 
@@ -341,6 +341,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceIdentityApi.ApiServiceIdentityIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ApiServiceIdentityIdPut`: ModelsServiceIdentity
+    fmt.Fprintf(os.Stdout, "Response from `ServiceIdentityApi.ApiServiceIdentityIdPut`: %v\n", resp)
 }
 ```
 
@@ -364,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ModelsServiceIdentity**](ModelsServiceIdentity.md)
 
 ### Authorization
 
@@ -373,7 +375,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
