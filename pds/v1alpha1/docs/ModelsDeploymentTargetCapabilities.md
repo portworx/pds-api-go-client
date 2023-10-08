@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Redis** | Pointer to **string** |  | [optional] 
 **Restore** | Pointer to **string** |  | [optional] 
 **Sqlserver** | Pointer to **string** |  | [optional] 
+**StorageSizeIncrease** | Pointer to **string** |  | [optional] 
 **Zookeeper** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -492,6 +493,31 @@ SetSqlserver sets Sqlserver field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasSqlserver() bool`
 
 HasSqlserver returns a boolean if a field has been set.
+
+### GetStorageSizeIncrease
+
+`func (o *ModelsDeploymentTargetCapabilities) GetStorageSizeIncrease() string`
+
+GetStorageSizeIncrease returns the StorageSizeIncrease field if non-nil, zero value otherwise.
+
+### GetStorageSizeIncreaseOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetStorageSizeIncreaseOk() (*string, bool)`
+
+GetStorageSizeIncreaseOk returns a tuple with the StorageSizeIncrease field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageSizeIncrease
+
+`func (o *ModelsDeploymentTargetCapabilities) SetStorageSizeIncrease(v string)`
+
+SetStorageSizeIncrease sets StorageSizeIncrease field to given value.
+
+### HasStorageSizeIncrease
+
+`func (o *ModelsDeploymentTargetCapabilities) HasStorageSizeIncrease() bool`
+
+HasStorageSizeIncrease returns a boolean if a field has been set.
 
 ### GetZookeeper
 
