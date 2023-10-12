@@ -7157,6 +7157,7 @@ components:
             crd_reporting: crd_reporting
             event_reporting: event_reporting
             rabbitmq: rabbitmq
+            storage_size_increase: storage_size_increase
             redis: redis
             database: database
             elasticsearch: elasticsearch
@@ -7428,6 +7429,7 @@ components:
           crd_reporting: crd_reporting
           event_reporting: event_reporting
           rabbitmq: rabbitmq
+          storage_size_increase: storage_size_increase
           redis: redis
           database: database
           elasticsearch: elasticsearch
@@ -7498,6 +7500,7 @@ components:
         crd_reporting: crd_reporting
         event_reporting: event_reporting
         rabbitmq: rabbitmq
+        storage_size_increase: storage_size_increase
         redis: redis
         database: database
         elasticsearch: elasticsearch
@@ -7546,6 +7549,8 @@ components:
         restore:
           type: string
         sqlserver:
+          type: string
+        storage_size_increase:
           type: string
         zookeeper:
           type: string
@@ -8381,6 +8386,7 @@ components:
               crd_reporting: crd_reporting
               event_reporting: event_reporting
               rabbitmq: rabbitmq
+              storage_size_increase: storage_size_increase
               redis: redis
               database: database
               elasticsearch: elasticsearch
@@ -8508,6 +8514,7 @@ components:
               crd_reporting: crd_reporting
               event_reporting: event_reporting
               rabbitmq: rabbitmq
+              storage_size_increase: storage_size_increase
               redis: redis
               database: database
               elasticsearch: elasticsearch
@@ -8565,6 +8572,7 @@ components:
             crd_reporting: crd_reporting
             event_reporting: event_reporting
             rabbitmq: rabbitmq
+            storage_size_increase: storage_size_increase
             redis: redis
             database: database
             elasticsearch: elasticsearch
@@ -8609,6 +8617,7 @@ components:
             crd_reporting: crd_reporting
             event_reporting: event_reporting
             rabbitmq: rabbitmq
+            storage_size_increase: storage_size_increase
             redis: redis
             database: database
             elasticsearch: elasticsearch
