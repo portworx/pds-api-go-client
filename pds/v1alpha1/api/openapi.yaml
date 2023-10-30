@@ -9971,7 +9971,7 @@ components:
     service.DeploymentStatus:
       example:
         replicas: 6
-        health: Healthy
+        health: Available
         initialized: "Yes"
         readyReplicas: 0
         resources:
@@ -10002,13 +10002,14 @@ components:
             type: type
             status: status
         restoring: true
-        status: Available
+        status: Preparing
       properties:
         health:
           enum:
-          - Healthy
-          - Down
-          - Degraded
+          - Available
+          - Partially Available
+          - Unknown
+          - Unavailable
           type: string
         initialized:
           enum:
@@ -10030,12 +10031,14 @@ components:
           type: boolean
         status:
           enum:
-          - Available
-          - Partially Available
-          - Unavailable
-          - Deploying
-          - Unknown
+          - Preparing
           - Restoring
+          - Deploying
+          - Updating
+          - Failed
+          - Update Failed
+          - Timeout
+          - Deployed
           type: string
       type: object
     service.RestoreCompatibilityCondition:
