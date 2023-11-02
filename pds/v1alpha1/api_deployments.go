@@ -510,12 +510,12 @@ type ApiApiDeploymentsIdPutRequest struct {
 	ctx context.Context
 	ApiService *DeploymentsApiService
 	id string
-	body *ControllersUpdateDeploymentRequest
+	body *RequestsUpdateDeploymentRequest
 	localOnly *bool
 }
 
 // Request body containing the updated deployment config
-func (r ApiApiDeploymentsIdPutRequest) Body(body ControllersUpdateDeploymentRequest) ApiApiDeploymentsIdPutRequest {
+func (r ApiApiDeploymentsIdPutRequest) Body(body RequestsUpdateDeploymentRequest) ApiApiDeploymentsIdPutRequest {
 	r.body = &body
 	return r
 }

@@ -2386,7 +2386,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/controllers.UpdateDeploymentRequest'
+              $ref: '#/components/schemas/requests.UpdateDeploymentRequest'
         description: Request body containing the updated deployment config
         required: true
       responses:
@@ -5779,34 +5779,6 @@ components:
       properties:
         name:
           description: Name of the backup target. Must be unique for the given tenant.
-          type: string
-      type: object
-    controllers.UpdateDeploymentRequest:
-      properties:
-        application_configuration_overrides:
-          additionalProperties:
-            type: string
-          type: object
-        application_configuration_template_id:
-          type: string
-        image_id:
-          type: string
-        node_count:
-          description: See models.Deployment for more information.
-          example: 3
-          type: integer
-        resource_settings_template_id:
-          type: string
-        scheduled_backup:
-          $ref: '#/components/schemas/controllers.UpdateDeploymentScheduledBackup'
-      type: object
-    controllers.UpdateDeploymentScheduledBackup:
-      properties:
-        backup_policy_id:
-          type: string
-        backup_target_id:
-          description: BackupTargetID and BackupPolicyID must be both specified or
-            not. Set both to null to have no scheduled backup.
           type: string
       type: object
     controllers.UpdateDeploymentTargetRequest:
@@ -9928,6 +9900,35 @@ components:
       required:
       - enabled
       - name
+      type: object
+    requests.UpdateDeploymentRequest:
+      properties:
+        application_configuration_overrides:
+          additionalProperties:
+            type: string
+          type: object
+        application_configuration_template_id:
+          type: string
+        image_id:
+          type: string
+        node_count:
+          example: 3
+          type: integer
+        resource_settings_template_id:
+          type: string
+        scheduled_backup:
+          $ref: '#/components/schemas/requests.UpdateDeploymentScheduledBackup'
+        tls_enabled:
+          type: boolean
+      type: object
+    requests.UpdateDeploymentScheduledBackup:
+      properties:
+        backup_policy_id:
+          type: string
+        backup_target_id:
+          description: BackupTargetID and BackupPolicyID must be both specified or
+            not. Set both to null to have no scheduled backup.
+          type: string
       type: object
     requests.UpdateOperatorMetadataRequest:
       properties:

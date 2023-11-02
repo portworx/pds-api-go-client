@@ -1,4 +1,4 @@
-# ControllersUpdateDeploymentScheduledBackup
+# RequestsUpdateDeploymentScheduledBackup
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewControllersUpdateDeploymentScheduledBackup
+### NewRequestsUpdateDeploymentScheduledBackup
 
-`func NewControllersUpdateDeploymentScheduledBackup() *ControllersUpdateDeploymentScheduledBackup`
+`func NewRequestsUpdateDeploymentScheduledBackup() *RequestsUpdateDeploymentScheduledBackup`
 
-NewControllersUpdateDeploymentScheduledBackup instantiates a new ControllersUpdateDeploymentScheduledBackup object
+NewRequestsUpdateDeploymentScheduledBackup instantiates a new RequestsUpdateDeploymentScheduledBackup object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewControllersUpdateDeploymentScheduledBackupWithDefaults
+### NewRequestsUpdateDeploymentScheduledBackupWithDefaults
 
-`func NewControllersUpdateDeploymentScheduledBackupWithDefaults() *ControllersUpdateDeploymentScheduledBackup`
+`func NewRequestsUpdateDeploymentScheduledBackupWithDefaults() *RequestsUpdateDeploymentScheduledBackup`
 
-NewControllersUpdateDeploymentScheduledBackupWithDefaults instantiates a new ControllersUpdateDeploymentScheduledBackup object
+NewRequestsUpdateDeploymentScheduledBackupWithDefaults instantiates a new RequestsUpdateDeploymentScheduledBackup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetBackupPolicyId
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupPolicyId() string`
+`func (o *RequestsUpdateDeploymentScheduledBackup) GetBackupPolicyId() string`
 
 GetBackupPolicyId returns the BackupPolicyId field if non-nil, zero value otherwise.
 
 ### GetBackupPolicyIdOk
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupPolicyIdOk() (*string, bool)`
+`func (o *RequestsUpdateDeploymentScheduledBackup) GetBackupPolicyIdOk() (*string, bool)`
 
 GetBackupPolicyIdOk returns a tuple with the BackupPolicyId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBackupPolicyId
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) SetBackupPolicyId(v string)`
+`func (o *RequestsUpdateDeploymentScheduledBackup) SetBackupPolicyId(v string)`
 
 SetBackupPolicyId sets BackupPolicyId field to given value.
 
 ### HasBackupPolicyId
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) HasBackupPolicyId() bool`
+`func (o *RequestsUpdateDeploymentScheduledBackup) HasBackupPolicyId() bool`
 
 HasBackupPolicyId returns a boolean if a field has been set.
 
 ### GetBackupTargetId
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupTargetId() string`
+`func (o *RequestsUpdateDeploymentScheduledBackup) GetBackupTargetId() string`
 
 GetBackupTargetId returns the BackupTargetId field if non-nil, zero value otherwise.
 
 ### GetBackupTargetIdOk
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) GetBackupTargetIdOk() (*string, bool)`
+`func (o *RequestsUpdateDeploymentScheduledBackup) GetBackupTargetIdOk() (*string, bool)`
 
 GetBackupTargetIdOk returns a tuple with the BackupTargetId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBackupTargetId
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) SetBackupTargetId(v string)`
+`func (o *RequestsUpdateDeploymentScheduledBackup) SetBackupTargetId(v string)`
 
 SetBackupTargetId sets BackupTargetId field to given value.
 
 ### HasBackupTargetId
 
-`func (o *ControllersUpdateDeploymentScheduledBackup) HasBackupTargetId() bool`
+`func (o *RequestsUpdateDeploymentScheduledBackup) HasBackupTargetId() bool`
 
 HasBackupTargetId returns a boolean if a field has been set.
 

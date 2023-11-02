@@ -320,7 +320,7 @@ import (
 
 func main() {
     id := "id_example" // string | Deployment ID (must be valid UUID)
-    body := *openapiclient.NewControllersUpdateDeploymentRequest() // ControllersUpdateDeploymentRequest | Request body containing the updated deployment config
+    body := *openapiclient.NewRequestsUpdateDeploymentRequest() // RequestsUpdateDeploymentRequest | Request body containing the updated deployment config
     localOnly := true // bool | Set to true to only update the Deployment object in the database (does not create any actual resources) (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -351,7 +351,7 @@ Other parameters are passed through a pointer to a apiApiDeploymentsIdPutRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ControllersUpdateDeploymentRequest**](ControllersUpdateDeploymentRequest.md) | Request body containing the updated deployment config | 
+ **body** | [**RequestsUpdateDeploymentRequest**](RequestsUpdateDeploymentRequest.md) | Request body containing the updated deployment config | 
  **localOnly** | **bool** | Set to true to only update the Deployment object in the database (does not create any actual resources) | 
 
 ### Return type
