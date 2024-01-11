@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Backup** | Pointer to **string** |  | [optional] 
 **Capabilities** | Pointer to **string** |  | [optional] 
 **Cassandra** | Pointer to **string** |  | [optional] 
+**Cockroachdb** | Pointer to **string** |  | [optional] 
 **Consul** | Pointer to **string** |  | [optional] 
 **Couchbase** | Pointer to **string** |  | [optional] 
 **CrdReporting** | Pointer to **string** |  | [optional] 
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **Kafka** | Pointer to **string** |  | [optional] 
 **Mongodb** | Pointer to **string** |  | [optional] 
 **Mysql** | Pointer to **string** |  | [optional] 
+**Neo4j** | Pointer to **string** |  | [optional] 
 **Postgresql** | Pointer to **string** |  | [optional] 
 **Rabbitmq** | Pointer to **string** |  | [optional] 
 **Redis** | Pointer to **string** |  | [optional] 
@@ -118,6 +120,31 @@ SetCassandra sets Cassandra field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasCassandra() bool`
 
 HasCassandra returns a boolean if a field has been set.
+
+### GetCockroachdb
+
+`func (o *ModelsDeploymentTargetCapabilities) GetCockroachdb() string`
+
+GetCockroachdb returns the Cockroachdb field if non-nil, zero value otherwise.
+
+### GetCockroachdbOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetCockroachdbOk() (*string, bool)`
+
+GetCockroachdbOk returns a tuple with the Cockroachdb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCockroachdb
+
+`func (o *ModelsDeploymentTargetCapabilities) SetCockroachdb(v string)`
+
+SetCockroachdb sets Cockroachdb field to given value.
+
+### HasCockroachdb
+
+`func (o *ModelsDeploymentTargetCapabilities) HasCockroachdb() bool`
+
+HasCockroachdb returns a boolean if a field has been set.
 
 ### GetConsul
 
@@ -368,6 +395,31 @@ SetMysql sets Mysql field to given value.
 `func (o *ModelsDeploymentTargetCapabilities) HasMysql() bool`
 
 HasMysql returns a boolean if a field has been set.
+
+### GetNeo4j
+
+`func (o *ModelsDeploymentTargetCapabilities) GetNeo4j() string`
+
+GetNeo4j returns the Neo4j field if non-nil, zero value otherwise.
+
+### GetNeo4jOk
+
+`func (o *ModelsDeploymentTargetCapabilities) GetNeo4jOk() (*string, bool)`
+
+GetNeo4jOk returns a tuple with the Neo4j field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNeo4j
+
+`func (o *ModelsDeploymentTargetCapabilities) SetNeo4j(v string)`
+
+SetNeo4j sets Neo4j field to given value.
+
+### HasNeo4j
+
+`func (o *ModelsDeploymentTargetCapabilities) HasNeo4j() bool`
+
+HasNeo4j returns a boolean if a field has been set.
 
 ### GetPostgresql
 

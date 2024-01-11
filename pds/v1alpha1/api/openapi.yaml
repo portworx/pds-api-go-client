@@ -7122,6 +7122,7 @@ components:
             px_version: px_version
           teleport_agent_version: teleport_agent_version
           capabilities:
+            cockroachdb: cockroachdb
             backup: backup
             capabilities: capabilities
             restore: restore
@@ -7132,6 +7133,7 @@ components:
             storage_size_increase: storage_size_increase
             redis: redis
             database: database
+            neo4j: neo4j
             elasticsearch: elasticsearch
             postgresql: postgresql
             sqlserver: sqlserver
@@ -7394,6 +7396,7 @@ components:
           px_version: px_version
         teleport_agent_version: teleport_agent_version
         capabilities:
+          cockroachdb: cockroachdb
           backup: backup
           capabilities: capabilities
           restore: restore
@@ -7404,6 +7407,7 @@ components:
           storage_size_increase: storage_size_increase
           redis: redis
           database: database
+          neo4j: neo4j
           elasticsearch: elasticsearch
           postgresql: postgresql
           sqlserver: sqlserver
@@ -7465,6 +7469,7 @@ components:
       type: object
     models.DeploymentTargetCapabilities:
       example:
+        cockroachdb: cockroachdb
         backup: backup
         capabilities: capabilities
         restore: restore
@@ -7475,6 +7480,7 @@ components:
         storage_size_increase: storage_size_increase
         redis: redis
         database: database
+        neo4j: neo4j
         elasticsearch: elasticsearch
         postgresql: postgresql
         sqlserver: sqlserver
@@ -7491,6 +7497,8 @@ components:
         capabilities:
           type: string
         cassandra:
+          type: string
+        cockroachdb:
           type: string
         consul:
           type: string
@@ -7511,6 +7519,8 @@ components:
         mongodb:
           type: string
         mysql:
+          type: string
+        neo4j:
           type: string
         postgresql:
           type: string
@@ -8351,6 +8361,7 @@ components:
               px_version: px_version
             teleport_agent_version: teleport_agent_version
             capabilities:
+              cockroachdb: cockroachdb
               backup: backup
               capabilities: capabilities
               restore: restore
@@ -8361,6 +8372,7 @@ components:
               storage_size_increase: storage_size_increase
               redis: redis
               database: database
+              neo4j: neo4j
               elasticsearch: elasticsearch
               postgresql: postgresql
               sqlserver: sqlserver
@@ -8479,6 +8491,7 @@ components:
               px_version: px_version
             teleport_agent_version: teleport_agent_version
             capabilities:
+              cockroachdb: cockroachdb
               backup: backup
               capabilities: capabilities
               restore: restore
@@ -8489,6 +8502,7 @@ components:
               storage_size_increase: storage_size_increase
               redis: redis
               database: database
+              neo4j: neo4j
               elasticsearch: elasticsearch
               postgresql: postgresql
               sqlserver: sqlserver
@@ -8537,6 +8551,7 @@ components:
             px_version: px_version
           teleport_agent_version: teleport_agent_version
           capabilities:
+            cockroachdb: cockroachdb
             backup: backup
             capabilities: capabilities
             restore: restore
@@ -8547,6 +8562,7 @@ components:
             storage_size_increase: storage_size_increase
             redis: redis
             database: database
+            neo4j: neo4j
             elasticsearch: elasticsearch
             postgresql: postgresql
             sqlserver: sqlserver
@@ -8582,6 +8598,7 @@ components:
             px_version: px_version
           teleport_agent_version: teleport_agent_version
           capabilities:
+            cockroachdb: cockroachdb
             backup: backup
             capabilities: capabilities
             restore: restore
@@ -8592,6 +8609,7 @@ components:
             storage_size_increase: storage_size_increase
             redis: redis
             database: database
+            neo4j: neo4j
             elasticsearch: elasticsearch
             postgresql: postgresql
             sqlserver: sqlserver
