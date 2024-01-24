@@ -13,6 +13,8 @@ Full documentation with installation and examples can be found [here](https://gi
 It's possible to manually generate this client using the following command:
 
 ```bash
-docker run --rm -v ${PWD}/pds/v1alpha1:/local openapitools/openapi-generator-cli generate -i /local/api/swagger.json -g go -o /local/pds/v1alpha1 --package-name pds
+docker run --rm -v ${PWD}/pds/v1alpha1:/local \
+-v ${PWD}/../pds-api/docs:/source \
+openapitools/openapi-generator-cli:v5.4.0 generate -i /source/swagger.json -g go -o /local --package-name pds
 ```
 
