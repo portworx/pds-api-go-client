@@ -1,0 +1,1096 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/catalog/dataservices/apiv1/dataservices.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: DataServicesService
+- name: DataServiceVersionService
+paths:
+  /pds/v1/catalog/dataServices:
+    get:
+      operationId: DataServicesService_ListDataServices
+      parameters:
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListDataServicesResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListDataServices API lists the the data service resources.
+      tags:
+      - DataServicesService
+  /pds/v1/catalog/dataServices/{id}:
+    get:
+      operationId: DataServicesService_GetDataService
+      parameters:
+      - description: UID of the Data Service.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DataService'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: GetDataService API returns the the data service resource.
+      tags:
+      - DataServicesService
+  /pds/v1/catalog/dataServiceVersions/{id}:
+    get:
+      operationId: DataServiceVersionService_GetDataServiceVersion
+      parameters:
+      - description: UID of the version
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DataServiceVersion'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: GetDataServiceVersion returns a data service version
+      tags:
+      - DataServiceVersionService
+  /pds/v1/catalog/dataServiceVersions:listCompatibleVersions:
+    get:
+      operationId: DataServiceVersionService_ListCompatibleDataServiceVersions
+      parameters:
+      - description: UID of the data service for which compatible data service versions
+          are requested
+        explode: true
+        in: query
+        name: dataServiceId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: UID of the data service version for which compatible versions
+          are requested
+        explode: true
+        in: query
+        name: versionId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListCompatibleDataServiceVersionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListCompatibleDataServiceVersions lists all the data service versions
+        compatible with other version of a data service
+      tags:
+      - DataServiceVersionService
+  /pds/v1/catalog/dataServices/{dataServiceId}/dataServiceVersions:
+    get:
+      operationId: DataServiceVersionService_ListDataServiceVersions
+      parameters:
+      - description: UID of the data service
+        explode: false
+        in: path
+        name: dataServiceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListDataServiceVersionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListDataServiceVersions lists all the versions of a data service
+      tags:
+      - DataServiceVersionService
+components:
+  schemas:
+    SortByField:
+      default: FIELD_UNSPECIFIED
+      description: |-
+        Field names for sorting the list of resources.
+
+         - FIELD_UNSPECIFIED: Unspecified, do not use.
+         - NAME: Sorting based on the name of the resource.
+         - CREATED_AT: Sorting on create time of the resource.
+         - UPDATED_AT: Sorting on update time of the resource.
+         - PHASE: Sorting on phase of the resource.
+      enum:
+      - FIELD_UNSPECIFIED
+      - NAME
+      - CREATED_AT
+      - UPDATED_AT
+      - PHASE
+      type: string
+    SortOrderValue:
+      default: VALUE_UNSPECIFIED
+      description: |-
+        Value of sort order for the list of resources.
+
+         - VALUE_UNSPECIFIED: Unspecified, do not use.
+         - ASC: Sort order ascending.
+         - DESC: Sort order descending.
+      enum:
+      - VALUE_UNSPECIFIED
+      - ASC
+      - DESC
+      type: string
+    protobufAny:
+      additionalProperties: {}
+      properties:
+        '@type':
+          type: string
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1DataService:
+      description: "A data service is a independent, loosely coupled function that\
+        \ calculate information collected and saved in data storage volumes."
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        info:
+          nodeRestrictions:
+            allowedSizes:
+            - allowedSizes
+            - allowedSizes
+            resizeDisabledSizes:
+            - resizeDisabledSizes
+            - resizeDisabledSizes
+            downsizeEnabled: true
+          nodesLimitations: nodesLimitations
+          shortName: shortName
+          enabled: true
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        info:
+          $ref: '#/components/schemas/v1Info'
+      type: object
+    v1Info:
+      description: Desired Info of the data service.
+      example:
+        nodeRestrictions:
+          allowedSizes:
+          - allowedSizes
+          - allowedSizes
+          resizeDisabledSizes:
+          - resizeDisabledSizes
+          - resizeDisabledSizes
+          downsizeEnabled: true
+        nodesLimitations: nodesLimitations
+        shortName: shortName
+        enabled: true
+      properties:
+        shortName:
+          description: Short name of the data service.
+          type: string
+        enabled:
+          description: Enabled flag suggests if the data service is enabled or not.
+          type: boolean
+        nodesLimitations:
+          description: Node limitations.
+          type: string
+        nodeRestrictions:
+          $ref: '#/components/schemas/v1NodeRestrictions'
+      type: object
+    v1ListDataServicesResponse:
+      description: Response for listing data service.
+      example:
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+        dataServices:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            nodeRestrictions:
+              allowedSizes:
+              - allowedSizes
+              - allowedSizes
+              resizeDisabledSizes:
+              - resizeDisabledSizes
+              - resizeDisabledSizes
+              downsizeEnabled: true
+            nodesLimitations: nodesLimitations
+            shortName: shortName
+            enabled: true
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            nodeRestrictions:
+              allowedSizes:
+              - allowedSizes
+              - allowedSizes
+              resizeDisabledSizes:
+              - resizeDisabledSizes
+              - resizeDisabledSizes
+              downsizeEnabled: true
+            nodesLimitations: nodesLimitations
+            shortName: shortName
+            enabled: true
+      properties:
+        dataServices:
+          description: List of data service resources.
+          items:
+            $ref: '#/components/schemas/v1DataService'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      type: object
+    v1Meta:
+      description: Meta holds general resource metadata.
+      example:
+        uid: uid
+        parentReference:
+          uid: uid
+          type: type
+          version: version
+        createTime: 2000-01-23T04:56:07.000+00:00
+        resourceVersion: resourceVersion
+        name: name
+        description: description
+        annotations:
+          key: annotations
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        labels:
+          key: labels
+      properties:
+        uid:
+          description: UID of the resource of the format <resource prefix>-<uuid>.
+          type: string
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      type: object
+    v1NodeRestrictions:
+      example:
+        allowedSizes:
+        - allowedSizes
+        - allowedSizes
+        resizeDisabledSizes:
+        - resizeDisabledSizes
+        - resizeDisabledSizes
+        downsizeEnabled: true
+      properties:
+        allowedSizes:
+          description: List of all allowed node sizes.
+          items:
+            format: int64
+            type: string
+          type: array
+        downsizeEnabled:
+          description: Flag to determine whether downsizing the cluster is enabled
+            during editing.
+          type: boolean
+        resizeDisabledSizes:
+          description: List of all node sizes that are not allowed to change during
+            editing.
+          items:
+            format: int64
+            type: string
+          type: array
+      title: |-
+        Node Restrictions defines the number of replicas of data service on which the restrictions are imposed.
+        Eg: allowed_sizes = [1,2,4,6]; downsize_enabled = true;  resize_disabled_sizes = [2]
+      type: object
+    v1PageBasedPaginationRequest:
+      properties:
+        pageNumber:
+          format: int64
+          title: Page number is the page number to return based on the size
+          type: string
+        pageSize:
+          format: int64
+          title: Page size is the maximum number of records to include per page
+          type: string
+      title: Request parameters for page-based pagination
+      type: object
+    v1PageBasedPaginationResponse:
+      example:
+        totalRecords: totalRecords
+        nextPage: nextPage
+        totalPages: totalPages
+        pageSize: pageSize
+        prevPage: prevPage
+        currentPage: currentPage
+      properties:
+        totalRecords:
+          format: int64
+          title: Total records without pagination available in the dataset
+          type: string
+        currentPage:
+          format: int64
+          title: Current page number for this paginated response
+          type: string
+        pageSize:
+          format: int64
+          title: Page size used for pagination
+          type: string
+        totalPages:
+          format: int64
+          title: Total pages based on the page_size provided in the request
+          type: string
+        nextPage:
+          format: int64
+          title: "Next page if available in the dataset, -1 if unavailable"
+          type: string
+        prevPage:
+          format: int64
+          title: "Previous page if available in the dataset, -1 if unavailable"
+          type: string
+      title: Metadata related to page based pagination for paginated API responses
+      type: object
+    v1Reference:
+      description: |-
+        Reference identifies the resource type, version of the uid and
+        the resource.
+      example:
+        uid: uid
+        type: type
+        version: version
+      properties:
+        type:
+          description: API group of the resource.
+          type: string
+        version:
+          description: Version of the API.
+          type: string
+        uid:
+          description: UID of the resource.
+          type: string
+      type: object
+    v1Sort:
+      description: The details of the attribute for which the requested list of resource
+        to be sorted.
+      properties:
+        sortBy:
+          $ref: '#/components/schemas/SortByField'
+        sortOrder:
+          $ref: '#/components/schemas/SortOrderValue'
+      type: object
+    v1CompatibleVersions:
+      description: CompatibleVersions contains compatibility information for a particular
+        Version.
+      example:
+        versionId: versionId
+        dataServiceId: dataServiceId
+        dataServiceName: dataServiceName
+        latestCompatibleVersions:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+        versionName: versionName
+        latestCompatiblePatch:
+          meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+        compatibleVersions:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+      properties:
+        dataServiceId:
+          title: UID of the data service
+          type: string
+        dataServiceName:
+          title: name of the data service
+          type: string
+        versionId:
+          title: UID of the version
+          type: string
+        versionName:
+          title: name of the version
+          type: string
+        latestCompatiblePatch:
+          $ref: '#/components/schemas/v1DataServiceVersion'
+        latestCompatibleVersions:
+          description: LatestCompatibleVersions contains the latest patch versions
+            of compatible major/minor versions.
+          items:
+            $ref: '#/components/schemas/v1DataServiceVersion'
+          type: array
+        compatibleVersions:
+          description: CompatibleVersions contains all compatible versions.
+          items:
+            $ref: '#/components/schemas/v1DataServiceVersion'
+          type: array
+      type: object
+    v1DataServiceVersion:
+      description: Version represents a particular version of a data service.
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        info:
+          enabled: true
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        info:
+          $ref: '#/components/schemas/v1Info1'
+      type: object
+    v1Info1:
+      description: Information related to the data service version.
+      example:
+        enabled: true
+      properties:
+        enabled:
+          description: Enabled indicates if the version is enabled.
+          type: boolean
+      type: object
+    v1ListCompatibleDataServiceVersionsResponse:
+      example:
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+        compatibleDataServiceVersions:
+        - versionId: versionId
+          dataServiceId: dataServiceId
+          dataServiceName: dataServiceName
+          latestCompatibleVersions:
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          versionName: versionName
+          latestCompatiblePatch:
+            meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          compatibleVersions:
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+        - versionId: versionId
+          dataServiceId: dataServiceId
+          dataServiceName: dataServiceName
+          latestCompatibleVersions:
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          versionName: versionName
+          latestCompatiblePatch:
+            meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          compatibleVersions:
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+          - meta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            info:
+              enabled: true
+      properties:
+        compatibleDataServiceVersions:
+          items:
+            $ref: '#/components/schemas/v1CompatibleVersions'
+          title: List of compatible versions of the data service
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      title: ListCompatibleDataServiceVersionsResponse is the response for ListCompatibleDataServiceVersions
+      type: object
+    v1ListDataServiceVersionsResponse:
+      example:
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+        dataServiceVersions:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            enabled: true
+      properties:
+        dataServiceVersions:
+          items:
+            $ref: '#/components/schemas/v1DataServiceVersion'
+          title: List of versions of the data service
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      title: ListDataServiceVersionsResponse is the response object for ListVersions
+      type: object

@@ -1,0 +1,396 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/images/apiv1/images.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: ImageService
+paths:
+  /pds/v1/catalog/images:
+    get:
+      operationId: ImageService_ListImages
+      parameters:
+      - description: UID of the account.
+        explode: true
+        in: query
+        name: dataServiceId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: UID of the tenant.
+        explode: true
+        in: query
+        name: versionId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListImagesResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListImages API lists the data service images.
+      tags:
+      - ImageService
+  /pds/v1/catalog/images/{id}:
+    get:
+      operationId: ImageService_GetImage
+      parameters:
+      - description: UID of the image.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1Image'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: GetImage API returns the information about the specified image.
+      tags:
+      - ImageService
+components:
+  schemas:
+    protobufAny:
+      additionalProperties: {}
+      properties:
+        '@type':
+          type: string
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1Image:
+      description: Resource representing the data service image.
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        info:
+          registry: registry
+          capabilities:
+            key: capabilities
+          references:
+            dataServiceId: dataServiceId
+          build: build
+          additionalImages:
+            key: additionalImages
+          namespace: namespace
+          tag: tag
+          tlsSupport: true
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        info:
+          $ref: '#/components/schemas/v1Info'
+      type: object
+    v1Info:
+      description: Information related to the data service image.
+      example:
+        registry: registry
+        capabilities:
+          key: capabilities
+        references:
+          dataServiceId: dataServiceId
+        build: build
+        additionalImages:
+          key: additionalImages
+        namespace: namespace
+        tag: tag
+        tlsSupport: true
+      properties:
+        references:
+          $ref: '#/components/schemas/v1References'
+        registry:
+          description: Image registry where the image is stored.
+          type: string
+        namespace:
+          description: Image registry namespace where the image is stored.
+          type: string
+        tag:
+          description: Tag associated with the image.
+          type: string
+        build:
+          description: Build version of the image.
+          type: string
+        tlsSupport:
+          description: Flag indicating if TLS is supported for a data service using
+            this image.
+          type: boolean
+        capabilities:
+          additionalProperties:
+            type: string
+          description: Capabilities associated with this image.
+          type: object
+        additionalImages:
+          additionalProperties:
+            type: string
+          description: Additional images associated with this data service image.
+          type: object
+      type: object
+    v1ListImagesResponse:
+      description: Response to list images request.
+      example:
+        images:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            registry: registry
+            capabilities:
+              key: capabilities
+            references:
+              dataServiceId: dataServiceId
+            build: build
+            additionalImages:
+              key: additionalImages
+            namespace: namespace
+            tag: tag
+            tlsSupport: true
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          info:
+            registry: registry
+            capabilities:
+              key: capabilities
+            references:
+              dataServiceId: dataServiceId
+            build: build
+            additionalImages:
+              key: additionalImages
+            namespace: namespace
+            tag: tag
+            tlsSupport: true
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+      properties:
+        images:
+          description: List of images.
+          items:
+            $ref: '#/components/schemas/v1Image'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      type: object
+    v1Meta:
+      description: Meta holds general resource metadata.
+      example:
+        uid: uid
+        parentReference:
+          uid: uid
+          type: type
+          version: version
+        createTime: 2000-01-23T04:56:07.000+00:00
+        resourceVersion: resourceVersion
+        name: name
+        description: description
+        annotations:
+          key: annotations
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        labels:
+          key: labels
+      properties:
+        uid:
+          description: UID of the resource of the format <resource prefix>-<uuid>.
+          type: string
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      type: object
+    v1PageBasedPaginationRequest:
+      properties:
+        pageNumber:
+          format: int64
+          title: Page number is the page number to return based on the size
+          type: string
+        pageSize:
+          format: int64
+          title: Page size is the maximum number of records to include per page
+          type: string
+      title: Request parameters for page-based pagination
+      type: object
+    v1PageBasedPaginationResponse:
+      example:
+        totalRecords: totalRecords
+        nextPage: nextPage
+        totalPages: totalPages
+        pageSize: pageSize
+        prevPage: prevPage
+        currentPage: currentPage
+      properties:
+        totalRecords:
+          format: int64
+          title: Total records without pagination available in the dataset
+          type: string
+        currentPage:
+          format: int64
+          title: Current page number for this paginated response
+          type: string
+        pageSize:
+          format: int64
+          title: Page size used for pagination
+          type: string
+        totalPages:
+          format: int64
+          title: Total pages based on the page_size provided in the request
+          type: string
+        nextPage:
+          format: int64
+          title: "Next page if available in the dataset, -1 if unavailable"
+          type: string
+        prevPage:
+          format: int64
+          title: "Previous page if available in the dataset, -1 if unavailable"
+          type: string
+      title: Metadata related to page based pagination for paginated API responses
+      type: object
+    v1Reference:
+      description: |-
+        Reference identifies the resource type, version of the uid and
+        the resource.
+      example:
+        uid: uid
+        type: type
+        version: version
+      properties:
+        type:
+          description: API group of the resource.
+          type: string
+        version:
+          description: Version of the API.
+          type: string
+        uid:
+          description: UID of the resource.
+          type: string
+      type: object
+    v1References:
+      description: References to other resources.
+      example:
+        dataServiceId: dataServiceId
+      properties:
+        dataServiceId:
+          description: UID of the Data service.
+          type: string
+      type: object

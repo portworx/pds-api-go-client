@@ -1,0 +1,838 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/backupconfig/apiv1/backupconfig.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: BackupConfigService
+paths:
+  /pds/v1/backupConfigs:
+    get:
+      operationId: BackupConfigService_ListBackupConfigs
+      parameters:
+      - description: Account ID for which the backup configurations will be listed.
+        explode: true
+        in: query
+        name: accountId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Tenant ID for which the backup configurations will be listed.
+        explode: true
+        in: query
+        name: tenantId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Project ID for which the backup configurations will be listed.
+        explode: true
+        in: query
+        name: projectId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Cluster ID for which the backup configurations will be listed.
+        explode: true
+        in: query
+        name: targetClusterId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Namespace ID for which the backup configurations will be listed.
+        explode: true
+        in: query
+        name: namespaceId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID for which the backup configurations will be listed.
+        explode: true
+        in: query
+        name: deploymentId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListBackupConfigsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListBackupConfigs API lists all the backup configuration for a deployment.
+      tags:
+      - BackupConfigService
+  /pds/v1/backupConfigs/{backupConfig.meta.uid}:
+    put:
+      operationId: BackupConfigService_UpdateBackupConfig
+      parameters:
+      - description: UID of the resource of the format <resource prefix>-<uuid>.
+        explode: false
+        in: path
+        name: backupConfig.meta.uid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Desired_backup_configuration_'
+        description: Desired backup configuration.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1BackupConfig'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateBackupConfig API updates the backup configuration of the backup.
+      tags:
+      - BackupConfigService
+  /pds/v1/backupConfigs/{id}:
+    delete:
+      operationId: BackupConfigService_DeleteBackupConfig
+      parameters:
+      - description: ID of the backup configuration.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteBackupConfig API deletes the backup configuration.
+      tags:
+      - BackupConfigService
+    get:
+      operationId: BackupConfigService_GetBackupConfig
+      parameters:
+      - description: ID of the backup configuration.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1BackupConfig'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetBackupConfig API returns the the backup configuration resource.
+      tags:
+      - BackupConfigService
+  /pds/v1/projects/{projectId}/backupConfigs:
+    post:
+      operationId: BackupConfigService_CreateBackupConfig
+      parameters:
+      - description: |-
+          (-- api-linter: core::0133::request-required-fields=disabled
+              aip.dev/not-precedent: We really need this field to be required to support creation of
+              the resource in the project context. --)
+          (-- api-linter: core::0133::request-unknown-fields=disabled
+              aip.dev/not-precedent: We really need this field to be required to support creation of
+              the resource in the project context. --)
+          The parent project id under which backup configuration will be created.
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          (-- api-linter: core::0133::request-unknown-fields=disabled
+              aip.dev/not-precedent: We really need this field to be required
+              to support creation of the resource in the deployment context.. --)
+          (-- api-linter: core::0133::request-required-fields=disabled
+              aip.dev/not-precedent: We really need this field to be required
+              to support creation of the resource in the deployment context.. --)
+          Deployment id associated with the backup configuration.
+        explode: true
+        in: query
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1BackupConfig'
+        description: Backup configuration for the backup.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1BackupConfig'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateBackupConfig API creates the backup configuration of the backup.
+      tags:
+      - BackupConfigService
+components:
+  schemas:
+    ConfigBackupLevel:
+      default: BACKUP_LEVEL_UNSPECIFIED
+      description: |-
+        Enum for Backup Level of the backup configuration.
+
+         - BACKUP_LEVEL_UNSPECIFIED: Unspecified level.
+         - SNAPSHOT: Snapshot.
+         - INCREMENTAL: Incremental.
+      enum:
+      - BACKUP_LEVEL_UNSPECIFIED
+      - SNAPSHOT
+      - INCREMENTAL
+      type: string
+    ConfigBackupType:
+      default: BACKUP_TYPE_UNSPECIFIED
+      description: |-
+        Enum for Backup Type of the backup configuration.
+
+         - BACKUP_TYPE_UNSPECIFIED: Unspecified type.
+         - ADHOC: Adhoc Backup.
+         - SCHEDULED: Scheduled Backup.
+      enum:
+      - BACKUP_TYPE_UNSPECIFIED
+      - ADHOC
+      - SCHEDULED
+      type: string
+    ConfigReclaimPolicyType:
+      default: RECLAIM_POLICY_TYPE_UNSPECIFIED
+      description: |-
+        Enum for Reclaim Policy for the backup configuration.
+
+         - RECLAIM_POLICY_TYPE_UNSPECIFIED: Unspecified.
+         - DELETE: Delete snapshot.
+         - RETAIN: Retain snapshot.
+      enum:
+      - RECLAIM_POLICY_TYPE_UNSPECIFIED
+      - DELETE
+      - RETAIN
+      type: string
+    SortByField:
+      default: FIELD_UNSPECIFIED
+      description: |-
+        Field names for sorting the list of resources.
+
+         - FIELD_UNSPECIFIED: Unspecified, do not use.
+         - NAME: Sorting based on the name of the resource.
+         - CREATED_AT: Sorting on create time of the resource.
+         - UPDATED_AT: Sorting on update time of the resource.
+         - PHASE: Sorting on phase of the resource.
+      enum:
+      - FIELD_UNSPECIFIED
+      - NAME
+      - CREATED_AT
+      - UPDATED_AT
+      - PHASE
+      type: string
+    SortOrderValue:
+      default: VALUE_UNSPECIFIED
+      description: |-
+        Value of sort order for the list of resources.
+
+         - VALUE_UNSPECIFIED: Unspecified, do not use.
+         - ASC: Sort order ascending.
+         - DESC: Sort order descending.
+      enum:
+      - VALUE_UNSPECIFIED
+      - ASC
+      - DESC
+      type: string
+    StatusPhase:
+      default: PHASE_UNSPECIFIED
+      description: |-
+        Enum for Phases of the backup configuration.
+
+         - PHASE_UNSPECIFIED: Unspecified state.
+         - PENDING: Pending state.
+         - FAILED: Failed state.
+         - CREATED: Created state.
+         - SUSPENDED: Suspended state.
+      enum:
+      - PHASE_UNSPECIFIED
+      - PENDING
+      - FAILED
+      - CREATED
+      - SUSPENDED
+      type: string
+    backupconfigv1Status:
+      description: Status for backup configuration.
+      example:
+        phase: null
+        deploymentMetaData:
+          tlsEnabled: true
+          deploymentTargetName: deploymentTargetName
+          name: name
+          customResourceName: customResourceName
+          namespaceName: namespaceName
+        customResourceName: customResourceName
+        isScheduleSynchronized: true
+      properties:
+        phase:
+          $ref: '#/components/schemas/StatusPhase'
+        customResourceName:
+          description: Custom Resource Name is the kubernetes resource name for the
+            backup that is built from ID.
+          type: string
+        isScheduleSynchronized:
+          description: Flag to check if the schedule is synchronized or not.
+          type: boolean
+        deploymentMetaData:
+          $ref: '#/components/schemas/v1DeploymentMetaData'
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    protobufAny:
+      additionalProperties: {}
+      properties:
+        '@type':
+          type: string
+      type: object
+    v1BackupConfig:
+      description: Resource representing the backup configuration for a backup.
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        config:
+          jobHistoryLimit: 0
+          suspend: true
+          schedule:
+            resourceVersion: resourceVersion
+            id: id
+          references:
+            dataServiceId: dataServiceId
+            deploymentId: deploymentId
+            backupLocationId: backupLocationId
+          reclaimPolicy: null
+          backupLevel: null
+          backupType: null
+        status:
+          phase: null
+          deploymentMetaData:
+            tlsEnabled: true
+            deploymentTargetName: deploymentTargetName
+            name: name
+            customResourceName: customResourceName
+            namespaceName: namespaceName
+          customResourceName: customResourceName
+          isScheduleSynchronized: true
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        config:
+          $ref: '#/components/schemas/v1Config'
+        status:
+          $ref: '#/components/schemas/backupconfigv1Status'
+      type: object
+    v1Config:
+      description: Desired config of the backup configuration.
+      example:
+        jobHistoryLimit: 0
+        suspend: true
+        schedule:
+          resourceVersion: resourceVersion
+          id: id
+        references:
+          dataServiceId: dataServiceId
+          deploymentId: deploymentId
+          backupLocationId: backupLocationId
+        reclaimPolicy: null
+        backupLevel: null
+        backupType: null
+      properties:
+        references:
+          $ref: '#/components/schemas/v1References'
+        jobHistoryLimit:
+          description: Job History Limit is a number of retained backup jobs. Must
+            be greater than or equal to 1.
+          format: int32
+          type: integer
+        schedule:
+          $ref: '#/components/schemas/v1Schedule'
+        suspend:
+          description: Suspend flag is used to suspend a scheduled backup from creating
+            new backup jobs.
+          type: boolean
+        backupType:
+          $ref: '#/components/schemas/ConfigBackupType'
+        backupLevel:
+          $ref: '#/components/schemas/ConfigBackupLevel'
+        reclaimPolicy:
+          $ref: '#/components/schemas/ConfigReclaimPolicyType'
+      type: object
+    v1DeploymentMetaData:
+      description: Deployment Meta Data contains the details of the deployment associated
+        with the backup configuration.
+      example:
+        tlsEnabled: true
+        deploymentTargetName: deploymentTargetName
+        name: name
+        customResourceName: customResourceName
+        namespaceName: namespaceName
+      properties:
+        name:
+          description: Name of the deployment.
+          type: string
+        customResourceName:
+          description: Custom Resource Name is the kubernetes resource name for the
+            deployment meta data.
+          readOnly: true
+          type: string
+        deploymentTargetName:
+          description: Deployment Target Name associated with the backup configuration.
+          type: string
+        namespaceName:
+          description: Namespace name to which the backup configuration is associated.
+          type: string
+        tlsEnabled:
+          description: Flag to check whether Transport Layer Security support is enabled
+            or not.
+          type: boolean
+      type: object
+    v1ListBackupConfigsResponse:
+      description: Response of list of backup configurations.
+      example:
+        backupConfigs:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          config:
+            jobHistoryLimit: 0
+            suspend: true
+            schedule:
+              resourceVersion: resourceVersion
+              id: id
+            references:
+              dataServiceId: dataServiceId
+              deploymentId: deploymentId
+              backupLocationId: backupLocationId
+            reclaimPolicy: null
+            backupLevel: null
+            backupType: null
+          status:
+            phase: null
+            deploymentMetaData:
+              tlsEnabled: true
+              deploymentTargetName: deploymentTargetName
+              name: name
+              customResourceName: customResourceName
+              namespaceName: namespaceName
+            customResourceName: customResourceName
+            isScheduleSynchronized: true
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          config:
+            jobHistoryLimit: 0
+            suspend: true
+            schedule:
+              resourceVersion: resourceVersion
+              id: id
+            references:
+              dataServiceId: dataServiceId
+              deploymentId: deploymentId
+              backupLocationId: backupLocationId
+            reclaimPolicy: null
+            backupLevel: null
+            backupType: null
+          status:
+            phase: null
+            deploymentMetaData:
+              tlsEnabled: true
+              deploymentTargetName: deploymentTargetName
+              name: name
+              customResourceName: customResourceName
+              namespaceName: namespaceName
+            customResourceName: customResourceName
+            isScheduleSynchronized: true
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+      properties:
+        backupConfigs:
+          description: The list of backup configurations.
+          items:
+            $ref: '#/components/schemas/v1BackupConfig'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      type: object
+    v1Meta:
+      description: Meta holds general resource metadata.
+      example:
+        uid: uid
+        parentReference:
+          uid: uid
+          type: type
+          version: version
+        createTime: 2000-01-23T04:56:07.000+00:00
+        resourceVersion: resourceVersion
+        name: name
+        description: description
+        annotations:
+          key: annotations
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        labels:
+          key: labels
+      properties:
+        uid:
+          description: UID of the resource of the format <resource prefix>-<uuid>.
+          type: string
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      type: object
+    v1PageBasedPaginationRequest:
+      properties:
+        pageNumber:
+          format: int64
+          title: Page number is the page number to return based on the size
+          type: string
+        pageSize:
+          format: int64
+          title: Page size is the maximum number of records to include per page
+          type: string
+      title: Request parameters for page-based pagination
+      type: object
+    v1PageBasedPaginationResponse:
+      example:
+        totalRecords: totalRecords
+        nextPage: nextPage
+        totalPages: totalPages
+        pageSize: pageSize
+        prevPage: prevPage
+        currentPage: currentPage
+      properties:
+        totalRecords:
+          format: int64
+          title: Total records without pagination available in the dataset
+          type: string
+        currentPage:
+          format: int64
+          title: Current page number for this paginated response
+          type: string
+        pageSize:
+          format: int64
+          title: Page size used for pagination
+          type: string
+        totalPages:
+          format: int64
+          title: Total pages based on the page_size provided in the request
+          type: string
+        nextPage:
+          format: int64
+          title: "Next page if available in the dataset, -1 if unavailable"
+          type: string
+        prevPage:
+          format: int64
+          title: "Previous page if available in the dataset, -1 if unavailable"
+          type: string
+      title: Metadata related to page based pagination for paginated API responses
+      type: object
+    v1Reference:
+      description: |-
+        Reference identifies the resource type, version of the uid and
+        the resource.
+      example:
+        uid: uid
+        type: type
+        version: version
+      properties:
+        type:
+          description: API group of the resource.
+          type: string
+        version:
+          description: Version of the API.
+          type: string
+        uid:
+          description: UID of the resource.
+          type: string
+      type: object
+    v1References:
+      description: References to the associated resources for backup configuration.
+      example:
+        dataServiceId: dataServiceId
+        deploymentId: deploymentId
+        backupLocationId: backupLocationId
+      properties:
+        deploymentId:
+          description: UID of the deployment to which the backup configuration belong.
+          readOnly: true
+          type: string
+        backupLocationId:
+          description: UID of the backup target to which the backup configuration
+            belong.
+          type: string
+        dataServiceId:
+          description: UID of the data service to which the backup configuration belong.
+          readOnly: true
+          type: string
+      type: object
+    v1Schedule:
+      description: Schedule associated with the backup config.
+      example:
+        resourceVersion: resourceVersion
+        id: id
+      properties:
+        id:
+          description: UID of the schedule associated with the backup configuration.
+          type: string
+        resourceVersion:
+          description: Resource version of the schedule.
+          type: string
+      type: object
+    v1Sort:
+      description: The details of the attribute for which the requested list of resource
+        to be sorted.
+      properties:
+        sortBy:
+          $ref: '#/components/schemas/SortByField'
+        sortOrder:
+          $ref: '#/components/schemas/SortOrderValue'
+      type: object
+    Metadata_of_the_backup_configuration_:
+      description: Metadata of the backup configuration.
+      properties:
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      title: Metadata of the backup configuration.
+      type: object
+    Desired_backup_configuration_:
+      properties:
+        meta:
+          $ref: '#/components/schemas/Metadata_of_the_backup_configuration_'
+        config:
+          $ref: '#/components/schemas/v1Config'
+        status:
+          $ref: '#/components/schemas/backupconfigv1Status'
+      title: Desired backup configuration.
+      type: object

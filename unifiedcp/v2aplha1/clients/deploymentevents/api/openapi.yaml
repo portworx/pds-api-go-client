@@ -1,0 +1,431 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/deploymentevents/apiv1/deploymentevents.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: DeploymentEventService
+paths:
+  /pds/v1/deployments/{deploymentId}/events:
+    get:
+      operationId: DeploymentEventService_ListDeploymentEvents
+      parameters:
+      - description: Deployment id for which events need to be listed.
+        explode: false
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListDeploymentEventsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDeploymentEvents API returns the list of kubernetes events related
+        to a deployment.
+      tags:
+      - DeploymentEventService
+components:
+  schemas:
+    SortByField:
+      default: FIELD_UNSPECIFIED
+      description: |-
+        Field names for sorting the list of resources.
+
+         - FIELD_UNSPECIFIED: Unspecified, do not use.
+         - NAME: Sorting based on the name of the resource.
+         - CREATED_AT: Sorting on create time of the resource.
+         - UPDATED_AT: Sorting on update time of the resource.
+         - PHASE: Sorting on phase of the resource.
+      enum:
+      - FIELD_UNSPECIFIED
+      - NAME
+      - CREATED_AT
+      - UPDATED_AT
+      - PHASE
+      type: string
+    SortOrderValue:
+      default: VALUE_UNSPECIFIED
+      description: |-
+        Value of sort order for the list of resources.
+
+         - VALUE_UNSPECIFIED: Unspecified, do not use.
+         - ASC: Sort order ascending.
+         - DESC: Sort order descending.
+      enum:
+      - VALUE_UNSPECIFIED
+      - ASC
+      - DESC
+      type: string
+    deploymenteventsv1Status:
+      description: Status of the event.
+      example:
+        resourceKind: resourceKind
+        reason: reason
+        count: count
+        action: action
+        timestampTime: 2000-01-23T04:56:07.000+00:00
+        resourceName: resourceName
+        message: message
+        type: null
+      properties:
+        action:
+          description: Action involved in the event.
+          type: string
+        count:
+          description: No. of times the event has been generated.
+          format: int64
+          type: string
+        message:
+          description: Message related to the event.
+          type: string
+        reason:
+          description: Reason for the event.
+          type: string
+        resourceKind:
+          description: Resource Kind.
+          type: string
+        resourceName:
+          description: Resource Name.
+          type: string
+        timestampTime:
+          description: Timestamp of the event.
+          format: date-time
+          type: string
+        type:
+          $ref: '#/components/schemas/v1EventType'
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    protobufAny:
+      additionalProperties: {}
+      properties:
+        '@type':
+          type: string
+      type: object
+    v1DeploymentEvent:
+      description: DeploymentEvent contains all the fields received from kubernetes
+        event of a deployment.
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        status:
+          resourceKind: resourceKind
+          reason: reason
+          count: count
+          action: action
+          timestampTime: 2000-01-23T04:56:07.000+00:00
+          resourceName: resourceName
+          message: message
+          type: null
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        status:
+          $ref: '#/components/schemas/deploymenteventsv1Status'
+      type: object
+    v1EventType:
+      default: EVENT_TYPE_UNSPECIFIED
+      description: |-
+        EventType is type of kubernetes event.
+
+         - EVENT_TYPE_UNSPECIFIED: Unspecified.
+         - NORMAL: Normal event.
+         - WARNING: Warning event.
+      enum:
+      - EVENT_TYPE_UNSPECIFIED
+      - NORMAL
+      - WARNING
+      type: string
+    v1ListDeploymentEventsResponse:
+      description: Response to list the deployment events.
+      example:
+        deploymentEvents:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          status:
+            resourceKind: resourceKind
+            reason: reason
+            count: count
+            action: action
+            timestampTime: 2000-01-23T04:56:07.000+00:00
+            resourceName: resourceName
+            message: message
+            type: null
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          status:
+            resourceKind: resourceKind
+            reason: reason
+            count: count
+            action: action
+            timestampTime: 2000-01-23T04:56:07.000+00:00
+            resourceName: resourceName
+            message: message
+            type: null
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+      properties:
+        deploymentEvents:
+          description: List of Event resources.
+          items:
+            $ref: '#/components/schemas/v1DeploymentEvent'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      type: object
+    v1Meta:
+      description: Meta holds general resource metadata.
+      example:
+        uid: uid
+        parentReference:
+          uid: uid
+          type: type
+          version: version
+        createTime: 2000-01-23T04:56:07.000+00:00
+        resourceVersion: resourceVersion
+        name: name
+        description: description
+        annotations:
+          key: annotations
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        labels:
+          key: labels
+      properties:
+        uid:
+          description: UID of the resource of the format <resource prefix>-<uuid>.
+          type: string
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      type: object
+    v1PageBasedPaginationRequest:
+      properties:
+        pageNumber:
+          format: int64
+          title: Page number is the page number to return based on the size
+          type: string
+        pageSize:
+          format: int64
+          title: Page size is the maximum number of records to include per page
+          type: string
+      title: Request parameters for page-based pagination
+      type: object
+    v1PageBasedPaginationResponse:
+      example:
+        totalRecords: totalRecords
+        nextPage: nextPage
+        totalPages: totalPages
+        pageSize: pageSize
+        prevPage: prevPage
+        currentPage: currentPage
+      properties:
+        totalRecords:
+          format: int64
+          title: Total records without pagination available in the dataset
+          type: string
+        currentPage:
+          format: int64
+          title: Current page number for this paginated response
+          type: string
+        pageSize:
+          format: int64
+          title: Page size used for pagination
+          type: string
+        totalPages:
+          format: int64
+          title: Total pages based on the page_size provided in the request
+          type: string
+        nextPage:
+          format: int64
+          title: "Next page if available in the dataset, -1 if unavailable"
+          type: string
+        prevPage:
+          format: int64
+          title: "Previous page if available in the dataset, -1 if unavailable"
+          type: string
+      title: Metadata related to page based pagination for paginated API responses
+      type: object
+    v1Reference:
+      description: |-
+        Reference identifies the resource type, version of the uid and
+        the resource.
+      example:
+        uid: uid
+        type: type
+        version: version
+      properties:
+        type:
+          description: API group of the resource.
+          type: string
+        version:
+          description: Version of the API.
+          type: string
+        uid:
+          description: UID of the resource.
+          type: string
+      type: object
+    v1Sort:
+      description: The details of the attribute for which the requested list of resource
+        to be sorted.
+      properties:
+        sortBy:
+          $ref: '#/components/schemas/SortByField'
+        sortOrder:
+          $ref: '#/components/schemas/SortOrderValue'
+      type: object

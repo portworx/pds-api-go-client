@@ -1,0 +1,1168 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/deploymentconfigupdate/apiv1/deploymentconfigupdate.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: DeploymentConfigUpdateService
+paths:
+  /pds/v1/deploymentConfigUpdates:
+    get:
+      operationId: DeploymentConfigUpdateService_ListDeploymentConfigUpdates
+      parameters:
+      - description: UID of the deployment
+        explode: true
+        in: query
+        name: deploymentId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListDeploymentConfigUpdatesResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDeploymentConfigUpdates API returns a list of deployment config
+        updates
+      tags:
+      - DeploymentConfigUpdateService
+  /pds/v1/deploymentConfigUpdates/{id}:
+    get:
+      operationId: DeploymentConfigUpdateService_GetDeploymentConfigUpdate
+      parameters:
+      - description: UID of the deployment config update
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeploymentConfigUpdate'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetDeploymentConfigUpdate API returns a deployment config update by
+        id
+      tags:
+      - DeploymentConfigUpdateService
+  /pds/v1/deploymentConfigUpdates/{id}:retry:
+    post:
+      operationId: DeploymentConfigUpdateService_RetryDeploymentConfigUpdate
+      parameters:
+      - description: UID of the deployment config update
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentConfigUpdateServiceRetryDeploymentConfigUpdateBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeploymentConfigUpdate'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: RetryDeploymentConfigUpdate API retries a deployment config update
+      tags:
+      - DeploymentConfigUpdateService
+  /pds/v1/deployments/{deploymentConfigUpdate.config.deploymentMeta.uid}/deploymentConfigUpdates:
+    put:
+      operationId: DeploymentConfigUpdateService_CreateDeploymentConfigUpdate
+      parameters:
+      - description: UID of the resource of the format <resource prefix>-<uuid>.
+        explode: false
+        in: path
+        name: deploymentConfigUpdate.config.deploymentMeta.uid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config_of_the_deployment_for_which_config_update_is_requested'
+        description: Config of the deployment for which config update is requested
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeploymentConfigUpdate'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: |-
+        CreateDeploymentConfigUpdate API creates a deployment config update
+        (-- api-linter: core::0133::http-method=disabled
+            aip.dev/not-precedent: We need to do this because here we are actually updating deployment config. --)
+      tags:
+      - DeploymentConfigUpdateService
+components:
+  schemas:
+    DeploymentConfigUpdateServiceRetryDeploymentConfigUpdateBody:
+      title: RetryDeploymentConfigUpdateRequest is the request for RetryDeploymentConfigUpdate
+      type: object
+    SortByField:
+      default: FIELD_UNSPECIFIED
+      description: |-
+        Field names for sorting the list of resources.
+
+         - FIELD_UNSPECIFIED: Unspecified, do not use.
+         - NAME: Sorting based on the name of the resource.
+         - CREATED_AT: Sorting on create time of the resource.
+         - UPDATED_AT: Sorting on update time of the resource.
+         - PHASE: Sorting on phase of the resource.
+      enum:
+      - FIELD_UNSPECIFIED
+      - NAME
+      - CREATED_AT
+      - UPDATED_AT
+      - PHASE
+      type: string
+    SortOrderValue:
+      default: VALUE_UNSPECIFIED
+      description: |-
+        Value of sort order for the list of resources.
+
+         - VALUE_UNSPECIFIED: Unspecified, do not use.
+         - ASC: Sort order ascending.
+         - DESC: Sort order descending.
+      enum:
+      - VALUE_UNSPECIFIED
+      - ASC
+      - DESC
+      type: string
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    pdsdeploymentconfigupdatev1Config:
+      example:
+        deploymentMeta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        deploymentConfig:
+          tlsEnabled: true
+          references:
+            imageId: imageId
+            restoreId: restoreId
+            projectId: projectId
+            targetClusterId: targetClusterId
+          deploymentTopologies:
+          - serviceType: serviceType
+            storageTemplate:
+              resourceVersion: resourceVersion
+              values:
+                key:
+                  '@type': '@type'
+              id: id
+            resourceTemplate:
+              resourceVersion: resourceVersion
+              values:
+                key:
+                  '@type': '@type'
+              id: id
+            replicas: replicas
+            name: name
+            description: description
+            loadBalancerSourceRanges:
+            - loadBalancerSourceRanges
+            - loadBalancerSourceRanges
+            serviceName: serviceName
+            applicationTemplate:
+              resourceVersion: resourceVersion
+              values:
+                key:
+                  '@type': '@type'
+              id: id
+          - serviceType: serviceType
+            storageTemplate:
+              resourceVersion: resourceVersion
+              values:
+                key:
+                  '@type': '@type'
+              id: id
+            resourceTemplate:
+              resourceVersion: resourceVersion
+              values:
+                key:
+                  '@type': '@type'
+              id: id
+            replicas: replicas
+            name: name
+            description: description
+            loadBalancerSourceRanges:
+            - loadBalancerSourceRanges
+            - loadBalancerSourceRanges
+            serviceName: serviceName
+            applicationTemplate:
+              resourceVersion: resourceVersion
+              values:
+                key:
+                  '@type': '@type'
+              id: id
+      properties:
+        deploymentMeta:
+          $ref: '#/components/schemas/v1Meta'
+        deploymentConfig:
+          $ref: '#/components/schemas/pdsdeploymentv1Config'
+      title: Config of the desired deployment configuration
+      type: object
+    pdsdeploymentconfigupdatev1Status:
+      example:
+        phase: null
+        retryCount: 0
+        errorMessage: errorMessage
+        errorCode: errorCode
+      properties:
+        errorCode:
+          description: Error Code is a short string that represents the error.
+          type: string
+        errorMessage:
+          description: Error Message is a description of the error.
+          type: string
+        retryCount:
+          format: int32
+          title: Number of times the deployment config update has been retried
+          type: integer
+        phase:
+          $ref: '#/components/schemas/pdsdeploymentconfigupdatev1StatusPhase'
+      title: Status of the deployment config update
+      type: object
+    pdsdeploymentconfigupdatev1StatusPhase:
+      default: PHASE_UNSPECIFIED
+      description: |-
+        Enum for Phase of the Deployment config update.
+
+         - PHASE_UNSPECIFIED: Phase is unspecified.
+         - FAILED: Deployment config update failed.
+         - QUEUED: Deployment config update is queued.
+         - COMPLETED: Deployment config update is completed.
+         - REQUEUED: Deployment config update is requeued.
+      enum:
+      - PHASE_UNSPECIFIED
+      - FAILED
+      - QUEUED
+      - COMPLETED
+      - REQUEUED
+      type: string
+    pdsdeploymentv1Config:
+      description: Desired configuration of the Deployment.
+      example:
+        tlsEnabled: true
+        references:
+          imageId: imageId
+          restoreId: restoreId
+          projectId: projectId
+          targetClusterId: targetClusterId
+        deploymentTopologies:
+        - serviceType: serviceType
+          storageTemplate:
+            resourceVersion: resourceVersion
+            values:
+              key:
+                '@type': '@type'
+            id: id
+          resourceTemplate:
+            resourceVersion: resourceVersion
+            values:
+              key:
+                '@type': '@type'
+            id: id
+          replicas: replicas
+          name: name
+          description: description
+          loadBalancerSourceRanges:
+          - loadBalancerSourceRanges
+          - loadBalancerSourceRanges
+          serviceName: serviceName
+          applicationTemplate:
+            resourceVersion: resourceVersion
+            values:
+              key:
+                '@type': '@type'
+            id: id
+        - serviceType: serviceType
+          storageTemplate:
+            resourceVersion: resourceVersion
+            values:
+              key:
+                '@type': '@type'
+            id: id
+          resourceTemplate:
+            resourceVersion: resourceVersion
+            values:
+              key:
+                '@type': '@type'
+            id: id
+          replicas: replicas
+          name: name
+          description: description
+          loadBalancerSourceRanges:
+          - loadBalancerSourceRanges
+          - loadBalancerSourceRanges
+          serviceName: serviceName
+          applicationTemplate:
+            resourceVersion: resourceVersion
+            values:
+              key:
+                '@type': '@type'
+            id: id
+      properties:
+        references:
+          $ref: '#/components/schemas/v1References'
+        tlsEnabled:
+          description: Flag to enable TLS for the Data Service.
+          type: boolean
+        deploymentTopologies:
+          description: A deployment topology contains a number of nodes that have
+            various attributes as a collective group.
+          items:
+            $ref: '#/components/schemas/v1DeploymentTopology'
+          type: array
+      type: object
+    protobufAny:
+      additionalProperties: {}
+      description: |-
+        `Any` contains an arbitrary serialized protocol buffer message along with a
+        URL that describes the type of the serialized message.
+
+        Protobuf library provides support to pack/unpack Any values in the form
+        of utility functions or additional generated methods of the Any type.
+
+        Example 1: Pack and unpack a message in C++.
+
+            Foo foo = ...;
+            Any any;
+            any.PackFrom(foo);
+            ...
+            if (any.UnpackTo(&foo)) {
+              ...
+            }
+
+        Example 2: Pack and unpack a message in Java.
+
+            Foo foo = ...;
+            Any any = Any.pack(foo);
+            ...
+            if (any.is(Foo.class)) {
+              foo = any.unpack(Foo.class);
+            }
+            // or ...
+            if (any.isSameTypeAs(Foo.getDefaultInstance())) {
+              foo = any.unpack(Foo.getDefaultInstance());
+            }
+
+         Example 3: Pack and unpack a message in Python.
+
+            foo = Foo(...)
+            any = Any()
+            any.Pack(foo)
+            ...
+            if any.Is(Foo.DESCRIPTOR):
+              any.Unpack(foo)
+              ...
+
+         Example 4: Pack and unpack a message in Go
+
+             foo := &pb.Foo{...}
+             any, err := anypb.New(foo)
+             if err != nil {
+               ...
+             }
+             ...
+             foo := &pb.Foo{}
+             if err := any.UnmarshalTo(foo); err != nil {
+               ...
+             }
+
+        The pack methods provided by protobuf library will by default use
+        'type.googleapis.com/full.type.name' as the type URL and the unpack
+        methods only use the fully qualified type name after the last '/'
+        in the type URL, for example "foo.bar.com/x/y.z" will yield type
+        name "y.z".
+
+        JSON
+        ====
+        The JSON representation of an `Any` value uses the regular
+        representation of the deserialized, embedded message, with an
+        additional field `@type` which contains the type URL. Example:
+
+            package google.profile;
+            message Person {
+              string first_name = 1;
+              string last_name = 2;
+            }
+
+            {
+              "@type": "type.googleapis.com/google.profile.Person",
+              "firstName": <string>,
+              "lastName": <string>
+            }
+
+        If the embedded message type is well-known and has a custom JSON
+        representation, that representation will be embedded adding a field
+        `value` which holds the custom JSON in addition to the `@type`
+        field. Example (for message [google.protobuf.Duration][]):
+
+            {
+              "@type": "type.googleapis.com/google.protobuf.Duration",
+              "value": "1.212s"
+            }
+      example:
+        '@type': '@type'
+      properties:
+        '@type':
+          description: |-
+            A URL/resource name that uniquely identifies the type of the serialized
+            protocol buffer message. This string must contain at least
+            one "/" character. The last segment of the URL's path must represent
+            the fully qualified name of the type (as in
+            `path/google.protobuf.Duration`). The name should be in a canonical form
+            (e.g., leading "." is not accepted).
+
+            In practice, teams usually precompile into the binary all types that they
+            expect it to use in the context of Any. However, for URLs which use the
+            scheme `http`, `https`, or no scheme, one can optionally set up a type
+            server that maps type URLs to message definitions as follows:
+
+            * If no scheme is provided, `https` is assumed.
+            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+              value in binary format, or produce an error.
+            * Applications are allowed to cache lookup results based on the
+              URL, or have them precompiled into a binary to avoid any
+              lookup. Therefore, binary compatibility needs to be preserved
+              on changes to types. (Use versioned type names to manage
+              breaking changes.)
+
+            Note: this functionality is not currently available in the official
+            protobuf release, and it is not used for type URLs beginning with
+            type.googleapis.com. As of May 2023, there are no widely used type server
+            implementations and no plans to implement one.
+
+            Schemes other than `http`, `https` (or the empty scheme) might be
+            used with implementation specific semantics.
+          type: string
+      type: object
+    v1DeploymentConfigUpdate:
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        config:
+          deploymentMeta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          deploymentConfig:
+            tlsEnabled: true
+            references:
+              imageId: imageId
+              restoreId: restoreId
+              projectId: projectId
+              targetClusterId: targetClusterId
+            deploymentTopologies:
+            - serviceType: serviceType
+              storageTemplate:
+                resourceVersion: resourceVersion
+                values:
+                  key:
+                    '@type': '@type'
+                id: id
+              resourceTemplate:
+                resourceVersion: resourceVersion
+                values:
+                  key:
+                    '@type': '@type'
+                id: id
+              replicas: replicas
+              name: name
+              description: description
+              loadBalancerSourceRanges:
+              - loadBalancerSourceRanges
+              - loadBalancerSourceRanges
+              serviceName: serviceName
+              applicationTemplate:
+                resourceVersion: resourceVersion
+                values:
+                  key:
+                    '@type': '@type'
+                id: id
+            - serviceType: serviceType
+              storageTemplate:
+                resourceVersion: resourceVersion
+                values:
+                  key:
+                    '@type': '@type'
+                id: id
+              resourceTemplate:
+                resourceVersion: resourceVersion
+                values:
+                  key:
+                    '@type': '@type'
+                id: id
+              replicas: replicas
+              name: name
+              description: description
+              loadBalancerSourceRanges:
+              - loadBalancerSourceRanges
+              - loadBalancerSourceRanges
+              serviceName: serviceName
+              applicationTemplate:
+                resourceVersion: resourceVersion
+                values:
+                  key:
+                    '@type': '@type'
+                id: id
+        status:
+          phase: null
+          retryCount: 0
+          errorMessage: errorMessage
+          errorCode: errorCode
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        config:
+          $ref: '#/components/schemas/pdsdeploymentconfigupdatev1Config'
+        status:
+          $ref: '#/components/schemas/pdsdeploymentconfigupdatev1Status'
+      title: DeploymentConfigUpdate represents a deployment config update resource
+      type: object
+    v1DeploymentTopology:
+      description: |-
+        A deployment topology contains a number of nodes that have various attributes as a collective group.
+        This is consumed in a deployment and the functionality is being controlled by the CRUD APIs of deployment.
+      example:
+        serviceType: serviceType
+        storageTemplate:
+          resourceVersion: resourceVersion
+          values:
+            key:
+              '@type': '@type'
+          id: id
+        resourceTemplate:
+          resourceVersion: resourceVersion
+          values:
+            key:
+              '@type': '@type'
+          id: id
+        replicas: replicas
+        name: name
+        description: description
+        loadBalancerSourceRanges:
+        - loadBalancerSourceRanges
+        - loadBalancerSourceRanges
+        serviceName: serviceName
+        applicationTemplate:
+          resourceVersion: resourceVersion
+          values:
+            key:
+              '@type': '@type'
+          id: id
+      properties:
+        name:
+          description: Name of the deployment topology.
+          type: string
+        description:
+          description: Description of the deployment topology.
+          type: string
+        replicas:
+          description: Number of replicas of data services.
+          format: int64
+          type: string
+        serviceType:
+          description: "Service type are standard Kubernetes service types such as\
+            \ clusterIP, NodePort, load balancers, etc."
+          type: string
+        serviceName:
+          description: Service name is the name of service as provided by user.
+          type: string
+        loadBalancerSourceRanges:
+          description: Source IP ranges to use for the deployed Load Balancer.
+          items:
+            type: string
+          type: array
+        resourceTemplate:
+          $ref: '#/components/schemas/v1Template'
+        applicationTemplate:
+          $ref: '#/components/schemas/v1Template'
+        storageTemplate:
+          $ref: '#/components/schemas/v1Template'
+      type: object
+    v1ListDeploymentConfigUpdatesResponse:
+      example:
+        deploymentConfigUpdates:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          config:
+            deploymentMeta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            deploymentConfig:
+              tlsEnabled: true
+              references:
+                imageId: imageId
+                restoreId: restoreId
+                projectId: projectId
+                targetClusterId: targetClusterId
+              deploymentTopologies:
+              - serviceType: serviceType
+                storageTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                resourceTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                replicas: replicas
+                name: name
+                description: description
+                loadBalancerSourceRanges:
+                - loadBalancerSourceRanges
+                - loadBalancerSourceRanges
+                serviceName: serviceName
+                applicationTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+              - serviceType: serviceType
+                storageTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                resourceTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                replicas: replicas
+                name: name
+                description: description
+                loadBalancerSourceRanges:
+                - loadBalancerSourceRanges
+                - loadBalancerSourceRanges
+                serviceName: serviceName
+                applicationTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+          status:
+            phase: null
+            retryCount: 0
+            errorMessage: errorMessage
+            errorCode: errorCode
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          config:
+            deploymentMeta:
+              uid: uid
+              parentReference:
+                uid: uid
+                type: type
+                version: version
+              createTime: 2000-01-23T04:56:07.000+00:00
+              resourceVersion: resourceVersion
+              name: name
+              description: description
+              annotations:
+                key: annotations
+              updateTime: 2000-01-23T04:56:07.000+00:00
+              labels:
+                key: labels
+            deploymentConfig:
+              tlsEnabled: true
+              references:
+                imageId: imageId
+                restoreId: restoreId
+                projectId: projectId
+                targetClusterId: targetClusterId
+              deploymentTopologies:
+              - serviceType: serviceType
+                storageTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                resourceTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                replicas: replicas
+                name: name
+                description: description
+                loadBalancerSourceRanges:
+                - loadBalancerSourceRanges
+                - loadBalancerSourceRanges
+                serviceName: serviceName
+                applicationTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+              - serviceType: serviceType
+                storageTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                resourceTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+                replicas: replicas
+                name: name
+                description: description
+                loadBalancerSourceRanges:
+                - loadBalancerSourceRanges
+                - loadBalancerSourceRanges
+                serviceName: serviceName
+                applicationTemplate:
+                  resourceVersion: resourceVersion
+                  values:
+                    key:
+                      '@type': '@type'
+                  id: id
+          status:
+            phase: null
+            retryCount: 0
+            errorMessage: errorMessage
+            errorCode: errorCode
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+      properties:
+        deploymentConfigUpdates:
+          items:
+            $ref: '#/components/schemas/v1DeploymentConfigUpdate'
+          title: List of deployment config updates
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      title: ListDeploymentConfigUpdatesResponse is the response for ListDeploymentConfigUpdates
+      type: object
+    v1Meta:
+      description: Meta holds general resource metadata.
+      example:
+        uid: uid
+        parentReference:
+          uid: uid
+          type: type
+          version: version
+        createTime: 2000-01-23T04:56:07.000+00:00
+        resourceVersion: resourceVersion
+        name: name
+        description: description
+        annotations:
+          key: annotations
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        labels:
+          key: labels
+      properties:
+        uid:
+          description: UID of the resource of the format <resource prefix>-<uuid>.
+          type: string
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      type: object
+    v1PageBasedPaginationRequest:
+      properties:
+        pageNumber:
+          format: int64
+          title: Page number is the page number to return based on the size
+          type: string
+        pageSize:
+          format: int64
+          title: Page size is the maximum number of records to include per page
+          type: string
+      title: Request parameters for page-based pagination
+      type: object
+    v1PageBasedPaginationResponse:
+      example:
+        totalRecords: totalRecords
+        nextPage: nextPage
+        totalPages: totalPages
+        pageSize: pageSize
+        prevPage: prevPage
+        currentPage: currentPage
+      properties:
+        totalRecords:
+          format: int64
+          title: Total records without pagination available in the dataset
+          type: string
+        currentPage:
+          format: int64
+          title: Current page number for this paginated response
+          type: string
+        pageSize:
+          format: int64
+          title: Page size used for pagination
+          type: string
+        totalPages:
+          format: int64
+          title: Total pages based on the page_size provided in the request
+          type: string
+        nextPage:
+          format: int64
+          title: "Next page if available in the dataset, -1 if unavailable"
+          type: string
+        prevPage:
+          format: int64
+          title: "Previous page if available in the dataset, -1 if unavailable"
+          type: string
+      title: Metadata related to page based pagination for paginated API responses
+      type: object
+    v1Reference:
+      description: |-
+        Reference identifies the resource type, version of the uid and
+        the resource.
+      example:
+        uid: uid
+        type: type
+        version: version
+      properties:
+        type:
+          description: API group of the resource.
+          type: string
+        version:
+          description: Version of the API.
+          type: string
+        uid:
+          description: UID of the resource.
+          type: string
+      type: object
+    v1References:
+      description: References to other resources.
+      example:
+        imageId: imageId
+        restoreId: restoreId
+        projectId: projectId
+        targetClusterId: targetClusterId
+      properties:
+        targetClusterId:
+          description: UID of the target cluster in which Data Service will be deployed.
+          type: string
+        imageId:
+          description: UID of the image to be used for the Data Service Deployment.
+          type: string
+        projectId:
+          description: UID of the project to which DataService Deployment associated.
+          type: string
+        restoreId:
+          description: UID of the restore id for the Deployment.
+          readOnly: true
+          type: string
+      type: object
+    v1Sort:
+      description: The details of the attribute for which the requested list of resource
+        to be sorted.
+      properties:
+        sortBy:
+          $ref: '#/components/schemas/SortByField'
+        sortOrder:
+          $ref: '#/components/schemas/SortOrderValue'
+      type: object
+    v1Template:
+      description: Template.
+      example:
+        resourceVersion: resourceVersion
+        values:
+          key:
+            '@type': '@type'
+        id: id
+      properties:
+        id:
+          description: UID of the Template.
+          type: string
+        resourceVersion:
+          description: Resource version of the template.
+          readOnly: true
+          type: string
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          description: Values required for template.
+          type: object
+      type: object
+    Metadata_of_the_deployment_resource:
+      properties:
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      title: Metadata of the deployment resource
+      type: object
+    Config_of_the_deployment_for_which_config_update_is_requested:
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        config:
+          $ref: '#/components/schemas/Config_of_the_deployment_for_which_config_update_is_requested'
+        status:
+          $ref: '#/components/schemas/pdsdeploymentconfigupdatev1Status'
+      title: Config of the deployment for which config update is requested
+      type: object

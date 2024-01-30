@@ -1,0 +1,723 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/restore/apiv1/restore.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: RestoreService
+paths:
+  /pds/v1/namespaces/{namespaceId}/restores:
+    post:
+      operationId: RestoreService_CreateRestore
+      parameters:
+      - description: |-
+          UID of the namespace where restore will be created
+          (-- api-linter: core::0133::request-unknown-fields=disabled
+              aip.dev/not-precedent: We really need this field because namespace is the parent of the restore. --)
+        explode: false
+        in: path
+        name: namespaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1Restore'
+        description: Restore resource.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1Restore'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateRestore API creates the Restore resource.
+      tags:
+      - RestoreService
+  /pds/v1/restores:
+    get:
+      operationId: RestoreService_ListRestores
+      parameters:
+      - description: Account ID for which the restore will be listed.
+        explode: true
+        in: query
+        name: accountId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Tenant ID for which the restore will be listed.
+        explode: true
+        in: query
+        name: tenantId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Project ID for which the restore will be listed.
+        explode: true
+        in: query
+        name: projectId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID for which the restore will be listed.
+        explode: true
+        in: query
+        name: deploymentId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Backup ID for which the restore will be listed.
+        explode: true
+        in: query
+        name: backupId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Name of the attribute to sort results by.
+
+           - FIELD_UNSPECIFIED: Unspecified, do not use.
+           - NAME: Sorting based on the name of the resource.
+           - CREATED_AT: Sorting on create time of the resource.
+           - UPDATED_AT: Sorting on update time of the resource.
+           - PHASE: Sorting on phase of the resource.
+        explode: true
+        in: query
+        name: sort.sortBy
+        required: false
+        schema:
+          default: FIELD_UNSPECIFIED
+          enum:
+          - FIELD_UNSPECIFIED
+          - NAME
+          - CREATED_AT
+          - UPDATED_AT
+          - PHASE
+          type: string
+        style: form
+      - description: |-
+          Order of sorting to be applied on requested list.
+          If sort_by having some value and sort_order is not provided, by default ascending order will be used to sort the list.
+
+           - VALUE_UNSPECIFIED: Unspecified, do not use.
+           - ASC: Sort order ascending.
+           - DESC: Sort order descending.
+        explode: true
+        in: query
+        name: sort.sortOrder
+        required: false
+        schema:
+          default: VALUE_UNSPECIFIED
+          enum:
+          - VALUE_UNSPECIFIED
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - description: Page number is the page number to return based on the size
+        explode: true
+        in: query
+        name: pagination.pageNumber
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      - description: Page size is the maximum number of records to include per page
+        explode: true
+        in: query
+        name: pagination.pageSize
+        required: false
+        schema:
+          format: int64
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListRestoresResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListRestore API lists the Restore resources.
+      tags:
+      - RestoreService
+  /pds/v1/restores/{id}:
+    delete:
+      operationId: RestoreService_DeleteRestore
+      parameters:
+      - description: UID of the Restore.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteRestore API deletes the restore.
+      tags:
+      - RestoreService
+    get:
+      operationId: RestoreService_GetRestore
+      parameters:
+      - description: UID of the restore.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1Restore'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetRestore API returns the Restore resource.
+      tags:
+      - RestoreService
+  /pds/v1/restores/{id}:recreate:
+    post:
+      operationId: RestoreService_RecreateRestore
+      parameters:
+      - description: UID of the existing restore
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestoreServiceRecreateRestoreBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1Restore'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: RecreateRestore API recreates a already failed restore.
+      tags:
+      - RestoreService
+components:
+  schemas:
+    RestoreServiceRecreateRestoreBody:
+      example:
+        namespaceId: namespaceId
+        name: name
+        targetClusterId: targetClusterId
+      properties:
+        targetClusterId:
+          title: UID of the target cluster where restore will be created
+          type: string
+        name:
+          title: Name of the restore
+          type: string
+        namespaceId:
+          title: UID of mamespace where restore will be created
+          type: string
+      title: Request to recreate a restore
+      type: object
+    SortByField:
+      default: FIELD_UNSPECIFIED
+      description: |-
+        Field names for sorting the list of resources.
+
+         - FIELD_UNSPECIFIED: Unspecified, do not use.
+         - NAME: Sorting based on the name of the resource.
+         - CREATED_AT: Sorting on create time of the resource.
+         - UPDATED_AT: Sorting on update time of the resource.
+         - PHASE: Sorting on phase of the resource.
+      enum:
+      - FIELD_UNSPECIFIED
+      - NAME
+      - CREATED_AT
+      - UPDATED_AT
+      - PHASE
+      type: string
+    SortOrderValue:
+      default: VALUE_UNSPECIFIED
+      description: |-
+        Value of sort order for the list of resources.
+
+         - VALUE_UNSPECIFIED: Unspecified, do not use.
+         - ASC: Sort order ascending.
+         - DESC: Sort order descending.
+      enum:
+      - VALUE_UNSPECIFIED
+      - ASC
+      - DESC
+      type: string
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    protobufAny:
+      additionalProperties: {}
+      properties:
+        '@type':
+          type: string
+      type: object
+    restorev1Status:
+      description: Status of the restore.
+      example:
+        phase: null
+        completedAt: 2000-01-23T04:56:07.000+00:00
+        errorMessage: errorMessage
+        startedAt: 2000-01-23T04:56:07.000+00:00
+        errorCode: null
+      properties:
+        startedAt:
+          format: date-time
+          title: |-
+            Time when restore was started
+            (-- api-linter: core::0142::time-field-names=disabled
+                aip.dev/not-precedent: We need to do this because we need different name for the field. --)
+          type: string
+        completedAt:
+          format: date-time
+          title: |-
+            Time when restore was completed
+            (-- api-linter: core::0142::time-field-names=disabled
+                aip.dev/not-precedent: We need to do this because we need different name for the field. --)
+          type: string
+        errorCode:
+          $ref: '#/components/schemas/v1ErrorCode'
+        errorMessage:
+          title: Error message is description of the error in restore
+          type: string
+        phase:
+          $ref: '#/components/schemas/v1Phase'
+      type: object
+    v1Config:
+      description: Desired configuration of the restore.
+      example:
+        destinationReferences:
+          deploymentId: deploymentId
+          targetClusterId: targetClusterId
+        sourceReferences:
+          cloudsnapId: cloudsnapId
+          deploymentId: deploymentId
+          backupId: backupId
+          backupLocationId: backupLocationId
+        customResourceName: customResourceName
+      properties:
+        sourceReferences:
+          $ref: '#/components/schemas/v1SourceReferences'
+        destinationReferences:
+          $ref: '#/components/schemas/v1DestinationReferences'
+        customResourceName:
+          description: "K8s resource name for restore, built from [\"restore-\" +\
+            \ name + short-id]."
+          readOnly: true
+          type: string
+      type: object
+    v1DestinationReferences:
+      description: Destination references for the restore.
+      example:
+        deploymentId: deploymentId
+        targetClusterId: targetClusterId
+      properties:
+        targetClusterId:
+          title: UID of the target cluster where restore will be created
+          type: string
+        deploymentId:
+          description: UID of the deployment created by the restore.
+          readOnly: true
+          type: string
+      type: object
+    v1ErrorCode:
+      default: ERROR_CODE_UNSPECIFIED
+      description: |-
+        - ERROR_CODE_UNSPECIFIED: Error code not specified.
+         - PX_CLOUD_CREDENTIALS_NOT_FOUND: Cloud credentials specified in Restore spec were not found by Portworx.
+         - PX_CLOUD_SNAP_RESTORE_TRIGGER_FAILED: Problem triggering the cloudsnap restore in PX.
+         - PX_CLOUD_SNAP_RESTORE_FAILED: Problem with finishing the cloudsnap restore in PX.
+         - PX_GET_CLOUD_SNAP_STATUS_FAILED: Problem with getting the cloudsnap restore status from PX.
+         - PX_GET_VOLUME_FAILED: Problem with getting the volume from PX.
+         - READ_DATA_SERVICE_MANIFEST_FAILED: Problem with reading the data service manifest from the busybox pod.
+         - UNMARSHAL_DATA_SERVICE_JSON: Problem with unmarshalling the JSON with data service manifest.
+         - DEPLOYMENT_NAME_ALREADY_EXIST: Deployment name already used in the namespace.
+         - TIMEOUT_BUSYBOX_POD_RUNNING: Timeout while waiting for the BusyBox pod to enter the running state.
+         - BUSYBOX_POD_FAILED: Busybox pod has failed.
+      enum:
+      - ERROR_CODE_UNSPECIFIED
+      - PX_CLOUD_CREDENTIALS_NOT_FOUND
+      - PX_CLOUD_SNAP_RESTORE_TRIGGER_FAILED
+      - PX_CLOUD_SNAP_RESTORE_FAILED
+      - PX_GET_CLOUD_SNAP_STATUS_FAILED
+      - PX_GET_VOLUME_FAILED
+      - READ_DATA_SERVICE_MANIFEST_FAILED
+      - UNMARSHAL_DATA_SERVICE_JSON
+      - DEPLOYMENT_NAME_ALREADY_EXIST
+      - TIMEOUT_BUSYBOX_POD_RUNNING
+      - BUSYBOX_POD_FAILED
+      title: Enums for error codes for restore on the target cluster
+      type: string
+    v1ListRestoresResponse:
+      example:
+        pagination:
+          totalRecords: totalRecords
+          nextPage: nextPage
+          totalPages: totalPages
+          pageSize: pageSize
+          prevPage: prevPage
+          currentPage: currentPage
+        restores:
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          config:
+            destinationReferences:
+              deploymentId: deploymentId
+              targetClusterId: targetClusterId
+            sourceReferences:
+              cloudsnapId: cloudsnapId
+              deploymentId: deploymentId
+              backupId: backupId
+              backupLocationId: backupLocationId
+            customResourceName: customResourceName
+          status:
+            phase: null
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            errorMessage: errorMessage
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            errorCode: null
+        - meta:
+            uid: uid
+            parentReference:
+              uid: uid
+              type: type
+              version: version
+            createTime: 2000-01-23T04:56:07.000+00:00
+            resourceVersion: resourceVersion
+            name: name
+            description: description
+            annotations:
+              key: annotations
+            updateTime: 2000-01-23T04:56:07.000+00:00
+            labels:
+              key: labels
+          config:
+            destinationReferences:
+              deploymentId: deploymentId
+              targetClusterId: targetClusterId
+            sourceReferences:
+              cloudsnapId: cloudsnapId
+              deploymentId: deploymentId
+              backupId: backupId
+              backupLocationId: backupLocationId
+            customResourceName: customResourceName
+          status:
+            phase: null
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            errorMessage: errorMessage
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            errorCode: null
+      properties:
+        restores:
+          items:
+            $ref: '#/components/schemas/v1Restore'
+          title: List of restores
+          type: array
+        pagination:
+          $ref: '#/components/schemas/v1PageBasedPaginationResponse'
+      title: ListRestoresResponse represents list restores response
+      type: object
+    v1Meta:
+      description: Meta holds general resource metadata.
+      example:
+        uid: uid
+        parentReference:
+          uid: uid
+          type: type
+          version: version
+        createTime: 2000-01-23T04:56:07.000+00:00
+        resourceVersion: resourceVersion
+        name: name
+        description: description
+        annotations:
+          key: annotations
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        labels:
+          key: labels
+      properties:
+        uid:
+          description: UID of the resource of the format <resource prefix>-<uuid>.
+          type: string
+        name:
+          description: Name of the resource.
+          type: string
+        description:
+          description: Description of the resource.
+          type: string
+        resourceVersion:
+          description: |-
+            A string that identifies the version of this object that can be used by
+            clients to determine when objects have changed. This value must be passed
+            unmodified back to the server by the client.
+          type: string
+        createTime:
+          description: Creation time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        updateTime:
+          description: Update time of the object.
+          format: date-time
+          readOnly: true
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Labels to apply to the object.
+          type: object
+        annotations:
+          additionalProperties:
+            type: string
+          description: Annotations for the object.
+          type: object
+        parentReference:
+          $ref: '#/components/schemas/v1Reference'
+      type: object
+    v1PageBasedPaginationRequest:
+      properties:
+        pageNumber:
+          format: int64
+          title: Page number is the page number to return based on the size
+          type: string
+        pageSize:
+          format: int64
+          title: Page size is the maximum number of records to include per page
+          type: string
+      title: Request parameters for page-based pagination
+      type: object
+    v1PageBasedPaginationResponse:
+      example:
+        totalRecords: totalRecords
+        nextPage: nextPage
+        totalPages: totalPages
+        pageSize: pageSize
+        prevPage: prevPage
+        currentPage: currentPage
+      properties:
+        totalRecords:
+          format: int64
+          title: Total records without pagination available in the dataset
+          type: string
+        currentPage:
+          format: int64
+          title: Current page number for this paginated response
+          type: string
+        pageSize:
+          format: int64
+          title: Page size used for pagination
+          type: string
+        totalPages:
+          format: int64
+          title: Total pages based on the page_size provided in the request
+          type: string
+        nextPage:
+          format: int64
+          title: "Next page if available in the dataset, -1 if unavailable"
+          type: string
+        prevPage:
+          format: int64
+          title: "Previous page if available in the dataset, -1 if unavailable"
+          type: string
+      title: Metadata related to page based pagination for paginated API responses
+      type: object
+    v1Phase:
+      default: PHASE_UNSPECIFIED
+      description: |-
+        Enum for phase of the restore.
+
+         - PHASE_UNSPECIFIED: Phase is unspecified.
+         - INITIALIZING: Restore is initializing.
+         - PENDING: Restore has not yet started.
+         - RESTORING_CLOUDSNAP: Waiting for the cloud snap restore to complete.
+         - RESTORING_DATA_SERVICE_CR: PV and PVC resources are ready and we're waiting to get the data service manifest from the backup.
+         - RESTORING_DEPLOYMENT: New data service has been created and we're waiting for the restore process to complete.
+         - DEPLOYMENT_ENTERING_NORMAL_MODE: Restore process in data service has succeeded and we're waiting until it becomes healthy in normal mode.
+         - SUCCESSFUL: Restore successful.
+         - FAILED: Restore failed.
+      enum:
+      - PHASE_UNSPECIFIED
+      - INITIALIZING
+      - PENDING
+      - RESTORING_CLOUDSNAP
+      - RESTORING_DATA_SERVICE_CR
+      - RESTORING_DEPLOYMENT
+      - DEPLOYMENT_ENTERING_NORMAL_MODE
+      - SUCCESSFUL
+      - FAILED
+      type: string
+    v1Reference:
+      description: |-
+        Reference identifies the resource type, version of the uid and
+        the resource.
+      example:
+        uid: uid
+        type: type
+        version: version
+      properties:
+        type:
+          description: API group of the resource.
+          type: string
+        version:
+          description: Version of the API.
+          type: string
+        uid:
+          description: UID of the resource.
+          type: string
+      type: object
+    v1Restore:
+      description: Restore represents a data service restore.
+      example:
+        meta:
+          uid: uid
+          parentReference:
+            uid: uid
+            type: type
+            version: version
+          createTime: 2000-01-23T04:56:07.000+00:00
+          resourceVersion: resourceVersion
+          name: name
+          description: description
+          annotations:
+            key: annotations
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          labels:
+            key: labels
+        config:
+          destinationReferences:
+            deploymentId: deploymentId
+            targetClusterId: targetClusterId
+          sourceReferences:
+            cloudsnapId: cloudsnapId
+            deploymentId: deploymentId
+            backupId: backupId
+            backupLocationId: backupLocationId
+          customResourceName: customResourceName
+        status:
+          phase: null
+          completedAt: 2000-01-23T04:56:07.000+00:00
+          errorMessage: errorMessage
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          errorCode: null
+      properties:
+        meta:
+          $ref: '#/components/schemas/v1Meta'
+        config:
+          $ref: '#/components/schemas/v1Config'
+        status:
+          $ref: '#/components/schemas/restorev1Status'
+      type: object
+    v1Sort:
+      description: The details of the attribute for which the requested list of resource
+        to be sorted.
+      properties:
+        sortBy:
+          $ref: '#/components/schemas/SortByField'
+        sortOrder:
+          $ref: '#/components/schemas/SortOrderValue'
+      type: object
+    v1SourceReferences:
+      description: SourceReferences for the restore.
+      example:
+        cloudsnapId: cloudsnapId
+        deploymentId: deploymentId
+        backupId: backupId
+        backupLocationId: backupLocationId
+      properties:
+        deploymentId:
+          description: UID of the deployment which was backed up.
+          readOnly: true
+          type: string
+        backupId:
+          description: UID of the backup.
+          type: string
+        backupLocationId:
+          description: UID of the backup location.
+          readOnly: true
+          type: string
+        cloudsnapId:
+          description: UID of the cloud snapshot of the backup volume used for restore.
+          readOnly: true
+          type: string
+      type: object

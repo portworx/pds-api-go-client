@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: public/portworx/pds/copilot/apiv1/copilot.proto
+  version: version not set
+servers:
+- url: /
+tags:
+- name: CopilotService
+paths:
+  /pds/v1/copilot/search:
+    post:
+      operationId: CopilotService_SearchQuery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1SearchQueryRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1SearchQueryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: Search dataservice queries.
+      tags:
+      - CopilotService
+components:
+  schemas:
+    protobufAny:
+      additionalProperties: {}
+      properties:
+        '@type':
+          type: string
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1SearchQueryRequest:
+      properties:
+        dataServiceId:
+          description: Id of the dataservice.
+          type: string
+        query:
+          description: Query string.
+          type: string
+      title: Search request to query
+      type: object
+    v1SearchQueryResponse:
+      description: Response structure contains fields for query response from copilot
+        service.
+      example:
+        dataServiceId: dataServiceId
+        response: response
+        responseTime: 2000-01-23T04:56:07.000+00:00
+        query: query
+        id: id
+      properties:
+        dataServiceId:
+          description: |-
+            (-- api-linter: core::0158::response-repeated-first-field=disabled
+                aip.dev/not-precedent: We need to do this because of the copilot response. --)
+            (-- api-linter: core::0158::response-plural-first-field=disabled
+                aip.dev/not-precedent: We need to do this because of the copilot response. --)
+            Id of the dataservice.
+          type: string
+        id:
+          description: Unique id of response.
+          type: string
+        query:
+          description: Query string.
+          type: string
+        response:
+          description: Response string.
+          type: string
+        responseTime:
+          description: Response time.
+          format: date-time
+          type: string
+      type: object

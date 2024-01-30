@@ -1,0 +1,33 @@
+.PHONY: all build test clean
+
+all: build test
+
+build:
+	@echo "Building..."
+	@go build ./...
+
+test:
+	@echo "Running tests..."
+	@go test -v ./...
+
+clean:
+	@echo "Cleaning up..."
+	@go clean ./...
+
+update-dependencies:
+	@echo "Updating dependencies..."
+	@go get -u ./...
+	@go mod tidy
+
+vendor:
+	@echo "Creating vendor directory..."
+	@go mod vendor
+
+tidy-submodules:
+	@echo "Running go mod tidy in each submodule..."
+	@find . -type f -name 'go.mod' -execdir go mod tidy \;
+
+.PHONY: submodule-update
+submodule-update:
+	@echo "Updating submodules..."
+	@git submodule update --recursive --remote
