@@ -1,6 +1,6 @@
 module github.com/portworx/pds-api-go-client
 
-go 1.17
+go 1.21.4
 
 require golang.org/x/oauth2 v0.0.0-20210218202405-ba52d332ba99
 
